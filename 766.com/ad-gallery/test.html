@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="http://js.olcdn.com/grouppic2013129/css/group_style_simple.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="http://js.olcdn.com/grouppic2013129/js/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="http://js.olcdn.com/grouppic2013129/js/jquery.ad-gellery.js"></script>
+    <script type="text/javascript" src="http://js.olcdn.com/grouppic2013129/js/jquery.easydrag.js"></script>
+    <script type="text/javascript" src="http://js.olcdn.com/grouppic2013129/js/group_data.js"></script>
+    <script type="text/javascript" src="http://js.olcdn.com/grouppic2013129/js/lightbox.js"></script>
+    <link href="http://js.olcdn.com/grouppic2013129/css/lightbox.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript">
+        $(function() {
+            new $.fn.initList({_data:imageGroup.items,_k1:true});
+
+            /*var mousedown = false;
+
+             $('#lightbox').mousedown(function(e){
+             $('#lightbox').data('mousepos',{
+             left :e.pageX,
+             top  :e.pageY
+             })
+             mousedown = true;
+             }).mousemove(function(e){
+             if(!mousedown) return ;
+             var  os = {
+             left :e.pageX,
+             top  :e.pageY
+             };
+
+             var lightbox =  $('#lightbox');
+
+             var p = {
+             left :  parseFloat(lightbox.css('left'))  + (os.left - lightbox.data('mousepos').left),
+             top : parseFloat(lightbox.css('top')) + (os.top - lightbox.data('mousepos').top)
+             }
+
+             lightbox.css(p).data('mousepos',os);
+
+             })
+             $(document).mouseup(function(){
+             mousedown = false;
+             })*/
+
+            //  $('#lightbox').css('float','left').easydrag();
+        });
+    </script>
+</head>
+<body>
+<div class="ad-gallery" style="width: 700px;">
+    <div class="ad-image-wrapper"></div>
+    <div class="ad-chakanpic"><a href="#" target="_blank" class="ad-chakan" rel="lightbox">查看原图</a></div>
+    <div class="ad-target"><a href="#">url link</a></div>
+    <div class="ad-title"></div>
+    <div class="ad-nav">
+        <div class="ad-thumbs">
+            <ul class="ad-thumb-list">
+                <script type="text/javascript">
+                    var imageGroup = <!--infoContent-->; //图片源
+                </script>
+            </ul>
+        </div>
+    </div>
+    <div class="ad-scrollbar-cnt">
+        <div class="ad-scrollbar"></div>
+    </div>
+    <div class="ad-lookpic" style="display:none">
+        <div class="lastpic2">
+            <div class="look-pic2-cnt">
+                <div class="look-pic-wb clearfix">
+                    <div class="look-pic-wbl"><img src="http://i3.static.olcdn.com/js/grouppic2013129//look.gif" width="150" height="32" onclick="$( '.ad-next' ).click();" /></div>
+                    <div class="look-pic-wbr"><img src="http://i3.static.olcdn.com/js/grouppic2013129//look1.gif" width="150" height="32" /></div>
+                </div>
+            </div>
+            <div class="look-pic-like">
+                <h3>你可能还喜欢</h3>
+                <ul>
+
+                    <li><a href="http://tu.yeyou.com/content/12302012/110734853.shtml" target="_blank" alt="《忍者无双》截图独家曝光"><img src="http://i1.yeyou.itc.cn/2012/tu/2012/12/30/9176/small/102933.jpg" width="160" height="120"  /></a><span><a href="http://tu.yeyou.com/content/12302012/110734853.shtml" target="_blank">《忍者无双》截图独家曝光</a></span></li>
+
+                    <li><a href="http://tu.yeyou.com/content/12182012/151340455.shtml" target="_blank" alt="《兵临城下2》视频截图"><img src="http://i1.yeyou.itc.cn/2012/tu/2012/12/18/h1218as12s.jpg" width="160" height="120"  /></a><span><a href="http://tu.yeyou.com/content/12182012/151340455.shtml" target="_blank">《兵临城下2》视频截图</a></span></li>
+
+                    <li><a href="http://tu.yeyou.com/content/12182012/092343522.shtml" target="_blank" alt="步步生莲三千世界 《斩魔》实景截图首曝"><img src="http://i2.yeyou.itc.cn/2012/tu/2012/12/18/9.jpg" width="160" height="120"  /></a><span><a href="http://tu.yeyou.com/content/12182012/092343522.shtml" target="_blank">步步生莲三千世界 《斩魔》实景截图首曝</a></span></li>
+
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+<!-- START 766 STATS CENSUS -->
+<script type="text/javascript" src="http://stats.766.com/stats.js"></script>
+<noscript>
+    <img src="http://stats.766.com/stats.html" height="0" width="0" />
+</noscript>
+<!-- END 766 STATS CENSUS -->
+</body>
+</html>

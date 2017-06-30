@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>6.下拉菜单/级联菜单效果</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<style>
+/*slide*/
+.backToTop { display:none; width:18px; line-height:1.2; padding:5px 0; background-color:#000; color:#fff; font-size:12px; text-align:center; position:fixed; _position:absolute; left:50%; margin-left:500px; bottom:100px; _bottom:"auto"; cursor:pointer; opacity:.6; filter:Alpha(opacity=60); }
+</style>
+<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+<script src="js/back_top.js"></script>
+<script type="text/javascript" src="js/jquery.hoverIntent.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="js/bigMenu.js"></script>
+</head>
+<body>
+<!-- wrapper -->
+<div class="main">
+<!--目录-->
+<h2>766通用JS效果 目录：（以下效果，经测试，兼容FF10.0/IE6,7,8,9/360 4.1.1.6/遨游 3.1.5/世界之窗3.2）</h2>
+<p class="descirpt" style="background:#f1f1f1; border:1px solid #369;">
+	<a href="0.index.html">0.首页-JQuery基础使用教程</a><br />
+	<a href="1.fade.html">1.幻灯片效果-淡入淡出 + 返回顶部</a><br />
+	<a href="2.stepScroll.html">2.幻灯片效果-单块内容滚动</a><br />
+	<a href="3.scroll.html">3.滚动效果</a><br />
+	<a href="4.textScroll.html">4.文本滚动效果</a><br />
+	<a href="5.tab.html">5.选项卡/标签切换效果+图片切换后载效果</a><br />
+	<span>6.下拉菜单/级联菜单效果</span><br />
+	<a href="7.ie6png.html">7.IE6 png bug</a><br />
+	<a href="8.ie6fixed.html">8.IE6 fixed bug</a><br />
+</p>
+<!--目录 end-->
+<h2>menu/级联菜单效果</h2>
+<p class="descirpt">描述：用于建立级联菜单的JS代码。</p>
+<!--begin***************************************************-->
+<h3 class="h3" style="margin-top:10px">范例：竖排级联菜单</h3>
+<textarea style="height:400px; width:978px; float:left;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*menu*/
+		#menu1{ float:left; display:inline; }
+		#menu1 ul{ display:none;}
+		#menu1{ border:1px solid #59595f;border-bottom:none; width:100px;}
+			#menu1 li{position:relative; line-height:20px; border-bottom:1px solid #59595f; float:left; width:100px; height:20px;}
+			#menu1 li a{width:85px; padding:0 5px 0 10px; height:20px; display:block; background:#C03; text-decoration:none; color:#fff; overflow:hidden;}
+			#menu1 .menu1_sub a{ background:#369; }
+			#menu1 .menu1_sub li a{ background:#f90; }
+			#menu1 li ul{position:absolute; left:100px; top:-1px; border:1px solid #59595f; border-bottom:none;}
+			#menu1 span{float:right; background:url(images/arrows-ffffff.png) no-repeat -3px 5px; width:5px; height:30px;}
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/jquery.hoverIntent.min.js"></script>
+		<script type="text/javascript" src="js/menu.js"></script>
+		<script>
+		$(function(){ 
+			/*menu*/
+			$("#menu1 li").each(function(){
+				if($(this).find("ul").length>0){
+					$(this).children("a").attr("class","");
+					$(this).menu();
+				}
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<ul id="menu1">
+			<li><a href="#" title=""><span></span>a_menu1 &raquo;</a>
+				<ul>
+					<li class="menu1_sub"><a href="#" title=""><span></span>a_menu21 &raquo;</a>
+						<ul>
+							<li><a href="#" title="">a_menu31</a></li>
+						</ul>
+					</li>
+					<li class="menu1_sub"><a href="#" title=""><span></span>a_menu22 &raquo;</a>
+						<ul>
+							<li><a href="#" title="">a_menu31</a></li>
+						</ul>
+					</li>
+					<li class="menu1_sub"><a href="#" title=""><span></span>a_menu23 &raquo;</a>
+						<ul>
+							<li><a href="#" title="">a_menu31</a></li>
+						</ul>
+					</li>
+					<li class="menu1_sub"><a href="#" title=""><span></span>a_menu24 &raquo;</a>
+						<ul>
+							<li><a href="#" title="">a_menu31</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><a href="#" title="">c_menu1</a></li>
+			<li><a href="#" title=""><span></span>b_menu1 &raquo;</a>
+				<ul>
+					<li class="menu1_sub"><a href="#" title=""><span></span>b_menu21 &raquo;</a>
+						<ul>
+							<li><a href="#" title="">b_menu31</a></li>
+						</ul>
+					</li>
+					<li class="menu1_sub"><a href="#" title="">b_menu22</a></li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+</html>
+
+</textarea>
+<div class="clear"></div>
+<style>
+/*menu*/
+#menu1{ float:left; display:inline; }
+#menu1 ul{ display:none;}
+#menu1{ border:1px solid #59595f;border-bottom:none; width:100px;}
+	#menu1 li{position:relative; line-height:20px; border-bottom:1px solid #59595f; float:left; width:100px; height:20px;}
+	#menu1 li a{width:85px; padding:0 5px 0 10px; height:20px; display:block; background:#C03; text-decoration:none; color:#fff; overflow:hidden;}
+	#menu1 .menu1_sub a{ background:#369; }
+	#menu1 .menu1_sub li a{ background:#f90; }
+	#menu1 li ul{position:absolute; left:100px; top:-1px; border:1px solid #59595f; border-bottom:none;}
+	#menu1 span{float:right; background:url(images/arrows-ffffff.png) no-repeat -3px 5px; width:5px; height:30px;}
+</style>
+<script>
+$(function(){ 
+	/*menu*/
+	$("#menu1 li").each(function(){if($(this).find("ul").length>0){jQuery(this).children("a").attr("class","");$(this).menu()}});
+});
+</script>
+<p class="menu_title">竖排菜单</p>
+<ul id="menu1">
+	<li><a href="#" title=""><span></span>a_menu1 &raquo;</a>
+		<ul>
+			<li class="menu1_sub"><a href="#" title=""><span></span>a_menu21 &raquo;</a>
+				<ul>
+					<li><a href="#" title="">a_menu31</a></li>
+				</ul>
+			</li>
+			<li class="menu1_sub"><a href="#" title=""><span></span>a_menu22 &raquo;</a>
+				<ul>
+					<li><a href="#" title="">a_menu31</a></li>
+				</ul>
+			</li>
+			<li class="menu1_sub"><a href="#" title=""><span></span>a_menu23 &raquo;</a>
+				<ul>
+					<li><a href="#" title="">a_menu31</a></li>
+				</ul>
+			</li>
+			<li class="menu1_sub"><a href="#" title=""><span></span>a_menu24 &raquo;</a>
+				<ul>
+					<li><a href="#" title="">a_menu31</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><a href="#" title="">c_menu1</a></li>
+	<li><a href="#" title=""><span></span>b_menu1 &raquo;</a>
+		<ul>
+			<li class="menu1_sub"><a href="#" title=""><span></span>b_menu21 &raquo;</a>
+				<ul>
+					<li><a href="#" title="">b_menu31</a></li>
+				</ul>
+			</li>
+			<li class="menu1_sub"><a href="#" title="">b_menu22</a></li>
+		</ul>
+	</li>
+</ul>
+<div class="clear"></div>
+<br />
+<br />
+<!--end***************************************************-->
+
+<!--begin***************************************************-->
+<h3 class="h3" style="margin-top:10px">范例：横排级联菜单</h3>
+<textarea style="height:400px; width:978px; float:left;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*menu*/
+		#menu2{ float:left; display:inline; }
+		#menu2 ul{ display:none;}
+		#menu2{ border:1px solid #59595f; border-right:0; border-bottom:none; }
+			#menu2 li{position:relative; line-height:20px; border:1px solid #59595f; border-width:0px 1px 1px 0; float:left; width:100px; height:20px;}
+			#menu2 li a{width:85px; padding:0 5px 0 10px; height:20px; display:block; background:#C03; text-decoration:none; color:#fff; overflow:hidden;}
+			#menu2 .menu1_sub a{ background:#369; }
+			#menu2 .menu1_sub li a{ background:#f90; }
+			/*z-index:1001;表示层级为1001；层级越大，显示在网页的越上面。设置该属性是为了防止弹出的菜单被其他内容遮盖。数字可以根据需要改变。只有设置了position:absolute/position:relative的内容，z-index才有效果*/
+			#menu2 li ul{position:absolute; left:-1px; z-index:1001; top:20px; border:1px solid #59595f; border-width:1px 0px 0px 1px;} 
+			#menu2 span{float:right; background:url(images/arrows-ffffff.png) no-repeat -3px 5px; width:5px; height:30px;}
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/jquery.hoverIntent.min.js"></script>
+		<script type="text/javascript" src="js/menu.js"></script>
+		<script>
+		$(function(){ 
+			/*menu*/
+			$("#menu2 li").each(function(){
+				if($(this).find("ul").length>0){
+					$(this).children("a").attr("class","");
+					$(this).menu()
+				}
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<ul id="menu2">
+			<li><a href="#" title="">a_menu1 ▼</a>
+				<ul>
+					<li class="menu1_sub"><a href="#" title="">a_menu21</a></li>
+					<li class="menu1_sub"><a href="#" title="">a_menu22</a></li>
+					<li class="menu1_sub"><a href="#" title="">a_menu23</a></li>
+					<li class="menu1_sub"><a href="#" title="">a_menu24</a></li>
+				</ul>
+			</li>
+			<li><a href="#" title="">c_menu1</a></li>
+			<li><a href="#" title="">b_menu1 ▼</a>
+				<ul>
+					<li class="menu1_sub"><a href="#" title="">b_menu21</a></li>
+					<li class="menu1_sub"><a href="#" title="">b_menu22</a></li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+</html>
+</textarea>
+<div class="clear"></div>
+<style>
+/*menu*/
+#menu2{ float:left; display:inline; }
+#menu2 ul{ display:none;}
+#menu2{ border:1px solid #59595f; border-right:0; border-bottom:none; }
+	#menu2 li{position:relative; line-height:20px; border:1px solid #59595f; border-width:0px 1px 1px 0; float:left; width:100px; height:20px;}
+	#menu2 li a{width:85px; padding:0 5px 0 10px; height:20px; display:block; background:#C03; text-decoration:none; color:#fff; overflow:hidden;}
+	#menu2 .menu1_sub a{ background:#369; }
+	#menu2 .menu1_sub li a{ background:#f90; }
+	/*z-index:1001;表示层级为1001；层级越大，显示在网页的越上面。设置该属性是为了防止弹出的菜单被其他内容遮盖。数字可以根据需要改变。只有设置了position:absolute/position:relative的内容，z-index才有效果*/
+	#menu2 li ul{position:absolute; left:-1px; z-index:1001; top:20px; border:1px solid #59595f; border-width:1px 0px 0px 1px;} 
+	#menu2 span{float:right; background:url(images/arrows-ffffff.png) no-repeat -3px 5px; width:5px; height:30px;}
+</style>
+<script>
+$(function(){ 
+	/*menu*/
+	$("#menu2 li").each(function(){if($(this).find("ul").length>0){jQuery(this).children("a").attr("class","");$(this).menu()}});
+});
+</script>
+<div class="clear"></div>
+<p class="menu_title">横排菜单</p>
+<ul id="menu2" style="margin-bottom:100px;">
+	<li><a href="#" title="">a_menu1 ▼</a>
+		<ul>
+			<li class="menu1_sub"><a href="#" title="">a_menu21</a></li>
+			<li class="menu1_sub"><a href="#" title="">a_menu22</a></li>
+			<li class="menu1_sub"><a href="#" title="">a_menu23</a></li>
+			<li class="menu1_sub"><a href="#" title="">a_menu24</a></li>
+		</ul>
+	</li>
+	<li><a href="#" title="">c_menu1</a></li>
+	<li><a href="#" title="">b_menu1 ▼</a>
+		<ul>
+			<li class="menu1_sub"><a href="#" title="">b_menu21</a></li>
+			<li class="menu1_sub"><a href="#" title="">b_menu22</a></li>
+		</ul>
+	</li>
+</ul>
+<div class="clear"></div>
+<!--end***************************************************-->
+
+<!--begin***************************************************-->
+<h2>鼠标移动上去，显示整体子菜单</h2>
+<h3 class="h3" style="margin-top:10px">范例：</h3>
+<textarea style="height:400px; width:978px; float:left;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*内容样式*/
+		.popmenu_hole{ position:relative; zoom:1; font-size:14px; }
+		.popmenu_list li{ float:left; width:100px; height:24px; line-height:24px; overflow:hidden; background:#ddd; display:inline; margin-right:5px; text-align:center; }
+			.popmenu_list .ph_select{ background:#960 }
+		.popmenu_list li a{ width:100%; height:100%; display:block; overflow:hidden; }
+		
+		.popmenu_box{ width:760px; position:absolute; height:200px; left:0; top:24px; background:#777; display:none; }
+		.popmenu_box ul{ height:190px;  padding:10px 0 0; float:left; width:100px; overflow:hidden; display:inline; margin-right:5px;}
+		.popmenu_box li{ width:100px; float:left; overflow:hidden; text-align:center; }
+		.popmenu_box li a{ color:#fff; }
+		.popmenu_box li a:hover{ color:#f90; text-decoration:underline; }
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/bigMenu.js"></script>
+		<script>
+		$(function(){
+			/*完整参数，不写则使用默认值。样式出现冲突时修改类名，注意是否有"."
+			$(".popmenu_hole").bigMenu({
+				container : '.popmenu_hole',	//大容器
+				list : '.popmenu_list',			//第一级菜单DIV
+				box : '.popmenu_box',			//弹出菜单DIV
+				cur : 'ph_select'				//当前选中的菜单class名
+			});
+			*/
+			$(".popmenu_hole").bigMenu();
+		});
+		</script>
+	</head>
+	<body>
+		<div class="popmenu_hole">
+			<ul class="popmenu_list">
+				<li><a href="#"><span class="ph_bg1"></span>梦幻11迪士尼</a></li>
+				<li><a href="#"><span class="ph_bg2"></span>梦幻22迪士尼</a></li>
+				<li><a href="#"><span class="ph_bg3"></span>梦幻33迪士尼</a></li>
+				<li><a href="#"><span class="ph_bg4"></span>梦幻44迪士尼</a></li>
+				<li><a href="#"><span class="ph_bg5"></span>梦幻55迪士尼</a></li>
+			</ul>
+			<div class="popmenu_box">
+				<ul>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+				</ul>
+				<ul></ul><!--子菜单为空时也要写个空层-->
+				<ul>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+					<li><a href="#">梦幻33迪士尼</a></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</body>
+</html>
+
+</textarea>
+<div class="clear"></div>
+<style>
+/*内容样式*/
+.test{ height:200px; overflow:hidden; }
+.popmenu_hole{ position:relative; zoom:1; font-size:14px; }
+.popmenu_list li{ float:left; width:100px; height:24px; line-height:24px; overflow:hidden; background:#ddd; display:inline; margin-right:5px; text-align:center; }
+	.popmenu_list .ph_select{ background:#960 }
+.popmenu_list li a{ width:100%; height:100%; display:block; overflow:hidden; }
+
+.popmenu_box{ width:760px; position:absolute; height:200px; left:0; top:24px; background:#777; display:none; }
+.popmenu_box ul{ height:190px;  padding:10px 0 0; float:left; width:100px; overflow:hidden; display:inline; margin-right:5px;}
+.popmenu_box li{ width:100px; float:left; overflow:hidden; text-align:center; }
+.popmenu_box li a{ color:#fff; }
+.popmenu_box li a:hover{ color:#f90; text-decoration:underline; }</style>
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/bigMenu.js"></script>
+<script>
+$(function(){
+	/*完整参数，不写则使用默认值。样式出现冲突时修改类名，注意是否有"."
+	$(".popmenu_hole").bigMenu({
+		container : '.popmenu_hole',	//大容器
+		list : '.popmenu_list',			//第一级菜单DIV
+		box : '.popmenu_box',			//弹出菜单DIV
+		cur : 'ph_select'				//当前选中的菜单class名
+	});
+	*/
+	$(".popmenu_hole").bigMenu();
+});
+</script>
+<br />
+<div class="popmenu_hole test">
+	<ul class="popmenu_list">
+		<li><a href="#"><span class="ph_bg1"></span>梦幻11迪士尼</a></li>
+		<li><a href="#"><span class="ph_bg2"></span>梦幻22迪士尼</a></li>
+		<li><a href="#"><span class="ph_bg3"></span>梦幻33迪士尼</a></li>
+		<li><a href="#"><span class="ph_bg4"></span>梦幻44迪士尼</a></li>
+		<li><a href="#"><span class="ph_bg5"></span>梦幻55迪士尼</a></li>
+	</ul>
+	<div class="popmenu_box">
+		<ul>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+		</ul>
+		<ul></ul><!--子菜单为空时也要写个空层-->
+		<ul>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+		</ul>
+		<ul>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+			<li><a href="#">梦幻33迪士尼</a></li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+</div>
+<!--end***************************************************-->
+</div>
+<!-- wrapper end -->
+
+</body>
+</html>

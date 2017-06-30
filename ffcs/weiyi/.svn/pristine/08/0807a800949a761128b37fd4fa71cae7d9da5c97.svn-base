@@ -1,0 +1,28 @@
+{template 'header'}
+{template 'slide'}
+<link href="./themes/mobile/css/common.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/css/reset.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/css/snower.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/templet12/css/home.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="./themes/mobile/js/maivl.js"></script>
+<style type="text/css">
+    ul,li{maring:0; padding:0;list-style:none
+    }
+</style>
+<style>
+body{{if !empty($_W['styles']['indexbgcolor'])} background-color:{$_W['styles']['indexbgcolor']};{else}background:#f0fbff;{/if}}
+</style>
+       <div class="main">
+    	<ul>
+            {loop $navs $nav}
+            <li id="m1">
+            <a href="{$nav['url']}">
+            <span class="icon"  style="background:url({$_W['attachurl']}{$nav['icon']}) no-repeat;background-size:88px 64px;"><em></em></span><span class="title"> {$nav['name']}</span></a></li>
+            {/loop}
+       	</ul>
+        </div>
+        </div>
+        <div id="insert2"></div>
+        <div style="display:none"> </div>
+
+{template 'footer'}

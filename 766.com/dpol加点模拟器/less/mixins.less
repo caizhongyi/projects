@@ -1,0 +1,737 @@
+﻿@charset "utf-8";
+
+.en-font (...){
+	font:12px/1.5 arial,tahoma,'宋体';
+}
+.cn-font (...){
+	font:12px/1.5 '宋体',tahoma,arial;
+}
+
+.number-font (...) {
+	font-family: tahoma,arial,'宋体';
+}
+// Drop shadows
+.size (@height, @width,...) {
+	width: @width;
+	height: @height;
+}
+.pos (@left : 0 , @top : 0 ,...){
+	left : @left;
+	top:  @top;
+}
+
+
+// Placeholder text
+// -------------------------
+.placeholder (@color: @placeholderText,...) {
+	&:-moz-placeholder {
+		color: @color;
+	}
+	&:-ms-input-placeholder {
+		color: @color;
+	}
+	&::-webkit-input-placeholder {
+		color: @color;
+	}
+}
+
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+.text-overflow (...) {
+	.inline-block();
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.no-decoration (...){
+	&:hover{text-decoration: none;}
+}
+// CSS image replacement
+// -------------------------
+// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+.hide-text (...) {
+	font: 0/0 a;
+	color: transparent;
+	text-shadow: none;
+	background-color: transparent;
+	border: 0;
+}
+
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+.clearfix (...) {
+	*zoom: 1;
+	&:before,
+	&:after {
+		display: table;
+		content: ""; // Fixes Opera/contenteditable bug:
+	// http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+		line-height: 0;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+.min-height (@height: 300px,...) {
+	_height: @height;
+	_overflow: "visible";
+	min-height: @height;
+}
+
+.inline-block (...) {
+	display: inline-block;
+	vertical-align: middle;
+}
+.ie7-inline-block (...) {
+	*display: inline; /* IE7 inline-block hack */
+	*zoom: 1;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.opacity (@val: 0.8,...) {
+	@pval: @val*100;
+	filter: ~"alpha(opacity = @{pval})";
+	opacity: @val;
+}
+
+.block-center (...) {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.middle (@height: 22px,...) {
+	height: @height;
+	line-height: @height;
+}
+
+.bg (@bg, @repeat: no-repeat,@offset : 0 0,...) {
+	.get(@bg)when (iscolor(@bg)){
+		background: @bg @repeat @offset;
+	}
+	.get(@bg)when (isstring(@bg)){
+		background: url(@bg) @repeat @offset;
+	}
+	.get(@bg);
+}
+
+.toggle (@selector,...) {
+	position: relative;
+	(~"@{selector}") {
+		display: none;
+		position: absolute;
+	};
+	&:hover {
+		(~"@{selector}") {
+			display: block;
+		}
+	}
+}
+
+.left (...){
+	float: left;
+	_margin-right:-3px;
+}
+
+.right (...){
+	float: right;
+	_margin-left:-3px;
+}
+
+.nowrap (...){white-space:nowrap;}
+
+.fluid (...){
+	float: none;
+	width: auto;
+	_overflow:visible;
+	zoom:1;
+}
+
+.empty (...){
+	height:0;line-height:0;overflow:hidden; font-size:0;
+}
+
+.show (...){
+	display: block;
+}
+.hide (...){
+	display: none;
+}
+
+.text-right (...){ text-align: right; }
+.text-left (...){ text-align: left; }
+.text-center (...){text-align: center;}
+.text-justify (...){text-align:justify;text-justify:inter-ideograph;}
+
+.scroll (@width : 100px , @height : 100px ,...){
+	overflow: auto;
+	height:@height;
+	width: @width;
+}
+.scroll-y ( @height : 100px ,...){
+	overflow-y: auto;
+	height: @height;
+}
+.scroll-x (@width : 100px  ,...){
+	overflow-x: auto;
+	width: @width;
+}
+/* -----------------------  make object  --------------------------------- */
+
+.textarea (@width:100%,@height:150px,...){
+	width: @width;
+	max-width: @width;
+	height: @height;
+}
+
+.search (...){
+	.text{ width: 150px; vertical-align: middle; }
+}
+
+.tree (@indent:20px,...){
+	a{ .no-derocation();}
+	li{
+		padding-left: @indent;
+		h3{
+			padding-left: @indent * 2;
+		}
+		li{
+			padding-left: @indent * 3;
+		}
+	}
+}
+
+.form (@label:120px,...){
+	li {
+		font-size: 12px;
+		margin: 10px 0;
+		.clearfix()
+	}
+	label {
+		text-align: right;
+		margin-right: 10px;
+		height: 100%;
+		.inline-block();
+		width: @label;
+	}
+	.tips {
+		margin-left: 10px;
+	}
+	em {
+		color: red;
+	}
+	.ft {
+		margin: 10px 0;
+		.btn {
+			display: inline-block;
+			margin-right: 10px;
+		}
+	}
+}
+
+.image (@url, @repeat: no-repeat,@offset: 0 0,@root:'../images/',...){
+	background:url('@{root}@{url}') @repeat @offset;
+}
+
+
+.icon (@width: 15px, @height : 15px,...) {
+	vertical-align: middle;
+	display: inline-block;
+	height: @height;
+	.icon > .width();
+	.item (@row, @col){
+		background-position: -@col*@height -@row*@width;
+	}
+	.row (@row) {
+		background-position: 0 -@row*@width;
+	}
+	.col (@col) {
+		background-position: -@col*@height 0;
+	}
+	.left () {
+		padding-left: @width + 5px;
+	}
+	.right () {
+		padding-right: @width + 5px;
+	}
+	.width () {
+		width: @width;
+		padding: 0;
+	}
+
+	.list(@name, @row: 1, @col: 5, @width: 15px, @height: 15px) {
+	/* @len : @row * @col;
+.icon(@rowIndex,@colIndex,@width,@height) when (@rowIndex < @row),(@colIndex < @col){
+  @index : @rowIndex + (@rowIndex * @colIndex);
+  @posX : -@rowIndex*@width;
+  @posX : -@colIndex*@height;
+  (~".@{name}-@{index}"){
+	background-position: @width @height;
+  }
+  .icon( @rowIndex + 1,@colIndex,@width,@height);
+}
+.icon(@rowIndex,@colIndex,@width,@height) when (@rowIndex >= @row){
+  .icon(0,@colIndex + 1,@width,@height);
+}
+.icon(@rowIndex,@colIndex,@width,@height){
+
+}
+.icon(0,0,@width,@height);*/
+	}
+}
+
+.full-horizontal-list (@spacing : 10px , ...){
+	.clearfix();
+	.li,.item{
+		float: left;
+		margin-right: @spacing;
+	}
+	.last {
+		margin-right: 0;
+	}
+}
+
+.horizontal-list (@space:5px,...){
+	.clearfix();
+	li{margin:0 @space; .left();}
+}
+.vertical-list (@space:5px,...){
+	li{margin:@space 0; .clearfix();}
+	.left{ .text-overflow();}
+	.right{ width: 100px; }
+}
+.image-list (@width: 100px, @height: 100px,@space:5px,...) {
+	.clearfix();
+	li {
+		position: relative;
+		margin: 0 @space;
+		float: left;
+		width: @width;
+		text-align: center;
+		img {
+			width: 100%;
+			height: @height;
+		}
+		.name {
+			font-size: 12px;
+			margin-top: 5px;
+		}
+		.summary {
+			transition: opacity 0.2s linear 0;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			background: #000;
+			.opacity(0);
+			height: @height / 4;
+			line-height: @height / 4;
+			display: block;
+			.text-overflow();
+			width: @width;
+			text-align: center;
+			display: none;
+			&, a {
+				color: #fff;
+			}
+		}
+		&:hover {
+			.summary {
+				.opacity(0.5);
+				display: block;
+			}
+		}
+	}
+	.hover() {
+		li .name {
+			display: none;
+		}
+		li:hover {
+			.name {
+				display: block;
+			}
+		}
+	}
+}
+.info-list (...) {
+li {
+	padding: 10px;
+	border-bottom: 1px dashed #ddd;
+	&:hover{
+		background: #bbd8e9;
+	}
+}
+.left {
+	&,img{width: 150px;}
+	text-align: center;
+	margin-bottom: 5px;
+}
+.right {
+	width: 150px;
+	padding: 10px;
+}
+.main {
+	overflow: hidden;
+	padding: 0 10px;
+	h3 {
+		margin-bottom: 5px;
+		font-size: 14px;
+	}
+	p {
+		text-indent: 2em;
+		line-height: 22px;
+		min-height: 50px;
+	}
+	.summary{
+		.clearfix();
+		.left { color: #999;}
+	}
+}
+}
+.group (@space:5px,...) {
+	span,a,input{margin: 0 @space; vertical-align: middle;}
+}
+
+.grid (@width:100px,@height:auto,@space:5px,...){
+	.item() {
+		li {
+			width: @width;
+			height: @height;
+			margin:@space;
+			float: left;
+			_display:inline;
+		}
+	}
+	.row (){
+		li {
+			width: @width;
+			height: @height;
+			margin:0 @space;
+			.left();
+		}
+	}
+	.col() {
+		li {
+			width: @width;
+			height: @height;
+			margin:@space 0;
+		}
+	}
+	.clearfix();
+}
+
+.text (@width:150px,...){
+	@text-width:@width;
+	display: inline-block;
+	width : @width;
+	.label(@width:50px){
+		label{
+			width: @width;
+			display:inline-block;
+		}
+		.text {
+			width: @text-width - @width  - 2px;
+			padding: 0;
+		}
+		label,.text{ vertical-align: middle;}
+	}
+}
+
+.btn (...){
+	.inline-block();
+	cursor:pointer;
+	.no-decoration();
+	.text-center();
+}
+.auto-btn (@padding:0 15px){
+	.btn();
+	padding:@padding;
+}
+.auto-border-btn (@padding:0 15px,@border:1px solid #ddd){
+	.auto-btn(@padding);
+	border:@border;
+	border-radius: 5px;
+}
+
+.layout (@padding: 10px, @space: 10px,...) {
+	.clearfix();
+	overflow: hidden;
+	.left(@width: 200px) {
+		.left {
+			width: @width;
+			margin-right: @space;
+			padding: @padding;
+		}
+	}
+	.right(@width: 200px) {
+		.right {
+			width: @width;
+			margin-left: @space;
+			padding: @padding;
+		}
+	}
+	.main {
+		overflow: hidden;
+		padding: @padding;
+	}
+}
+
+.absolute-layer (@background:#000,...){
+	.opacity(0.7);
+	position: absolute;
+	background: #000;
+	left: 0;
+	top: 0;
+}
+
+.arrow (@color: '#fff', @size: 5px,...) {
+	font-size: 0;
+	height: 0;
+	width: 0;
+	vertical-align: middle;
+	line-height: 0;
+	border-style: solid;
+	border-width: @size;
+}
+.up-arrow (@color: '#fff', @size: 5px,...) {
+	.arrow(@color, @size);
+	border-color: ~"transparent transparent @{color} transparent";
+}
+.down-arrow (@color: '#fff', @size: 5px,...) {
+	.arrow(@color, @size);
+	border-color: ~'@{color} transparent transparent transparent';
+}
+.left-arrow (@color: '#fff', @size: 5px,...) {
+	.arrow(@color, @size);
+	border-color: ~'transparent @{color} transparent transparent';
+}
+.right-arrow (@color: '#fff', @size: 5px,...) {
+	.arrow(@color, @size);
+	border-color: ~'transparent transparent transparent @{color}';
+}
+
+.mod (@padding:10px,@border:none,...){
+	border:@border;
+	.hd, .bd, .ft {
+		padding: @padding;
+		.clearfix();
+	}
+	.hd {
+		border-bottom: @border;
+	}
+	.ft {
+		border-top: @border;
+	}
+}
+
+/* ------------------------------------------------------------------------------------------------  */
+.sendbox (@border:1px solid #ddd,...){
+	padding: 10px;
+	border: 1px solid #ddd;
+	.textarea{
+		margin: 10px 0;
+		@width : 90%;
+		width: @width ;
+		max-width: @width;
+	}
+	.ft{
+		.left{
+			color: #999;
+		}
+		.right{
+			.btn{
+				margin: 0 5px;
+			}
+		}
+		.clearfix();
+	}
+};
+
+/*
+翻页
+@params {string} background #fffff | url('')
+@params {px} width
+@params {px} height
+@params {string} border
+@params {string} disabled-border
+*/
+.page (...){
+	a,span{
+		&,&:hover{text-decoration: none;}
+	}
+	.prev,.next{
+		.inline-block();
+		background-repeat: no-repeat;
+		margin: 0 5px;
+	}
+	.prev-disabled,.next-disabled{
+		color: #999;
+	}
+}
+
+/**
+创建星星标识
+@param width 单一宽度
+@param height 单一高度
+@param  url 背景图片地址
+@param count 最大个数
+*/
+.level ( @width: 15px, @height: 15px, @count: 5,...) {
+	width: @width * @count;
+	&, i {
+		height: @height;
+	}
+	i {
+		background-position: 0 -@height;
+		display: inline-block;
+		width: @width;
+	}
+	.item(0);
+	.item(@n)when (@n < @count){
+		(~"i.count-@{n}") {
+			width: @width * @n;
+		}
+	//@m :`this.n + 1`;
+		@m: @n + 1;
+		.item(@m);
+	}
+}
+
+/**
+创建弹出窗口
+@param width 图片宽度
+@param height 图片高度
+*/
+.dialog (@width: 500px, @z-index: 10,...) {
+	position: fixed;
+	width: @width;
+	padding: 5px;
+	z-index: @z-index;
+	display: none;
+	.content {
+		position: relative;
+		z-index: 1;
+		background: #fff;
+	}
+	.bg {
+		height: 100%; .opacity(0.5);
+		width: 100%;
+		position: absolute;
+		_display: none;
+		margin: -5px;
+		box-shadow: 1px 1px 5px #000;
+		background: #ddd;
+	}
+	.bg, .content {
+		border: 1px solid #ddd;
+		border-radius: 5px;
+	}
+	.hd {
+		padding: 10px;
+		border-bottom: 1px solid #ddd;
+		h3, .title {
+			float: left;
+			height: 100%;
+		}
+	}
+	.hd, .bd, .ft {
+		padding: 10px;.clearfix();
+	}
+	.ft {
+		text-align: right;
+		.btn {
+			margin-right: 10px;
+		}
+	}
+
+	.alert() {
+		.bd {
+			text-align: center;
+			.icon {
+				margin-right: 10px;
+			}
+			.icon, .msg {.inline-block();}
+		}
+		.ft {
+			text-align: center;
+		}
+	}
+}
+.overlay (@opacity:0.5,...) {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	.opacity(@opacity);
+}
+
+.topbar (@height: 40px,...) {
+	position: relative;
+	height: @height;
+	color: #fff;
+	.bg {
+		background: #000;
+		.opacity(0.5);
+		height: 100%;
+	}
+	.left, .right {
+		position: absolute;
+		top: 10px;
+		float: none;
+	}
+	.left {
+		left: 10px;
+	}
+	.right {
+		right: 10px;
+	}
+}
+
+.tabs (@width: auto, @clipHeight: 300px,...) {
+	.clearfix();
+	.nav {
+		.width(@width)when (ispixel(@width)){
+			float: right;
+			width: @width;
+		}
+		a {
+			display: inline-block;
+			margin-right: 5px;
+			padding: 5px 10px;
+			&:hover{ text-decoration: none;}
+		}
+		li {
+			padding: 5px 10px;
+		}
+	;
+	}
+	.clip {
+		position: relative;
+		overflow: hidden;
+		width: @width;
+		height: @clipHeight;
+	}
+	.panel {
+		position: relative;
+	}
+}
+
+.progress (@width :200px ,@height : 10px,...){
+	.bar{
+		i{
+			height: @height;
+			width: 20%;
+			display: inline-block;
+			vertical-align: top;
+		}
+		height: @height;
+		display:inline-block;
+		width: 100%;
+		vertical-align: middle;
+	}
+}
+
+/* ----------------------- end  make object  --------------------------------- */

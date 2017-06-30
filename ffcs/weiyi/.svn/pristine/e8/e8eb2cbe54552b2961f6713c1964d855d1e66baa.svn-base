@@ -1,0 +1,42 @@
+{template 'header'}
+{template 'slide'}
+<body onselectstart="return true" ondragstart="return false">
+<link rel="stylesheet" type="text/css" href="./themes/mobile/css/font-awesome.css" media="all">
+<!--<img class="bgimg" src="{php echo $styles[$name.'bgimg']}"/>-->
+<!--导航菜单-->
+<div class="weimob-page" style="display: block;padding-bottom: 48px">
+
+    <header>
+        <div class="snower">
+            <script type="text/javascript"></script>
+            <script type="text/javascript" src="./themes/mobile/css/snower.css"></script>
+        </div>
+    </header>
+    <div class="weimob-content">
+        {if $navs}
+        <div  class="weimob-list">
+            {loop $navs $nav}
+            <a class="weimob-list-item" href="{$nav['url']}">
+                <div class="weimob-list-item-bg">
+                    <div>
+                        <span class="{$nav['css']['icon']['icon']}"></span>
+                    </div>
+                    <div class="weimob-list-item-box">
+                        <div class="weimob-list-item-line">
+                            <div class="weimob-list-item-title">{$nav['name']}</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {/loop}
+        </div>
+        {else}
+        <a href="mobile.php?act=channel&name=home&weid={$_W['weid']}" class="box-item">
+            <i class="icon-user"></i>
+            <span style="{$nav['css']['name']}">个人中心</span>
+        </a>
+        {/if}
+    </div>
+</div>
+
+{template 'footer'}

@@ -1,0 +1,163 @@
+{template 'common/header'}
+{template 'site/nav_style'}
+<div class="main">
+	<form id="form" class="form-horizontal form" action="" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="templateid" value="{$template['id']}">
+		<h4>微站风格</h4>
+		<table class="tb">
+			<tr>
+				<th><label for="">模板名称</label></th>
+				<td>
+					{$template['title']}
+				</td>
+                <td rowspan="5">
+                    <!--<div class="mobile-preview">
+                        <iframe src="{php echo create_url('site/preview')}&styleid={$_W['account']['styleid']}" frameborder="0"></iframe>
+                    </div>-->
+                </td>
+			</tr>
+			<tr>
+				<th><label for="">模板路径</label></th>
+				<td>
+					./themes/mobile/{$template['name']}
+				</td>
+                <td></td>
+			</tr>
+			<tr>
+				<th><label for="">基础图片目录[imgdir]</label></th>
+				<td>
+					<input type="text" class="span4" name="style[imgdir]" value="{$styles['imgdir']['content']}" />
+					<span class="help-block">风格基础图片存放的目录，如果为空则默认为./themes/mobile/{$template['name']}/images目录</span>
+				</td>
+                <td></td>
+			</tr>
+			<tr>
+				<th>首页背景 [indexbgcolor] <br /> [indexbgimg] <br /> [indexbgextra]</th>
+				<td>
+					<div>
+						<input class="span3" type="text" name="style[indexbgcolor]" id="indexbgcolor" value="{$styles['indexbgcolor']['content']}" placeholder="">
+						<input class="colorpicker" target="indexbgcolor" value="{$styles['indexbgcolor']['content']}" />
+					</div>
+					<div style="display:block; margin-top:5px;" class="fileupload">
+						<input class="span3" type="text" name="style[indexbgimg]" id="indexbgimg" value="{$styles['indexbgimg']['content']}" placeholder="">
+						<input type="button" fieldname="indexbgimg" class="btn upload-btn" value="<i class='icon-upload-alt'></i> 上传" style="font-size:14px;width:80px;">
+					</div>
+                    <span class="help-block"> 微官网风格的建议尺寸是350*580。</span>
+					<div style="margin-top:5px;"><input class="span3" type="text" name="style[indexbgextra]" value="{$styles['indexbgextra']['content']}" placeholder=""><span class="help-inline">附加属性</span></div>
+					<div style="margin-top:5px;" id="indexbgimg_preview"><img src="{$_W['attachurl']}{$styles['indexbgimg']['content']}" width="100" /></div>
+					<span class="help-block">上传背景图片后，需要提交生效!</span>
+				</td>
+                <td></td>
+			</tr>
+			<tr>
+				<th><label for="">正常字体</label>[fontfamily]</th>
+				<td>
+					<input type="text" class="span4" name="style[fontfamily]" value="{$styles['fontfamily']['content']}" />
+					<span class="help-block"></span>
+				</td>
+                <td></td>
+			</tr>
+			<tr>
+				<th><label for="">正常字体大小</label>[fontsize]</th>
+				<td>
+					<input type="text" class="span4" name="style[fontsize]" value="{$styles['fontsize']['content']}" />
+					<span class="help-block"></span>
+				</td>
+                <td></td>
+			</tr>
+			<tr>
+				<th><label for="">普通文本颜色</label>[fontcolor]</th>
+				<td>
+					<input type="text" class="span3" id="fontcolor" name="style[fontcolor]" value="{$styles['fontcolor']['content']}" />
+					<input class="colorpicker" target="fontcolor" value="{$styles['fontcolor']['content']}" />
+					<span class="help-block"></span>
+				</td>
+                <td></td>
+			</tr>
+			<tr>
+				<th><label for="">菜单文本颜色</label>[fontnavcolor]</th>
+				<td>
+					<input type="text" class="span3" id="fontnavcolor" name="style[fontnavcolor]" value="{$styles['fontnavcolor']['content']}" />
+					<input class="colorpicker" target="fontnavcolor" value="{$styles['fontnavcolor']['content']}" />
+					<span class="help-block"></span>
+				</td>
+                <td></td>
+			</tr>
+			<tr>
+				<th><label for="">链接文字颜色</label>[linkcolor]</th>
+				<td>
+					<input type="text" class="span3" id="linkcolor" name="style[linkcolor]" value="{$styles['linkcolor']['content']}" />
+					<input class="colorpicker" target="linkcolor" value="{$styles['linkcolor']['content']}" />
+					<span class="help-block"></span>
+				</td>
+			</tr>
+			<tr>
+				<th>扩展CSS</th>
+				<td>
+					<textarea name="style[css]" class="span6" cols="70">{$styles['css']['content']}</textarea>
+					<span class="help-block">附加一些CSS样式</span>
+				</td>
+			</tr>
+		</table>
+		<h4>相册风格</h4>
+		<table class="tb">
+			<tr>
+				<th>相册展示方式</th>
+				<td>
+					<label class="radio inline"><input type="radio" value="1" name="style[albumlisttype]" {if $styles['albumlisttype']['content'] == '1'} checked{/if}> 单行</label>
+					<label class="radio inline"><input type="radio" value="2" name="style[albumlisttype]" {if $styles['albumlisttype']['content'] == '2'} checked{/if}> 双行</label>
+					<label class="radio inline"><input type="radio" value="3" name="style[albumlisttype]" {if $styles['albumlisttype']['content'] == '3'} checked{/if}> 瀑布流</label>
+				</td>
+			</tr>
+			<tr>
+				<th></th>
+				<td>
+					<input name="token" type="hidden" value="{$_W['token']}" />
+					<input type="submit" class="btn btn-primary" name="submit" id="submit" value="提交" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<script type="text/javascript" src="./resource/script/colorpicker/spectrum.js"></script>
+<link type="text/css" rel="stylesheet" href="./resource/script/colorpicker/spectrum.css" />
+<link type="text/css" rel="stylesheet" href="./resource/script/kindeditor/themes/default/default.css" />
+<script type="text/html" id="item-form-html">
+	<tr>
+		<td></td>
+		<td><input type="text" class="span3" id="linkhightcolor" name="style[content][]" /></td>
+		<td>
+			<input type="text" class="span3" id="linkhightcolor" name="style[content][]" />
+		</td>
+	</tr>
+</script>
+<script type="text/javascript">
+<!--
+	$('.upload-btn').each(function(){
+		kindeditorUploadBtn($(this), uploadHander);
+	});
+
+	function uploadHander(obj, data) {
+        var $input = $("#"+ obj.attr('fieldname')) , $imgContainer =$("#"+obj.attr('fieldname') + '_preview');
+        $input.val(data.filename).attr('data-filename', data.filename)
+        $imgContainer.html('<img src="'+ data.url + '" width="100" />');
+	}
+
+	function buildForm() {
+		$('#append-list').append($('#item-form-html').html());
+	}
+
+	function doDeleteItemImage(id) {
+		var filename = $('#' + id).val();
+		ajaxopen('./index.php?act=attachment&do=delete&filename=' + filename, function(){
+			$('#' + id).val('');
+			$('#submit').trigger('click');
+		});
+	}
+
+	$(function(){
+		colorpicker();
+	});
+//-->
+</script>
+{template 'common/footer'}

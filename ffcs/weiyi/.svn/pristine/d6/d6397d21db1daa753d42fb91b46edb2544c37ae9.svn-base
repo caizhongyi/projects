@@ -1,0 +1,60 @@
+{templateWithTemplet 'mobile/header','default'}
+<link rel="stylesheet" type="text/css" href="./themes/mobile/default/style/photo.mobile.css" media="all" />
+<link rel="stylesheet" type="text/css" href="./themes/mobile/default/style/photoswipe.mobile.css" media="all" />
+<script type="text/javascript" src="./themes/mobile/default/script/jquery.imagesloaded.js"></script>
+<script type="text/javascript" src="./themes/mobile/default/script/jquery.wookmark.min.js"></script>
+<script type="text/javascript" src="./themes/mobile/default/script/klass.min.js"></script>
+<script type="text/javascript" src="./themes/mobile/default/script/code.photoswipe.min.js"></script>
+<script type="text/javascript" src="./themes/mobile/default/script/jquery.lazyload.js"></script>
+<style>
+img{width:100%!important;}
+</style>
+<div id="photo">
+	<div class="body">
+		<div class="qiandaobanner">
+			<a href="#">
+				<img src="./themes/mobile/default/images/albums_head.jpg" alt="" style="max-height:200px;"/>
+			</a>
+		</div>
+		<div id="main">
+			<ul id="gallery" class="gallery">
+				{loop $result['list'] $row}
+				<li style="">
+					<a href="{$_W['attachurl']}{$row['attachment']}">
+						<img src="{$_W['attachurl']}{$row['attachment']}" alt="{$row['title']}">
+					</a>
+				</li>
+				{/loop}
+			</ul>
+		</div>
+	</div>
+</div>
+{$result['pager']}
+<script type="text/javascript">
+(function(window){
+	document.addEventListener('DOMContentLoaded', function(){
+		var PhotoSwipe = window.Code.PhotoSwipe;
+		var options = {loop:false},
+		instance = PhotoSwipe.attach( window.document.querySelectorAll('#gallery a'), options );
+	}, false);
+})(window);
+
+//下面是瀑布流js
+$(function() {
+  $('#gallery').imagesLoaded(function() {
+	// Prepare layout options.
+	var options = {
+	  autoResize: false, // This will auto-update the layout when the browser window is resized.
+	  container: $('#main'), // Optional, used for some extra CSS styling
+	  offset: 4, // Optional, the distance between grid items
+	  itemWidth: 140 // Optional, the width of a grid item
+	};
+
+	// Get a reference to your grid items.
+	var handler = $('#gallery li');
+	// Call the layout function.
+	handler.wookmark(options);
+  });
+});
+</script>
+{templateWithTemplet 'mobile/footer','default'}

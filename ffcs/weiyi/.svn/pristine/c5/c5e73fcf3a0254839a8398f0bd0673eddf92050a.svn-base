@@ -1,0 +1,125 @@
+{if empty($_GPC['status'])}{php $_W['breadcrumb'] = array(array('title'=>'系统管理'),array('title'=>'用户管理 '),array('title'=>'用户列表 '))}{/if}
+{if $_GPC['status'] == -1}{php $_W['breadcrumb'] = array(array('title'=>'系统管理'),array('title'=>'用户管理 '),array('title'=>'审核用户 '))}{/if}
+{template 'common/header'}
+
+
+<div class="page-header">
+    <h1>
+        <i class="icon-user"></i> 用户管理
+    </h1>
+</div>
+
+<script type="text/javascript">
+    var u ={};
+    u.deny = function(uid, status){
+        var uid = parseInt(uid);
+        if(isNaN(uid)) {
+            return;
+        }
+        if(!confirm('确认要禁用/解禁此用户吗? ')) {
+            return;
+        }
+		$.post('{php echo create_url('member/permission');}', {'do': 'deny', uid: uid, status: status}, function(dat){
+            if(dat == 'success') {
+                location.href = location.href;
+            } else {
+                message('操作失败, 请稍后重试. ' + dat);
+            }
+        });
+    };
+    u.del = function(uid){
+        var uid = parseInt(uid);
+        if(isNaN(uid)) {
+            return;
+        }
+        if(!confirm('确认要删除此用户吗? ')) {
+            return;
+        }
+        $.post('{php echo create_url('member/edit');}', {'do': 'delete', uid: uid}, function(dat){
+            if(dat == 'success') {
+                location.href = location.href;
+            } else {
+                message('操作失败, 请稍后重试. ' + dat);
+            }
+        });
+    };
+</script>
+{if $_W['member']['groupid']!=CHANNEL_GROUP_ID}
+<ul class="nav nav-tabs">
+	<li {if empty($_GPC['status'])}class="active"{/if}><a href="{php echo create_url('member/display');}">用户列表</a></li>
+    <li {if $_GPC['status'] == -1}class="active"{/if}><a href="{php echo create_url('member/display', array('status' => -1));}">审核用户</a></li>
+</ul>
+{/if}
+
+<div class="main">
+    <p style="padding-top: 15px">
+        <a href="{php echo create_url('member/create');}" class="btn btn-sm btn-primary"><i class="icon-pencil"></i>添加用户</a>
+    </p>
+    <div>
+        <form action="member.php" method="get" enctype="multipart/form-data">
+            <input type="hidden" name="act" value="display" />
+            <input type="hidden" name="status" value="{$_GPC['status']}" />
+            <table class="table table-striped table-bordered table-hover">
+                <tbody>
+                <tr>
+                    <th>关键字</th>
+                    <td>
+                        <input class="span6" name="keyword" id="" type="text" value="{$_GPC['keyword']}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>用户组</th>
+                    <td>
+                        <select class="span3" style="margin-right:15px;" name="cate_1" onchange="fetchChildCategory(this.options[this.selectedIndex].value)">
+                            <option value="0">请选择用户组</option>
+                            {loop $group_val $key $val}
+                            <option value="{$key}" {if $key == $_GPC['cate_1']} selected="selected"{/if}>{$val}</option>
+                            {/loop}
+                        </select>
+                    </td>
+
+                </tr>
+
+                <tr class="search-submit">
+                    <td colspan="2"><button class="btn pull-right span2 btn-primary"><i class="icon-search icon-large"></i> 搜索</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+<div class="rule">
+	<table class="table table-hover">
+		<thead class="navbar-inner">
+			<tr>
+				<th style="max-width:150px;">用户名</th>
+				<th style="width:100px;">身份</th>
+				<th style="width:80px;">状态</th>
+				<th style="text-align:center;">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			{loop $members $m}
+			<tr>
+				<td>{if !$m['founder']}<a href="./member.php?act=edit&uid={$m['uid']}">{$m['username']}</a>{else}{$m['username']}{/if}</td>
+				<td>{php echo $m['founder'] ? '<span class="label label-success">管理员</span>' : '';} &nbsp;<span class="label label-danger">{$m['group_name']}</span></td>
+				<td>{php echo $m['status'] == '-1' ? '<span class="label label-important">被禁止</span>' : '';}</td>
+				<td style="text-align:center;">
+					{if !$m['founder']}
+					<div>
+                        <a href="{php echo create_url('member/edit', array('uid' => $m['uid']))}">编辑</a>
+                        {if $_W['member']['groupid'] != CHANNEL_GROUP_ID}
+                        &nbsp;&nbsp;<a href="{php echo create_url('member/permission', array('uid' => $m['uid']))}">设置操作权限</a>
+                        &nbsp;&nbsp;<a href="javascript:;" onclick="u.deny('{$m['uid']}', '{php echo $m['status'] == '-1' ? '0' : '-1';}');">{php echo $m['status'] == '-1' ? '启用' : '禁止';}用户</a>&nbsp;&nbsp;
+                        <a href="javascript:;" onclick="u.del('{$m['uid']}');">删除用户</a>
+                        {/if}
+                    </div>
+					{/if}
+				</td>
+			</tr>
+			{/loop}
+		</tbody>
+	</table>
+	{$pager}
+</div>
+{template 'common/footer'}

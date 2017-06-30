@@ -1,0 +1,30 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微会员'),array('title'=>'管理会员'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-cog"></i> 管理会员
+    </h1>
+</div>
+<ul class="nav nav-tabs">
+    <li ><a href="{php echo create_url('micromember/setcard',array('type'=>'edit'))}">添加会员卡</a></li>
+    <li class="active"><a href="{php echo create_url('micromember/setcard',array('type'=>'list'))}">管理会员卡</a></li>
+</ul>
+<div class="main">
+    <div class="rule">
+        {loop $card_setting $row}
+        <table class="tb table table-bordered">
+            <tr class="control-group">
+                <td class="rule-content">
+                    <h4>
+                        <span class="pull-right">{if $row['isdefault']==0}<a onclick="return confirm('设置为默认会员卡，确认吗？');return false;" href="{php echo create_url('micromember/setcard', array('id' => $row['id'], 'type' => 'setdefault'))}">设置为默认会员卡</a>{/if}{if $row['isdefault']==0}<a onclick="return confirm('删除该会员卡，确认吗？');return false;" href="{php echo create_url('micromember/setcard', array('id' => $row['id'], 'type' => 'delete'))}">删除</a>{/if}<a href="{php echo create_url('micromember/setcard', array('id' => $row['id'],'type'=>'edit'))}">编辑</a></span>
+                        {$row['name']}
+                    </h4>
+                </td>
+            </tr>
+        </table>
+        {/loop}
+    </div>
+    {$pager}
+</div>
+
+{template 'common/footer'}

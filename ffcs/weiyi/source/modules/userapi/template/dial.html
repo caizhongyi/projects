@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>能力体验</title>
+    <link rel="stylesheet"  href="./resource/style/jquery.mobile-1.3.1.css">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <script src="./resource/script/jquery-1.7.2.min.js"></script>
+    <script src="./resource/script/jquery.mobile-1.3.1.min.js"></script>
+    <script src="./resource/script/jquery.FlexSlider/jquery.flexslider-min.js"></script>
+    <script type="text/javascript">
+    function update_tip(){
+    	var $pop = $('.ui-page:visible').find('.popupInfo');
+		$.ajax({
+			url:"index.php?act=module&name=userapi&do=get_record",
+	        type:'post',
+            data:"date="+new Date().getTime(),
+            dataType:'text',
+	        success:function(rs){
+	        	rs?eval("var rs="+rs+";"):'';
+	        	if(rs.status >= 0){
+	        		$pop.html(rs.msg);
+	        		$pop.popup("open");
+	   			}
+	        	return true;
+			}
+		});
+	}
+	$(function(){
+		window.setInterval(update_tip,2000);
+	});
+    </script>
+</head>
+
+<body>
+<div data-role="popup" id="popupInfo" class="ui-content popupInfo" data-theme="e" style="max-width:350px;"></div>
+<!-- <div data-role="page" id="home"> -->
+    <header data-role="header">
+        <h1>点击拨号</h1>
+    </header>
+    <div data-role="content">
+        请输入您的手机号码作为主叫号码：
+        <input name="user" class="user" value="{$calling}" placeholder="电话号码" data-theme="c" type="text" />
+        <div class="phonetip" style="font-size:12px;color:green;"></div><br/>
+        输入被叫号码：
+        <input name="called" class="called" value="" placeholder="电话号码" data-theme="c" type="text" />
+        <div class="phonetip1" style="font-size:12px;color:green;"></div>
+        <a href="#popupInfo" class="dial2" data-rel="popup" data-role="button"  data-inline="true" data-transition="pop">点击拨号</a>
+      <div data-role="controlgroup" data-type="horizontal" >
+            <script type="text/javascript">
+            	$(document).off('keyup.userphone').on('keyup.userphone','.user' , function(){
+            		var val = $.trim($(this).val());
+            		var bool = new RegExp('^[0-9]{11}$').test(val);
+            		var $phonetip = $(this).closest('.ui-page').find('.phonetip');
+            		if(bool) {
+            			$phonetip.html('电话号码输入正确 <input type="button" class="btn phone-confirm" value="确认"/>');
+            		}else $phonetip.html('请输入正确的电话号码');
+            	});
+            	$(document).off('click.phoneconfirm').on('click.phoneconfirm','.phone-confirm' , function(){
+            		var $user = $(this).closest('.ui-page').find('.user');
+            		var $phonetip = $(this).closest('.ui-page').find('.phonetip');
+            		var $pop = $(this).closest('.ui-page').find('.popupInfo');
+            		var $calling = $user.val(); 
+            		$.ajax({
+                        url:"index.php?act=module&name=userapi&do=set_calling",
+                        type:'post',
+                        data:"calling="+$calling+"&date="+new Date().getTime(),
+                        dataType:'text',
+            	   		success:function(rs){
+            	   			rs?eval("var rs="+rs+";"):'';
+            	   			if(rs.status > 0){
+            	   			//	$user.attr('readonly', 'readonly');
+            	   				$phonetip.html('');
+            	   			}
+            	   			$pop.html(rs.msg);
+            	   			$pop.popup("open");
+        	   				return true;
+            	   		}
+                    });
+            	});
+            	$(document).off('keyup.called').on('keyup.called','.called' , function(){
+            		var val = $.trim($(this).val());
+            		var bool = new RegExp('^[0-9]{11}$').test(val);
+            		var $phonetip = $(this).closest('.ui-page').find('.phonetip1');
+            		if(bool) {
+            			$phonetip.html('正确');
+            		}else $phonetip.html('请输入正确的电话号码');
+            	});
+            	$(document).off('click.dial2').on('click.dial2','.dial2' , function(){
+            		var $user = $(this).closest('.ui-page').find('.called');
+            		var $phonetip = $(this).closest('.ui-page').find('.phonetip1');
+            		var $pop = $(this).closest('.ui-page').find('.popupInfo');
+            		var $called = $user.val();
+            		var bool = new RegExp('^[0-9]{11}$').test($called);
+            		if(!bool){
+            			$phonetip.html('请输入正确的被叫号码');
+        	   			return false;
+            		}
+            		$.ajax({
+                        url:"index.php?act=module&name=userapi&do=dial",
+                        type:'post',
+                        data:"called="+$called+"&date="+new Date().getTime(),
+                        dataType:'text',
+            	   		success:function(rs){
+            	   			rs?eval("var rs="+rs+";"):'';
+            	   			if(rs.status > 0){
+            	   				$phonetip.html('');
+            	   			}
+            	   			$pop.html(rs.msg);
+            	   			$pop.popup("open");
+        	   				return true;
+            	   		}
+                    });
+            	});
+            </script>
+        </div>
+        
+    </div>
+
+    <footer data-role="footer">
+        <h2>智能管道开放合作论坛</h2>
+    </footer>
+
+<script type="text/javascript">
+$(function(){
+	$(document).off('click.dialphone').on('click.dialphone','.dial-phone' , function(){
+		var $id = $(this).closest('.kd01').prev().prev().find('input[name="info[]"]').val();
+		alert($id); return false;
+		var $pop = $(this).closest('.ui-page').find('.popupInfo');
+		$pop.html('');
+		$.ajax({
+            url:"index.php?act=module&name=userapi&do=dial",
+            type:'post',
+            data:"id="+$id+"&date="+new Date().getTime(),
+            dataType:'text',
+	   		success:function(rs){
+	   			rs?eval("var rs="+rs+";"):'';
+	   			if(rs.status >= -1){
+	   				$pop.html(rs.msg);
+	   				$pop.popup("open");
+	   			}
+	   			return true;
+	   		}
+        });
+	});
+	
+});
+</script>
+
+</body>
+</html>

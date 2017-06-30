@@ -1,0 +1,12 @@
+<div class="banner">
+	<div class="user">
+		<span class="username">{if $_W['fans']['nickname']}{$_W['fans']['nickname']}{else}请设置您的昵称{/if}</span>
+		<span class="usergroup">{if !empty($_W['fans']['vip'])}<span style="color:#ff0000">会员{if $_W['fans']['vip'] > 1}Lv.{$_W['fans']['vip']}{/if}</span>{else}普通会员{/if}</span>
+	</div>
+	<div class="avatar"><img src="{if !empty($_W['fans']['avatar'])}{$_W['fans']['avatar']}{else}resource/image/noavatar_middle.gif{/if}"></div>
+	<div class="banner_footer">
+		<div style="display:none;">
+			<button class="btn btn-warning">成为会员</button>
+		</div>
+	</div>
+</div>

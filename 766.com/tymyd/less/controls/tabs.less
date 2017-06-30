@@ -1,0 +1,55 @@
+@import "../mixins/mixins.less";
+
+.tabs {
+	.nav {
+		.clearfix();
+		li, a {
+			display: inline-block;
+			*display: inline;
+			*zoom: 1;
+			padding: 5px 10px;
+			position: relative;
+			margin-left: -1px;
+			&:hover{ text-decoration: none;}
+		}
+	}
+//li.selected,a.selected{}
+	.panel {
+		li {
+			width: 100%;
+		}
+	}
+	.clip, .nav-clip {
+		overflow: hidden;
+		position: relative;
+		height: 100px;
+	}
+	.prev {
+		left: 10px;
+	}
+	.next {
+		right: 10px;
+	}
+}
+
+.left-tabs:extend(.tabs) {
+	.clearfix();
+	.nav {
+		width: 200px;
+		float: left;
+		li, a {
+			display: block;
+		}
+	}
+}
+
+.right-tabs:extend(.tabs)  {
+	.clearfix();
+	.nav {
+		width: 200px;
+		float: right;
+		li, a {
+			display: block;
+		}
+	}
+}

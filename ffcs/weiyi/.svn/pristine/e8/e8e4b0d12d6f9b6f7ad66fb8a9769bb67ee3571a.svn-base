@@ -1,0 +1,112 @@
+{php $_W['breadcrumb'] = array(array('title'=>'系统管理'),array('title'=>'添加菜单 '))}
+{template 'common/header'}
+<link rel="stylesheet" href="./resource/script/formvalidator/formvalidator.css" />
+<script src="./resource/script/formvalidator/formvalidator.js"></script>
+<script src="./resource/script/formvalidator/formvalidatorregex.js"></script>
+<script type="text/javascript">
+$(function(){
+	$.formValidator.initConfig({formid:"myform",autotip:true,onerror:function(msg,obj){window.top.art.dialog({content:msg,lock:true,width:'200',height:'50'}, function(){this.close();$(obj).focus();})}});
+	$("#ch_name").formValidator({onshow:"请输入对应的中文语言名称",onfocus:"请输入对应的中文语言名称",oncorrect:"输入正确"}).inputValidator({min:1,onerror:"请输入对应的中文语言名称"});
+	$("#name").formValidator({onshow:"请输入菜单英文名称",onfocus:"请输入菜单英文名称",oncorrect:"输入正确"}).inputValidator({min:1,onerror:"请输入菜单英文名称"});
+	$("#m").formValidator({onshow:"请输入模块名",onfocus:"请输入模块名",oncorrect:"输入正确"}).inputValidator({min:1,onerror:"请输入模块名"});
+	//$("#a").formValidator({onshow:"请输入文件名",onfocus:"请输入文件名",oncorrect:"输入正确"}).inputValidator({min:1,onerror:"请输入文件名"});
+	//$("#d").formValidator({tipid:'a_tip',onshow:"请输入方法名",onfocus:"请输入方法名",oncorrect:"输入正确"}).inputValidator({min:1,onerror:"请输入方法名"});
+
+	/* $('#menus').change(function(){
+		var val = $('#menus').val();
+		if(val == 0){
+			$('#menu_icon').show();
+		}else{
+			$('#menu_icon').hide();
+		}
+	}); */
+})
+</script>
+
+<div class="page-header">
+    <h1>
+        <i class="icon-globe "></i> 添加菜单
+    </h1>
+</div>
+<ul class="nav nav-tabs">
+    <li><a href="{php echo create_url('setting/menu');}">菜单管理</a></li>
+    <li class="active"><a href="{php echo create_url('setting/menu',array('do'=>'add'))}">添加菜单</a></li>
+</ul><br/>
+<div class="main">
+	<form name="myform" id="myform" action="" method="post">
+	<input type="hidden" name="id" id="id" value="{$id}">
+	<table width="100%" class="table table-bordered">
+	      <tr>
+	        <th width="200">上级菜单：</th>
+	        <td><select name="info[parentid]" id="menus">
+	        <option value="0">作为一级菜单</option>
+			{$select_categorys}
+			</select></td>
+	      </tr>
+	      <tr id="menu_icon">
+	      	<th>一级菜单图标：</th>
+	      	<td>
+		      	<div class="input-group span4">
+					<input  type="text" class="form-control" name="info[icon]" id="icon" value="{$rs['icon']}" placeholder="">
+					<span class="input-group-btn">
+						<button class="btn btn-sm btn-primary" onclick="w = ajaxshow('{php echo create_url('site/icon')}', '图标列表', {width : 800});return false;">选择图标</button>
+					</span>
+				</div>
+				<span class="help-block">一级菜单在导航处显示，导航的背景图标，微擎系统提供丰富的图标icon</span>
+	      	</td>
+	      </tr>
+	      <tr>
+	      	<th>一级菜单是否作为连接</th>
+	      	<td>
+	      		<input type="radio" name="info[plink]" id="plink" value="0" {if empty($rs['plink']) || $rs['plink'] == 0}checked{/if}/> 否
+	      		<input type="radio" name="info[plink]" id="plink" value="1" {if $rs['plink'] == 1}checked{/if}/> 是
+	      		<span class="help-block">当一级菜单下无要显示的子菜单，则置为可点击的链接</span>
+	      	</td>
+	      </tr>
+	      <tr>
+	        <th>菜单中文名称：</th>
+	        <td><input type="text" name="info[ch_name]" id="ch_name" class="input-text" value="{$rs['ch_name']}"></td>
+	      </tr>
+	      <tr>
+	        <th>菜单英文名称：</th>
+	        <td><input type="text" name="info[name]" id="name" class="input-text" value="{$rs['name']}"></td>
+	      </tr>
+		<tr>
+	        <th>模块名（模块文件名）：</th>
+	        <td><input type="text" name="info[m]" id="m" class="input-text" value="{$rs['m']}"></td>
+	      </tr>
+		<tr>
+	        <th>act参数：</th>
+	        <td><input type="text" name="info[a]" id="a" class="input-text" value="{$rs['a']}">
+	        	<span class="help-block">当参数中没有act则为空；通过ajax传递的方法，请使用"ajax_"开头；当方法无需验证权限，请用"public_"开头</span> 
+	      	</td>
+	      </tr>
+		<tr>
+	        <th>do参数：</th>
+	        <td><input type="text" name="info[d]" id="d" class="input-text" value="{$rs['d']}"> <span id="a_tip"></span><br/>
+	      		<span class="help-block">当参数中没有do则为空；通过ajax传递的方法，请使用 ajax_开头；当方法无需验证权限，请用"public_"开头</span> 
+	        </td>
+	      </tr>
+	    <tr>
+	        <th>name参数：</th>
+	        <td><input type="text" name="info[n]" id="n" class="input-text" value="{$rs['n']}"></td>
+	      </tr>
+		<tr>
+	        <th>附加参数（其他参数）：</th>
+	        <td><input type="text" name="info[data]" class="input-text" value="{$rs['data']}"></td>
+	      </tr>
+		<tr>
+	        <th>是否显示菜单：</th>
+	        <td><input type="radio" name="info[display]" value="1" {if empty($rs['display']) || $rs['display'] == 1}checked{/if}> 是 <input type="radio" name="info[display]" value="0" {if is_numeric($rs['display']) && $rs['display'] == 0}checked{/if}> 否 </td>
+	    </tr>
+	    <tr>
+	    	<th></th>
+	    	<td><input type="submit" id="dosubmit" class="btn btn-primary" name="dosubmit" value="提交"/></td>
+	    </tr>
+	</table>
+	
+	
+	</form>
+</div>
+
+{template 'common/footer'}

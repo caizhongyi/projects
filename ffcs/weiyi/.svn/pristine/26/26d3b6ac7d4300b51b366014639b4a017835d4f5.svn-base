@@ -1,0 +1,50 @@
+<?php
+/**
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+defined('IN_IA') or exit('Access Denied');
+require_once IA_ROOT . '/source/model/pay.mod.php';
+require_once IA_ROOT . '/source/library/pay/pay_factory.class.php';
+
+$request = array(
+    'payment_id'=>3,
+    'price'=>1,
+    'order_id'=>2,
+    'quantity'=>3,
+    'email'=>'df@163.com',
+    'order_time'=>time(),
+    'name'=>'客户',
+    'note'=>'买东西',
+    'username'=>'用户名',
+    'telephone'=>'12345',
+);
+if($request){
+    $pay_id = $request['payment_id'];
+    if(!$pay_id) message('支付方式错误！');
+    $payment = get_payment($pay_id);
+    $cfg = unserialize_config($payment['config']);
+    $pay_name = ucwords($payment['pay_code']);
+    if(!$request['order_id']) message('订单错误！');
+
+    // add order info
+    $order_info['id']	= $request['order_id'];
+    $order_info['quantity']	= $request['quantity'];
+    $order_info['buyer_email']	= $request['email'];
+    $order_info['order_time']	= $request['order_time'];
+
+    //add product info
+    $product_info['name'] = $request['name'];
+    $product_info['body'] = $request['note'];
+    $product_info['price'] = $request['price'];
+
+    //add set_customerinfo
+    $customerinfo['telephone'] = $request['telephone'];
+    $customerinfo['username'] = $request['username'];
+
+    $payment_handler = new pay_factory($pay_name, $cfg);
+    $payment_handler->set_productinfo($product_info)->set_orderinfo($order_info)->set_customerinfo($customerinfo);
+    $code = $payment_handler->get_code('value="确认并支付" class="button"');
+    template('pay/pay');
+}else{
+    message('参数错误！');
+}

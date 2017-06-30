@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="Keywords" content="微盟中心" />
+    <meta name="Description" content="微盟中心" />
+    <!-- Mobile Devices Support @begin -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Mobile Devices Support @end -->
+    <link rel="shortcut icon" href="http://stc.weimob.com/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../resource/style/login.css" media="all" />
+    <script type="text/javascript" src="../resource/script/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../resource/script/placeholder.js"></script>
+    <title>登录-微盟中心</title>
+
+</head>
+<body onkeydown="bindEnterKey(event);">
+<div id="doc">
+    <div id="hd" class="clearfix">
+        <div class="logo"><a href="/" hidefocus="true" onfocus="this.blur();"></a></div>
+    </div>
+    <div class="info">
+        <span><a href="/" target="_blank" title="微盟首页" hidefocus="true" onfocus="this.blur();">微盟首页</a></span>
+        <span class="split">|</span>
+        <span><a href="http://www.weimob.com/reg/business" class="registerNew" title="注册" hidefocus="true" onfocus="this.blur();">注册新帐号</a></span>
+
+
+    </div>
+    <div id="bd" class="quc-clearfix reg-wrapper-quick">
+        <div class="content">
+            <div id="loginWrap">
+                <div id="modLoginWrap" class="mod-qiuser-pop">
+                    <dl class="login-wrap">
+                        <dt>
+                            <span id="loginTitle"></span>
+                        </dt>
+                        <div class="ipbox">
+                            <b class="r1"></b>
+                            <b class="r2"></b>
+                            <b class="r5"></b>
+                            <div class="con">
+                                <dd class="botborder" style="z-index:10;">
+                                    <div class="quc-clearfix login-item">
+                                        <label for="username">帐号：</label>
+                                        <input type="text" id="username" name="username" tabindex="1" class="ipt tipinput1" placeholder="用户名" autocomplete="off" maxlength="100" suggestwidth="374px" />
+                                    </div>
+                                </dd>
+                                <dd class="password">
+                                    <div class="quc-clearfix login-item">
+                                        <label for="password">密码：</label>
+                                        <input type="password" id="password" name="password" tabindex="2" class="ipt tipinput1" placeholder="请输入您的密码" maxlength="20" autocomplete="off" />
+                                    </div>
+                                </dd>
+                            </div>
+                            <b class="r5"></b>
+                            <b class="r3"></b>
+                            <b class="r4"></b>
+                        </div>
+                        <dd class="find">
+                            <label onClick="changeCheckbox();">
+                                <span id="keepalive" value="1" class="checked checkbox" tabindex="3"></span>自动登录
+                            </label>
+                            <a href="/" target="_blank" class="fac" style="display:none;">找回密码</a>
+                        </dd>
+                        <div style="margin:0 0 10px; color:#c35d00;" id="error_box">
+                            <span id="error_tips"></span>
+                        </div>
+                        <dd class="submit">
+                            <span><input type="submit" tabindex="4" class="btn-login" id="btn-login" value="" /></span>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ft">Copyright&copy;2012-2013 weimob.com All Rights Reserved 微盟</div>
+</div>
+</body>
+<script>/*背景图片自适应*/var resolutionHeight=window.screen.height;$("#hd").css("padding-top",(resolutionHeight*0.08)+"px");$("div.info").css("margin-top",(resolutionHeight*0.11)+"px");if(resolutionHeight<770){$("body").css("height","130%");}else if(resolutionHeight<901){$("body").css("height","115%");}else if(resolutionHeight>1200){$("body").addClass("bodybig");}var scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;var maxHeight=Math.max(clientHeight,scrollHeight);$("body").css("min-height",maxHeight+"px");$(window).resize(function(){var scrollHeight1 = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);var clientHeight1 = document.documentElement.clientHeight || document.body.clientHeight;var maxHeight1=Math.max(clientHeight1,scrollHeight1);$("body").css("height",maxHeight1+"px");});/*placeholder*/$('input[placeholder]').placeholder();</script>
+<script type="text/javascript" src="http://www.120fd.com/tongji/ga/huishuo.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#btn-login').click(function(){
+            $('#error_box').hide();
+            var userAgent = window.navigator.userAgent.toLowerCase();
+            var ie6 = $.browser.msie && /msie 6\.0/i.test(userAgent);
+            if (ie6)
+            {
+                alert('请不要使用ie6及以下等低版本浏览器');
+                return false;
+            }
+
+            // 提交前检验
+            if('' == $('#username').val()){
+                $('#username').focus();
+                $('#error_tips').text('请输入账号');
+                $('#error_box').slideDown(400);
+                setTimeout(function(){
+                    $('#error_box').hide();
+                }, 1000);
+                return false;
+            }
+
+            $.post('/login', {username:$('#username').val(), password:$('#password').val(), keepalive:$('#keepalive').attr('value')}, function(rs){
+                $('#error_tips').text(rs.error);
+                $('#error_box').slideDown(400);
+                setTimeout(function(){
+                    $('#error_box').hide();
+                }, 1000);
+                if(rs.errno == 200){
+                    setTimeout(function(){
+                        location.href = rs.url_route;
+                    }, 600);
+                }
+            }, 'json');
+        });
+    });
+
+    function changeCheckbox(){
+        var new_value = (parseInt($('#keepalive').attr('value')) + 1) % 2;
+        $('#keepalive').attr('value', new_value);
+        if(1 == new_value){
+            $('#keepalive').addClass('checked');
+        }else{
+            $('#keepalive').removeClass('checked');
+        }
+    }
+
+    function bindEnterKey(event){
+        if(13 == event.keyCode){
+            $('#btn-login').click();
+        }
+    }
+</script></html>

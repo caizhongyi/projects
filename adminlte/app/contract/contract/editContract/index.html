@@ -1,0 +1,215 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active">  {{ $state.current.page.title }} </li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content slide" >
+    <div class="box">
+
+        <form name="editForm" ng-submit="submitEdit(editForm.$valid)"  role="form" novalidate ng-if="$stateParams.type != 1">
+            <div class="modv2-bheader clearfix">
+                <div class="modv2-bheader-in ">
+                    <span class="modv2-c ng-binding">您即将建立合同订单，请确认刷卡金额。</span>
+                </div>
+            </div>
+            <table input-max-fee="" class="table modv2-table table-hover">
+                <tbody>
+                <tr>
+                    <th width="12%"><label><span class="text-danger">*</span> 车牌号码：</label></th>
+                    <td>
+                        <div class="form-group ">
+                            <input type="text" placeholder="车牌号码" id="car_number" class="form-control modv2-inputg" name="car_number" ng-model="item.car_number" ng-disabled="!utils.hasRoleCode('cfb.caiwu.manage,cfb.caiwu.recheck,cfb.caiwu.pay')" required >
+                            <div class="has-feedback text-danger" ng-messages="editForm.car_number.$error" ng-show="interacted(editForm.car_number)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入车牌号码！</div>
+                            <!--    <div ng-message="pattern"><i class="fa fa-info-circle"></i>输入车牌号码不正确！</div>-->
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%"><label><span class="text-danger">*</span> 刷卡金额：</label></th>
+                    <td>
+                        <input type="text" placeholder="刷卡金额" id="fee" class="form-control modv2-inputg" name="fee"  required ng-model="item.fee" ng-pattern="/^([1-9]{1}[0-9]{0,7}|1000000000)$/" >
+                        <div class="text-danger">请输入刷卡总金额，同一订单可分笔支付！</div>
+                        <div class="has-feedback text-danger" ng-messages="editForm.fee.$error" ng-show="interacted(editForm.fee)">
+                            <div ng-message="pattern"><i class="fa fa-info-circle"></i> 请输入金额类型大于0小于1亿！</div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-primary modv2-btn">保存并刷卡</button>
+        </form>
+
+            <form  role="form" ng-submit="submit(form.$valid)" name="form" novalidate ng-if="$stateParams.type == 1">
+                <div class="box-header row">
+                    <div class="ng-binding">
+                        <label>订单号：</label>
+                        <span class="modv2-imp">{{ item.order_no }}</span>
+                    </div>
+                </div><!-- /.box-header -->
+
+                <div class="modv2-bheader clearfix">
+                    <div class="modv2-bheader-in ">
+                        <span class="modv2-c">合同编号：{{ item.order_contract.contract_no }}</span>|<span class="modv2-c">车型品牌：{{ item.order_contract.vehicle_brand}}</span>|<span class="modv2-c">成交价：<span class="modv2-imp">{{ item.order_contract.sale_price}}</span></span>
+                    </div>
+                </div>
+                <div class="box-body no-padding">
+                    <table class="table modv2-table table-hover" input-max-fee="">
+                        <tbody><tr>
+                            <th width="12%">
+                                车牌号码
+                            </th>
+                            <td>
+                                <div class="form-group ">
+                                    <input type="text" placeholder="车牌号码"  class="form-control modv2-inputg" name="car_number" ng-model=" item.order_contract.car_number" ng-disabled="!utils.hasRoleCode('cfb.caiwu.manage,cfb.caiwu.recheck,cfb.caiwu.pay')" ng-pattern="/^[\u4E00-\u9FA5][\da-zA-Z]{6}$/" required >
+                                    <div class="has-feedback text-danger" ng-messages="form.car_number.$error" ng-show="interacted(form.car_number)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入车牌号码！</div>
+                                        <div ng-message="pattern"><i class="fa fa-info-circle"></i>输入车牌号码不正确！</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <th width="12%">刷卡金额</th>
+                            <td >
+                            <span class="modv2-imp">
+                            <div class="form-group ">
+                                <div class="input-group modv2-inputg">
+                                    <input type="text" value="0" ng-model="item.fee" required="" ng-pattern="/^([0-9]*|[0-9]*\.[0-9]*)$/" name="fee" class="form-control text-right ">
+                                    <div class="input-group-addon">元</div>
+                                </div>
+                            </div></span><span class="text-danger">请输入刷卡总金额，同一订单可分笔支付。
+                            </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="12%"><h4 class="box-title">卖方信息</h4></th>
+                            <td>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 卖方姓名：</label>{{ item.order_contract.seller_name }}</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 联系方式：</label> {{ item.order_contract.seller_phone }}</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 证件号码：</label> {{ item.order_contract.seller_cert_no }}</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 代理姓名：</label> {{ item.order_contract.seller_agent_name }}</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 代理证件：</label> {{ item.order_contract.seller_agent_cert_no }}</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 业务顾问：</label> {{ item.order_contract.seller_tracer_name}}</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 所属门店：</label> {{ item.order_contract.seller_tracer_shop_name }}</div>
+                            </td>
+                            <th width="12%"><h4 class="box-title">买方信息</h4></th>
+                            <td>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 买方姓名：</label> {{ item.order_contract.buyer_name }}</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 联系方式：</label>  {{ item.order_contract.buyer_phone }} </div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 证件号码：</label> {{ item.order_contract.buyer_cert_no }}</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 代理姓名：</label>  {{ item.order_contract.buyer_agent_name }} </div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 代理证件：</label> {{ item.order_contract.buyer_agent_cert_no }} </div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 业务顾问：</label> {{ item.order_contract.buyer_tracer_name}} </div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 所属门店：</label> {{ item.order_contract.buyer_tracer_shop_name}} </div>
+                            </td>
+                        </tr>
+                     <!--   <tr>
+                            <th><h4 class="box-title">车辆信息</h4></th>
+                            <td>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 车型品牌：</label> </div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 车辆类型：</label> </div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 车牌号码：</label> 闽K88447</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 发动机号：</label> </div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 卖车架号：</label> </div>
+                            </td>
+                            <th><h4 class="box-title">交易信息</h4></th>
+                            <td>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 车辆成交价：</label><span class="modv2-impb">11,500,000</span>元</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 信息服务费：</label><span class="modv2-impb">10,000</span>元</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 过户费：</label><span class="modv2-impb">5,000</span>元</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 代办过户费：</label><span class="modv2-impb">5,000</span>元</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 其它费用：</label>&mdash;&mdash;</div>
+                                <div class="form-group ng-binding"><label><span class="text-danger"></span> 签订日期：</label>
+                                    0
+                                </div>
+
+                            </td>
+                        </tr>-->
+                        <tr>
+                            <th colspan="4"><h4 class="box-title">委托结算金额（订单总金额 <strong class="text-danger ng-binding">{{ item.fee_sum }}</strong>，以下款项总和等于订单总金额）</h4></th>
+                        </tr>
+                        <tr>
+                            <th><label><span class="text-danger">*</span> 车款：</label></th>
+                            <td>
+                                <div class="form-group ">
+                                    <div class="input-group modv2-inputg"><input type="text" name="car_fee" ng-model="item.car_fee" required="" ng-pattern="/^([0-9]*|[0-9]*\.[0-9]*)$/" class="form-control text-right "> <div class="input-group-addon">元</div></div>
+                                    <div ng-show="interacted(form.car_fee)" ng-messages="form.car_fee.$error" class="has-feedback text-danger">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入车款！</div>
+                                        <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>输入的车款格式不正确！</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <th><label><span class="text-danger">*</span> 信息服务费：</label></th>
+                            <td>
+                                <div class="form-group ">
+                                    <div class="input-group modv2-inputg"><input type="text" value="0" name="brokerage" ng-model="item.brokerage" required="" ng-pattern="/^([0-9]*|[0-9]*\.[0-9]*)$/" class="form-control text-right "> <div class="input-group-addon">元</div></div>
+                                    <div ng-show="interacted(form.brokerage)" ng-messages="form.brokerage.$error" class="has-feedback text-danger">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代办过户费！</div>
+                                        <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>输入的信息服务费格式不正确！</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label><span class="text-danger">*</span> 代办过户费：</label></th>
+                            <td>
+                                <div class="form-group ">
+                                    <div class="input-group modv2-inputg">
+                                        <input type="text" value="0" ng-model="item.anency_fee" required="" ng-pattern="/^([0-9]*|[0-9]*\.[0-9]*)$/" name="anency_fee" class="form-control text-right ">
+                                        <div class="input-group-addon">元</div>
+                                    </div>
+                                    <div ng-show="interacted(form.anency_fee)" ng-messages="form.anency_fee.$error" class="has-feedback text-danger">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入过户费！</div>
+                                        <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>输入的过户费格式不正确！</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <th><label><span class="text-danger">*</span> 过户费：</label></th>
+                            <td>
+                                <div class="form-group ">
+                                    <div class="input-group modv2-inputg">
+                                        <input type="text" value="0" ng-model="item.transfer_fee" name="transfer_fee" class="form-control text-right " required="" ng-pattern="/^([0-9]*|[0-9]*\.[0-9]*)$/">
+                                        <div class="input-group-addon">元</div>
+                                    </div>
+                                    <div ng-show="interacted(form.transfer_fee)" ng-messages="form.transfer_fee.$error" class="has-feedback text-danger">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入过户费！</div>
+                                        <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>输入的过户费格式不正确！</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label><span class="text-danger">*</span> 其它费用：</label></th>
+                            <td><div class="form-group ">
+
+                                <div class="input-group modv2-inputg"><input type="text" value="0" ng-model="item.other_fee" required="" ng-pattern="/^([0-9]*|[0-9]*\.[0-9]*)$/" name="other_fee" class="form-control text-right ">
+                                    <div class="input-group-addon">元</div></div>
+                                <div ng-show="interacted(form.other_fee)" ng-messages="form.other_fee.$error" class="has-feedback text-danger">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入其它费用！</div>
+                                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>输入的其它费用格式不正确！</div>
+                                </div>
+                            </div></td>
+                            <th></th>
+                            <td></td>
+                        </tr>
+                        </tbody></table>
+                </div>
+                <div class="box-footer">
+                    <button class="btn btn-primary modv2-btn" >修改</button>
+                </div>
+            </form>
+
+    </div>
+
+</section>
+<!-- /.content -->
+
+

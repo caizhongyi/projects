@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="http://js.olcdn.com/lib/gb2312/jquery-1.4.4.min.js"></script>
+<!-- the mousewheel plugin - optional to provide mousewheel support -->
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<!-- the jScrollPane script -->
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="http://js.olcdn.com/net/v1/gb2312/jquery.alCommon.js"></script>
+<script type="text/javascript" src="js/swfobject.js"></script>
+<script type="text/javascript" src="js/jquery.floatbox.js"></script>
+<script type=text/javascript>			
+var flashvars = {};
+flashvars.xml =  "config.xml";
+var params = {};
+params.allowscriptaccess = "always";
+params.allownetworking = "all";
+params.wmode = "transparent";
+var attributes = {};
+attributes.id = "slider";
+swfobject.embedSWF("cu3er.swf", "cu3er_swf", "714", "403", "3", flashvars, params, attributes);
+//使用插件
+$(function(){
+/*
+$(".container").stepScroll({
+aniTime:500,				//动画时间，单位：毫秒
+autoPlay:true,				//是否自动轮播
+btn_left:'.rightscroll',	//左滚动按钮的类名
+btn_right:'.leftscroll',	//右滚动按钮的类名
+scrollTime:3000				//轮播时间，单位：毫秒
+});
+*/
+$(".container").stepScroll({ scrollTime:2000 , autoPlay:false });
+$('.left').jScrollPane();
+$('.gamelist')
+var $gamelist = $('.gamelist');
+var $up_down = $('.up_down');
+$gamelist.find("li").hover(function(){
+$(this).toggleClass("lihover");									
+});
+$up_down.click(function(){
+if($up_down.hasClass("up_down_hover")){
+$gamelist.find('li:gt(2)').addClass("hide");
+$up_down.removeClass("up_down_hover");
+$('.left').jScrollPane();
+}else{
+$gamelist.find('li:gt(2)').removeClass("hide");
+$up_down.addClass("up_down_hover");
+$('.left').jScrollPane();
+}
+});	
+});
+
+
+
+</script>
+</head>
+<body>
+ <div class="float" style="display:none;">
+             <div class="float_01"><p>大唐真龙2</p><span><a href="javascript:;" title="关闭" class="close"></a></span></div>
+            <div class="float_02">
+				    <ul>
+					    <li>大唐真龙</li>
+						 <li>大唐真龙真龙</li>
+						 <li>大唐真龙</li>
+						 <li>大唐真龙龙</li>
+						 <li>大唐真龙</li>
+						 <li>大唐真龙</li>
+					 </ul>
+				</div>
+            <div class="float_03"></div>
+          </div>
+<div class="wrapper">
+  <div class="left" id="sidebar">
+    <div class="befor_play">
+      <h2>最近玩过:</h2>
+      <div class="gamelist">
+        <ul>
+          <li><img src="images/pic.jpg" />
+            <div class="list">
+              <h3><a href="" title="大唐真龙2" target="_blank">大唐真龙2</a></h3>
+              <p>上次您在[55]区</p>
+            </div>
+            <span><a href="" title="选区" target="_blank">[选区]</a></span> </li>
+          <li><img src="images/pic.jpg" />
+            <div class="list">
+              <h3><a href="" title="大唐真龙2" target="_blank">大唐真龙2</a></h3>
+              <p>上次您在[55]区</p>
+            </div>
+            <span><a href="" title="选区" target="_blank">[选区]</a></span> </li>
+          <li><img src="images/pic.jpg" />
+            <div class="list">
+              <h3><a href="" title="大唐真龙2" target="_blank">大唐真龙2</a></h3>
+              <p>上次您在[55]区</p>
+            </div>
+            <span><a href="" title="选区" target="_blank">[选区]</a></span> </li>
+          <li class="hide"><img src="images/pic.jpg" />
+            <div class="list">
+              <h3><a href="" title="大唐真龙2" target="_blank">大唐真龙2</a></h3>
+              <p>上次您在[55]区</p>
+            </div>
+            <span><a href="" title="选区" target="_blank">[选区]</a></span> </li>
+          <li class="hide"><img src="images/pic.jpg" />
+            <div class="list">
+              <h3><a href="" title="大唐真龙2" target="_blank">大唐真龙2</a></h3>
+              <p>上次您在[55]区</p>
+            </div>
+            <span><a href="" title="选区" target="_blank">[选区]</a></span> </li>
+          <li class="hide"><img src="images/pic.jpg" />
+            <div class="list">
+              <h3><a href="" title="大唐真龙2" target="_blank">大唐真龙2</a></h3>
+              <p>上次您在[55]区</p>
+            </div>
+            <span><a href="" title="选区" target="_blank">[选区]</a></span> </li>
+        </ul>
+      </div>
+      <div class="up_down"></div>
+    </div>
+    <!--end--> 
+    <!--推荐游戏-->
+    <div class="faver_game">
+      <h2>推荐游戏</h2>
+      <div class="bg_tw_2"></div>
+      <ul>
+        <li><img src="images/pic.jpg" />
+          <div class="list_02">
+            <p><b class="color_01">大唐真龙2</b><span></span></p>
+            <p>类型：角色扮演</p>
+            <p>火爆指数</p>
+            <p class="color_02">★★★★★</p>
+            <p><a href="javascript:;" class="btn_01 btn_margin comein" >进入</a> <a href="" class="btn_01">充值</a> </p>
+				
+          </div>
+         
+        </li>
+        <li><img src="images/pic.jpg" />
+          <div class="list_02">
+            <p><b class="color_01">大唐真龙2</b><span></span></p>
+            <p>类型：角色扮演</p>
+            <p>火爆指数</p>
+            <p class="color_02">★★★★★</p>
+            <p> <a href="javascript:;" class="btn_01 btn_margin comein">进入</a> <a href="" class="btn_01">充值</a> </p>
+				
+          </div>
+         
+        </li> <li><img src="images/pic.jpg" />
+          <div class="list_02">
+            <p><b class="color_01">大唐真龙2</b><span></span></p>
+            <p>类型：角色扮演</p>
+            <p>火爆指数</p>
+            <p class="color_02">★★★★★</p>
+            <p> <a href="javascript:;" class="btn_01 btn_margin comein">进入</a> <a href="" class="btn_01">充值</a> </p>
+			
+          </div>
+         
+        </li>
+      </ul>
+      <!--float--> 
+      
+      <!--float end--> 
+    </div>
+  </div>
+  <!--right-->
+  <div class="right" id="container">
+    <div class="flash_01">
+      <div  id="cu3er_swf"> <a href="http://www.adobe.com/go/getflashplayer"> <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" /> </a> </div>
+    </div>
+    <div class="container" id="stepScroll">
+      <div class="flash_02_title">近期开服</div>
+      <div class="scrollDiv">
+        <ul>
+          <li><a href="" title="近期开服" target="_blank"><img src="images/pic.jpg" /></a></li>
+          <li><a href="" title="近期开服" target="_blank"><img src="images/pic.jpg" /></a></li>
+          <li><a href="" title="近期开服" target="_blank"><img src="images/pic.jpg" /></a></li>
+          <li><a href="" title="近期开服" target="_blank"><img src="images/pic.jpg" /></a></li>
+          <li><a href="" title="近期开服" target="_blank"><img src="images/pic.jpg" /></a></li>
+          <li><a href="" title="近期开服" target="_blank"><img src="images/pic.jpg" /></a></li>
+          <li><a href="" title="近期开服" target="_blank"><img src="images/pic.jpg" /></a></li>
+        </ul>
+      </div>
+      <a href="#" class="leftscroll"></a> <a href="#" class="rightscroll"></a> </div>
+  </div>
+  <!--end--> 
+</div>
+<script type="text/javascript">
+	function setbar(){
+		var height = $(window).height();
+		;
+		var sidebar = $('#sidebar').height(height);
+		$('#sidebar .jspContainer').height(height);
+		
+		//$('#container').height($(window).height());
+		var container = $('#container');
+		var middle = parseFloat(height) / 2 -  parseFloat(container.height()) /2 ;
+		
+		container.css({ 'padding-top' : middle ,'padding-bottom' : middle});
+		$('.left').jScrollPane();
+		
+	}
+	$(window).resize(function(){
+		setbar();
+	})
+	setbar();
+	
+	
+	$('.float .close').click(function(){
+		$(this).closest('.float').hide();
+	})
+	/*
+	$('.faver_game .comein').click(function(){
+		$(this).parent().next('.float').stop().fadeIn();
+	})*/
+	
+	$('.faver_game .comein').floatbox('click', { move : false , position: 'b' , box : '.float' , offset : { x : 50 , y : -20}})
+	.click(function(event){event.stopPropagation();});
+	$('.faver_game li').click(function(){
+		window.open($(this).attr('url'),'_blank');
+	}).css('cursor','pointer')
+</script>
+</body>
+</html>

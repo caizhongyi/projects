@@ -1,0 +1,56 @@
+@import "../mixins/index";
+@import "core";
+
+.tabs {
+	.tabs-nav {
+		.clearfix();
+		li, a {
+			display: inline-block;
+			*display: inline;
+			*zoom: 1;
+			padding: 5px 10px;
+			position: relative;
+			margin-left: -1px;
+			&:hover{ text-decoration: none;}
+		}
+	}
+//li.selected,a.selected{}
+	.tabs-panel {
+		li {
+			width: 100%;
+		}
+	}
+	.tabs-clip, .nav-clip {
+		overflow: hidden;
+		position: relative;
+		height: 100px;
+	}
+	.tabs-prev {
+		left: 10px;
+	}
+	.tabs-next {
+		right: 10px;
+	}
+}
+
+.left-tabs:extend(.tabs) {
+	.clearfix();
+	.tabs-nav {
+		width: 200px;
+		float: left;
+		li, a {
+			display: block;
+		}
+	}
+}
+
+.right-tabs:extend(.tabs)  {
+	.clearfix();
+	.tabs-nav {
+		width: 200px;
+		float: right;
+		li, a {
+			display: block;
+		}
+	}
+}

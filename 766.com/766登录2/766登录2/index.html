@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<script src="js/jquery.js"></script>
+</head>
+
+<body>
+<div class="wrapper">
+     <div class="header">
+		  <h2>用户登录</h2>
+		  <em><a href="" title="关闭"></a></em>
+     </div>
+	  <div class="tips">请输入正确的766通行证帐号！</div>
+	  <!--main-->
+   <div class="con">
+        <div ><input class="input" value="通行证/电子邮箱:" onfocus="if(this.value=='通行证/电子邮箱:'){this.value='';}" onblur="if(this.value==''){this.value='通行证/电子邮箱:';}" /></div>
+		  <div ><input class="input" value="密码：" onfocus="if(this.value=='密码：'){this.value='';}" onblur="if(this.value==''){this.value='密码：';}" /></div>
+		  <div ><input class="input" value="验证码：" onfocus="if(this.value=='验证码：'){this.value='';}" onblur="if(this.value==''){this.value='验证码：';}" /></div>
+          <div class="code">
+          <img src="" id="cpatch" />
+<a name="send" id="send">看不清楚,换一张</a>
+
+          </div>
+		  <div class="radio">
+		     <input type="checkbox" class="checkbox" /><span>记住密码</span>
+		  </div>
+		  <div class="clear"></div>
+		  <div class="button"><a href="" title="登录">登录</a></div>
+		  <div class="word"><b>其他登录方式：</b><p class="icon"><a href="" title="新浪微博"></a></p><p class="icon2"><a href="" title="腾讯微博"></a></p>
+		  <div class="forgin">
+		    <a href="###">忘记密码?</a>|<a href="###">注册新用户</a></div>
+		  </div>
+	  </div>
+	  <!--main end-->
+  </div>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $("#send").click(function(){
+        $("#cpatch").attr("src",'cpatch.php');
+    });
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+@import "../mixins/mixins.less";
+
+
+.search-input{
+	.clearfix();
+	@width: 270px;
+	@input-width:220px;
+	width: @width;
+	background-color: #fff;
+	border:1px solid #ddd;
+	.text{
+		border: none;
+		width:@input-width;
+		float: left;
+	}
+	.icon{
+		.image('icons/blue-search.png',@offset:center);
+		height: 25px;
+		width: @width - @input-width - 10px;
+	}
+}

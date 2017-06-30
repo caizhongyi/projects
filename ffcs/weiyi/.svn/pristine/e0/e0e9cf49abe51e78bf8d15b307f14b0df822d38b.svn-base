@@ -1,0 +1,61 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微会员'),array('title'=>'特权管理'),array('title'=>'特权设置'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-cog"></i> 特权设置
+    </h1>
+</div>
+<ul class="nav nav-tabs">
+    <li  class="active" ><a href="{php echo create_url('micromember/cardright',array('type'=>'edit'))}">添加特权</a></li>
+    <li><a href="{php echo create_url('micromember/cardright',array('type'=>'list'))}">管理特权</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" style="margin-top: 20px;">
+        <input name="type" type="hidden" value="post"/>
+        <input name="id" type="hidden" value="{$cardright_setting['id']}"/>
+        <input name="level" type="hidden" value="1"/>
+        <table id="form"
+               class="tb reply-news-edit">
+            <tr>
+                <th>权限名称</th>
+                <td><input type="text" id="" class="span7" placeholder=""
+                           name="name" value="{$cardright_setting['name']}"></td>
+            </tr>
+
+            <tr>
+                <th>描述</th>
+                <td><textarea style="height: 80px;" class="span7" cols="70" id="description"
+                              name="description">{$cardright_setting['description']}</textarea>
+                </td>
+            </tr>
+            <!--
+            <tr>
+                <th>权限级别</th>
+                <td>
+                    <select name="level" id="level">
+                    <option value="1" {if $cardright_setting['level']==1} selected{/if}>1</option>
+                    <option value="2" {if $cardright_setting['level']==2} selected{/if}>2</option>
+                    <option value="3" {if $cardright_setting['level']==3} selected{/if}>3</option>
+                    <option value="4" {if $cardright_setting['level']==4} selected{/if}>4</option>
+                    <option value="5" {if $cardright_setting['level']==5} selected{/if}>5</option>
+                    <option value="6" {if $cardright_setting['level']==6} selected{/if}>6</option>
+                    <option value="7" {if $cardright_setting['level']==7} selected{/if}>7</option>
+                    <option value="8" {if $cardright_setting['level']==8} selected{/if}>8</option>
+                    <option value="9" {if $cardright_setting['level']==9} selected{/if}>9</option>
+                    <option value="10" {if $cardright_setting['level']==10} selected{/if}>10</option>
+                </select>
+                </td>
+            </tr>
+            -->
+            <tr>
+                <th></th>
+                <td>
+                    <input name="submit" type="submit" value="提交" class="btn btn-sm btn-primary " />
+                    <input type="hidden" name="token" value="{$_W['token']}" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{template 'common/footer'}

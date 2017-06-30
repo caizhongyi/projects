@@ -1,0 +1,318 @@
+{if $do == 'post'}
+{template 'common/header'}
+<ul class="nav nav-tabs">
+	<li{if $action == 'nav' && empty($do)} class="active"{/if}><a href="{php echo create_url('site/nav');}">导航管理</a></li>
+	<li {if $action == 'nav' && $do == 'post'} class="active"{/if}><a href="{php echo create_url('site/nav/post');}">{if $id}更新导航{else}添加导航{/if}</a></li>
+</ul>
+<form class="form-horizontal form" action="" method="post" enctype="multipart/form-data">
+<div class="main">
+	<input type="hidden" name="id" value="{$id}" />
+	<input type="hidden" name="templateid" value="{$template['id']}">
+	<h4>微站导航</h4>
+	<table class="tb">
+		<tr>
+			<th><label for="">状态</label></th>
+			<td>
+				<label for="status_1" class="radio inline"><input autocomplete="off" type="radio" name="status" id="status_1" value="1" {if $rule['rule']['status'] == 1 || empty($rule['rule']['status'])} checked="checked"{/if} /> 显示</label>
+				<label for="status_0" class="radio inline"><input autocomplete="off" type="radio" name="status" id="status_0" value="0" {if !empty($rule) && $rule['rule']['status'] == 0} checked="checked"{/if} /> 隐藏</label>
+				<span class="help-block">设置导航菜单的显示状态</span>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="">排序</label></th>
+			<td>
+				<input type="text" class="span2" name="displayorder" value="{$item['displayorder']}" />
+				<span class="help-block">导航排序，越大越靠前</span>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="">名称</label></th>
+			<td>
+				<input type="text" class="span4" name="name" id="name" value="{$item['name']}" />
+			</td>
+		</tr>
+		<tr>
+			<th><label for="">显示位置</label></th>
+			<td>
+				<select name="position" class="position"  id="position" onchange="togglemenu($(this).val())" autocomplete="off">
+					{loop $position $posid $posname}
+					<option value="{$posid}" {if $item['position'] == $posid} selected{/if}>{$posname}</option>
+					{/loop}
+				</select>
+				<span class="help-block">选择导航链接将显示的页面</span>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="">链接类型</label></th>
+			<td>
+				<div class="radio inline"><label for="type_1"><input type="radio" name="type" value="1" id="type_1" {if $item['issystem']} checked{/if} autocomplete="off" /> 系统内置菜单</label></div>
+				<div class="radio inline"><label for="type_2"><input type="radio" name="type" value="2" id="type_2" {if !$item['issystem'] || empty($item)} checked{/if} autocomplete="off" /> 自定义菜单</label></div>
+				<span class="help-block"></span>
+			</td>
+		</tr>
+		<tbody id="tbody_1" {if !$item['issystem']} style="display:none;"{/if}>
+		<tr>
+			<th><label for="">链接</label></th>
+			<td>
+				{php include_once model('site');}
+				{php $systemmenus = site_system_menus();}
+				<select name="sysurl" autocomplete="off">
+					{loop $systemmenus $menu}
+					<option value="{$menu['url']}" {if $item['url'] == $menu['url']} selected{/if}>{$menu['title']}</option>
+					{/loop}
+				</select>
+				<span class="help-block">选择系统内置的导航链接</span>
+			</td>
+		</tr>
+		</tbody>
+		<tbody id="tbody_2" {if $item['issystem']} style="display:none;"{/if}>
+		<tr>
+			<th><label for="">链接</label></th>
+			<td>
+				<div class="input-append" style="display:block; margin-top:5px;">
+					<input class="span3" type="text" name="url" id="url" value="{$item['url']}" placeholder=""><button class="btn btn-sm btn-primary" onclick="w = $('#modal-module-menus').modal();buildModuleMenuForm();return false;">选择模块扩展链接</button>
+				</div>
+				<span class="help-block">链接可以添加直接URL链接，也可以通过“选择模块扩展链接”界面添加模块扩展出的菜单。</span>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	<h4>导航样式</h4>
+	<table class="tb">
+		<tr>
+			<th>系统图标</th>
+			<td>
+				<div class="input-append" style="display:block; margin-top:5px;">
+					<input class="span3" type="text" name="icon[icon]" id="icon" value="{$item['css']['icon']['icon']}" placeholder=""><button class="btn" onclick="w = ajaxshow('{php echo create_url('site/icon')}', '图标列表', {width : 800});return false;">选择图标</button>
+				</div>
+				<span class="help-block">导航的背景图标，微擎系统提供丰富的图标ICON。</span>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="">图标颜色</label></th>
+			<td>
+				<input type="text" class="span3" id="iconcolor" name="icon[color]" value="{$item['css']['icon']['color']}" />
+				<input class="colorpicker" target="iconcolor" value="{$item['css']['icon']['color']}" />
+				<span class="help-block">图标颜色，上传图标时此设置项无效</span>
+			</td>
+		</tr>
+		<tr>
+			<th>图标大小</th>
+			<td>
+				<input class="span2" type="text" name="icon[size]" id="icon" value="{if $item['css']['icon']['size']}{$item['css']['icon']['size']}{else}35{/if}"><span class="help-inline">PX</span>
+				<span class="help-block">图标的尺寸大小，单位为像素，上传图标时此设置项无效</span>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="">上传图标</label></th>
+			<td>
+				<div class="fileupload fileupload-new" data-provides="fileupload">
+					<div class="fileupload-preview thumbnail" >{if $item['fileicon']}<img src="{$_W['attachurl']}{$item['fileicon']}" width="50" />{/if}</div>
+					<div>
+						<span class="btn btn-sm btn-primary btn-file"><span class="fileupload-new">选择图片</span><span class="fileupload-exists">更改</span><input name="icon" type="file" /></span>
+						{if $item['fileicon']}<button type="submit" name="fileupload-delete" value="{$item['fileicon']}" class="btn btn-sm fileupload-new">删除</button>{/if}
+						<a href="#" class="btn btn-sm  fileupload-exists" data-dismiss="fileupload">移除</a>
+					</div>
+				</div>
+				<input type="hidden" name="icon_old" value="{$item['fileicon']}" />
+				<span class="help-block">自定义上传图标图片，“系统图标”优先于此项</span>
+			</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td>
+				<input name="token" type="hidden" value="{$_W['token']}" />
+				<input type="submit" class="btn btn-primary" name="submit" value="提交" />
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="modal-module-menus" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true" style="position:absolute; width:600px;">
+	<div class="modal-header"><button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button><h3 id="myModalLabel">扩展模块菜单</h3></div>
+	<div class="modal-body">
+		<table class="tb">
+			<tr>
+				<th><label for="">模块</label></th>
+				<td>
+					<select name="module" id="module" onchange="buildModuleMenuForm()" autocomplete="off">
+						<option value="">选择模块</option>
+						{loop $modules $mod}
+						<option value="{$mod['name']}">{$mod['title']}</option>
+						{/loop}
+					</select>
+				</td>
+			</tr>
+			<!--tr>
+				<th><label for="">显示位置</label></th>
+				<td>
+					<select class="position" onchange="togglemenu($(this).val())" autocomplete="off">
+						{loop $position $posid $posname}
+						<option value="{$posid}" {if $item['position'] == $posid} selected{/if}>{$posname}</option>
+						{/loop}
+					</select>
+					<span class="help-block">选择导航链接将显示的页面</span>
+				</td>
+			</tr-->
+			<tr>
+				<th><label for="">搜索关键字</label></th>
+				<td>
+					<div class="input-append" style="display:block;">
+						<input type="text" class="span3" name="keyword" value="" id="keyword" /><button class="btn btn-sm btn-primary" onclick="buildModuleMenuForm(); return false;">搜索</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div id="module-menus">
+
+		</div>
+	</div>
+	<div class="modal-footer"><a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a></div>
+</div>
+</form>
+<script type="text/javascript" src="./resource/script/colorpicker/spectrum.js"></script>
+<link type="text/css" rel="stylesheet" href="./resource/script/colorpicker/spectrum.css" />
+<link type="text/css" rel="stylesheet" href="./resource/script/kindeditor/themes/default/default.css" />
+<script type="text/javascript">
+<!--
+	var w;
+	function buildModuleMenuForm() {
+		var module = $('#module').val();
+		if (!module) {
+			return false;
+		}
+		try {
+			$.ajax({
+			  url: "{php echo create_url('site/nav/module')}",
+			  type: "GET",
+			  data: {'name' : module.toLowerCase(), 'position' : $('#position').val(), 'keyword' : $('#keyword').val()},
+			  dataType: "html"
+			}).done(function(s) {
+				if (!s) {
+					$('#module-menus').html('此模块未有扩展菜单');
+					return false;
+				}
+				$('#module-menus').html(s);
+			});
+		}
+		catch (e) {
+		}
+	}
+
+	function togglemenu(position) {
+		$('#home').show();
+		$('#profile').show();
+		$('.position').find("option[value='"+position+"']").attr("selected",true);
+		switch (position)
+		{
+			case '1':
+				$('#home').show();
+				$('#profile').hide();
+			break;
+			case '2':
+				$('#home').hide();
+				$('#profile').show();
+			break;
+		}
+	}
+
+	$("input[name='type']").click(function(){
+		$("tbody[id^='tbody']").hide();
+		$("#tbody_"+$(this).val()).show();
+	});
+
+	$(function(){
+		colorpicker();
+	});
+//-->
+</script>
+{template 'common/footer'}
+{elseif $do == 'display' || empty($do)}
+{template 'common/header'}
+<ul class="nav nav-tabs">
+	<li{if $action == 'nav' && empty($do)} class="active"{/if}><a href="{php echo create_url('site/nav');}">导航管理</a></li>
+	<li {if $action == 'nav' && $do == 'post'} class="active"{/if}><a href="{php echo create_url('site/nav/post');}">{if $id}更新导航{else}添加导航{/if}</a></li>
+</ul>
+<style>
+.table td span{display:inline-block;margin-top:4px;}
+.table td input{margin-bottom:0;}
+</style>
+<form action="" method="post">
+<div class="main">
+	<div>
+		<table class="table table-striped table-bordered table-hover">
+			<thead class="navbar-inner">
+				<tr>
+					<th style="width:30px;"></th>
+					<th style="width:60px;">排序</th>
+					<th style="width:45px;">图标</th>
+					<th style="width:100px;">名称</th>
+					<th style="width:60px;">位置</th>
+					<th style="width:60px;">类型</th>
+					<th style="width:200px;">链接</th>
+					<th style="min-width:60px;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				{loop $navs $item}
+				<tr>
+					<td><input type="checkbox" name="status[{$item['id']}]" value="1" {if $item['status']} checked{/if} /></td>
+					<td><input type="text" class="span1" name="displayorder[{$item['id']}]" value="{$item['displayorder']}" /></td>
+					<td>{if $item['css']['icon']['icon'] && empty($item['icon'])}<i class="{$item['css']['icon']['icon']} icon-2x"></i>{else}{if $item['icon']}<img src="{$_W['attachurl']}{$item['icon']}" width="30" />{/if}{/if}</td>
+					<td><input type="text" class="span3" name="name[{$item['id']}]" value="{$item['name']}" /></td>
+					<td><span>{$position[$item['position']]}</span></td>
+					<td><span>{if $item['issystem']}内置{else}自定义{/if}</span></td>
+					<td><span>{$item['url']}</span></td>
+					<td><span><a href="{php echo create_url('site/nav/post', array('id' => $item['id']))}">编辑</a>&nbsp;<a onclick="return confirm('此操作不可恢复，确定删除吗？');return false;" href="{php echo create_url('site/nav/delete', array('id' => $item['id']))}">删除</a></span></td>
+				</tr>
+				{/loop}
+			</tbody>
+		</table>
+        <div>
+            <input name="token" type="hidden" value="{$_W['token']}" />
+            <input type="submit" class="btn btn-primary" name="submit" value="提交" />
+        </div>
+	</div>
+</div>
+</form>
+{template 'common/footer'}
+{elseif $do == 'module'}
+<table class="table table-hover" id="home" {if $position == 2} style="display:none;"{/if}>
+	<thead class="navbar-inner">
+		<tr>
+			<th colspan="3">首页扩展菜单</th>
+		</tr>
+	</thead>
+	<tbody>
+		{loop $result['home'] $item}
+		<tr>
+			<td style="width:80px;"><a href="javascript:;" onclick="addModuleMenu('{$item['title']}', '{$item['url']}')">添加</a></td>
+			<td style="width:100px;">{$item['title']}</td>
+		</tr>
+		{/loop}
+	</tbody>
+</table>
+<table class="table table-hover" id="profile" {if $position == 1} style="display:none;"{/if}>
+	<thead class="navbar-inner">
+		<tr>
+			<th colspan="3">个人中心扩展菜单</th>
+		</tr>
+	</thead>
+	<tbody>
+		{loop $result['profile'] $item}
+		<tr>
+			<td style="width:80px;"><a href="javascript:;" onclick="addModuleMenu('{$item['title']}', '{$item['url']}')">添加</a></td>
+			<td style="width:100px;">{$item['title']}</td>
+		</tr>
+		{/loop}
+	</tbody>
+</table>
+<script type="text/javascript">
+<!--
+	function addModuleMenu(title, url) {
+		$('#url').val(url);
+		$('#name').val(title);
+		w.modal('hide');
+	}
+//-->
+</script>
+{/if}

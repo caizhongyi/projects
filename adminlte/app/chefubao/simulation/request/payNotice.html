@@ -1,0 +1,160 @@
+<form name="form" ng-submit="submit(form.$valid)"  role="form" novalidate>
+        <table class="table modv2-table table-hover">
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 填写订单号：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="订单号" id="order_no" name="order_no" ng-disabled="hasKey" ng-model='item.order_no' class="form-control " required>
+                    </div>
+                    <div class="has-feedback text-danger" ng-messages="form.order_no.$error" ng-show="interacted(form.order_no)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入订单号！</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 填写商户号：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="商户号" id="merchant_id" name="merchant_id" ng-disabled="hasKey" ng-model='item.merchant_id' class="form-control " required>
+                    </div>
+                    <div class="has-feedback text-danger" ng-messages="form.merchant_id.$error" ng-show="interacted(form.merchant_id)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入商户号！</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 填写终端号：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="终端号" id="terminal_id" name="terminal_id" ng-disabled="hasKey" ng-model='item.terminal_id' class="form-control " required>
+                    </div>
+                    <div class="has-feedback text-danger" ng-messages="form.terminal_id.$error" ng-show="interacted(form.terminal_id)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入终端号！</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 填写支付金额：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="支付金额" id="payment_amount" name="payment_amount" ng-model='item.payment_amount' ng-disabled="hasKey" class="form-control " required>
+                    </div>
+                    <div class="has-feedback text-danger" ng-messages="form.payment_amount.$error" ng-show="interacted(form.payment_amount)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入支付金额！</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 填写交易时间：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="交易时间" id="trans_time" name="trans_time" ng-disabled="hasKey" ng-model='item.trans_time' class="form-control " required> 格式：2015-10-10 20:20:20
+                    </div>
+                    <div class="has-feedback text-danger" ng-messages="form.trans_time.$error" ng-show="interacted(form.trans_time)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入交易时间！</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 填写交易参考号：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="交易参考号" id="refer_no" name="refer_no"  ng-model='item.refer_no' class="form-control" required>
+                    </div>
+                    <div class="has-feedback text-danger" ng-messages="form.refer_no.$error" ng-show="interacted(form.refer_no)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入交易参考号！</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 银行卡号：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="银行卡号" id="card_no" name="card_no" ng-disabled="hasKey" ng-model='item.card_no' class="form-control " required>
+                    </div>
+                    <div class="has-feedback text-danger" ng-messages="form.card_no.$error" ng-show="interacted(form.card_no)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入银行卡号！</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 卡类型：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="卡类型" id="card_type" name="card_type" ng-disabled="hasKey" ng-model='item.card_type' class="form-control " required>
+                    </div>
+                    <div class="has-feedback text-danger" ng-messages="form.card_type.$error" ng-show="interacted(form.card_type)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入卡类型！</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">
+                    <span class="text-danger"> 填写secretKey(非必填，不填的时候用默认测试店数据，不可修改)：</span>
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="key" id="key" name="key" ng-model='item.key' class="form-control" >
+                    </div>
+                    <div class="has-feedback text-danger" ng-messages="form.key.$error" ng-show="interacted(form.key)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请填写key！</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">
+                    <span class="text-danger"> 支付通知回滚：</span>
+                </th>
+                <td colspan="3">
+                    <label class="pickbox"><input type="radio" name="rollback" value="1" ng-model="item.rollback" checked/> 不回滚 </label>
+                    <label class="pickbox"><input type="radio" name="rollback" value="2" ng-model="item.rollback" /> 回滚 </label>
+                </td>
+            </tr>
+            <td colspan="100%">
+                <label class="pickbox"><input type="radio" name="type" value="1" ng-model="item.type" checked/> 测试环境(目前是绑定到172.16.1.42) </label>
+                <!--<label class="pickbox"><input type="radio" name="type" value="2" ng-model="item.type" /> sim环境 </label>-->
+                <label class="pickbox"><input type="radio" name="type" value="3" ng-model="item.type" /> 线上环境（测试店固定订单号，不用输入key） </label>
+            </td>
+        </table>
+        <button class="btn btn-primary modv2-btn" >提交申请</button>
+</form>
+<div data-ng-show="res.ACTION_RETURN_CODE === 0">
+    <table class="table modv2-table table-hover">
+        <tr>
+            <th width="12%">
+                <span class="text-danger">*</span> 请求地址：
+            </th>
+            <td colspan="3">
+                <div class="input-group modv2-inputg">
+                    {{res.url}}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th width="12%">
+                <span class="text-danger">*</span> 请求结果：
+            </th>
+            <td colspan="3">
+                <div class="input-group modv2-inputg">
+                    {{res.MESSAGE}}
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

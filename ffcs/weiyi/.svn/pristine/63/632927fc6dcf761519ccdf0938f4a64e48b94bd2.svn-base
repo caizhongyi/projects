@@ -1,0 +1,71 @@
+a{text-decoration: none;}
+.pull-left{ float: left}
+.pull-right{ float: right;}
+.dialog {
+    background: #fff;
+    box-shadow: 0px 0px 5px #ddd;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 70%;
+    height: auto;
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    left: 50%;
+    margin-left: -35%;
+    z-index: 99;
+    top: 30%;
+    transition: all 0.2s linear 0s ;
+}
+.dialog h3{width: 90%;}
+.dialog .dialog-header,
+.dialog .dialog-footer,
+.dialog .dialog-body {
+    *zoom: 1;
+    padding: 10px;
+}
+.dialog .dialog-header:before,
+.dialog .dialog-footer:before,
+.dialog .dialog-body:before,
+.dialog .dialog-header:after,
+.dialog .dialog-footer:after,
+.dialog .dialog-body:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.dialog .dialog-header:after,
+.dialog .dialog-footer:after,
+.dialog .dialog-body:after {
+    clear: both;
+}
+.dialog .dialog-header h1 {
+    font-size: 18px;
+}
+.dialog .dialog-header h2 {
+    font-size: 16px;
+}
+.dialog .dialog-header h3,
+.dialog .dialog-header h4,
+.dialog .dialog-header h5,
+.dialog .dialog-header h6 {
+    margin: 0;
+    font-size: 14px;
+}
+.dialog.shown {
+    visibility: inherit;
+    opacity: 1;
+}
+.dialog .message {
+    text-align: center;
+    font-size: 12px;
+    margin: 0;
+}
+.dialog-hint {
+    top: auto;
+    bottom: -100px;
+}
+.dialog-hint.shown {
+    visibility: inherit;
+    bottom: 0;
+}

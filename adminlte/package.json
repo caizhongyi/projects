@@ -1,0 +1,42 @@
+{
+  "name": "angular",
+  "version": "1.0.0",
+  "spm": {
+    "main": "app/app.js",
+    "dependencies": {
+      "import-style": "1.0.0"
+    },
+    "common": true,
+    "vendor": [
+      "jquery"
+    ],
+    "library": [],
+    "ignore": [
+      "angular",
+      "angular-bootstrap",
+      "angular-cookies",
+      "angular-messages",
+      "angular-ui-router",
+      "angular-animate",
+      "icheck",
+      "jquery-ui",
+      "oclazyload",
+      "jquery-md5",
+      "bootstrap"
+    ],
+    "uglify": {
+      "keep_fnames": false,
+      "output": {
+        "beautify": false,
+        "ascii_only": true
+      },
+      "compress": false
+    },
+    "babel": {},
+    "registry ": "https://registry.npmjs.org"
+  },
+  "description": "",
+  "scripts": {
+    "fis-build": "fis3 release prod -d ../angular-release"
+  }
+}

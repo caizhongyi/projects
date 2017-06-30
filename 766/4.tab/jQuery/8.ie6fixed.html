@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>1.幻灯片效果-淡入淡出 + 返回顶部效果</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/ie6fixed.js"></script>
+</head>
+<body>
+<!-- wrapper -->
+<div class="main">
+<!--目录-->
+<h2>766通用JS效果 目录：（以下效果，经测试，兼容FF10.0/IE6,7,8,9/360 4.1.1.6/遨游 3.1.5/世界之窗3.2）</h2>
+<p class="descirpt" style="background:#f1f1f1; border:1px solid #369;">
+	<a href="0.index.html">0.首页-JQuery基础使用教程</a><br />
+	<a href="1.fade.html">1.幻灯片效果-淡入淡出 + 返回顶部</a><br />
+	<a href="2.stepScroll.html">2.幻灯片效果-单块内容滚动</a><br />
+	<a href="3.scroll.html">3.滚动效果</a><br />
+	<a href="4.textScroll.html">4.文本滚动效果</a><br />
+	<a href="5.tab.html">5.选项卡/标签切换效果+图片切换后载效果</a><br />
+	<a href="6.menu.html">6.下拉菜单/级联菜单效果</a><br />
+	<a href="7.ie6png.html">7.IE6 png bug</a><br />
+	<span>8.IE6 fixed bug</span><br />
+</p>
+<!--目录 end-->
+
+<!--范例***************************************************-->
+<style>
+/*slide*/
+.backToTop { display:none; width:18px; line-height:1.2; padding:5px 0; background-color:#000; color:#fff; font-size:12px; text-align:center; position:fixed; _position:absolute; left:50%; margin-left:500px; bottom:100px; _bottom:auto; cursor:pointer; opacity:.6; filter:Alpha(opacity=60); }
+</style>
+<script src="js/back_top.js"></script>
+<!--范例 end***************************************************-->
+
+<!--1.幻灯片效果-->
+<h2>IE6 fixed bug</h2>
+<p class="descirpt">描述：解决IE6无法使用position:fixed;样式的bug。
+</p><br />
+<h3 class="h3">范例：</h3>
+<!--范例1***************************************************--> 
+<textarea style="height:1400px; width:978px;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/* 以下样式用于范例使用 */
+		#test{ height:1500px; width:1000; margin:0 auto; background:#aaa; }
+		.fixed{ position:fixed; _position:absolute; top:50%; left:50%; width:400px; height:50px; margin:-25px 0 0 -200px; _margin-top:0; background:#369; color:#fff; font-weight:bold; }
+		.fixed2{ position:fixed; _position:absolute; top:50px; left:50px; width:100px; height:100px; background:#f90; color:#333; }
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/ie6fixed.js"></script>
+		<script>
+		$(function(){
+			/*需要设置position:fixed样式的内容，通常都是针对整个窗口使用的，所以将需要使用的内容，放到html代码的最外层
+			比如：
+			<html>
+			  <body>
+				其他html代码
+					
+				<div class="fixed"></div>
+			  </body>
+			</html>
+			$(".fixed").({
+				box:'.fixed',	//默认样式名，如果对象的样式名实class=fixed，则可以不写；样式名可以是id或者class等
+				flag:true		//内容在窗口绝对居中时，设置成true；否则设置成false；默认绝对居中
+			});
+			*/
+			$(".fixed").alIE6Fixed();
+			$(".fixed2").alIE6Fixed({
+				box:'.fixed2', 	//样式名
+				flag:false		//是否窗口垂直居中
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!--其他html代码-->
+		<div id="test"></div>
+		<!--其他html代码-->
+		<div class="fixed">修正后的fixed</div>
+		<div class="fixed2">没有绝对居中的定位</div>
+	</body>
+</html>
+
+</textarea>
+<!--******************************************************************-->
+<style type="text/css">
+.fixed{ position:fixed; _position:absolute; top:50%; left:50%; width:400px; height:50px; margin:-25px 0 0 -200px; _margin-top:0; background:#369; color:#fff; font-weight:bold; }
+.fixed2{ position:fixed; _position:absolute; top:50px; left:50px; width:100px; height:100px; background:#f90; color:#333; }
+</style>
+<script>
+$(function(){	
+	$(".fixed").alIE6Fixed();
+	$(".fixed2").alIE6Fixed({
+		box:'.fixed2',
+		flag:false
+	});
+});
+</script>
+<div id="main"></div>
+<!--******************************************************************-->
+</div>
+<!-- wrapper end -->
+
+<div class="fixed">修正后的fixed</div>
+<div class="fixed2">没有绝对居中的定位</div>
+</body>
+</html>

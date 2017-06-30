@@ -1,0 +1,197 @@
+
+<form name="form" ng-submit="submit(form.$valid)"  role="form" novalidate>
+    <table class="table modv2-table table-hover" input-max-fee>
+        <tr>
+            <th width="12%">收款门店：</th>
+            <td colspan="3">
+                <div class="form-group" select-store="">
+                    <div class="form-group modv2-formg">
+                        <select id="province" class="form-control province" name="province" ng-model="subitem.province"  ng-options="item.id as item.name  for item in province "  >
+                            <option value="">省份</option>
+                        </select>
+                    </div>
+                    <div class="form-group modv2-formg">
+                        <select id="city" class="form-control city" name="city" ng-model="subitem.city"  ng-options="item.id as  item.name for item in city "  >
+                            <option value="">市/区</option>
+                        </select>
+                    </div>
+                    <div class="form-group modv2-formg">
+                        <select id="shop" class="form-control shop" name="shop" ng-model="subitem.to_dept_id"   ng-options="item.id as  item.name for item in shop" >
+                            <option value="">门店</option>
+                        </select>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr ng-if="item.order.is_jhc != 1">
+            <th>信息服务费：</th>
+            <td colspan="3">
+                <div class="input-group modv2-inputg">
+                    <input type="text" placeholder="信息服务费" id="brokerage" name="brokerage" class="form-control text-right" money-validator=""  ng-model="subitem.brokerage" max-number="item.max_detail.brokerage">
+                    <div class="input-group-addon">元</div>
+                </div>
+                <span>最多申请：<span class="text-danger">{{ item.max_detail.brokerage  }}</span>元（已申请支付：{{ item.applied.brokerage }} 元）</span>
+                <div class="has-feedback text-danger" ng-messages="form.brokerage.$error" ng-show="interacted(form.brokerage)">
+                    <!--<div ng-message="required"><i class="fa fa-info-circle"></i> 请输入信息服务费！</div>-->
+                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i> 输入的信息服务费格式不正确！</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                代办过户费：
+            </th>
+            <td colspan="3">
+                <div class="input-group modv2-inputg">
+                    <input type="text" placeholder="代办过户费" id="anency_fee" name="anency_fee" class="form-control text-right" money-validator=""  ng-model="subitem.anency_fee" max-number="item.max_detail.anency_fee">
+                    <div class="input-group-addon">元</div>
+                </div>
+                <span>最多申请：<span class="text-danger">{{  item.max_detail.anency_fee  }}</span>元（已申请支付：{{ item.applied.anency_fee }} 元）</span>
+                <div class="has-feedback text-danger" ng-messages="form.anency_fee.$error" ng-show="interacted(form.anency_fee)">
+                    <!--<div ng-message="required"><i class="fa fa-info-circle"></i> 请输入代办过户费！</div>-->
+                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i> 输入的代办过户费格式不正确！</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th> 过户费：</th>
+            <td colspan="3">
+                <div class="input-group modv2-inputg">
+                    <input type="text" placeholder="过户费" id="transfer_fee" name="transfer_fee" class="form-control text-right" money-validator="" ng-model="subitem.transfer_fee"  max-number="item.max_detail.transfer_fee">
+                    <div class="input-group-addon">元</div>
+                </div>
+                <span>最多申请：<span class="text-danger">{{ item.max_detail.transfer_fee }}</span>元（已申请支付：{{ item.applied.transfer_fee }} 元）</span>
+                <div class="has-feedback text-danger" ng-messages="form.transfer_fee.$error" ng-show="interacted(form.transfer_fee)">
+                    <!--<div ng-message="required"><i class="fa fa-info-circle"></i> 请输入过户费！</div>-->
+                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i> 输入的过户费格式不正确！</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                其它费用：
+            </th>
+            <td colspan="3">
+                <div class="input-group modv2-inputg">
+                    <input type="text" placeholder="其它费用" id="other_fee" name="other_fee" class="form-control text-right" money-validator="" ng-model="subitem.other_fee" max-number="item.max_detail.other_fee">
+                    <div class="input-group-addon">元</div>
+                </div>
+                <span>最多申请：<span class="text-danger">{{ item.max_detail.other_fee }}</span>元（已申请支付：{{ item.applied.other_fee }} 元）</span>
+                <div class="has-feedback text-danger" ng-messages="form.other_fee.$error" ng-show="interacted(form.other_fee)">
+                    <!--<div ng-message="required"><i class="fa fa-info-circle"></i> 请输入其它费用！</div>-->
+                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i> 输入的其它费用格式不正确！</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="4" > 共：<span class="text-danger">{{ subitem.fee }}</span>  元</th>
+        </tr>
+        <tr>
+            <th colspan="4"><h4 class="box-title text-danger">此处收款人为门店帐号</h4></th>
+        </tr>
+        <tr>
+            <th >收款人姓名：</th>
+            <td>
+                {{ item.payee_realname }}
+            </td>
+            <th >收款账户：</th>
+            <td>
+                {{ item.payee_cardno }}
+            </td>
+        </tr>
+        <tr>
+            <th >收款银行：</th>
+            <td>
+                {{ item.payee_bank }}
+            </td>
+            <th >开户支行：</th>
+            <td>
+                {{ item.payee_bank_branch }}
+            </td>
+        </tr>
+        <tr ng-if="item.avoidCode">
+            <th>验证码：</th>
+            <td colspan="3">
+                <input type="text" style="display:inline-block" ng-model="subitem.code" class="form-control  modv2-inputg" name="code" placeholder="请输入验证码" required>
+                <button class="btn btn-danger" type="button" ng-click="sendCode(2)" >获取验证码</button>
+                <span ng-if="profile.latestMobile">验证码发送至：<span class="text-danger">{{profile.latestMobile}}</span>，如号码有误请在个人中心修改。</span>
+                <span ng-if="!profile.latestMobile" class="text-danger">信息不全，请联系管理员添加手机号！</span>
+                <div class="has-feedback text-danger" ng-messages="form.code.$error"  ng-show="interacted(form.code)" >
+                    <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入验证码！</div>
+                </div>
+            </td>
+        </tr>
+     </table>
+        <button class="btn btn-primary modv2-btn" ng-disabled="submitted">提交申请</button>
+</form>
+<script type="text/ng-template" id="tpl-bank-card-auth.html">
+    <form role="form" name="addForm" ng-submit="addSubmit(addForm.$valid)"  novalidate  >
+        <div class="modal-header">
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+            <h3 class="modal-title">银行卡认证</h3>
+        </div>
+        <div class="modal-body">
+            <div class="box-body">
+                <table class="table">
+                    <tr>
+                        <td class="text-danger" colspan="2">为了款项安全，请进行收款银行卡认证</td>
+                    </tr>
+                    <tr>
+                        <td class="">收款人姓名：</td>
+                        <td>{{item.payee_realname}}</td>
+                    </tr>
+                    <tr>
+                        <td class="pay-title">收款人帐户：</td>
+                        <td>{{item.payee_bank_card_number}}</td>
+                    </tr>
+                    <tr>
+                        <td class="">收款银行：</td>
+                        <td>{{item.payee_bank}}</td>
+                    </tr>
+                    <tr>
+                        <td class="">开户支行：</td>
+                        <td>{{item.payee_bank_branch}}</td>
+                    </tr>
+                    <tr>
+                        <td class="">身份证号：</td>
+                        <td>{{item.payee_idcard}}</td>
+                    </tr>
+                    <tr>
+                        <td class=""><span class="text-danger">*</span> 银行预留手机号：</td>
+                        <td>
+                            <div class="modv2-inputg">
+                                <input type="text" ng-model="item.linkman_phone" class="form-control  "  name="linkman_phone" id="linkman_phone" placeholder="银行预留手机号">
+                            </div>
+                            <div class="has-feedback text-danger" ng-messages="addForm.linkman_phone.$error" ng-show="interacted(addForm.linkman_phone)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入银行预留手机号。</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class=""><span class="text-danger">*</span> 验证码：</td>
+                        <td>
+                            <span class="input-group modv2-inputg">
+                                <input type="text" ng-model="item.code" class="form-control" name="code" placeholder="验证码"  >
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary" type="button" count-down="sendCode({ id : $scope.item.id , phone_no : $scope.item.linkman_phone  })" >
+                                        获取验证码
+                                    </button>
+                                </div>
+                            </span>
+                            <div class="has-feedback text-danger" ng-messages="addForm.code.$error" ng-show="interacted(addForm.code)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入验证码。</div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div><!-- /.box-body -->
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary modv2-btn" ng-disabled="submitted">确认</button>
+            <button class="btn btn-primary modv2-btn" type="button" ng-click="cancel()">暂时不认证</button>
+        </div>
+    </form>
+</script>

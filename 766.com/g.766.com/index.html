@@ -1,0 +1,346 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+<title>新梦幻之城--经典动漫元素，浪漫恋爱色彩，hold住！</title>
+
+<style type="text/css">
+
+* { margin:0; padding:0; }
+
+body { font:12px/1.5 arial, simsun; color:#000; background:#000; }
+
+a { text-decoration:none; }
+
+a:hover { text-decoration:underline; }
+
+ul { list-style:none; }
+
+li { clear:both; padding-bottom: 10px; height:22px; line-height:22px; }
+
+li.firli { padding-bottom: 20px;}
+
+label, .text, li span { float:left; }
+
+.text { height:20px; width:130px; font-family:arial, simsun; border:1px solid #000; line-height:20px; padding:0 3px;}
+
+.main { width:1000px; height:600px; margin:auto; position:relative; color:#000;}
+
+/*new login*/
+
+#show{ position:absolute; width:400px; top:244px; left:535px; margin-left:-220px;margin-top:90px; z-index:1000; }
+
+#loginbox .hd { position:relative; padding-top:5px; height:31px; line-height:31px; text-align:center; }
+
+#loginbox .hd a { display:inline-block; margin: 0 30px 0 10px; width:104px; height:31px; line-height:31px;}
+
+#loginbox .hd .curr {  background-position:0 -31px; }
+
+#loginbox .bd { overflow:hidden; padding:10px;  zoom:1; }
+
+#loginbox label { width:85px; text-align:right; }
+
+#loginbox .opt { margin-bottom:10px; line-height:30px; text-align:center; }
+
+#loginbox .button { width: 161px; height: 50px; margin-bottom:20px; margin-left:-30px; border:0 none; background:url(images/xmhbtn1114.gif);  font-size:12px; cursor:pointer; }
+
+#regForm p { line-height:40px; text-align:center; }
+
+#regForm p span { margin:0 3px; color:#f00; }
+
+#regForm p a { color:#000; text-decoration:underline; }
+
+#regForm li { position:relative; vertical-align:top; }
+
+#regForm li input{width:105px;}
+
+#regForm li span { position:absolute; left:205px; top:0; _top:4px; width:140px; line-height:18px; color:#000; }
+
+#regForm li .ok { width:18px; background:url(tip.png) no-repeat 0 3px; _background:url(tip.gif) no-repeat 0 0; text-indent:-999em; overflow:hidden; }
+
+#regForm li .error { padding-left:18px; width:115px; background:url(tip.png) no-repeat 0 -37px; _background:url(tip.gif) no-repeat 0 -40px; color:#000; }
+
+#regForm .opt { margin-bottom:10px; }
+
+#loginForm { display:none; padding-top:40px; }
+
+#loginForm label { width:110px; }
+
+#animation { width: 1000px; height: 600px; position:absolute; top:0; left:50%; margin-left:-500px; z-index:100; }
+
+.tabs a{ color: #fff; margin-right: 10px;}
+</style>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script type="text/javascript" src="js/reg_common.js"></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		$("#reg").click(function(){
+
+			$(this).removeClass().addClass("curr");
+
+			$("#login").removeClass();
+
+			$(".bd>div").hide();
+
+			$("#regForm").show();
+
+		});
+
+		//$("#login").click(function(){
+
+//			$(this).removeClass().addClass("curr");
+
+//			$("#reg").removeClass();
+
+//			$(".bd>div").hide();
+
+//			$("#loginForm").show();
+
+//		});
+
+		
+
+		function OpenDiv(){
+
+			$("#show").show();
+
+		}
+
+	});
+
+
+
+	function OpenDiv(){
+
+		$('#show').show();
+
+  }
+
+
+
+  function closeErrors() { 
+
+		return true; 
+
+	} 
+
+</script>
+
+<script type="text/javascript" src="js/swfobject.js"></script>
+
+<script type="text/javascript">
+
+	var flashvars = {};
+
+	var params = {wmode:"transparent"};
+
+	var attributes = {};
+
+	swfobject.embedSWF("swf/xmh-1114.swf", "animation", "1000", "550", "9.0.0","swf/expressInstall.swf", flashvars, params, attributes);
+
+</script>
+
+</head>
+
+<body>
+
+<div class="main">
+
+	<div id="animation"></div>
+
+	<div id="show" >
+
+		<!--注册填写"隐藏/显示"的DIV style="display:none"-->
+
+		<div id=loginbox>
+
+				<div class="hd"> <a class="curr" href="javascript:void(0);" id="reg" title="立即注册"></a> <a id="login" title="老用户登录"></a></div>
+
+				<div class="bd">
+
+					<div id="regForm" class="curr">
+
+
+
+                        <div class="tabs">
+                            <div class="tabs-nav">
+                                <a href="javascript:void(0)" class="selected" data-index="0">新用户</a>
+                                <a href="javascript:void(0)"  data-index="1">老用户</a>
+                            </div>
+
+                            <div class="tabs-panel">
+
+                                <form action="http://g.766.com/mhzc/" id="submit_form" method="post">
+
+                                    <input type="hidden" name="gamename" id="gamename" value="xmh" />
+
+                                    <input type="hidden" name="serverid" id="serverid" value="" />
+
+                                    <input type="hidden" name="thegame" id="thegame" value="" />
+
+                                    <input type="hidden" name="servername" id="servername" value="" />
+
+                                    <input type="hidden" name="gameurl" id="gameurl" value="" />
+
+                                    <input type="hidden" name="fcm" id="fcm" value="0" />
+
+                                    <!-- 统计所需参数 -->
+
+                                    <input type="hidden" name="who" id="who" value="" />
+
+                                    <input type="hidden" name="from_website_id" id="from_website_id" value="" />
+
+                                    <input type="hidden" name="from_ad_id" id="from_ad_id" value="" />
+
+                                    <input type="hidden" name="subaid" id="subaid" value="" />
+                                <ul>
+
+                                    <li class="firli">
+
+                                        <label for="username">账号：</label>
+
+                                        <input class="text" name="username" type="text" onpaste="return false;" id="username" size="12"/>
+
+                                        <span id="username_div_error">6-16个字母/数字/点或@组成</span>
+
+                                        <div id="username_div_info" style="display:none;">6-16个字母/数字/点或@组成</div>
+
+                                    </li>
+
+                                    <li>
+
+                                        <label for="password">密码：</label>
+
+                                        <input class="text" name="password" type="password" onpaste="return false;" id="password" />
+
+                                        <span id="password_div_error">6-32个字符，区分大小写</span>
+
+                                        <div id="password_div_info" style="display:none;">6-32个字符，区分大小写</div>
+
+                                    </li>
+
+                                    <li>
+
+                                        <label for="repassword">确认密码：</label>
+
+                                        <input class="text" name="repassword" type="password" onpaste="return false;" id="repassword" />
+
+                                        <span id="repassword_div_error">再次输入密码</span> </li>
+                                        <div id="repassword_div_info" style="display:none;">再次输入密码</div>
+                                </ul>
+                                    <p class="opt">
+
+                                        <input type="checkbox" name="" id="agree" checked="checked" />
+
+                                        我接受《乐游通行证使用协议和隐私政策》 </p>
+
+                                    <p class="opt">
+
+                                        <input class="button"  type="submit" value=" " />
+
+                                    </p>
+
+                                 </form>
+                                <form action="http://g.766.com/mhzc/" method="post" id="login-form"  style="display: none;">
+                                <ul>
+
+                                    <li class="firli">
+
+                                        <label for="username">账号：</label>
+
+                                        <input class="text" name="username" type="text" onpaste="return false;" id="login-username" size="12"/>
+
+                                        <span class="login-username_div_error">6-16个字母/数字/点或@组成</span>
+
+                                        <div class="login-username_div_info" style="display:none;">6-16个字母/数字/点或@组成</div>
+
+                                    </li>
+
+                                    <li>
+
+                                        <label for="password">密码：</label>
+
+                                        <input class="text" name="password" type="password" onpaste="return false;" id="login-password" />
+
+                                        <span class="login-password_div_error">6-32个字符，区分大小写</span>
+
+                                        <div class="login-password_div_info" style="display:none;">6-32个字符，区分大小写</div>
+
+                                    </li>
+
+
+                                </ul>
+                                    <p class="opt">
+                                        <input class="button"  type="submit" value=" " />
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+	</div>
+
+</div>
+
+<script type="text/javascript" src="js/reg_user_stat.js"></script>
+
+<script type="text/javascript">
+
+  var step=0;   
+
+	 var _title1=document.title;  
+
+	 var space=''; 
+
+	 for (var i = 0; i <= _title1.length; i++)space += '　';
+
+	 function flash_title()  
+
+	 {  
+
+		 step++;  
+
+		 if (step==3) {step=1;}  
+
+		 if (step==1) {document.title=space;}  
+
+		 if (step==2) {document.title=_title1;}  
+
+		 setTimeout("flash_title()",800);  
+
+	 }  
+
+	 flash_title();  
+
+</script>
+
+
+<script type="text/javascript">
+    $('.tabs-nav > a').click(function(){
+        $('.tabs-nav a').removeClass('selected');
+        $(this).addClass('selected');
+        var panel = $('.tabs-panel> form').hide();
+        panel.eq($(this).attr('data-index')).show();
+    });
+</script>
+
+</body>
+
+</html>

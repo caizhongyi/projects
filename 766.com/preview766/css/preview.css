@@ -1,0 +1,417 @@
+@charset "UTF-8";
+html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video { margin: 0; padding: 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body, input, textarea, select, table, button { font-size: 13px; line-height: 1.5; color: #333; font-family: "맑은 고딕", Malgun Gothic, dotum, Sans-serif; }
+
+body, html { height: 100%; }
+
+fieldset, img { border: 0 none; }
+
+fieldset { clear: both; }
+
+legend { display: none; }
+
+em, address { font-style: normal; }
+
+ul, ol, dl { list-style: none; }
+
+button { cursor: pointer; border: 0 none; }
+
+hr { clear: both; }
+
+label { cursor: pointer; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+a { color: #333; text-decoration: none; cursor: pointer; }
+a:hover, a.active { color: #333; text-decoration: underline; }
+
+img { vertical-align: top; }
+
+a:focus, button:focus { outline: 1px dotted #999 !important; }
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus { border-color: #999 !important; outline: none; }
+
+header, hgroup, article, nav, footer, figure, figCaption, canvas, section, menu, details, aside { display: block; }
+
+button, input { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box; }
+
+button, input, textarea { margin: 0; outline: none; }
+
+input, label { vertical-align: middle; }
+
+input[type='checkbox'], input[type='radio'] { margin: 0; padding: 0; *margin: -3px; *margin-left: -4px; }
+
+body { overflow: hidden; width: 100%; height: 100%; margin: 0; background-color: #000; }
+
+#jpreOverlay { background-color: #000; }
+#jpreOverlay #jpreSlide { width: 100%; height: 100%; }
+#jpreOverlay #jpreLoader { width: 100%; height: 1px; margin-top: 78px; background-color: #222; }
+#jpreOverlay #jpreBar { background-color: #22ae46; }
+#jpreOverlay .logo { position: absolute; left: 50%; top: 50%; margin-left: -200px; margin-top: -370px; width: 400px; height: 500px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/preloader.jpg) no-repeat 0 0; }
+#jpreOverlay .footer { position: absolute; bottom: 0; left: 50%; margin-left: -200px; width: 400px; height: 100px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/preloader.jpg) no-repeat 0 100%; }
+
+#viewport { position: absolute; left: 0; top: 0; overflow: hidden; width: 100%; height: 100%; }
+#viewport .blind { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: #000; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60); opacity: 0.6; }
+
+#topbar { position: absolute; z-index: 100; left: 0; top: 0; width: 100%; height: 50px; background-color: #333; color: #fff; }
+#topbar a { color: #fff; }
+#topbar .wrap { width: 1000px; margin: 0 auto; }
+#topbar h1.link-aa { float: left; }
+#topbar h1.link-aa a { display: block; width: 106px; height: 50px; font-size: 0; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sprite.png) no-repeat 0 -40px; }
+#topbar .link-join { float: left; width: 220px; height: 50px; margin-left: 20px; font-size: 0; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sprite.png) no-repeat 0 -100px; }
+#topbar .outlink { float: right; }
+#topbar .outlink .btn-bridge { position: relative; float: left; width: 146px; height: 50px; font-size: 0; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/evt/btn-bridge.png) no-repeat 0 0; }
+#topbar .outlink .btn-bridge .arr { position: absolute; right: 15px; top: 15px; display: block; width: 21px; height: 21px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/evt/btn-bridge.png) no-repeat 0 -60px; }
+#topbar .outlink .btn-bridge:hover .arr, #topbar .outlink .btn-bridge.active .arr { background-position: -30px -60px; }
+#topbar .outlink .link-download { float: left; font-size: 0; }
+#topbar .outlink .link-download span { display: block; width: 122px; margin-left: 20px; height: 50px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sprite.png) no-repeat 0 -160px; }
+#topbar .outlink .link-download:hover span { background-position: -130px -160px; }
+
+#bgmPlayer { position: relative; float: left; width: 90px; height: 50px; background-color: #494949; color: #fff; text-align: center; font-size: 0; }
+#bgmPlayer .tit { display: block; margin: 10px auto 0; width: 26px; height: 9px; font-size: 0; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sprite.png) no-repeat 0 -280px; }
+#bgmPlayer .wrap-btn { margin-top: 4px; letter-spacing: -2px; }
+#bgmPlayer .wrap-btn a { display: inline-block; width: 17px; height: 18px; font-size: 0; background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sprite.png); background-repeat: no-repeat; }
+#bgmPlayer .wrap-btn a.prev { background-position: -40px -230px; }
+#bgmPlayer .wrap-btn a.prev:hover { background-position: -40px -260px; }
+#bgmPlayer .wrap-btn a.play { background-position: 0 -230px; }
+#bgmPlayer .wrap-btn a.play:hover { background-position: 0 -260px; }
+#bgmPlayer .wrap-btn a.pause { background-position: -20px -230px; }
+#bgmPlayer .wrap-btn a.pause:hover { background-position: -20px -260px; }
+#bgmPlayer .wrap-btn a.next { background-position: -60px -230px; }
+#bgmPlayer .wrap-btn a.next:hover { background-position: -60px -260px; }
+#bgmPlayer .nowplaying { display: none; position: absolute; left: 45px; top: 50px; width: 436px; height: 101px; margin-left: -218px; padding-top: 8px; font-size: 11px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/bgm-nowplaying.png) no-repeat; cursor: default; }
+.no-opacity #bgmPlayer .nowplaying { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/bgm-nowplaying.png", sizingMethod="crop"); }
+
+#nav { position: absolute; z-index: 10; right: 0; top: 50%; overflow: hidden; width: 10px; padding: 20px 0 20px 40px; margin-top: -374/2px; font-size: 11px; }
+#nav .nav-box { -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3); box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3); }
+#nav .link-trailer { display: block; width: 170px; height: 50px; background-color: #191919; color: #fff; font-weight: bold; line-height: 50px; text-align: center; text-decoration: none; }
+#nav .link-trailer:hover { background-color: #12b33a; }
+#nav ul { padding: 10px 0; background-color: #333; overflow: hidden; width: 170px; }
+#nav ul li { float: left; width: 170px; }
+#nav ul a { display: block; padding: 4px; color: #fff; text-decoration: none; }
+#nav ul a:hover { background-color: #12b33a; }
+#nav ul a .dot { content: ''; display: inline-block; position: relative; width: 2px; height: 2px; margin-right: 6px; background-color: #f2f2f2; vertical-align: middle; }
+#nav ul .active { background-color: #10a034; }
+#nav:hover .dot { margin-left: 4px; }
+
+.subnav { position: absolute; z-index: 10; bottom: 38px; width: 100%; text-align: center; height: 38px; }
+.subnav .wrap { display: inline-block; position: relative; height: 100%; padding: 0 4px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/bg-repeat-x.png) repeat-x 0 0; }
+.subnav .wrap a { position: relative; float: left; width: 12px; height: 12px; margin: 12px 6px 0; line-height: 100%; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sprite.png) repeat-x -50px -20px; font-size: 0; }
+.subnav .wrap a.active { background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sprite.png) repeat-x -50px 0; }
+.subnav .wrap [class^="subnav-"] { position: absolute; display: block; width: 20px; height: 100%; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sprite.png); }
+.subnav .wrap .subnav-left { left: -20px; background-position: 0 0; }
+.subnav .wrap .subnav-right { right: -20px; background-position: -20px 0; }
+.subnav .tooltip { position: absolute; top: -41px; width: 200px; height: 30px; color: #fff; text-align: center; font-weight: bold; font-size: 12px; line-height: 30px; }
+.subnav .tooltip .tt-wrap { display: inline-block; position: relative; padding: 0 4px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/bg-repeat-x.png) repeat-x 0 -40px; white-space: nowrap; }
+.subnav .tooltip .tt-wrap [class^="tt-"] { display: block; position: absolute; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sprite.png); }
+.subnav .tooltip .tt-wrap .tt-left { left: -15px; top: 0; width: 15px; height: 100%; background-position: -70px 0; }
+.subnav .tooltip .tt-wrap .tt-right { right: -15px; top: 0; width: 15px; height: 100%; background-position: -90px 0; }
+.subnav .tooltip .tt-wrap .tt-tail { bottom: -4px; left: 50%; width: 7px; height: 4px; margin-left: -4px; background-position: -110px 0; }
+
+.menu { position: absolute; z-index: 10; left: 50%; bottom: 38px; margin-left: 300px; width: 200px; height: 37px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sns.png) no-repeat; }
+.menu a { position: absolute; display: block; font-size: 0; }
+.menu a:hover { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sns.png); }
+.menu .link-top { right: 0; top: 0; width: 37px; height: 37px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/sns.png) no-repeat 0 -80px; }
+.menu .link-top:hover { background-position: -50px -80px; }
+.menu .link-facebook, .menu .link-me2day, .menu .link-twitter, .menu .link-wiki { top: 3px; width: 28px; height: 30px; }
+.menu .link-facebook { left: 15px; }
+.menu .link-facebook:hover { background-position: -15px -43px; }
+.menu .link-me2day { left: 43px; }
+.menu .link-me2day:hover { background-position: -43px -43px; }
+.menu .link-twitter { left: 73px; }
+.menu .link-twitter:hover { background-position: -73px -43px; }
+.menu .link-wiki { left: 105px; }
+.menu .link-wiki:hover { background-position: -105px -43px; }
+.menu .link-wiki:hover .tooltip { display: block; }
+.menu .link-wiki .tooltip { display: none; position: absolute; left: -78px; bottom: 30px; width: 110px; padding: 6px; background-color: #000; font-size: 11px; line-height: 16px; color: #fff; }
+.menu .link-wiki .tooltip:after { content: ''; position: absolute; right: 24px; bottom: -9px; display: block; width: 0; height: 0; border-width: 5px; border-style: solid; border-color: transparent; border-top: 6px solid #000; }
+
+#scrollPanel { width: 100%; height: 100%; }
+#scrollPanel .slide { position: absolute; left: 0; top: 0; overflow: hidden; width: 100%; height: 100%; }
+#scrollPanel .util { position: absolute; overflow: hidden; width: 100%; height: 100%; }
+#scrollPanel .bg-flexible { position: absolute; left: 50%; top: 50%; min-width: 100%; }
+
+#tempSlide { display: none; }
+
+#oldIE { position: absolute; z-index: 100000; bottom: 0; left: 50%; width: 1002px; height: 95px; margin-left: -501px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/old-ie.gif); }
+#oldIE a { display: block; font-size: 0; }
+#oldIE .btn-close { position: absolute; left: 30px; top: 68px; width: 157px; height: 15px; }
+#oldIE .link-chrome { position: absolute; left: 393px; top: 17px; width: 115px; height: 55px; }
+#oldIE .link-firefox { position: absolute; left: 536px; top: 17px; width: 115px; height: 55px; }
+#oldIE .link-opera { position: absolute; left: 672px; top: 17px; width: 115px; height: 55px; }
+#oldIE .link-ie { position: absolute; left: 808px; top: 17px; width: 140px; height: 55px; }
+
+.content-full, .world .content, .race-nuian .male, .race-nuian .female, .race-elf .male, .race-elf .female, .race-hariharan .male, .race-hariharan .female, .race-ferre .male, .race-ferre .female { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+
+.content-race, .race-nuian .content, .race-elf .content, .race-hariharan .content, .race-ferre .content { position: absolute; left: 50%; top: 50%; width: 1400px; height: 850px; margin-left: -700px; margin-top: -425px; }
+
+.content-video, .btn-movieplay, .trailer .content, .ship-warfare .content, .ship-kraken .content, .fly-movie .content, .pvp-duel .content, .pvp-warfare .content, .siege-movie .content { position: absolute; left: 50%; top: 50%; width: 1000px; height: 564px; margin-left: -500px; margin-top: -282px; }
+
+.content-cont, .place .content, .ship-boat .content, .trade-vehicle .content, .fly-play .content, .justice-jail .content, .life-house .content { position: absolute; left: 50%; top: 50%; width: 1000px; height: 600px; margin-left: -500px; margin-top: -300px; background-color: #fff; }
+
+.side-copy { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-repeat: no-repeat; }
+
+.v-panel { position: absolute; z-index: 1; left: 320px; top: 0; width: 680px; height: 100%; background-color: #333; }
+.v-panel .pics { position: relative; overflow: hidden; width: 680px; height: 522px; }
+.v-panel .pics .list { position: relative; left: 0; top: 0; width: 10000px; }
+.v-panel .pics .list li { float: left; width: 680px; }
+.v-panel .pics .list li img { display: block; width: 100%; }
+.v-panel .btns { margin: 0 auto; overflow: hidden; height: 30px; }
+.v-panel .btns a { float: left; width: 130px; height: 30px; margin-left: 10px; border: 0 none; font-size: 0; background-image: none; background-repeat: no-repeat; }
+.v-panel .btns a:first-child { margin-left: 0; }
+
+.h-panel { position: absolute; z-index: 1; left: 0; top: 0; width: 680px; height: 100%; }
+.h-panel .pics { overflow: hidden; position: absolute; left: 300px; top: 0; width: 700px; height: 100%; background-color: #333; }
+.h-panel .pics .list { position: relative; left: 0; top: 0; width: 10000px; }
+.h-panel .pics .list li { float: left; width: 700px; }
+.h-panel .pics .list li img { display: block; width: 100%; }
+.h-panel .btns { position: absolute; left: 0; top: 235px; width: 300px; }
+.h-panel .btns a { display: block; width: 100%; height: 100px; border: 0 none; font-size: 0; background-image: none; background-repeat: no-repeat; }
+
+.btn-movieplay { z-index: 10; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/common/btn-play.png) no-repeat 50% 50%; }
+
+.index { background-color: #f2f2f2; }
+.index .content { position: absolute; left: 50%; top: 50%; margin-left: -502px; margin-top: -320px; width: 1004px; height: 690px; z-index: 1; }
+.index .content .section { position: relative; float: left; width: 250px; height: 190px; margin-right: 1px; margin-bottom: 60px; font-size: 0; }
+.index .content .section .front, .index .content .section .back { display: block; width: 100%; height: 100%; }
+.index .content .section .front { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/index/front.png); }
+.index .content .section .back { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/index/back.jpg); }
+.csstransforms3d .index .content .section { -webkit-perspective: 500px; perspective: 500px; }
+.csstransforms3d .index .content .section .front, .csstransforms3d .index .content .section .back { position: absolute; left: 0; top: 0; -webkit-transform-style: preserve-3d; transform-style: preserve-3d; -webkit-backface-visibility: hidden; backface-visibility: hidden; -webkit-transition: all 0.4s ease-in-out; -moz-transition: all 0.4s ease-in-out; -ms-transition: all 0.4s ease-in-out; -o-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out; }
+.csstransforms3d .index .content .section .front { -webkit-transform: rotateX(0deg) rotateY(0deg); -moz-transform: rotateX(0deg) rotateY(0deg); -ms-transform: rotateX(0deg) rotateY(0deg); -o-transform: rotateX(0deg) rotateY(0deg); transform: rotateX(0deg) rotateY(0deg); }
+.csstransforms3d .index .content .section .back { -webkit-transform: rotateY(-180deg); -moz-transform: rotateY(-180deg); -ms-transform: rotateY(-180deg); -o-transform: rotateY(-180deg); transform: rotateY(-180deg); }
+.csstransforms3d .index .content .section:hover .front { -webkit-transform: rotateY(180deg); -moz-transform: rotateY(180deg); -ms-transform: rotateY(180deg); -o-transform: rotateY(180deg); transform: rotateY(180deg); }
+.csstransforms3d .index .content .section:hover .back { -webkit-transform: rotateX(0deg) rotateY(0deg); -moz-transform: rotateX(0deg) rotateY(0deg); -ms-transform: rotateX(0deg) rotateY(0deg); -o-transform: rotateX(0deg) rotateY(0deg); transform: rotateX(0deg) rotateY(0deg); }
+.no-csstransforms3d .index .content .section { overflow: hidden; }
+.no-csstransforms3d .index .content .section .front , .no-csstransforms3d .index .content .section .back { position: absolute; top: 0; }
+.no-csstransforms3d .index .content .section .front { left: 0; }
+.no-csstransforms3d .index .content .section .back { left: 250px; }
+.index .content .btn-world { background-position: 0 0; }
+.index .content .btn-race { background-position: -251px 0; }
+.index .content .btn-job { background-position: -502px 0; }
+.index .content .btn-place { background-position: -753px 0; }
+.index .content .btn-ship { background-position: 0 -250px; }
+.index .content .btn-trade { background-position: -251px -250px; }
+.index .content .btn-fly { background-position: -502px -250px; }
+.index .content .btn-justice { background-position: -753px -250px; }
+.index .content .btn-pvp { background-position: 0 -500px; }
+.index .content .btn-life { background-position: -251px -500px; }
+.index .content .btn-siege { background-position: -502px -500px; }
+.index .content .event { position: absolute; right: 1px; bottom: 0; width: 250px; height: 190px; }
+.index .content .event img { display: block; width: 100%; height: 100%; }
+.index .bg { position: absolute; left: 50%; top: 0; width: 1004px; margin-left: -502px; height: 100%; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/index/bg.gif) repeat 1px 0; }
+
+.trailer { background-color: #000; }
+.trailer .content .menu-trailer { position: absolute; bottom: -51px; left: 50%; width: 155px; height: 20px; margin-left: -72px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/trailer/menu.png) no-repeat; font-size: 0; text-align: right; }
+.trailer .content .menu-trailer .skip { display: block; position: absolute; left: 0; top: 0; width: 40px; height: 20px; }
+.trailer .content .menu-trailer .link-facebook, .trailer .content .menu-trailer .link-me2day, .trailer .content .menu-trailer .link-twitter { display: inline-block; width: 22px; height: 20px; margin-left: 8px; }
+.trailer .content .menu-trailer a:hover { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/trailer/menu.png); background-repeat: no-repeat; }
+.trailer .content .menu-trailer a.skip { background-position: 0 -20px; }
+.trailer .content .menu-trailer a.link-facebook { background-position: -73px -20px; }
+.trailer .content .menu-trailer a.link-me2day { background-position: -103px -20px; }
+.trailer .content .menu-trailer a.link-twitter { background-position: -133px -20px; }
+
+.world .content { z-index: 1; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/world/content.png) 50% 50% no-repeat; }
+.world .heros { position: absolute; left: 50%; bottom: 0; margin-left: -355px; overflow: hidden; width: 710px; height: 520px; background: url("http://mp4vod-archeage.x-cdn.com/preview/res_1/images/world/heros.png") no-repeat; }
+.ie8 .world .heros { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://mp4vod-archeage.x-cdn.com/preview/res_1/images/world/heros.png", sizingMethod="crop"); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://mp4vod-archeage.x-cdn.com/preview/res_1/images/world/heros.png', sizingMethod='crop')"; }
+
+.race-nuian .content, .race-elf .content, .race-hariharan .content, .race-ferre .content { z-index: 2; }
+.race-nuian .content .txt, .race-elf .content .txt, .race-hariharan .content .txt, .race-ferre .content .txt { position: absolute; left: 0; right: 0; width: 100%; height: 100%; }
+
+.race-nuian .content .txt { background: url("http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/n-content.png") no-repeat; }
+.ie8 .race-nuian .content .txt { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/n-content.png", sizingMethod="crop"); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/n-content.png', sizingMethod='crop')"; }
+.race-nuian .male { z-index: 3; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/n-male.png) 50% 50% no-repeat; }
+.race-nuian .female { z-index: 2; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/n-female.png) 50% 50% no-repeat; }
+
+.race-elf .content .txt { background: url("http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/e-content.png") no-repeat; }
+.ie8 .race-elf .content .txt { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/e-content.png", sizingMethod="crop"); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/e-content.png', sizingMethod='crop')"; }
+.race-elf .male { z-index: 2; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/e-male.png) 50% 50% no-repeat; }
+.race-elf .female { z-index: 3; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/e-female.png) 50% 50% no-repeat; }
+
+.race-hariharan .content .txt { background: url("http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/h-content.png") no-repeat; }
+.ie8 .race-hariharan .content .txt { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/h-content.png", sizingMethod="crop"); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/h-content.png', sizingMethod='crop')"; }
+.race-hariharan .female { z-index: 3; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/h-female.png) 50% 50% no-repeat; }
+.race-hariharan .male { z-index: 2; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/h-male.png) 50% 50% no-repeat; }
+
+.race-ferre .content .txt { background: url("http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/f-content.png") no-repeat; }
+.ie8 .race-ferre .content .txt { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/f-content.png", sizingMethod="crop"); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/f-content.png', sizingMethod='crop')"; }
+.race-ferre .female { z-index: 3; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/f-female.png) 50% 50% no-repeat; }
+.race-ferre .male { z-index: 2; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/race/f-male.png) 50% 50% no-repeat; }
+
+.job .copy { position: absolute; z-index: 1; left: 50%; top: 50%; width: 241px; height: 214px; margin-left: 249px; margin-top: -300px; background: url("http://mp4vod-archeage.x-cdn.com/preview/res_1/images/job/copy.png") no-repeat; }
+.ie8 .job .copy { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://mp4vod-archeage.x-cdn.com/preview/res_1/images/job/copy.png", sizingMethod="crop"); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://mp4vod-archeage.x-cdn.com/preview/res_1/images/job/copy.png', sizingMethod='crop')"; }
+.job .btn { position: absolute; z-index: 2; left: 50%; top: 50%; width: 176px; height: 40px; margin-left: 282px; margin-top: -27px; font-size: 0; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/job/btn.png) no-repeat; }
+.job .btn:hover { background-position: 0 -50px; }
+.job .char { position: absolute; left: 50%; top: 50%; width: 1400px; height: 850px; margin-left: -810px; margin-top: -295px; background: url("http://mp4vod-archeage.x-cdn.com/preview/res_1/images/job/char.png") no-repeat; }
+.ie8 .job .char { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://mp4vod-archeage.x-cdn.com/preview/res_1/images/job/char.png", sizingMethod="crop"); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://mp4vod-archeage.x-cdn.com/preview/res_1/images/job/char.png', sizingMethod='crop')"; }
+
+.place .content { margin-top: -275px; background: none; }
+.place .content .copy { position: absolute; z-index: 1; left: 50%; top: 50%; width: 225px; height: 223px; margin-left: 212px; margin-top: -219px; background: url("http://mp4vod-archeage.x-cdn.com/preview/res_1/images/place/copy.png") no-repeat; }
+.ie8 .place .content .copy { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://mp4vod-archeage.x-cdn.com/preview/res_1/images/place/copy.png", sizingMethod="crop"); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://mp4vod-archeage.x-cdn.com/preview/res_1/images/place/copy.png', sizingMethod='crop')"; }
+.place .content .mark img { position: absolute; }
+.place .content .mark .p1 { left: 263px; top: 466px; }
+.place .content .mark .p2 { left: 356px; top: 437px; }
+.place .content .mark .p3 { left: 301px; top: 413px; }
+.place .content .mark .p4 { left: 236px; top: 480px; }
+.place .content .mark .p5 { left: 264px; top: 392px; }
+.place .content .mark .p6 { left: 477px; top: 495px; }
+.place .content .mark .p7 { left: 583px; top: 456px; }
+.place .content .mark .p8 { left: 500px; top: 533px; }
+.place .content .mark .p9 { left: 507px; top: 438px; }
+.place .place-nav { position: absolute; z-index: 2; left: 50%; top: 50%; margin-left: -500px; margin-top: -300px; overflow: hidden; width: 150px; height: 30px; color: #ccc; font-weight: bold; letter-spacing: -1px; -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); -moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); }
+.place .place-nav.active { height: auto; }
+.place .place-nav.active .selected .arr { background-position: -20px -140px; }
+.place .place-nav .inner { position: relative; z-index: 1; }
+.place .place-nav .nav-bg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: #333; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80); opacity: 0.8; }
+.place .place-nav .selected { display: block; width: 100%; height: 30px; padding: 0 16px; background-color: #191919; text-align: left; font-size: 15px; line-height: 30px; letter-spacing: -1px; color: #fff; }
+.place .place-nav .selected .arr { position: absolute; right: 10px; top: 13px; display: block; width: 10px; height: 10px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/place/nav.png) no-repeat 0 -140px; }
+.place .place-nav .list { padding: 12px 0 14px; }
+.place .place-nav .list button { display: block; width: 100%; padding: 0 17px; text-align: left; font-weight: bold; font-size: 12px; line-height: 25px; background-color: transparent; color: #ccc; }
+.place .place-nav .list button:hover, .place .place-nav .list button.active { background-color: #22ae46; color: #fff; }
+.place .place-nav .list button:hover .dot, .place .place-nav .list button.active .dot { background-color: #fff; }
+.place .place-nav .list .dot { display: inline-block; width: 2px; height: 2px; vertical-align: middle; background-color: #ccc; }
+.place .place-panel { position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; }
+.place .place-panel .pics { overflow: hidden; width: 100%; height: 100%; }
+.place .place-panel .pics .list { position: relative; left: 0; top: 0; width: 100%; height: 100%; }
+.place .place-panel .pics .list li { position: relative; float: left; overflow: hidden; width: 100%; height: 100%; }
+.place .place-panel .pics .list li .place-img { display: block; width: 100%; }
+.place .place-panel .pics .list .world { background: #d5c98d url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/place/bg.jpg) no-repeat 50% 50%; }
+.place .place-panel .btns { position: absolute; z-index: 1; left: 50%; bottom: 80px; overflow: hidden; width: 130px; margin-left: -65px; }
+.place .place-panel .btns a { width: 60px; height: 60px; border: 0 none; font-size: 0; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/place/nav.png) no-repeat; }
+.place .place-panel .btns a.prev { float: left; background-position: 0 0; }
+.place .place-panel .btns a.prev:hover { background-position: 0 -70px; }
+.place .place-panel .btns a.next { float: right; background-position: -70px 0; }
+.place .place-panel .btns a.next:hover { background-position: -70px -70px; }
+
+.ship-main .copy { position: absolute; left: 50%; top: 50%; margin-top: -25px; margin-left: 42px; width: 224px; height: 200px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/ship/copy.png) no-repeat; }
+
+.ship-boat .content .side-copy { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/ship/boat-copy.png); }
+.ship-boat .content .v-panel .btns { width: 550px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/ship/boat-btns.png) no-repeat; }
+.ship-boat .content .v-panel .btns a.active, .ship-boat .content .v-panel .btns a:hover { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/ship/boat-btns.png); }
+.ship-boat .content .v-panel .btns a.b1 { background-position: 0 -40px; }
+.ship-boat .content .v-panel .btns a.b2 { background-position: -140px -40px; }
+.ship-boat .content .v-panel .btns a.b3 { background-position: -280px -40px; }
+.ship-boat .content .v-panel .btns a.b4 { background-position: -420px -40px; }
+.ship-boat .side-boat { position: absolute; z-index: 2; left: 0; bottom: 0; width: 430px; height: 259px; margin-left: -57px; margin-bottom: 28px; background: url("http://mp4vod-archeage.x-cdn.com/preview/res_1/images/ship/boat-side.png") no-repeat; }
+.ie8 .ship-boat .side-boat { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://mp4vod-archeage.x-cdn.com/preview/res_1/images/ship/boat-side.png", sizingMethod="crop"); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://mp4vod-archeage.x-cdn.com/preview/res_1/images/ship/boat-side.png', sizingMethod='crop')"; }
+.ship-boat .side-picture { position: absolute; z-index: 1; left: 0; bottom: 0; width: 217px; height: 121px; margin-left: -122px; margin-bottom: -28px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/ship/boat-picture.png) no-repeat; }
+
+.trade-main .copy { position: absolute; z-index: 1; left: 50%; top: 50%; width: 310px; height: 195px; margin-left: -155px; margin-top: -200px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/trade/main-copy.png) no-repeat; }
+.trade-main .side { position: absolute; left: 0; bottom: 0; width: 656px; height: 710px; margin-left: -44px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/trade/main-side.png) no-repeat; }
+
+.trade-vehicle .content .side-copy { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/trade/vehicle-copy.png); }
+.trade-vehicle .content .h-panel .btns { background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/trade/vehicle-btns.png) no-repeat; }
+.trade-vehicle .content .h-panel .btns a.active, .trade-vehicle .content .h-panel .btns a:hover { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/trade/vehicle-btns.png); }
+.trade-vehicle .content .h-panel .btns a.b1 { background-position: -310px 0; }
+.trade-vehicle .content .h-panel .btns a.b2 { background-position: -310px -100px; }
+.trade-vehicle .content .h-panel .btns a.b3 { background-position: -310px -200px; }
+
+.fly-main .copy { position: absolute; left: 50%; top: 50%; width: 230px; height: 225px; margin-left: -115px; margin-top: -255px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/fly/copy.png) no-repeat; }
+.fly-main .flying1, .fly-main .flying2 { position: absolute; left: 50%; top: 50%; }
+.fly-main .flying1 { z-index: 2; width: 1313px; height: 789px; margin-left: -814px; margin-top: -262px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/fly/flying1.png) no-repeat; }
+.fly-main .flying2 { z-index: 1; width: 575px; height: 522px; margin-left: 144px; margin-top: -181px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/fly/flying2.png) no-repeat; }
+
+.fly-play .content .side-copy { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/fly/play-copy.png); }
+.fly-play .content .v-panel .btns { width: 410px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/fly/play-btns.png) no-repeat; }
+.fly-play .content .v-panel .btns a.active, .fly-play .content .v-panel .btns a:hover { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/fly/play-btns.png); }
+.fly-play .content .v-panel .btns a.b1 { background-position: 0 -40px; }
+.fly-play .content .v-panel .btns a.b2 { background-position: -140px -40px; }
+.fly-play .content .v-panel .btns a.b3 { background-position: -280px -40px; }
+.fly-play .side-aircraft { position: absolute; z-index: 2; left: 0; bottom: 0; width: 450px; height: 357px; margin-left: -57px; margin-bottom: -44px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/fly/play-side.png) no-repeat; }
+
+.justice-main .copy { position: absolute; left: 50%; top: 50%; width: 265px; height: 209px; margin-left: -317px; margin-top: -216px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/justice/copy.png) no-repeat; }
+.justice-main .criminal { position: absolute; left: 50%; bottom: 0; width: 600px; height: 728px; margin-left: -625px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/justice/criminal.png) no-repeat; }
+
+.justice-jail .content .side-copy { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/justice/jail-copy.png); }
+.justice-jail .content .side-criminal1 { position: absolute; z-index: 1; left: 0; bottom: 0; width: 290px; height: 540px; margin-left: 148px; margin-bottom: -96px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/justice/jail-side1.png) no-repeat; }
+.justice-jail .content .side-criminal2 { position: absolute; left: 0; bottom: 0; width: 215px; height: 425px; margin-left: 70px; margin-bottom: -56px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/justice/jail-side2.png) no-repeat; }
+.justice-jail .content .v-panel .btns { width: 410px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/justice/jail-btns.png) no-repeat; }
+.justice-jail .content .v-panel .btns a.active, .justice-jail .content .v-panel .btns a:hover { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/justice/jail-btns.png); }
+.justice-jail .content .v-panel .btns a.b1 { background-position: 0 -40px; }
+.justice-jail .content .v-panel .btns a.b2 { background-position: -140px -40px; }
+.justice-jail .content .v-panel .btns a.b3 { background-position: -280px -40px; }
+
+.pvp-main .copy { position: absolute; z-index: 3; left: 50%; top: 50%; width: 256px; height: 155px; margin-left: 192px; margin-top: -300px; }
+.pvp-main .copy .inner { width: 100%; height: 100%; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/pvp/copy.png) no-repeat; }
+.pvp-main .man-left, .pvp-main .man-right { position: absolute; left: 50%; bottom: 0; }
+.pvp-main .man-left { z-index: 1; width: 920px; height: 792px; margin-left: -713px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/pvp/man-left.png) no-repeat; }
+.pvp-main .man-right { z-index: 2; width: 1071px; height: 812px; margin-left: -140px; margin-bottom: -156px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/pvp/man-right.png) no-repeat; }
+
+.life-main .copy { position: absolute; left: 50%; top: 50%; width: 194px; height: 195px; margin-left: -330px; margin-top: -280px; background: url("http://mp4vod-archeage.x-cdn.com/preview/res_1/images/life/copy.png") no-repeat; }
+.ie8 .life-main .copy { background: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://mp4vod-archeage.x-cdn.com/preview/res_1/images/life/copy.png", sizingMethod="crop"); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://mp4vod-archeage.x-cdn.com/preview/res_1/images/life/copy.png', sizingMethod='crop')"; }
+
+.life-house .content .side-copy { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/life/house-copy.png); }
+.life-house .content .h-panel .btns { background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/life/house-btns.png) no-repeat; }
+.life-house .content .h-panel .btns a.active, .life-house .content .h-panel .btns a:hover { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/life/house-btns.png); }
+.life-house .content .h-panel .btns a.b1 { background-position: -310px 0; }
+.life-house .content .h-panel .btns a.b2 { background-position: -310px -100px; }
+.life-house .content .h-panel .btns a.b3 { background-position: -310px -200px; }
+
+.siege-main { z-index: 1; }
+.siege-main .copy { position: absolute; left: 50%; top: 50%; width: 243px; height: 192px; margin-left: -121px; margin-top: -300px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/siege/copy.png) no-repeat; }
+
+#evtBridge { position: absolute; z-index: 99; left: 0; top: 0; width: 100%; height: 100%; }
+#evtBridge .bg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-color: #000; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60); opacity: 0.6; }
+#evtBridge .panel { position: absolute; z-index: 1; left: 50%; top: 50%; width: 1000px; height: 750px; margin-left: -500px; margin-top: -400px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/evt/bridge.png); }
+#evtBridge .panel a { position: absolute; font-size: 0; display: block; }
+#evtBridge .panel .btn-close { right: 0; top: 110px; width: 25px; height: 25px; font-size: 0; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/evt/btn-bridge.png) no-repeat -60px -60px; }
+#evtBridge .panel .btn-close:hover { background-position: -90px -60px; }
+#evtBridge .panel .e1 { left: 20px; top: 300px; width: 450px; height: 150px; }
+#evtBridge .panel .e2 { left: 20px; top: 470px; width: 450px; height: 160px; }
+#evtBridge .panel .e3 { left: 520px; top: 120px; width: 445px; height: 180px; }
+#evtBridge .panel .e4 { left: 520px; top: 335px; width: 230px; height: 165px; }
+#evtBridge .panel .e5 { left: 755px; top: 335px; width: 245px; height: 165px; }
+#evtBridge .panel .e6 { left: 520px; top: 515px; width: 230px; height: 145px; }
+#evtBridge .panel .e7 { left: 755px; top: 515px; width: 245px; height: 145px; }
+#evtBridge.v121231 .panel { background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/evt/bridge-121231.png); }
+#evtBridge.v121231 .panel .e1 { left: 260px; top: 140px; width: 230px; height: 170px; }
+#evtBridge.v121231 .panel .e2 { left: 260px; top: 330px; width: 230px; height: 160px; }
+#evtBridge.v121231 .panel .e3 { left: 30px; top: 510px; width: 230px; height: 160px; }
+#evtBridge.v121231 .panel .e4 { left: 260px; top: 510px; width: 230px; height: 160px; }
+#evtBridge.v121231 .panel .e5 { left: 520px; top: 140px; width: 220px; height: 170px; }
+#evtBridge.v121231 .panel .e6 { left: 760px; top: 140px; width: 230px; height: 170px; }
+#evtBridge.v121231 .panel .e7 { left: 520px; top: 330px; width: 220px; height: 160px; }
+#evtBridge.v121231 .panel .e8 { left: 760px; top: 330px; width: 230px; height: 160px; }
+#evtBridge.v121231 .panel .e9 { left: 520px; top: 510px; width: 220px; height: 160px; }
+#evtBridge.v121231 .panel .e10 { left: 760px; top: 510px; width: 230px; height: 160px; }
+#evtBridge.v130110 .panel { background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/evt/bridge-130110.png); }
+#evtBridge.v130110 .panel .e1 { left: 25px; top: 285px; width: 445px; height: 160px; }
+#evtBridge.v130110 .panel .e2 { left: 25px; top: 490px; width: 445px; height: 180px; }
+#evtBridge.v130110 .panel .e3 { left: 517px; top: 145px; width: 228px; height: 150px; }
+#evtBridge.v130110 .panel .e4 { left: 758px; top: 145px; width: 237px; height: 150px; }
+#evtBridge.v130110 .panel .e5 { left: 517px; top: 335px; width: 228px; height: 155px; }
+#evtBridge.v130110 .panel .e6 { left: 758px; top: 335px; width: 237px; height: 155px; }
+#evtBridge.v130110 .panel .e7 { left: 517px; top: 515px; width: 228px; height: 160px; }
+#evtBridge.v130110 .panel .e8 { left: 758px; top: 515px; width: 237px; height: 160px; }
+
+.btn-bridge .new-121231 { display: block; position: absolute; left: -34px; top: 5px; width: 43px; height: 16px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/evt/btn-bridge-121231.png) no-repeat; }
+.btn-bridge .new-130110 { display: block; position: absolute; left: -34px; top: 5px; width: 43px; height: 16px; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/evt/btn-bridge-130110.png) no-repeat; }
+
+#evtStar { display: none; position: absolute; z-index: 98; right: 0; top: 50%; height: 180px; }
+#evtStar .banner { position: absolute; right: 20px; top: 36px; cursor: pointer; }
+#evtStar .banner .msg { width: 100px; height: 45px; margin-bottom: 3pxs; font-size: 0; background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/evt/sprite.png) no-repeat 0 -240px; }
+#evtStar .panel { position: absolute; z-index: 1; right: 0; top: 0; width: 310px; height: 180px; }
+#evtStar .panel .txt-done, #evtStar .panel .btn-close, #evtStar .panel .msg-promo, #evtStar .panel .link-info, #evtStar .panel .msg-login, #evtStar .panel .link-login, #evtStar .panel .star { background-image: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/evt/sprite.png); background-repeat: no-repeat; }
+#evtStar .panel .txt-done { position: absolute; z-index: 1; left: 64px; top: -44px; width: 81px; height: 81px; font-size: 0; background-position: 0 0; }
+#evtStar .panel .btn-close { position: absolute; width: 21px; height: 21px; background-color: #333; background-position: -96px -46px; font-size: 0; }
+#evtStar .panel .btn-close:hover { background-color: #22ae46; }
+#evtStar .panel .promo { overflow: hidden; padding-left: 141px; height: 110px; background-color: #fff; }
+#evtStar .panel .promo .img-gift { position: absolute; left: 22px; top: 16px; }
+#evtStar .panel .promo .msg-promo { margin: 30px 0 9px; width: 155px; height: 34px; background-position: 0 -90px; font-size: 0; }
+#evtStar .panel .promo .link-info { display: block; width: 97px; height: 18px; font-size: 0; background-position: 0 -130px; }
+#evtStar .panel .promo .link-info:hover { background-position: 0 -150px; }
+#evtStar .panel .collect { overflow: hidden; height: 70px; background-color: #333; }
+#evtStar .panel .collect .login { margin: 20px 0 0 34px; }
+#evtStar .panel .collect .login .msg-login { float: left; width: 162px; height: 16px; margin-top: 7px; margin-right: 10px; background-position: 0 -210px; font-size: 0; }
+#evtStar .panel .collect .login .link-login { float: left; width: 70px; height: 30px; background-position: -100px -130px; font-size: 0; }
+#evtStar .panel .collect .login .link-login:hover { background-position: -100px -170px; }
+#evtStar .panel .collect .list { float: left; margin-left: 24px; }
+#evtStar .panel .collect .list li { float: left; position: relative; margin-left: 7px; }
+#evtStar .panel .collect .list li:first-child { margin-left: 0; }
+#evtStar .panel .collect .list .star { margin-left: 4px; width: 34px; height: 38px; }
+#evtStar .panel .collect .list .label { width: 38px; height: 16px; margin-top: 6px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; color: #fff; text-align: center; font-size: 11px; line-height: 13px; background-color: #191919; }
+#evtStar .panel .collect .list .placeholder .star { background-position: -140px 0; }
+#evtStar .panel .collect .list .item { position: absolute; left: 0; top: 0; }
+#evtStar .panel .collect .list .item .star { background: url(http://mp4vod-archeage.x-cdn.com/preview/res_1/images/evt/star.png) no-repeat; }
+#evtStar .panel .collect .list .item .label { background-color: #22ae46; }

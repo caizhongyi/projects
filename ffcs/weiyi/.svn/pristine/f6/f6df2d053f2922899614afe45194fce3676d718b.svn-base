@@ -1,0 +1,211 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微活动 '),array('title'=>$module->title))}
+{template 'common/header'}
+{template 'activity/table'}
+<div class="main">
+	<form class="form-horizontal form" action="" method="post" enctype="multipart/form-data" onsubmit="return formcheck(this)">
+		<input type="hidden" name="id" value="{$activity['activity'][id]}">
+		<h4>添加活动 <small>删除，修改活动、关键字以及回复后，请提交活动以保存操作。</small></h4>
+		<table class="tb">
+			<tr>
+				<th><label for="">活动名称</label></th>
+				<td>
+					<input type="text" id="activity-name" class="span6" placeholder="" name="name" value="{$activity['activity'][name]}">
+					<span class="help-block">您可以给活动起一个名字, 方便下次修改和查看.<a class="iconEmotion" href="javascript:;" inputid="activity-name"><i class="icon-github-alt"></i> 表情</a></span>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="">活动类别</label></th>
+				<td>
+					<select class="span3" style="margin-right:15px;" name="cate_1" onchange="fetchChildCategory(this.options[this.selectedIndex].value)">
+						<option value="0">请选择一级分类</option>
+						{loop $category $row}
+						{if $row['parentid'] == 0}
+						<option value="{$row['id']}" {if $row['id'] == $activity['activity']['cate'][0]} selected="selected"{/if}>{$row['name']}</option>
+						{/if}
+						{/loop}
+					</select>
+					<select class="span3" name="cate_2" id="cate_2">
+					<option value="0">请选择二级分类</option>
+					{if $activity['activity']['cate'][1]}
+					{loop $children[$activity['activity']['cate'][0]] $row}
+						<option value="{$row[0]}" {if $row[0] == $activity['activity']['cate'][1]} selected="selected"{/if}>{$row[1]}</option>
+					{/loop}
+					{/if}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="">回复类型</label></th>
+				<td>
+					{if empty($rid)}
+					<select name="module" id="module" class="span6" onchange="$(this).next().html($(this.options[this.selectedIndex]).attr('description'));buildModuleForm($(this).val())"  disabled="disabled">
+						{loop $_W['account']['modules'] $key $mod}
+						{php $mod = $_W['modules'][$mod['name']];}
+						{if $mod['name'] == $defaultmodule}
+						<option value="{$mod['name']}" {if $mod['name'] == $defaultmodule} selected="selected"{/if} description="{$mod['description']}">{$mod['title']}</option>
+						{/if}
+						{/loop}
+					</select>
+					<span class="help-block"></span>
+					{else}
+					<div>{$_W['modules'][$activity['activity']['module']]['title']}</div>
+					<span class="help-block">{$_W['modules'][$activity['activity']['module']]['description']}<input type="hidden" name="module" value="{$activity['activity']['module']}" /></div>
+					{/if}
+				</td>
+			</tr>
+			<tr>
+				<th><label for="">关键字</label></th>
+				<td>
+					<div class="keyword-list list" id="keyword-list">
+						{loop $activity[keyword] $item}
+						<div class="item" id="keyword-item-{$item['id']}">
+							{template 'activity/item'}
+						</div>
+						{/loop}
+					</div>
+					<!-- <a href="javascript:;" onclick="keywordHandler.buildForm()" class="add-kw-button"><i class="icon-plus"></i> 添加关键字</a>  -->
+				</td>
+			</tr>
+			<tr>
+				<th><label for="">回复</label></th>
+				<td id="module-form">
+					{if !empty($rid)}
+					{php $activity['reply']->fieldsFormDisplay($activity['activity']['id']);}
+					{else}
+					{php module($defaultmodule)->fieldsFormDisplay();}
+					</script>
+					{/if}
+				</td>
+			</tr>
+			<tr>
+				<th></th>
+				<td>
+					<button type="submit" class="btn btn-sm btn-primary" name="submit" value="提交">提交</button>
+					<input type="hidden" name="token" value="{$_W['token']}" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<script type="text/html" id="keyword-item-html">
+{php unset($item); template('activity/item');}
+</script>
+<script type="text/javascript"><!--
+
+	var category = {php echo json_encode($children)};
+	var keywordHandler = {
+		'buildForm' : function() {
+			var obj = buildAddForm('keyword-item-html', $('#keyword-list'));
+			obj.find('.btn-group .btn').on('click', function(){
+				$(this).parent().next().html($(this).attr('description'));
+				obj.find('#keyword-type-new').val($(this).find('input').attr('value'));
+			});
+			obj.find('#form').removeClass('hide');
+			obj.find('#show').addClass('hide');
+		},
+		'doEdit' : function(itemid){
+			var parent = $('#' + itemid);
+			if ($('.keyword-name-new', parent).val() == '') {
+				message('请输入关键字！', '', 'error');
+				return false;
+			}
+			var typetips = $('.active', parent).html();
+			$('#show #type', parent).html(typetips);
+			$('#show #content', parent).html($('.keyword-name-new', parent).val());
+			$('#show', parent).removeClass('hide');
+			$('#form', parent).addClass('hide');
+			
+			//将最后一个item显示出来
+			{if empty($rid)}
+			$('#keyword-list .item').each(function(index,obj){
+				if(index == $('#keyword-list .item').length - 1) {
+					$('#form', $(this)).removeClass('hide');
+					$('#show', $(this)).addClass('hide');		
+				}		
+			});
+			{/if}
+		},
+		'doAdd' : function(itemid) {
+			var parent = $('#' + itemid);
+			if ($('.keyword-name-new', parent).val() == '') {
+				message('请输入关键字！', '', 'error');
+				return false;
+			}
+			var typetips = $('.active', parent).find('span').html();
+			$('#show #type', parent).html(typetips);
+			$('#show #content', parent).html($('.keyword-name-new', parent).val());
+			$('#show', parent).removeClass('hide');
+			$('#form', parent).addClass('hide');
+			
+			{if empty($rid)}this.buildForm();{/if}
+			
+		}, 
+		'doEditItem' : function(itemid) {
+
+			//切换一个节点的编辑状态和显示状态
+			$('#keyword-list .item').each(function(index,obj){
+				if(index == $('#keyword-list .item').length - 1) {
+					{if empty($rid)}
+					$('#form', $(this)).addClass('hide');
+					$('#show', $(this)).addClass('hide');	
+					{/if}
+				}
+				else{
+					$('#form', $(this)).addClass('hide');
+					$('#show', $(this)).removeClass('hide');
+				}
+						
+			});
+			var parent = $('#' + itemid);
+			$('#form', parent).removeClass('hide');
+			$('#show', parent).addClass('hide');	
+			$('#addbtn', parent).addClass('hide');
+			$('#editbtn', parent).removeClass('hide');
+		}
+	};
+
+	function buildModuleForm(module) {
+		try {
+			$.ajax({
+			  url: "{php echo create_url('setting/module', array('do' => 'form', 'id' => $activity['activity'][id]))}",
+			  type: "GET",
+			  data: {'name' : module},
+			  dataType: "html"
+			}).done(function(s) {
+				if (s && s.indexOf('"type":"error"') >= 0) {
+					message('请重新选择公众号！', '{php echo create_url('activity/post')}', 'error');
+					return false;
+				}
+				formCheckers = [];
+				$('#module-form').html(s);
+			});
+		}
+		catch (e) {
+		}
+	}
+
+	function formcheck(form) {
+		if (form['name'].value == '') {
+			message('抱歉，活动名称为必填项，请返回修改！', '', 'error');
+			return false;
+		}
+		if ($('.keyword-name-new').val() == '') {
+			message('抱歉，您至少要设置一个触发关键字！', '', 'error');
+			return false;
+		}
+		return true;
+	}
+
+	{if empty($rid)}
+	$(function(){
+		keywordHandler.buildForm();
+	});
+	{else}
+	$('.btn-group .btn').on('click', function(){
+		$(this).parent().next().html($(this).attr('description'));
+		$(this).parent().parent().find('#keyword-type-new').val($(this).find(':radio').attr('value'));
+	});
+	{/if}
+//
+--></script>
+{template 'common/footer'}

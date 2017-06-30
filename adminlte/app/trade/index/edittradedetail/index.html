@@ -1,0 +1,327 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active">  {{ $state.current.page.title }} </li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content slide" >
+    <div class="box">
+        <form name="form" ng-submit="submit(form.$valid)"  role="form" novalidate>
+        <div class="box-header row">
+            <div class="form-group col-md-6">
+                <label for="number">车付宝合同编号：</label>
+                <input type="text" placeholder="车付宝合同编号" id="number" name="contract_no" class="form-control"  ng-model="trade.contract_no">
+            </div>
+            <div class="form-group col-md-6">
+                <div>
+                    <a style="margin:0 5px;" href="{{ item }}" target="_blank" class="" ng-repeat="item in trade.file_content"><img
+                            src="" ng-src="{{ item }}" alt="" height="100"/></a>
+                </div>
+            </div>
+        </div><!-- /.box-header -->
+            <div class="box-footer"></div>
+
+            <div class="box-body  no-padding">
+              <!-- <div data-spy="affix" affix class="trade-image"  style="background: #fff">
+                    <div class="box-header">
+                        <h3 class="box-title">合同图</h3>
+                    </div>&lt;!&ndash; /.box-header &ndash;&gt;
+                    &lt;!&ndash; form start &ndash;&gt;
+                    <div class="box-body ">
+                        <img src="" alt="" ng-src="{{ trade.file_content.uploader_contract }}"/>
+                    </div>
+                </div>-->
+
+                <div class="box-header" >
+                    <h3 class="box-title">卖方信息编辑</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="seller_number"><span class="text-danger"></span> 卖方信息编号：</label>
+                                <input type="text" placeholder="卖方信息编号" id="seller_number" name="seller_number" class="form-control"  ng-model="trade.seller_number">
+                                <!-- <div class="has-feedback text-danger" ng-messages="form.seller_number.$error" ng-show="interacted(form.seller_number)">
+                                     <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入卖方信息编号！</div>
+                                 </div>-->
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="seller_name"><span class="text-danger">*</span> 卖方姓名：</label>
+                                <input type="text" placeholder="卖方姓名" id="seller_name" name="seller_name"  class="form-control" required ng-model="trade.seller_name">
+                                <div class="has-feedback text-danger" ng-messages="form.seller_name.$error" ng-show="interacted(form.seller_name)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入卖方姓名！</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="seller_cert_type"><span class="text-danger">*</span> 卖方证件类型：</label>
+                                <select class="form-control" name="seller_cert_type" id="seller_cert_type" required ng-model="trade.seller_cert_type" ng-options="item for item in certType"  >
+                                    <option value="">请选择</option>
+                                </select>
+                                <div class="has-feedback text-danger" ng-messages="form.seller_cert_type.$error" ng-show="interacted(form.seller_cert_type)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i> 请选择卖方证件类型！</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="seller_cert_number"><span class="text-danger">*</span> 卖方证件号码：</label>
+                                <input type="text" placeholder="卖证件号码" id="seller_cert_number" name="buyer_cert_number"  class="form-control" required ng-model="trade.seller_cert_number" >
+                                <div class="has-feedback text-danger" ng-messages="form.buyer_cert_number.$error" ng-show="interacted(form.buyer_cert_number)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入卖证件号码！</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="seller_agent"><span class="text-danger"></span> 卖方代理人：</label>
+                                <input type="text" placeholder="卖方代理人" id="seller_agent" name="seller_agent" ng-model="trade.seller_agent" class="form-control" >
+                                <!--  <div class="has-feedback text-danger" ng-messages="form.seller_agent.$error" ng-show="interacted(form.seller_agent)">
+                                      <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入卖方代理人！</div>
+                                  </div>-->
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="seller_agent_no"><span class="text-danger"></span> 卖方代理人身份证号码：</label>
+                                <input type="text" placeholder="卖方代理人身份证号码" id="seller_agent_no" name="seller_agent_no" class="form-control"  ng-model="trade.seller_agent_no">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="seller_tracer"><span class="text-danger"></span> 卖方交易顾问：</label>
+                                <div class="row">
+                                    <div class="col-md-3"><select class="form-control" name="seller_tracer_province" id="seller_tracer_province" ng-model="trade.seller_tracer_province" ng-options="item.name for item in seller.province" ng-change="changeProvince('seller')">
+                                        <option value="">请选择</option>
+                                    </select></div>
+                                    <div class="col-md-3"><select class="form-control" name="seller_tracer_city" id="seller_tracer_city" ng-model="trade.seller_tracer_city" ng-options="item.name for item in  seller.city" ng-change="changeCity('seller')">
+                                        <option value="">请选择</option>
+                                    </select></div>
+                                    <div class="col-md-3"><select class="form-control" name="seller_tracer_shop" id="seller_tracer_shop" ng-model="trade.seller_tracer_shop" ng-options="item.name for item in  seller.shop" >
+                                        <option value="" >请选择</option>
+                                    </select></div>
+                                    <div class="col-md-3"><select class="form-control" name="seller_tracer" id="seller_tracer" ng-model="trade.seller_tracer">
+                                        <option value="" >请选择</option>
+                                    </select></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="seller_phone"><span class="text-danger">*</span> 卖方联系方式：</label>
+                                <input type="text" placeholder="卖方联系方式" id="seller_phone" class="form-control" name="seller_phone" required ng-model="trade.seller_phone">
+                                <div class="has-feedback text-danger" ng-messages="form.seller_phone.$error" ng-show="interacted(form.seller_phone)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入卖方联系方式 ！</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- /.box-body -->
+                <div class="box-footer"></div>
+
+
+                <div class="box-header">
+                    <h3 class="box-title">买方信息编辑</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body ">
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="buyer_number"><span class="text-danger"></span> 买方信息编号：</label>
+                            <input type="text" placeholder="买方信息编号" id="buyer_number" name="buyer_number" class="form-control"  ng-model="trade.buyer_number">
+                            <!--    <div class="has-feedback text-danger" ng-messages="form.buyer_number.$error" ng-show="interacted(form.buyer_number)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入买方信息编号！</div>
+                                </div>-->
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="buyer_name"><span class="text-danger">*</span> 买方姓名：</label>
+                            <input type="text" placeholder="买方姓名" id="buyer_name" name="seller_name"  class="form-control" required ng-model="trade.buyer_name">
+                            <div class="has-feedback text-danger" ng-messages="form.seller_name.$error" ng-show="interacted(form.seller_name)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入买方姓名！</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="buyer_cert_type"><span class="text-danger">*</span> 买方证件类型：</label>
+                            <select class="form-control" name="buyer_cert_type" id="buyer_cert_type" name="buyer_cert_type" required  ng-model="trade.buyer_cert_type"  ng-options="item for item in certType" >
+                                <option value="">请选择</option>
+                            </select>
+                            <div class="has-feedback text-danger" ng-messages="form.buyer_cert_type.$error" ng-show="interacted(form.buyer_cert_type)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i> 请选择买方证件类型！</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="buyer_cert_number"><span class="text-danger">*</span> 买方证件号码：</label>
+                            <input type="text" placeholder="买方证件号码" id="buyer_cert_number" name="buyer_cert_number" class="form-control" required ng-model="trade.buyer_cert_number">
+                            <div class="has-feedback text-danger" ng-messages="form.buyer_cert_number.$error" ng-show="interacted(form.buyer_cert_number)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入买方证件号码！</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="buyer_agent"><span class="text-danger"></span> 买方代理人：</label>
+                            <input type="text" placeholder="买方代理人" id="buyer_agent" name="buyer_agent" class="form-control"  ng-model="trade.buyer_agent">
+                            <!--  <div class="has-feedback text-danger" ng-messages="form.buyer_agent.$error" ng-show="interacted(form.buyer_agent)">
+                                  <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入买方代理人！</div>
+                              </div>-->
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="buyer_agent_no"><span class="text-danger"></span> 买方代理人身份证号码：</label>
+                            <input type="text" placeholder="买方代理人身份证号码" id="buyer_agent_no" name="buyer_agent_no" class="form-control"  ng-model="trade.buyer_agent_no">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="buyer_tracer"><span class="text-danger"></span> 买方交易顾问：</label>
+                            <div class="row">
+                                <div class="col-md-3"><select class="form-control" name="buyer_tracer_province" id="buyer_tracer_province" ng-model="trade.buyer_tracer_province" ng-options="item.name for item in buyer.province" ng-change="changeProvince('buyer')">
+                                    <option value="">请选择</option></select></div>
+                                <div class="col-md-3"><select class="form-control" name="buyer_tracer_city" id="buyer_tracer_city" ng-model="trade.buyer_tracer_city"  ng-options="item.name for item in buyer.city" ng-change="changeCity('buyer')">
+                                    <option value="">请选择</option>
+                                </select></div>
+                                <div class="col-md-3"><select class="form-control" name="buyer_tracer_shop" id="buyer_tracer_shop" ng-model="trade.buyer_tracer_shop" ng-options="item.name for item in buyer.shop" >
+                                    <option value="">请选择</option>
+                                </select></div>
+                                <div class="col-md-3"><select class="form-control" name="buyer_tracer" id="buyer_tracer" ng-model="trade.buyer_tracer">
+                                    <option value="">请选择</option>
+                                </select></div>
+                            </div>
+                    </div>
+                        <div class="form-group col-md-6">
+                            <label for="buyer_phone"><span class="text-danger"></span> 买方联系方式：</label>
+                            <input type="text" placeholder="买方联系方式" id="buyer_phone" name="buyer_phone" class="form-control"  ng-model="trade.buyer_phone">
+                        </div>
+                        <!--   <div class="has-feedback text-danger" ng-messages="form.buyer_phone.$error" ng-show="interacted(form.buyer_phone)">
+                               <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入买方姓名！</div>
+                           </div>-->
+                </div><!-- /.box-body -->
+                <div class="box-footer"></div>
+
+
+            <div class="box-header">
+                <h3 class="box-title">成交内容</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="sale_price"><span class="text-danger">*</span> 车辆成交价：</label>
+                        <input  type="text" placeholder="车辆成交价"  type="text" id="sale_price" name="sale_price" class="form-control" ng-model="trade.sale_price" required>
+                        <div class="has-feedback text-danger" ng-messages="form.sale_price.$error" ng-show="interacted(form.sale_price)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入车辆成交价！</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="owner_commission"><span class="text-danger">*</span> 信息服务费：</label>
+                        <input class="form-control" name="owner_commission" id="owner_commission" type="text" required ng-model="trade.owner_commission"/>
+                        <div class="has-feedback text-danger" ng-messages="form.owner_commission.$error" ng-show="interacted(form.owner_commission)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入信息服务费！</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="sale_date"><span class="text-danger">*</span> 车辆成交时间：</label>
+                        <p class="input-group">
+                            <input type="datetime"  name="sale_date" id="sale_date" required ng-model="trade.sale_date_picker"
+                                   class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="opened"
+                                   datepicker-options="dateOptions"  ng-required="true" current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                        </p>
+                        <div class="has-feedback text-danger" ng-messages="form.sale_date.$error" ng-show="interacted(form.sale_date)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入车辆成交时间！</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /.box-body -->
+
+                <div class="box-header">
+                    <h3 class="box-title">车辆信息</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <div class="box-body ">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="car_number"><span class="text-danger">*</span> 车牌号：</label>
+                            <input  type="text" placeholder="车牌号" id="car_number" name="car_number" class="form-control" ng-model="trade.car_number" required>
+                            <div class="has-feedback text-danger" ng-messages="form.car_number.$error" ng-show="interacted(form.car_number)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入车牌号！</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="car_type"><span class="text-danger"></span> 车辆类型：</label>
+                            <select class="form-control" name="car_type" id="car_type"   ng-model="trade.car_type" ng-options="item for item in carType">
+                                <option value="">请选择</option>
+                            </select>
+                            <!--     <div class="has-feedback text-danger" ng-messages="form.car_type.$error" ng-show="interacted(form.car_type)">
+                                     <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入车架号！</div>
+                                 </div>-->
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="use_quality"><span class="text-danger"></span> 车辆使用性质：</label>
+                            <select class="form-control" name="use_quality" id="use_quality"  ng-model="trade.use_quality" ng-options="item for item in useQuality">
+                                <option value="">请选择</option>
+                            </select>
+                            <!--    <div class="has-feedback text-danger" ng-messages="form.use_quality.$error" ng-show="interacted(form.use_quality)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入车辆使用性质！</div>
+                                </div>-->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="driver_number"><span class="text-danger">*</span> 发动机号：</label>
+                            <input  type="text" placeholder="发动机号" id="driver_number" name="driver_number" class="form-control" ng-model="trade.driver_number" required>
+                            <div class="has-feedback text-danger" ng-messages="form.driver_number.$error" ng-show="interacted(form.driver_number)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入发动机号！</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="frame_number"><span class="text-danger">*</span> 车架号：</label>
+                            <input  type="text" placeholder="车架号" id="frame_number" name="frame_number"  ng-model="trade.frame_number" class="form-control" required>
+                            <div class="has-feedback text-danger" ng-messages="form.frame_number.$error" ng-show="interacted(form.frame_number)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入车架号！</div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button class="btn btn-success" type="button"  ng-click="save()" >保存</button>
+                    <button class="btn btn-primary" type="submit"  ng-disabled="form.$invalid" >提交并继续下一条</button>
+                </div>
+
+        </div>
+            </div>
+    </form>
+    </div>
+
+</section>
+<!-- /.content -->
+
+

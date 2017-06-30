@@ -1,0 +1,24 @@
+{template 'header'}
+{template 'slide'}
+<link rel="stylesheet" type="text/css" href="./themes/mobile/templet9/style/css.css" media="all" />
+<div class="body">
+<!-- 分类导航 -->
+		<div class="we7-content">
+            <div class="we7-list">
+			{loop $navs $nav}
+                <a href="{$nav['url']}" class="we7-list-item">
+					<div class="we7-list-item-bg">
+                        <div class="we7-list-item-image" style="background-image:url('{$_W['attachurl']}{$nav['icon']}')"></div>
+                        <div class="we7-list-item-box">
+                                <div class="we7-list-item-line">
+                                <div class="we7-list-item-title">{$nav['name']}</div>
+                                <div class="we7-list-item-summary">{$nav['css']['icon']['icon']}</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+			{/loop}
+            </div>
+        </div>
+</div>
+{template 'footer'}

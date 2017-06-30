@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>QQ会员竞技频道</title>
+    <link href="http://f3.file.766.com/xbqqvip/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript" src="http://js.olcdn.com/lib/gb2312/jquery-1.7.2.min.js" charset="gb2312"></script>
+<script type="text/javascript" src="http://js.olcdn.com/net/v1/gb2312/jquery.alCommon.js" charset="gb2312"></script>
+<script type="text/javascript" src="js/jquery.accordion.js"></script>
+<script type="text/javascript" src="js/smartfloat.js"></script>
+<script>
+    $(function(){
+        $("#tabgame").tab();
+        accordion(".g1",0);
+        accordion(".g2",0);
+        $(".timelog").smartFloat();
+    });
+</script>
+
+<body>
+<div class="wrapper">
+    <!-- left -->
+    <div class="left">
+        <!-- column -->
+        <div class="column c1">
+            <h3 class="tit"><a href="#">更多&gt;&gt;</a>赛事专题</h3>
+            <ul class="piclist">
+                <CMS action="LIST" return="List" NodeID="19180" Num="2" where="c.Photo !='' "  />
+                <LOOP name="List" var="var" key="key">
+                    <li><a href="[$var.URL]" target="_blank" title="[$var.Title]"><img src="[$var.Photo]" /></a><p><a href="[$var.NodeURL]">[[$var.NodeName]]</a> <a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></p></li>
+                </loop>
+            </ul>
+            <ul class="list">
+                <CMS action="LIST" return="List" NodeID="19183" Num="3" />
+                <LOOP name="List" var="var" key="key">
+                    <li><code>[@date('m-d', $var.PublishDate)]</code><a href="[$var.NodeURL]">[[$var.NodeName]]</a> <a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></li>
+                </loop>
+            </ul>
+        </div>
+        <!-- column end -->
+        <!-- column -->
+        <div class="column c2">
+            <h3 class="tit"><a href="#">更多&gt;&gt;</a>赛事新闻</h3>
+            <ul class="list pt10">
+                <CMS action="LIST" return="List" NodeID="19181" Num="8" />
+                <LOOP name="List" var="var" key="key">
+                    <li><code>[@date('m-d', $var.PublishDate)]</code><a href="[$var.NodeURL]">[[$var.NodeName]]</a> <a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></li>
+                </loop>
+            </ul>
+        </div>
+        <!-- column end -->
+        <div class="clear12"></div>
+        <!-- column -->
+        <div class="column">
+            <h3 class="tit"><a href="#">更多&gt;&gt;</a>视频点播</h3>
+            <ul class="piclist2">
+                <CMS action="LIST" return="List" NodeID="19184" Num="2" where="c.Photo !='' "  />
+                <LOOP name="List" var="var" key="key">
+                    <li><a href="[$var.URL]" target="_blank" title="[$var.Title]"><span></span><img src="[$var.Photo]" /></a><p><a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></p></li>
+                </loop>
+            </ul>
+            <ul class="list2">
+                <CMS action="LIST" return="List" NodeID="19184" Num="5" />
+                <LOOP name="List" var="var" key="key">
+                    <li><code>[@date('m-d', $var.PublishDate)]</code><a href="[$var.NodeURL]">[[$var.NodeName]]</a> <a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></li>
+                </loop>
+            </ul>
+        </div>
+        <!-- column end -->
+    </div>
+    <!-- left end -->
+    <!-- right -->
+    <div class="right">
+        <!-- column -->
+        <div class="column" id="tabgame">
+            <h3 class="tit">赛事参与</h3>
+            <ul class="tabtit tab_menu">
+                <li class="select">进行中</li>
+                <li>未开始</li>
+            </ul>
+            <div class="tab_main">
+                <dl class="gamelist g1">
+                    <CMS action="LIST" return="List" NodeID="19182" Num="5" where="c.Photo !='' "  />
+                    <LOOP name="List" var="var" key="key">
+                        <dt>[$var.Title]</dt>
+                        <dd>
+                            <img src="[$var.Photo]" />
+                            <div class="fl">
+                                <h4><a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></h4>
+                                <p>时间：[$var.SubTitle]</p>
+                                <a href="[$var.URL]" title="[$var.Title]" >去报名</a>
+                            </div>
+                        </dd>
+                    </loop>
+                </dl>
+            </div>
+            <div class="tab_main" style="display:none">
+                <dl class="gamelist g2">
+                    <CMS action="LIST" return="List" NodeID="19182" Num="5" where="c.Photo !='' "  />
+                    <LOOP name="List" var="var" key="key">
+                        <dt>[$var.Title]</dt>
+                        <dd>
+                            <img src="[$var.Photo]" />
+                            <div class="fl">
+                                <h4><a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></h4>
+                                <p>时间：[$var.SubTitle]</p>
+                                <a href="[$var.URL]" title="[$var.Title]" >去报名</a>
+                            </div>
+                        </dd>
+                    </loop>
+                </dl>
+            </div>
+        </div>
+        <!-- column end -->
+        <!-- column -->
+        <div class="column">
+            <h3 class="tit">俱乐部</h3>
+            <ul class="piclist3">
+                <CMS action="LIST" return="List" NodeID="19185" Num="2" where="c.Photo !='' "  />
+                <LOOP name="List" var="var" key="key">
+                    <li>
+                        <a href="[$var.URL]" target="_blank" title="[$var.Title]"><img src="[$var.Photo]" /></a>
+                        <h4><a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></h4>
+                        <p><if test="!empty($var.Intro)">[$var.Intro]<else>[@CsubStr(no_html($var.Content),0,40)]</if></p>
+                    </li>
+                </loop>
+            </ul>
+        </div>
+        <!-- column end -->
+    </div>
+    <!-- right end -->
+    <div class="clear12"></div>
+    <ul class="timelog"></ul>
+    <!-- column -->
+    <div class="column posr">
+        <h3 class="tit">赛事时光轴</h3>
+        <ul class="tabtit2">
+            <li class="select">全部</li>
+            <li>穿越火线</li>
+            <li>英雄联盟</li>
+            <li>地下城勇士</li>
+            <li>QQ飞车</li>
+            <li>QQ炫舞</li>
+        </ul>
+        <div class="timecon">
+            <!-- timeline -->
+        </div>
+    </div>
+    <!-- column end -->
+    <script type="text/javascript" charset="gb2312">
+
+        $('.timelog li').click(function(){
+            $(this).addClass('select').siblings().removeClass('select');
+        });
+
+        function loadHtml(content,url){
+            content.load(url + " .timeline",function(){
+                content.find('.t-l .t-column:lt(3)').show();
+                content.find('.t-r .t-column:lt(2)').show();
+                var html = " <li class=\"select\"><a href=\"#top\">最新</a></li><li><a href=\"#y2013\">2013</a></li>";
+                var  item1 = content.find('.t-l .t-column');
+                var  item2 = content.find('.t-r .t-column');
+
+                item1.each(function(){
+                    var h3 = $(this).find('h3');
+                    var h3_1 = item2.eq($(this).index()).find('h3');
+                    html += '<li><a href="'+ '#' + h3.attr('id') + '">'+ h3.text() +'</a></li>';
+                    if(h3_1.length)
+                        html += '<li><a href="'+ '#' + h3_1.attr('id') + '">'+ h3_1.text() +'</a></li>';
+                })
+                $('.timelog').html(html);
+            })
+        }
+
+        var content = $('.timecon');
+        loadHtml(content,'http://qqvip.766.com/zh/item0.shtml');
+
+        content.on('click','.m3',function(){
+            $(this).hide();
+            $('.m4').show();
+            content.find('.t-column').show();
+        });
+
+
+        $('.tabtit2 li').click(function(){
+            $(this).addClass('select').siblings().removeClass('select');
+            loadHtml(content,'http://qqvip.766.com/zh/item'+ $(this).index() +'.shtml');
+        });
+
+
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=7">
+		<title>
+			斗战神官网合作专
+		</title>
+		<meta name="keywords" content="斗战神官网合作专">
+		<meta name="description" content="斗战神技能模拟">
+		
+		<script src="http://js.olcdn.com/lib/gb2312/jquery-1.4.4.min.js"></script>
+        <script>
+			var url=window.location.href;
+			//alert(url.indexOf("?"));
+			var id="";
+			if(url.indexOf("?")!=-1){
+				var str = url.substr(1);
+				var strs = str.split("?");
+				for(i=0;i<strs.length;i++)   
+				  {   
+					if([strs[i].split("=")[0]]=='id') id=unescape(strs[i].split("=")[1]);
+				  }  
+				  var gid = id.substr(0,1);	
+				 
+				  
+			}
+			if(gid==undefined || gid=="") {gid=1};
+			document.write("<script src='script\/"+gid+".js'><\/script>");  
+		</script>
+		
+		<style>
+				body{min-width:1000px;font:12px/1.5 tahoma,sans-serif;color:#4e352b;} 
+				a{text-decoration:none;color:#4e352b;} 
+				a:hover{text-decoration:underline;}
+		</style>
+	</head>
+	<body>
+
+    <!-- header -->
+    <div class="header">
+        <div class="navgation">
+            <a class="item1" href="" title="最新资讯"></a>
+            <a class="item2" href="" title="五洲战志"></a>
+            <a class="item3" href="" title="新手指南"></a>
+            <a class="item4" href="" title="音画欣赏"></a>
+            <a class="item5" href="" title="热门视频"></a>
+            <a class="item6" href="" title="游戏下载"></a>
+            <a class="forum" href="" title="论坛"></a>
+        </div>
+    </div>
+    <!-- end header -->
+
+    <!-- nav -->
+    <div class="nav">
+        <div class="nav-inner">
+            <a class="collect" href="" title="加入收藏"></a>
+            <a class="regist" href="" title="注册账号"></a>
+            <ul>
+                <li><span>背景资料:</span><a href="">历史篇</a> - <a href="">地理篇</a></li>
+                <li><span>人物资料:</span><a href="">灵猴</a> - <a href="">罗刹</a> - <a href="">牛魔</a> - <a href="">玉狐</a></li>
+                <li><span>野渡拾遗:</span><a href="">第一章</a> - <a href="">第二章</a> - <a href="">第三章</a></li>
+                <li><span>副本故事:</span><a href="">堕龙坑</a> - <a href="">五行山</a> - <a href="">黑风寨</a> - <a href="">高老庄</a> - <a href="">五庄观</a> - <a href="">白骨洞</a> - <a href="">波月洞</a> - <a href="">三仙观</a> - <a href="">莲花洞</a> - <a href="">昆仑山</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end nav -->
+
+	<div id="doc" class="container">
+
+			<link rel="stylesheet" type="text/css" href="css/style.css" />
+			<!--[if lte IE 6]>
+				<script src="script/DD_belatedPNG_0.0.8a.js" type="text/javascript">
+				</script>
+				<script type="text/javascript">
+					DD_belatedPNG.fix('h1,div, ul, img, li, input ,span,em,i, a,src');
+				</script>
+				<style type="text/css">
+					body { behavior: url(csshover.htc); } /*注意路径*/
+				</style>
+			<![endif]-->
+			<!--主内容{licanbluesea design--><div class="layout"><div class="blank10 layout-hd"></div><div class="step-one"></div><div class="dzs-cal-roleselect"><ul><li><a href="index.html?id=1"title="灵猴"><img src="images/role_03.jpg"></a></li><li><a href="index.html?id=2"title="神将"><img src="images/role_05.jpg"></a></li><li><a href="index.html?id=4"title="罗刹"><img src="images/role_07.jpg"></a></li><li><a href="index.html?id=3"title="牛魔"><img src="images/role_09.jpg"></a></li><li><a href="index.html?id=5"title="玉狐"><img src="images/role_12.jpg"></a></li><li><a href="index.html?id=6"title="龙女"><img src="images/role_15.jpg"></a></li></ul></div><div class="step-two"></div><div class="dzs-cal-rolecharge"><div class="dzs-role-icon"><img src="images/role_icon4.png"></div>
+        <div class="dzs-role-choice">
+            <table width="460"border="0"cellspacing="0">
+                <tr>
+                    <td width="84"><label for="">级数：</label></td>
+                    <td class="choice_level"><input type="text"name="leve"size="1"class="level_text"><a href="javascript:void(0)"target="_self"level="1">+1</a><a href="javascript:void(0)"level="10"target="_self">+10</a><a href="javascript:void(0)"level="60"target="_self">+60</a></td></tr>
+                 <tr>
+                    <td ><label for="">技能点：</label></td>
+                    <td class="f12">共有<span class="skill_ct"></span><span id="pt_total_ct">54</span><span class="skill_jx"></span><span id="pt_total_jx">54</span></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td class="f12">还有<span class="skill_ct"></span><span id="pt_remain_ct">54</span><span class="skill_jx"></span><span id="pt_remain_jx">54</span><span class="static_show_mastery"><i class="skill_type posit_adjust"><img src="images/demo_skill.jpg"></i>xx系</span></td>
+                </tr>
+            </table>
+            <ul><li><a class="btn_output"href="#">导  出</a></li><li><a class="btn_reset"href="javascript:void(0)">重  置</a></li><li><a target="_blank"href="#">纠  错</a></li></ul>
+
+        </div>
+        <div class="contribute"><a class="contribute-btn"></a></div>
+         </div>
+
+        <div class="step-three"></div>
+        <div class="dzs_cal_con">
+            <div class="con">
+                <div class="dzs_calculator"><h2>领悟</h2><div class="skill_choice"><ul><li><span class="skill_name"style="background:url(images/lock.jpg) 3px center no-repeat"><a href="
+								javascript:void(0)"></a><i>22</i></span></li><li><span class="skill_name"style="background:url(images/mark.jpg) 3px center no-repeat"><a href="
+								javascript:void(0)"></a><i></i></span><a href="
+							javascript:void(0);"class="skill_learnbtn">请选择学习技能</a></li><li class="dzs_skill_chocie"><span class="skill_name"style="background:url(images/demo_skill.jpg) 3px center no-repeat"><a class="skill_act"href="
+								javascript:void(0);"></a><i></i></span><span class="skill_control"><a class="skill_cancel"href="#"target="_self">取消</a><b>重刃</b><p><span class="skill_ct"></span>重天：1<a class="skill_add"href=""></a><a class="skill_sub"href=""></a></p><p><i><span class="skill_jx"></span>0/20</i><em>下一级所需等级8</em></p></span></li><li class="dzs_skill_chocie"><span class="skill_name"style="background:url(images/demo_skill.jpg) 3px center no-repeat"><a class="skill_pasv skill_act"href="
+								javascript:void(0);"></a><i></i></span><span class="skill_control"><a class="skill_cancel"href="#"target="_self">取消</a><b>重刃</b><p><span class="skill_ct"></span>重天：1<a class="skill_add"href=""></a><a class="skill_sub"href=""></a></p><p><i><span class="skill_jx"></span>0/20</i><em>下一级所需等级8</em></p></span></li><li class="dzs_skill_chocie"><span class="skill_name"style="background:url(images/demo_skill.jpg) 3px center no-repeat"><a class="skill_pasv skill_act"href="
+								javascript:void(0);"></a><i></i></span><span class="skill_control"><a class="skill_cancel"href="#"target="_self">取消</a><b>重刃</b><p><span class="skill_ct"></span>重天：1<a class="skill_add"href=""></a><a class="skill_sub"href=""></a></p><p><i><span class="skill_jx"></span>0/20</i><em>下一级所需等级8</em></p></span></li></ul></div></div><div class="dzs_calculator"style="display:none;"><div class="sill_learn_list"style="display:none;"><h2>学习技能</h2><dl><dt><i>第一层</i>需要等级4</dt><dd><span class="skill_name"style="background:url(images/demo_skill.jpg) 5px center no-repeat"><a href="#"></a><i></i></span><b>轻刃</b></dd><dd><span class="skill_name"style="background:url(images/demo_skill.jpg) 5px center no-repeat"><a class="skill_pasv"href="#"></a><i></i></span><b>轻刃</b></dd><dd class="dzs_skill_chocie"><span class="skill_name"style="background:url(images/demo_skill.jpg) 5px center no-repeat"><a class="skill_pasv"href="#"></a><i></i></span><b>轻刃</b><i class="skill_book"></i><i class="skill_type"><img src="images/demo_skill.jpg"></i></dd><dt><i>第一层</i>需要等级4</dt><dd><span class="skill_name"style="background:url(images/demo_skill.jpg) 5px center no-repeat"><a href="#"></a><i></i></span><b>轻刃</b></dd><dd><span class="skill_name"style="background:url(images/demo_skill.jpg) 5px center no-repeat"><a class="skill_pasv"href="#"></a><i></i></span><b>轻刃</b></dd><dd><span class="skill_name"style="background:url(images/demo_skill.jpg) 5px center no-repeat"><a class="skill_pasv"href="#"></a><i></i></span><b>轻刃</b></dd><dt><i>第一层</i>需要等级4</dt><dd class="skill_promote_forbid"><span class="skill_name"style="background:url(images/demo_skill.jpg) 5px center no-repeat"><a href="#"></a><i></i></span><b>轻刃</b></dd><dd class="skill_promote_forbid"><span class="skill_name"style="background:url(images/demo_skill.jpg) 5px center no-repeat"><a class="skill_pasv"href="#"></a><i></i></span><b>轻刃</b></dd><dd class="skill_promote_forbid"><span class="skill_name"style="background:url(images/demo_skill.jpg) 5px center no-repeat"><a class="skill_pasv"href="#"></a><i></i></span><b>轻刃</b></dd></dl><p>带有<i class="skill_book"></i>图标的技能需要技能书<p></div><div class="skill_promote"style="display:none"><h2>进修技能(<font color="green"class="upgrade_title">气源斩精修</font>)</h2><ul><li class="skill_promote_forbid"><span class="skill_promote_amount"><em>1</em><em>1</em><em class="">3</em><em>4</em><em>1</em><em>1</em><em>1</em></span><span class="skill_promote_name"><img src="images/demo_skill.jpg"><i>体</i></span></li><li><span class="skill_promote_amount"><em>1</em><em>1</em><em class="skill_promoted">3</em><em>4</em><em>1</em><em>1</em><em>1</em></span><span class="skill_promote_name"><img src="images/demo_skill.jpg"><i>体</i></span></li><li><span class="skill_promote_amount"><em>1</em><em>1</em><em class="skill_promoted">3</em><em>4</em><em>1</em><em>1</em><em>1</em></span><span class="skill_promote_name"><img src="images/demo_skill.jpg"><i>体</i></span></li><li><span class="skill_promote_amount"><em>1</em><em>1</em><em class="skill_promoted">3</em><em>4</em><em>1</em><em>1</em><em>1</em></span><span class="skill_promote_name"><img src="images/demo_skill.jpg"><i>体</i></span></li><li><span class="skill_promote_amount"><em>1</em><em>1</em><em class="skill_promoted">3</em><em>4</em><em>1</em><em>1</em><em>1</em></span><span class="skill_promote_name"><img src="images/demo_skill.jpg"><i>体</i></span></li>
+                <li><span class="skill_promote_amount"><em>1</em><em>1</em><em class="skill_promoted">3</em><em>4</em><em>1</em><em>1</em><em>1</em></span><span class="skill_promote_name"><img src="images/demo_skill.jpg"><i>体</i></span></li><li><span class="skill_promote_amount"><em>1</em><em>1</em><em class="skill_promoted">3</em><em>4</em><em>1</em><em>1</em><em>1</em></span><span class="skill_promote_name"><img src="images/demo_skill.jpg"><i>体</i></span></li></ul></div>
+            </div>
+                <div class="last-side">
+                    此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子此处好多蚊子
+                </div>
+                <div class="fn-clear"></div>
+            </div></div><div class="blank10 layout-ft"></div></div><!--}主内容-->
+			<!-- 页脚{ -->
+			<div class="blank8">
+				<br>
+				<div id='tooltip' style='display:none;z-index: 100000001;left:-3360px;top:-3360px;position:absolute;'>
+					<div part='icon' style='float:left;'>
+					</div>
+					<div part='tips' style='float:left;'>
+					</div>
+				</div>
+				<script type="text/javascript">
+					var classId = 6;
+					regId = new RegExp("id=([0-9]*)", "i");
+					res = location.href.match(regId);
+					if (res != null && res.length > 1) classId = res[1];
+
+					var application = new Main(new Role(classId));
+					var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://": " http://");
+					//document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6a734b1a89cb4e577e2d6d98153a7994' type='text/javascript'%3E%3C/script%3E"));
+				</script>
+				
+			</div>
+            <div class="container-footer"></div>
+				
+		</div>
+		<!-- }页脚 -dzs-role-choice->
+
+    <!-- footer -->
+    <div class="footer-wrap">
+            <div class="footer">
+                <script type="text/javascript" src="http://js.ue.766.com/common/flc.js" charset="gb2312"></script>
+            </div>
+        </div>
+	</body>
+
+</html>

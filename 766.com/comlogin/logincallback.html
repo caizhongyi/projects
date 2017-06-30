@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <!-- 此页面放在弹出窗口的同域下 -->
+</head>
+<body>
+<script type="text/javascript">
+    window.onload = function(){
+        var url = window.location.href;
+        if(url.indexOf('redirected=true') > -1){
+            var str= location.hash;      //以#开头的信息
+            if(str.length > 1){
+                str= str.substring(1);
+                window.parent.parent.$.comLoginDialog.hide();
+            }
+            //window.parent.parent.onExcute(str);
+            window.location.href = 'logincallback.html';    //恢复状态，以方便B.html再次响应事件
+        }
+    }
+</script>
+</body>
+</html>

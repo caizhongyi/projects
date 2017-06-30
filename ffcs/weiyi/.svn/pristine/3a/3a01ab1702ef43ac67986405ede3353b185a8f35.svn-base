@@ -1,0 +1,138 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <link rel="stylesheet" type="text/css" href="./source/modules/micromember/template/css/fans.css" media="all" />
+    <script type="text/javascript" src="./source/modules/micromember/template/js/zepto.js"></script>
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./resource/script/cascade.js"></script>
+    <title>个人资料</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+</head>
+<!-- <a href="{php echo create_url('mobile/module', array('name' => 'fans', 'weid' => $_W['weid'], 'do' => 'profile'))}" class="box-item">
+		<i class="icon-user"></i>
+		<span>我的资料</span>
+	</a> -->
+<body id="carduser" ondragstart="return false;" onselectstart="return false;">
+<section class="body">
+    <div class="qiandaobanner">
+        <img src="./source/modules/micromember/template/images/user.jpg">
+    </div>
+    <div class="cardexplain">
+       <form action="{php echo create_url('index/module', array('name' => 'micromember', 'weid' => $_W['weid'], 'do' => 'check'))}" method="post" >
+        <input type="hidden" name="from_user" value="{$_W['fans']['from_user']}" />
+        <ul class="round">
+                <li class="title mb"><span class="none">会员资料</span></li>
+                
+                {loop $result $k=>$v}
+                <li class="nob">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                        <tr>
+                            <th>{if $v['isnecessary']}<font color="red">*</font>{/if}{$v['colname']}</th>
+                            <td>
+                            {if $v['type'] == 'text'}
+                                <input name="{$v['col']}" id="{$v['col']}" type="text" class="px" {if $v['col'] == 'mobile'}value="{$profile['mobile']}"{/if} >
+                            {elseif $v['type'] == 'select'}
+                            	{if $v['col'] == 'gender'}
+	                            <select name="{$v['col']}"  id="{$v['col']}" class="dropdown-select"><option value="1">男</option><option value="2">女</option></select>
+                            	{elseif $v['col'] == 'birthyear'}
+                            	<select name="{$v['col']}"  id="{$v['col']}" class="dropdown-select">
+                            	<?php for($i = intval(date('Y')); $i > 1900; $i--  ){ ?>
+                            		<option value="{$i}">{$i}</option>
+                            	<?php }?>
+                            	</select>
+                            	{elseif $v['col'] == 'birthmonth'}
+                            	<select name="{$v['col']}"  id="{$v['col']}" class="dropdown-select">
+                            	<?php for($i = 1; $i <=12; $i++  ){ ?>
+                            		<option value="{$i}">{$i}月</option>
+                            	<?php }?>
+                            	</select>
+                            	{elseif $v['col'] == 'birthday'}
+                            	<select name="{$v['col']}"  id="{$v['col']}" class="dropdown-select">
+                            	<?php for($i = 1; $i <=31; $i++  ){ ?>
+                            		<option value="{$i}">{$i}日</option>
+                            	<?php }?>
+                            	</select>
+                            	{elseif $v['col'] == 'resideprovince'}
+                            	<select name="{$v['col']}" id="sel-provance" onChange="selectCity();" class="dropdown-select">
+                            		<option value="" selected="true">省/直辖市</option>
+                            	</select>
+                            	{elseif $v['col'] == 'residecity'}
+                            	<select name="{$v['col']}" id="sel-city" onChange="selectcounty()" class="dropdown-select">
+									<option value="" selected="true">请选择</option>
+								</select>
+                            	{elseif $v['col'] == 'residedist'}
+                            	<select name="{$v['col']}" id="sel-area" class="dropdown-select">
+									<option value="" selected="true">请选择</option>
+								</select>
+                            	{elseif in_array($v['col'],array('education','bloodtype','affectivestatus','zodiac','constellation'))}
+                            	<select name="{$v['col']}" id="{$v['col']}" class="dropdown-select">
+                            	{loop $form[$v['col']] $item}
+								<option value="{$item}">{$item}</option>
+								{/loop}
+                            	</select>
+                            	{/if}
+                            
+                            {/if}
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+                {/loop}
+            
+        </ul>
+        
+        <div class="footReturn">
+	        <input type="hidden" name="token" value="{$_W['token']}" />
+	        <!-- <input type="submit" class="submit" value="提交" name="submit" /> -->
+            <a id="submit1" class="submit" href="javascript:void(0)">保 存</a>
+            <div class="window" id="windowcenter">
+                <div id="title" class="wtitle">保存成功<span class="close" id="alertclose"></span></div>
+            </div>
+        </div>
+        
+        </form>
+        
+    </div>
+</section>
+<script type="text/javascript">
+$(function () {
+    $("#submit1").click(function () {
+    	var obj = {};
+    	
+    	{if !empty($result)}
+    	{loop $result $rs}
+    		obj["{$rs['col']}"] = $("#{$rs['col']}").val();
+    	{/loop}
+    	{/if}
+    		
+        var submitData = obj;
+        
+        $.post("{php echo create_url('index/module', array('name' => 'micromember', 'weid' => $_W['weid'], 'do' => 'bindinfo'))}", submitData,
+                function (data) {
+                    if (data.errno == 200) {
+                    	alertdiy('提交成功！');
+                    } else {
+                    	alertdiy(data.error);
+                    }
+                },"json");
+    	});
+	    function alertdiy(title) {
+	        $("#windowcenter").slideToggle("slow");
+	        $("#txt").html(title);
+	        setTimeout('$("#windowcenter").slideUp(500)', 4000);
+	    }
+	    $("#alertclose").click(function () {
+            $("#windowcenter").slideUp(500);
+        });
+});
+cascdeInit('{$profile['resideprovince']}','{$profile['residecity']}','{$profile['residedist']}'); //开启地区三级联动
+$("#sysavatar .modal-body").delegate("span", "click", function(){
+	$("#sysavatar .modal-body span").css("border", "2px #E1E1E1 solid");
+    $(this).css("border", "2px #ED2F2F solid");
+	$('#avatar').val($(this).find("img").attr("src"));
+});
+</script>
+</body>
+</html>

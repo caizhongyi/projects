@@ -1,0 +1,238 @@
+@charset "utf-8";
+
+/*基础格式化*/
+
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0
+}
+
+[hidden] {
+    display: none
+}
+
+html,
+button,
+input,
+select,
+textarea {
+    font-size: 100%
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+menu,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+code,
+form,
+fieldset,
+legend,
+button,
+input,
+select,
+textarea,
+blockquote,
+figure {
+    margin: 0;
+    padding: 0
+}
+
+a:active {
+    outline: none!important;
+    background: none
+}
+
+a {
+    text-decoration: none;
+    color: #333
+}
+
+a:visited {
+    color: #333
+}
+
+a:focus,
+a:active,
+a:hover {
+    outline: none
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal
+}
+
+sub,
+sup {
+    position: relative;
+    vertical-align: baseline
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+    list-style-image: none
+}
+
+img {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    -ms-interpolation-mode: bicubic;
+    max-width: 100%
+}
+
+fieldset {
+    border: 0
+}
+
+legend {
+    border: 0;
+    white-space: normal;
+    *margin-left: -7px
+}
+
+button,
+input,
+select,
+textarea {
+    vertical-align: baseline;
+    *vertical-align: middle;
+    outline: none
+}
+
+button,
+input {
+    line-height: normal;
+    border-radius: 0
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    *overflow: visible
+}
+
+button[disabled],
+input[disabled] {
+    cursor: default
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box;
+    *height: 13px;
+    *width: 13px
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+textarea {
+    overflow: auto;
+    vertical-align: top;
+    resize: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+body { font-size: 14px; font-family: "Microsoft YaHei";}
+
+.row:before,
+.row:after,
+.clearfix:before,
+.clearfix:after {
+    content: '';
+    display: table;
+    clear: both
+}
+
+.row,
+.clearfix {
+    *zoom: 1
+}
+
+.row .span,
+.clearfix .span {
+    float: left
+}
+
+#pageheader {
+    background: #f2f2f2;
+    height: 45px
+}
+
+#pageheader span {
+    margin: 0;
+    float: left;
+    text-align: center
+}
+
+#pageheader .reback {
+    margin-left: 10px;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAbCAYAAACjkdXHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGMTRBMDRDMTY2MTkxMUUzOTlBMEMwQzA2NDkxM0ExQSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGMTRBMDRDMjY2MTkxMUUzOTlBMEMwQzA2NDkxM0ExQSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNEEwNEJGNjYxOTExRTM5OUEwQzBDMDY0OTEzQTFBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkYxNEEwNEMwNjYxOTExRTM5OUEwQzBDMDY0OTEzQTFBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+aHOmcgAAAI9JREFUeNqc1EsOgCAMBFDLvXSh0UObuPFiGFmYIv1My/4NTaBDtdYpepbtaKhkYRhzeF8nlSyEb5YghDXoYgua2IMqRqCIUTjgCOxwFH44A99D87qnYLuZAz4BPHY2oEgjowHdU0UDhk8SCRC/JxqgLgYSYK6kF+CWgRUA1ZAWABegFEDR0k/39n+CR4ABANsGabcti0KAAAAAAElFTkSuQmCC") no-repeat 0 13px;
+    background-size: auto 15px;
+    padding-left: 10px;
+    margin-top: 1px;
+    line-height: 44px;
+}
+
+#pageheader .pagetitle {
+    font-size: 1.25em;
+    color: #000;
+    line-height: 44px;
+    text-align: center;
+    width: 50%;
+    position: absolute;
+    left: 25%
+}
+
+#pageheader .otherlink {
+    width: 25%
+}

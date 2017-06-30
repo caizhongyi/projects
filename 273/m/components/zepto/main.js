@@ -1,0 +1,18 @@
+require('./ajax.js');
+require('./assets.js');
+require('./callbacks.js');
+require('./data.js');
+require('./deferred.js');
+require('./detect.js');
+require('./event.js');
+require('./form.js');
+require('./fx.js');
+require('./fx_methods.js');
+require('./gesture.js');
+require('./ie.js');
+require('./ios3.js');
+require('./lazyload.js');
+require('./selector.js');
+require('./stack.js');
+require('./touch.js');
+module.exports = require('./zepto.js');

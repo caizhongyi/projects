@@ -1,0 +1,63 @@
+<?php
+error_reporting(0);
+define('IN_MOBILE', true);
+if(empty($_GET['out_trade_no'])) {
+	exit('request failed.');
+}
+$pieces = explode(':', $_GET['out_trade_no']);
+if(!is_array($pieces) || count($pieces) != 2) {
+	exit('request failed.');
+}
+$_POST['weid'] = $pieces[0];
+require '../../source/bootstrap.inc.php';
+if(empty($_W['account']['payment'])) {
+	exit('request failed.');
+}
+$alipay = $_W['account']['payment']['alipay'];
+if(empty($alipay)) {
+	exit('request failed.');
+}
+$prepares = array();
+foreach($_GET as $key => $value) {
+	if($key != 'sign' && $key != 'sign_type') {
+		$prepares[] = "{$key}={$value}";
+	}
+}
+sort($prepares);
+$string = implode($prepares, '&');
+$string .= $alipay['secret'];
+$sign = md5($string);
+if($sign == $_GET['sign'] && $_GET['result'] == 'success') {
+	$plid = $pieces[1];
+	$sql = 'SELECT * FROM ' . tablename('paylog') . ' WHERE `plid`=:plid';
+	$params = array();
+	$params[':plid'] = $plid;
+	$log = pdo_fetch($sql, $params);
+	if(!empty($log) && $log['status'] == '0') {
+		$record = array();
+		$record['status'] = '1';
+		pdo_update('paylog', $record, array('plid' => $log['plid']));
+		if($log['type'] == 'credit2-charge') {
+			$fee = intval($log['fee']);
+			$sql = 'UPDATE ' . tablename('fans') . " SET `credit2`=`credit2`+{$fee} WHERE `weid`=:weid AND `from_user`=:openid";
+			$pars = array();
+			$pars[':weid'] = $log['weid'];
+			$pars[':openid'] = $log['openid'];
+			pdo_query($sql, $pars);
+			//写入充值日志
+			pdo_insert('card_log', array(
+				'weid' => $_W['weid'],
+				'from_user' => $log['openid'],
+				'type' => 3,
+				'content' => '充值'.$fee.'元',
+				'createtime' => TIMESTAMP,
+			));
+			message("成功充值 {$fee} 余额.", $_W['siteroot'] . '../../' . create_url('mobile/channel/home', array('weid' => $log['weid'])));
+		}
+		if($log['type'] == 'shopping-order') {
+			$fee = intval($log['fee']);
+			pdo_update('shopping_order', array('status' => 1), array('id' => $log['tid']));
+			message("订单支付成功！", $_W['siteroot'] . '../../' . create_url('mobile/module/myorder', array('name' => 'shopping', 'weid' => $log['weid'])));
+		}
+	}
+}

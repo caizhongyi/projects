@@ -1,0 +1,47 @@
+{if $type == 'card'}
+<input type="hidden" name="type" value="card" />
+<div class="alert alert-block alert-new">
+	<table id="form" class="tb reply-news-edit">
+		<tr>
+			<th>封面</th>
+			<td>
+				{php echo tpl_form_field_image('thumb', $setting['picurl']);}
+				<img src="./source/modules/member/images/card.png" width="200" />
+			</td>
+		</tr>
+	</table>
+</div>
+{elseif $type == 'coupon'}
+<input type="hidden" name="type" value="coupon" />
+<div class="alert alert-block alert-new">
+	<table id="form" class="tb reply-news-edit">
+		<tr>
+			<th>封面</th>
+			<td>
+				{php echo tpl_form_field_image('thumb', $setting['picurl']);}
+				<img src="./source/modules/member/images/coupon.png" width="200" />
+			</td>
+		</tr>
+	</table>
+</div>
+{else}
+<div class="alert alert-block alert-new">
+	<table id="form" class="tb reply-news-edit">
+		<tr>
+			<th>类型</th>
+			<td>
+				<select name="type">
+					<option value="card">会员卡</option>
+					<option value="coupon">优惠券</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th>封面</th>
+			<td>
+				{php echo tpl_form_field_image('thumb');}
+			</td>
+		</tr>
+	</table>
+</div>
+{/if}

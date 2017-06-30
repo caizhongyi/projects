@@ -1,0 +1,152 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="./source/modules/micromember/template/css/fans.css" media="all" />
+    <script type="text/javascript" src="./source/modules/micromember/template/js/zepto.js"></script>
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+    <title>会员卡</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+</head>
+
+<body id="card" ondragstart="return false;" onselectstart="return false;">
+<section class="body">
+    <div id="overlay"></div>
+    <div class="cardcenter">
+        <div class="msk">
+            <p class="explain2">
+                <a id="showcard" class="receive" href="javascript:void(0)">领取您的新会员卡</a>
+                <span>微时代会员卡，方便携带收藏，永不挂失…</span>
+            </p>
+        </div>
+
+        <div class="card">
+            <img class="cardbg" src="{if ($card_info['bgtype']==1&&!empty($card_info['sysbackground']))}
+            {$card_info['sysbackground']}
+            {else}
+            {$_W['attachurl']}{$card_info['sysbackground']}
+            {/if}">
+            <h1 style="color: {$card_info['namecolor']}">{$card_info['name']}</h1>
+            <strong class="pdo verify" style="{$card_info['numcolor']}">
+                <span id="cdnb"><em>普通会员</em></span>
+            </strong>
+        </div>
+        <p class="explain">
+            <span>使用时向服务员出示此卡</span>
+        </p>
+    </div>
+
+    <div class="cardexplain">
+        <ul class="round">
+            <li><a href="#"><span>会员卡说明</span></a></li>
+            <li><a href="#"><span>商家说明</span></a></li>
+        </ul>
+        <ul class="round">
+            <li class="addr">
+                <a href="{$address}">
+                    <span>地址: 福建省福州市鼓楼区软件大道A区</span>
+                </a>
+            </li>
+            <li class="tel">
+                <a href="javascript:;">
+                    <span>电话: 15059484010</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="plugback">
+        <a href="javascript:history.back(-1)">
+            <div class="plugbg themeStyle">
+                <span class="plugback"></span>
+            </div>
+        </a>
+    </div>
+    <!--输入框-->
+    <div class="window" id="windowcenter">
+        <div id="title" class="wtitle">领卡信息<span class="close" id="alertclose"></span></div>
+        <input type="hidden" id="weid" name="id" value="{$weid}"/>
+        <input type="hidden" name="token" value="{$token}"/>
+        <div class="content">
+            <div id="txt">填写详细信息真实，享受会员特权！</div>
+            <p>
+                <input name="realname" value="" class="px" id="realname" type="text" placeholder="请输入您的姓名">
+            </p>
+            <p>
+                <input name="qq" class="px" id="qq" value="" type="tel" placeholder="请输入您的QQ">
+            </p>
+            <p>
+                <input name="mobile" class="px" id="mobile" value="" type="tel" placeholder="请输入您的电话">
+            </p>
+            <input type="button" value="确 定" name="确 定" class="txtbtn" id="windowclosebutton">
+        </div>
+    </div>
+    <!---->
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $("#windowclosebutton").bind("click",
+                    function() {
+                        var btn = $(this);
+                        var mobile = $("#mobile").val();
+                        var from_user = "{$_GPC['from_user']}";
+                        var realname = $("#realname").val();
+                        var qq = $("#qq").val();
+                        var weid = $('#weid').val();
+                        var token = $('#token').val();
+                        if (realname == '' || "请输入名字!" == realname) {
+                            $("#truename").val("请输入名字!");
+                            return;
+                        }
+                        if (mobile == '' || "手机号不对或为空!" == mobile) {
+                            $("#mobile").val("手机号不对或为空!");
+                            return;
+                        }
+                        if (qq == '' || "QQ号不对或为空!" == qq) {
+                            $("#qq").val("QQ号不对或为空!");
+                            return;
+                        }
+                        var submitData = {
+                            from_user:from_user,
+                            weid:weid,
+                            qq:qq,
+                            realname: realname,
+                            mobile: mobile
+                        };
+                        $.post('{$loclurl}', submitData,
+                                function(data) {
+                                    alert(data);
+                                    if(data.errno == 200) {
+                                        $("#windowcenter").slideUp(500);
+                                        $("#overlay").css("display","none");
+                                        $("#cdnb").html(data.msg);
+                                        $("#notice").css("display","");
+                                        $("#powerandgift").css("display","");
+                                        window.location.href=data.url;
+                                    }else{
+                                        $("#txt").html('<span style="color:red;">'+data.error+'</span>');
+                                    }
+                                },
+                                "json");
+                    });
+
+            $("#showcard").click(function () {
+                alert("填写详细信息真实，享受会员特权！");
+                $("#overlay").css("display","block");
+            });
+        });
+
+        $("#alertclose").click(function () {
+            $("#windowcenter").slideUp(500);
+            $("#overlay").css("display","none");
+        });
+
+        function alert(title){
+            $("#windowcenter").slideToggle("slow");
+            $("#txt").html(title);
+        }
+    </script>
+</section>
+
+</body>
+</html>

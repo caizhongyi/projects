@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript Sliders Demo</title>
+<style>
+* { margin:0; padding:0; }
+body { background:rgba(240, 240, 240, .8); font:14px/1.5 Tahoma, Verdana, Arial; width:950px; margin:0 auto; }
+header { margin:20px 0; }
+#slider_box { width:600px; height:400px; overflow:hidden; position:relative; }
+#slider_box button { background:rgba(0, 0, 0, .6); border:1px solid rgba(0, 0, 0, .7); border-radius:17px; box-shadow:0 0 3px rgba(0, 0, 0, 1); color:rgba(255, 255, 255, 1); cursor:pointer; font-size:17px; font-weight:500; width:32px; height:32px; text-align:center; vertical-align:middle; position:absolute; top:184px; z-index:999; }
+#slider_box button:hover { background:rgba(255, 255, 255, 1); border-color:rgba(240, 240, 240, 1); color:rgba(0, 0, 0, 1); }
+#slider_box li { list-style:none; position:absolute; top:0; }
+#prev { left:10px; }
+#next { right:10px; }
+#slider { position:absolute; top:0; }
+footer { font-size:12px; color:rgba(150, 150, 150, 1); margin:20px 0; }
+</style>
+</head>
+
+<body>
+<header>
+	<h1>JavaScript Sliders</h1>
+</header>
+<article>
+	<div id="slider_box">
+		<button id="prev"> &laquo; </button>
+		<button id="next"> &raquo; </button>
+		<ul id="slider">
+			<li><img src="images/1.jpg" width="600" height="400" alt="1" title="1"></li>
+			<li><img src="images/2.jpg" width="600" height="400" alt="2" title="2"></li>
+			<li><img src="images/3.jpg" width="600" height="400" alt="3" title="3"></li>
+			<li><img src="images/4.jpg" width="600" height="400" alt="4" title="4"></li>
+			<li><img src="images/5.jpg" width="600" height="400" alt="5" title="5"></li>
+		</ul>
+	</div>
+</article>
+<footer>2012 &copy; prower.cn</footer>
+<script>
+function sliderShow() {
+	if(!document.getElementById && !document.getElementsByTagName) return false;
+	var slide = document.getElementById("slider");
+	var slideli = slide.getElementsByTagName("li");
+	for(var i=0; i<slideli.length; i++) {
+		slideli[i].style.left += i * 600 + "px";
+	}
+	var prev = document.getElementById("prev"), next = document.getElementById("next");
+	var elem = document.getElementById("slider");
+	if(!elem.style.marginLeft) {
+		elem.style.marginLeft = "0";
+	}
+	var xpos = parseInt(elem.style.marginLeft);
+	next.onclick = function() {
+		if(xpos > 0 || xpos <= -2400) return false;
+		moveElement("slider",xpos -= 600,20);
+	}
+	prev.onclick = function() {
+		if(xpos >= 0 || xpos < -2400) return false;
+		moveElement("slider",xpos += 600,20);
+	}
+}
+function moveElement(elementID,gap,interval) {
+	var elem = document.getElementById(elementID);
+	if(elem.movement) {
+		clearTimeout(elem.movement);
+	}
+	var xpos = parseInt(elem.style.marginLeft);
+	if(xpos == gap) return true;
+	if(xpos > gap) {
+		var glist = Math.floor((gap - xpos)/10);
+		xpos = xpos + glist;
+	}
+	if(xpos < gap) {
+		var glist = Math.ceil((gap - xpos)/10);
+		xpos = xpos + glist;
+	}
+	elem.style.marginLeft = xpos + "px";
+	var move = "moveElement('"+elementID+"',"+gap+","+interval+")";
+	elem.movement = setTimeout(move,interval);
+}
+window.onload = sliderShow;
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<div class="footer-menu">
+	<div class="menu-main img-rounded">
+		<ul class="unstyled img-rounded">
+			{loop $_W['quickmenu']['menus'] $nav}
+			<li>
+			<a href="{$nav['url']}" class="box-item">
+				<i class="{$nav['css']['icon']['icon']}" style="{$nav['css']['icon']['style']}"></i>
+				<span style="{$nav['css']['name']}">{$nav['name']}</span>
+			</a>
+			</li>
+			{/loop}
+		</ul>
+	</div>
+	<div class="menu-button img-circle"><i class="icon-plus-sign"></i></div>
+</div>
+<script type="text/javascript">
+<!--
+	$(".menu-button").click(function() {
+		var a = $(this).find("i");
+		if(a.hasClass("icon-plus-sign")) {
+			a.removeClass("icon-plus-sign").addClass("icon-minus-sign");
+			$(".menu-main").show();
+		} else {
+			a.removeClass("icon-minus-sign").addClass("icon-plus-sign");
+			$(".menu-main").hide();
+		}
+	});
+//-->
+</script>

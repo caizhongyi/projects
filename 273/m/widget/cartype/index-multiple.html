@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/cartype.css"/>
+</head>
+<body>
+<input type="text" id="city-hidden" >
+<input type="text" id="city" data-hidden-input="#city-hidden">
+
+<script type="text/javascript" src="/mod.js"></script>
+<script>
+    var carType = require('js/cartype.js');
+    new carType('#city' ,{
+        multiple : true
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Keywords" content="微盟中心">
+    <meta name="Description" content="微盟中心">
+    <!-- Mobile Devices Support @begin -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Mobile Devices Support @end -->
+    <link rel="shortcut icon" href="http://stc.weimob.com/img/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../resource/style/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../resource/style/index.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../resource/script/formvalidator/formvalidator.css" media="all">
+
+    <script id="undefined" src="../resource/inpage_linkid.js" async="" type="text/javascript"></script>
+<!--    <script src="../resource/analytics.js" async=""></script>
+    <script src="../resource/ga.js" async="" type="text/javascript"></script>-->
+    <script type="text/javascript" src="../resource/script/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../resource/script/bootstrap.js"></script>
+
+    <script type="text/javascript" src="../resource/script/formvalidator/formvalidator.js"></script>
+<!--    <script type="text/javascript" src="../resource/script/reg.js"></script>-->
+    <script type="text/javascript" src="../resource/script/placeholder.js"></script>
+    <title>登录-微盟中心</title>
+</head>
+
+<body>
+<div id="header" class="head head-nobg">
+    <div class="top">
+        <div class="topnav">
+            <a href="/reg/business" target="_blank">微盟首页</a>|
+            <a href="http://www.weimob.com/site/proxy" target="_blank">登录</a>
+        </div>
+    </div>
+
+</div>
+<div class="container">
+    <form  class="form-horizontal form-box" action="#">
+        <div class="form-header">
+            <span class="pull-left">轻松绑定公众账号，只需三步！</span>
+        </div>
+
+        <div class="stepbar stepbar-separate stepbar-three">
+            <div class="stepbar-inner">
+                <div class="stepbar-item first active">
+                    <span class="stepbar-number"><em>1</em></span>
+                    <span class="stepbar-desc">填写您的公共账号信息</span>
+                    <hr class="stepbar-progrees">
+                </div>
+                <div class="stepbar-item">
+                    <span class="stepbar-number"><em>2</em></span>
+                    <span class="stepbar-desc">请将此URL及Token填到微信公众平台</span>
+                    <hr class="stepbar-progrees">
+                </div>
+                <div class="stepbar-item last">
+                    <span class="stepbar-number"><em>3</em></span>
+                    <span class="stepbar-desc">设置用户欢迎信息及默认回复语</span>
+                    <hr class="stepbar-progrees">
+                </div>
+            </div>
+        </div>
+        <div class="form-body">
+            <div class="control-group">
+                <label class="control-label" for="username">选择您公众号所在平台:</label>
+                <div class="controls">
+                    <label for="" class="radio"><input type="radio" name="plate"/><i class="icon-weixin "></i></label><label for="" class="radio"><input type="radio" name="plate"/><i class="icon-yixin"></i></label>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="username">公共账号名称</label>
+                <div class="controls">
+                    <input name="username" id="username" placeholder="如  微易服务"  type="text">
+                    <span class="maroon">*</span><span class="help-inline"> 输入您的公共号的名称，如  微易服务</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" id="reg-btn" class="btn-register" style="display:none;"></button>
+                    <button type="button" class="btn btn-submit"onclick="validityInvitecode(this); return false;">下一步</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#username').focus();
+
+    });
+
+    $(function(){
+        $.formValidator.initConfig({wideword:true,autotip:true,formid:"regform",onerror:function(msg){},onsuccess:function(){
+            //return confirm('请确认您填写的身份认证信息，该信息再通过审核后将无法修改!');
+        }});
+
+
+        $("#username").formValidator({onshow:"长度为6~16位字符，可以为“数字/字母/中划线/下划线”组成！",onfocus:"长度为6~16位字符，可以为“数字/字母/中划线/下划线”组成！",onerror:"输入使用云主机的具体需求必需4-20个字符！"})
+                .inputValidator({min:10,max:300,onerror:"长度为6~16位字符，可以为“数字/字母/中划线/下划线”组成！"});
+        $("#way").formValidator({onshow:"获知此次活动的渠道！",onfocus:"获知此次活动的渠道！",onerror:"输入获知此次活动的渠道必需4-50个字符！"})
+                .inputValidator({min:4,max:50,onerror:"输入申请企业名称必需10-300个字符！"});
+        $("#email").formValidator({onshow:"请填写常用邮箱,该邮箱用于接收重要信息",onfocus:"请填写常用邮箱,该邮箱用于接收重要信息",oncorrect:"邮箱格式正确"}).regexValidator({regexp:"email",datatype:"enum",onerror:"邮箱格式错误"})
+        /*    .ajaxValidator({
+         type : "get",
+         url : "",
+         data :"m=member&c=index&a=public_checkemail_ajax",
+         datatype : "html",
+         async:'false',
+         success : function(data){
+         //FIXME 测试先把 邮箱验证去掉
+         //return true;
+         if( data == "1" ) {
+         return true;
+         } else {
+         return false;
+         }
+         },
+         buttons: $("#dosubmit"),
+         onerror : "禁止注册或邮箱已存在",
+         onwait : "请稍候..."
+         });*/
+
+        $('.form [name=type]').click(function(){
+            var type = $(this).attr('data-type');
+            $('.ansy').empty().hide();
+            if(type == 'name'){
+                $('#' + type + '-content').show().html('<label for="">申请企业名称：</label><input id="name" type="text" name=""/>');
+                $("#name").formValidator({onshow:"请输入申请企业名称！",onfocus:"请输入申请企业名称！",onerror:"输入申请企业名称必需4-20个字符！"})
+                        .inputValidator({min:2,max:20,onerror:"输入申请企业名称必需4-20个字符！"});;
+            }
+            else{
+                $('#' + type + '-content').show().html('<label for="">申请电话：</label><input id="tel" type="text" />');
+                $("#tel").formValidator({onshow:"请填写手机号码",onfocus:"请填写手机号码",onempty:"请填写手机号码"})
+                        .inputValidator({min:0,max:11,onerror:"请正确填写手机号码"})
+                        .regexValidator({regexp:"^(1)[0-9]{10}$",onerror:"请正确填写手机号码"});
+            }
+        }).eq(1).click();
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<form name="form" ng-submit="submit(form.$valid)"  role="form" novalidate>
+        <table class="table modv2-table table-hover">
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 填写账号：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="账号" id="account" name="account" ng-model='item.account' class="form-control " required>测试账号：135400001
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 填写密码：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="password" placeholder="密码" id="order_no" name="passwd" ng-model='item.passwd' class="form-control " required>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-primary modv2-btn" >提交申请</button>
+</form>
+    <table class="table modv2-table table-hover" ng-if="res != ''">
+        <tr><th class="text-right">搜索结果</th></tr>
+        <tr data-ng-repeat="item in res">
+            <td  class="text-right">
+                <span class="text-danger "> {{ item.total | price}}</span>
+            </td>
+            <td class="text-right">
+                {{ item.pays | price }}
+            </td>
+
+            <td class="text-right">
+                {{ item.remains | price }}
+            </td>
+            <td class="text-center">
+                {{ item.status }}
+            </td>
+            <td class="text-center">
+                {{ item.plate }}
+            </td>
+            <td class="text-center">
+                {{ item.order_id }}
+            </td>
+            <td class="text-center">
+                {{ item.order_time }}
+            </td>
+        </tr>
+    </table>
+</div>

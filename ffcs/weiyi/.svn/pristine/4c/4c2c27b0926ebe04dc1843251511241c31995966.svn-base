@@ -1,0 +1,65 @@
+{template 'header'}
+{template 'slide'}
+<body onselectstart="return true" ondragstart="return false">
+<link href="./themes/mobile/css/common.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/css/reset.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/css/snower.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/templet7/css/home.css" rel="stylesheet" type="text/css" media="all">
+<!--<link type="text/css" rel="stylesheet" href="./resource/style/font-awesome.min.css" />-->
+<!--<script type="text/javascript" src="./themes/mobile/js/jQuery.js"></script>-->
+<script type="text/javascript" src="./themes/mobile/js/maivl.js"></script>
+<!--<script type="text/javascript" src="./themes/mobile/js/swipe.js"></script>-->
+<!--<script type="text/javascript" src="./themes/mobile/js/zepto.js"></script>-->
+<!--<img class="bgimg" src="{php echo $styles[$name.'bgimg']}"/>-->
+<!--导航菜单-->
+<div class="body">
+    <section>
+        {if $navs}
+        <?php
+        //将导航数组平均分，每组2个元素，每个元素代表一个导航
+        $num = 0;
+        $mNavs = array();//数组元素为数组
+        $nNavs = array();//元素个数为2的数组，数组元素为导航
+        $count = count($navs) - 1;//最后一个导航的索引
+        for($i = 0;$i<count($navs);$i++){
+            $nNavs[$num] = $navs[$i];
+            $num ++;
+            if($num == 2){//每两个导航为一组，并存入数组mNavs中
+                $mNavs[] = $nNavs;
+                $num = 0;
+            }else if( $num < 2 && $i == $count){//如果总个数为奇数个，则将最后一个导航单独存入数组mNavs中
+                array_splice($nNavs,1);
+                $mNavs[] = $nNavs;
+            }
+        }
+        ?>
+        <div>
+            <ul class="list_ul">
+                {loop $mNavs $values}
+                <li class="box">
+                    {loop $values $nav}
+                    <dl>
+                        <a href="{$nav['url']}">
+                            <dd>
+                                <div>
+                                    <span class="{$nav['css']['icon']['icon']}"></span>
+                                </div>
+                            </dd>
+                            <dt>{$nav['name']}</dt>
+                        </a>
+                    </dl>
+                    {/loop}
+                </li>
+                {/loop}
+            </ul>
+        </div>
+        {else}
+        <a href="mobile.php?act=channel&name=home&weid={$_W['weid']}" class="box-item">
+            <i class="icon-user"></i>
+            <span style="{$nav['css']['name']}">个人中心</span>
+        </a>
+        {/if}
+    </section>
+</div>
+
+{template 'footer'}

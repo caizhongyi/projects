@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>幻灯片 向上滚动 效果</title>
+<style type="text/css">
+*{ padding:0; margin:0; }
+body{ font-size:12px; text-align:center; }
+#scrollUp, #scrollUp2{ position:relative; width:290px; height:183px; margin:100px auto 0; }
+.scrollUp_photo, .scrollUp_photo li{ width:210px; height:183px; position:relative; float:left; overflow:hidden; }
+	.scrollUp_photo{ width:210px; height:183px; position:relative; float:left; overflow:hidden; }
+	.scrollUp_photo li{ position:absolute; top:0; left:0; display:none; }
+.scrollUp_thumb{ margin-top:20px; width:70px; height:130px; float:right; overflow:hidden; }
+	.scrollUp_thumb li{ height:40px; overflow:hidden; margin-bottom:5px; }
+.scrollUp_btn, .scrollDown_btn{ display:block; width:70px; height:20px; position:absolute; right:0; line-height:20px; background:#CCC; text-align:center; }
+.scrollUp_btn{ bottom:0; }
+.scrollDown_btn{ top:0; }
+.noUp, .noDown{ background:#eee; color:#ddd; }
+</style>
+</head>
+
+<body>
+<div id="scrollUp">
+	<!--<div class="scrollUp_photo">
+		<ul>
+			<li style="display:block;"><img src="pics/eg01.jpg" /></li>
+			<li><img src="pics/eg02.jpg" /></li>
+			<li><img src="pics/eg03.jpg" /></li>
+			<li><img src="pics/eg04.jpg" /></li>
+			<li><img src="pics/eg05.jpg" /></li>
+			<li><img src="pics/eg06.jpg" /></li>
+			<li><img src="pics/eg07.jpg" /></li>
+		</ul>
+	</div>-->
+	<div class="scrollUp_thumb">
+		<ul>
+			<li><img src="pics/eg01.jpg" /></li>
+			<li><img src="pics/eg02.jpg" /></li>
+			<li><img src="pics/eg03.jpg" /></li>
+			<li><img src="pics/eg04.jpg" /></li>
+			<li><img src="pics/eg05.jpg" /></li>
+			<li><img src="pics/eg06.jpg" /></li>
+			<li><img src="pics/eg07.jpg" /></li>
+		</ul>
+	</div>
+	<a class="scrollUp_btn" href="javascript:void(0)">↓点击滚动</a>
+	<a class="scrollDown_btn noDown" href="javascript:void(0)">↑点击滚动</a>
+</div>
+<div id="scrollUp2">
+	<!--<div class="scrollUp_photo">
+		<ul>
+			<li style="display:block;"><img src="pics/eg01.jpg" /></li>
+			<li><img src="pics/eg02.jpg" /></li>
+			<li><img src="pics/eg03.jpg" /></li>
+			<li><img src="pics/eg04.jpg" /></li>
+			<li><img src="pics/eg05.jpg" /></li>
+			<li><img src="pics/eg06.jpg" /></li>
+			<li><img src="pics/eg07.jpg" /></li>
+		</ul>
+	</div>-->
+	<div class="scrollUp_thumb">
+		<ul>
+			<li><img src="pics/eg01.jpg" /></li>
+			<li><img src="pics/eg02.jpg" /></li>
+			<li><img src="pics/eg03.jpg" /></li>
+			<li><img src="pics/eg04.jpg" /></li>
+			<li><img src="pics/eg05.jpg" /></li>
+			<li><img src="pics/eg06.jpg" /></li>
+			<li><img src="pics/eg07.jpg" /></li>
+		</ul>
+	</div>
+	<a class="scrollUp_btn" href="javascript:void(0)">↓点击滚动</a>
+	<a class="scrollDown_btn noDown" href="javascript:void(0)">↑点击滚动</a>
+</div>
+<div class="show" style="clear:both; width:100px; height:100px;"></div>
+<!--<script type="text/javascript" src="../jslib/utf8/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/scrollUp.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#scrollUp").scrollUp();
+});
+</script>-->
+<script type="text/javascript" src="http://js.olcdn.com/lib/utf8/jquery-1.4.4.min.js"></script>
+<script type="text/javascript">
+(function($){
+$.fn.stepUp = function(setting){
+	var defaults = {
+		thumb		:	'.scrollUp_thumb',	//缩略图容器
+		btnUp		:	'.scrollUp_btn',		//上滚按钮
+		btnDown		:	'.scrollDown_btn',		//上滚按钮
+		scrollTime	:	3000,	//滚动间隔时间
+		aniTime		:	500,	//滚动时间
+		noUp		:	'noUp',	//到顶时，下方按钮样式类
+		noDown		:	'noDown'	//到底时，上方按钮样式类
+	}
+	setting = $.extend({},defaults,setting);
+	return this.each(function(){
+		//init
+		var $box = $(this);
+		var $thumb = $box.find(setting.thumb);
+		var $btn = $box.find(setting.btnUp) || '';
+		var $btnDown = $box.find(setting.btnDown) || '';
+		var step = $thumb.find('li').outerHeight(true);
+		var length = $thumb.find("li").length;
+		var flag = 3;
+		var timer = '';
+		var con = $thumb.find("ul").eq(0);
+		//isAutoStop
+		//play
+		var mt=0;
+		var play = function(){
+			$btn.unbind('click');
+			mt = parseInt(con.css("margin-top"));
+			if(Math.abs(mt) < con.height()-$thumb.height()){
+				$btnDown.removeClass(setting.noDown);
+				con.animate({marginTop: mt-step*flag+'px'},setting.aniTime,function(){
+					if(Math.abs(parseInt(con.css("margin-top"))) >= con.height()-$thumb.height()){
+						$btn.addClass(setting.noUp);
+					}
+					$btn.bind('click',function(){
+						play();
+					});
+				});
+			}else{
+				$btn.bind('click',function(){
+					play();
+				});
+			}
+		}
+		//backScroll
+		var backScroll = function(){
+			$btnDown.unbind('click');
+			mt = parseInt(con.css("margin-top"));
+			if(mt<0){
+				$btn.removeClass(setting.noUp);
+				con.animate({marginTop: mt+step*flag+'px'},setting.aniTime,function(){
+					if(Math.abs(parseInt(con.css("margin-top"))) == 0){
+						$btnDown.addClass(setting.noDown);
+					}					
+					$btnDown.bind('click',function(){
+						backScroll();
+					});
+				});
+			}else{
+				$btnDown.bind('click',function(){
+					backScroll();
+				});
+			}
+		}
+		//click up
+		if($btn && typeof($btn)!=undefined)
+		{
+			$btn.bind('click',function(){
+				play();
+			});
+		}
+		//click down
+		if($btnDown && typeof($btnDown)!=undefined)
+		{
+			$btnDown.bind('click',function(){
+				backScroll();
+			});
+		}
+	});
+}	
+})(jQuery);
+</script>
+<script type="text/javascript">
+	$("#scrollUp").stepUp();
+	$("#scrollUp2").stepUp();
+	$show = $(".show");
+	$li = $('.scrollUp_thumb li');
+	$li.each(function(i,j){
+		$(j).click(function(){
+			$li.removeClass('scroll_selected').eq(i).addClass('scroll_selected');//选中的li增加样式scroll_selected
+			$show.html($(j).html());	
+		});
+	});
+	$show.html($('#scrollUp li').eq(0).html());//内容重置为第一张官方壁纸，如果#scrollUp根据需要修改
+</script>
+</body>
+</html>

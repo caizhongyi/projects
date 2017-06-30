@@ -1,0 +1,43 @@
+/*表单验证*/
+.onShow,.onFocus,.onError,.onCorrect,.onLoad,.onTime {
+	display: inline-block;
+	display: -moz-inline-stack;
+	zoom: 1;
+	*display: inline;
+	vertical-align: middle;
+	background: url(msg_bg.png) no-repeat;
+	color: #444;
+	padding: 2px 10px 2px 23px;
+	margin-bottom:10px;
+}
+
+
+.onShow {
+	background-position: 3px -147px;
+	border-color: #40B3FF;
+	color: #959595
+}
+
+.onFocus {
+	background-position: 3px -147px;
+	border-color: #40B3FF;
+}
+
+.onError {
+	background-position: 3px -47px;
+	border-color: #40B3FF;
+	color: red
+}
+
+.onCorrect {
+	background-position: 3px -246px;
+	border-color: #40B3FF;
+}
+
+
+
+textarea.formError, select.formError, input.formError[type="text"], input.formError[type="password"], input.formError[type="datetime"], input.formError[type="datetime-local"], input.formError[type="date"], input.formError[type="month"], input.formError[type="time"], input.formError[type="week"], input.formError[type="number"], input.formError[type="email"], input.formError[type="url"], input.formError[type="search"], input.formError[type="tel"], input.formError[type="color"], .uneditable-input.formError {
+    border-color: rgba(255, 96, 0, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(250, 106, 6, 0.6);
+    outline: 0 none;
+}

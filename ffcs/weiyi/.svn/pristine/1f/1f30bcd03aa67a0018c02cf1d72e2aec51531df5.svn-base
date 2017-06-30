@@ -1,0 +1,57 @@
+	<div id="footer">&copy;{if empty($_W['account']['name'])}微擎团队{else}{$_W['account']['name']}{/if}</div>
+</div>
+{if !empty($quick)}
+<div class="footer-menu">
+	<div class="menu-main img-rounded">
+		<ul class="unstyled img-rounded">
+			{loop $quick $nav}
+			<li>
+			<a href="{$nav['url']}" class="box-item">
+				<i class="{$nav['css']['icon']['icon']}" style="{$nav['css']['icon']['style']}"></i>
+				<span style="{$nav['css']['name']}">{$nav['name']}</span>
+			</a>
+			</li>
+			{/loop}
+		</ul>
+	</div>
+	<div class="menu-button img-circle"><i class="icon-plus-sign"></i></div>
+</div>
+{/if}
+<script type="text/javascript">
+$(function() {
+	$(".user-box .box-item").each(function(i) {
+		i = i +1;
+		if(i%3 == 0) $(this).css("border-right", "0");
+	});
+	$(".menu-button").click(function() {
+		var a = $(this).find("i");
+		if(a.hasClass("icon-plus-sign")) {
+			a.removeClass("icon-plus-sign").addClass("icon-minus-sign");
+			$(".menu-main").show();
+		} else {
+			a.removeClass("icon-minus-sign").addClass("icon-plus-sign");
+			$(".menu-main").hide();
+		}
+	});
+	$(window).scroll(function(){
+		$(".menu-button").find("i").removeClass("icon-minus-sign").addClass("icon-plus-sign");
+		$(".menu-main").hide();
+	});
+	$(".menu-main a").click(function(){ $(".menu-main").hide(); });
+
+	//控制tab宽度
+	var profile_tab = $(".nav-tabs li");
+	profile_tab.css({"width": 100/profile_tab.length+"%", "text-align": "center"});
+
+	//手机表单处理
+	$(".form-table").delegate(".checkbox input[type='checkbox']", "click", function(){
+		$(this).parent().toggleClass("btn-inverse");
+	});
+	$(".form-table").delegate(".file input[type='file']", "change", function(){
+		var a = $(this).next("button");
+		a.html(a.html() +' '+  $(this).val());
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active">  {{ $state.current.page.title }} </li>
+    </ol>
+</section>
+
+<script type="text/ng-template" id="tpl-print.html">
+    <div class="modal-header"></div>
+
+    <div class="modal-body">
+        <div ng-if="showInstall">
+            <font color='#FF00FF' size="4">打印控件未安装！点击这里<a href='http://att.273.com.cn/install_lodop32_v6198.exe' target='_self'>执行安装</a>,安装后请刷新页面或重新进入。</font>
+        </div>
+        <div ng-if="showUpdate">
+            <font color='#FF00FF' size="4">打印控件需要升级!点击这里<a href='http://att.273.com.cn/install_lodop32_v6198.exe' target='_self'>执行升级</a>,升级后请重新进入。</font>
+        </div>
+        <div ng-if="showInstall64">
+            <font color='#FF00FF' size="4">打印控件未安装!点击这里<a href='http://att.273.com.cn/install_lodop64_v6198.exe' target='_self'>执行安装</a>,安装后请刷新页面或重新进入。</font>
+        </div>
+        <div ng-if="showUpdate64">
+            <font color='#FF00FF' size="4">打印控件需要升级!点击这里<a href='http://att.273.com.cn/install_lodop64_v6198.exe' target='_self'>执行升级</a>,升级后请重新进入。</font>
+        </div>
+        <div ng-if="showFireFox">
+            <font color='#FF00FF' size="4">注意：<br>1：如曾安装过Lodop旧版附件npActiveXPLugin,请在【工具】->【附加组件】->【扩展】中先卸它。</font>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary modv2-btn" ng-click="cancel()">取消</button>
+    </div>
+</script>
+<!-- Main content -->
+
+<object id="LODOP_OB" width="0" height="0" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA">
+    <embed id="LODOP_EM" width="0" height="0" pluginspage="install_lodop32_v6198.exe" type="application/x-print-lodop">
+</object>
+<section class="content slide" >
+    <img style="left:50%;margin:10px 0 0 -392px;position: absolute;width:780px;" src="img/contractHeader.jpg"/>
+    <div id="contain" class="fixedbar-wrap"  style="position:relative;z-index:2;">
+        <style type="text/css">
+            .header, .line1, .line2{text-align: center;}
+            .line1,.line2,table{font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:13px;}
+            .line1{font-size: 24px;font-weight : bold}
+            .underLine{text-decoration : underline }
+
+            table{ margin: 0 auto;width: 780px;border-collapse:collapse; }
+            table td{border:1px solid #000000; padding:1px 7px;}
+        </style>
+        <div class="header"  style="margin: 3px 0 0 600px;">
+            <img style="margin-left: 130px;" src="{{item.codeImage}}"/>
+            <div class="line1" style="margin:15px 0 8px 0">
+                <span style="font-size:13px;font-weight:normal;" class="">
+                    {{ item.contract_no }}
+                </span>
+            </div>
+        </div>
+
+        <div class="line2">根据相关法律法规和遵循公平、诚实信用原则，就旧机动车现状及交易的实际情况经甲乙双方协商一致，自愿达成如下协议：</div>
+        <table  cellspacing="0" cellpadding="0">
+            <tr>
+                <td colspan="12" style="font-weight : bold; ">一、交易车辆基本信息确认：</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="width: 25%">车辆登记人</td>
+                <td colspan="2" style="width: 25%">{{item.vehicle_owner}}</td>
+                <td colspan="2" style="width: 25%">车牌号</td>
+                <td colspan="5" style="width: 25%">{{item.car_number}}</td>
+            </tr>
+            <tr>
+                <td colspan="3">品牌型号</td>
+                <td colspan="2">{{item.brand_name}} {{ item.series_name }}</td>
+
+                <td colspan="2">首次车辆注册日期</td>
+                <td colspan="5">{{item.first_register_time  ? (item.first_register_time  | date:"yyyy年MM月dd日") : '-'}}</td>
+
+            </tr>
+            <tr>
+                <td colspan="3">车辆识别代码（VIN码）</td>
+                <td colspan="2">{{item.vin}}</td>
+                <td colspan="2">年检到期日期</td>
+                <td colspan="5">{{item.year_check_time  ? (item.year_check_time | date:"yyyy年MM月") : '-'}}</td>
+            </tr>
+            <tr>
+                <td colspan="3">发动机号</td>
+                <td colspan="2">{{item.engine_no}}</td>
+                <td colspan="2">路桥费到期日期</td>
+                <td colspan="5">
+                    <span  ng-if="item.road_bridge_time !=1">{{item.road_bridge_time | date:"yyyy年MM月dd日"}}</span>
+                    <span  ng-if="item.road_bridge_time ==1">无</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">发动机排量</td>
+                <td colspan="2">{{item.displacement}}</td>
+                <td colspan="2">商业险到期日期</td>
+                <td colspan="5">
+                    <span  ng-if="item.safe_business_time !=1"> {{item.safe_business_time  | date:"yyyy年MM月dd日"}}</span>
+                    <span  ng-if="item.safe_business_time ==1">无</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">变速箱</td>
+                <td colspan="2">{{item.gearbox_name}}</td>
+                <td colspan="2">交强险到期日期</td>
+                <td colspan="5">
+                    <span  ng-if="item.safe_force_time !=1">{{item.safe_force_time | date:"yyyy年MM月dd日"}}</span>
+                    <span  ng-if="item.safe_force_time ==1">无</span>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="3">车辆使用性质</td>
+                <td colspan="2">{{item.use_type_name}}</td>
+                <td colspan="2">表显里程</td>
+                <td colspan="5">{{item.mileage}}<span ng-if="item.unit==1">公里</span><span ng-if="item.unit==2">英里</span></td>
+            </tr>
+            <tr>
+                <td colspan="12" style="font-weight : bold; ">二、成交价格、交易保证（交易保证金标准：车辆成交价5%，不低于2000元）：</td>
+            </tr>
+
+            <tr>
+                <td colspan="2" >1、成交价格</td>
+                <td colspan="10">约定车辆成交价为：
+                    <span  class="underLine"> <span ng-if="item.sale_price">￥{{item.sale_price | price }} </span>
+                    <span ng-if="!item.sale_price"> / </span></span>&nbsp;元人民币。
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" rowspan="2" >2、交易保证</td>
+                <td colspan="10">乙方愿支付交易保证金
+                    <span  class="underLine">
+                        <span ng-if="item.b_deposit_c2">￥{{item.b_deposit_c2 | price }} </span>
+                        <span ng-if="!item.b_deposit_c2">&nbsp;/</span>
+                    </span>&nbsp;元人民币，交由<span ng-if="item.template==1">丙方1或丙方2</span><span ng-if="item.template!=1">丙方2</span>保管。</td>
+            </tr>
+            <tr>
+                <td colspan="10">
+                    甲方愿支付交易保证金
+                    <span  class="underLine">
+                        <span ng-if="item.a_deposit_c2">￥{{item.a_deposit_c2 | price }}&nbsp;</span>
+                        <span ng-if="!item.a_deposit_c2">&nbsp;/</span>
+                    </span> 元人民币，交由<span ng-if="item.template==1">丙方1或丙方2</span><span ng-if="item.template!=1">丙方2</span>保管；<br/>
+                    <span ng-if="item.a_safekeeping_cert_c1_name || item.a_safekeeping_cert_c1_other">
+                        甲方愿交付
+                        <span class="underLine">
+                            {{item.a_safekeeping_cert_c1_name }}
+                            <span ng-if="item.a_safekeeping_cert_c1_other">
+                                <span ng-if="item.a_safekeeping_cert_c1_name">、</span>{{item.a_safekeeping_cert_c1_other }}
+                            </span>
+                        </span>  于丙方1保管。
+                    </span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td colspan="12" style="font-weight : bold; ">三、车款结算（元/人民币）</td>
+            </tr>
+
+            <tr>
+                <td colspan="1" rowspan="2" style="width:130px;">委托<span ng-if="item.template==1">丙方1或丙方2</span><span ng-if="item.template!=1">丙方2</span>车付宝代结算车款，<br/>
+                    <span ng-if="item.car_fee_balance_type == 1" style="font-weight:bold;">委托丙方1过户</span>
+                    <span ng-if="item.car_fee_balance_type == 2" style="font-weight:bold;">甲乙双方自行过户</span>
+                </td>
+                <td colspan="11">
+                    ①乙方在 <span class="underLine">{{item.b_car_fee_time_c2 | date:"yyyy年MM月dd日"}}</span>&nbsp;前支付 <span ng-if="item.b_car_fee_type != 2 ">全部</span> <span ng-if="item.b_car_fee_type == 2">部分</span>车款&nbsp;<span class="underLine">
+                        <span ng-if="item.b_car_fee_c2">￥{{item.b_car_fee_c2 | price }}</span>
+                        <span ng-if="!item.b_car_fee_c2">&nbsp;/&nbsp;</span>
+                    </span>&nbsp;元（含交易保证金）并交予<span ng-if="item.template==1">丙方1或丙方2</span><span ng-if="item.template!=1">丙方2</span>保管；<br/>
+                    <span ng-if="item.b_car_fee_type == 2">乙方未支付的车辆余款&nbsp;<span class="underLine">￥{{item.b_remain_car_fee_c2 | price }}</span>&nbsp;元在 <span class="underLine">{{item.b_remain_car_fee_time_c2 | date:"yyyy年MM月dd日"}}</span> 前交由<span ng-if="item.template==1">丙方1或丙方2</span><span ng-if="item.template!=1">丙方2</span>保管；<br/>
+                    </span>
+                    ②乙方委托<span ng-if="item.template==1">丙方1或丙方2</span><span ng-if="item.template!=1">丙方2</span>：在<span class="underLine">{{item.b_c2_car_fee_time | date:"yyyy年MM月dd日"}}</span>当日支付部分车款&nbsp;<span class="underLine">
+                        <span ng-if="item.b_c2_car_fee">￥{{item.b_c2_car_fee | price }}</span>
+                        <span ng-if="!item.b_c2_car_fee">&nbsp;/&nbsp;</span>
+                    </span>&nbsp;元给甲方；<br/>
+                    <span ng-if="item.car_fee_balance_type == 1">③甲乙双方委托丙方1办理过户手续，在过户手续办理完结后 <span class="underLine">{{item.b_c1_working_days}}</span> 个工作日内由<span ng-if="item.template==1">丙方1或丙方2</span><span ng-if="item.template!=1">丙方2</span>将全部余款支付给甲方。</span>
+                    <span ng-if="item.car_fee_balance_type == 2">③甲乙双方自行过户，则甲方将车辆交付乙方后 <span class="underLine">{{item.b_c1_working_days}}</span> 个工作日内由<span ng-if="item.template==1">丙方1或丙方2</span><span ng-if="item.template!=1">丙方2</span>将全部余款支付给甲方。</span>
+                    <br/>
+                    ④卖方指定收款账户，户名：<span class="underLine">{{item.gathering_account_username}}</span>；账号：<span class="underLine">{{item.gathering_account}}</span>；开户行：<span class="underLine">{{item.gathering_account_bank_branch}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="11">
+                    ①办理验车、过户转籍手续时间：在 <span class="underLine">{{item.change_start_time | date:"yyyy年MM月dd日"}}</span>&nbsp;至 <span class="underLine">{{item.change_end_time | date:"yyyy年MM月dd日"}}</span>&nbsp;内办理验车过户转籍手续。
+                    ②乙方指定过户人：乙方指定车辆变更至 <span class="underLine">&nbsp;{{item.new_vehicle_owner}}&nbsp;</span>（姓名）名下，其身份证号码为：<span class="underLine">{{item.new_vehicle_owner_cert_no}}</span>。
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="12">
+                    <span style="font-weight : bold ">四、服务项目：</span>
+                    {{item.service_items_name}}
+                    <span ng-if="item.service_items_other">、{{item.service_items_other}}</span><br/>
+                    <span style="font-weight : bold ">车况宝检测服务与延保产品服务说明：签订正式交易合同且交易保证金、车款和其他相关费用全额委托丙方2车付宝代结算情况下：</span><br/>
+                    <div style="color: red">
+                        <span style="text-decoration: underline"> 1、丙方2提供车况宝检测服务，对车辆状况进行检测并出具检测报告，丙方2承诺检测失误90天内退车还款（检测项目、内容及承诺检测失误90天内退车还款具体约定以丙方2出具的车况宝《车辆检测报告》和《车况宝退车保障书》为准）。但是如果甲乙双方交易车辆时“本合同约定车辆成交价”与“委托丙方2车付宝代结算金额”或与“《车辆检测报告》确定的退车保障价“不一致时，则一旦发生车况宝检测失误，乙方提出退车还款时，以 “委托丙方2车付宝代结算车款金额”为准。<br/>
+                        </span>
+                        2、丙方2提供延保产品服务，具体的延保产品服务承诺以丙方2提供的相关“延保服务合同”为准。<br/>
+                        3、丙方2为甲乙双方提供车辆交易信息、车款代收代付与监管、车况检测、延保产品等服务；丙方1系丙方2落地运营服务商，受丙方2委托对甲乙双方提供线下交易约看、撮合、合同签订、代办过户等落地服务。
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="12" style="font-weight : bold;">五、服务费用（以上服务费用应于车辆交付之前通过<span ng-if="item.template==1">丙方1或丙方2</span><span ng-if="item.template!=1">丙方2</span>车付宝支付完毕，单位：元/人民币）：</td>
+            </tr>
+            <tr ng-if="item.template != 1">
+                <td  colspan="2" style="width: 13%" >1、甲方承担</td>
+                <td  colspan="1" style="width: 11%">信息服务费</td>
+                <td  colspan="1" style="width: 8%">
+                    <span ng-if="item.a_brokerage">￥{{item.a_brokerage | price }}</span>
+                    <span ng-if="!item.a_brokerage"> /</span>
+                </td>
+                <td  colspan="1" style="width: 11%">代办过户费</td>
+                <td  colspan="1" style="width: 8%">
+                    <span ng-if="item.a_anency_fee">￥{{item.a_anency_fee | price }}</span>
+                    <span ng-if="!item.a_anency_fee"> /</span>
+                </td>
+                <td  colspan="1" style="width: 11%">其他费用</td>
+                <td  colspan="1" style="width: 8%">
+                    <span ng-if="item.a_other_fee">￥{{item.a_other_fee | price }}</span>
+                    <span ng-if="!item.a_other_fee"> /</span>
+                </td>
+                <td  colspan="1" style="width: 11%">&nbsp;</td>
+                <td  colspan="3" style="width: 8%">&nbsp;</td>
+            </tr>
+            <tr ng-if="item.template == 1">
+                <td  colspan="2" style="width: 13%" >1、甲方承担</td>
+                <td  colspan="1" style="width: 11%">信息服务费</td>
+                <td  colspan="1" style="width: 8%">
+                    <span ng-if="item.a_brokerage">￥{{item.a_brokerage | price }}</span>
+                    <span ng-if="!item.a_brokerage"> /</span>
+                </td>
+                <td  colspan="1" style="width: 11%">平台服务费</td>
+                <td  colspan="1" style="width: 8%">
+                    <span ng-if="item.a_platform_fee">￥{{item.a_platform_fee | price }}</span>
+                    <span ng-if="!item.a_platform_fee"> /</span>
+                </td>
+                <td  colspan="1" style="width: 11%">代办过户费</td>
+                <td  colspan="1" style="width: 8%">
+                    <span ng-if="item.a_anency_fee">￥{{item.a_anency_fee | price }}</span>
+                    <span ng-if="!item.a_anency_fee"> /</span>
+                </td>
+                <td  colspan="1" style="width: 11%">其他费用</td>
+                <td  colspan="3" style="width: 8%">
+                    <span ng-if="item.a_other_fee">￥{{item.a_other_fee | price }}</span>
+                    <span ng-if="!item.a_other_fee"> /</span>
+                </td>
+            </tr>
+            <tr ng-if="item.template != 1">
+                <td  colspan="2">2、乙方承担</td>
+                <td  colspan="1">信息服务费</td>
+                <td  colspan="1">
+                    <span ng-if="item.b_brokerage">￥{{item.b_brokerage | price }}</span>
+                    <span ng-if="!item.b_brokerage"> /</span>
+                </td>
+                <td  colspan="1">代办过户费</td>
+                <td  colspan="1">
+                    <span ng-if="item.b_anency_fee">￥{{item.b_anency_fee | price }}</span>
+                    <span ng-if="!item.b_anency_fee"> /</span>
+                </td>
+
+                <td  colspan="1">代办按揭费</td>
+                <td  colspan="1">
+                    <span ng-if="item.b_anency_mortgage_fee">￥{{item.b_anency_mortgage_fee | price }}</span>
+                    <span ng-if="!item.b_anency_mortgage_fee"> /</span>
+                </td>
+
+                <td  colspan="1">其他费用</td>
+                <td  colspan="3">
+                    <span ng-if="item.b_other_fee">￥{{item.b_other_fee | price }}</span>
+                    <span ng-if="!item.b_other_fee"> /</span>
+                </td>
+            </tr>
+            <tr ng-if="item.template == 1">
+                <td  colspan="2">2、乙方承担</td>
+                <td  colspan="1">信息服务费</td>
+                <td  colspan="1">
+                    <span ng-if="item.b_brokerage">￥{{item.b_brokerage | price }}</span>
+                    <span ng-if="!item.b_brokerage"> /</span>
+                </td>
+
+                <td  colspan="1">平台服务费</td>
+                <td  colspan="1">
+                    <span ng-if="item.b_platform_fee">￥{{item.b_platform_fee | price }}</span>
+                    <span ng-if="!item.b_platform_fee"> /</span>
+                </td>
+                <td  colspan="1">代办过户费</td>
+                <td  colspan="1">
+                    <span ng-if="item.b_anency_fee">￥{{item.b_anency_fee | price }}</span>
+                    <span ng-if="!item.b_anency_fee"> /</span>
+                </td>
+
+                <td  colspan="1">其他费用</td>
+                <td  colspan="3">
+                    <span ng-if="item.b_other_fee">￥{{item.b_other_fee | price }}</span>
+                    <span ng-if="!item.b_other_fee"> /</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="12" style="font-weight : bold; ">六、车辆及证件资料交付时间（本款约定即为交付，不另行办理交接手续）： </td>
+            </tr>
+            <tr>
+                <td colspan="2" >1、交付时间</td>
+                <td colspan="10"><span class="">{{item.delivery_time_2 * 1000 | date:"yyyy年MM月dd日 HH时mm分 "}} </span></td>
+            </tr>
+            <tr>
+                <td colspan="2">2、交付项目</td>
+                <td colspan="10">
+                    <span ng-bind-html="item.delivery_items_name"></span>
+                    <span ng-if="item.delivery_items_other">、{{item.delivery_items_other}}</span>。
+                </td>
+            </tr>
+            <tr>
+                <td colspan="12"><span  style="font-weight : bold ">七、关于按揭约定：</span>
+                    <span ng-if="item.mortgage_set==1">
+                        买方申请金融按揭，如因买方原因申请不通过，买方支付丙方2 <span class="underLine">￥{{item.mortgage_brokerage | price}} </span> 元信息服务费，支付卖方 <span  class="underLine">￥{{item.mortgage_compensation | price }} </span> 元补偿，合同自动解除。
+                    </span>
+                    <span ng-if="item.mortgage_set==2">
+                        买方申请金融按揭，如因买方原因申请不通过，买方以现金方式支付，合同继续履行。
+                    </span>
+                    <span ng-if="!item.mortgage_set">
+                        无
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="12">
+                    <span style="font-weight : bold;">八、其它约定事项：</span>
+                    <span ng-if="item.other_agreement">{{item.other_agreement}}</span>
+                    <span ng-if="!item.other_agreement">无</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <span style="float:right;">甲方（签章）：<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>
+                    甲方（卖方）：{{item.seller_name}}
+                    <br/>
+                    {{item.seller_cert_type_name}}号：{{item.seller_cert_no}}<br/>
+                    <span ng-if="item.seller_agent_cert_no">
+                        代理人：{{item.seller_agent_name}}<br/>
+                        {{item.seller_agent_cert_type_name}}号：{{item.seller_agent_cert_no}}<br/>
+                    </span>
+                    联系地址：
+                    <span ng-if="item.a_address">{{item.a_address}}</span>
+                    <span ng-if="!item.a_address">无</span>
+                    <br/>
+                </td>
+                <td colspan="7">
+                    <span style="float:right;">乙方（签章）：<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>
+                    乙方（买方）：{{item.buyer_name}}
+                    <br/>
+                    {{item.buyer_cert_type_name}}号：{{item.buyer_cert_no}}<br/>
+                    <span ng-if="item.buyer_agent_cert_no">
+                    代理人：{{item.buyer_agent_name}}<br/>
+                    {{item.buyer_agent_cert_type_name}}号：{{item.buyer_agent_cert_no}}<br/>
+                    </span>
+                    联系地址：<span ng-if="item.b_address">{{item.b_address}}</span>
+                    <span ng-if="!item.b_address">无</span>
+                    <br/>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    　　　　丙方1（落地运营服务商）：<br/>
+                    273二手车交易网特许加盟<span class=""> {{item.dept_id_name}} </span><br/>
+                    经营主体（签章）：　　　　　　　　经办人：<span  class="">{{item.add_user_id_name}}</span>
+                </td>
+                <td colspan="7">
+                    　　　　　　丙方2（273二手车交易网）：<br/>
+                    　　　　　　福州车友网络科技有限公司<br/>
+                </td>
+            </tr>
+        </table>
+        <div style="text-align: right; width: 780px; margin: 0 auto;">
+            签订时间：{{item.sign_time | date:"yyyy年MM月dd日"}}
+            <span style="float: right;margin: -135px 20px;"><img width="145" style="z-index: -1" src="img/contractSeal.png"/> </span>
+        </div>
+    </div>
+
+    <div class="fixedbar text-center" style="width: 90%">
+        <button  class="btn btn-primary modv2-btn" ng-click="showPrint()">打印</button>
+    </div>
+
+</section>
+<!-- /.content -->

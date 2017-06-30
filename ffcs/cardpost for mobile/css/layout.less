@@ -1,0 +1,114 @@
+@import "mixins/index";
+
+body,html{ font-size: 12px; background: #fff; font-family: 'microsoft yahei'}
+
+a{
+	text-decoration: none;
+	transition: color .2s linear 0;
+	/* blr:expression(this.onFocus=this.close()); 只支持IE，过多使用效率低 */
+	&:focus { -moz-outline-style: none;outline: none;  } /* IE不支持 */
+}
+
+.carousel img{ width: 100%;}
+
+.glyphicon-chevron-left:before{  content: '<'}
+.glyphicon-chevron-right:before{  content: '>'}
+
+.img-default { background: #eee;}
+
+.icon { display:inline-block; vertical-align: middle; }
+.icon-list-detail { background: url(../img/icon-list-detail.png) no-repeat; width: 38px; height: 26px; }
+
+.btn-more,.btn-more:hover,.btn-more:focus{ background: #e93a2f ; color: #fff; border-radius: 0;}
+
+.main { overflow: hidden; }
+
+.header{
+	z-index: 1;
+	position: relative;
+	font-size: 20px;
+	text-align: center;
+	height: 55px;
+	line-height: 55px;
+	.linear-gradient(top, #ec4137 30%, #e6352a 70%);
+	a,&{ color: #fff; }
+	.main{ border-right:1px solid #ec4137 ; border-left:1px solid #ec4137 ;  overflow: hidden; height: 100%; }
+	.pull-left { border-right: 1px solid #cd1a0e ;}
+	.pull-right{ border-left: 1px solid #cd1a0e ; }
+	.pull-left ,  .pull-right { width: 30%;  }
+	.btn-navbar.shown{ background: #e7382d;}
+	.figure{ position: absolute; bottom: -36px; width: 100%; height: 36px; background: url(../img/flower-figure.png) repeat-x; left: 0;}
+	.navbar{   display: none; width: 100%; }
+	.navbar.shown{ display: block ; }
+}
+
+.header + .module { margin-top: 40px;}
+.module{
+	margin-bottom: 10px;
+	.module-header , .module-container , .module-footer { padding: 10px; }
+	.module-title{ float: left;}
+	.pull-left{ font-size: 25px;}
+	.module-opts{
+		float: right ;
+		a,input,button,span { margin-left: 10px;  }
+	}
+	.module-header .btn{ margin-top:14px; display: inline-block; }
+}
+
+.module-card { background: url(../img/tooth-down.png) repeat-x bottom; margin-bottom: 0;}
+.module-card:nth-child(odd){ background:#f5f3f0; }
+
+.list-card {}
+.list-card li{ float: left;  width: 33.33333%; height: 160px;  text-align: center; margin-bottom: 10px;}
+.list-card li .item {  width: 100px;  }
+.list-card li .item:hover{ text-decoration: none;}
+.list-card li img{ border: 1px solid #ddd; width: 80px; height: 100px; }
+.list-card li span{ display: block; }
+.list-card li .caption{ margin: 5px 0; font-size: 14px; color: #666;}
+.list-card li .desc{ color: #999;  font-size: 12px; }
+.list-card li .desc em {  font-style: normal; margin: 0 3px; }
+
+.carousel{
+	.carousel-indicators li{ background: #ffd9d3; margin: 0 5px; width: 13px; height: 13px;}
+	.carousel-indicators .active{ background: #cd1a0e;}
+}
+
+.navbar {
+	background: #cd1a0e;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	padding: 5px 10px;
+	li{ width: 25%; text-align: center; float: left; height: 30px; line-height: 30px; font-size: 16px; }
+	a{ color: #fff;}
+	a:hover{ color: #ffa493;}
+}
+
+.invite{
+	text-align: center;
+	margin:20px 0;
+}
+.invite .btn,.invite .btn:hover,.invite .btn:active{ background: none; display: block; width: 80%; margin: 0 auto; .linear-gradient( top ,  #f31f0c 40% , #e9170d 60%);}
+
+.card{ padding: 5%;  background: #f4f3ef;}
+.card .card-info{ position: relative; border: 2px solid #ddd; }
+.card-container{ left: 0; top: 0; position: absolute; height: 100%;overflow: hidden; width: 100%;  }
+.card  img{ width: 100%;}
+.card  .card-text{  padding:5% 7%; letter-spacing: 1.5px; color:#666; }
+.card .title{ font-size: 30px; height: 25%; }
+.card .content{ font-size: 30px; line-height: 2; }
+.card .img{ bottom: 0;}
+.card .card-custom{ position: absolute; bottom: 5%; right: 5%; width: 25%;z-index: 10; }
+.card b{ font-weight: normal;}
+
+.tab{ position: relative; list-style: none; margin: 0; padding: 0; }
+.tab li{position:absolute;left:0px;top:0px;width:100%;list-style:none;z-index:1;}
+
+#textsub ,#textsuper{ position: relative; overflow: hidden; }
+
+.guid,.overlay{ position: fixed; z-index: 10; }
+.guid{ background: url(../img/guide.png) no-repeat; width:330px; height: 228px;  right: 0;top: 0;z-index: 11;}
+.overlay{ background: #000; opacity: 0.5; left: 0;top: 0; width: 100%; height: 100%;}
+// 界于水平手机与竖直平板之间
+@media (max-width: 450px) {
+}

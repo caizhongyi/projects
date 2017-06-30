@@ -1,0 +1,39 @@
+{templateWithTemplet 'mobile/header','templet6'}
+<link href="./themes/mobile/css/car_rest.css" rel="stylesheet" type="text/css" media="all">
+<lINK href="./themes/mobile/templet6/css/list.css" rel="stylesheet" type="text/css" media="all">
+<div class="weimob-page">
+    <div class="weimob-content">
+        {loop $newsInfo $row}
+        <div class="weimob-list">
+            <a class="weimob-list-box" href="{php echo create_url('mobile/channel', array('name' => 'detail', 'id' => $row['id'], 'templetid'=>$_GPC['templetid'],'weid' => $_W['weid']))}">
+                <div class="weimob-list-sau">
+                            <span class="mday">
+                                <b class="day">{php echo date('d', $row['createtime'])}</b>/{php echo date('m', $row['createtime'])}</span>
+                    <span class="years">{php echo date('Y', $row['createtime'])}</span>
+                </div>
+                <div class="weimob-list-item">
+                    <div class="weimob-list-item-line">
+                        <div class="weimob-list-item-title">{$row['title']}</div>
+                        <div class="weimob-list-item-img"><img src="{$_W['attachurl']}{$row['thumb']}"></div>
+                    </div>
+                    <div class="weimob-list-more"><div class="weimob-list-item-more">阅读全文</div><div class="weimob-list-item-more-icon icon-arrow-r"></div></div>
+                </div>
+            </a>
+        </div>
+        {/loop}
+    </div>
+</div>
+
+<ol class="list_ul_news_nav box">
+    {if !empty($prepageur) }
+    <li>
+        <a href="{$prepageur}">上一页</a>
+    </li>
+    {/if}
+    {if !empty($nextpageurl) }
+    <li>
+        <a href="{$nextpageurl}">下一页</a>
+    </li>
+    {/if}
+</ol>
+{templateWithTemplet 'mobile/footer','templet6'}

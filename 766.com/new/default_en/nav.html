@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div class="top"> {loop source=lang()} <a href="{print $v['url']/}" {print $v['class']/} {print $v['target']/}>{print $v['lang_name']/}</a> {/loop}
+  </div>
+  <!--flash-->
+  <div class="content_right">
+    <div class="ad" >
+      <ul class="slider" >
+        <li><a href="{path template/}/images/4.jpg"><img src="{path template/}/images/4.jpg"/></a></li>
+      </ul>
+    </div>
+  </div>
+  <!--flash end-->
+  <div class="nav"> 
+  	<a href="{path index/}" target="_blank" class="a1" >{print weblangs('index')/}</a> 
+
+  	{loop source=nav_middle() item=$nav_child} 
+		<a href="{print $nav_child['url']/}" class="a{print $nav_child['key']/}" {print $nav_child['target']/}>{print $nav_child['cate_name']/}</a>
+
+	{/loop}
+  </div>

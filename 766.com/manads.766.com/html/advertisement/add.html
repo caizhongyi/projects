@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>系统首页</title>
+
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  </head>
+
+  <body>
+  <form id="adv-form" method="post" class="form">
+      <table width="100%" cellspacing="5">
+          <tr>
+              <td align="right" width="120">广告样式：</td>
+              <td><select class="easyui-combobox" name="" id=""></select></td>
+          </tr>
+          <tr>
+              <td align="right" >广告分类：</td>
+              <td><select class="easyui-combobox" name="" id=""></select></td>
+          </tr>
+          <tr>
+              <td align="right" >广告位置：</td>
+              <td><select class="easyui-combobox" name="" id=""></select></td>
+          </tr>
+          <tr>
+              <td align="right" >投放厂商：</td>
+              <td><select class="easyui-combobox" name="" id=""></select></td>
+          </tr>
+          <tr>
+              <td align="right" >广告素材类型：</td>
+              <td><select class="easyui-combobox" name="" id=""></select></td>
+          </tr>
+          <tr>
+              <td align="right" >广告起始时间：</td>
+              <td><input class="easyui-datebox easyui-validatebox" data-options="required:true,validType:'date'" name="" id=""/>&nbsp;<input type="text" style="width: 30px;">&nbsp;时&nbsp;<input type="text" style="width: 30px;">&nbsp;分</td>
+          </tr>
+          <tr>
+              <td align="right" >广告起始时间：</td>
+              <td><input class="easyui-datebox easyui-validatebox" data-options="required:true,validType:'date'" name="" id=""/>&nbsp;<input type="text" style="width: 30px;">&nbsp;时&nbsp;<input type="text" style="width: 30px;">&nbsp;分</td>
+          </tr>
+          <tr>
+              <td align="right" >广告类型：</td>
+              <td>目前该广告位置设置为投放图片广告</td>
+          </tr>
+          <tr>
+              <td align="right" valign="top" >图片广告：</td>
+              <td>
+                  窄屏:&nbsp;<input type="text">&nbsp;<a href="javascript:void(0);" class="easyui-linkbutton">本地上传</a>&nbsp;<a href="javascript:void(0);" class="easyui-linkbutton">预览</a><br>
+                  宽屏:&nbsp;<input type="text">&nbsp;<a href="javascript:void(0);" class="easyui-linkbutton">本地上传</a>&nbsp;<a href="javascript:void(0);" class="easyui-linkbutton">预览</a>
+              </td>
+          </tr>
+          <tr>
+              <td align="right" valign="top" >文字广告：</td>
+              <td>
+                  <textarea name="" id="" cols="30" rows="10" ></textarea>
+              </td>
+          </tr>
+          <tr>
+              <td align="right" valign="top" width="90">广告链接地址：</td>
+              <td>
+                  <textarea name="" id="" cols="30" rows="10" ></textarea>
+              </td>
+          </tr>
+          <tr>
+              <td align="right" valign="top" width="90">广告词：</td>
+              <td>
+                  <textarea name="" id="" cols="30" rows="10"  ></textarea>
+              </td>
+          </tr>
+          <tr>
+              <td align="right" valign="top" width="90">是否设置为默认广告：</td>
+              <td>
+                  <input type="checkbox">&nbsp;是&nbsp;<input type="checkbox">&nbsp;否
+              </td>
+          </tr>
+          <tr>
+              <td align="right" valign="top" width="90">&nbsp;</td>
+              <td>
+                  <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-ok" onclick="submitForm()">提交</a>
+                  <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-cancel" onclick="clearForm()">清空</a>
+              </td>
+          </tr>
+      </table>
+
+  </form>
+  <script type="text/javascript">
+      function submitForm(){
+          $('#adv-form').form('submit');
+      }
+      function clearForm(){
+          $('#adv-form').form('clear');
+      }
+  </script>
+  </body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="微易、微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" name="Keywords">
+    <meta content="微易，国内最大的微信公众智能服务平台，微易八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" name="Description">
+    <link rel="stylesheet" type="text/css" href="./resource/style/bootstrap.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="./resource/style/bootstrap-responsive.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="./resource/style/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/inside.css?2013-10-15-2" media="all" />
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/plugins/chosen/chosen.css?2013-10-15-2" media="all" />
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/web_bb/back/setcard.css?2013-10-15-2" media="all" />
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./resource/script/jquery.cookie.js"></script>
+    <script type="text/javascript" src="./resource/script/bootstrap.js"></script>
+    <script type="text/javascript" src="./resource/script/jquery_form_min.js?2013-10-15-2"></script>
+    <script type="text/javascript" src="./resource/script/jquery_validate_min.js?2013-10-15-2"></script>
+    <script type="text/javascript" src="./resource/script/jquery_validate_methods.js?2013-10-15-2"></script>
+    <script type="text/javascript" src="./resource/script/chosen_jquery_min.js?2013-10-15-2"></script>
+    <!--<script type="text/javascript" src="./resource/script/jquery_form_wizard_min.js?2013-10-15-2"></script>-->
+    <script type="text/javascript" src="./resource/script/jscolor/jscolor.js?2013-10-15-2"></script>
+    <script type="text/javascript" src="./resource/script/inside.js?2013-10-15-2"></script>
+    <script type="text/javascript" src="./resource/script/map.js?2013-10-15-2"></script>
+    <title>微易公众服务平台</title>
+    <link href="./resource/script/kindeditor/themes/default/default.css" rel="stylesheet" />
+    <script src="./resource/script/kindeditor/kindeditor-min.js"></script>
+    <script src="./resource/script/kindeditor/lang/zh_CN.js"></script>
+    <script src="./resource/script/kindeditor/kindeditor.config-upfile.js"></script>
+</head>
+<body>
+<script>
+    $(document).ready(function () {
+        $("div.mc-name").css("color", $('#cname_color').val());
+        $("#select_bg").val("./resource/cards/card_bg05.png");
+        $("div.mc-number").css("color", '#000000');
+
+        $("#cname").change(function () {
+            $("div.mc-name").text($(this).val())
+        });
+        $("#cname_color").change(function () {
+            $("div.mc-name").css("color", $(this).val())
+        });
+        $("#numbercolor").change(function () {
+            $("div.mc-number").css("color", $(this).val())
+        });
+        $("#select_bg").change(function () {
+
+            var v = $(this).val();
+            if (v.length > 0) {
+                $("img.i-img").attr("src", v)
+                $("#card_bg").val(v);
+            }
+        });
+    });
+</script>
+<div class="container-fluid" id="Div1">
+
+<div id="Div2">
+<div class="container-fluid">
+
+<div class="row-fluid">
+<div class="span12">
+<div class="box">
+<div class="box-title">
+    <div class="span10">
+        <h3><i class="icon-edit"></i>会员卡设置</h3>
+    </div>
+    <div class="span2"><a class="btn btn-sm btn-light" href="Javascript:window.history.go(-1)">返回</a></div>
+</div>
+<div class="box-content">
+<form action="/membercard/addcard" method="POST" class='form-horizontal form-validate'>
+<input type="hidden" name="aid" value="9643"/>
+<input type="hidden" name="mckey" value="1661"/>
+<div class="span12">
+<div class="img-preview">
+    <div class="img-wrapper">
+        <img class="i-img" src="./resource/cards/card_bg05.png">
+        <img class="mc" style="left: 20px; top: 20px;" src="http://img.weimob.com/static/16/7d/2a/image/20131021/20131021134629_42411.png">
+        <div class="mc-name">w助手会员卡</div>
+        <div class="mc-number"><em>会员卡号</em>88888</div>
+    </div>
+    <div>
+
+        <ul class="nav nav-tabs nav-stacked">
+        </ul>
+    </div>
+</div>
+<div class="span5">
+    <div class="control-group">
+        <label class="control-label">会员卡名称</label>
+        <div class="controls inline">
+            <input type="text" name="cname" id="cname" value="w助手会员卡" class="input-medium">
+        </div>
+
+    </div>
+    <div class="control-group">
+        <label class="control-label">会员卡名称颜色</label>
+        <div class="controls inline">
+            <input type="text" name="cname_color" id="cname_color" value="#36FFFF" class="input-mini color">
+        </div>
+
+    </div>
+    <div class="control-group">
+        <label class="control-label">会员卡的背景</label>
+        <div class="controls">
+            <select name="select" id="select_bg" class="input-large" style="width: 227px">
+                <option selected="" value="./resource/cards/card_bg21.png">请选择会员卡背景图</option>
+                <option value="./resource/cards/card_bg01.png">01 </option>
+                <option value="./resource/cards/card_bg02.png">02</option>
+                <option value="./resource/cards/card_bg03.png">03</option>
+                <option value="./resource/cards/card_bg04.png">04</option>
+                <option value="./resource/cards/card_bg05.png">05</option>
+                <option value="./resource/cards/card_bg06.png">06</option>
+                <option value="./resource/cards/card_bg07.png">07</option>
+                <option value="./resource/cards/card_bg08.png">08</option>
+                <option value="./resource/cards/card_bg09.png">09</option>
+                <option value="./resource/cards/card_bg10.png">10</option>
+                <option value="./resource/cards/card_bg11.png">11</option>
+                <option value="./resource/cards/card_bg12.png">12</option>
+                <option value="./resource/cards/card_bg13.png">13</option>
+                <option value="./resource/cards/card_bg14.png">14</option>
+                <option value="./resource/cards/card_bg15.png">15</option>
+                <option value="./resource/cards/card_bg16.png">16</option>
+                <option value="./resource/cards/card_bg17.png">17</option>
+                <option value="./resource/cards/card_bg18.png">18</option>
+                <option value="./resource/cards/card_bg19.png">19</option>
+                <option value="./resource/cards/card_bg20.png">20</option>
+                <option value="./resource/cards/card_bg21.png">21</option>
+                <option value="./resource/cards/card_bg22.png">22</option>
+                <option value="./resource/cards/card_bg23.png">23</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="control-group">
+        <label for="textfield" class="control-label">
+            自己设计背景
+        </label>
+        <div class="controls">
+            <div class="input-append">
+                <input type="text" name="card_bg" readonly id="card_bg" value="./resource/cards/card_bg05.png" class="input-large">
+                <button type="button" class="btn insertimage" rel="i-img">选择背景</button>
+            </div>
+            <span class="help-block">建议尺寸：534像素 * 318像素</span>
+        </div>
+    </div>
+    <div class="control-group">
+        <label for="textfield" class="control-label">
+            会员卡的图标
+        </label>
+        <div class="controls">
+            <div class="input-append">
+                <input type="text" name="card_logo" value="http://img.weimob.com/static/16/7d/2a/image/20131021/20131021134629_42411.png" readonly id="logo" class="input-large">
+                <button type="button" class="btn insertimage" rel="mc">选择背景</button>
+
+            </div>
+            <span class="help-block">建议尺寸：152像素 * 70像素 透明图片</span>
+        </div>
+        <script type="text/javascript">
+            KindEditor.ready(function (K) {
+                var editor = K.editor({
+                    themeType: "simple",
+                    uploadJson : "index.php?act=attachment&do=upload",
+                    allowFileManager: true
+                });
+                $('a.insertimage').add("button.insertimage").click(function (e) {
+                    editor.loadPlugin('image', function () {
+                        var $input = $(e.target).prev();
+                        editor.plugin.imageDialog({
+                            imageUrl: $input ? $input.val() : "",
+                            clickFn: function (url, title, width, height, border, align) {
+                                if ($input) {
+                                    $input.val(url);
+                                    var rel = $(e.target).attr("rel")
+
+                                    $("img." + rel + "").attr("src", url)
+                                }
+                                editor.hideDialog();
+                            }
+                        });
+                    });
+                })
+            });
+
+        </script>
+
+    </div>
+    <div class="control-group">
+        <label for="textfield" class="control-label">
+            卡号文字颜色
+        </label>
+        <div class="controls">
+            <input type="text" name="numbercolor" id="numbercolor" value="#000000" class="input-mini color">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="fanslocal">
+            商家兑换密码</label>
+        <div class="controls">
+            <input type="text" name="password" id="password" data-rule-required="true" value="123123123"/>
+            <span class="help-inline">在用户手机特权SN码页面输入此码可直接使用该特权SN码，不超过20个字。</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function dodelit(i) {
+        document.getElementById("txt" + i).value = "";
+        document.getElementById("value" + i).value = "";
+        if (i != 1) {
+            document.getElementById("trtxt" + i).style.display = "none";
+            document.getElementById("add" + i).style.display = "";
+        }
+    }
+    function doaddit(i) {
+        document.getElementById('trtxt' + i).style.display = "";
+        document.getElementById('add' + i).style.display = "none";
+    }
+    function sdodelit(i) {
+        document.getElementById("select" + i).value = "";
+        document.getElementById("svalue" + i).value = "";
+        if (i != 1) {
+            document.getElementById("strtxt" + i).style.display = "none";
+            document.getElementById("sadd" + i).style.display = "";
+        }
+    }
+    function sdoaddit(i) {
+        document.getElementById('strtxt' + i).style.display = "";
+        document.getElementById('sadd' + i).style.display = "none";
+    }
+</script>
+
+
+
+<div class="form-actions span12">
+    <button id="Button1" type="submit" data-loading-text="提交中..." class="btn btn-sm btn-primary">保存</button>
+    <button type="button" class="btn btn-sm btn-gray" onclick="Javascript:window.history.go(-1);">取消</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</body>
+</html>

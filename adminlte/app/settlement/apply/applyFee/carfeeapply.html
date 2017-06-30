@@ -1,0 +1,65 @@
+<form name="form" ng-submit="submit(form.$valid)"  role="form" novalidate>
+        <table class="table modv2-table table-hover">
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 申请支付车款：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="申请支付车款" id="fee" name="fee" class="form-control "  ng-model="submitter.fee" required max-number="item.max_detail.car_fee">
+                        <div class="input-group-addon">元</div>
+                    </div>
+                    <span class="help-inline">最多申请：<span class="text-danger">{{ item.max_detail.car_fee }}</span>元（已申请支付：{{ item.applied.car_fee }} 元）</span>
+                    <div class="has-feedback text-danger" ng-messages="form.fee.$error" ng-show="interacted(form.fee)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入申请支付车款！</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th width="12%">收款人姓名：</th>
+                <td> <strong>{{ item.payee_realname }}</strong></td>
+                <th width="12%"> 收款银行：</th>
+                <td>
+                    <input type="text" placeholder="收款银行" id="payee_bank" name="payee_bank"
+                           class="form-control  modv2-inputg" ng-model="item.payee_bank" required auto-complete="">
+                    <div class="has-feedback text-danger" ng-messages="form.payee_bank.$error"
+                         ng-show="interacted(form.payee_bank )">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入收款银行！</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th><span class="text-danger">*</span>  开户支行：</th>
+                <td>
+                    <input type="text" placeholder="开户支行" id="payee_bank_branch" name="payee_bank_branch"
+                           class="form-control  modv2-inputg" ng-model="item.payee_bank_branch" required auto-complete-branch="">
+                    <span class="text-danger">为保证财务快速付款，请选择在列表中的开户支行；如确认无法找到可用填写。</span>
+                    <div class="has-feedback text-danger" ng-messages="form.payee_bank_branch.$error"
+                         ng-show="interacted(form.payee_bank_branch,'submittedService')">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入开户支行！</div>
+                    </div>
+                </td>
+                <th ><span class="text-danger">*</span> 收款账户：</th>
+                <td> {{ item.payee_cardno }}</td>
+            </tr>
+            <tr>
+                <th>收款人证件号：</th>
+                <td>{{ item.payee_idcard }}</td>
+                <th>联系电话：</th>
+                <td>{{ item.payee_mobile }}</td>
+            </tr>
+            <tr ng-if="item.avoidCode">
+                <th>验证码：</th>
+                <td colspan="3">
+                    <input type="text" style="display:inline-block" ng-model="submitter.code" class="form-control  modv2-inputg" name="code" placeholder="请输入验证码" required>
+                    <button class="btn btn-danger" type="button" ng-click="sendCode(1)">获取验证码</button>
+                    <span ng-if="profile.latestMobile">验证码发送至：<span class="text-danger">{{profile.latestMobile}}</span>，如号码有误请在个人中心修改。</span>
+                    <span ng-if="!profile.latestMobile" class="text-danger">信息不全，请联系管理员添加手机号！</span>
+                    <div class="has-feedback text-danger" ng-messages="form.code.$error" ng-show="interacted(form.code)" >
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入验证码！</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <button class="btn btn-primary modv2-btn" ng-disabled="submitted">提交申请</button>
+</form>

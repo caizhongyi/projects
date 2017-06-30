@@ -1,0 +1,16 @@
+<?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: chenxn
+ * Date: 14-2-10
+ * Time: 上午11:28
+ * To change this template use File | Settings | File Templates.
+ */
+$item = 'http://127.0.0.1/weixin/index.php?name=1';
+if (!strpos($item, '?')) {
+    $item .= '?';
+} else {
+    $item .= '&';
+}
+echo $item;
+?>

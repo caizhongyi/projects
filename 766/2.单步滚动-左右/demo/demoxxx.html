@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Demo step scroll</title>
+<style type="text/css">
+* { padding:0; margin:0; }
+
+#JS-scroll{ margin:20px auto; width:400px; overflow:hidden; position:relative; }
+.con{ width:210px; height:163px; overflow:hidden; position:relative; }
+.scroll{ position:absolute; width:100%; left:0; }
+.item{ float:left; }
+
+.page{ overflow:hidden; }
+.goto{ float:left; width:20px; height:20px; line-height:20px; text-align:center; background:#ddd; }
+.current{ background:#369; color:#fff; }
+</style>
+</head>
+<body>
+<div id="JS-scroll">
+	<div class="con">
+		<div class="scroll">
+			<!--<div class="alstep-item"><img src="pic/thumb_01.jpg" alt="pic" /></div>-->
+			<div class="item"><img src="http://pic1.tu.178.com/thumb/27/80992/thumb_b_80992.jpg" alt="pic" /></div>
+			<div class="item"><img src="http://pic1.tu.178.com/thumb/27/80984/thumb_b_80984.jpg" alt="pic" /></div>
+			<div class="item"><img src="http://pic1.tu.178.com/thumb/27/80986/thumb_b_80986.jpg" alt="pic" /></div>
+			<div class="item"><img src="http://pic1.tu.178.com/thumb/27/80976/thumb_b_80976.jpg" alt="pic" /></div>
+			<div class="item"><img src="http://pic1.tu.178.com/thumb/27/80982/thumb_b_80982.jpg" alt="pic" /></div>
+			<div class="item"><img src="http://pic1.tu.178.com/thumb/27/80971/thumb_b_80971.jpg" alt="pic" /></div>			
+		</div>		
+	</div>
+	<div class="bar">
+		<a href="#" class="left">左</a>
+		<a href="#" class="right">右</a>
+		<div class="alstep-flag"><span class="curpage">1</span>/<span class="total">5</span></div>
+	</div>
+	<div class="page">
+		<div class="goto current">1</div>
+		<div class="goto">2</div>
+		<div class="goto">3</div>
+		<div class="goto">4</div>
+		<div class="goto">5</div>
+		<div class="goto">6</div>
+	</div>
+</div>
+<!--<script type="text/javascript" src="http://js.olcdn.com/lib/utf8/jquery-1.4.4.min.js"></script>-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*
+**	Author:	acedanny@qq.com
+**	Date:	2012-05-02
+**	Usefor:	A jQuery plugin for step scroll
+*/
+;(function($){
+$.fn.alstepscroll = function(setting){
+var defaults = {
+	box:	'.scroll',	//box
+	items:	'.item',	//scroll item
+	flag:	'.flag',	//show flag
+	current:'.curpage',	//current flag
+	total:	'.total',	//total flag
+	left:	'.left',	//left scroll
+	right:	'.right',	//right scroll
+	goto:	'.page',	//goto
+	goItem:	'.goto',	//goto item
+	loop:	true,		//is loop
+	play:	true,		//play or stop
+	isFlag:	true,		//is show flag
+	stime:	3000,		//twice scroll separate time
+	atime:	300			//scroll animate time
+}
+setting = $.extend({}, defaults, setting);
+return this.each(function(){
+	//variable init
+	var	$obj = $(this),
+		$box = $obj.find(setting.box),
+		$item = $obj.find(setting.items),
+		$current = $obj.find(setting.current),
+		$total = $obj.find(setting.total),
+		$left =	$obj.find(setting.left),
+		$right = $obj.find(setting.right),
+		length = $item.length,
+		$step = $item.outerWidth(true),
+		flag = oflag = current = 1,
+		timer = '',
+		length2 = length + 2,
+		$goto = $obj.find(setting.goto),
+		$goItem = $obj.find(setting.goItem);
+	//display flag
+	if(setting.isFlag === true){
+		$total.html(length);
+		$current.html(flag);
+	}
+	//insert loop unit
+	var html = [$item.eq(0)[0].outerHTML, $item.eq(length-1)[0].outerHTML];
+	$box.prepend(html[1]);
+	$box.append(html[0]);
+	//state init
+	$box.css({
+		'width':length2*$step+'px',
+		'left':'-'+$step+'px'
+	});	
+	//play
+	var play = function(){
+		$right.unbind('click');
+		flag++;
+		if(flag >= length+1){
+			flag = 1;
+			$box.css('left','-'+$step+'px');
+		}
+		oflag = flag, current = flag;
+		//change flag
+		if(setting.isFlag === true){
+			$current.html(flag);
+		}
+		$goItem.removeClass('current').eq(flag-1).addClass('current');
+		$box.animate({left:'-'+flag*$step+'px'},setting.atime,function(){
+			$right.bind('click',play);
+		});
+	}
+	//oppsite play
+	var oplay = function(){
+		$left.unbind('click');
+		oflag--;
+		if(oflag <= 0){
+			oflag = length;
+			$box.css('left','-'+oflag*$step+'px');
+		}
+		flag = oflag, current = oflag;
+		//change flag
+		if(setting.isFlag === true){
+			$current.html(oflag);
+		}
+		$goItem.removeClass('current').eq(oflag-1).addClass('current');
+		$box.animate({left:'-'+oflag*$step+'px'},setting.atime,function(){
+			$left.bind('click',oplay);
+		});
+	}
+	//autoplay
+	var autoplay = function(){
+		play();
+		timer = setTimeout(autoplay,setting.stime);
+	}
+	//stop
+	var stop = function(){
+		clearTimeout(timer);	
+	}
+	//start
+	var start = function(){
+		setTimeout(autoplay,setting.stime);	
+	}
+	setTimeout(autoplay,setting.stime);
+	//hover stop
+	/*$obj.mouseenter(function(){
+		stop();
+		//alert('stop')
+	}).mouseleave(function(){
+		start();
+		//alert('go')
+	});*/
+	//control
+	$left.click(function(){
+		oplay();
+	});
+	$right.click(function(){
+		play();
+	});		
+	
+	//start or stop
+	
+	//stop loop
+	
+	//goto flag
+});
+}	
+})(jQuery);
+/*var $item = $(".alstep-item");
+var html = [$item.eq(0)[0].outerHTML, $item.eq(length-1)[0].outerHTML];
+alert(html.join("----"));*/
+$("#JS-scroll").alstepscroll();
+</script>
+</body>
+</html>

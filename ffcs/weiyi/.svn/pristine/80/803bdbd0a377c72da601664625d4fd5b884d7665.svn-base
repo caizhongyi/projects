@@ -1,0 +1,51 @@
+<?php
+/**
+ * 
+ * 
+ * 
+ */
+defined('IN_IA') or exit('Access Denied');
+
+class VoteModuleProcessor extends WeModuleProcessor {
+	
+	public $name = 'VoteModuleProcessor';
+
+	public function isNeedInitContext() {
+		return 0;
+	}
+	
+    public function respond() {
+        global $_W;
+        $rid = $this->rule;
+        $reply = pdo_fetch("SELECT * FROM " . tablename('vote_reply') . " WHERE `rid`=:rid LIMIT 1", array(':rid' => $rid));
+        if($reply==false || $reply['end_time']<time()){
+            $message='活动已经取消了';
+            return $this->respText($message);
+        }
+        if($reply['start_time']>time()|| $reply['end_time']<time()){
+            $message='活动暂时没有开始，请稍候!';
+            return $this->respText($message);
+        }
+        $result = pdo_fetchall("SELECT * FROM ".tablename('vote_option')." WHERE rid = :rid ORDER by `id` ASC", array(':rid' => $rid));
+        if($result==false){
+            $message='活动暂时没有开始，请稍候';
+        }
+        $response['FromUserName'] = $this->message['to'];
+        $response['ToUserName'] = $this->message['from'];
+        $response['MsgType'] = 'news';
+        $response['ArticleCount'] = 1;
+        $response['Articles'] = array();
+        $response['Articles'][] = array(
+            'Title' => $reply['title'],
+            'Description' => $reply['description'],
+            'PicUrl' =>empty($reply['thumb'])?'':$_W['attachurl'] . $reply['thumb'],
+            'Url' => $_W['siteroot'] . create_url('index/module', array('do' => 'list', 'name' => 'vote', 'id' => $rid,'from_user' => base64_encode(authcode($this->message['from'], 'ENCODE')))),
+            'TagName' => 'item',
+        );
+        return $response;
+    }
+
+	public function isNeedSaveContext() {
+		return false;
+	}
+}

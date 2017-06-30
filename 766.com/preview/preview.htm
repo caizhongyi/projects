@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html lang="ko" prefix="og: http://ogp.me/ns#" class="ie8 no-js"><![endif]-->
+<!--[if !IE 8 ]><!-->
+<html prefix="og: http://ogp.me/ns#" class=" js no-touch opacity cssanimations csstransforms csstransforms3d csstransitions" lang="ko"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>ArcheAge Preview</title>
+	<link rel="stylesheet" type="text/css" href="css/preview.css">
+	<meta name="decorator" content="null">
+	<link rel="shortcut icon" type="image/x-icon" href="http://img0.archeage.com/resources-201301100832/images/favicon.ico">
+	
+	<script src="js/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="js/jquery-1.js"></script>
+	<script type="text/javascript" src="js/archeage.js"></script>
+	<script type="text/javascript" src="js/archeage_common_ui.js"></script>
+	<script type="text/javascript" src="js/preview_sns.js"></script>
+	<script type="text/javascript" src="js/preview_event.js"></script>
+	<script type="text/javascript" src="js/preview_service.js"></script>
+	<script type="text/javascript">
+		var isLogin = false;
+		var isCompleted = false;
+		var accountDomainUrl = "https://account.archeage.com";
+		var slideDetailOption = {
+			
+			 'trailer' : { title : '아키에이지 : OBT 공식 트레일러',wikiUrl : '', hasMovie: 'true'}
+			, 'world' : { title : '아키에이지 : 2천 년의 신화, 아키에이지의 세계관',wikiUrl : 'http://board.archeage.com/wikis/%EC%B5%9C%EC%B4%88%EC%9D%98%20%EC%9B%90%EC%A0%95%EB%8C%80', hasMovie: 'false'}
+			, 'race-nuian' : { title : '아키에이지 : 대륙의 정복자들, 누이안',wikiUrl : 'http://board.archeage.com/wikis/%EB%88%84%EC%9D%B4%EC%95%88%20%EC%A2%85%EC%A1%B1%20%EC%86%8C%EA%B0%9C', hasMovie: 'false'}
+			, 'race-elf' : { title : '아키에이지 : 숲의 은둔자들, 엘프',wikiUrl : 'http://board.archeage.com/wikis/%EC%97%98%ED%94%84%20%EC%A2%85%EC%A1%B1%20%EC%86%8C%EA%B0%9C', hasMovie: 'false'}
+			, 'race-hariharan' : { title : '아키에이지 : 대륙의 개척자들, 하리하란',wikiUrl : 'http://board.archeage.com/wikis/%ED%95%98%EB%A6%AC%ED%95%98%EB%9E%80%20%EC%A2%85%EC%A1%B1%20%EC%86%8C%EA%B0%9C', hasMovie: 'false'}
+			, 'race-ferre' : { title : '아키에이지 : 초원의 방랑자들, 페레',wikiUrl : 'http://board.archeage.com/wikis/%ED%8E%98%EB%A0%88%20%EC%A2%85%EC%A1%B1%20%EC%86%8C%EA%B0%9C', hasMovie: 'false'}
+			, 'job' : { title : '아키에이지 : 10가지 능력조합 120가지 직업',wikiUrl : 'http://board.archeage.com/wikis/%EC%A7%81%EC%97%85%EB%B3%84%20%EB%8A%A5%EB%A0%A5%20%EA%B5%AC%EC%84%B1', hasMovie: 'false'}
+			, 'place' : { title : '아키에이지 : 아키에이지의 멋진 풍경과 다양한 이야기',wikiUrl : 'http://board.archeage.com/wikis/%EC%A7%80%EC%97%AD%20%EB%B0%8F%20%ED%80%98%EC%8A%A4%ED%8A%B8', hasMovie: 'false'}
+			, 'ship-main' : { title : '아키에이지 : 이제는 바다다, 선박',wikiUrl : 'http://board.archeage.com/wikis/%EC%84%A0%EB%B0%95', hasMovie: 'false'}
+			, 'ship-warfare' : { title : '아키에이지 : 이제는 바다다, 선박',wikiUrl : 'http://board.archeage.com/wikis/%ED%95%B4%EC%83%81%20%EC%A0%84%ED%88%AC', hasMovie: 'true'}
+			, 'ship-kraken' : { title : '아키에이지 : 이제는 바다다, 선박',wikiUrl : 'http://board.archeage.com/wikis/%ED%81%AC%EB%9D%BC%EC%BC%84', hasMovie: 'true'}
+			, 'ship-boat' : { title : '아키에이지 : 나룻배로 즐기는 또 다른 즐거움',wikiUrl : 'http://board.archeage.com/wikis/%EB%82%98%EB%A3%BB%EB%B0%B0', hasMovie: 'false'}
+			, 'trade-main' : { title : '아키에이지 : 부자가 되는 지름길, 무역',wikiUrl : 'http://board.archeage.com/wikis/%EB%AC%B4%EC%97%AD', hasMovie: 'false'}
+			, 'trade-vehicle' : { title : '아키에이지 : 천리길을 한 걸음에! 빠른 이동수단',wikiUrl : 'http://board.archeage.com/wikis/%ED%83%88%EA%B2%83', hasMovie: 'false'}
+			, 'fly-main' : { title : '아키에이지 : 하늘을 정복한 자, 세계를 정복하리라!',wikiUrl : 'http://board.archeage.com/wikis/%EB%82%A0%ED%8B%80', hasMovie: 'false'}
+			, 'fly-movie' : { title : '아키에이지 : 하늘을 정복한 자, 세계를 정복하리라!',wikiUrl : 'http://board.archeage.com/wikis/%EB%82%A0%ED%8B%80', hasMovie: 'true'}
+			, 'fly-play' : { title : '아키에이지 : 날틀을 즐기는 또 다른 즐거움',wikiUrl : 'http://board.archeage.com/wikis/%EB%82%A0%ED%8B%80', hasMovie: 'false'}
+			, 'justice-main' : { title : '아키에이지 : 유죄 혹은 무죄, 재판',wikiUrl : 'http://board.archeage.com/wikis/%EB%B2%94%EC%A3%84%EC%99%80%20%EC%9E%AC%ED%8C%90', hasMovie: 'false'}
+			, 'justice-jail' : { title : '아키에이지 : 유죄 혹은 무죄, 재판',wikiUrl : 'http://board.archeage.com/wikis/%EA%B0%90%EC%98%A5', hasMovie: 'false'}
+			, 'pvp-main' : { title : '아키에이지 : 명예를 건 도전장',wikiUrl : 'http://board.archeage.com/wikis/PVP', hasMovie: 'false'}
+			, 'pvp-duel' : { title : '아키에이지 : 명예를 건 도전장',wikiUrl : 'http://board.archeage.com/wikis/%EC%A0%84%ED%88%AC%ED%95%98%EA%B8%B0', hasMovie: 'true'}
+			, 'pvp-warfare' : { title : '아키에이지 : 명예를 건 도전장',wikiUrl : 'http://board.archeage.com/wikis/%EC%A0%84%ED%88%AC%ED%95%98%EA%B8%B0', hasMovie: 'true'}
+			, 'life-main' : { title : '아키에이지 : 생산의 중심, 주택과 농장',wikiUrl : 'http://board.archeage.com/wikis/%EC%A3%BC%EA%B1%B0', hasMovie: 'false'}
+			, 'life-house' : { title : '아키에이지 : 내가 꾸민 나만의 특별한 공간',wikiUrl : 'http://board.archeage.com/wikis/%EC%95%84%EC%9D%B4%ED%85%9C%20%EC%A2%85%EB%A5%98', hasMovie: 'false'}
+			, 'siege-main' : { title : '아키에이지 : 원대륙에서 운명을 건 전쟁의 시작!',wikiUrl : 'http://board.archeage.com/wikis/%EA%B3%B5%EC%84%B1%EC%A0%84%ED%88%AC', hasMovie: 'false'}
+			, 'siege-movie' : { title : '아키에이지 : 원대륙에서 운명을 건 전쟁의 시작!',wikiUrl : 'http://board.archeage.com/wikis/%EA%B3%B5%EC%84%B1%EC%A0%84%ED%88%AC', hasMovie: 'true'}
+		};
+		var preview;
+	</script>
+	<script data-main="//img0.archeage.com/resources-201301100832/beta/js/preview/main.min" src="js/rj.js"></script>
+<script src="js/main.js" data-requiremodule="main.min" data-requirecontext="_" async="" charset="utf-8" type="text/javascript"></script></head>
+
+<body style="display: block;">
+
+<!--[if lt IE 8 ]>
+	<div id="oldIE">
+		<a href="http://www.google.com/chrome" target="_blank" class="link-chrome">크롬 다운받기</a>
+		<a href="http://www.mozilla.or.kr/ko/" target="_blank" class="link-firefox">파이어폭스 다운받기</a>
+		<a href="http://opera.com/" target="_blank" class="link-opera">오페라 다운받기</a>
+		<a href="http://windows.microsoft.com/ko-KR/internet-explorer/products/ie/home" target="_blank" class="link-ie">최신 익스플로러 다운받기</a>
+		<a href="javascript:;" class="btn-close" title="닫기">닫기</a>
+	</div>
+<![endif]-->
+
+<div></div>
+<div id="viewport" style="">
+	<div id="topbar">
+		<div class="wrap">
+			<h1 class="link-aa"><a href="http://www.archeage.com/" target="_blank" title="아키에이지 홈으로">아키에이지</a></h1>
+			<a class="link-join" href="https://account.archeage.com/user/agreement" target="_blank">지금 아키에이지를 즐기려면? 회원가입</a>
+			<div class="outlink">
+				<a href="http://www.archeage.com/%E2%80%8B%22javascript:%E2%80%8B;%E2%80%8B%22" class="​&quot;btn-bridge" active"="">​
+					</a><a href="javascript:;" class="btn-bridge active">아키에이지 런칭 이벤트 <i class="arr"></i><i class="new-130110">01/10 new</i></a>
+				<div id="bgmPlayer">
+					<div class="box">
+					<strong class="tit">BGM</strong>
+						<div class="wrap-btn">
+							<a href="javascript:;" class="prev">이전곡</a>
+							<a href="javascript:;" class="toggle-play pause">재생</a>
+							<a href="javascript:;" class="next">다음곡</a>
+						</div>
+					</div>
+					<div style="display: none;" class="nowplaying">풍요의 물결</div>
+				</div>
+				<a href="http://www.archeage.com/downloads/clients" target="_blank" class="link-download"><span>게임 다운로드</span></a>
+			</div>
+		</div>
+	</div><div style="margin-top: -187px; width: 10px; overflow: hidden;" id="nav">
+		<div class="nav-box">
+			<ul>
+				
+				<li>
+					<a class="" href="#world" data-slide="0"><i class="dot"></i>2천년의 신화 <b>세계관</b></a>
+				</li>
+				
+				<li>
+					<a class="" href="#race-nuian" data-slide="1"><i class="dot"></i>동서의 대립과 야망 <b>종족</b></a>
+				</li>
+				
+				<li>
+					<a class="" href="#job" data-slide="2"><i class="dot"></i>120가지의 가능성 <b>직업</b></a>
+				</li>
+				
+				<li>
+					<a class="" href="#place" data-slide="3"><i class="dot"></i>여긴 꼭 가보자 <b>지역</b></a>
+				</li>
+				
+				<li>
+					<a class="" href="#ship-main" data-slide="4"><i class="dot"></i>이제는 바다다 <b>선박</b></a>
+				</li>
+				
+				<li>
+					<a class="" href="#trade-main" data-slide="5"><i class="dot"></i>부자가 되는 지름길 <b>무역</b></a>
+				</li>
+				
+				<li>
+					<a class="" href="#fly-main" data-slide="6"><i class="dot"></i>더 높이, 더 멀리 <b>날틀</b></a>
+				</li>
+				
+				<li>
+					<a class="" href="#justice-main" data-slide="7"><i class="dot"></i>유죄 혹은 무죄 <b>재판</b></a>
+				</li>
+				
+				<li>
+					<a class="" href="#pvp-main" data-slide="8"><i class="dot"></i>승리는 나의것 <b>PvP</b></a>
+				</li>
+				
+				<li>
+					<a class="" href="#life-main" data-slide="9"><i class="dot"></i>생산의 중심 <b>주택과 농장</b></a>
+				</li>
+				
+				<li>
+					<a href="#siege-main" data-slide="10"><i class="dot"></i>영지쟁탈의 야망 <b>공성전</b></a>
+				</li>
+				
+			</ul>
+			<a href="#trailer" class="link-trailer">아키에이지 세계관 트레일러</a>
+		</div>
+	</div>
+	<div id="scrollPanel">
+
+		<div style="top: 0px; left: 0px;" id="currentUtil" class="util current"></div>
+		
+		<div style="top: 922px; left: 0px;" id="helperUtil" class="util helper"></div>
+		
+	<div style="top: 922px; left: 0px;" id="helperSlide" class="slide helper"></div><div style="top: 0px; left: 0px;" id="currentSlide" class="slide current"><div id="index" class="index slide" data-id="index">
+		<div class="content">
+			<a href="#world" class="section">
+				세계관
+				<i class="btn-world back"></i>
+				<i class="btn-world front"></i>
+			</a>
+			<a href="#race-nuian" class="section">
+				종족
+				<i class="btn-race back"></i>
+				<i class="btn-race front"></i>
+			</a>
+			<a href="#job" class="section">
+				직업
+					<i class="btn-job back"></i>
+					<i class="btn-job front"></i>
+			</a>
+			<a href="#place" class="section">
+				지역
+				<i class="btn-place back"></i>
+				<i class="btn-place front"></i>
+			</a>
+			<a href="#ship-main" class="section">
+				선박
+				<i class="btn-ship back"></i>
+				<i class="btn-ship front"></i>
+			</a>
+			<a href="#trade-main" class="section">
+				무역
+				<i class="btn-trade back"></i>
+				<i class="btn-trade front"></i>
+			</a>
+			<a href="#fly-main" class="section">
+				날틀
+				<i class="btn-fly back"></i>
+				<i class="btn-fly front"></i>
+			</a>
+			<a href="#justice-main" class="section">
+				재판
+				<i class="btn-justice back"></i>
+				<i class="btn-justice front"></i>
+			</a>
+			<a href="#pvp-main" class="section">
+				PvP
+				<i class="btn-pvp back"></i>
+				<i class="btn-pvp front"></i>
+			</a>
+			<a href="#life-main" class="section">
+				주택과 농장
+				<i class="btn-life back"></i>
+				<i class="btn-life front"></i>
+			</a>
+			<a href="#siege-main" class="section">
+				공성
+				<i class="btn-siege back"></i>
+				<i class="btn-siege front"></i>
+			</a>
+			<a class="event" target="_blank" href="http://www.archeage.com/events/running/15">
+				<img alt="" src="images/makechar.jpg" height="100%" width="100%">
+			</a>
+		</div>
+		<div class="bg"></div>
+	</div></div></div>
+
+	
+<div id="evtStar" style="display:none;">
+	<div class="banner" tabindex="0">
+		<p class="msg">프리뷰보고 푸짐한 경품 받고!</p>
+		<img src="images/gift.png" alt="">
+	</div>
+	<div class="panel">
+		<strong class="txt-done" style="display:none">응모완료</strong>
+		<button class="btn-close" title="닫기">닫기</button>
+		<div class="promo">
+			<img src="images/gift.png" alt="" class="img-gift">
+			<p class="msg-promo">아키에이지 프리뷰를 보기만해도 푸짐한 경품이!</p>
+			<a href="http://www.archeage.com/events/running/14" target="_blank" class="link-info">이벤트 자세히보기</a>
+		</div>
+		<div class="collect">
+			
+				
+					<div class="login">
+						<span class="msg-login">로그인 후 응모하실 수 있습니다.</span>
+						<a href="javascript:;" class="link-login">로그인</a>
+					</div>
+				
+				
+			
+		</div>
+	</div>
+</div>
+
+<div class="menu" style="background: none repeat scroll 0% 0% transparent; width: 0pt; height: 0pt;"></div></div>
+<div id="musicPlayer">
+	<audio src="images/03.ogg" id="audioPlayer" preload="preload">
+		<source type="audio/ogg" src="images/01.ogg">
+		<source type="audio/mpeg" src="images/01.mp3">
+	</audio>
+</div>
+
+
+	
+	<div id="evtBridge" class="v130110" style="display:none">
+		<div class="panel">
+			<a href="http://www.archeage.com/events/running/28" target="_blank" class="e1">1</a>
+			<a href="http://www.archeage.com/events/running/15" target="_blank" class="e2">2</a>
+			<a href="http://www.archeage.com/events/running/19" target="_blank" class="e3">3</a>
+			<a href="http://www.archeage.com/events/running/26" target="_blank" class="e4">4</a>
+			<a href="http://www.archeage.com/events/running/17" target="_blank" class="e5">5</a>
+			<a href="http://www.archeage.com/events/running/23" target="_blank" class="e6">6</a>
+			<a href="http://www.archeage.com/events/running/25" target="_blank" class="e7">7</a>
+			<a href="http://www.archeage.com/events/running/27" target="_blank" class="e8">8</a>
+			<a href="javascript:;" class="btn-close" title="닫기">닫기</a>
+		</div>
+		<div class="bg"></div>
+	</div>
+
+<div id="tempSlide">
+	<div class="trailer slide" data-id="trailer">
+		<div class="content">
+			<div id="movieEndArea" style="position:absolute;left:250px;top:50%;display:none;">
+				<img src="images/mov_end.png">
+			</div>
+			<div class="menu-trailer" data-id="trailer">
+				<a href="#index" class="skip">skip</a>
+				<a href="javascript:;" class="link-facebook" title="페이스북 공유하기">페이스북 공유하기</a>
+				<a href="javascript:;" class="link-me2day" title="미투데이 공유하기">미투데이 공유하기</a>
+				<a href="javascript:;" class="link-twitter" title="트위터 공유하기">트위터 공유하기</a>
+			</div>
+		</div>
+	</div>
+	<div class="index slide" data-id="index">
+		<div class="content">
+			<a href="#world" class="section">
+				세계관
+				<i class="btn-world back"></i>
+				<i class="btn-world front"></i>
+			</a>
+			<a href="#race-nuian" class="section">
+				종족
+				<i class="btn-race back"></i>
+				<i class="btn-race front"></i>
+			</a>
+			<a href="#job" class="section">
+				직업
+					<i class="btn-job back"></i>
+					<i class="btn-job front"></i>
+			</a>
+			<a href="#place" class="section">
+				지역
+				<i class="btn-place back"></i>
+				<i class="btn-place front"></i>
+			</a>
+			<a href="#ship-main" class="section">
+				선박
+				<i class="btn-ship back"></i>
+				<i class="btn-ship front"></i>
+			</a>
+			<a href="#trade-main" class="section">
+				무역
+				<i class="btn-trade back"></i>
+				<i class="btn-trade front"></i>
+			</a>
+			<a href="#fly-main" class="section">
+				날틀
+				<i class="btn-fly back"></i>
+				<i class="btn-fly front"></i>
+			</a>
+			<a href="#justice-main" class="section">
+				재판
+				<i class="btn-justice back"></i>
+				<i class="btn-justice front"></i>
+			</a>
+			<a href="#pvp-main" class="section">
+				PvP
+				<i class="btn-pvp back"></i>
+				<i class="btn-pvp front"></i>
+			</a>
+			<a href="#life-main" class="section">
+				주택과 농장
+				<i class="btn-life back"></i>
+				<i class="btn-life front"></i>
+			</a>
+			<a href="#siege-main" class="section">
+				공성
+				<i class="btn-siege back"></i>
+				<i class="btn-siege front"></i>
+			</a>
+			<a class="event" target="_blank" href="http://www.archeage.com/events/running/15">
+				<img alt="" src="images/makechar.jpg" height="100%" width="100%">
+			</a>
+		</div>
+		<div class="bg"></div>
+	</div>
+	<div class="world slide main" data-id="world">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg_003.jpg" alt="" class="bg-flexible">
+		<div class="content"></div>
+		<div class="heros"></div>
+	</div>
+	<div class="race slide main" data-id="race">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/n-bg.jpg" alt="" class="bg-flexible race-bg-new race-bg-n">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/e-bg.jpg" alt="" class="bg-flexible race-bg-new race-bg-e">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/h-bg.jpg" alt="" class="bg-flexible race-bg-new race-bg-h">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/f-bg.jpg" alt="" class="bg-flexible race-bg-new race-bg-f">
+	</div>
+	<div class="race-nuian slide sub" data-id="race-nuian">
+		<div class="content">
+			<div class="txt"></div>
+		</div>
+		<div class="male"></div>
+		<div class="female"></div>
+	</div>
+	<div class="race-elf slide sub" data-id="race-elf">
+		<div class="content">
+			<div class="txt"></div>
+		</div>
+		<div class="male"></div>
+		<div class="female"></div>
+	</div>
+	<div class="race-hariharan slide sub" data-id="race-hariharan">
+		<div class="content">
+			<div class="txt"></div>
+		</div>
+		<div class="male"></div>
+		<div class="female"></div>
+	</div>
+	<div class="race-ferre slide sub" data-id="race-ferre">
+		<div class="content">
+			<div class="txt"></div>
+		</div>
+		<div class="male"></div>
+		<div class="female"></div>
+	</div>
+	<div class="job slide main" data-id="job">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg_004.jpg" alt="" class="bg-flexible">
+		<div class="copy"></div>
+		<div class="char"></div>
+		<a href="http://www.archeage.com/gameinfos/job" class="btn" target="blank">직업 만들어 보기</a>
+	</div>
+	<div class="place slide main" data-id="place">
+		<div class="place-nav active">
+			<div class="inner">
+				<button type="button" class="selected">
+					<span class="label">지역 목록</span>
+					<i class="arr"></i>
+				</button>
+				<ul class="list">
+					<li>
+						<button type="button" data-place="0" class="active">
+							<i class="dot"></i> 세계지도
+						</button>
+					</li>
+					<li>
+						<button type="button" data-place="1">
+							<i class="dot"></i> 긴 모래톱 해안
+						</button>
+					</li>
+					<li>
+						<button type="button" data-place="2">
+							<i class="dot"></i> 불탄성
+						</button>
+					</li>
+					<li>
+						<button type="button" data-place="3">
+							<i class="dot"></i> 마리아노플
+						</button>
+					</li>
+					<li>
+						<button type="button" data-place="4">
+							<i class="dot"></i> 황금평원
+						</button>
+					</li>
+					<li>
+						<button type="button" data-place="5">
+							<i class="dot"></i> 하얀숲
+						</button>
+					</li>
+					<li>
+						<button type="button" data-place="6">
+							<i class="dot"></i> 마하데비
+						</button>
+					</li>
+					<li>
+						<button type="button" data-place="7">
+							<i class="dot"></i> 로카의 장기말들
+						</button>
+					</li>
+					<li>
+						<button type="button" data-place="8">
+							<i class="dot"></i> 무지개 벌판
+						</button>
+					</li>
+					<li>
+						<button type="button" data-place="9">
+							<i class="dot"></i> 비파항구
+						</button>
+					</li>
+				</ul>
+			</div>
+			<div class="nav-bg"></div>
+		</div>
+		<div class="place-panel">
+			<div class="pics">
+				<ul class="list" data-place="1">
+					<li data-place="0" class="item world">
+						<div class="content">
+							<div class="copy"></div>
+							<div class="mark">
+								<img src="images/1.png" alt="" class="p1" data-place="1">
+								<img src="images/2.png" alt="" class="p2" data-place="2">
+								<img src="images/3.png" alt="" class="p3" data-place="3">
+								<img src="images/4.png" alt="" class="p4" data-place="4">
+								<img src="images/5.png" alt="" class="p5" data-place="5">
+								<img src="images/6.png" alt="" class="p6" data-place="6">
+								<img src="images/7.png" alt="" class="p7" data-place="7">
+								<img src="images/8.png" alt="" class="p8" data-place="8">
+								<img src="images/9.png" alt="" class="p9" data-place="9">
+							</div>
+						</div>
+					</li>
+					<li data-place="1" class="item"><img src="images/1_002.jpg" class="place-img" alt=""></li>
+					<li data-place="2" class="item"><img src="images/2_006.jpg" class="place-img" alt=""></li>
+					<li data-place="3" class="item"><img src="images/3_003.jpg" class="place-img" alt=""></li>
+					<li data-place="4" class="item"><img src="images/4_002.jpg" class="place-img" alt=""></li>
+					<li data-place="5" class="item"><img src="images/5.jpg" class="place-img" alt=""></li>
+					<li data-place="6" class="item"><img src="images/6.jpg" class="place-img" alt=""></li>
+					<li data-place="7" class="item"><img src="images/7.jpg" class="place-img" alt=""></li>
+					<li data-place="8" class="item"><img src="images/8.jpg" class="place-img" alt=""></li>
+					<li data-place="9" class="item"><img src="images/9.jpg" class="place-img" alt=""></li>
+				</ul>
+			</div>
+			<div class="btns">
+				<a href="javascript:;" class="prev" title="이전">이전</a>
+				<a href="javascript:;" class="next" title="다음">다음</a>
+			</div>
+		</div>
+	</div>
+	<div class="ship slide main" data-id="ship">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg_006.jpg" alt="" class="bg-flexible">
+	</div>
+	<div class="ship-main slide sub" data-id="ship-main">
+		<div class="copy"></div>
+	</div>
+	<div class="ship-warfare slide sub" data-id="ship-warfare">
+		<div class="content">
+			<img src="images/warfare.jpg" class="poster" alt="">
+		</div>
+		<a href="javascript:;" class="btn-movieplay"></a>
+	</div>
+	<div class="ship-kraken slide sub" data-id="ship-kraken">
+		<div class="content">
+			<img src="images/kraken.jpg" class="poster" alt="">
+		</div>
+		<a href="javascript:;" class="btn-movieplay"></a>
+	</div>
+	<div class="ship-boat slide sub" data-id="ship-boat">
+		<div class="content">
+			<div class="v-panel">
+				<div class="pics">
+					<ul class="list">
+						<li><img src="images/1_005.jpg" alt=""></li>
+						<li><img src="images/2_004.jpg" alt=""></li>
+						<li><img src="images/3_006.jpg" alt=""></li>
+						<li><img src="images/4.jpg" alt=""></li>
+					</ul>
+				</div>
+				<div class="btns">
+					<a href="javascript:;" class="b1 active">나룻배 리프팅</a>
+					<a href="javascript:;" class="b2">나룻배 경주대회</a>
+					<a href="javascript:;" class="b3">나룻배 기네스</a>
+					<a href="javascript:;" class="b4">사랑의 나룻배</a>
+				</div>
+			</div>
+			<div class="side-copy"></div>
+			<div class="side-boat"></div>
+			<div class="side-picture"></div>
+		</div>
+	</div>
+	<div class="trade slide main" data-id="trade">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg_008.jpg" alt="" class="bg-flexible">
+	</div>
+	<div class="trade-main slide sub" data-id="trade-main">
+		<div class="copy"></div>
+		<div class="side"></div>
+	</div>
+	<div class="trade-vehicle slide sub" data-id="trade-vehicle">
+		<div class="content">
+			<div class="h-panel">
+				<div class="pics">
+					<ul class="list">
+						<li><img src="images/1_006.jpg" alt=""></li>
+						<li><img src="images/2_005.jpg" alt=""></li>
+						<li><img src="images/3_002.jpg" alt=""></li>
+					</ul>
+				</div>
+				<div class="btns">
+					<a href="javascript:;" class="b1 active">무역선</a>
+					<a href="javascript:;" class="b2">달구지</a>
+					<a href="javascript:;" class="b3">당나귀</a>
+				</div>
+			</div>
+			<div class="side-copy"></div>
+		</div>
+	</div>
+	<div class="fly slide main" data-id="fly">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg_002.jpg" alt="" class="bg-flexible">
+	</div>
+	<div class="fly-main slide sub" data-id="fly-main">
+		<div class="copy"></div>
+		<div class="flying1"></div>
+		<div class="flying2"></div>
+	</div>
+	<div class="fly-movie slide sub" data-id="fly-movie">
+		<div class="content">
+			<img src="images/movie.jpg" class="poster" alt="">
+		</div>
+		<a href="javascript:;" class="btn-movieplay"></a>
+	</div>
+	<div class="fly-play slide sub" data-id="fly-play">
+		<div class="content">
+			<div class="v-panel">
+				<div class="pics">
+					<ul class="list">
+						<li><img src="images/1_004.jpg" alt=""></li>
+						<li><img src="images/2.jpg" alt=""></li>
+						<li><img src="images/3_004.jpg" alt=""></li>
+					</ul>
+				</div>
+				<div class="btns">
+					<a href="javascript:;" class="b1 active">멀리날기 대회</a>
+					<a href="javascript:;" class="b2">에어쇼</a>
+					<a href="javascript:;" class="b3">날틀동산</a>
+				</div>
+			</div>
+			<div class="side-copy"></div>
+			<div class="side-aircraft"></div>
+		</div>
+	</div>
+	<div class="justice slide main" data-id="justice">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg.jpg" alt="" class="bg-flexible">
+	</div>
+	<div class="justice-main slide sub" data-id="justice-main">
+		<div class="criminal"></div>
+		<div class="copy"></div>
+	</div>
+	<div class="justice-jail slide sub" data-id="justice-jail">
+		<div class="content">
+			<div class="v-panel">
+				<div class="pics">
+					<ul class="list">
+						<li><img src="images/1_003.jpg" alt=""></li>
+						<li><img src="images/2_002.jpg" alt=""></li>
+						<li><img src="images/3_005.jpg" alt=""></li>
+					</ul>
+				</div>
+				<div class="btns">
+					<a href="javascript:;" class="b1 active">수감자 노동</a>
+					<a href="javascript:;" class="b2">축구대회</a>
+					<a href="javascript:;" class="b3">탈옥</a>
+				</div>
+			</div>
+			<div class="side-copy"></div>
+			<div class="side-criminal1"></div>
+			<div class="side-criminal2"></div>
+		</div>
+	</div>
+	<div class="pvp slide main" data-id="pvp">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg_009.jpg" alt="" class="bg-flexible">
+	</div>
+	<div class="pvp-main slide sub" data-id="pvp-main">
+		<div class="copy"><div class="inner"></div></div>
+		<div class="man-left"></div>
+		<div class="man-right"></div>
+	</div>
+	<div class="pvp-duel slide sub" data-id="pvp-duel">
+		<div class="content">
+			<img src="images/duel.jpg" class="poster" alt="">
+		</div>
+		<a href="javascript:;" class="btn-movieplay"></a>
+	</div>
+	<div class="pvp-warfare slide sub" data-id="pvp-warfare">
+		<div class="content">
+			<img src="images/warfare_002.jpg" class="poster" alt="">
+		</div>
+		<a href="javascript:;" class="btn-movieplay"></a>
+	</div>
+	<div class="life slide main" data-id="life">
+		<img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg_005.jpg" alt="" class="bg-flexible">
+	</div>
+	<div class="life-main slide sub" data-id="life-main">
+		<div class="copy"></div>
+	</div>
+	<div class="life-house slide sub" data-id="life-house">
+		<div class="content">
+			<div class="h-panel">
+				<div class="pics">
+					<ul class="list">
+						<li><img src="images/1.jpg" alt=""></li>
+						<li><img src="images/2_003.jpg" alt=""></li>
+						<li><img src="images/3.jpg" alt=""></li>
+					</ul>
+				</div>
+				<div class="btns">
+					<a href="javascript:;" class="b1 active">빛나는 제작대</a>
+					<a href="javascript:;" class="b2">벽난로</a>
+					<a href="javascript:;" class="b3">장인의 대형 보관함</a>
+				</div>
+			</div>
+			<div class="side-copy"></div>
+		</div>
+	</div>
+	<div class="siege slide main" data-id="siege">
+		<div class="bg-rumble" style="width:100%;height:100%"><img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg_007.jpg" alt="" class="bg-flexible"></div>
+	</div>
+	<div class="siege-main slide sub" data-id="siege-main">
+		<div class="copy"></div>
+	</div>
+	<div class="siege-movie slide sub" data-id="siege-movie">
+		<div class="content">
+			<img src="images/movie_002.jpg" class="poster" alt="">
+		</div>
+		<a href="javascript:;" class="btn-movieplay"></a>
+	</div>
+</div>
+<form id="previewEvent" style="border:0;margin:0;padding:0;" action="/preview;jsessionid=84F6714FABABDB87416BF1DA18018D2F" method="post">
+	<input id="showEvent1" name="showEvent1" value="false" type="hidden">
+	<input id="showEvent2" name="showEvent2" value="false" type="hidden">
+	<input id="showEvent3" name="showEvent3" value="false" type="hidden">
+	<input id="showEvent4" name="showEvent4" value="false" type="hidden">
+	<input id="showEvent5" name="showEvent5" value="false" type="hidden">
+	<input id="showEvent6" name="showEvent6" value="false" type="hidden">
+</form>
+
+
+<script type="text/x-handlebars-template" id="audio_tmpl">
+	<audio id="audioPlayer" preload="preload">
+		<source type="audio/ogg" src="http://mp4vod-archeage.x-cdn.com/preview/res_1/bgm/01.ogg">
+		<source type="audio/mpeg" src="http://mp4vod-archeage.x-cdn.com/preview/res_1/bgm/01.mp3">
+	</audio>
+</script>
+<script type="text/x-handlebars-template" id="flash_tmpl">
+	<object id="flashPlayer" width="1" height="1" type="application/x-shockwave-flash" data="/resources-201301100832/js/preview/bgm/player_mp3_js.swf">
+		<param name="FlashVars" value="mp3=http://mp4vod-archeage.x-cdn.com/preview/res_1/bgm/01.mp3&amp;listener=preview.bgm._parent&amp;interval=500"></param>
+		<param name="movie" value="/resources-201301100832/js/preview/bgm/player_mp3_js.swf"></param>
+		<param name="AllowScriptAccess" value="always"></param>
+	</object>
+</script>
+
+<script id="tempNav" type="text/x-handlebars-template">
+	<div id="nav">
+		<div class="nav-box">
+			<ul>
+				{{#links}}
+				<li>
+					<a href="{{link}}" data-slide="{{slideNum}}"><i class="dot"></i>{{{title}}}</a>
+				</li>
+				{{/links}}
+			</ul>
+			<a href="#trailer" class="link-trailer">아키에이지 세계관 트레일러</a>
+		</div>
+	</div>
+</script>
+<script id="tempSubnav" type="text/x-handlebars-template">
+	<div class="subnav">
+		<span class="wrap">
+			<i class="subnav-left"></i>
+			<i class="subnav-right"></i>
+			<span class="links">
+				{{#links}}
+				<a href="{{link}}" data-slide="{{slideNum}}">{{title}}</a>
+				{{/links}}
+			</span>
+		</span>
+		<div class="tooltip" style="display: none">
+			<span class="tt-wrap">
+				<i class="tt-left"></i>
+				<i class="tt-right"></i>
+				<i class="tt-tail"></i>
+				<span class="txt"></span>
+			</span>
+		</div>
+	</div>
+</script>
+<script id="tempMenu" type="text/x-handlebars-template">
+	<div class="menu" data-id="{{id}}">
+		<a href="#index" class="link-top">TOP</a>
+		<a href="javascript:;"  class="link-facebook"  title="페이스북 공유하기">페이스북 공유하기</a>
+		<a href="javascript:;"  class="link-me2day" title="미투데이 공유하기">미투데이 공유하기</a>
+		<a href="javascript:;"  class="link-twitter" title="트위터 공유하기">트위터 공유하기</a>
+		<a href="javascript:;"  class="link-wiki" title="아키위키에서 더 많은 정보를 찾아보세요"><div class="tooltip">아키위키에서 더 많은 정보를 찾아보세요</div></a>
+	</div>
+</script>
+<!--[if IE]>
+<script type="text/javascript" event="FSCommand(command,args)" for="flashPlayer">
+eval(args);
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+try {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-13199387-1']);
+  _gaq.push(['_setDomainName', 'archeage.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+} catch (err) {
+}
+</script>
+
+</body></html>

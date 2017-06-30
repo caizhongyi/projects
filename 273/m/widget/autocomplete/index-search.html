@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>autocomplete</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width">
+    <link type="text/css" rel="stylesheet" href="http://sta.273.com.cn/app/wap_v2/theme/style-newindex.__1450915200__.css">
+    <link rel="stylesheet" href="css/autocomplete.css"/>
+</head><style>
+    #slider{
+        height: 150px;
+        overflow: hidden;
+    }
+    .banner-img{
+        overflow: hidden;
+    }
+    #index-ads li {
+        width: 100%;
+        position: relative;
+        margin: 0px;
+        float: left;
+    }
+    .search-show {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .search-show form input[type="search"] {
+        border: 1px solid #ddd;
+        padding: 10px;;
+        width: 70%;
+        background: #fff;
+    }
+    .search-auto.show{
+        display: block !important;
+        padding: 0 !important;
+    }
+    .search-show .cancel{
+        display: inline !important;
+        margin: 0 !important;
+    }
+    #search form .close {
+        position: absolute;
+        top: 25px;
+        right: 27%;
+        width: 15px;
+        height: 15px;
+        background: url("http://sta.273.com.cn/app/wap_v2/theme/banner-close.png") no-repeat 0 0;
+        background-size: 15px auto;
+        text-indent: -82982em;
+        text-align: center;
+        color: #999;
+    }
+    #more_brand{
+        position:absolute;
+        top:0px;
+        right 0;
+        -webkit-transition:right 0.5s ease;
+        -moz-transition: right 0.5s ease;
+        transition: right 0.5s ease;
+        background: #fff;
+    }
+    .uptop a{
+        z-index: 1;
+    }
+</style>
+<body>
+<header class="header">
+    <h1 class="logo"><a class="logo-item" href="/"><img width="312" height="50" alt="273二手车交易网" class="i-img" src="http://sta.273.com.cn/app/wap_v2/theme/logo.png"></a></h1>
+    <!--search-box-->
+    <div data-domain="www" data-widget="app/wap_v2/js/sale/matchBox.js#autoMatch" class="search-box search-def" id="search">
+        <form method="get" action="/car/" id="search_form">
+            <span class="search-ico"><img width="48" height="48" class="i-img" alt="搜索" src="http://sta.273.com.cn/app/wap_v2/theme/icon-search-black.png"></span>
+            <span data-273-click-log="/wap/search/input@etype=click@search=clear" title="清除" class="close js_input_clear hidden">x</span>
+            <input type="search" autocomplete="off" class="search-inp" placeholder="请输入关键字" name="kw" id="vehicle_search" data-273-click-log="/wap/search/input@etype=click">
+            <span class="cancel" id="cancel"><a data-273-click-log="/wap/search/input@etype=click@search=cancel" href="javascript:;">取消</a></span>
+            <div class="search-auto " id="autocomplete"></div>
+        </form>
+        <div class="search-history hidden" style="display: none;"></div>
+    </div>
+    <!--//search-box-->
+    <a class="location" href="/city.php?city=全国" id="current_city" data-273-click-log="/wap/location@etype=click@page=index"><span class="ico"><img width="20" height="29" alt="位置" class="i-img" src="http://sta.273.com.cn/app/wap_v2/theme/icon-gps.png"></span><span class="txt">全国</span></a>
+</header>
+
+<!--<style>
+    .autocomplete{ z-index: 999; background: transparent; box-shadow: none;}
+</style>-->
+<script type="text/javascript" src="/mod.js"></script>
+<script type="text/javascript">
+
+
+    var  $ = require('zepto'), cookie = require('cookie');
+
+    var $autocomplete = $('#autocomplete'), $searchHistory = $('.search-history');
+    var searchAuto = {
+        load : function( data ){
+            var $ul = $('<ul/>') ;
+            for( var i = 0 ; i < data.length ; i ++  ){
+                var item = data[i];
+                $ul.append('<li  data-273-click-log="/wap/autocomplete@etype=click@url='+ item.url +'"><a data-273-click-log="/wap/search/input@etype=click@keyword='+ item.name +'" href="'+ item.url +'">'+ item.name +'</a><span>约'+ item.count +'条车源</span></li>');
+            }
+            $autocomplete.empty().append($ul).append('<span data-273-click-log="/wap/search/input@etype=click@search=close" class="btn" id="close" data-url="autocomplete">关闭</span>');
+            return this;
+        },
+        history : function(){
+            var data = this.getCookie(),$ul = $('<ul/>') ;
+            for( var i = 0 ; i < data.length ; i ++  ){
+                var item = data[i];
+                $ul.append('<li><a href="'+ item.url  +'" data-273-click-log="/wap/search/input@etype=click@keyword='+ item.name + '">'+ item.name + '</a><em>&nbsp;</em></li>');
+            }
+            $searchHistory.empty().append($ul).append('<span data-273-click-log="/wap/search/input@etype=click@search=close" class="btn" id="close" data-url="autocomplete">关闭</span>');
+            return this;
+        },
+        showHistory : function(){
+            $('.js_input_clear,#autocomplete').addClass('hidden').hide();
+            $('.search-history,.search-history').removeClass('hidden').show();
+            this.history();
+            return this;
+        },
+        showAutocomplete : function(){
+            $('.js_input_clear,#autocomplete').removeClass('hidden').show();
+            $('.search-history,.search-history').addClass('hidden').hide();
+            this.load([{ name : 11 , url : '/' , count : 1111}]);
+            return this;
+        },
+        hide : function(){
+            $('.js_input_clear,#autocomplete').addClass('hidden').hide();
+            $('.search-history,.search-history').addClass('hidden').hide();
+            return this;
+        },
+        getCookie : function(){
+            var c = cookie.get('history') || '[]';
+            return JSON.parse(c);
+        },
+        setCookie : function( data ){
+            return cookie.set('history' , JSON.stringify(data) ) ;
+        }
+    }
+
+    $('#vehicle_search').on('focus keyup' ,function(){
+        $(this).closest('#search').addClass('search-show');
+        if( $.trim( $(this).val()) != ''){
+            searchAuto.showAutocomplete();
+        }
+        else{
+            searchAuto.showHistory();
+        }
+    })
+
+    $('#search').on('click' ,'#cancel,#close',function(){
+        $(this).closest('#search').removeClass('search-show');
+        searchAuto.hide();
+    })
+
+   $('#autocomplete') .on('click' ,'a',function(){
+       var array =  searchAuto.getCookie();
+       for( var i = 0 ; i < array.length ; i ++ ){
+           if( array[i].name ==  $(this).text() ){
+               return ;
+           }
+       }
+       array.push( { name : $(this).text() , value : '' , url : $(this).attr('href') });
+       searchAuto.setCookie(array);
+    })
+
+    $('.js_input_clear').click(function(){
+        $('#vehicle_search').val('');
+        searchAuto.showHistory();
+    })
+
+   /* var auto = new AutoComplete( '#vehicle_search' , {
+        source : "data.json" ,
+        type : 'default',
+        format : function( row ){
+            return "<li style='overflow: hidden'><span style='float: right'>"+ row.count +"条</span><a href='http://www.baidu.com'>"+ row.name +"</a></li>"
+        },
+        valueFormat : function( $item ){
+            return $item.find('a').text();
+        },
+        cache : false,
+        attachment : $('#search_form') //依附定位的元素
+    });*/
+
+</script>
+</body>
+</html>

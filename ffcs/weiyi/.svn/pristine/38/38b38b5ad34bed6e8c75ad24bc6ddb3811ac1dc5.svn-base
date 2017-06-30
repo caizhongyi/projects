@@ -1,0 +1,62 @@
+{template 'common/header'}
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="{php echo create_url('setting/category/post')}">添加分类</a></li>
+		<li><a href="{php echo create_url('setting/category/display')}">管理分类</a></li>
+	</ul>
+	<div class="main">
+		<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data">
+		<input type="hidden" name="parentid" value="{$parent['id']}" />
+			<h4>分类详细设置</h4>
+			<table class="tb">
+				{if !empty($parentid)}
+				<tr>
+					<th><label for="">上级分类</label></th>
+					<td>
+						{$parent['name']}
+					</td>
+				</tr>
+				{/if}
+				<tr>
+					<th><label for="">排序</label></th>
+					<td>
+						<input type="text" name="displayorder" class="span6" value="{$category['displayorder']}" />
+					</td>
+				</tr>
+				<tr>
+					<th><label for="">分类名称</label></th>
+					<td>
+						<input type="text" name="name" class="span6" value="{$category['name']}" />
+					</td>
+				</tr>
+				<tr>
+					<th><label for="">分类描述</label></th>
+					<td>
+						<textarea name="description" class="span6" cols="70">{$category['description']}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<th><label for="">分类图片</label></th>
+					<td>
+						<input type="file" name="icon" class="span6" value="" />
+						{if $category['icon']}
+						<p style="margin-top:10px;"><img src="{$_W['attachurl']}{$category['icon']}" width="100"/></p>
+						{/if}
+					</td>
+				</tr>
+				<tr>
+					<th><label for="">设为栏目</label></th>
+					<td>
+						<label for="isshow1" class="radio inline"><input type="radio" name="enabled" value="1" id="isshow1" {if $category['enabled'] == '1'}checked="true"{/if}> 是</label>&nbsp;&nbsp;&nbsp;<label for="isshow0" class="radio inline"><input type="radio" name="enabled" value="0" id="isshow0"  {if $category['enabled'] == '0'}checked="true"{/if}> 否</label>
+					</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>
+						<input name="submit" type="submit" value="提交" class="btn btn-primary span3">
+						<input type="hidden" name="token" value="{$_W['token']}" />
+					</td>
+				</tr>
+			</table>
+		</form>
+    </div>
+{template 'common/footer'}

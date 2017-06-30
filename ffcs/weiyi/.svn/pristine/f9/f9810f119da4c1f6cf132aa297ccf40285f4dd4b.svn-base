@@ -1,0 +1,29 @@
+<?php
+/**
+ * 图文模块详细页面
+ * @author WeEngine Team
+ */
+defined('IN_IA') or exit('Access Denied');
+
+class SiteModuleSite extends WeModuleSite {
+
+	public function doMobileDetail() {
+        global $_W, $_GPC;
+        $id = intval($_GPC['id']);
+        $we_name = $_GPC['we_name'];
+        $sql = "SELECT * FROM " . tablename('site_reply') . " WHERE `id`=:id";
+        $row = pdo_fetch($sql, array(':id'=>$id));
+        $sql = "SELECT * FROM " . tablename('rule') . " WHERE `id`=:id";
+        $rule = pdo_fetch($sql, array(':id'=>$row['rid']));
+        $weid = $rule['weid'];
+        if (!empty($row['url'])) {
+            //图文源链接bug修复by hongmingjie 13/11/06
+            if(empty($row['islocation'])){
+                header("Location: ".$row['url']);
+            }
+        }
+        $row = istripslashes($row);
+        $row['thumb'] = $_W['attachurl'] . trim($row['thumb'], '/');
+        include $this->template('detail');
+	}
+}

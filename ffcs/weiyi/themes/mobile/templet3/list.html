@@ -1,0 +1,57 @@
+{templateWithTemplet 'mobile/header','templet3'}
+<link href="./themes/mobile/css/car_rest.css" rel="stylesheet" type="text/css" media="all">
+<lINK href="./themes/mobile/templet3/css/list.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/css/weiyi-ui-1-1.css" rel="stylesheet" type="text/css" media="all">
+<?php
+    $row1 = $newsInfo[0];
+    $newsInfos = array();
+    for($i = 0;$i<count($newsInfo);$i++){
+        if($i != 0){
+            $newsInfos[] = $newsInfo[$i];
+        }
+    }
+?>
+<div class="list_body">
+    <header>
+        <div class="head_news">
+            <a href="{php echo create_url('mobile/channel', array('name' => 'detail', 'id' => $row1['id'], 'templetid'=>$_GPC['templetid'],'weid' => $_W['weid']))}">
+                <ul>
+                    <li><img src="{$_W['attachurl']}{$row1['thumb']}" style="width:100%; max-height:400px;"></li>
+                </ul>
+                <ol>{$row1['title']}</ol>
+            </a>
+        </div>
+    </header>
+
+    <section>
+        <ul class="list_list_ul list_ul_news">
+            {loop $newsInfos $row}
+            <li>
+                <a class="tbox" href="{php echo create_url('mobile/channel', array('name' => 'detail', 'id' => $row['id'], 'templetid'=>$_GPC['templetid'], 'weid' => $_W['weid']))}">
+                    <div>
+                        <img src="{$_W['attachurl']}{$row['thumb']}" style="width:60px!important; height:60px;">
+                    </div>
+                    <div>
+                        <p>{$row['title']}</p>
+                        <p>{php echo date('Y-m-d H:i:s', $row['createtime'])}</p>
+                    </div>
+                </a>
+            </li>
+            {/loop}
+        </ul>
+    </section>
+
+</div>
+<ol class="list_ul_news_nav box">
+    {if !empty($prepageur) }
+    <li>
+        <a href="{$prepageur}">上一页</a>
+    </li>
+    {/if}
+    {if !empty($nextpageurl) }
+    <li>
+        <a href="{$nextpageurl}">下一页</a>
+    </li>
+    {/if}
+</ol>
+{templateWithTemplet 'mobile/footer','templet3'}

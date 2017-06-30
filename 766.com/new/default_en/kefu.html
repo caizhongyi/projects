@@ -1,0 +1,35 @@
+<!--<select name="market_type">
+	<option value="">请选择客服类型</option>
+	<option value="1">QQ客服</option>
+	<option value="2">淘宝(阿里)客服</option>
+	<option value="3">MSN客服</option>
+	<option selected="selected" value="4">Skype客服</option>
+	<option value="5">联系电话</option>
+	<option value="6">联系手机</option>
+</select>-->
+<script type="text/javascript"
+src="http://skype.tom.com/script/skypeCheck40.js">
+</script>
+ {loop source=get_market()}
+            {if $v['market_type']=='1'}
+            <li><a href="http://wpa.qq.com/msgrd?v=3&uin={print $v['market_num']/}&site=qq&menu=yes" target="_blank"> <img border="0" src="http://wpa.qq.com/pa?p=2:{print $v['market_num']/}:4" alt="点击这里给我发消息" title="点击这里给我发消息"> {print $v['market_name']/}</a> </li>
+            {/if}
+            {if $v['market_type']=='3'}
+            <li><a href="http://wpa.qq.com/msgrd?v=3&uin={print $v['market_num']/}&site=qq&menu=yes" target="_blank"> <img border="0" src="http://wpa.qq.com/pa?p=2:{print $v['market_num']/}:4" alt="点击这里给我发消息" title="点击这里给我发消息"> {print $v['market_name']/}</a> </li>
+            {/if}	
+            {if $v['market_type']=='4'}
+				<li><a href="skype:mengsajewel?call" onclick="return skypeCheck();"><img src="{path template/}/images/skype.png" style="border: none;" alt="" /> {print $v['market_name']/}</a> </li>
+           
+            {/if}
+            {if $v['market_type']=='2'}
+            <li><a href="http://wpa.qq.com/msgrd?v=3&uin={print $v['market_num']/}&site=qq&menu=yes" target="_blank"> <img border="0" src="http://wpa.qq.com/pa?p=2:{print $v['market_num']/}:4" alt="点击这里给我发消息" title="点击这里给我发消息"> {print $v['market_name']/}</a> </li>
+            {/if}
+            {if $v['market_type']=='5'}
+            <li> <span class="lf"> 电话： </span> <span class="lf">{print $v['market_num']/}</span> </li>
+            <!--tel-->
+            {/if}
+            {if $v['market_type']=='6'}
+            <li> <span class="lf"> 手机： </span> <span class="lf">{print $v['market_num']/}</span> </li>
+            <!--phone-->
+            {/if}
+            {/loop}

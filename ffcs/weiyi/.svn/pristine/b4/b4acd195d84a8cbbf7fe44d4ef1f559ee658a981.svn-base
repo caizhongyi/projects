@@ -1,0 +1,402 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="../../../resource/style/bootstrap.css">
+    <link rel="stylesheet" href="css/base.css" type="text/css" />
+    <link rel="stylesheet" href="css/extend.css" type="text/css" />
+    <link rel="stylesheet" href="css/slideDownMsg.css" type="text/css" />
+    <script type="text/javascript" src="../../../resource/script/jquery-1.7.2.min.js"></script>
+   <!-- <script type="text/javascript" src="js/lib/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.json.js"></script>-->
+   <!-- <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/ExtendJQUery.js"></script>
+    <script type="text/javascript" src="js/AjaxUtils.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/form.js"></script>
+    <script type="text/javascript">
+        var contextPath = "";
+        var globalActivity = "";
+        var globalShowIcon = "";
+        var globalFuse = "";
+        var globalOrderTotalPrices = "0";
+        window.noStock = true;
+
+
+    </script>
+-->
+    <script type="text/javascript" src="../../../themes/mobile/default/script/swipe.js"></script>
+    <title>
+        三星 S4
+    </title>
+<!--    <script type="text/javascript" src="js/wgt_carousel.js"></script>
+    <script type="text/javascript" src="js/hotProducts_heyueji.js"></script>-->
+
+    <style type="text/css">
+        .box_swipe {
+            overflow: hidden;
+            position: relative;
+            visibility: hidden;
+        }
+        .box_swipe ul {
+            overflow: hidden;
+            position: relative;
+        }
+        .box_swipe ul > li {
+            float: left;
+            position: relative;
+            width: 100%;
+        }
+        .box_swipe ul li span {
+            bottom: 5px;
+            color: #FFFFFF;
+            display: inline-block;
+            left: 10px;
+            position: absolute;
+            width: 75%;
+        }
+        .box_swipe > ol {
+            height: 20px;
+            margin-top: -25px;
+            padding-right: 15px;
+            position: relative;
+            text-align: center;
+            z-index: 10;
+        }
+        .box_swipe > ol > li {
+            background-color: #CDCDCD;
+            border-radius: 8px;
+            display: inline-block;
+            height: 8px;
+            margin: 5px 0;
+            width: 8px;
+        }
+        .box_swipe > ol > li.on {
+            background-color: rgba(235, 102, 25, 0.9);
+        }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div style="padding:0 5px;" class="navbar-inner">
+        <!--            <a class="btn btn-small btn-inverse pull-right" href="mobile.php?act=channel&name=home&weid=64"><i class="icon-user"></i> 个人中心</a>-->
+        <a href="mobile.php?act=module&amp;name=shopping&amp;do=mycart&amp;weid=64" class="btn btn-small btn-inverse pull-left"><i class="icon-shopping-cart"></i> 我的购物车</a>
+        <a href="mobile.php?act=module&amp;name=shopping&amp;do=myorder&amp;weid=64" class="btn btn-small btn-inverse pull-left"><i class="icon-reorder"></i> 我的订单</a>
+    </div>
+</div>
+<!--<div class="header">
+    <a href="login/initLogin.action?type=mobile#/mobile" class="go_link">小翼好机友<b></b></a>
+    <a href="login/initLogin.action" class="go_home"></a>
+</div>-->
+<div id="banner_box" class="box_swipe">
+    <ul>
+        <li> <img src="http://img0.bdstatic.com/img/image/shouye/shoujiaomeinv.jpg" /></li>
+        <li> <img src="http://img0.bdstatic.com/img/image/shouye/shoujiaomeinv.jpg" /></li>
+    </ul>
+    <ol>
+        <li class="on"></li>
+        <li></li>
+    </ol>
+</div>
+<script>
+    $(function(){
+        new Swipe(document.getElementById('banner_box'), {
+            speed:500,
+            auto:3000,
+            callback: function(){
+                var lis = $(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
+            }
+        });
+    });
+</script>
+<div class="clearHeader"></div>
+<div class="pro_top">
+   <!-- <div class="pro_pic_list" id="picWrap">
+        <ul id="pic_list"><li class="pic"><img src="images/pro01.jpg" /></li><li class="pic"><img src="images/pro02.jpg" /></li><li class="pic"><img src="images/pro01.jpg" /></li></ul>
+    </div>
+    <script type="text/javascript">
+        //初始化图片展示=============
+        new Carousel('picWrap')
+    </script>-->
+    <div class="pro_title">
+        <h1 id="pro_title"><!--三星i9300--></h1>
+        <h2 class="pad_rl_10"><span id="pro_intro"><!--3G高速网络，E/G双网双待，谷歌Android 2.2智能系统3G高速网络--></span></h2>
+    </div>
+    <div class="pro_price clearfix pad_rl_10">
+        <span>价格：<b class="red">￥<i id="pro_price"><!--4888--></i></b> </span>  <span id="returnCash" class="red"></span> <span id="numberPrice" class="red"></span>
+        <span class="sales">已销售：<b id="pro_sales"><!--8888--></b>件</span>
+    </div>
+
+    <div class="pro_color_video clearfix pad_rl_10">
+        <div class="pro_color">
+            <ul>
+                <li class="proColor">选择颜色：<span id="changeColor"><a id="1" class="cur" href="javascript:;">黑<i></i></a><a id="2" href="javascript:;">白<i></i></a></span></li>
+                <li>购买件数：1件</li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            $('#changeColor a').click(function(){
+                $(this).addClass('cur').siblings().removeClass('cur');
+            })
+        </script>
+        <div class="pro_video">
+            <a href="javascript:;" id="pro_video_link" style="display:none">
+                <img id="pro_video_pic" src="" alt="" class="none" /><span>靓声美<br/>女介绍</span><i id="video_play_bg"></i>
+            </a>
+            <div id="player"></div>
+            <!--<audio controls="controls" id="pro_video_play">
+                <source src="" type="audio/ogg">
+                <source src="" type="audio/mpeg">
+            </audio>-->
+        </div>
+    </div>
+</div>
+
+<div class="pro_select">
+    <div class="pro_select_title" id="hyjh_title">合约计划：<b></b></div>
+    <div class="pro_select_main hyjh clearfix none">
+        <ul id="hyjh_list">
+            <li><label><input type="radio" name="tc" value="中国电信乐享3G 19元云卡套餐">新乐享 49元</label></li>
+            <li><label><input type="radio" name="tc" value="中国电信乐享3G 19元云卡套餐">新乐享 49元</label></li>
+            <li><label><input type="radio" name="tc" value="中国电信乐享3G 19元云卡套餐">新乐享 49元</label></li>
+            <li><label><input type="radio" name="tc" value="中国电信乐享3G 19元云卡套餐">新乐享 49元</label></li>
+            <li><label><input type="radio" name="tc" value="中国电信乐享3G 19元云卡套餐">新乐享 49元</label></li>
+            <li><label><input type="radio" name="tc" value="中国电信乐享3G 19元云卡套餐">新乐享 49元</label></li>
+        </ul>
+    </div>
+</div>
+
+<div class="pro_select no_marginT no_borderT">
+    <div class="pro_select_title" id="hyxx_title">合约信息：<b></b></div>
+    <div class="pro_select_main hyxx none" id="hyxx">
+        <div class="red">请选择合约计划</div>
+        <h2>合约信息：新乐享3G预存890元话费，享受 4000元优惠购</h2>
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" class="table_border table_4d">
+            <tbody>
+            <tr>
+                <td>月租</td>
+                <td>首月到账</td>
+                <td>赠送话费</td>
+                <td>上网流量</td>
+            </tr>
+            <tr>
+                <td>19元</td>
+                <td>50元</td>
+                <td>1000元</td>
+                <td>国内20M</td>
+            </tr>
+            <tr>
+                <td>通话时长</td>
+                <td>国内短信</td>
+                <td>免费接听</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>本地80分钟</td>
+                <td>80条</td>
+                <td>本地</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <h3><img src="images/pro_sample.gif" alt="" /></h3>
+    </div>
+</div>
+
+<div class="pro_select">
+    <div class="pro_select_title" id="hmxz_title">号码选择：<b></b></div>
+    <div class="pro_select_main hmxz clearfix none">
+        <h2 id="number_types"><a href="javascript:;" class="cur">预存50</a><a href="javascript:;">预存200</a><a href="javascript:;">预存400</a><a href="javascript:;">预存800</a><a href="javascript:;">预存1200</a></h2>
+        <h3>
+            <span id="minConsume"></span>
+            <a href="javascript:;" id="btn_change_number">换一批</a>
+        </h3>
+        <ul id="number_list">
+            <li><label><input type="radio" name="tc" value="13751074200">13751074200</label></li>
+            <li><label><input type="radio" name="tc" value="13751074201">13751074201</label></li>
+            <li><label><input type="radio" name="tc" value="13751074202">13751074202</label></li>
+            <li><label><input type="radio" name="tc" value="13751074203">13751074203</label></li>
+            <li><label><input type="radio" name="tc" value="13751074204">13751074204</label></li>
+            <li><label><input type="radio" name="tc" value="13751074205">13751074205</label></li>
+            <li><label><input type="radio" name="tc" value="13751074206">13751074206</label></li>
+            <li><label><input type="radio" name="tc" value="13751074207">13751074207</label></li>
+            <li><label><input type="radio" name="tc" value="13751074208">13751074208</label></li>
+            <li><label><input type="radio" name="tc" value="13751074209">13751074209</label></li>
+        </ul>
+    </div>
+</div>
+
+<div class="btn_sure"><a href="javascript:;" class="btn" id="submitBtn">立即购买</a>  &nbsp; &nbsp; <a href="javascript:;" class="btn cancelBtn" id="addShopcartBtn">加入购物车</a></div>
+
+<div class="pro_select">
+    <div class="pro_select_title" id="bbxq_title">宝贝详情：<b></b></div>
+    <div class="pro_select_main bbxq none" id="bbxq">
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" class="table_border table_3d">
+            <tbody id="details_list">
+            <tr>
+                <td>上市时间</td>
+                <td>待机类型</td>
+                <td>智能系统</td>
+            </tr>
+            <tr>
+                <td>2012/12/1</td>
+                <td>双模(GSM/CDMA2000)</td>
+                <td>Android/安卓</td>
+            </tr>
+            <tr>
+                <td>外观类型</td>
+                <td>尺寸</td>
+                <td>整机重量</td>
+            </tr>
+            <tr>
+                <td>直板</td>
+                <td>132.5x67x9.3mm</td>
+                <td>135g</td>
+            </tr>
+            <tr>
+                <td>屏幕尺寸</td>
+                <td>分辩率</td>
+                <td>摄像头</td>
+            </tr>
+            <tr>
+                <td>4.5英寸</td>
+                <td>854×480像素</td>
+                <td>双摄像头（前后）</td>
+            </tr>
+            <tr>
+                <td>电池</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>1700mAH</td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <img id="details_pic" src="" alt="" />
+        <a class="bbxq_goTop none" id="bbxq_goTop" href="javascript:;"></a>
+    </div>
+</div>
+
+<div class="pro_select">
+    <div class="pro_select_title" id="bbpl_title">宝贝评论：<b></b></div>
+    <div class="pro_select_main bbpl none" id="bbpl">
+        <h2>
+            <span>翼粉点评（<b id="total"><!--95--></b>）</span>
+            <span class="pf"><a id="btn_wydp" class="btn" href="javascript:;">我要点评</a></span>
+            <!--span class="pf" id="pf"><!--<b>评分：</b><i class="star4"></i>4.4-></span-->
+        </h2>
+        <ul id="comment_list">
+            <li>
+                <h3>手机挺好的 手机速度很快 老板服务很好 很正规</h3>
+                <h4>
+                    <span class="pl_form">来自：<b>风宝贝</b></span>
+                </h4>
+            </li>
+            <li>
+                <h3>手机挺好的 手机速度很快 老板服务很好 很正规</h3>
+                <h4>
+                    <span class="pl_form">来自：<b>风宝贝</b></span>
+                </h4>
+            </li>
+            <li>
+                <h3>手机挺好的 手机速度很快 老板服务很好 很正规</h3>
+                <h4>
+                    <span class="pl_form">来自：<b>风宝贝</b></span>
+                </h4>
+            </li>
+            <li>
+                <h3>手机挺好的 手机速度很快 老板服务很好 很正规</h3>
+                <h4>
+                    <span class="pl_form">来自：<b>风宝贝</b></span>
+                </h4>
+            </li>
+            <li>
+                <h3>手机挺好的 手机速度很快 老板服务很好 很正规</h3>
+                <h4>
+                    <span class="pl_form">来自：<b>风宝贝</b></span>
+                </h4>
+            </li>
+            <li>
+                <h3>手机挺好的 手机速度很快 老板服务很好 很正规</h3>
+                <h4>
+                    <span class="pl_form">来自：<b>风宝贝</b></span>
+                </h4>
+            </li>
+            <li class="dp" id="dp">
+                <div class="dp_left">点评：</div>
+                <div class="dp_right">
+                    <p><textarea id="content"></textarea></p>
+                    <p><a id="" class="btn" href="javascript:;">发表点评</a></p>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li class="more"><a id="btn_more" class="btn" href="javascript:;">加载更多</a></li>
+            <li id="dp">
+                <div class="dp_left"><span>名字：</span><span>点评：</span></div>
+                <div class="dp_right">
+                    <p><input id="author" name="author" maxlength="20" value="游客"/></p>
+                    <p><textarea id="content" name="content"></textarea></p>
+                    <p style="text-align: center;"><a id="publishComment" class="btn" href="javascript:;">发表点评</a></p>
+                </div>
+            </li>
+        </ul>
+        <a class="bbxq_goTop none" id="bbpl_goTop" href="javascript:;"></a>
+    </div>
+</div>
+
+<div class="pro_select">
+    <div class="pro_select_title" >购买流程：<b></b></div>
+    <div class="pro_select_main clearfix gmlc none">
+        <ul>
+            <li><h2><b>1、选手机</b>选择你中意的手机</h2></li>
+            <li><h2><b>2、选择合约套餐</b>选择经济的套餐</h2></li>
+            <li><h2><b>4、下单</b>提交订单</h2></li>
+            <li><h2><b>3、选号码</b>选择靓号</h2></li>
+        </ul>
+        <b class="arrow1"></b>
+        <b class="arrow2"></b>
+        <b class="arrow3"></b>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.pro_select .pro_select_title').click(function(){
+        $(this).next().toggleClass('none');
+    })
+    if(window.noStock){
+        $(function(){
+            /*购买验证
+             $("#submitBtn").unbind("click").bind("click", function(event){
+             $.error_pop("温馨提示","对不起，此款商品无库存");
+             return false;
+             });
+             */
+            $("#submitBtn").hide();
+
+            /*添加到购物车
+             $("#addShopcartBtn").unbind("click").bind("click", function(event){
+             $.error_pop("温馨提示","对不起，此款商品无库存");
+             return false;
+             });
+             */
+            $("#addShopcartBtn").hide();
+        });
+    }
+</script>
+
+<div class="footer">中国电信广州分公司<b style="color: #429dff;">翼货架</b></div>
+</body>
+</html>

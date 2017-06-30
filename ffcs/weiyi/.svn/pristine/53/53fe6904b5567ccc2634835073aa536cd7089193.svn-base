@@ -1,0 +1,439 @@
+body{
+    margin: 0;
+}
+
+div.voteContainer{
+    margin: 8px;
+}
+.voteBefore{
+}
+div.voteContainer p{
+    padding:0;
+    margin:0
+}
+
+
+div.voteError{
+    background-color: #eee;
+    background-image: url(../img/no_network.png);
+    background-repeat: no-repeat;
+    background-size: 144px 106px;
+    -webkit-background-size: 144px 106px;
+    background-position: center;
+    min-height:223px;
+    padding:0 12px 40px;
+}
+div.voteError a{
+    display:block;
+    min-height:223px;
+    text-decoration:none
+}
+*{
+    tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+div.alertTips{
+    position:absolute;
+    top: 0;
+    left: 0;
+    background:#000;
+    opacity: 0.7;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    text-align:center;
+}
+div.alertTips p {
+    color:#fff;
+    padding:8px 20px;
+    vertical-align:middle;
+    line-height:150%;
+    text-indent: 0;
+}
+.alertTips .answerResult{
+    padding:10px 20px;
+    margin: 0;
+    vertical-align:left;
+}
+@-webkit-keyframes alertAnimation {
+    0% {background:#000;}
+    100% {background:#000;}
+}
+
+div.alertAnimation {
+    background:#000;
+    -webkit-animation-name: alertAnimation;
+    animation-name: alertAnimation;
+
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}
+div.voteList{ padding-bottom:5px; border-bottom:1px dashed #cdcdcc; margin-bottom:0px;}
+div.lastList{ border-bottom:none;}
+div.voteIcon{
+    height:41px;
+    line-height:45px;
+    overflow:hidden;
+    background-image: url(../img/vote_icon.png);
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    background-position:left center;
+    -webkit-background-size: 22px 22px;
+    border-bottom:1px solid #ddd;
+    font-size:17px;
+    text-indent:25px;
+    color:#999;
+    margin-bottom:12px;
+    position:relative;
+}
+
+div.voteIcon p, div.voteIcon em{
+    position:absolute;
+    right:0;
+    top:0;
+    font-style:normal;
+    padding:0;
+    margin:0;
+}
+
+div.voteIcon p{
+    text-decoration:none;
+    color:#2e65a8;
+    padding:0;
+    margin:0;
+    cursor:pointer;
+    font-size:14px;
+}
+
+div.voteTitle{ font-size:17px; color:#444; line-height:150%; margin:2px 0; }
+div.voteTitle strong{ color:#1c8ccf }
+div.voteTips{color:#999; height:19px; line-height:19px;  font-size:14px; }
+div.voteBox ul{padding:0; list-style:none}
+div.voteBox ul li{
+    margin-bottom:13px;
+    color:#454545;
+    height:50px;
+}
+div.voteBox ul.listBtn li{
+    position: relative;
+    margin-bottom:13px;
+    color:#454545;
+    height:48px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border:1px solid #cdcdcd;
+    background:-webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
+}
+
+div.voteBox ul.listBtn li.heightLight{
+    background:-webkit-gradient(linear, left top, left bottom, from(#ededed), to(#dadada));
+}
+
+.submitBtnDiv{
+    background: #fff;
+    color:#fff;
+    z-index: 999;
+    margin-bottom: 30px;
+}
+.submitBtnDiv .submitBtn {
+    color: #fff;
+    display:block;
+    font-size: 18px;
+    text-align:center;
+    height:48px;
+    line-height:48px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    text-decoration:none;
+    background:-webkit-gradient(linear, left top, left bottom, from(#188fd3), to(#2174ad));
+    -webkit-box-shadow:0px 1px 0px #999;
+    box-shadow:0px 1px 0px #999;
+    cursor:pointer;
+    text-indent:0;
+}
+
+.submitBtnDiv .disSubmitBtn {
+    display:block;
+    text-align:center;
+    height:48px;
+    line-height:48px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    text-decoration:none;
+    background:-webkit-gradient(linear, left top, left bottom, from(#b5b5b5), to(#a7a7a7));
+    cursor:pointer;
+    text-indent:0;
+}
+.submitBtnDiv .countdownNum{
+    display:inline-block;
+    color:#fb9401;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.submitCompleteBtn {
+    display:block;
+    color:#999999;
+    text-align:center;
+    height:48px;
+    line-height:48px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    text-decoration:none;
+    background:-webkit-gradient(linear, left top, left bottom, from(#e7e7e7), to(#e7e7e7));
+    -webkit-box-shadow:0px 1px 0px #e7e7e7;
+    box-shadow:0px 1px 0px #e7e7e7 ;
+    text-indent:0;
+}
+
+div.voteBox ul li.voted{
+    background-color:#ececec;
+    background-image:url(../img/vote_check.png);
+    background-repeat:no-repeat;
+    background-position: right 5px;
+    background-size: 49px 36px;
+    -webkit-background-size: 49px 36px;
+}
+
+div.voteBox ul li.rightChecked{
+    background-color:#ececec;
+    background-image:url(../img/right_check.png);
+    background-repeat:no-repeat;
+    background-position: right 5px;
+    background-size: 60px 37px;
+    -webkit-background-size: 60px 37px;
+}
+div.voteBox ul li.successChecked{
+    background-color:#ececec;
+    background-image:url(../img/success_check.png);
+    background-repeat:no-repeat;
+    background-position: right 5px;
+    background-size: 60px 37px;
+    -webkit-background-size: 60px 37px;
+}
+div.voteBox ul li.wrongChecked{
+    background-color:#ececec;
+    background-image:url(../img/wrong_check.png);
+    background-repeat:no-repeat;
+    background-position: right 5px;
+    background-size: 60px 37px;
+    -webkit-background-size: 60px 37px;
+}
+div.voteBox ul li.dontChecked{
+    background-color:#ececec;
+    background-image:url(../img/dont_Checked.png);
+    background-repeat:no-repeat;
+    background-position: right 5px;
+    background-size: 60px 37px;
+    -webkit-background-size: 60px 37px;
+}
+
+div.voteBox ul li p{
+    display:block;
+    padding:0;
+    margin:0;
+    height:50px;
+    text-decoration:none;
+    color:#444;
+    text-indent:14px;
+    cursor:pointer;
+}
+
+div.voteBox ul.listBtn li p {
+    font-size:16px;
+    line-height:50px;
+}
+
+
+div.voteBox ul li p.checkbox{
+    background-image:url(../img/check_point.png);
+    background-repeat:no-repeat;
+    background-position: right 5px;
+    background-size: 36px 36px;
+    -webkit-background-size: 36px 36px;
+}
+
+div.voteBox ul li p.checkboxChecked{
+    background-image:url(../img/check_point_2.png);
+    background-repeat:no-repeat;
+    background-position: right 5px;
+    background-size: 36px 36px;
+    -webkit-background-size: 36px 36px;
+}
+
+div.voteBox ul li p.radio{
+    background-image:url(../img/check_point.png);
+    background-repeat:no-repeat;
+    background-position: right 5px;
+    background-size: 36px 36px;
+    -webkit-background-size: 36px 36px;
+}
+
+div.voteBox ul li p.radioChecked{
+    background-image:url(../img/check_point_2.png);
+    background-repeat:no-repeat;
+    background-position: right 5px;
+    background-size: 36px 36px;
+    -webkit-background-size: 36px 36px;
+}
+
+div.voteBox ul li strong{color:#a5a5a5}
+div.voteBox ul li div.item{
+    font-size:14px;
+    line-height:15px;
+    text-indent:15px;
+    margin-bottom:6px;
+    padding-top:10px;
+    margin-right:40px;
+}
+div.voteBox ul li span {
+    display: block;
+    height: 10px;
+    position: relative;
+    text-align:right;
+    -webkit-border-radius: 50px;銆€
+border-radius: 50px;
+}
+
+div.voteBox ul li span.animate{
+    animation-name:animate-progress;
+    animation-iteration-count:1;
+    animation-timing-function:linear;
+    animation-duration: 0.2s;
+
+    -webkit-animation-name:animate-progress;
+    -webkit-animation-iteration-count:1;
+    -webkit-animation-timing-function:linear;
+    -webkit-animation-duration: 0.2s;
+}
+
+@-webkit-keyframes animate-progress {
+    0% {width: 0;}
+    100% {width: 100%;}
+}
+
+div.voteBox ul li span  em {position:absolute; right:-35px; top:-2px; color:#999; width:30px; text-align:left; font-style:normal; line-height:12px; font-size:13px;display: none;}
+
+div.voteBox ul li span.style0, div.voteBox ul li span.style6, div.voteBox ul li span.style9 {
+    background-color: rgb(157,224,46);
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(100,179,33)),
+        color-stop(1, rgb(157,224,46))
+    );
+    -webkit-box-shadow:
+        inset 0 2px 9px  rgba(144,201,45,0.3),
+        inset 0 -2px 6px rgba(89,171,22,0.4);
+}
+
+div.voteBox ul li span.style1, div.voteBox ul li span.style7, div.voteBox ul li span.style10 {
+    background-color: rgb(87,136,223);
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(87,136,223)),
+        color-stop(1, rgb(97,173,238))
+    );
+    -webkit-box-shadow:
+        inset 0 2px 9px  rgba(100,178,242, 0.3),
+        inset 0 -2px 6px rgba(60,127,220,0.4);
+}
+
+div.voteBox ul li span.style2, div.voteBox ul li span.style5, div.voteBox ul li span.style8, div.voteBox ul li span.style11 {
+    background-color: rgb(202,42,40);
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(164,13,9)),
+        color-stop(1, rgb(230,63,63))
+    );
+    -webkit-box-shadow:
+        inset 0 2px 9px  rgba(230,63,63, 0.3),
+        inset 0 -2px 6px rgba(230,63,63,0.4);
+}
+
+div.voteBox ul li span.style3{
+    background-color: rgb(234,155,10);
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(217,129,10)),
+        color-stop(1, rgb(246,175,0))
+    );
+    -webkit-box-shadow:
+        inset 0 2px 9px  rgba(246,175,0,0.3),
+        inset 0 -2px 6px rgba(246,175,0,0.4);
+}
+
+div.voteBox ul li span.style4{
+    background-color: rgb(35,189,203);
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(10,171,182)),
+        color-stop(1, rgb(59,207,224))
+    );
+    -webkit-box-shadow:
+        inset 0 2px 9px  rgba(59,207,224,0.3),
+        inset 0 -2px 6px rgba(59,207,224,0.4);
+}
+
+div.voteBox div.animateItem{visibility: hidden; padding-left:10px; margin-right:93px;}
+
+.voteBox li h5{
+    position:absolute;
+    top:0;
+    left:0;
+    height:48px;
+    width:4px;
+    margin:0;
+    -webkit-border-bottom-left-radius:2px;
+    -webkit-border-top-left-radius:2px;
+}
+.voteBox .vote-option li  p{
+    margin:0 0 0 20px;
+    font-size:15px;
+    color:#222222;
+}
+.voteBox li:nth-child(5n) h5{background:-webkit-gradient(linear, left top,left bottom, from(#8ace29),to(#6eb921));}
+.voteBox li:nth-child(5n+1) h5{background:-webkit-gradient(linear, left top,left bottom, from(#60a6eb),to(#5390e0));}
+.voteBox li:nth-child(5n+2) h5{background:-webkit-gradient(linear, left top,left bottom, from(#da3634),to(#c1221f));}
+.voteBox li:nth-child(5n+3) h5{background:-webkit-gradient(linear, left top,left bottom, from(#f1a703),to(#e69505));}
+.voteBox li:nth-child(5n+4) h5{background:-webkit-gradient(linear, left top,left bottom, from(#32cad8),to(#23bfcc));}
+
+#answerHint{
+    text-indent: 2em;
+    display: block;
+    margin: 10px 0 10px 0;
+    font-size: 17px;
+}
+#answerHint span{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+#countdownDiv{
+    position: fixed;
+    display: inline-block;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+#countdownDiv #countdownSpan{
+    display: inline-block;
+    padding: 5px;
+    margin: 0 auto;
+    background-color: rgba(255,207,123,0.7);
+    font-size: 19px;
+    color: #d20806;
+    border-radius: 5px;
+}
+
+.btn-block{ display: block; width: 100%; border: none;}

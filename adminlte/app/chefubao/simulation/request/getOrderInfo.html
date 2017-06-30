@@ -1,0 +1,84 @@
+<form name="form" ng-submit="submit(form.$valid)"  role="form" novalidate>
+        <table class="table modv2-table table-hover">
+            <tr>
+                <th width="12%">
+                    <span class="text-danger">*</span> 填写订单号：
+                </th>
+                <td colspan="3">
+                    <div class="input-group modv2-inputg">
+                        <input type="text" placeholder="订单号" id="order_no" name="order_no" ng-model='item.order_no' class="form-control " required>
+                    </div>
+                    <div class="has-feedback text-danger" ng-messages="form.order_no.$error" ng-show="interacted(form.order_no)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入订单号！</div>
+                    </div>
+                </td>
+            </tr>
+            <td colspan="100%">
+                <label class="pickbox"><input type="radio" name="type" value="1" ng-model="item.type" checked/> 测试环境(目前是绑定到172.16.1.42) </label>
+                <!--<label class="pickbox"><input type="radio" name="type" value="2" ng-model="item.type" /> sim环境 </label>-->
+                <label class="pickbox"><input type="radio" name="type" value="3" ng-model="item.type" /> 线上环境 </label>
+            </td>
+        </table>
+        <button class="btn btn-primary modv2-btn" >提交申请</button>
+</form>
+<div data-ng-show="res.ORDER_NO">
+    <table class="table modv2-table table-hover">
+        <tr>
+            <th width="12%" colspan="2">
+                返回结果
+            </th>
+        </tr>
+        <tr>
+            <th width="12%">
+                <span class="text-danger">*</span> 请求地址：
+            </th>
+            <td colspan="3">
+                <div class="input-group modv2-inputg">
+                    {{res.url}}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th width="12%">
+                <span class="text-danger">*</span> 订单编号：
+            </th>
+            <td colspan="3">
+                <div class="input-group modv2-inputg">
+                    {{res.ORDER_NO}}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th width="12%">
+                <span class="text-danger">*</span> 订单金额：
+            </th>
+            <td colspan="3">
+                {{res.TOTAL_AMT}}
+            </td>
+        </tr>
+        <tr>
+            <th width="12%">
+                <span class="text-danger">*</span> 已经支付金额：
+            </th>
+            <td colspan="3">
+                {{res.PAY_AMT}}
+            </td>
+        </tr>
+        <tr>
+            <th width="12%">
+                <span class="text-danger">*</span> 未支付金额：
+            </th>
+            <td colspan="3">
+                {{res.UNPAY_AMT}}
+            </td>
+        </tr>
+        <tr>
+            <th width="12%">
+                <span class="text-danger">*</span> 备注：
+            </th>
+            <td colspan="3">
+                {{res.REMARK}}
+            </td>
+        </tr>
+    </table>
+</div>

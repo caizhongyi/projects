@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>地图组件</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="css/tip.css"/>
+</head>
+<body>
+<div id="staticMap" style="width:285px;height:215px;margin:0 auto;"></div>
+<br/>
+<div id="dynamicMap" style="width:285px;height:215px;margin:0 auto;"></div>
+<script type="text/javascript" src="/mod.js"></script>
+<script>
+    var Map = require('js/map');
+    var map2 = new Map('#staticMap',{
+        zoom: 10,
+        type: 'static',
+        center: '北京'//'116.398053, 39.913741' //'福州',
+    })
+
+    var map = new Map('#dynamicMap',{
+        zoom: 10,
+        type: 'dynamic',
+        center: '北京'//'116.398053, 39.913741' //'福州',
+    })
+
+    var point = '116.398053, 39.913741';
+    var point2 = '116.498153, 39.913941';
+
+    map.ready(function () {
+        this.addControl({ctype: 'navigation', type: BMAP_NAVIGATION_CONTROL_ZOOM});
+        this.addOverlay({
+            type: 'marker',
+            point: map.formatPoint(point)
+        });
+    });
+
+    var marker;
+
+    // map.on('click', function (e) {
+    //     this.addOverlay({
+    //         type : 'marker',
+    //         point: Map.formatPoint(e.point.lng, e.point.lat)
+    //     });
+    //     console.log(this);
+    // });
+
+    map.on('rightclick', function (e) {
+        this.clearOverlays();
+    });
+
+    map.ready(function () {
+        this.addOverlay({
+            type: 'tip',
+            point: map.formatPoint(point),
+            letter: 'H',
+            text: '马小金VIP门店',
+            url: 'http://www.273.cn/',
+            width: 20
+        });
+        this.addOverlay({
+            type: 'tip',
+            point: map.formatPoint(point2),
+            letter: 'A',
+            text: '马小金第二门店',
+            url: 'http://www.273.cn/',
+            width: 20
+        });
+
+        this.setViewport([point, point2]);
+    });
+</script>
+</body>
+</html>

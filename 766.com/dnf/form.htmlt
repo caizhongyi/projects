@@ -1,0 +1,179 @@
+﻿<form id=mainform>
+<table>
+	<tr>
+		<td class=lv_buttons>
+		Lv:
+			<input id=minus10btn type=button onclick="addLevel(-10);" value="-10">
+			<input id=minus1btn  type=button onclick="addLevel(- 1);" value="-1" >
+			<input id=plv type=text name=lv size=2 value=80 class="num tb" onchange="addLevel(0);">
+			<input id=plus1btn   type=button onclick="addLevel(  1);" value="+1" >
+			<input id=plus10btn  type=button onclick="addLevel( 10);" value="+10">
+		<td class=sp_edits>
+		SP:
+			<input id=level_sp name=level_sp type=text size=4 value=0 class="num rtb" readonly> + 
+			<input id=dsp      name=input    type=text size=3 value=0 class="num tb" onchange="s(this.form)"> - 
+			<input id=used_sp  name=sum      type=text size=4 value=0 class="num rtb" readonly> = 
+			<input id=rest_sp  name=re       type=text size=4 value=0 class="num rtb" readonly>
+		<td class=tp_edits>
+		TP:
+			<input id=level_tp name=level_tp type=text size=2 value=0 class="num rtb" readonly> -
+			<input id=used_tp  name=sum_tp   type=text size=2 value=0 class="num rtb" readonly> = 
+			<input id=rest_tp  name=re_tp    type=text size=2 value=0 class="num rtb" readonly>
+		<td class=qp_edits>
+		QP:
+			<input id=level_qp name=level_qp type=text size=4 value=0 class="num rtb" readonly> -
+			<input id=used_qp  name=used_qp  type=text size=4 value=0 class="num rtb" readonly> =
+			<input id=rest_qp  name=rest_qp  type=text size=4 value=0 class="num rtb" readonly>
+		<td class=n_cols_select>
+			<input id=shift_n_columns_btn type=button onclick="shiftNumberOfColumns();" value="#{label_n_cols}">
+	<td >
+	       <input type=button onclick="showInfo();" value="显示加点">
+</table>
+
+<table>
+<tr valign="top">
+	<td><div id="skill_table0"></div></td>
+	<td><div id="skill_table1"></div></td>
+	<td><div id="skill_table2"></div></td>
+	<td><div id="skill_table3"></div></td>
+	<td><div id="skill_table4"></div></td>
+	<td><div id="skill_table5"></div></td>
+</tr>
+<tr><!--スロット，コード-->
+	<td colspan=4 style="display:none">
+		<table>
+		<tr><td align=right>#{label_save_slots}:
+			<td>
+				<select id="slotnumber" name="slotnumber" style="width:80ex;" onchange="onSlotChange(this);">
+					<option value=0>0) untitled</option>
+					<option value=1>1) untitled</option>
+					<option value=2>2) untitled</option>
+					<option value=3>3) untitled</option>
+					<option value=4>4) untitled</option>
+					<option value=5>5) untitled</option>
+					<option value=6>6) untitled</option>
+					<option value=7>7) untitled</option>
+					<option value=8>8) untitled</option>
+					<option value=9>9) untitled</option>
+				</select>
+				<input id=load_btn       type=button onclick="load();" value="#{label_load_button}">
+				<input id=save_btn       type=button onclick="save();" value="#{label_save_button}">
+				<input id=reset_btn      type=button onclick="clearForm(true);" value="#{label_clear_form_button}">
+				<input id=del_cookie_btn type=button onclick="clearCookie();" value="#{label_clear_cookie_button}">
+		<tr><td align=right>#{label_skillcode}:
+			<td>
+				<input id=skillcode  type=text style="width:80ex" onfocus="this.select();">
+				<input id=decode_btn type=button onclick="doDecode();" value="#{label_decode_button}">
+				<input id=encode_btn type=button onclick="doEncode();" value="#{label_encode_button}">
+				<input id=dump_btn   type=button onclick="doDump();"   value="#{label_dump_button}">
+				<input id=shortcode_chk type=checkbox checked onclick="toggleShortcode();">#{label_shortcode_checkbox}
+				<input id=url_chk type=checkbox onclick="toggleUrlCode();">#{label_url_checkbox}
+		<tr><td align=right>#{label_options}:
+			<td>
+				<input id=contract_chk     type=checkbox         onclick="toggleContractExpert();">#{label_contract_checkbox}
+				/
+				<input id=fairpvp_chk      type=checkbox         onclick="toggleFairPvp();">#{label_fairpvp_checkbox}
+				/
+				<input id=hint_chk         type=checkbox         onclick="toggleHint();">#{label_hint_checkbox}
+				/
+				<input id=requirements_chk type=checkbox         onclick="toggleShowRequirements();">#{label_requirements_checkbox}
+				/
+				<input id=nowrap_chk       type=checkbox checked onclick="toggleNowrap();">#{label_nowrap_checkbox}
+				/
+				Lang :
+					<select id="lang_select" style="width:8ex" onchange="onLangSelect(this);">
+						<option value=jp>JA</option>
+						<option value=en>EN</option>
+					</select>
+				/
+				Icon :
+					<select id="icon_size_select" style="width:8ex" onchange="onIconSizeSelect(this);">
+						<option value="0">無</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+						<option value="24">24</option>
+						<option value="25">25</option>
+						<option value="26">26</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+						<option value="29">29</option>
+						<option value="30">30</option>
+						<option value="31">31</option>
+						<option value="32">32</option>
+					</select>
+				/
+				ver :
+					<select id="version_select" style="width:8ex" onchange="onVersionSelect(this);">
+						
+					</select>
+					<span id="version_memo" class="deprecated"></span>
+		</table>
+	</td>
+</tr>
+
+<tr ><!--ダンプ出力エリア-->
+	<td colspan=4><div id=output_area class=output_area>
+	<input type=button   id=output_sel_btn onclick="selectOutputArea();" value="#{label_select_dump_all_button}">
+	<input type=checkbox id=chk_fixedfont  onclick="toggleFixedFont();">#{label_fixedfont_checkbox}
+	<input type=checkbox id=chk_template   onclick="toggleUseTemplate();">#{label_use_template_checkbox}
+	<input type=button   id=hideoutput_btn onclick="hideOutputArea();" value="#{label_hide_dump_button}">
+	<br>
+	<textarea cols=100 rows=30 id=dumped_text onfocus="this.select();" class=aa></textarea>
+	</div></td>
+</tr>
+
+</table>
+</form>
+
+<div id='index'  style="display:none">
+<a href="../index.html">top</a>
+/
+<a href="#{label_KWm_url}">#{label_KWm_link}</a>
+<a href="#{label_KSm_url}">#{label_KSm_link}</a>
+<a href="#{label_KBm_url}">#{label_KBm_link}</a>
+<a href="#{label_KAm_url}">#{label_KAm_link}</a>
+/
+<a href="#{label_FNf_url}">#{label_FNf_link}</a> (<a href="#{label_FNm_url}">#{label_FNm_link}</a>)
+<a href="#{label_FSf_url}">#{label_FSf_link}</a> (<a href="#{label_FSm_url}">#{label_FSm_link}</a>)
+<a href="#{label_FBf_url}">#{label_FBf_link}</a> (<a href="#{label_FBm_url}">#{label_FBm_link}</a>)
+<a href="#{label_FGf_url}">#{label_FGf_link}</a> (<a href="#{label_FGm_url}">#{label_FGm_link}</a>)
+</strike>
+/
+
+<a href="#{label_GRm_url}">#{label_GRm_link}</a> (<a href="#{label_GRf_url}">#{label_GRf_link}</a>)
+<a href="#{label_GLm_url}">#{label_GLm_link}</a> (<a href="#{label_GLf_url}">#{label_GLf_link}</a>)
+<a href="#{label_GMm_url}">#{label_GMm_link}</a> (<a href="#{label_GMf_url}">#{label_GMf_link}</a>)
+<a href="#{label_GSm_url}">#{label_GSm_link}</a> (<a href="#{label_GSf_url}">#{label_GSf_link}</a>)
+/<br>
+<a href="#{label_MEf_url}">#{label_MEf_link}</a>
+<a href="#{label_MBf_url}">#{label_MBf_link}</a>
+<a href="#{label_MSf_url}">#{label_MSf_link}</a>
+<a href="#{label_MWf_url}">#{label_MWf_link}</a>
+/        
+<a href="#{label_MEm_url}">#{label_MEm_link}</a>
+<a href="#{label_MIm_url}">#{label_MIm_link}</a>
+/
+<a href="#{label_PCm_url}">#{label_PCm_link}</a>
+<a href="#{label_PIm_url}">#{label_PIm_link}</a>
+<a href="#{label_PEm_url}">#{label_PEm_link}</a>
+<a href="#{label_PAm_url}">#{label_PAm_link}</a>
+/
+<a href="#{label_TRf_url}">#{label_TRf_link}</a>
+<a href="#{label_TNf_url}">#{label_TNf_link}</a>
+/
+<a id=wiki_link href="http://dnf.wikiwiki.jp/" target="_blank">wiki</a>
+/
+</div>
+
+
+<!--ヒントエリア-->
+<div id=hint_area class=hint_area>[hint here]</div>
+<!--IE6のselect z-indexバグ用iframe-->
+<iframe id=shim class=shim></iframe>
+<span id=SpanForGetAaTextWidth class=aa style="display:none"></span>

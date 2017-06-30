@@ -1,0 +1,436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>4.文本滚动效果</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<style>
+/*slide*/
+.backToTop { display:none; width:18px; line-height:1.2; padding:5px 0; background-color:#000; color:#fff; font-size:12px; text-align:center; position:fixed; _position:absolute; left:50%; margin-left:500px; bottom:100px; _bottom:"auto"; cursor:pointer; opacity:.6; filter:Alpha(opacity=60); }
+</style>
+<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+<script src="js/back_top.js"></script>
+<script type="text/javascript" src="js/scrolling_text.js"></script>
+</head>
+<body>
+<!-- wrapper -->
+<div class="main">
+<!--目录-->
+<h2>766通用JS效果 目录：（以下效果，经测试，兼容FF10.0/IE6,7,8,9/360 4.1.1.6/遨游 3.1.5/世界之窗3.2）</h2>
+<p class="descirpt" style="background:#f1f1f1; border:1px solid #369;">
+	<a href="0.index.html">0.首页-JQuery基础使用教程</a><br />
+	<a href="1.fade.html">1.幻灯片效果-淡入淡出 + 返回顶部</a><br />
+	<a href="2.stepScroll.html">2.幻灯片效果-单块内容滚动</a><br />
+	<a href="3.scroll.html">3.滚动效果</a><br />
+	<span>4.文本滚动效果</span><br />
+	<a href="5.tab.html">5.选项卡/标签切换效果+图片切换后载效果</a><br />
+	<a href="6.menu.html">6.下拉菜单/级联菜单效果</a><br />
+	<a href="7.ie6png.html">7.IE6 png bug</a><br />
+	<a href="8.ie6fixed.html">8.IE6 fixed bug</a><br />
+</p>
+<!--目录 end-->
+<!--滚动特效***************************************************-->
+<h2>滚动效果</h2>
+<p class="descirpt">描述：描述：滚动特效，适用于文字滚动<br />
+	<strong style="color:#f00;">注意：</strong>使用时，如果遇到动画过一段时间就停止；请增加滚动的内容数量，调整行高等样式</p>
+<h3 class="h3">范例1：自右向左滚动 ←</h3>
+<textarea style="height:400px; width:978px;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*scrolling_text ←*/	
+		#marquee_left {width:300px;height:20px; overflow:hidden; }
+		#marquee_left li{height:20px; overflow:hidden; line-height:20px; font-size:12px; float:left; padding-right:20px;} /*单行文字滚动，需要设置容器#marquee_left的高度与内容li的高度一致*/
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/scrolling_text.js"></script>
+		<script>
+		$(function(){ 
+			/*特效：scrolling_text*/
+			/*常改的参数为direction,scrollAmount,scrollDelay三个。步长和时长用于控制文本的滚动速度。参数有两种写法,具体看范例*/
+			var options={
+				isEqual:true,//所有滚动的元素长宽是否相等,true,false
+				loop: 0,//循环滚动次数，0时无限
+				direction: 'left',//滚动方向←，'left','right','up','down'
+				scrollAmount:1,//步长
+				scrollDelay:10//时长
+			};
+			$('#marquee_left').kxbdMarquee(options);
+		});
+		</script>
+	</head>
+	<body>
+		<div id="marquee_left">
+			<ul>
+				<li>撒大厦大厦大傻大傻</li>
+				<li>支持山东肥城单身汉</li>
+				<li>大厦程序支持山东肥</li>
+				<li>都市出现在长大傻大傻</li>
+			</ul>
+		</div>
+	</body>
+</html>
+</textarea>
+
+<style>
+/*scrolling_text ←*/	
+#marquee_left {width:300px;height:20px; overflow:hidden; }
+#marquee_left li{height:20px; overflow:hidden; line-height:20px; font-size:12px; float:left; padding-right:20px;} /*单行文字滚动，需要设置容器#marquee_left的高度与内容li的高度一致*/
+</style>
+<script>
+$(function(){ 
+	/*特效：scrolling_text*/
+	/*常改的参数为direction,scrollAmount,scrollDelay三个。步长和时长用于控制文本的滚动速度。参数有两种写法,具体看范例*/
+	var options={
+		isEqual:true,//所有滚动的元素长宽是否相等,true,false
+		loop: 0,//循环滚动次数，0时无限
+		direction: 'left',//滚动方向←，'left','right','up','down'
+		scrollAmount:1,//步长
+		scrollDelay:10//时长
+	};
+	$('#marquee_left').kxbdMarquee(options);
+});
+</script>
+<p class="menu_title">滚动方向：← ；左右文本滚动：常用于新闻滚动展示、公告展示等</p>
+<div id="marquee_left">
+	<ul>
+		<li>撒大厦大厦大傻大傻</li>
+		<li>支持山东肥城单身汉</li>
+		<li>大厦程序支持山东肥</li>
+		<li>都市出现在长大傻大傻</li>
+	</ul>
+</div>
+<div class="clear"></div>
+<br />
+<br />
+<!--滚动特效 end***************************************************-->
+
+<!--滚动特效***************************************************-->
+<h3 class="h3">范例2：自左向右滚动 →</h3>
+<textarea style="height:400px; width:978px; float:left;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*marquee_right →*/
+		#marquee_right {width:300px;height:20px;overflow:hidden; }
+		#marquee_right li{height:20px; overflow:hidden; line-height:20px; font-size:12px; float:left; padding-left:20px;}
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/scrolling_text.js"></script>
+		<script>
+		$(function(){ 
+			var options_right = {
+				isEqual:true,//所有滚动的元素长宽是否相等,true,false
+				loop: 0,//循环滚动次数，0时无限
+				direction: 'right',//滚动方向→，'left','right','up','down'
+				scrollAmount:1,//步长，一般不修改
+				scrollDelay:20//时长，推荐设置在30-60之间，可以根据需要自行修改
+			};
+			$('#marquee_right').kxbdMarquee(options_right);
+		});
+		</script>
+	</head>
+	<body>
+		<div id="marquee_right">
+			<ul>
+				<li>撒大厦大厦大傻大傻</li>
+				<li>支持山东肥城单身汉</li>
+				<li>大厦程序支持山东肥</li>
+				<li>都市出现在长大傻大傻</li>
+			</ul>
+		</div>
+	</body>
+</html>
+
+</textarea>
+
+<style>
+/*marquee_right →*/
+#marquee_right {width:300px;height:20px;overflow:hidden; }
+#marquee_right li{height:20px; overflow:hidden; line-height:20px; font-size:12px; float:left; padding-left:20px;}
+</style>
+<script>
+$(function(){ 
+	var options_right = {
+		isEqual:true,//所有滚动的元素长宽是否相等,true,false
+		loop: 0,//循环滚动次数，0时无限
+		direction: 'right',//滚动方向→，'left','right','up','down'
+		scrollAmount:1,//步长，一般不修改
+		scrollDelay:20//时长，推荐设置在30-60之间，可以根据需要自行修改
+	};
+	$('#marquee_right').kxbdMarquee(options_right);
+});
+</script>
+<p class="menu_title">滚动方向：→</p>
+<div id="marquee_right">
+	<ul>
+		<li>撒大厦大厦大傻大傻</li>
+		<li>支持山东肥城单身汉</li>
+		<li>大厦程序支持山东肥</li>
+		<li>都市出现在长大傻大傻</li>
+	</ul>
+</div>
+<div class="clear"></div>
+<br />
+<br />
+<!--滚动特效 end***************************************************-->
+
+<!--滚动特效***************************************************-->
+<h3 class="h3">范例3：自上向下滚动 ↓</h3>
+<textarea style="height:400px; width:978px; float:left;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*marquee_down ↓*/
+		#marquee_down {width:300px;height:80px;overflow:hidden; background-color:#999;}
+		#marquee_down li{height:20px; overflow:hidden; line-height:20px; font-size:12px; padding-right:20px;}
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/scrolling_text.js"></script>
+		<script>
+		$(function(){ 
+			$('#marquee_down').kxbdMarquee({
+				isEqual:true,//所有滚动的元素长宽是否相等,true,false
+				loop: 0,//循环滚动次数，0时无限
+				direction: 'down',//滚动方向↓，'left','right','up','down'
+				scrollAmount:1,//步长
+				scrollDelay:60//时长
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<div id="marquee_down">
+			<ul>
+				<li>
+					<h3>用户昵称/标题等</h3>
+					<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+					<p style="text-align:right;">2011-07-26 12:12</p>
+				</li>
+				<li>
+					<h3>用户昵称/标题等</h3>
+					<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+					<p style="text-align:right;">2011-07-26 12:12</p>
+				</li>
+				<li>
+					<h3>用户昵称/标题等</h3>
+					<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+					<p style="text-align:right;">还可以再加一段留言日期等</p>
+				</li>
+				<li>
+					<h3>用户昵称/标题等</h3>
+					<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+					<p style="text-align:right;">还可以再加一段留言日期等</p>
+				</li>
+				<li>
+					<h3>用户昵称/标题等</h3>
+					<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
+
+</textarea>
+
+<style>
+/*marquee_down ↓*/
+#marquee_down {width:300px;height:80px;overflow:hidden; background-color:#999;}
+#marquee_down li{height:20px; overflow:hidden; line-height:20px; font-size:12px; padding-right:20px;}
+</style>
+<script>
+$(function(){ 
+	$('#marquee_down').kxbdMarquee({
+		isEqual:true,//所有滚动的元素长宽是否相等,true,false
+		loop: 0,//循环滚动次数，0时无限
+		direction: 'down',//滚动方向↓，'left','right','up','down'
+		scrollAmount:1,//步长
+		scrollDelay:60//时长
+	});
+});
+</script>
+<p class="menu_title">滚动方向：↓</p>
+<div id="marquee_down">
+	<ul>
+		<li>
+			<h3>用户昵称/标题等</h3>
+			<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+			<p style="text-align:right;">2011-07-26 12:12</p>
+		</li>
+		<li>
+			<h3>用户昵称/标题等</h3>
+			<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+			<p style="text-align:right;">2011-07-26 12:12</p>
+		</li>
+		<li>
+			<h3>用户昵称/标题等</h3>
+			<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+			<p style="text-align:right;">还可以再加一段留言日期等</p>
+		</li>
+		<li>
+			<h3>用户昵称/标题等</h3>
+			<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+			<p style="text-align:right;">还可以再加一段留言日期等</p>
+		</li>
+		<li>
+			<h3>用户昵称/标题等</h3>
+			<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+		</li>
+	</ul>
+</div>
+<div class="clear"></div>
+<br />
+<br />
+<!--滚动特效 end***************************************************-->
+
+<!--滚动特效***************************************************-->
+<h3 class="h3">范例4：自下向上滚动 ↑</h3>
+<textarea style="height:400px; width:978px; float:left;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*marquee_up ↑*/
+		#marquee_up {width:600px;height:120px;overflow:hidden; background-color:#eee1b7;}
+		#marquee_up li{ overflow:hidden; line-height:20px; font-size:12px; padding:15px 0 0; margin:0 15px; border-bottom:1px dotted #666; }
+		#marquee_up li h3{ color:#369; }
+		#marquee_up li p{ color:#555; background:none; margin:0; padding:3px; }
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/scrolling_text.js"></script>
+		<script>
+		$(function(){ 
+			$('#marquee_up').kxbdMarquee({
+				isEqual:true,//所有滚动的元素长宽是否相等,true,false
+				loop: 0,//循环滚动次数，0时无限
+				direction: 'up',//滚动方向↑，'left','right','up','down'
+				scrollAmount:1,//步长
+				scrollDelay:40//时长
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<div id="marquee_up">
+			<ul>
+				<li>
+					<h3>用户昵称/标题等</h3>
+					<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+					<p style="text-align:right;">2011-07-26 12:12</p>
+				</li>
+				<li>
+					<h3>用户昵称/标题等</h3>
+					<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+					<p style="text-align:right;">2011-07-26 12:12</p>
+				</li>
+				<li>
+					<h3>用户昵称/标题等</h3>
+					<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+					<p style="text-align:right;">还可以再加一段留言日期等</p>
+				</li>
+				<li>
+					<h3>用户昵称/标题等</h3>
+					<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+					<p style="text-align:right;">还可以再加一段留言日期等</p>
+				</li>
+				<li>
+					<h3>用户昵称/标题等</h3>
+					<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
+</textarea>
+
+<style>
+/*marquee_up ↑*/
+#marquee_up {width:600px;height:120px;overflow:hidden; background-color:#eee1b7;}
+#marquee_up li{ overflow:hidden; line-height:20px; font-size:12px; padding:15px 0 0; margin:0 15px; border-bottom:1px dotted #666; }
+#marquee_up li h3{ color:#369; }
+#marquee_up li p{ color:#555; background:none; margin:0; padding:3px; }
+</style>
+<script>
+$(function(){ 
+	$('#marquee_up').kxbdMarquee({
+		isEqual:true,//所有滚动的元素长宽是否相等,true,false
+		loop: 0,//循环滚动次数，0时无限
+		direction: 'up',//滚动方向↑，'left','right','up','down'
+		scrollAmount:1,//步长
+		scrollDelay:40//时长
+	});
+});
+</script>
+<p class="menu_title">滚动方向：↑ ；上下文本滚动：常用于留言展示、微博、祝福语展示等</p>
+<div id="marquee_up">
+	<ul>
+		<li>
+			<h3>用户昵称/标题等</h3>
+			<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+			<p style="text-align:right;">2011-07-26 12:12</p>
+		</li>
+		<li>
+			<h3>用户昵称/标题等</h3>
+			<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+			<p style="text-align:right;">2011-07-26 12:12</p>
+		</li>
+		<li>
+			<h3>用户昵称/标题等</h3>
+			<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+			<p style="text-align:right;">还可以再加一段留言日期等</p>
+		</li>
+		<li>
+			<h3>用户昵称/标题等</h3>
+			<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+			<p style="text-align:right;">还可以再加一段留言日期等</p>
+		</li>
+		<li>
+			<h3>用户昵称/标题等</h3>
+			<p>我是留言内容。或者是简介、描述文字、贺词、活动留言等。</p>
+		</li>
+	</ul>
+</div>
+<div class="clear"></div>
+<br />
+<br />
+<!--滚动特效 end***************************************************-->
+</div>
+<!-- wrapper end -->
+
+</body>
+</html>

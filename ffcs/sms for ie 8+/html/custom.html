@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>我的标题</title>
+    <meta name="keywords" content="keywords"/>
+    <meta name="description" content="description"/>
+
+    <!-- author  -->
+    <!--<meta name="author" content=""/>-->
+    <!-- copyright  -->
+    <!--<meta name="copyright" content="2001-2010 Comsenz Inc."/>-->
+    <!-- web label  -->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+    <!-- web ico  -->
+    <link rel="shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="favicon.ico"/>
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../js/html5.js"></script>
+    <![endif]-->
+    <!-- base style  -->
+    <link rel="stylesheet" type="text/css" media="all" href="../component/bootstrap/css/bootstrap.min.css"/>
+
+    <!-- web style  -->
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/template.css"/>
+
+    <!-- basic scripts -->
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" ></script> -->
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+    </script>
+    <![endif]-->
+
+
+</head>
+<body>
+
+<!-- header -->
+<header class="header">
+    <div class="container">
+        <a href="" class="logo"><img src="../img/logo.png" alt=""/></a>
+        <span class="user"><a class="sms-tip"><i class="icon icon-mail"></i>短信群发</a>测试 <a href="">[退出]</a></span>
+        <nav class="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="">短信管理</a></li>
+                <li><a href="">客户管理</a></li>
+                <li><a href="">模板管理 <span class="badge pull-right">12</span></a></li>
+                <li class="active"><a href="">我的套餐</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- /header -->
+
+
+
+<div class="container">
+    <fieldset>
+        <legend class="clearfix">客户组<a href="javascript:;" class="pull-right btn btn-danger" data-target="#modalCreate" data-toggle="modal">创建客户组</a></legend>
+
+        <div class="sidebar">
+            <ul>
+                <li><a href="">电信3G手机用户vip <i class="glyphicon glyphicon-trash"></i><i class="glyphicon glyphicon-arrow-down"></i></a></li>
+                <li class="selected"><a href="">电信3G手机用户vip <i class="glyphicon glyphicon-trash"></i><i class="glyphicon glyphicon-arrow-down"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="main main-border">
+            <div>
+                <h5><strong>客户列表</strong></h5>
+                <div class="searchbar">
+                    <form action="" class="form">
+                        <div class="form-group">
+                            <select name="" id="" class="form-control"><option value="">客户名称</option></select>
+                            <input type="text" class="form-control" placeholder="输入文本"/>
+                            <select name="" id="" class="form-control"><option value="">请选择省市</option></select>
+                            <select name="" id="" class="form-control"><option value="">请选择市县</option></select>
+                            <select name="" id="" class="form-control"><option value="">请选择性别</option></select>
+                        </div>
+                        <div class="form-group">
+                            <select name="" id="" class="form-control"><option value="">请选择个体属性</option></select>
+                            <select name="" id="" class="form-control"><option value="">请选择消费能力</option></select>
+                            <select name="" id="" class="form-control"><option value="">请选择消费领域</option></select>
+                            <select name="" id="" class="form-control"><option value="">请选择客户等级</option></select>
+                            <button class="btn btn-danger">搜索</button>
+                        </div>
+                    </form>
+
+                </div>
+
+                <table class="table">
+                    <caption class="text-right">
+                        <input type="button" class="btn btn-original" value="导出模板"/>
+                        <input type="button" class="btn btn-original" value="导入客户"/>
+                        <input type="button" class="btn btn-original" value="添加客户"/>
+                    </caption>
+                    <thead>
+                    <tr>
+                        <th>选择</th>
+                        <th>所属客户组</th>
+                        <th>ID</th>
+                        <th>客户名称</th>
+                        <th>地区</th>
+                        <th>联系手机</th>
+                        <th>录入时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox"/></td>
+                        <td>58</td>
+                        <td>100</td>
+                        <td>customer2198659</td>
+                        <td>哈尔滨市 > 松北区</td>
+                        <td>180591312313</td>
+                        <td>2013-11-28</td>
+                        <td><a href="" class="text-danger">编辑</a></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"/></td>
+                        <td>58</td>
+                        <td>100</td>
+                        <td>customer2198659</td>
+                        <td>哈尔滨市 > 松北区</td>
+                        <td>180591312313</td>
+                        <td>2013-11-28</td>
+                        <td><a href="" class="text-danger">编辑</a></td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            <label class="checkbox"><input type="checkbox"/>全选</label>
+                            <button class="btn btn-danger">导出</button>
+                            <button class="btn btn-original">删除</button>
+                            <span class="page-result">每页显示 <select name="" id="" class="form-control"><option value="">50</option></select> 条</span>
+                        </td>
+                        <td colspan="5">
+                            <ul class="pagination">
+                                <li><a href="#">&laquo;</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+    </fieldset>
+</div>
+
+<!-- footer -->
+<footer class="footer">
+    增值电信业务经营许可证A2.B1.B2-20040001 [京网文[2011]0814-291号] | 京ICP备09031924号 <br>
+    Copyright © 中国电信集团 版权所有
+</footer>
+<!-- /footer -->
+
+<div id="modalCreate" class="modal fade modal-large">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">创建客户组</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" class="form">
+                    <div class="form-group">
+                        <label><span class="form-label">客户组名称：</span><input type="text" class="form-control" placeholder="输入文本"/></label>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="form-label">选择客户组字段：</span></label>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-panel">
+                            <span class="form-label">必选字段：</span><label class="checkbox"><input type="checkbox"/>客户姓名</label><label class="checkbox"><input type="checkbox"/>客户姓名</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-panel">
+                            <span class="form-label">可选字段：</span><label class="checkbox"><input type="checkbox"/>主键ID</label><label class="checkbox"><input type="checkbox"/>客户关系用户字段配置报表ID</label><label class="checkbox"><input type="checkbox"/>性别
+                        </label><label class="checkbox"><input type="checkbox"/>地区</label><label class="checkbox"><input type="checkbox"/>邮箱</label><label class="checkbox"><input type="checkbox"/>个体属性</label><label class="checkbox"><input type="checkbox"/>职位
+                        </label><label class="checkbox"><input type="checkbox"/>企业名称</label><label class="checkbox"><input type="checkbox"/>手机arpu值</label><label class="checkbox"><input type="checkbox"/>消费领域</label><label class="checkbox"><input type="checkbox"/>消费能力
+                        </label><label class="checkbox"><input type="checkbox"/>客户等级</label><label class="checkbox"><input type="checkbox"/>客户等级</label><label class="checkbox"><input type="checkbox"/>备注
+                        </label><label class="checkbox"><input type="checkbox"/>客户代表</label><label class="checkbox"><input type="checkbox"/>录入时间</label><label class="checkbox"><input type="checkbox"/>录入时间
+                        </label><label class="checkbox"><input type="checkbox"/>录入人</label>
+                            <div class="checkbox-all">
+                                <label class="checkbox"><input type="checkbox"/>全选</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-target="#modalConform" data-toggle="modal">添加</button>
+                <button type="button" class="btn btn-original" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript" src="../component/bootstrap/js/bootstrap.min.js"></script>
+<!-- placeholer 支持所有浏览器 -->
+<script type="text/javascript" src="../js/jquery.placeholder.js"></script>
+
+<!-- global  -->
+<script type="text/javascript" src="js/global.js"></script>
+
+</body>
+</html>

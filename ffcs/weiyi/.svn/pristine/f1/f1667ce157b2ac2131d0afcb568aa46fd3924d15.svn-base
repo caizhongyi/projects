@@ -1,0 +1,52 @@
+{if empty($news)}
+{php $namesuffix = '-new[(wrapitemid)][]';}
+{php $itemid = '(itemid)';}
+{php $wrapitemid = '(wrapitemid)';}
+{else}
+{php $namesuffix = '[news-wrap-item-'.$key.']['.$news['id'].']'}
+{php $itemid = 'news-item-' . $news['id'];}
+{php $wrapitemid = 'news-wrap-item-'.$key;}
+{/if}
+{if !empty($news)}
+<div class="item" id="news-item-{$news['id']}">
+
+    {/if}
+    <div id="show" class="alert alert-info reply-news-list {if !empty($key) && !empty($news['id']) && $key == $news['id']}reply-news-list-first{/if} {if empty($news)}hide{/if}">
+        <div style="height: 20px"></div>
+        <div class="reply-news-list-detail">
+            <div class="title">{$news['title']}</div>
+            <span class="pull-right">{if !empty($news)}<a href="{php echo create_url('site/module/delete', array('name' => 'exam', 'id' => $news[id]))}" onclick="return doDeleteItem('news-item-{$news['id']}', this.href)" style="margin-right:5px;">删除</a>{else}<a onclick="doDeleteItem('{$itemid}')" href="javascript:;" style="margin-right:5px;">删除</a>{/if}<a onclick="newsHandler.doEditItem('{$itemid}', '{$wrapitemid}')" href="javascript:;">编辑</a></span>
+        </div>
+    </div>
+    <table id="form" class="tb reply-news-edit {if !empty($news)}hide{/if}">
+        <tr>
+            <th>标题</th>
+            <td>
+                <input type="text" id="" class="span7" placeholder="" name="news-title{$namesuffix}" value="{$news['title']}">
+            </td>
+        </tr>
+
+        <tr>
+            <th>内容</th>
+            <td>
+                <textarea style="height:200px; width:535px;" class="span7 richtext-clone" name="news-content{$namesuffix}" cols="70" id="reply-add-text">{$news['content']}</textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <th>答案</th>
+            <td>
+                <input type="text" id="interval" class="span7" placeholder="" name="news-answer{$namesuffix}" value="{$news['answer']}">
+            </td>
+        </tr>
+
+        <tr>
+            <th>分值</th>
+            <td>
+                <input type="text" id="intervals" class="span7" placeholder="" name="news-score{$namesuffix}" value="{$news['score']}">
+            </td>
+        </tr>
+    </table>
+    {if !empty($news)}
+</div>
+{/if}

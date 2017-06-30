@@ -1,0 +1,216 @@
+<?php
+/**
+ * 图文模块详细页面
+ * @author WeEngine Team
+ */
+defined('IN_IA') or exit('Access Denied');
+
+class UserapiModuleSite extends WeModuleSite {
+    /*
+     * 手机号码绑定
+     */
+	public function doMobile_mobile_blind() {
+        global $_GPC;
+        $from_user = $_GPC['from_user'];
+        $user_info = pdo_fetch("SELECT * FROM ".tablename('fans')." WHERE from_user = '".$from_user."' and weid=".$_GET['weid']." limit 1" );
+        $mobile = $user_info['mobile'];
+        $loclurl = $this->createMobileUrl('_mobile_blind', array('name' => 'userapi', 'do' => '_mobile_blind','weid'=>4, 'from_user' => $from_user));
+        if($_GPC['action']=='edit'){
+            $user_info_data = array(
+                'nickname' => $_GPC['nickname'],
+                'realname' => $_GPC['realname'],
+                'mobile' => $_GPC['mobile'],
+                'qq' => $_GPC['qq'],
+                'gender' => $_GPC['gender'],
+                'age' => $_GPC['age'],
+                'from_user'=>$from_user,
+                'weid'=>$_GET['weid'],
+                'avatar'=>' '
+            );
+            if ($user_info==false) {
+                $user_info_data['createtime']=time();
+                if(pdo_insert('fans', $user_info_data)){
+                    echo json_encode(array('errno'=>200,'url'=>$loclurl));
+                }else{
+                    echo json_encode(array('errno'=>-1,'error'=>'添加错误'));
+                }
+            } else {
+                if(pdo_update('fans', $user_info_data, array('from_user' => $from_user,'weid'=>$_GET['weid']))!==false){
+                    echo json_encode(array('errno'=>200,'url'=>$loclurl));
+                }else{
+                    echo json_encode(array('errno'=>-2));
+                }
+            }
+            die();//ajax请求入口直接关闭
+        }
+        if(empty($mobile)){
+            include $this->template('blind_mobile');
+        }else{
+            include $this->template('member_info');
+        }
+        exit;
+	}
+    /**
+     * 判断手机是否安装易信
+     */
+    private function has_yixin($mobile){
+        $sql = 'select * from '.tablename('share_right').'where phone ='.$mobile.' limit 1';
+        $yx_info = pdo_fetch($sql);
+        if(!empty($yx_info)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    /**
+     * 分享有礼活动（移动互联网公众帐号）
+     */
+    public function doMobile_es_share() {
+        global $_GPC;
+        $from_user = authcode(base64_decode($_GPC['from_user']), 'DECODE');
+        $user_info = pdo_fetch("SELECT * FROM ".tablename('fans')." WHERE from_user = '".$from_user."' and weid=".$_GET['weid']." limit 1" );
+
+        if($_GPC['action']=='share'){
+            $mobile = $user_info['mobile'];
+            $post_url = "http://42.121.125.119:8080/tyfx/service/shareMessage";
+            $share_mobiles = $_GPC['share_mobile'];
+            $receiver = '';
+            foreach($share_mobiles as $k=>$share_mobile){
+                $receiver .= $share_mobile.',';
+            }
+            trim($receiver,',');
+            $msg = "用易信，短信免费发，更有电话留言、国际漫游等免费功能等你体验！新注册天翼用户送300M流量，次月再送60M流量。全网用户关注“移动互联网应用”易信公众号赢取高端智能机等好礼！";
+            $request = "<tyft_share_request><msIsdn>".$mobile."</msIsdn>";
+            $request .= "<destTermIds>".$receiver."</destTermIds>";
+            $request .= "<msgcontent>".$msg."</msgcontent>";
+            $request .= "<webSrc>1065946832</webSrc>";
+            $request .= "</tyft_share_request>";
+            $res = $this->es_execute($post_url, $request);
+            if($res['code'] == 200){
+                foreach($share_mobiles as $k=>$receiver){
+                    $logs = pdo_fetch("SELECT * FROM ".tablename('share_logs')." WHERE from_user = '".$from_user."' and weid=".$_GET['weid']." and receive_phone = '".$receiver."' and send_phone = '".$mobile."' limit 1" );
+                    if(!$logs){
+                        pdo_insert('share_logs',array('from_user'=>$from_user,'weid'=>$_GET['weid'],'receive_phone'=>$receiver,'send_phone'=>$mobile,'send_time'=>TIMESTAMP));
+                    }
+                }
+            }
+            echo json_encode(array('errno'=>$res['code'],'error'=>$res['msg']));
+            die();
+        }elseif($_GPC['action']=='check'){
+            $receiver=$_GPC['share_mobile'];
+            if(!empty($receiver)){
+                if(!fj_phone($receiver)){
+                    echo json_encode(array('errno'=>-2,'error'=>'手机号码不属于福建省，无法进行分享！'));
+                    die();
+                }
+                if($this->has_yixin($receiver)){
+                    echo json_encode(array('errno'=>-3,'error'=>'手机号码已安装易信，无法进行分享！'));
+                    die();
+                }
+            }
+            echo json_encode(array('errno'=>200));
+            die();
+        }else{
+            $show_url = $this->createMobileUrl('_es_share',array( 'name' => 'userapi','action'=>'share','weid'=>Mobile_Internet_Id,'from_user' => $_GPC['from_user']));
+            $check_url = $this->createMobileUrl('_es_share',array( 'name' => 'userapi','action'=>'check','weid'=>Mobile_Internet_Id,'from_user' => $_GPC['from_user']));
+            include $this->template('share');
+        }
+    }
+
+    public function es_execute($url, $request){
+        $response = $this->post($url, $request);
+        $res_string = simplexml_load_string($response);
+        $res = explode(',',$res_string);
+        $code = trim($res['0']);
+        $msg = trim($res['1']);
+        $num = 0;
+        while($code == '108'&& $num<3){
+            sleep(1);
+            $num++;
+            $response = $this->post($url, $request);
+            $res_string = simplexml_load_string($response);
+            $res = explode(',',$res_string);
+            $code = trim($res['0']);
+            $msg = trim($res['1']);
+        }
+        if($code ==0){
+            $code =200;
+            $msg ='分享成功！';
+            //分享成功入库
+        }
+        return array('code'=>$code,'msg'=>$msg);
+    }
+
+    /**
+     * 接口返回信息
+     * */
+    public function es_response($status, $msg){
+        if($status == 0){ //0为成功码 其余为异常
+            $code = sha1(md5($msg.'weiyi123456'));
+            setcookie('checkcode', $msg);
+        }elseif($status == 108){ //每秒10条的发送限制!
+            //稍后重试
+        }
+    }
+
+    public function post($url , $params = '' , $header = array()){
+        $ch = curl_init();// 初始化CURL句柄
+        curl_setopt($ch, CURLOPT_URL, $url);//设置请求的URL
+        //curl_setopt($ch, CURLOPT_PORT, 80); //设置端口
+        curl_setopt($ch, CURLOPT_POST, 1);//启用POST提交
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);//忽略ssl验证
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);//设置POST提交的字符串
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);// 设为TRUE把curl_exec()结果转化为字串，而不是直接输出
+        //curl_setopt($ch, CURLOPT_PROXY, '192.168.13.19:7777');//设置代理服务器
+        curl_setopt($ch,CURLOPT_HTTPHEADER,$header);//设置HTTP头信息
+        $response = curl_exec($ch);//执行预定义的CURL
+        curl_close($ch);//关闭CURL
+        return $response;
+    }
+
+    /**
+     * 拜年赢好礼活动
+     */
+    public function doMobileBainian() {
+        global $_GPC;
+        $from_user = authcode(base64_decode($_GPC['from_user']), 'DECODE');
+        $user_info = pdo_fetch("SELECT * FROM ".tablename('fans')." WHERE from_user = '".$from_user."' and weid=".$_GET['weid']." limit 1" );
+        if($_GPC['action']=='bainian'){
+            $mobile = $user_info['mobile'];
+            $bainian_mobiles = $_GPC['mobile'];
+            if(!fj_phone($bainian_mobiles)){
+                echo json_encode(array('errno'=>-1,'error'=>'手机号码不属于福建省，无法参与活动！'));
+                die();
+            }
+            if(!empty($bainian_mobiles)){
+                    $logs = pdo_fetch("SELECT * FROM ".tablename('bainian_logs')." WHERE openid = '".$from_user."' and weid=".$_GET['weid']." and phone = '".$bainian_mobiles."'  limit 1" );
+                    if(!$logs){
+                        pdo_insert('bainian_logs',array('openid'=>$from_user,'weid'=>$_GET['weid'],'phone'=>$bainian_mobiles,'createtime'=>TIMESTAMP));
+                        if(empty($mobile)){
+                            //未绑定的手机号码绑定
+                            pdo_update('fans',array('mobile'=>$bainian_mobiles),array('weid'=>$_GET['weid'],'from_user'=>$from_user));
+                        }
+                        echo json_encode(array('errno'=>200,'error'=>'完成报名！'));
+                    }else{
+                        echo json_encode(array('errno'=>-2,'error'=>'您已报名易信拜年赢豪礼活动，无需再次报名'));
+                        die();
+                    }
+            }
+        }elseif($_GPC['action']=='check'){
+            $receiver=$_GPC['mobile'];
+            if(!empty($receiver)){
+                if(!fj_phone($receiver)){
+                    echo json_encode(array('errno'=>-2,'error'=>'手机号码不属于福建省，无法进行分享！'));
+                    die();
+                }
+            }
+            echo json_encode(array('errno'=>200));
+            die();
+        }else{
+            $mobile = $user_info['mobile'];
+            $bainian_url = $this->createMobileUrl('Bainian',array( 'name' => 'userapi','action'=>'bainian','weid'=>$_GET['weid'],'from_user' => $_GPC['from_user']));
+            $check_url = $this->createMobileUrl('Bainian',array( 'name' => 'userapi','action'=>'check','weid'=>$_GET['weid'],'from_user' => $_GPC['from_user']));
+            include $this->template('bainian');
+        }
+    }
+}

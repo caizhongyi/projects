@@ -1,0 +1,49 @@
+<?php
+/**
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+defined('IN_IA') or exit('Access Denied');
+$do = !empty($_GPC['do']) ? $_GPC['do'] : '';
+require_once IA_ROOT . '/source/model/pay.mod.php';
+require_once IA_ROOT . '/source/library/pay/pay_factory.class.php';
+
+if ($do == 'respond_get') {
+    if ($_GPC['code']){
+        $payment = get_payment_by_code($_GPC['code'],$_GPC['userid']);
+        if(!$payment) message('支付方式发生错误');
+        $cfg = unserialize_config($payment['config']);
+        $pay_name = ucwords($payment['pay_code']);
+        $payment_handler = new pay_factory($pay_name, $cfg);
+        $return_data = $payment_handler->receive();
+        if($return_data) {
+            if($return_data['order_status'] == 0) {
+                update_success_order($return_data['order_id']);
+            }
+            update_recode_status_by_order_id($return_data['order_id'],$return_data['order_status']);
+            message('恭喜您，支付成功');
+        } else {
+            message('支付失败，请联系管理员');
+        }
+    } else {
+        message('恭喜您，支付成功');
+    }
+}elseif($do == 'respond_post'){
+    if ($_GPC['code']){
+        $payment = get_payment_by_code($_GPC['code'],$_GPC['userid']);
+        if(!$payment) logging('支付方式发生错误');
+        $cfg = unserialize_config($payment['config']);
+        $pay_name = ucwords($payment['pay_code']);
+        $payment_handler = new pay_factory($pay_name, $cfg);
+        $return_data = $payment_handler->notify();
+        if($return_data) {
+            if($return_data['order_status'] == 0) {
+                update_success_order($return_data['order_id']);
+            }
+            update_recode_status_by_order_id($return_data['order_id'],$return_data['order_status']);
+            $result = TRUE;
+        } else {
+            $result = FALSE;
+        }
+        $payment_handler->response($result);
+    }
+}

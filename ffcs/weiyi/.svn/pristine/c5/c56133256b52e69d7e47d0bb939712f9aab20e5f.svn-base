@@ -1,0 +1,318 @@
+CREATE TABLE IF NOT EXISTS `ims_micromember_business_sub` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `businessId` int(10) NOT NULL,
+  `weid` int(10) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `frontcover` varchar(120) NOT NULL COMMENT '分店封面连接',
+  `description` varchar(140) NOT NULL COMMENT '分店描述',
+  `address` varchar(120) NOT NULL COMMENT '分店',
+  `phonenum` varchar(13) NOT NULL DEFAULT '' COMMENT '联系电话',
+  `area_p` varchar(20) DEFAULT NULL COMMENT '省',
+  `area_c` varchar(20) DEFAULT NULL COMMENT '市',
+  `area_a` varchar(20) DEFAULT NULL COMMENT '区',
+  `category` varchar(30) DEFAULT NULL,
+  `place` varchar(30) DEFAULT NULL COMMENT '经纬度详情地址 ',
+  `lng` float(14,11) DEFAULT NULL COMMENT '经度',
+  `lat` float(14,11) DEFAULT NULL COMMENT '纬度',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='分店信息';
+
+
+CREATE TABLE IF NOT EXISTS `ims_micromember_card_right` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) NOT NULL,
+  `name` varchar(30) NOT NULL COMMENT '权限名称',
+  `level` int(10) NOT NULL COMMENT '权限级别',
+  `description` text NOT NULL COMMENT '权限描述',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='微会员卡权限';
+
+
+alter table ims_micromember_card add isdefault int default 0 comment '是否为默认会员卡';
+alter table ims_micromember_card add rightid int default 0 comment '会员卡权限';
+
+
+CREATE TABLE IF NOT EXISTS `ims_fans_col_config` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `colname` varchar(50) default null,
+  `col` varchar(60) default null,
+  `type` varchar(10) default null,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
+
+
+CREATE TABLE IF NOT EXISTS `ims_fans_config` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) default null,
+  `colid` varchar(50) default null,
+  `create_time` varchar(10) default null,
+  `ruleid` int(10) default null,
+  `isnecessary` tinyint(1) default null,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
+
+alter table ims_micromember add cardid int default 0 comment '会员卡';
+alter table ims_micromember add usermoney int default 0 comment '消费总额';
+alter table ims_micromember add money int default 0 comment '剩余总额';
+
+
+CREATE TABLE IF NOT EXISTS `ims_micromember_point_level` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) NOT NULL,
+  `name` varchar(30) default NULL COMMENT '等级名称',
+  `startpoint` int(10) default 0 COMMENT '开始积分',
+  `endpoint` int(10) default 0 COMMENT '结束积分',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='积分等级配置';
+
+
+CREATE TABLE IF NOT EXISTS `ims_micromember_point_set` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) NOT NULL,
+  `userdesc` text default NULL COMMENT '使用说明',
+  `pointdesc` text default NULL COMMENT '积分规则说明',
+  `point1` int(10) default 0 COMMENT '每天签到奖励',
+  `point6` int(10) default 0 COMMENT '连续6天签到奖励',
+  `point` int(10) default 0 COMMENT '消费1元奖励',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='积分规则配置';
+
+CREATE TABLE IF NOT EXISTS `ims_micromember_news` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) NOT NULL,
+  `target` int(10) default 0 COMMENT '通知对象',
+  `title` varchar(200) default NULL COMMENT '标题',
+  `addtime` int(10) default NULL COMMENT '添加时间',
+  `content` text default NULL COMMENT '内容',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='通知内容表';
+
+CREATE TABLE IF NOT EXISTS `ims_micromember_news_forward` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `newsid` int(10) NOT NULL,
+  `flag` int(10) default 0 COMMENT '读取标志；0-未读；1-已读',
+  `from_user` varchar(50) default NULL COMMENT '粉丝',
+  `readtime` int(10) default NULL COMMENT '阅读时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='通知推送表';
+
+ALTER TABLE `ims_members`
+ADD COLUMN `groupid`  int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '用户组id' AFTER `uid`;
+
+CREATE TABLE IF NOT EXISTS `ims_members_group` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `modules` varchar(1000) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8
+
+
+ALTER TABLE `ims_site_styles`
+ADD COLUMN `weid`  int(10) NULL AFTER `content`;
+
+##################12月24日融合官方版本SQL更新 by fangyq@ffcs.cn##################
+
+ALTER TABLE `ims_category` ADD COLUMN `nid`  int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '关联导航id' AFTER `weid`;
+
+ALTER TABLE `ims_fans` ADD COLUMN `credit1`  int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '积分' AFTER `follow`;
+
+ALTER TABLE `ims_fans` ADD COLUMN `credit2`  double UNSIGNED NOT NULL DEFAULT 0 COMMENT '余额' AFTER `credit1`;
+
+ALTER TABLE `ims_members` ADD COLUMN `groupid`  int(10) UNSIGNED NOT NULL DEFAULT 0 AFTER `uid`;
+
+CREATE TABLE `ims_members_group` (
+`id`  int(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+`name`  varchar(50) NOT NULL ,
+`modules`  varchar(1000) NOT NULL DEFAULT '' ,
+PRIMARY KEY (`id`)
+)
+ENGINE=MyISAM
+CHECKSUM=0
+ROW_FORMAT=Dynamic
+DELAY_KEY_WRITE=0
+;
+
+ALTER TABLE `ims_modules` ADD COLUMN `type`  varchar(20) NOT NULL DEFAULT '' COMMENT '类型' AFTER `name`;
+
+ALTER TABLE `ims_modules` ADD COLUMN `isrulesingle`  tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否单入口模块' AFTER `isrulefields`;
+
+CREATE TABLE `ims_paylog` (
+`plid`  int(11) NOT NULL AUTO_INCREMENT ,
+`type`  varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' ,
+`weid`  int(11) NOT NULL ,
+`openid`  varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' ,
+`tid`  varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`fee`  decimal(10,2) NOT NULL ,
+`status`  tinyint(4) NOT NULL DEFAULT 0 ,
+PRIMARY KEY (`plid`)
+)
+ENGINE=MyISAM
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
+AUTO_INCREMENT=1
+CHECKSUM=0
+ROW_FORMAT=DYNAMIC
+DELAY_KEY_WRITE=0
+;
+
+
+ALTER TABLE `ims_userapi_reply` ADD COLUMN `description`  varchar(300) NOT NULL DEFAULT '' AFTER `rid`;
+
+
+
+
+
+alter table ims_fans add sex tinyint(4) default 0;
+alter table ims_fans add age tinyint(4) default 0;
+
+
+CREATE TABLE `ims_article` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) unsigned NOT NULL,
+  `type` varchar(30) NOT NULL DEFAULT '',
+  `pcate` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '一级分类',
+  `ccate` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '二级分类',
+  `title` varchar(100) NOT NULL DEFAULT '',
+  `content` text NOT NULL,
+  `thumb` varchar(100) NOT NULL DEFAULT '' COMMENT '缩略图',
+  `source` varchar(50) NOT NULL DEFAULT '' COMMENT '来源',
+  `author` varchar(50) NOT NULL COMMENT '作者',
+  `createtime` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `idx_type` (`type`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `ims_album` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) unsigned NOT NULL,
+  `title` varchar(50) NOT NULL DEFAULT '',
+  `thumb` varchar(100) NOT NULL DEFAULT '',
+  `content` varchar(1000) NOT NULL DEFAULT '',
+  `displayorder` int(10) unsigned NOT NULL DEFAULT '0',
+  `isview` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `createtime` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `ims_album_photo` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) unsigned NOT NULL,
+  `albumid` int(10) unsigned NOT NULL,
+  `title` varchar(100) NOT NULL DEFAULT '',
+  `description` varchar(1000) NOT NULL DEFAULT '',
+  `attachment` varchar(100) NOT NULL DEFAULT '',
+  `ispreview` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `displayorder` int(10) unsigned NOT NULL DEFAULT '0',
+  `createtime` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `ims_micromember_coupon` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL COMMENT '标题',
+  `weid` int(11) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL COMMENT '券类型：1-打折，2-现金',
+  `begin_date` datetime DEFAULT NULL COMMENT '开始时间',
+  `end_date` datetime DEFAULT NULL COMMENT '结束时间',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `edit_date` date DEFAULT NULL COMMENT '最后修改时间',
+  `add_user_id` int(11) DEFAULT NULL COMMENT '创建者编号',
+  `edit_user_id` int(11) DEFAULT NULL COMMENT '修改者编号',
+  `show_template` int(11) DEFAULT NULL COMMENT '卷显示样式模板',
+  `use_type` int(11) DEFAULT '1' COMMENT '使用方式：1-领取使用',
+  `conpon_desc` varchar(500) DEFAULT NULL COMMENT '券说明',
+  `get_num` int(11) DEFAULT NULL,
+  `user_group` int(11) DEFAULT NULL COMMENT '人群类型',
+  `group_param` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT '1' COMMENT '状态：0-删除；1-正常',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `ims_micromember_coupon_log` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `weid` int(11) DEFAULT NULL,
+  `coupon_id` int(11) DEFAULT NULL COMMENT '对应ims_coupon_id',
+  `uid` int(11) DEFAULT NULL COMMENT '会员编号，ims_members.uid',
+  `get_date` datetime DEFAULT NULL,
+  `use_date` datetime DEFAULT NULL COMMENT '使用时间',
+  `usage` varchar(500) DEFAULT NULL COMMENT '用途',
+  `end_date` datetime DEFAULT NULL COMMENT '失效日期',
+  `sn` varchar(256) DEFAULT NULL,
+  `shop_id` int(11) DEFAULT NULL COMMENT '门店编号',
+  `money` int(11) DEFAULT NULL,
+  `use_status` float DEFAULT NULL,
+  `status` int(11) DEFAULT NULL COMMENT '记录状态：0-删除 1-正常',
+  `phone_no` varchar(16) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `ims_micromember_coupon_type` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `ims_userapi_reply` ADD COLUMN `req_type`  varchar(10) default null;
+ALTER TABLE `ims_userapi_reply` ADD COLUMN `resp_type`  varchar(10) default null;
+
+#常用服务接入-添加字段 2013.12.25
+ALTER TABLE `ims_userapi_reply` ADD COLUMN `description`  varchar(300) default null;
+
+#添加微官网模块
+INSERT INTO `ims_modules` (`name`,`title`,`version`,`ability`,`description`,`author`,`url`,`settings`,`subscribes`,`handles`,`isrulefields`,`isrulesingle`,`home`,`issystem`,`options`,`profile`,`site_menus`,`platform_menus`) VALUES ( 'site', '微官网', '1.0', '微官网', '微官网', 'ffcsteam', '', '0', '', '', '1', '0', '0', '1', '', '0', '', '');
+#添加微官网模块回复表
+CREATE TABLE IF NOT EXISTS `ims_site_reply`(
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) unsigned NOT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT '0',
+  `title` varchar(50) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `thumb` varchar(60) NOT NULL,
+  `content` text NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `createtime` int(10) DEFAULT NULL COMMENT '创建时间或者最后更新时间',
+  `islocation` tinyint(2) DEFAULT '0' COMMENT '是否直接跳转来源连接',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
+
+
+#添加微团购表
+CREATE TABLE `ims_group_buying` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '团购编号',
+  `weid` int(10) NOT NULL COMMENT '公众账号id',
+  `key` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT '关键词',
+  `name` varchar(100) NOT NULL COMMENT '活动名称',
+  `summary` varchar(255) NOT NULL COMMENT '团购简介',
+  `starttime` int(10) NOT NULL COMMENT '活动开始时间',
+  `endtime` int(10) NOT NULL COMMENT '活动结束时间',
+  `email` varchar(50) NOT NULL COMMENT '通知邮箱',
+  `email_password` varchar(32) NOT NULL COMMENT '邮箱密码',
+  `smtp` varchar(30) NOT NULL COMMENT 'SMTP服务器',
+  `consume_password` varchar(32) NOT NULL COMMENT '消费确认密码',
+  `description` text NOT NULL COMMENT '活动描述及商品描述',
+  `notice` varchar(255) DEFAULT NULL COMMENT '特别提醒',
+  `end_theme` varchar(50) NOT NULL COMMENT '活动结束公告主题',
+  `end_description` text COMMENT '活动结束说明',
+  `phonenum` varchar(13) DEFAULT NULL COMMENT '团购电话',
+  `address` varchar(120) DEFAULT NULL COMMENT '联系地址',
+  `pay` varchar(50) DEFAULT NULL COMMENT '收款支付宝',
+  `business_description` varchar(255) DEFAULT NULL COMMENT '商家介绍',
+  `businessname` varchar(50) DEFAULT NULL COMMENT '商品名字',
+  `oldprice` float NOT NULL COMMENT '商品原价',
+  `per_maxnum` int(10) NOT NULL COMMENT '每人最多团购产品数',
+  `newprice` float NOT NULL COMMENT '商品团购价',
+  `totalnum` int(10) DEFAULT NULL COMMENT '商品总数',
+  `least` int(10) NOT NULL COMMENT '最低参团人数',
+  `virtualnum` int(10) DEFAULT NULL COMMENT '虚拟参团人数',
+  `copyright` varchar(255) DEFAULT NULL COMMENT '版权设置',
+  `start_img` varchar(255) DEFAULT NULL COMMENT '活动开始图片网址',
+  `end_img` varchar(255) DEFAULT NULL COMMENT '活动结束图片网址',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#文章表article—添加nid
+ALTER TABLE `ims_article` ADD COLUMN `nid` int(10) DEFAULT NULL COMMENT '导入的图文回复的编号';

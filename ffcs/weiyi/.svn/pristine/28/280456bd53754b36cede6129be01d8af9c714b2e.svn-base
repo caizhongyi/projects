@@ -1,0 +1,109 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+	<li><a href="{php echo create_url('activity/post',array('module' => 'egg'))}">添加活动</a></li>
+	<li class="active"><a href="{php echo create_url('activity/display')}">管理活动</a></li>
+</ul>
+<div class="main">
+	<div class="search">
+		<form action="activity.php" method="get">
+		<input type="hidden" name="act" value="display" />
+		<table class="table table-bordered tb">
+			<tbody>
+				<tr>
+					<th>活动类型</th>
+					<td>
+					<ul class="nav nav-pills">
+						<li {if 'all' == $module}class='active'{/if}><a href="{php echo create_url('activity/display', array('module' => 'all', 'keyword' => $_GPC['keyword']))}">全部</a></li>
+						{php $i=0;}
+						{loop $_W['account']['modules'] $row}
+						{php $row = $_W['modules'][$row['name']];}
+						{if (!$row['issystem'] && in_array($row['name'], $activity_modules))}<li {if $row['name'] == $module}class='active'{/if}><a href="{php echo create_url('activity/display', array('module' => $row['name'], 'keyword' => $_GPC['keyword']))}">{$row['title']}</a></li>{/if}
+						{php $i++;}
+						{/loop}
+					</ul>
+					</td>
+				</tr>
+				<tr>
+					<th>分类</th>
+					<td>
+						<select class="span3" style="margin-right:15px;" name="cate_1" onchange="fetchChildCategory(this.options[this.selectedIndex].value)">
+							<option value="0">请选择一级分类</option>
+							{loop $category $row}
+							{if $row['parentid'] == 0}
+							<option value="{$row['id']}" {if $row['id'] == $_GPC['cate_1']} selected="selected"{/if}>{$row['name']}</option>
+							{/if}
+							{/loop}
+						</select>
+						<select class="span3" id="cate_2" name="cate_2">
+						<option value="0">请选择二级分类</option>
+						{if !empty($_GPC['cate_1']) && !empty($children[$_GPC['cate_1']])}
+						{loop $children[$_GPC['cate_1']] $row}
+						<option value="{$row[0]}" {if $row[0] == $_GPC['cate_2']} selected="selected"{/if}>{$row[1]}</option>
+						{/loop}
+						{/if}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>关键字</th>
+					<td>
+							<input class="span6" name="keyword" id="" type="text" value="{$_GPC['keyword']}">
+					</td>
+				</tr>
+				 <tr class="search-submit">
+					<td colspan="2"><button class="btn pull-right span2"><i class="icon-search icon-large"></i> 搜索</button></td>
+				 </tr>
+			</tbody>
+		</table>
+		</form>
+	</div>
+	<div class="rule">
+		{loop $list $row}
+		<table class="tb table table-bordered">
+			<tr class="control-group">
+				<td class="rule-content">
+					<h4>
+						<span class="pull-right"><a onclick="return confirm('删除活动将同时删除关键字与回复，确认吗？');return false;" href="{php echo create_url('activity/delete', array('id' => $row['id'], 'type' => 'activity'))}">删除</a><a href="{php echo create_url('activity/post', array('id' => $row['id'],'module' => $row['module']))}">编辑</a></span>
+						{$row['name']} <small>（{$_W['modules'][$row['module']]['title']}）</small>
+					</h4>
+				</td>
+			</tr>
+			<tr class="control-group">
+				<td class="rule-kw">
+					<div>
+						{loop $row['keywords'] $kw}
+						<span>{$kw['content']}</span>
+						{/loop}
+					</div>
+				</td>
+			</tr>
+			<tr class="control-group">
+				<td class="rule-manage">
+					<span class="rule-type pull-right">
+					{if $row['cate'][0]}<a href="#">{$row['cate'][0]['name']}</a>{/if}
+					{if $row['cate'][1]}<a href="#">{$row['cate'][1]['name']}</a>{/if}
+					</span>
+					<div>
+						<a target="main" href="{php echo create_url('stat/trend/rule', array('id' => $row['id']))}">使用率走势</a>
+						<a target="main" href="{php echo create_url('index/module/awardlist', array('id' => $row['id'],'name' => $row['module']))}">中奖名单</a>
+						{if $row['menus']}
+						{loop $row['menus'] $menu}
+						<a href="{$menu[1]}" target="_blank">{$menu[0]}</a>
+						{/loop}
+						{/if}
+					</div>
+				</td>
+			</tr>
+		</table>
+		{/loop}
+	</div>
+	{$pager}
+</div>
+<script type="text/javascript">
+<!--
+	var category = {php echo json_encode($children)};
+
+//-->
+</script>
+{template 'common/footer'}

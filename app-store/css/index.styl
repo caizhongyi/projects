@@ -1,0 +1,83 @@
+font-size = 13px
+ismobile = true
+
+//default-color = #333
+//vendors = moz webkit ms o official
+
+//img-path = '../img/'
+//page-width = 1024px
+//space = 15px;
+//ie-support = false
+//responsive = false
+
+@require 'aliencss/mixins/index'
+@require 'aliencss/index'
+
+
+body,html
+   min-height: 100%;
+body
+   // bg-cover:'bg.jpg';
+   font-family microsoft yahei, "黑体", Arial, Simsun, "Arial Unicode MS", Mingliu, Helvetica;
+   background:#f9f9f9;
+
+.header
+   -width = 70px;
+   background:#4eaeeb;
+   color: #fff;
+   font-size 16px;
+   text-align center;
+   padding 10px  -width;
+   .btn-left,
+   .btn-right
+      width  -width;
+      position absolute;
+   .btn-left
+      left: 0;
+   .btn-right
+      right: 0;
+
+.list
+   li
+      margin 10px;
+      @extend .clearfix
+.box,.media
+   background #fff;
+   box-shadow 0 0 5px #ddd;
+.media
+   .media-object
+      width:100px;
+   p
+      font-size 12px;
+      color #999;
+   .pull-right
+      margin-left: 10px;
+
+.btn-default
+   border 1px solid #00aef1
+   color #00aef1
+   font-size 12px;
+   border-radius 5px;
+
+.icon
+   font-family '宋体', arial, tahoma
+   font-style: normal
+   &:hover
+      text-decoration none;
+
+.icon-more
+   transform  rotate(90deg);
+
+.footerbar-fixed
+   padding-bottom 40px;
+   .footerbar
+      position: fixed
+      bottom 0;
+      width: 100%;
+
+.footerbar
+   background #464646;
+   text-align center;
+   padding 10px 80px;
+
+

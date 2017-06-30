@@ -1,0 +1,190 @@
+@import "../mixins/index";
+
+//init style
+@color       : #666;
+@link-color : #666;
+@list-style : inherit;
+@family 	  : '宋体',arial,tahoma;
+@em 		  :  red;
+@background :  #fff;
+@font-size  :  12px;
+
+body{
+	color: @color;
+	font-size: @font-size ;
+	line-height: 1.5;
+	font-family: @family;
+	background:@background ;
+}
+em{ color: @em;}
+a{
+	color: @link-color;
+}
+li,ul,ol{
+	list-style: @list-style;
+}
+
+h1{
+	font-size: 16px;
+}
+h2,h3,h4,h5,h6{
+	font-size: 14px;
+}
+p{
+	font-size: 12px;
+}
+
+//.left{ .left();}
+//.right{ .right();}
+.bold{font-weight: bold;}
+//.clearfix{ .clearfix();}
+
+.error{color: red;}
+.success{ color: green;}
+
+.section {
+	margin: 10px 0;
+}
+
+.hover{
+	position: relative;
+	.hover-panel{
+		display: none;
+		position: absolute;
+	}
+	&:hover {
+		.hover-panel {
+			display: block;
+		}
+	}
+}
+
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+.text-overflow {
+    .inline-block();
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// CSS image replacement
+// -------------------------
+// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+.hide-text {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+.clearfix {
+    *zoom: 1;
+    &:before,
+    &:after {
+        display: table;
+        content: ""; // Fixes Opera/contenteditable bug:
+        // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+        line-height: 0;
+    }
+    &:after {
+        clear: both;
+    }
+}
+.no-decoration{
+    &:hover{text-decoration: none;}
+}
+
+.inline-block{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ie7-inline-block {
+    *display: inline; /* IE7 inline-block hack */
+    *zoom: 1;
+    display: inline-block;
+    vertical-align: middle;
+}
+.block-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+.left{
+    float: left;
+    _margin-right:-3px;
+}
+
+.right{
+    float: right;
+    _margin-left:-3px;
+}
+
+.fluid {
+    float: none;
+    width: auto;
+    _overflow:visible;
+    zoom:1;
+}
+
+.nowrap{white-space:nowrap;}
+.no-indent{
+    text-indent: 0;
+}
+
+.empty{
+    height:0;line-height:0;overflow:hidden; font-size:0;
+}
+
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
+}
+
+.grayscale{
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+    -webkit-filter: grayscale(1);
+    filter:gray;
+}
+
+.horizontal-group{
+	li,.group-item{
+		margin-bottom: 10px;
+	}
+}
+
+.vertical-group{
+	li,.group-item{
+		margin-right: 10px;
+	}
+}
+
+table{
+	width:100%;
+	th,td{
+		padding: 5px;
+	}
+}
+.border-table{
+	th,td{
+		border: 1px solid #ddd;
+	}
+}
+
+.text-right{ text-align: right; }
+.text-left{ text-align: left; }
+.text-center{text-align: center;}
+.text-justify{text-align:justify;text-justify:inter-ideograph;}

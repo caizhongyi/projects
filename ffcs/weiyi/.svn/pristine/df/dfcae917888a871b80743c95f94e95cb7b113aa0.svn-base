@@ -1,0 +1,104 @@
+{php $_W['breadcrumb'] = array(array('title'=>'营业厅统计'),array('title'=>'活跃度排行'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-book"></i> 活跃度排行
+    </h1>
+</div>
+
+<div class="main">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4>
+                <i class="icon-search"></i> 搜索
+            </h4>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main">{template 'active_search'}</div>
+        </div>
+    </div>
+
+    <div class="sub-item" id="table-list">
+        <script type="text/javascript">
+            $(function () { $("#pv-trend").highcharts({
+                    chart: {
+                        renderTo: 'container',
+                        type : "column",
+                        borderWidth : 1,
+                        backgroundColor:'#F3F3F3'
+                    },title :"",
+                    yAxis: {
+                        title:"",
+                        type: 'logarithmic',
+                        minorTickInterval: 1
+                    },
+                    xAxis: {
+                        categories: [{php echo implode(',', $uname)}]
+                    },
+                    legend: { align: 'right', x: -70, verticalAlign: 'top', y: 20, floating: true, backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white', borderColor: '#CCC', borderWidth: 1, shadow: false },
+                    tooltip: { formatter: function() { return '<b>'+ this.x +'</b><br/>'+ this.series.name +': '+ this.y +'<br/>'+ '总粉丝量: '+ this.point.stackTotal; } },
+                    plotOptions: { column: { stacking: 'normal', dataLabels: { enabled: false, color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white' } } },
+                    series: [{
+                        name :'非活跃粉丝量',
+                        data: [{php echo implode(',', $sum)}],
+                        dataLabels: {
+                            enabled: true,
+                            color: '#FFFFFF',
+                            align: 'right',
+                            style: {
+                                fontSize: '15px',
+                                fontFamily: 'Verdana, sans-serif',
+                                textShadow: '0 0 3px black'
+                            }
+                        },
+                        color: '#4572A7'
+                    },{ name :'活跃粉丝量',
+                        data: [{php echo implode(',', $total)}],
+                        dataLabels: {
+                            enabled: true,
+                            color: '#FFFFFF',
+                            align: 'right',
+                            style: {
+                                fontSize: '15px',
+                                fontFamily: 'Verdana, sans-serif',
+                                textShadow: '0 0 3px black'
+                            }
+                        },
+                        color: '#89A54E'
+                    }]
+                }) });
+        </script>
+        <script type="text/javascript" src="./resource/script/highcharts.js"></script>
+        <h4 class="header green"><i class="icon-list"></i>活跃度排行</h4>
+        <div class="sub-item">
+            <div class="sub-content" id="pv-trend"></div>
+        </div>
+
+        <h4 class="header green"><i class="icon-list"></i>活跃度详情排行</h4>
+        <div class="sub-content">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="navbar-inner">
+                <tr style="text-align: center;">
+                    <th style="width: 30%; text-align: center;" class="row-hover">公众账号</th>
+                    <th style="text-align: center;">总活跃量</th>
+                    <th style="text-align: center;">总粉丝数</th>
+                    <th style="text-align: center;">活跃度（%）</th>
+                </tr>
+                </thead>
+                <tbody>
+                {loop $list $lis}
+                <tr>
+                    <td>{$lis['tname']}</td>
+                    <td>{php if($lis['total']) echo $lis['total'];else echo '0';}</td>
+                    <td>{$lis['sum']}</td>
+                    <td>{php if($lis['total']) echo number_format($lis['total']*100/$lis['sum'],2);else echo '0';}</td>
+                </tr>
+                {/loop}
+                </tbody>
+            </table>
+        </div>
+        {$pager}
+        <!-- 详细数据 end -->
+    </div>
+</div>
+{template 'common/footer'}

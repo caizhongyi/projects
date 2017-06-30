@@ -1,0 +1,76 @@
+{template 'header'}
+<link href="./resource/ace/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="./resource/ace/assets/css/font-awesome.min.css" />
+
+<!--[if IE 7]>
+<link rel="stylesheet" href="./resource/ace/assets/css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<!-- page specific plugin styles -->
+
+<!-- fonts -->
+
+<link rel="stylesheet" href="./resource/ace/assets/css/ace-fonts.css" />
+
+<!-- ace styles -->
+
+<link rel="stylesheet" href="./resource/ace/assets/css/ace.min.css" />
+<link rel="stylesheet" href="./resource/ace/assets/css/ace-rtl.min.css" />
+<link rel="stylesheet" href="./resource/ace/assets/css/ace-skins.min.css" />
+
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="./resource/ace/assets/css/ace-ie.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" href="./resource/ace/assets/css/common.css" />
+<lINK href="./source/modules/groupbuying/css/item.css" rel="stylesheet" type="text/css" media="all">
+{loop $load_css $css}
+<link type="text/css" rel="stylesheet" href="./resource/style/{$css}.css"  />
+{/loop}
+{loop $load_js $js}
+<script type="text/javascript" src="./resource/script/{$js}.js" ></script>
+{/loop}
+<div data-role="header" data-position="inline">
+    <h1>{$title}</h1>
+</div>
+<div class="weimob-page">
+    <div class="weimob-content">
+        <div class="weimob-list">
+            <div class="weimob-list-item">
+                <div class="weimob-list-item-line">
+                    <div class="weimob-list-item-title">{$item['name']}</div><br>
+                    <div class="weimob-list-item-img">{if time()<$item['endtime']}<img src="{$item['start_img']}">{else}<img src="{$row['end_img']}">{/if}</div>
+                    <div class="weimob-list-item-title">
+                        <span class="red" style="font-size: 1.2rem">￥{$item['newprice']}</span>
+                        <span class="gray" style="font-size: 0.8rem">￥{$item['oldprice']}</span>
+                        <span class="gray" style="font-size: 0.9rem">{$total}人购买</span>
+                    </div><br>
+                    <div>
+                        团购结束还有<?=floor(($item['endtime']-time())/86400)?>天<?=floor(($item['endtime']-time())%86400/3600)?>时<?=floor(($item['endtime']-time())%86400%3600/60)?>分<?=floor(($item['endtime']-time())%86400%60)?>秒
+                    </div><br>
+                </div>
+                <div class="weimob-list-item-line">
+                    <div class="weimob-list-item-title">活动描述------------------</div><br>
+                    <div class="weimob-list-item-title" style="font-size: 0.8rem">【团购内容】</div>
+                    <div class="weimob-list-item-title">
+                        {$item['description']}
+                    </div><br>
+                </div>
+                {if $item['notice']}
+                <div class="weimob-list-item-line">
+                    <div class="weimob-list-item-title">特别提醒------------------</div>
+                    <div class="weimob-list-item-title">
+                        {$item['notice']}
+                    </div>
+                </div>
+                {/if}
+            <div>
+            <p class="weimob-list-item-line">
+                <a class="btn btn-sm btn-primary" style="text-align: center;color: #f0981c;padding-top: 0px" href="{$_W['siteroot']}{php echo $this->createMobileUrl('buying', array('id' => $item['id'],'from_user' => $_GPC['from_user']));}">抢购</a>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+{template 'footer'}

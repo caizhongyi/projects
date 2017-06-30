@@ -1,0 +1,37 @@
+{templateWithTemplet 'mobile/header','templet4'}
+<link href="./themes/mobile/css/car_rest.css" rel="stylesheet" type="text/css" media="all">
+<lINK href="./themes/mobile/templet4/css/list.css" rel="stylesheet" type="text/css" media="all">
+<div class="body">
+    <section>
+        <ul class="list_article">
+            {loop $newsInfo $row}
+            <li>
+                <a href="{php echo create_url('mobile/channel', array('name' => 'detail', 'id' => $row['id'], 'templetid'=>$_GPC['templetid'],'weid' => $_W['weid']))}" class="tbox">
+                    <div>
+                        <span><img src="{$_W['attachurl']}{$row['thumb']}"></span>
+                    </div>
+                    <div>
+                        <h3>{$row['title']}</h3>
+                        <p>{php echo date('Y-m-d H:i:s', $row['createtime'])}</p>
+                    </div>
+                </a>
+            </li>
+            {/loop}
+        </ul>
+    </section>
+
+</div>
+
+<ol class="list_ul_news_nav box">
+    {if !empty($prepageur) }
+    <li>
+        <a href="{$prepageur}">上一页</a>
+    </li>
+    {/if}
+    {if !empty($nextpageurl) }
+    <li>
+        <a href="{$nextpageurl}">下一页</a>
+    </li>
+    {/if}
+</ol>
+{templateWithTemplet 'mobile/footer','templet4'}

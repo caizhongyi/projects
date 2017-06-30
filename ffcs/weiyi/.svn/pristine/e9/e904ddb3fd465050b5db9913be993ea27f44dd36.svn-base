@@ -1,0 +1,81 @@
+<?php
+/**
+ * 砸蛋抽奖模块
+ *
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+defined('IN_IA') or exit('Access Denied');
+
+class GroupbuyingModuleSite extends WeModuleSite {
+	public function getProfileTiles() {
+
+	}
+
+	public function getHomeTiles($keyword = '') {
+		$urls = array();
+		$list = pdo_fetchall("SELECT key, id FROM ".tablename('group_buying').(!empty($keyword) ? " WHERE key LIKE '%{$keyword}%'" : ''));
+		if (!empty($list)) {
+			foreach ($list as $row) {
+				$urls[] = array('title'=>$row['key'], 'url'=> $this->createMobileUrl('groupbuy', array('id' => $row['id'])));
+			}
+		}
+		return $urls;
+	}
+
+	public function doMobileGroupbuy() {
+        global $_GPC;
+        $fromuser = authcode(base64_decode($_GPC['from_user']), 'DECODE');
+        $weid = $_GET['weid'];
+        if (empty($fromuser)) {
+            message('非法访问，请重新发送消息进入团购活动页面！');
+        }
+        $id = intval($_GPC['id']);
+        $item = pdo_fetch("SELECT * FROM ".tablename('group_buying')." WHERE rid = '$id' LIMIT 1");
+        if (empty($item)) {
+            message('非法访问，请重新发送消息进入团购活动页面！');
+        }
+        //用户购买次数
+        $total = pdo_fetchcolumn("SELECT COUNT(*) FROM ".tablename('group_order')." WHERE gid = '$id'");
+        $title = $item['name'];
+
+        include $this->template('groupbuy');
+	}
+
+	public function doMobileBuying() {
+        global $_GPC, $_W;
+        $fromuser = authcode(base64_decode($_GPC['from_user']), 'DECODE');
+        $weid = $_GET['weid'];
+        if (empty($fromuser)) {
+            exit('非法参数！');
+        }
+        $id = intval($_GPC['id']);
+        $item = pdo_fetch("SELECT * FROM".tablename('group_buying')."WHERE id = '$id'");
+        $title = $item['name'];
+        if (!empty($_GPC['submit'])) {
+            $data = array(
+                'name' => $_GPC['realname'],
+                'phonenum' => $_GPC['mobile'],
+                'number' => $_GPC['number'],
+                'address' => $_GPC['address'],
+                'gid' => $id,
+                'weid'=>$weid,
+            );
+            if (empty($data['name'])) {
+                die('<script>alert("请填写您的真实姓名！");location.reload();</script>');
+            }
+            if (empty($data['phonenum'])) {
+                die('<script>alert("请填写您的手机号码！");location.reload();</script>');
+            }
+            if (empty($member)) {
+                $data['from_user'] = $fromuser;
+                pdo_insert('group_order', $data);
+            } else {
+                pdo_update('group_order', $data, array('from_user' => $fromuser,'weid'=>$weid));
+            }
+            die('<script>alert("抢购成功！");location.href = "'.$this->createMobileUrl('groupbuy', array('id' => $id,'from_user' => base64_encode(authcode($fromuser, 'ENCODE')))).'";</script>');
+
+        }
+        include $this->template('buying');
+	}
+
+}

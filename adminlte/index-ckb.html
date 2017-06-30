@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="cn" id="ng-app" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="fragment" content="!">
+    <!-- 360极速模式 -->
+    <meta name="renderer" content="webkit">
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.2 -->
+    <link href="sea_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Font Awesome Icons -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Ionicons -->
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Theme style -->
+    <link href="css/AdminLTE.css" rel="stylesheet" type="text/css"/>
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link href="css/skin-blue.css" rel="stylesheet" type="text/css"/>
+    <link href="css/mbs.css" rel="stylesheet" type="text/css"/>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <!--
+        <script src="sea_modules/angular-ui-router/lib/angular-1.2.14/angular.js"></script>
+        <script src="sea_modules/angular-ui-router/lib/angular-1.2.14/angular-animate.js"></script>
+        <script src="sea_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    -->
+
+
+    <title ng-bind-template="{{  $state.current.page.title }} - 273业务管理系统">273业务管理系统</title>
+
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|---------------------------------------------------------|
+
+-->
+<body class="skin-blue login-page">
+<div class="loading in page-loading" id="page-loading"></div>
+<div ng-controller="controller.init">
+    <div class="login-box" id="login-box" style="display: none;">
+        <div class="login-logo">
+            <a ui-sref="mbs-index-home"><b>273</b>业务管理系统</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="login-box-msg">登录后台</p>
+
+            <form name="loginForm" ng-submit="submitForm(loginForm.$valid)" role="form" novalidate>
+                <div class="form-group has-feedback">
+                    <input type="text" name="email" class="form-control" placeholder="请输入用户名" required
+                           ng-model="user.username" hint-on-blur/>
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" name="password" placeholder="请输入密码" required
+                           ng-model="user.password" ng-minlength="6" hint-on-blur/>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+
+                <!-- <div class="form-group input-group input-group-lg">
+                     <input type="text" placeholder="验证码" class="form-control" name="verify">
+                     <span style="padding:0px; border:0px; cursor:pointer;" class="input-group-addon reget_verify">
+                         <img width="120" height="46" alt="点击切换" src="/User/Public/verify.html" class="verifyimg">
+                         <span class="label label-success">重新生成</span>
+                     </span>
+                 </div>-->
+                <div class="row" style="visibility: visible">
+                    <div class="col-xs-8">
+                        <div class="has-feedback text-danger" ng-messages="loginForm.email.$error"
+                             ng-show="interacted(loginForm.email)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入用户名！</div>
+                            <!-- <div ng-message="email"><i class="fa fa-info-circle"></i> 用户名格式不正确！</div>-->
+                            <!-- <div ng-message="loading">loading...</div>-->
+                        </div>
+                        <div class=" has-feedback text-danger" ng-messages="loginForm.password.$error"
+                             ng-show="interacted(loginForm.password)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入密码！</div>
+                            <div ng-message="minlength"><i class="fa fa-info-circle"></i> 密码不能小于6位！</div>
+                        </div>
+                        <div id="tips-info" class=" text-danger"></div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">登 录</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+
+            <!--      <div class="social-auth-links text-center">
+                      <p>- OR -</p>
+                      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
+                      <a href="#" class="btn btn-block btn-social btn-google-plus btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
+                  </div>
+      -->
+            <a href="#">忘记密码</a><br>
+            <!--   <a href="register.html" class="text-center">注册</a>-->
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+
+    <div class="wrapper" id="main">
+
+        <!-- Main Header -->
+        <header class="main-header">
+            <!-- Logo -->
+            <a ui-sref="home" class="logo">273业管系统<span class="modv2-ver">V2.0</span></a>
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account Menu -->
+                        <li class="dropdown user user-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                <!-- The user image in the navbar-->
+                                <img src="img/logo.gif" ng-src="{{ profile.photo }}" class="user-image"
+                                     alt="User Image"/>
+                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                <span class="hidden-xs " title="{{ profile.nickname }}">{{ profile.real_name }} <i class="glyphicon glyphicon-chevron-down"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- The user image in the menu -->
+                                <li class="user-header">
+                                    <img src="img/logo.gif" ng-src="{{ profile.photo }}" class="img-circle"
+                                         alt="User Image"/>
+
+                                    <p>
+                                        {{ profile.real_name }} - 总部
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <!--  <li class="user-body">
+                                      <div class="col-xs-4 text-center">
+                                          <a href="#">个人信息</a>
+                                      </div>
+                                      <div class="col-xs-4 text-center">
+                                          <a href="#">修改密码</a>
+                                      </div>
+                                      <div class="col-xs-4 text-center">
+                                          <a href="#">修改头像</a>
+                                      </div>
+                                  </li>-->
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-right">
+                                        <a href="javascript:;" ng-click="signout()"
+                                           class="btn  btn-flat btn-danger">退出</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <a href="javascript:;" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="modv2-sidebar-ico">&lt;</span>
+            </a>
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="img/logo.gif" ng-src="{{ profile.photo }}" class="img-circle" alt="User Image"/>
+                    </div>
+                    <div class="pull-left info" style="width: 100px;">
+                        <p>{{ profile.real_name || profile.username }}</p>
+                        <!-- Status -->
+                        <a href="#"><i class="fa fa-circle text-success"></i> {{ profile.address }}</a>
+                    </div>
+                </div>
+
+                <!-- search form (Optional) -->
+                <!--      <form action="#" method="get" class="sidebar-form">
+                          <div class="input-group">
+                              <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                            <span class="input-group-btn">
+                              <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
+                              </button>
+                            </span>
+                          </div>
+                      </form>-->
+                <!-- /.search form -->
+
+                <!-- Sidebar Menu -->
+
+                <ul class="sidebar-menu">
+                    <!-- Optionally, you can add icons to the links -->
+                    <!--<li class="treeview" ui-sref-active="active" ng-repeat="m in menus"  ng-class="activeClass" on-finish-render-filters>
+                      <a href="#" ng-if="m.sub"  title="{{ m.name }}"><i class="fa {{ m.icon }}"></i><span>{{ m.name }}</span><i  class="fa fa-angle-left pull-right"></i></a>
+                      <a href="#" ng-if="!m.sub" ui-sref="{{ m.sref }}" title="{{ m.name }}"><i class="fa {{ m.icon }}"></i><span>{{ m.name }}</span></a>
+                      <small  ng-if="!m.sub" class="label pull-right bg-green"></small>
+                      <ul class="treeview-menu" ng-if="m.sub" >
+                        <li ui-sref-active="active" ng-repeat="n in m.sub"><a href="#" ng-click="activeClass='active'"  ui-sref="{{ n.sref }}"><i class="fa {{ n.icon }}"></i>{{ n.name }}</a></li>
+                      </ul>
+                    </li>-->
+                    <li class="active">
+                        <a href="#" ui-sref="mbs-index-home" ui-sref-opts="{reload: true}">
+                            <i class="fa fa-dashboard"></i> <span>业管首页</span>
+                        </a>
+                    </li>
+                    <li class="treeview" ng-class="{active: $state.in('user')}">
+                        <a href="javascript:;">
+                            <i class="fa fa-user"></i>
+                            <span>用户中心</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li ui-sref-active="active"><a href="#" ui-sref="user-user-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>用户管理</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="user-dept-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>部门管理</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="user-car-recom"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>车人脉</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a href="#" ui-sref="acl-index-getrolelist">
+                            <i class="fa fa-cog"></i> <span>权限管理</span>
+                        </a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a href="#" ui-sref="trade-index-index">
+                            <i class="fa fa-money"></i> <span>交易</span>
+                        </a>
+                    </li>
+                    <li class="treeview"
+                        ng-class="{active: $state.in(['order','deptAccountTransferDetail','contract','apply','statement','finance']) }">
+                        <a href="javascript:;">
+                            <i class="fa fa-suitcase"></i>
+                            <span>车付宝</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-order-addOrder"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>新建订单</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-order-orderList"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>订单管理</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-deptAccountTransferDetail-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>刷卡明细</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-contract-contractList"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>合同管理</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-apply-applyList"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>付款审核</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-statement-getStatementList"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>资金对账</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-finance-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>财务付款</a>
+                            </li>
+                            <!--
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-trade-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>交易管理</a>
+                            </li>
+                            -->
+
+                        </ul>
+                    </li>
+                    <li class="treeview"
+                        ng-class="{active: $state.in(['order','deptAccountTransferDetail','contract','apply','statement','finance']) }">
+                        <a href="javascript:;">
+                            <i class="fa fa-suitcase"></i>
+                            <span>收付核心</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li ui-sref-active="active"><a href="#" ui-sref="chefubao-simulation-request" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>模拟刷卡</a>
+                            </li>
+                        </ul>
+                        <ul class="treeview-menu">
+                            <li ui-sref-active="active"><a href="#" ui-sref="chefubao-DeptIncomeExpense-deptList" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>门店收入、支出、余额</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview"
+                        ng-class="{active: $state.in(['deptAccount','deptAccountDepositApply','deptAccountRefundApply'])}">
+                        <a href="javascript:;">
+                            <i class="fa fa-suitcase"></i>
+                            <span>车付宝门店管理</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-deptAccount-getDeptAccountList"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>门店管理</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#"
+                                                           ui-sref="settlement-deptAccountDepositApply-getDeptAccountDepositApplyList"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>手续费存款复核</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#"
+                                                           ui-sref="settlement-deptAccountRefundApply-getDeptAccountRefundApplyList"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>手续费退款复核</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview"
+                        ng-class="{active: $state.in(['reportDept','incomeExpenses','reportHandingFee'])}">
+                        <a href="javascript:;">
+                            <i class="fa fa-suitcase"></i>
+                            <span>车付宝报表</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-reportDept-reportDeptAccount"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>刷卡手续费汇总表</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-reportDept-reportDeptOrder"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>刷卡手续费汇总表(按订单)</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-reportDept-reportDeptDetail"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>刷卡手续费流水表</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-incomeExpenses-detail"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>各款项收支流水表</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-reportSwiping-swingList"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>刷卡到账汇总表</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-reportSwiping-swipingList"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>刷卡汇总表</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-reportSwiping-advancePay"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>垫款报表</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-reportSwiping-unpayList"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>未付款报表</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="settlement-reportHandingFee-reportList"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>刷卡手续费收入(直营店)</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview" ng-class="{active: $state.in(['reportDept','incomeExpenses','reportHandingFee'])}">
+                        <a href="javascript:;">
+                            <i class="fa fa-user"></i>
+                            <span>专区管理</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+
+                        <ul class="treeview-menu">
+                            <li ui-sref-active="active">
+                                <a href="#" ui-sref="contract-contract-contractList" ui-sref-opts="{reload: true}">
+                                    <i class="fa fa-circle-o"></i>合同管理
+                                </a>
+                            </li>
+                            <li ui-sref-active="active">
+                                <a href="#" ui-sref="contract-contract-addContract({ id : null })" ui-sref-opts="{reload: true}">
+                                    <i class="fa fa-circle-o"></i>添加合同
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview" ng-class="{active: $state.in('change') || $state.includes('change')}">
+                        <a href="javascript:;">
+                            <i class="fa fa-user"></i>
+                            <span>过户模块</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li ui-sref-active="active"><a href="#" ui-sref="change-user-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>微信用户管理</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="change-businfo-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>订单车辆信息查询</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="change-city-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>过户城市相关信息配置</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="change-feeback-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>用户反馈查询</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="change-appraise-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>用户评价查询</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="change-order-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>订单管理查询</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="change-product-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>过户费用基础配置管理</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="change-carfee-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>车辆类型配置管理</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="change-trade-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>交易人员系统管理</a>
+                            </li>
+                            <li ui-sref-active="active"><a href="#" ui-sref="change-picture-index"
+                                                           ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>过户材料管理</a>
+                            </li>
+                        </ul>
+                    </li>
+					<li class="treeview" ng-class="{active: $state.in('basicservice')}">
+                        <a href="javascript:;"  >
+                            <i class="fa fa-user"></i>
+                            <span>基础服务平台</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li ui-sref-active="active">
+                                <a href="#"  ui-sref="basicservice-User-userInfo" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>账户管理</a>
+
+                            </li>
+                            <li ui-sref-active="active">
+                                <a href="#"  ui-sref="basicservice-App-appInfo" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>应用授权管理<i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu menu-open">
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-App-typeInfo" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>应用类型</a></li>
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-App-appInfo" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>应用管理</a></li>
+                                </ul>
+                            </li>
+                            <li ui-sref-active="active">
+                                <a href="#"  ui-sref="basicservice-Work-workList" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>工单管理<i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu menu-open">
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-Work-addWork" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>新增工单</a></li>
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-Work-workType" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>类型管理</a></li>
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-Work-workList" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>工单列表</a></li>
+                                </ul>
+                            </li>
+                            <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-VinSearch-getRecordList" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>车鉴定管理</a></li>
+                            <li ui-sref-active="active">
+                                <a href="#"  ui-sref="basicservice-ExtPhone-cdrList" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>转接电话<i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu menu-open">
+                                  <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-ExtPhone-bindList" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>绑定查询</a></li>
+                                  <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-ExtPhone-cdrList" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>通话查询</a></li>
+                                  <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-ExtPhone-pool10List" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>273号码池</a></li>
+                                  <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-ExtPhone-pool52List" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>爱卡号码池</a></li>
+                                  <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-ExtPhone-pool53List" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>赶集号码池</a></li>
+                                  <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-ExtPhone-pool54List" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>百姓号码池</a></li>
+                                  <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-ExtPhone-pool58List" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>58号码池</a></li>
+                                  <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-ExtPhone-pool99List" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>固定号码池</a></li>
+                                </ul>
+                            </li>
+                            
+                            
+							<li ui-sref-active="active">
+                                <a href="#"  ui-sref="basicservice-Msg-msgList" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>短信管理<i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu menu-open">
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-Msg-countList" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>短信用量</a></li>
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-Msg-msgList" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>短信查询</a></li>
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-Msg-sendTest" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>短信测试</a></li>
+                                </ul>
+                            </li>
+
+                            <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-ShortUrl-index" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>短地址管理</a></li>
+
+							<li ui-sref-active="active">
+                                <a href="#"  ui-sref="basicservice-App-channelDosage" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>回拨电话<i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu menu-open">
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-App-channelDosage" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>通道用量</a></li>
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-App-callTest" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>回拨测试</a></li>
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-App-bindList" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>绑定查询</a></li>
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-App-callBack" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>回拨查询</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li ui-sref-active="active">
+                                <a href="#"  ui-sref="basicservice-App-dosageRemain" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>数据报表<i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu menu-open">
+                                    <li ui-sref-active="active"><a href="#"  ui-sref="basicservice-App-dosageRemain" ui-sref-opts="{reload: true}"><i class="fa fa-circle-o"></i>第三方接口余量</a></li>
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a href="#" ui-sref="log-mongo-index">
+                            <i class="fa fa-cog"></i> <span>mongo日志</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.sidebar-menu -->
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div class="" ui-view>
+
+            </div>
+
+        </div>
+        <!-- /.content-wrapper -->
+
+    </div>
+
+    <div class="login-box help-info" id="help-info">
+        <div class="login-logo">
+            <a ui-sref="mbs-index-home"><b>273</b>业务管理系统</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p>您的浏览器版本过低,请使用ie9以上的浏览器,或<a href="http://down.360safe.com/cse/360cse_8.3.0.122.exe">点击下载</a><a
+                    href="http://chrome.360.cn/">360安全浏览器</a>!</p>
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+</div>
+
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+<!--<script src="sea_modules/jquery/1.9.1/jquery.min.js"></script>-->
+<!--<script src="sea_modules/me-pageloading/snap.svg-min.js"></script>-->
+<script src="js/sea.js"></script>
+<script src="sea_modules/seajs-css/seajs-css.js"></script>
+<script src="sea_modules/seajs-wrap/src/seajs-wrap.js"></script>
+
+<script src="sea_modules/jquery/1.9.1/jquery.min.js"></script>
+<script src="sea_modules/angular/angular.js"></script>
+<script src="sea_modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="sea_modules/es5/dist/index.js"></script>
+<script src="sea_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="sea_modules/oclazyload/dist/ocLazyLoad.min.js"></script>
+<script src="sea_modules/angular-messages/angular-messages.js"></script>
+<script src="sea_modules/angular-cookies/angular-cookies.min.js"></script>
+<script src="sea_modules/jQueryUI/jquery-ui-1.10.3.min.js"></script>
+
+<link rel="stylesheet" href="sea_modules/jquery-autocomplete/jquery.autocomplete.css"/>
+<link rel="stylesheet" href="sea_modules/angular-loading-bar/build/loading-bar.min.css"/>
+<script src="sea_modules/jquery-autocomplete/jquery.autocomplete.js"></script>
+<script src="sea_modules/angular-bootstrap/dist/ui-bootstrap-tpls.min.js"></script>
+<script src="sea_modules/angular-loading-bar/build/loading-bar.min.js"></script>
+<script src="sea_modules/angular-file-upload/dist/ng-file-upload-all.min.js"></script>
+<script src="sea_modules/jquery-cookie/dist/index.js"></script>
+<script src="sea_modules/jquery-md5/dist/index.js"></script>
+
+
+<link rel="stylesheet" href="sea_modules/webuploader/dist/webuploader.css"/>
+<link rel="stylesheet" href="sea_modules/webuploader/examples/image-upload/style.css"/>
+<script src="sea_modules/webuploader/dist/webuploader.custom.min.js"></script>
+
+<script src="js/app.min.js"></script>
+<script src="js/angular-common.js"></script>
+<script src="app-ckb/utils/route.js"></script>
+<script src="app-ckb/utils/directive.js"></script>
+<script src="app-ckb/utils/filter.js"></script>
+<script src="app-ckb/utils/datepicker.js"></script>
+<script src="app-ckb/utils/service.js"></script>
+<script src="app-ckb/app.js"></script>
+
+
+<script>
+    !(function () {
+        var ua = navigator.userAgent.toLowerCase(), browser = {};
+        if (/msie/.test(ua) || ua.match(/trident/i)) {
+            switch (navigator.appVersion.split(";")[1].replace(/[ ]/g, "")) {
+                case "MSIE6.0" :
+                    browser.version = 6;
+                    break;
+                case "MSIE7.0" :
+                    browser.version = 7;
+                    break;
+                case "MSIE8.0" :
+                    browser.version = 8;
+                    break;
+                case "MSIE9.0" :
+                    browser.version = 9;
+                    break;
+                case "MSIE10.0" :
+                    browser.version = 10;
+                    break;
+                case "MSIE11.0" :
+                    browser.version = 11;
+                    break;
+                default :
+                    browser.version = 99;
+                    break;
+            }
+            if (browser.version < 10) {
+                document.getElementById('login-box').style.display = 'none';
+                document.getElementById('main').style.display = 'none';
+                document.getElementById('page-loading').style.display = 'none';
+                document.getElementById('help-info').style.display = 'block';
+                return false;
+            }
+        }
+
+    /*    seajs.use('app/app', function () {
+            window.console && console.info('app has loaded~!');
+        })*/
+  /*      seajs.use([dev ? 'app/app' : 'dist/app/app.js?' + version.replace('v=', '')], function () {
+            window.console && console.info('app has loaded~!');
+        })*/
+    })();
+
+</script>
+</body>
+</html>

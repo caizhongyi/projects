@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <script type="text/javascript" src="../../../resource/script/zepto.min.js"></script>
+    <meta name="mqq-bottom-ad" content="no"/>
+    <title>翼起学4G</title>
+    <link href="../css/answer.css" type="text/css" rel="stylesheet">
+    <link href="../css/style_s.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<div id="content" class="main fontSize2">
+    <p class="title" align="left">爱答题：政府工作报告知多少</p>
+    <span class="src">2014-03-05 腾讯新闻</span>
+
+    <div id="answerHint">本次答题共<span>3</span>道，请在<span>120</span>秒内完成答题，否则系统将会自动提交。</div>
+    <br>
+
+    <div class="moreOperator">
+        <div class="share" id="share">
+        </div>
+    </div>
+</div>
+
+<div id="VoteContainer" class="voteContainer">
+    <div class="voteBox voteBefore">
+        <div class="voteIcon"> 爱答题</div>
+        <div class="voteList" max="0" need="1" projectid="5872528">
+            <div class="voteTitle"><strong>1.</strong>巴西球星内马尔是什么星座？</div>
+            <ul class="listBtn">
+                <li optionid="5999116_435190" optionmark="NEW20140305019213_null_435190" class=""><h5></h5>
+
+                    <p class="radio"><strong>01</strong> 天蝎座</p></li>
+                <li optionid="5999116_435191" optionmark="NEW20140305019213_null_435191" class="heightLight"><h5></h5>
+
+                    <p class="radio"><strong>02</strong> 处女座</p></li>
+                <li optionid="5999116_435192" optionmark="NEW20140305019213_null_435192" class=""><h5></h5>
+
+                    <p class="radio"><strong>03</strong> 水瓶座</p></li>
+            </ul>
+        </div>
+        <div class="voteList" max="0" need="1" projectid="5872528">
+            <div class="voteTitle"><strong>2.</strong>哪一对昔日情侣同时出现在巴黎时装周？</div>
+            <ul class="listBtn">
+                <li optionid="5999117_435193" optionmark="NEW20140305019213_null_435193" class=""><h5></h5>
+
+                    <p class="radio"><strong>01</strong> 谢霆锋和王菲</p></li>
+                <li optionid="5999117_435194" optionmark="NEW20140305019213_null_435194" class=""><h5></h5>
+
+                    <p class="radio"><strong>02</strong> 张柏芝和谢霆锋</p></li>
+                <li optionid="5999117_435195" optionmark="NEW20140305019213_null_435195" class=""><h5></h5>
+
+                    <p class="radio"><strong>03</strong> 莫文蔚和冯德伦</p></li>
+            </ul>
+        </div>
+        <div class="voteList lastList" max="0" need="1" projectid="5872528">
+            <div class="voteTitle"><strong>3.</strong>2014年政府工作报告里没有哪句话？</div>
+            <ul class="listBtn">
+                <li class="successChecked" optionid="5999118_435196" optionmark="NEW20140305019213_null_435196"><h5></h5>
+
+                    <p class=""><strong>01</strong> 背水一战</p></li>
+                <li class="wrongChecked" optionid="5999118_435197" optionmark="NEW20140305019213_null_435197"><h5></h5>
+
+                    <p class=""><strong>02</strong> 打掉老虎才有信心</p></li>
+                <li class="dontChecked" optionid="5999118_435198" optionmark="NEW20140305019213_null_435198"><h5></h5>
+
+                    <p class=""><strong>03</strong> 坚决向污染宣战</p></li>
+            </ul>
+        </div>
+
+        <div class="submitBtnDiv">
+            <button class="btn-block submitBtn" type="submit">提交</button>
+        </div>
+    </div>
+</div>
+
+<div id="countdownDiv"><span id="countdownSpan">12</span></div>
+</body>
+<script type="text/javascript" src="js/Date.min.js"></script>
+<script type="text/javascript">
+    $('#VoteContainer').on('click','.radio',function(){
+        $(this).addClass('radioChecked').parent().siblings().find('.radio').removeClass('radioChecked')
+    })
+
+    $.coundown = {
+        timer : null,
+        start : function(){
+            var now = new Date().getTime() + 120000;
+            var self =  this;
+            this.timer = setInterval(function(){
+                var date = new Date(now), sec =  new Date().diffSec(date);
+                $('#countdownSpan').html(sec);
+                if(sec <= 0 ) self.stop();
+            }, 1000 )
+        },
+        stop : function(){
+            clearInterval(this.timer);
+        }
+    }
+    $.coundown.start();
+
+
+</script>
+<!--
+<script language="javascript" src="js/answer.js" id="VoteJs" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+    /**
+     * 配置项
+     * container 要在页面显示的容器ID
+     * voteUrl jsonp数据格式URL
+     * submitUrl  提交投票数据的url, post方式提交
+     * subStr  前端截取选项的字符数，0 为不截取
+     */
+    var voteConfig = {
+        container: "VoteContainer",
+        voteUrl: "http://view.inews.qq.com/getQQVoteInfo?otype=jsonpval&id=5872528",
+        submitUrl: "http://input.vote.qq.com/survey.php",
+        answerUrl: "http://view.inews.qq.com/pubAidatiAnswer",
+        loading: true,
+        errorTip: true,
+        subStr: 22,
+        newsId: "NEW2014030501921301",
+        timeLimit: 120
+    };
+    webkitVote.init();
+</script>
+
+<script language="javascript">
+
+    var contentModel = {
+        "img_url": "http://pnewsapp.tc.qq.com/newsapp_ls/0/14398411_150110/0",
+        "img_width": "",
+        "img_height": "",
+        "link": "http://view.inews.qq.com/a/NEW2014030501921301",
+        "desc": "爱答题",
+        "title": "爱答题：政府工作报告知多少",
+        "src": "腾讯新闻"
+    };
+
+
+    var openText = "参与话题讨论";  // "打开腾讯新闻客户端";
+    //打开客户端链接
+    var openUrl;
+    var mobileType = "Unknown";
+    var newsId = "NEW2014030501921301"; // For BOSS stats and other
+    if(!newsId){
+        newsId=document.location.pathname.split("/")[2]; //parse pathname like /a/xxx or /a/xxx/yyy  to get xxx out
+    }
+
+    //下载链接地址
+    var downloadUrl;
+    function changefont(fontsize){
+        if(fontsize < 1 || fontsize > 4)return;
+        var contentDiv = document.getElementById('content');
+        contentDiv.className = 'main fontSize' + fontsize;
+    }
+</script>
+<script language="javascript" src="http://mat1.gtimg.com/www/js/newsapp/newsshare/webnews20131022_min.js" type="text/javascript" charset="utf-8"></script>
+-->
+
+</html>
+

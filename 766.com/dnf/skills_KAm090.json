@@ -1,0 +1,137 @@
+{
+	_title : "阿修羅",
+	GENERAL_SKILLS : [
+		new SkillInfo("c_throwitem"   , "キャンセルアイテム投擲","images").setAsOneOnly(20, 50),
+		new SkillInfo("jump"          , "跳躍"                  ).setAsBasic(10, 20, 3, 10),
+		new SkillInfo("kodai"         , "古代の記憶"            ).setAsBasic(15, 25, 3, 10), 
+		new SkillInfo("throwmastery"  , "投擲マスタリー"        ).setAsBasic(10, 25, 3, 10),
+		new SkillInfo("hukutu"        , "不屈の意思"            ).setAsBasic(15, 25, 3, 10),
+		new SkillInfo("p_crit"        , "物理クリティカルヒット").setAsBasic(20, 20, 3, 10),
+		new SkillInfo("p_back"        , "物理バックアタック"    ).setAsBasic(20, 20, 3, 10),
+		new SkillInfo("m_crit"        , "魔法クリティカルヒット").setAsBasic(20, 20, 3, 10),
+		new SkillInfo("m_back"        , "魔法バックアタック"    ).setAsBasic(20, 20, 3, 10),
+		new SkillInfo("quick_standing", "クイックスタンディング").setAsOneOnly(1, 10),
+		//Ex基本
+		new SkillInfo("ex_basic", "基本技熟練"  ).setAsEx(),
+		//Qp
+		new SkillInfo("qp_str"    , "力強化"        ).setAsQp(20, 20, 1, 27),
+		new SkillInfo("qp_int"    , "知能強化"      ).setAsQp(20, 20, 1, 27),
+		new SkillInfo("qp_vit"    , "体力強化"      ).setAsQp(20, 20, 1, 27),
+		new SkillInfo("qp_wis"    , "精神力強化"    ).setAsQp(20, 20, 1, 27),
+		new SkillInfo("qp_speed"  , "移動速度強化"  ).setAsQp(20, 20, 1,  5),
+		new SkillInfo("qp_pcrit"  , "物理クリ強化"  ).setAsQp(20, 35, 1,  5),
+		new SkillInfo("qp_mcrit"  , "魔法クリ強化"  ).setAsQp(20, 35, 1,  5),
+		new SkillInfo("qp_hpregen", "HP回復力強化"  ).setAsQp(20, 20, 1,  8),
+		new SkillInfo("qp_mpregen", "MP回復力強化"  ).setAsQp(20, 20, 1,  8),
+		new SkillInfo("qp_ereg"   , "全属性抵抗強化").setAsQp(20, 20, 1, 10),
+		new SkillInfo("qp_hitrate", "的中率強化"    ).setAsQp(50, 35, 1, 20),
+		new SkillInfo("qp_evasion", "回避率強化"    ).setAsQp(50, 35, 1, 20),
+		new SkillInfo("qp_eattack", "属性攻撃強化"  ).setAsQp(50, 70, 1, 10),
+		new SkillInfo("qp_fixed"  , "独立攻撃力強化").setAsQp(50, 70, 1, 10)
+	],
+	MAINCLASS_SKILLS : [
+		//波動
+		new SkillInfo("wave_normal", "波動剣地裂").setAsBasic(5, 15, 2, -1).setFirstCost(0),
+		new SkillInfo("ex_wave_normal",null,"").setAsEx().addPre(10),
+		new SkillInfo("rolling_wave", "裂波斬").setAsBasic(10, 15, 2, -1),
+		new SkillInfo("c_rolling_wave").setAsOneOnly(20, 50).addPre(5),
+		new SkillInfo("ex_rolling_wave").setAsEx(50, 2, 1, 1).addPre(10),
+		//剣術
+		new SkillInfo("upper_slash", "アッパースラッシュ").setAsBasic(1, 20, 3, 10).setFirstCost(0),
+		new SkillInfo("ex_upper_slash").setAsEx().addPre(10),
+		new SkillInfo("thrust", "スラスト").setAsBasic(5, 15, 2, -1),
+		new SkillInfo("ex_thrust").setAsEx(50, 2, 1, 1).addPre(10),
+		new SkillInfo("guard", "ガード").setAsBasic(5, 20, 5, 5),
+		new SkillInfo("c_guard").setAsOneOnly(15, 50).addPre(3),
+		new SkillInfo("ex_guard").setAsEx(50, 2, 1, 1).addPre(5),
+		new SkillInfo("ashen_fork", "アッシュフォーク").setAsBasic(10, 15, 2, -1),
+		new SkillInfo("ex_ashen_fork").setAsEx().addPre(10),
+		new SkillInfo("triple_slash", "断空斬").setAsBasic(10, 15, 2, -1).setFirstCost(0),
+		new SkillInfo("c_triple_slash").setAsOneOnly(20, 50).addPre(5),
+		new SkillInfo("ex_triple_slash").setAsEx().addPre(5),
+		new SkillInfo("aerial_chain_slash", "空中連続斬り").setAsOneOnly(15, 50).addPre("ashen_fork", 1),
+		new SkillInfo("short_sword_mastery", "小剣マスタリー"    ).setAsBasic(15, 20, 3, 20),
+		new SkillInfo("blade_sword_mastery", "ブレードマスタリー").setAsBasic(15, 20, 3, 20),
+		new SkillInfo("large_sword_mastery", "大剣マスタリー"    ).setAsBasic(15, 20, 3, 20),
+		new SkillInfo("blunt_mastery"      , "鈍器マスタリー"    ).setAsBasic(15, 20, 3, 20),
+		//ブラッド
+		new SkillInfo("gore_cross", "ゴアクロス").setAsBasic(10, 15, 2, -1),
+		new SkillInfo("ex_gore_cross").setAsEx().addPre(10),
+		new SkillInfo("earth_break", "崩山撃").setAsBasic(15, 20, 2, -1).setFirstCost(0),
+		new SkillInfo("ex_earth_break").setAsEx().addPre(10),
+		//ゴースト
+		new SkillInfo("ogre_slash", "鬼切り").setAsBasic(1, 15, 2, -1).setFirstCost(0),
+		new SkillInfo("c_ogre_slash").setAsOneOnly(2, 10).addPre(1),
+		new SkillInfo("ex_ogre_slash").setAsEx().addPre(10),
+		new SkillInfo("khazan", "カザン").setAsBasic(5, 20, 3, 10).setFirstCost(0),//ソウル20，他10
+		new SkillInfo("ex_khazan").setAsEx(50, 1).addPre(10),
+		new SkillInfo("moonlight_slash", "月光切り").setAsBasic(15, 20, 2, -1),
+		new SkillInfo("ex_moonlight_slash").setAsEx().addPre(10)
+	],
+	SUBCLASS_SKILLS : [
+		new SkillInfo("c_wave_normal").setAsOneOnly(18, 30).addPre(5),
+		new SkillInfo("wave_sign", "波動刻印").setAsBasic(20, 20, 3, -1, true),
+		new SkillInfo("ex_wave_sign").setAsEx(65, 2).addPre(10),
+		new SkillInfo("kimon", "鬼門返し").setAsBasic(20, 25, 2, -1).addPre("guard",1),
+		new SkillInfo("c_kimon").setAsOneOnly(25, 50).addPre(3),
+		new SkillInfo("ex_kimon").setAsEx(55, 2, 5, 2).addPre(10),
+		new SkillInfo("sonic_slash", "真空剣").setAsBasic(20, 25, 2, -1),
+		new SkillInfo("ex_sonic_slash").setAsEx(55, 2).addPre(10),
+		new SkillInfo("ogresonic", "修羅真空斬").setAsOneOnly(20, 50).addPre("sonic_slash",1),
+		new SkillInfo("mind", "精神集中").setAsBasic(25, 10, 3, -1),
+		new SkillInfo("hadou", "波動解放").setAsBasic(25, 20, 3, -1),
+		new SkillInfo("ex_hadou").setAsEx(55, 2).addPre(10),
+		new SkillInfo("wave_ice"   , "波動剣氷刃").setAsBasic(30, 25, 2, -1).addPre("wave_normal",5),
+		new SkillInfo("ex_wave_ice").setAsEx(55, 4).addPre(10),
+		new SkillInfo("ex_wave_ice_a", "極波動剣氷刃").setAsEx60().addPre("wave_ice",10),
+		new SkillInfo("ogrewave", "鬼神の波動").setAsBasic(30, 30, 2, -1),
+		new SkillInfo("ex_ogrewave").setAsEx(55, 2).addPre(10),
+		new SkillInfo("wave_fire"   , "波動剣爆炎").setAsBasic(35, 40, 2, -1).addPre("wave_ice",5),
+		new SkillInfo("ex_wave_fire").setAsEx(65, 2).addPre(10),
+		new SkillInfo("ex_wave_fire_a", "極波動剣爆炎").setAsEx70().addPre("wave_fire",5),
+		new SkillInfo("musou", "無双波").setAsBasic(35, 40, 2, -1).addPre("ogrewave",3).addPre("mind",4),
+		new SkillInfo("ex_musou").setAsEx(65, 2).addPre(10),
+		new SkillInfo("hadoujin", "炸裂波動陣").setAsBasic(40, 50, 2, -1).addPre("ogrewave",5),
+		new SkillInfo("myououjin", "不動明王陣").setAsBasic(45, 60, 2, -1).addPre("wave_sign",5).addPre("ogresonic",1),
+		new SkillInfo("ex_myououjin").setAsEx(65, 2).addPre(10),
+		new SkillInfo("mindseye", "心眼").setAsAp(),
+		new SkillInfo("wave_eye", "波動の眼").setAsAa().addPre("wave_fire",5).addPre("ogrewave",5),
+		new SkillInfo("rear_revenger", "背面攻撃").setAsBasic(34, 40, 3, 10),
+		new SkillInfo("bloodlust", "狂乱の宴").setAsBasic(24, 50, 2, 10),
+		new SkillInfo("bremen", "虚ろな目のブレーメン").setAsBasic(24, 50, 3, 10).addPre("khazan",5)
+	],
+	SKILL_TEMPLATE : [
+		 "jump"                 ,"kodai"
+		,"throwmastery"         ,"c_throwitem"
+		,"hukutu"               ,"quick_standing"
+		,"p_crit"               ,"p_back"
+		,"m_crit"               ,"m_back"
+		,"qp_str"               ,"qp_int"
+		,"qp_vit"               ,"qp_wis"
+		,"qp_speed"             ,"qp_pcrit"
+		,"qp_mcrit"             ,"qp_hpregen"
+		,"qp_mpregen"           ,"qp_ereg"
+		,"qp_hitrate"           ,"qp_evasion"
+		,"qp_eattack"           ,"qp_fixed"
+		,"ex_basic"             ,""
+		,"wave_normal"          ,"rolling_wave"
+		,"upper_slash"          ,"thrust"
+		,"guard"                ,"ashen_fork"  
+		,"triple_slash"         ,"aerial_chain_slash"
+		,"gore_cross"           ,"earth_break"
+		,"ogre_slash"           ,"moonlight_slash"
+		,"khazan"               ,"bremen"
+		,"short_sword_mastery"  ,"blade_sword_mastery"
+		,"large_sword_mastery"  ,"blunt_mastery"
+		,""                     ,""
+		,"wave_sign"            ,"ogrewave"
+		,"wave_ice"             ,"ex_wave_ice_a"
+		,"mind"                 ,"musou"
+		,"hadou"                ,"kimon"
+		,"sonic_slash"          ,"ogresonic"
+		,"wave_fire"            ,"ex_wave_fire_a"
+		,"hadoujin"             ,"myououjin"
+		,"mindseye"             ,"wave_eye"
+		,"rear_revenger"        ,"bloodlust"
+	],
+}

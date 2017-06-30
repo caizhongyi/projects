@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="微翼、微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" name="Keywords">
+    <meta content="微翼、微官网、微会员、微活动、微商城" name="Description">
+    <link rel="stylesheet" type="text/css" href="./resource/style/bootstrap.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="./resource/style/bootstrap-responsive.min.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="./resource/style//resource.css" media="all" />
+    <!--<link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/inside.css?2013-10-15-2" media="all" />-->
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./resource/script/jquery.cookie.js"></script>
+    <script type="text/javascript" src="./resource/script/bootstrap.js"></script>
+    <script type="text/javascript" src="./resource/script/jquery_form_min.js?2013-10-15-2"></script>
+    <script type="text/javascript" src="./resource/script/jquery_validate_min.js?2013-10-15-2"></script>
+    <script type="text/javascript" src="./resource/script/jquery_validate_methods.js?2013-10-15-2"></script>
+    <script type="text/javascript" src="./resource/script/chosen_jquery_min.js?2013-10-15-2"></script>
+    <!--<script type="text/javascript" src="./resource/script/jquery_form_wizard_min.js?2013-10-15-2"></script>-->
+    <script type="text/javascript" src="./resource/script/jscolor.js?2013-10-15-2"></script>
+    <script type="text/javascript" src="./resource/script/inside.js?2013-10-15-2"></script>
+    <script type="text/javascript" src="./resource/script/map.js?2013-10-15-2"></script>
+    <title>微翼公众服务平台</title>
+    <script src="http://api.map.baidu.com/api?key=549717558167eff9640bd18067ec919a&v=1.1&services=true" type="text/javascript" type="text/javascript"></script>
+
+    <link href="./resource/script/kindeditor/themes/default/default.css" rel="stylesheet" />
+    <script src="./resource/script/kindeditor/kindeditor-min.js"></script>
+    <script src="./resource/script/kindeditor/lang/zh_CN.js"></script>
+    <script src="./resource/script/kindeditor/kindeditor.config-upfile.js"></script>
+</head>
+<body>
+
+<div class="container-fluid" id="content">
+    <div id="main">
+        <div class="container-fluid">
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="box">
+                        <div class="box-title clearfix">
+                            <div class="span10">
+                                <h3><i class="icon-edit"></i>商家设置</h3>
+                            </div>
+                            <div class="span2"><a class="btn" href="Javascript:window.history.go(-1)">返回</a></div>
+                        </div>
+                        <div class="box-content">
+                            <form action="/membercard/setbusiness" method="POST" class='form-horizontal form-validate'>
+                                <input type="hidden" name="aid" value="7829"/>
+                                <input type="hidden" name="mckey" value="1368"/>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="keyword">
+                                        商家名称</label>
+                                    <div class="controls">
+                                        <input type="text" name="shop_name" id="shop_name" value="" data-rule-required="true" data-rule-maxlength="30" />
+                                        <span>*</span> <span class="help-inline">最多只能输入30个字符。</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="keyword">
+                                        触发关键词</label>
+                                    <div class="controls">
+                                        <input type="text" name="keyword" id="keyword" value="" data-rule-required="true" data-rule-maxlength="20" />
+                                        <span>*</span> <span class="help-inline">用户输入此“关键词”将可以触发会员卡图文，最多只能输入20个字符。</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="cover">图文消息封面</label>
+                                    <div class="controls">
+                                        <img id="thumb_img" src="" style="max-height:100px;" />
+                                        <input id="thumb" type="hidden" name="cover" value="" class="input-xlarge" readonly="readonly" data-rule-required="true" data-rule-url="true" />
+                                        	                                        	<span class="help-inline" style="margin-top:3px;">
+                                            	<a class="btn" id="insertimage">选择封面</a>
+                                        	</span>
+
+
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label for="textfield" class="control-label">
+                                        封面消息
+                                    </label>
+                                    <div class="controls">
+                                        <textarea class="input-large" name="info" id="info" data-rule-required="true" style="width:350px;height:80px;" data-rule-maxlength="140">We时代会员卡，方便携带收藏，永不挂失</textarea>
+                                        <span>*</span> <span class="help-inline">最多只能输入140个字符。</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="location_p">
+                                        商家所在地区</label>
+                                    <div class="controls">
+                                        <select name="location_p" id="location_p">
+                                        </select>
+                                        <select name="location_c" id="location_c">
+                                        </select>
+                                        <select name="location_a" id="location_a">
+                                        </select>
+                                        <script src="./resource/script/region_select.js"></script>
+                                        <script type="text/javascript">
+                                            new PCAS("location_p", "location_c", "location_a", '', '', '');
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="category_f">
+                                        商家类别</label>
+                                    <div class="controls">
+                                        <select name="category_f" id="category_f">
+                                        </select><select name="category_s" id="category_s"></select>
+                                    </div>
+                                </div>
+                                <script src="./resource/script/category.js"></script>
+                                <script type="text/javascript">
+                                    new CS("category_f", "category_s", '',  '', '美食-1$本帮江浙菜-11,川菜-12,粤菜-13,湘菜-14,贵州菜-15,东北菜-16,台湾菜-17,新疆/清真菜-18,西北菜-19,素菜-20,火锅-21,自助餐-22,小吃快餐-23,日本-24,韩国料理-25,东南亚菜-26,西餐-27,面包甜点-28,其他-29#休闲娱乐-2$密室-30,咖啡厅-31,酒吧-32,茶馆-33,KTV-34,电影院-35,文化艺术-36,景点/郊游-37,公园-38,足疗按摩-39,洗浴-40,游乐游艺-41,桌球-42,桌面游戏-43,DIY手工坊-44,其他-45#购物-3$综合商场-46,食品茶酒-47,服饰鞋包-48,珠宝饰品-49,化妆品-50,运动户外-51,亲子购物-52,品牌折扣店-53,数码家电-54,家居建材-55,特色集市-56,书店-57,花店-58,眼镜店-59,超市/便利店-60,药店-61,其他-62#丽人-4$美发-63,美容/SPA-64,化妆品-65,瘦身纤体-66,美甲-67,瑜伽-68,舞蹈-69,个性写真-70,整形-71,齿科-72,其他-73#结婚-5$婚纱摄影-74,婚宴-75,婚戒首饰-76,婚纱礼服-77,婚庆公司-78,彩妆造型-79,司仪主持-80,婚礼跟拍-81,婚车租赁-82,婚礼小商品-83,婚房装修-84,其他-85#亲子-6$幼儿教育-86,亲子摄影-87,亲子游乐-88,亲子购物-89,孕产护理-90,其他-91#运动健身-7$游泳馆-92,羽毛球馆-93,健身中心-94,瑜伽-95,舞蹈-96,篮球场-97,网球场-98,足球场-99,高尔夫场-100,保龄球馆-101,桌球馆-102,乒乓球馆-103,武术场馆-104,体育场馆-105,其他-106#酒店-8$五星级酒店-107,四星级酒店-108,三星级酒店-109,经济型酒店-110,公寓式酒店-111,精品酒店-112,青年旅舍-113,度假村-114,其他-115#爱车-9$4S店/汽车销售-116,汽车保险-117,维修保养-118,配件/车饰-119,驾校-120,汽车租赁-121,停车场-122,加油站-123,其他-124#生活服务-10$旅行社-125,培训-126,室内装潢-127,宠物-128,齿科-129,快照/冲印-130,家政-131,银行-132,学校-133,团购网站-134,其他-135#其他-11$其他-136');
+                                </script>
+                                <div class="control-group">
+                                    <label class="control-label" for="fanslocal">
+                                        商家详细地址</label>
+                                    <div class="controls">
+                                        <input type="text" name="address" value="福州市铜盘路软件大道89号A区12#楼"
+                                               id="address" data-rule-required="true" data-rule-maxlength="30" />
+                                        <span class="maroon">*</span> <span class="help-inline">将会显示在会员卡背面，最多只能输入30个字符。</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="fanslocal">
+                                        联系方式</label>
+                                    <div class="controls">
+                                        <input type="text" name="phone" id="phone" value="15059484010" data-rule-required="true" data-rule-phone="false" />
+                                        <span class="maroon">*</span> <span class="help-inline">将会显示在会员卡背面，如13911111111或者0755-2345678</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="suggestId">经纬度</label>
+                                    <div class="controls">
+                                        <div class="input-append">
+                                            <input type="text" id="suggestId" class="input-xlarge" name="place" value="福州市铜盘路软件大道89号A区12#楼" data-rule-required="true" />
+                                            <button class="btn" type="button" id="positioning">搜索</button>
+                                        </div>
+
+                                        <span class="maroon">注意：这个只是模糊定位，准确位置请地图上标注!</span>
+                                        <div id="l-map">
+                                            <i class="icon-spinner icon-spin icon-large"></i>地图加载中...
+                                        </div>
+                                        <div id="r-result">
+                                            <input type="text" id="lng" name="lng" /><input type="text" id="lat" name="lat" />
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-actions">
+                                    <button id="bsubmit" type="submit" data-loading-text="提交中..." class="btn btn-primary">保存</button>
+                                    <button type="button" class="btn" onclick="Javascript:window.history.go(-1)">取消</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var op = {
+            lat: 26.117184192871,
+            lng: 119.27552212129,
+            adr: "福建省福州市鼓楼区软件大道"
+        }
+        baidu_map(op);
+    })
+</script>
+</body>
+</html>

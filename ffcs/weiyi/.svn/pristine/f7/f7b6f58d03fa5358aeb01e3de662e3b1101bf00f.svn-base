@@ -1,0 +1,34 @@
+<?php
+/**
+ * 微信墙模块
+ *
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+defined('IN_IA') or exit('Access Denied');
+
+class WxwallModuleSite extends WeModuleSite {
+
+	public function doMobileRegister() {
+		global $_GPC, $_W;
+		$title = '微信墙登记';
+		$member = fans_search($_W['fans']['from_user'], array('nickname', 'avatar'));
+		if (!empty($_GPC['submit'])) {
+			$data = array(
+				'weid' => $_W['weid'],
+				'nickname' => $_GPC['nickname'],
+			);
+			if (empty($data['nickname'])) {
+				die('<script>alert("请填写您的昵称！");location.reload();</script>');
+			}
+			
+			if (!empty($_FILES['avatar']['tmp_name'])) {
+				$data['avatar'] = '';
+			} else {
+				$data['avatar'] = $_GPC['avatar_radio'];
+			}
+			fans_update($_W['fans']['from_user'], $data);
+			die('<script>alert("登记成功！现在进入话题发表内容！");location.href = "'.$this->createMobileUrl('register').'";</script>');
+		}
+		include $this->template('register');
+	}
+}

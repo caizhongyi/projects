@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang=”zh-CN”>
+<head>
+    <meta charset="utf-8">
+
+    <title>我的标题</title>
+    <meta name="keywords" content="keywords"/>
+    <meta name="description" content="description"/>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+    <!-- 如果内容设置为YES，Web应用程序运行在全屏模式;否则，它不会。默认行为是使用Safari浏览器显示网页内容-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon-precomposed" href="http://pic2.58.com/m58/img/icon58b.png" />
+    <link rel="apple-touch-startup-image" href="http://pic2.58.com/m58/img/icon58b.png" />
+    <!-- 缩略图 -->
+    <link rel="apple-touch-icon" sizes="114x114" href="touch-icon-iphone4.png" />
+
+    <!--  浏览器不会自动调整文件的大小,也就是说是固定大小,不会随着浏览器拉伸缩放 。 -->
+    <!-- <META NAME="MobileOptimized" CONTENT="240"> -->
+    <!-- "添加到主屏幕“后，全屏显示-->
+    <!-- <meta name="apple-touch-fullscreen" content="yes"> -->
+
+    <!--在iPhone 手机上默认值是（电话号码显示为拨号的超链接）-->
+    <!--
+        <meta content="telephone=no, address=no,email=no" name="format-detection">
+        <meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+        <meta content="no-cache" http-equiv="pragma">
+        <meta content="0" http-equiv="expires">
+    -->
+
+    <!-- base style  -->
+    <link rel="stylesheet" type="text/css" media="all" href="css/zero.mobile.min.css" />
+
+    <!-- web style  -->
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <script type="text/javascript" src="lib/zepto.min.js"></script>
+    <script type="text/javascript" src="lib/Date.min.js"></script>
+    <script type="text/javascript" src="lib/String.min.js"></script>
+
+</head>
+<body>
+
+
+<section class="container">
+     <h1>Jaeger-LeCoultre 大师系列男士机械腕表</h1>
+     <div class="summary"><span>时间：2012-10-10</span><span>作者：作者</span></div>
+     <div class="img-view box-container">
+         <img src="pic/as.png" alt="" width="290" height="290"/>
+     </div>
+
+    <div class="form">
+        <div class="form-group">
+            <label class="form-control"><span class="form-label">当前价:</span>¥<em>71,000</em></label><span class="form-control">出价人:&nbsp;marchzhang</span><span  class="form-control">出价次数67次</span>
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">距结束</label><span class="lastdate">
+                <span class="lastdate-item" id="day"><i>0</i><i>1</i>天</span>
+                <span class="lastdate-item" id="hour"><i>0</i><i>1</i>时</span>
+                <span class="lastdate-item" id="minu"><i>0</i><i>1</i>分</span>
+                <span class="lastdate-item" id="sec"><i>0</i><i>1</i>秒</span>
+            </span>
+        </div>
+    </div>
+
+    <form action="" class="form box-container">
+        <span class="badge">正在进行中</span>
+        <div class="form-group">
+            <label for="" class="form-label">出价:</label><span class="input-group input-spinner input-spinner-vertical spinner-xxlarge">
+        <input type="text" class="input" value="0" data-max="100" data-min="0" data-increase="5"><span class="input-group-btn"><a class="add-on spinner-up" href="javascript:;">+</a><a class="add-on spinner-down" href="javascript:;">-</a></span>
+     </span>
+        </div>
+        <div class="form-group">
+            <label for="" class="form-label">数量:</label><span class="input-group input-spinner input-spinner-vertical spinner-xxlarge">
+        <input type="text" class="input" value="0" data-max="100" data-min="0"><span class="input-group-btn"><a class="add-on spinner-up" href="javascript:;">+</a><a class="add-on spinner-down" href="javascript:;">-</a></span>
+     </span>
+        </div>
+        <div class="form-group">
+            <div class="form-panel">
+                <button type="button" class="btn btn-primary" dialog-trigger="#dialog-slider" >确认提交</button>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+            var timer = setInterval( function(){
+                 var date = new Date().diff( new Date(2014,2,20) );
+                 var day =  date.day.toString().pad(2).split('') , hour =  date.hour.toString().pad(2).split(''), minu = date.minu.toString().pad(2).split(''),  sec = date.sec.toString().pad(2).split('');
+                 function getTime( array ){
+                     return '<i>'+ array[0] +'</i>'+ '<i>'+ array[1] +'</i>';
+                 }
+                 var $lastdate = $('.lastdate');
+                 $('.lastdate').find('#day').html( getTime(day) + '天')
+                $lastdate.find('#hour').html( getTime(hour) + '时')
+                $lastdate.find('#minu').html( getTime(minu) + '分')
+                $lastdate.find('#sec').html( getTime(sec) + '秒');
+            } ,1000 );
+        </script>
+    </form>
+    <div class="article">
+        承诺简介：卖家在拍卖会发布拍品时，都应履行如实描述义务。买家收到的拍品与达成交易时卖家对拍品的描述不相符，卖家未对商品瑕疵、保质期、附带品等必须说明的信息进行披露，妨害买家权益的，均视为违反如实描述约定。
+        违规处理：核查属实的，淘宝有权：按照《淘宝规则》处理；禁止发布拍品及禁止报名专场30天，并支持买家退货退款；情节严重的，还将下架拍卖会上的所有拍品，从拍卖会清退。
+    </div>
+
+</section>
+
+
+<div id="dialog-slider" class="dialog dialog-slider" data-control="dialog">
+    <div class="dialog-header clearfix">
+        <h3 class="dialog-title">拍卖提醒</h3>
+    </div>
+    <div class="dialog-container dialog-message">
+        您出价100元，拍下1件商品。
+    </div>
+    <div class="dialog-footer">
+        <a href="javascript:;" class="btn btn-primary" data-hide>确 认</a>
+        <a href="javascript:;" class="btn btn-default" data-hide>取 消</a>
+    </div>
+</div>
+
+<script type="text/javascript" src="lib/jquery.transitionEnd.min.js"></script>
+<script type="text/javascript" src="lib/jquery.dialog.min.js"></script>
+<script type="text/javascript" src="lib/jquery.spinner.min.js"></script>
+<script type="text/javascript">
+    var dialog = $('.dialog').dialog();
+   // dialog.trigger('show');  显示
+   // dialog.trigger('hide');   隐藏
+    $('.input-spinner').spinner();
+</script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    color: #494949;
+    font-family: tohoma,arial,"Hiragino Sans GB","Microsoft Yahei",sans-serif,"宋体";
+    font-size: 12px;
+    line-height: 24px;
+}
+a{
+    color: #494949;
+    text-decoration: none;
+}
+a:hover{
+    color: #fc5300;
+}
+ul{
+    list-style: none;
+}
+.drop{
+    position: relative;
+    top: 20px;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer;
+    margin: 0 40px 40px 0;
+}
+.clear::after{
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+}
+/*城市选择*/
+.drop_city{
+    background: #f7f7f7 none repeat scroll 0 0;
+    border: 1px solid #e7e7e7;
+    /*cursor: pointer;*/
+    display: inline-block;
+    /*float: left;*/
+    /*height: 24px;*/
+    left: 10px;
+    /*line-height: 24px;*/
+    padding: 5px 10px;
+    /*margin: 0 40px 40px 0;*/
+    /*position: relative;*/
+    /*top: 20px;*/
+}
+.drop_city::after{
+    display: block;
+    content: "";
+    height: 0;
+    clear: both;
+}
+.drop_city i{
+    background: rgba(0, 0, 0, 0) url("../images/icons.png") no-repeat -20px -19px;
+    float: left;
+    height: 18px;
+    margin-top: 3px;
+    width: 18px;
+}
+.oncity{
+    font-weight: 700;
+}
+.drop_city_on{
+    background: #fc5300 repeat;
+    border-color: #f30;
+    color: #fff;
+}
+.drop_city_on .city_selected a{
+    color: #fff;
+}
+.drop_city_on .oncity i{
+    background-position: 0 -19px;
+}
+.city_more{
+    background: #fff repeat;
+    border: 2px solid #fc5300;
+    color: #494949;
+    cursor: default;
+    display: none;
+    left: -1px;
+    padding: 10px 10px 0;
+    position: absolute;
+    top: 34px;
+    width: 400px;
+    z-index: 101;
+}
+.city_more_tt{
+    font-weight: bold;
+    margin: 0 0 6px 3px;
+}
+.city_more_near,.city_more_hot{
+    padding: 5px;
+    margin: 5px;
+}
+.city_more_near{
+    border-bottom: 1px dashed #e9e9e9;
+}
+.city_more li{
+    display: inline;
+    float: left;
+    line-height: 18px;
+    margin: 0 0 5px;
+    width: 54px;
+}
+.city_more li a{
+    display: inline-block;
+    padding: 0 3px;
+}
+a.current,.city_more li a:hover{
+    background: #fc5300 repeat;
+    color: #fff;
+}
+.city_more_other{
+    float: right;
+    padding: 0 10px 10px;
+}
+.city_more_other i{
+    background: rgba(0, 0, 0, 0) url("../images/icons.png") no-repeat -40px 2px;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+}
+.city_more_other a{
+    color: #fc5300;
+    display: inline-block;
+    padding: 0 0 0 17px;
+}
+/*城市选择结束*/
+/*导航*/
+.drop_nav{
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e7e7e7;
+    display: inline-block;
+}
+.drop_nav_on{
+    color: #fc5300;
+}
+.nav_link{
+    position: relative;
+    z-index: 102;
+    padding: 0 23px 0 15px;
+    display: inline-block;
+    height: 24px;
+}
+.drop_nav_on .nav_link{
+    border-bottom: 1px solid #FFFFFF;
+}
+.nav_link i{
+    background: rgba(0, 0, 0, 0) url("../images/icons.png") no-repeat scroll 3px 0;
+    display: block;
+    height: 10px;
+    position: absolute;
+    right: 4px;
+    top: 10px;
+    width: 15px;
+}
+.nav_list{
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #d2d2d2;
+    display: none;
+    line-height: 30px;
+    padding: 10px 20px;
+    position: absolute;
+    left: -1px;
+    top: 24px;
+    width: 400px;
+    z-index: 101;
+}
+.nav_list dl{
+    float: left;
+    width: 80px;
+}
+.nav_list dt{
+    font-weight: bold;
+}
+/*导航结束*/
+/*已保存*/
+.drop_save{
+    /*border: 1px solid;*/
+}
+.save_link{
+    color: #0090d8;
+    font-size: 14px;
+    padding: 5px 0 15px;
+}
+.save_link b{
+    color: #fc5300;
+}
+.save_up{
+    background: rgba(0, 0, 0, 0) url("../images/icons.png") no-repeat scroll -630px -610px;
+    height: 7px;
+    position: absolute;
+    left: 29px;
+    top: -7px;
+    width: 13px;
+    z-index: 2;
+}
+.save_list{
+    display: none;
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #cfcfcf;
+    box-shadow: 1px 1px 5px #bbb;
+    color: #494949;
+    font-family: SimSun;
+    font-size: 14px;
+    position: absolute;
+    left: -9px;
+    top: 29px;
+    width: 435px;
+    z-index: 1;
+}
+.save_list li{
+    border-bottom: 1px solid #efefef;
+    margin: 0 2px;
+}
+.li_div{
+    cursor: pointer;
+    height: 36px;
+    line-height: 36px;
+    margin: 2px 0;
+}
+.i_5{
+    background: rgba(0, 0, 0, 0) url("../images/icons.png") no-repeat scroll -600px -610px;
+    display: inline-block;
+    float: left;
+    height: 12px;
+    margin: 12px 8px 0 9px;
+    width: 12px;
+}
+.save_close{
+    background: rgba(0, 0, 0, 0) url("../images/icons.png") no-repeat scroll -538px -608px;
+    display: inline-block;
+    float: right;
+    height: 15px;
+    margin: 10px 8px 0 0;
+    padding: 0;
+    width: 15px;
+}
+.li_div span{
+    display: inline;
+    float: left;
+    height: 36px;
+    overflow: hidden;
+    width: 370px;
+}
+.li_div_on{
+    background: #ebf3f7 repeat;
+}
+/*已保存结束*/
+/*页码选择*/
+.drop_select{
+    border: 1px solid #cfcfcf;
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    position: relative;
+    vertical-align: top;
+    width: 58px;
+}
+.select_link{
+    cursor: pointer;
+    display: block;
+    height: 22px;
+    padding: 0 0 5px 10px;
+    position: relative;
+}
+.select_link i{
+    background: #fff url("../images/icons.png") no-repeat scroll -74px 9px;
+    height: 22px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 18px;
+}
+.select_list{
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #cfcfcf;
+    left: -1px;
+    position: absolute;
+    top: 24px;
+    display: none;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 11;
+}
+
+.select_list li{
+    padding: 5px;
+}
+.select_list li a{
+    display: block;
+    padding: 0 9px;
+}
+/*页码选择结束*/
+/*气泡*/
+.bubble{
+    background: rgba(0, 0, 0, 0) url("../images/ensure_png.png") no-repeat scroll -120px 3px;
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    vertical-align: middle;
+    width: 15px;
+}
+.i_arrow{
+    background: rgba(0, 0, 0, 0) url("../images/ensure_gif.gif") no-repeat scroll -360px 0;
+    display: none;
+    height: 11px;
+    left: 6px;
+    position: absolute;
+    top: 22px;
+    width: 11px;
+    z-index: 2;
+}
+.bubble dl{
+    background: #fff6df none repeat scroll 0 0;
+    border: 1px solid #ffc85c;
+    display: none;
+    font-size: 12px;
+    left: 6px;
+    line-height: 18px;
+    padding: 0 0 11px;
+    position: absolute;
+    text-align: left;
+    top: 32px;
+    width: 132px;
+    z-index: 1;
+}
+.bubble dt{
+    margin: 0 0 0 17px;
+    padding: 11px 0 0;
+}
+.bubble dd{
+    margin: 0 0 0 17px;
+}
+/*气泡结束*/

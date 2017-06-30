@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>countdown</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+</head>
+<body>
+<!--<button id="" class="btn" type="button"  data-time="0:1:50" data-format="m:s秒后可重新发送">获取验证码</button>
+<br/><br/>-->
+<button id="countdown" class="btn" type="button">获取验证码</button>
+<a href="###" id="countdown-tag" >获取验证码</a>
+<span  id="countdown-span" >获取验证码</span>
+<br/><br/>
+<div id="auto-countdown"></div>
+
+<script type="text/javascript" src="/mod.js"></script>
+<script type="text/javascript">
+    var  Countdown = require('js/countdown');
+    new Countdown('#countdown',{
+        time    : '0:0:60' ,
+        format  : 'mm:ss秒后可重新发送' ,
+        ajax    : function( done ){
+            console.log('ajax')
+            done();
+            $.ajax('data.json', {
+                success : function(data){
+                   if( data.success ){
+                       done();
+                   }
+                }
+            })
+        },
+        beforeCallback : function(){
+            var res = false;
+
+            return true;
+        },
+        afterCallback : function(){
+            console.log('afterCallback');
+        }});
+
+    new Countdown('#countdown-tag',{
+        time    : '0:0:60' ,
+        format  : 'mm:ss秒后可重新发送' ,
+        beforeCallback : function(){
+            return true;
+            console.log('beforeCallback');
+        },
+        afterCallback : function(){
+            console.log('afterCallback');
+        }});
+
+    new Countdown('#countdown-span',{
+        time    : '0:0:60' ,
+        format  : 'mm:ss秒后可重新发送' ,
+        beforeCallback : function(){
+            return true;
+            console.log('beforeCallback');
+        },
+        afterCallback : function(){
+            console.log('afterCallback');
+        }});
+
+    new Countdown('#auto-countdown' ,{
+        auto    : true,
+        format  : 'dd天 hh时mm分ss秒' ,
+        beforeCallback : function(){
+            console.log('beforeCallback');
+        },
+        afterCallback : function(){
+            console.log('afterCallback');
+        }});
+
+</script>
+</body>
+</html>

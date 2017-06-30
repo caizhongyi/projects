@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>投诉与建议成功弹窗</title>
+    <link href="css/tabs.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div id="hot_brands"><!--热门品牌-->
+    <div class="tab_title" >
+        <ul class="clearfix " data-tab-nav style="overflow:hidden;">
+            <li class="current" data-target="#item1">
+                <a  href="javascript:;"><img src="http://sta.273.com.cn/app/ms_v2/pics/all-car.gif">最新车源</a>
+            </li>
+            <li data-target="#item2">
+                <a  href="javascript:;"><img src="http://att.273.com.cn/ms/brand/volkswagen.gif">大众</a>
+            </li>
+            <li  data-target="#item3">
+                <a  href="javascript:;"><img src="http://att.273.com.cn/ms/brand/toyota.gif">丰田</a>
+            </li>
+            <li data-target="#item4">
+                <a  href="javascript:;"><img src="http://att.273.com.cn/ms/brand/hyundai.gif">现代</a>
+            </li>
+            <li data-target="#item5">
+                <a href="javascript:;"><img src="http://att.273.com.cn/ms/brand/ford.gif">福特</a>
+            </li>
+            <li  data-target="#item6">
+                <a  href="javascript:;"><img src="http://att.273.com.cn/ms/brand/audi.gif">奥迪</a>
+            </li>
+            <li  data-target="#item7">
+                <a href="javascript:;"><img src="http://att.273.com.cn/ms/brand/bmw.gif">宝马</a>
+            </li>
+            <li  data-target="#item8">
+                <a  href="javascript:;"><img src="http://att.273.com.cn/ms/brand/buick.gif">别克</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <div class="car_list js-content "  data-tab-item="#item1" >item1</div>
+        <div id="item2" style="display:none;" class="car_list js-content " data-tab-item >
+            item2
+            <a href="###" data-target="#item9">go to item9</a>
+        </div>
+        <div style="display:none;" class="car_list js-content " data-tab-item="#item3">item3</div>
+        <div id="item4" style="display:none;" class="car_list js-content " data-tab-item>item4</div>
+        <div id="item5" style="display:none;" class="car_list js-content " data-tab-item>item5</div>
+        <div id="item6" style="display:none;" class="car_list js-content " data-tab-item>item6</div>
+        <div id="item7" style="display:none;" class="car_list js-content " data-tab-item>item7</div>
+        <div id="item8" style="display:none;" class="car_list js-content " data-tab-item>item8</div>
+        <div style="display:none;" class="car_list js-content " data-tab-item="#item9">item9</div>
+    </div>
+
+
+</div>
+<script type="text/javascript" src="/mod.js"></script>
+
+<script type="text/javascript">
+   var Tabs = require('js/tabs')
+   var tabs =  new Tabs('#hot_brands',{ type : 'hash' , activeClass : 'current' });
+    tabs.on('change',function(e , args ){
+        console.log(args);
+    })
+</script>
+</body>
+</html>

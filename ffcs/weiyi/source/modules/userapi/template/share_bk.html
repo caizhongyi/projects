@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>易信分享有礼活动</title>
+<meta content="width=device-width,user-scalable=no" name="viewport">
+<style>
+html, body, h1, div, img, p, video {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    background-color: #fff;
+    font: 12.5pt/1.45 STHeiti, microsoft yahei, arial, '\5b8b\4f53';
+}
+
+.g-doc {
+}
+
+.m-detail {
+    position: relative;
+    margin: 0 auto;
+    padding: 40px 0 20px;
+    color: #666;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.m-detail .wrap {
+    margin: 0 40px;
+}
+
+.m-detail .tlt {
+    font-size: 15pt;
+    font-weight: normal;
+    color: #333;
+    font-weight: bold;
+}
+
+.m-detail .time {
+    font-size: 8pt;
+    color: #b9b9b9;
+}
+
+.m-detail .imgwrap {
+    margin: 10px 0;
+}
+
+.m-detail img {
+    display: block;
+    max-width: 100%;
+    margin: 5px auto;
+}
+
+.m-detail .content p {
+    margin: 0 0 12pt;
+}
+
+.m-detail .url {
+    margin-top: 20px;
+    font-size: 11pt;
+}
+
+.m-detail .interval {
+    margin: 10px 0;
+}
+
+.m-detail a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+.m-detail .u-btn {
+    font-size: 11pt;
+    display: block;;
+    border-radius: 6px;
+
+    color: #222;
+}
+.m-detail .u-btn input ,textarea{
+    width: 70%;
+    padding:5px;
+    border:1px solid #DDDDDD;
+   /* margin-right: -10px;
+    width: 0;
+    visibility: hidden;*/
+    transition:all 0.2s ease;
+    margin-right: 10px;
+}
+
+/*.m-detail .u-btn:hover {text-decoration: none;}
+.m-detail .u-btn:hover input{ width: 100px; visibility: inherit;}*/
+
+#qbig {
+    position: absolute;
+    left: 12px;
+    bottom: 18px;
+    width: 24px;
+    height: 24px;
+}
+
+.m-detail a:hover {
+    text-decoration: underline;
+}
+
+.m-detail i {
+    font-style: italic;
+}
+
+.m-detail b {
+    font-weight: bold;
+}
+
+div.m-detail video {
+    width: 100%;
+    margin: 5px auto;
+}
+
+.m-detail .content-invalid #article_from_nick {
+    display: none
+}
+
+.m-detail .content-invalid  .u-btn, .m-detail .content-invalid  #qbig {
+    display: none;
+    visibility: hidden
+}
+
+#article_from_nick {
+    font-size: 11pt;
+    position: absolute;
+    left: 0px;
+    bottom: 0;
+    line-height: 50px;
+    right: 0px;
+    text-align: left;
+    border-top: 2px solid #ddd;
+    padding-left: 22px;
+    padding-top: 4px;
+    padding-bottom: 8px;
+}
+
+#article_from_nick a {
+    margin-right: 20px;
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+#article_from_nick a:before {
+}
+
+    /*   #unregist{
+    position:absolute;left:20px;width:40px; bottom: 0; height: 50px;
+    text-align: center;
+    color: #2270ac;
+    }*/
+.m-error {
+    margin: 25pt auto 0;
+    padding-top: 130pt;
+    text-align: center;
+    font-size: 14pt;
+    color: #808080;
+    background: url(/res/image/warm.png) no-repeat center 0;
+    -webkit-background-size: 110pt auto;
+    background-size: 110pt auto;
+}
+
+.m-detail-lg .wrap {
+    margin: 0 !important;
+}
+
+.m-detail-lg .texts {
+    margin: 0 40px;
+}
+
+.m-download {
+    border-bottom: 2px solid #ddd;
+    background-color: #f8f8f8;
+    padding: 3% 4%;
+    position: relative;
+    zoom: 1;
+}
+
+.m-download:after {
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    content: ".";
+}
+
+.m-download .logo {
+    float: left;
+    width: 30%;
+    max-width: 160px;
+}
+
+.m-download .link {
+    float: right;
+    width: 45%;
+    max-width: 240px;
+}
+
+@media screen and (max-width:719px) {
+    .m-detail {
+        padding-top: 28px;
+    }
+
+    .m-detail .wrap {
+        margin: 0 28px;
+    }
+
+    .m-detail-lg .texts {
+        margin: 0 28px;
+    }
+}
+
+@media screen and (max-width:639px) {
+    .m-detail {
+        padding-top: 24px;
+    }
+
+    .m-detail .wrap {
+        margin: 0 24px;
+    }
+
+    .m-detail-lg .texts {
+        margin: 0 24px;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .m-detail {
+        padding-top: 18px;
+    }
+
+    .m-detail .wrap {
+        margin: 0 18px;
+    }
+
+    .m-detail-lg .texts {
+        margin: 0 18px;
+    }
+}
+
+@media screen and (max-width:319px) {
+    .m-detail {
+        padding-top: 12px;
+    }
+
+    .m-detail .wrap {
+        margin: 0 12px;
+    }
+
+    .m-detail-lg .texts {
+        margin: 0 12px;
+    }
+}
+
+    /*window*/
+.window {
+    width:290px;
+    position:absolute;
+    display:none;
+    bottom:30px;
+    left:50%;
+    z-index:9999;
+    margin:-50px auto 0 -145px;
+    padding:2px;
+    border-radius:0.6em;
+    -webkit-border-radius:0.6em;
+    -moz-border-radius:0.6em;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font:14px/1.5 Microsoft YaHei,Helvitica,Verdana,Arial,san-serif;
+}
+.window .title {
+
+    background-color: #A3A2A1;
+    line-height: 26px;
+    padding: 5px 5px 5px 10px;
+    color:#ffffff;
+    font-size:16px;
+    border-radius:0.5em 0.5em 0 0;
+    -webkit-border-radius:0.5em 0.5em 0 0;
+    -moz-border-radius:0.5em 0.5em 0 0;
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #585858 ), to( #565656 )); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(#585858, #565656); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient(#585858, #565656); /* FF3.6 */
+    background-image:     -ms-linear-gradient(#585858, #565656); /* IE10 */
+    background-image:      -o-linear-gradient(#585858, #565656); /* Opera 11.10+ */
+    background-image:         linear-gradient(#585858, #565656);
+
+}
+.window .wtitle {
+    background-color: #585858;
+    line-height: 26px;
+    padding: 5px 5px 5px 10px;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 0.5em 0.5em 0 0;
+    -webkit-border-radius: 0.5em 0.5em 0 0;
+    -moz-border-radius: 0.5em 0.5em 0 0;
+}
+.window .content {
+    /*min-height:100px;*/
+    overflow:auto;
+    padding:10px;
+    background: linear-gradient(#FBFBFB, #EEEEEE) repeat scroll 0 0 #FFF9DF;
+    color: #222222;
+    text-shadow: 0 1px 0 #FFFFFF;
+    border-radius: 0 0 0.6em 0.6em;
+    -webkit-border-radius: 0 0 0.6em 0.6em;
+    -moz-border-radius: 0 0 0.6em 0.6em;
+}
+
+.window .content p {
+    margin: 10px 0 0 0;
+}
+
+.window #txt {
+    min-height:30px;font-size:16px; line-height:22px;
+}
+.window .txtbtn {
+
+    background: #f1f1f1;
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #DCDCDC ), to( #f1f1f1 )); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #ffffff , #DCDCDC ); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient( #ffffff , #DCDCDC ); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #ffffff , #DCDCDC ); /* IE10 */
+    background-image:      -o-linear-gradient( #ffffff , #DCDCDC ); /* Opera 11.10+ */
+    background-image:         linear-gradient( #ffffff , #DCDCDC );
+    border: 1px solid #CCCCCC;
+    border-bottom: 1px solid #B4B4B4;
+    color: #555555;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #FFFFFF;
+    border-radius: 0.6em 0.6em 0.6em 0.6em;
+    display: block;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: windowcenter;
+    font-weight: bold;
+    font-size: 18px;
+    padding:6px;
+    margin:10px 0 0 0;
+}
+.window .txtbtn:visited {
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #ffffff ), to( #cccccc )); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #ffffff , #cccccc ); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient( #ffffff , #cccccc ); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #ffffff , #cccccc ); /* IE10 */
+    background-image:      -o-linear-gradient( #ffffff , #cccccc ); /* Opera 11.10+ */
+    background-image:         linear-gradient( #ffffff , #cccccc );
+}
+.window .txtbtn:hover {
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #ffffff ), to( #cccccc )); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #ffffff , #cccccc ); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient( #ffffff , #cccccc ); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #ffffff , #cccccc ); /* IE10 */
+    background-image:      -o-linear-gradient( #ffffff , #cccccc ); /* Opera 11.10+ */
+    background-image:         linear-gradient( #ffffff , #cccccc );
+}
+.window .txtbtn:active {
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #cccccc ), to( #ffffff )); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( #cccccc , #ffffff ); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient( #cccccc , #ffffff ); /* FF3.6 */
+    background-image:     -ms-linear-gradient( #cccccc , #ffffff ); /* IE10 */
+    background-image:      -o-linear-gradient( #cccccc , #ffffff ); /* Opera 11.10+ */
+    background-image:         linear-gradient( #cccccc , #ffffff );
+    border: 1px solid #C9C9C9;
+    border-top: 1px solid #B4B4B4;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) inset;
+}
+
+.window .wtitle .close {
+    float: right;
+    background:url("../images/close.png") no-repeat center center;
+    width: 26px;
+    height: 26px;
+    display: block;
+}
+    /**************************************************/
+#overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000000;
+    opacity:0.5;
+    filter:alpha(opacity=0);
+    display:none;
+    z-index: 9;
+}
+
+input[type=text]{
+    padding:8px 5px;
+    border:1px solid #DDDDDD;
+    border-radius: 8px;
+}
+
+.windowcenter{ font-size: 14px;}
+.text-success{ color: green;}
+.text-error{ color: red;}
+
+
+.follow{ display: inline-block; padding: 5px 20px; border: 1px solid #5898dd; background: #5898dd; color: #fff !important; font-size: 16px;  text-decoration: none;}
+.follow:hover{ text-decoration: none !important;}
+.follow[disabled],.disabled{ background: #999; border: 1px solid #999; cursor: default}
+
+.alert{ background: #fffdf2; color: #bd974e; border: 1px solid #ffdd9c; padding: 10px;  font-size: 14px;}
+
+.form .form-group{ margin-bottom: 10px;}
+.form .form-label{ margin-bottom: 10px; font-size: 14px; font-weight: bold;}
+.form input[type=text]{ width: 100%;}
+
+.footer{ border-top: 1px solid #ddd; background: #fafafa; padding: 10px 20px; }
+
+.center{ text-align: center; }
+
+.text-auto{ display: block; padding: 0 6px;}
+.text-auto input{ margin: 0 -6px;}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="m-download" style='display:none'><img src="/res/image/logo_wap.png?f9b0b8aa939b5dcc338827c28ebd941c" alt=""
+                                                  class="logo"> <a href="http://yixin.im/" title='下载易信客户端'> <img
+        src="/res/image/download_wap.png?d1781e87de9495526208b4b140ab87fe" alt="" class="link"> </a></div>
+<div class="g-doc">
+    <div class="m-detail ">
+        <div class="wrap  ">
+            <div class="texts"><h1 class="tlt" title="189邮箱多方通话 5重好礼任你享">易信分享有礼活动</h1></div>
+            <div class="texts"><p class="time"> 2013-11-25  <a href = "yixin://opencard?pid=NzI1ODA4OC03MjU4MDg4LTEzODQyMjQ4OTA=" style = "margin-left: 10px;">移动互联网应用</a></p></div>
+            <div class="imgwrap"><img src="https://nos.163.com/yixinpublic/pr_3b3daf0kwekxa3may1ddvw==_1385373993_18898"
+                                      alt=""></div>
+            <div style="position:absolute;width:1px;height:1px;overflow:hidden;visibility:hidden;"><img
+                    style="width:10000px;height:10000px;max-width:none;"
+                    src="https://nos.163.com/yixinpublic/pr_3b3daf0kwekxa3may1ddvw==_1385373993_18898"/></div>
+            <div class="content" id="content"></div>
+            <div class="texts">
+                <p>
+                <div class="page-content">
+                <div class="text"><p>
+                    <h2>
+                        <span style="font-size:12.0pt;line-height:173%;font-family:&quot;font-weight:normal;">一、</span><span style="font-size:12.0pt;line-height:173%;font-family:&quot;">活动目的<span></span></span>
+                    </h2>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">1</span><span style="font-size:12.0pt;font-family:&quot;">、宣传“移动互联网应用”公众帐号，继而提高“移动互联网应用”公众帐号的用户数和访问量。<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">2</span><span style="font-size:12.0pt;font-family:&quot;">、提高关注“移动互联网应用”公众帐号用户的活跃度。<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">3</span><span style="font-size:12.0pt;font-family:&quot;">、吸引用户下载安装易信客户端，增加易信用户数。<span></span></span>
+                    </p>
+                    <h2>
+                        <span style="font-size:12.0pt;line-height:173%;font-family:&quot;">二、活动时间<span></span></span>
+                    </h2>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">起止时间：<span>2013</span>年<span>12</span>月<span>29</span>日<span>-2014</span>年<span>1</span>月<span>30</span>日。<span></span></span>
+                    </p>
+                    <h2>
+                        <span style="font-size:12.0pt;line-height:173%;font-family:&quot;">三、活动主题<span></span></span>
+                    </h2>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">易信分享有礼。<span></span></span>
+                    </p>
+                    <h2>
+                        <span style="font-size:12.0pt;line-height:173%;font-family:&quot;">四、参加人员<span></span></span>
+                    </h2>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">福建地区用户（包括电信、移动、联通用户）。<span></span></span>
+                    </p>
+                    <h2>
+                        <span style="font-size:12.0pt;line-height:173%;font-family:&quot;">五、活动规则<span></span></span>
+                    </h2>
+                    <p class="MsoNormal">
+                        <b><span style="font-size:12.0pt;font-family:&quot;">（一）参与步骤<span></span></span></b>
+                    </p>
+                    <p class="MsoNormal">
+                        <span style="font-size:12.0pt;font-family:&quot;">步骤一：下载易信客户端。<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">用户可通过以下三种方式下载：<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">1</span><span style="font-size:12.0pt;font-family:&quot;">．登录易信官网（地址：<span>http</span>：<span>//yixin.im/m/</span>）下载易信客户端。（目前有<span>android</span>版本和<span>iOS</span>两个版本，网站会自动识别用户手机下载相应的版本。）<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">2</span><span style="font-size:12.0pt;font-family:&quot;">．在各大电子市场搜索<span>“</span>易信<span>”</span>进行下载。<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">3</span><span style="font-size:12.0pt;font-family:&quot;">．扫描二维码进行下载易信。</span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <img src="data:image/png;base64,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" alt="" /><br />
+                        <span style="font-size:12.0pt;font-family:&quot;"><span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;"> </span><span style="font-size:12.0pt;font-family:&quot;"></span>
+                    </p>
+                    <p class="MsoNormal">
+                        <span style="font-size:12.0pt;font-family:&quot;">步骤二：安装并注册登录易信客户端，关注“移动互联网应用”公众账号。<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">关注公众账号的方式如下：<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">易信客户端主界面向左滑动（或是点击右上角图标）进入联系人界面，点击公众号进入公众号界面，点击右上角<span>“+”</span>号，输入<span>“</span>移动互联网应用<span>”</span>点击搜索，查看并关注搜索结果。<span></span></span>
+                    </p>
+                    <p class="MsoNormal">
+                        <span style="font-size:12.0pt;font-family:&quot;">步骤三：分享好友<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">具体分享方式如下：<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">用户于活动期间登录易信，关注<span>“</span>移动互联网应用<span>”</span>公众号，点击下方的“分享有礼”功能按钮，跳转至分享有礼活动页面。<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">在分享有礼活动页面内输入所要分享的手机号码，点击“分享”按钮完成分享操作。<span></span></span>
+                    </p>
+                    <p class="MsoNormal">
+                        <b><span style="font-size:12.0pt;font-family:&quot;">（二）活动规则<span></span></span></b>
+                    </p>
+                    <p class="MsoListParagraph" style="margin-left:18.0pt;text-indent:-18.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;"><span>1.<span>&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-size:12.0pt;font-family:&quot;">天翼用户通过易信分享功能对好友进行分享。如若分享成功，赠送<span>2</span>元话费，分享无上限。（成功分享指的是所分享的用户从未关注过易信“移动互联网应用”公众帐号，且该用户通过分享链接成功关注。）<span></span></span>
+                    </p>
+                    <p class="MsoListParagraph" style="margin-left:18.0pt;text-indent:-18.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;"><span>2.<span>&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-size:12.0pt;font-family:&quot;">移动、联通用户分享成功，即可获得 <span>2</span>元<span></span></span>
+                    </p>
+                    <p class="MsoListParagraph" style="margin-left:18.0pt;text-indent:-18.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;"><span>3.<span>&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-size:12.0pt;font-family:&quot;">分享者对同一用户重复分享，不重复计算。（被分享者如收到多条分享短信，以点击的那条为有效分享）<span></span></span>
+                    </p>
+                    <p class="MsoListParagraph" style="margin-left:18.0pt;text-indent:-18.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;"><span>4.<span>&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-size:12.0pt;font-family:&quot;">天翼用户直接充值至分享者账户，异网用户在<span>7</span>个工作日内以短信方式发送卡账号、密码至分享者手机。<span></span></span>
+                    </p>
+                    <p class="MsoListParagraph" style="margin-left:18.0pt;text-indent:-18.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;"><span>5.<span>&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-size:12.0pt;font-family:&quot;">用户通过分享有礼页面发送的短信完全免费。<span></span></span>
+                    </p>
+                    <p class="MsoNormal">
+                        <b><span style="font-size:12.0pt;font-family:&quot;">（三）分享结果查看方式</span></b><span style="font-size:12.0pt;font-family:&quot;"></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">（<span>1</span>）<span>“</span>移动互联网应用<span>”</span>公众号每周会发布一份成功分享用户清单。<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">（<span>2</span>）个人分享查询：当用户发送向公众帐号发送指令<span>“f”</span>时，公众帐号告知个人分享情况。<span></span></span>
+                    </p>
+                    <h2>
+                        <span style="font-size:12.0pt;line-height:173%;font-family:&quot;">六、活动奖励<span></span></span>
+                    </h2>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">我们将在活动结束后，进行抽奖，具体奖励规则如下：<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">成功分享<span>10</span>人以上的用户中抽取一位幸运用户，奖励<span>999</span>元加油卡一张；<span></span></span>
+                    </p>
+                    <p class="MsoNormal" style="text-indent:24.0pt;">
+                        <span style="font-size:12.0pt;font-family:&quot;">成功分享<span>50</span>人以上的用户中抽取一位幸运用户，奖励平板<span>ipadmini2</span>一台。<span></span></span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+    <div class="footer">
+        <div class="form">
+            <div class="form-group">
+                <div class="form-label">分享内容：</div>
+                <div class="alert">
+                    参加分享有礼活动！装易信送红包！
+                </div>
+                <!--         <textarea name="" id="" disabled='disabled'></textarea>-->
+            </div>
+            <div class="form-group">
+                <div class="form-label">分享号码：</div>
+                <span class='u-btn text-auto' style="position: relative"><input id="mobile" name="mobile"   type="text" /><span id="sharemsg" style="position: absolute;left:0px;top:45px; font-size: 12px;"></span></span>
+                <br>
+
+            </div>
+            <div class="form-group center">
+                <a class="follow"  href='javascript:;'>分享</a>
+            </div>
+        </div>
+        <p class="url"></p>
+    </div>
+<script type="text/javascript">
+    $(document).on('click','.follow', function(){
+        var mobile = $("#mobile").val();
+        $(this).attr('disabled','disabled');
+        var that = this;
+        reg = /^0{0,1}(13[0-9]|145|15[0-9]|153|156|18[0-9])[0-9]{8}$/i;
+        if (!reg.test(mobile)) {
+            $('#sharemsg').removeClass('text-success text-error').show().html('手机号码格式有误！').addClass('text-error').fadeOut(3000);
+            $(that).removeAttr('disabled');
+            return false;
+        }
+
+        $.post('{$show_url}',{share_mobile:mobile},
+                function (data) {
+                    if (data.errno == 200) {
+                        $('#sharemsg').removeClass('text-success text-error').show().html('分享成功').addClass('text-success').fadeOut(3000);
+                    } else {
+                        $('#sharemsg').removeClass('text-success text-error').show().html(data.error).addClass('text-error').fadeOut(3000);
+                    }
+                    $(that).removeAttr('disabled');
+                },'json');
+    });
+</script>
+</body>
+</html>

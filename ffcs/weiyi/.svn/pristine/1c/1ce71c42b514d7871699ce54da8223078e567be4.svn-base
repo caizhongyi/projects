@@ -1,0 +1,222 @@
+<?php
+if (isset($set_modules) && $set_modules == TRUE) {
+	$i = isset($modules) ? count($modules) : 0;
+	
+	$modules[$i]['code'] = basename(__FILE__, '.class.php');
+	$modules[$i]['name'] = '翼支付';
+	$modules[$i]['desc'] = '福富软件翼支付插件，需要申请翼支付商户号与密钥';
+	$modules[$i]['version'] = '1.0.0';
+	$modules[$i]['config'] = array(
+		array(
+			'name' => 'merchantid',
+            'language'=>'商家代码',
+			'type' => 'text', 
+			'value' => ''
+		), 
+		array(
+			'name' => 'bestpay_key',
+            'language'=>'商家秘钥',
+			'type' => 'text', 
+			'value' => ''
+		)
+	);
+	
+	return;
+}
+require_once IA_ROOT . '/source/library/pay/pay_abstract.class.php';
+
+class Bestpay extends paymentabstract {
+	
+	public function __construct($config = array()) {
+		if (! empty($config))
+			$this->set_config($config);
+		
+		$this->config['gateway_url'] = 'http://webpay.bestpay.com.cn/payWeb.do';
+		$this->config['gateway_method'] = 'POST';
+		$this->config['merchanturl'] = return_url('bestpay');
+		$this->config['backmerchanturl'] = return_url('bestpay', 1);
+	}
+	
+	public function getpreparedata() {
+		$prepare_data['MERCHANTID'] = $this->config['merchantid']; //商户号
+		$prepare_data['MERCHANTURL'] = $this->config['merchanturl']; //前台返回地址
+		$prepare_data['BACKMERCHANTURL'] = $this->config['backmerchanturl']; //后台返回地址
+		
+		$prepare_data['ENCODETYPE'] = '1'; //加密方式,md5
+		$prepare_data['CURTYPE'] = 'RMB'; //币种
+		$prepare_data['BUSICODE'] = '0001'; //业务类型
+
+		//买家信息
+		$prepare_data['PRODUCTID'] = '08'; //08 一般网购,业务标识
+		$prepare_data['TMNUM'] = $this->customer_info['telephone']; //客户联系电话
+		$prepare_data['CUSTOMERID'] = $this->customer_info['username']; //客户登录名,客户标识
+
+		//订单信息
+		$prepare_data['ORDERSEQ'] = $this->order_info['id']; //订单号
+		$prepare_data['ORDERREQTRANSEQ'] = $this->order_info['id'] . str_pad(mt_rand(1, 99999), 5, "0", STR_PAD_LEFT); //订单请求交易流水号
+		$prepare_data['ORDERDATE'] = date('Ymd', $this->order_info['order_time']); //订单日期
+
+		// 商品信息
+		$prepare_data['ORDERAMOUNT'] = $this->product_info['price'] * 100; //订单总金额 单位：分,订单总金额 = 产品金额+附加金额
+		$prepare_data['PRODUCTAMOUNT'] = $this->product_info['price'] * 100; //产品金额
+		$prepare_data['ATTACHAMOUNT'] = 0; //附加金额
+		$prepare_data['PRODUCTDESC'] = $this->product_info['body']; //产品描述
+
+		$prepare_data['CLIENTIP'] = $_SERVER['REMOTE_ADDR'];
+		
+		$data = 'MERCHANTID=' . $prepare_data['MERCHANTID'];
+		$data .= '&ORDERSEQ=' . $prepare_data['ORDERSEQ'];
+		$data .= '&ORDERDATE=' . $prepare_data['ORDERDATE'];
+		$data .= "&ORDERAMOUNT=" . $prepare_data['ORDERAMOUNT'];
+		$data .= '&CLIENTIP=' . $prepare_data['CLIENTIP'];
+		$data .= '&KEY=' . $this->config['bestpay_key'];
+		
+		// 数字签名
+		$prepare_data['MAC'] = md5($data);
+
+        logging($this->order_info['id'] . ' - 完成数据准备：' . var_export($prepare_data, 1));
+		
+		return $prepare_data;
+	}
+	
+	/**
+	 * 客户端接收数据，前台回调页面。
+	 */
+	public function receive() {
+		
+		$receive_data = $this->filterParameter($_POST);
+		logging($receive_data['ORDERSEQ'] . ' - get获得数据：' . var_export($receive_data, 1));
+		if ($receive_data) {
+			$uptranseq = trim($receive_data['UPTRANSEQ']);
+			$trandate = trim($receive_data['TRANDATE']);
+			$retncode = trim($receive_data['RETNCODE']);
+			$retninfo = trim($receive_data['RETNINFO']);
+			$orderreqtranseq = trim($receive_data['ORDERREQTRANSEQ']);
+			$orderseq = trim($receive_data['ORDERSEQ']);
+			$orderamount = floatval($receive_data['ORDERAMOUNT']); //单位为分，本系统以元展示计算
+			$productamount = floatval($receive_data['PRODUCTAMOUNT']); //单位为分，本系统以元展示计算
+			$attachamount = floatval($receive_data['ATTACHAMOUNT']);
+			$curtype = trim($receive_data['CURTYPE']);
+			$encodetype = trim($receive_data['ENCODETYPE']);
+			$bankid = trim($receive_data['BANKID']);
+			$attach = trim($receive_data['ATTACH']);
+			$sign = trim($receive_data['SIGN']);
+			
+			$data = 'UPTRANSEQ=' . $uptranseq;
+			$data .= '&MERCHANTID=' . $this->config['merchantid'];
+			$data .= '&ORDERID=' . $orderseq;
+			$data .= '&PAYMENT=' . $orderamount;
+			$data .= '&RETNCODE=' . $retncode;
+			$data .= '&RETNINFO=' . $retninfo;
+			$data .= '&PAYDATE=' . $trandate;
+			$data .= '&KEY=' . $this->config['bestpay_key'];
+			
+			$md5string = strtoupper(md5($data));
+			if ($sign == $md5string) {
+				$return_data['order_id'] = $orderseq;
+				$return_data['order_total'] = $orderamount * 100; //响应回来的价格为分
+				$return_data['price'] = $orderamount * 100; //响应回来的价格为分
+				if ($retncode == "0000") {
+					$return_data['order_status'] = 0;
+                    logging($orderseq . ' - 订单状态成功：' . var_export($return_data, 1));
+					return $return_data;
+				} else {
+                    logging($orderseq . ' - 订单状态失败：' . var_export($return_data, 1));
+					return false;
+				}
+			} else {
+                logging($orderseq . ' - sign非法：' . var_export($md5string, 1));
+				message('签名错误');
+				return false;
+			}
+		} else {
+            logging($receive_data['ORDERSEQ'] . ' - 无数据响应');
+            message('信息返回错误');
+            return false;
+		}
+	}
+	
+	/**
+	 * POST接收数据
+	 */
+	public function notify() {
+		$receive_data = $this->filterParameter($_POST);
+		logging($receive_data['ORDERSEQ'] . ' - post获得数据：' . var_export($receive_data, 1));
+		if ($receive_data) {
+			$uptranseq = trim($receive_data['UPTRANSEQ']);
+			$trandate = trim($receive_data['TRANDATE']);
+			$retncode = trim($receive_data['RETNCODE']);
+			$retninfo = trim($receive_data['RETNINFO']);
+			$orderreqtranseq = trim($receive_data['ORDERREQTRANSEQ']);
+			$orderseq = trim($receive_data['ORDERSEQ']);
+			$orderamount = floatval($receive_data['ORDERAMOUNT']); //单位为分，本系统以元展示计算
+			$productamount = floatval($receive_data['PRODUCTAMOUNT']); //单位为分，本系统以元展示计算
+			$attachamount = floatval($receive_data['ATTACHAMOUNT']);
+			$curtype = trim($receive_data['CURTYPE']);
+			$encodetype = trim($receive_data['ENCODETYPE']);
+			$bankid = trim($receive_data['BANKID']);
+			$attach = trim($receive_data['ATTACH']);
+			$sign = trim($receive_data['SIGN']);
+			
+			$data = 'UPTRANSEQ=' . $uptranseq;
+			$data .= '&MERCHANTID=' . $this->config['merchantid'];
+			$data .= '&ORDERID=' . $orderseq;
+			$data .= '&PAYMENT=' . $orderamount;
+			$data .= '&RETNCODE=' . $retncode;
+			$data .= '&RETNINFO=' . $retninfo;
+			$data .= '&PAYDATE=' . $trandate;
+			$data .= '&KEY=' . $this->config['bestpay_key'];
+			
+			$md5string = strtoupper(md5($data));
+			if ($sign == $md5string) {
+				$return_data['order_id'] = $orderseq;
+				$return_data['order_total'] = $orderamount * 100; //响应回来的价格为分
+				$return_data['price'] = $orderamount * 100; //响应回来的价格为分
+				$return_data['uptranseq'] = $uptranseq;
+				if ($retncode == "0000") {
+					$return_data['order_status'] = 0;
+                    logging($orderseq . ' - 订单状态成功：' . var_export($return_data, 1));
+					return $return_data;
+				} else {
+                    logging($orderseq . ' - 订单状态失败：' . var_export($return_data, 1));
+					return false;
+				}
+			} else {
+                logging($orderseq . ' - sign非法：' . var_export($md5string, 1));
+				return false;
+			}
+		} else {
+            logging($receive_data['ORDERSEQ'] . ' - 无数据响应');
+			return false;
+		}
+	}
+	
+	/**
+	 * 相应服务器应答状态
+	 * @param $result
+	 */
+	public function response($result) {
+        logging('最终响应:' . $result);
+		if (false == $result)
+			echo 'fail';
+		else
+			echo 'UPTRANSEQ_' . $result;
+	}
+	
+	/**
+	 * 返回字符过滤
+	 * @param $parameter
+	 */
+	private function filterParameter($parameter) {
+		$para = array();
+		foreach ( $parameter as $key => $value ) {
+			if ('' == $value || 'do' == $key || 'weid' == $key || 'code' == $key) {
+				continue;
+			} else {
+				$para[$key] = $value;
+			}
+		}
+		return $para;
+	}
+}
+?>

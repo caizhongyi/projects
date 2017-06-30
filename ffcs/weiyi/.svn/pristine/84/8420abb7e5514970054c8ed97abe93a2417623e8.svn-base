@@ -1,0 +1,30 @@
+{template 'header'}
+{template 'slide'}
+<link rel="stylesheet" type="text/css" href="./themes/mobile/templet8/style/css.css" media="all" />
+<div class="body">
+
+<!-- 分类导航 -->
+	<section>
+		<ul class="v12_ul">
+			{php $f=1;}
+			{loop $navs $nav}
+			{if $f==1}
+			<li class="card_lol">
+			{else}
+			<li class="card_lol" style="direction:rtl;">
+			{/if}
+			{php $f++;}
+			{if $f==3}{php 	$f=1;;}{/if}
+				<a href="{$nav['url']}" class="tbox">
+					<div style="vertical-align:middle;"><label>{$nav['name']}</label><span></span></div>
+					<div style="background-image:url('{$_W['attachurl']}{$nav['icon']}');">
+					</div>
+				</a>
+			</li>
+			{/loop}
+		</ul>
+	</section>
+</div>
+{template 'footer'}
+
+

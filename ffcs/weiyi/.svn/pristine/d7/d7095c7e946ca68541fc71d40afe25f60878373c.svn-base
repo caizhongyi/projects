@@ -1,0 +1,99 @@
+{templateWithTemplet 'mobile/header','templet7'}
+<body onselectstart="return true" ondragstart="return false">
+<!--<img class="bgimg" src="{php echo $styles[$name.'bgimg']}"/>-->
+<link href="./themes/mobile/css/slide.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="./themes/mobile/default/script/swipe.js"></script>
+<!--幻灯片-->
+<div style="-webkit-transform:translate3d(0,0,0);">
+    <div id="banner_box" class="box_swipe" style="visibility: visible;">
+        <ul style="list-style: none; width: 1280px; transition: 500ms; -webkit-transition: 500ms; -webkit-transform: translate3d(-640px, 0, 0);">
+            {loop $slides $slide}
+            <li style="width: 640px; display: table-cell; vertical-align: top;">
+                <a href="{php echo create_url('mobile/channel', array('name' => 'detail', 'id' => $slide['id'], 'templetid'=>$_GPC['templetid'],'weid' => $_W['weid']))}">
+                    <img src="{$_W['attachurl']}{$slide['thumb']}" alt="{$slide['title']}" style="width:100%;">
+                </a>
+            </li>
+            {/loop}
+        </ul>
+        <ol>
+            {php $slideNum = 1;}
+            {loop $slides $vv}
+            <li{if $slideNum == 1} class="on"{/if}></li>
+            {php $slideNum++;}
+            {/loop}
+        </ol>
+    </div>
+</div>
+<script>
+    $(function(){
+        new Swipe(document.getElementById('banner_box'), {
+            speed:500,
+            auto:3000,
+            callback: function(){
+                var lis = $(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
+            }
+        });
+    });
+</script>
+
+<!--导航菜单-->
+<div class="body">
+    <section>
+        {if $navs}
+        <?php
+        //将导航数组平均分，每组2个元素，每个元素代表一个导航
+        $num = 0;
+        $mNavs = array();//数组元素为数组
+        $nNavs = array();//元素个数为2的数组，数组元素为导航
+        $count = count($navs) - 1;//最后一个导航的索引
+        for($i = 0;$i<count($navs);$i++){
+            $nNavs[$num] = $navs[$i];
+            $num ++;
+            if($num == 2){//每两个导航为一组，并存入数组mNavs中
+                $mNavs[] = $nNavs;
+                $num = 0;
+            }else if( $num < 2 && $i == $count){//如果总个数为奇数个，则将最后一个导航单独存入数组mNavs中
+                array_splice($nNavs,1);
+                $mNavs[] = $nNavs;
+            }
+        }
+        ?>
+        <div>
+            <ul class="list_ul">
+                {loop $mNavs $values}
+                <li class="box">
+                    {loop $values $nav}
+                    <dl>
+                        <a href="{$nav['url']}&templetid={$_GPC['templetid']}&page=0">
+                            <dd>
+                                <div>
+                                    <span class="{$nav['css']['icon']['icon']}"></span>
+                                </div>
+                            </dd>
+                            <dt>{$nav['name']}</dt>
+                        </a>
+                    </dl>
+                    {/loop}
+                </li>
+                {/loop}
+            </ul>
+        </div>
+        {else}
+        <a href="http://www.we7.cc" class="box-item">
+            <i class="icon-home"></i>
+            <span style="{$nav['css']['name']}">微擎</span>
+        </a>
+        <a href="http://bbs.we7.cc" class="box-item">
+            <i class="icon-comment"></i>
+            <span style="{$nav['css']['name']}">论坛</span>
+        </a>
+        <a href="mobile.php?act=channel&name=home&weid={$_W['weid']}" class="box-item">
+            <i class="icon-user"></i>
+            <span style="{$nav['css']['name']}">个人中心</span>
+        </a>
+        {/if}
+    </section>
+</div>
+
+{templateWithTemplet 'mobile/footer','templet7'}

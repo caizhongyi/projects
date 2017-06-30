@@ -1,0 +1,1029 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active">  {{ $state.current.page.title }} </li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content slide fixedbar-wrap" >
+    <div class="box">
+        <form name="form" ng-submit="submit(form.$valid)"  role="form" novalidate>
+            <div style="width: 1100px; margin: 0 auto;">
+                <div class="box-header row">
+                    <!--<div class="col-md-6">
+                        <label><span class="text-danger">*</span> 问题单号：</label>
+                        <span class="modv2-imp ">
+                            <input type="text" class="form-control modv2-inputg" name="work_order_no" ng-model="item.work_order_no" style="display: inline-block;" required>
+                            <div class="has-feedback text-danger" ng-messages="form.work_order_no.$error" ng-show="interacted(form.work_order_no)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入问题单号！</div>
+                                <div ng-message="pattern"><i class="fa fa-info-circle"></i>问题单号格式不正确！</div>
+                            </div>
+                        </span>
+                    </div>-->
+                    <div class="col-md-6">
+                        <label ><span class="text-danger">*</span> 订单编号：</label>
+                        <span class="modv2-imp ">
+                            <input type="text" class="form-control modv2-inputg" name="order_no" ng-model="item.order_no" required  ng-pattern="/^\d{8,9}$/"  style="display: inline-block;">
+                            <input type="hidden" ng-model="item.is_jhc"/>
+                            <button class="btn btn-primary modv2-btn" type="button" ng-click="goOrder()" >新建订单</button>
+                            <div style="margin-left: 73px" class="has-feedback text-danger" ng-messages="form.order_no.$error" ng-show="interacted(form.order_no)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入订单编号！</div>
+                                <div ng-message="pattern"><i class="fa fa-info-circle"></i>订单编号格式不正确！</div>
+                            </div>
+                        </span>
+                    </div>
+
+                    <div class="col-md-6" style="padding-top: 10px">
+                        <label><span class="text-danger">归属门店：</span></label>
+                        <span class="modv2-imp ">
+                            {{item.belong_dept_info.province_name}}
+                            {{item.belong_dept_info.city_name}}
+                            {{item.belong_dept_info.name}}
+                        </span>
+                    </div>
+                    <div class="col-md-6" style="padding-top: 10px">
+                        <label ><span class="text-danger">*</span> 车牌号：</label>
+                        <span class="modv2-imp ">
+                            {{item.car_number}}
+                        </span>
+                    </div>
+                </div><!-- /.box-header -->
+
+                <div class="table-group">
+                    <table class="table modv2-table table-hover small-table" >
+                        <tr>
+                            <td colspan="6">一、交易车辆基本信息确认：</td>
+                        </tr>
+                        <tr>
+                            <th width="12%"><label ><span class="text-danger">*</span> 车辆登记人：</label></th>
+                            <td colspan="2" style="width:32% ">
+                                <input type="text" class="form-control modv2-inputg" name="vehicle_owner" ng-model="item.vehicle_owner" required  >
+                                <div class="has-feedback text-danger" ng-messages="form.vehicle_owner.$error" ng-show="interacted(form.vehicle_owner)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入车辆登记人！</div>
+                                </div>
+                            </td>
+                            <th width="12%"><label ><span class="text-danger"></span> </label></th>
+                            <td colspan="2"  style="width:32% ">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th ><label ><span class="text-danger">*</span> 车辆品牌：</label></th>
+                            <td colspan="2" >
+                                <div style="float:left">
+                                    <div class="vehicle">
+                                        <input type="hidden" class="form-control modv2-inputg" name="brandId" ng-model="item.brand_id" required  >
+                                        <input type="text" class="form-control modv2-inputg" name="brandName" ng-model="item.brand_name" data-id-model="item.brand_id"  ng-keypress="brandKeypress()" required  auto-complete-brand="item.series_name" style="width: 15em" >
+                                        <div class="vehicle-outer">
+                                            <div class="vehicle-inner"style="min-height: 509px;;">
+                                                <div class="tip"><a class="close" href="javascript:;"></a>车辆品牌</div>
+                                                <div class="vechicle-nav">A</div>
+                                                <div class="list overflow">
+                                                    <ul></ul>
+                                                </div>
+                                                <ul class="anchors">                  <li><a href="javascript:;">A</a></li>                  <li><a href="javascript:;">B</a></li>                  <li><a href="javascript:;">C</a></li>                  <li><a href="javascript:;">D</a></li>                  <li><a href="javascript:;">F</a></li>                  <li><a href="javascript:;">G</a></li>                  <li><a href="javascript:;">H</a></li>                  <li><a href="javascript:;">J</a></li>                  <li><a href="javascript:;">K</a></li>                  <li><a href="javascript:;">L</a></li>                  <li><a href="javascript:;">M</a></li>                  <li><a href="javascript:;">N</a></li>                  <li><a href="javascript:;">O</a></li>                  <li><a href="javascript:;">P</a></li>                  <li><a href="javascript:;">Q</a></li>                  <li><a href="javascript:;">R</a></li>                  <li><a href="javascript:;">S</a></li>                  <li><a href="javascript:;">T</a></li>                  <li><a href="javascript:;">W</a></li>                  <li><a href="javascript:;">X</a></li>                  <li><a href="javascript:;">Y</a></li>                  <li><a href="javascript:;">Z</a></li>          </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="has-feedback text-danger" ng-messages="form.brandName.$error" ng-show="interacted(form.brandName)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入车辆品牌！</div>
+                                    </div>
+                                    <div class="has-feedback text-danger" ng-messages="form.brandId.$error" ng-show="interacted(form.brandId)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>品牌必须是选择！</div>
+                                    </div>
+                                </div>
+                                <div style="float:left;margin-left:10px" ng-if="item.brand_id">
+                                    <div class="vehicle">
+                                        <input type="hidden" class="form-control modv2-inputg" name="seriesId" ng-model="item.series_id" required  >
+                                        <input type="text" class="form-control modv2-inputg" name="seriesName" ng-model="item.series_name"  data-id-model="item.series_id" required  auto-complete-series="item.vehicle_type_id" style="width: 15em" >
+                                        <div class="vehicle-outer">
+                                            <div class="vehicle-inner">
+                                                <div class="tip"><a class="close" href="javascript:;"></a>请选择车系</div>
+                                                <div class="list overflow">
+                                                    <ul></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="has-feedback text-danger" ng-messages="form.seriesName.$error" ng-show="interacted(form.seriesName)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请选择车系</div>
+                                    </div>
+                                    <div class="has-feedback text-danger" ng-messages="form.seriesId.$error" ng-show="interacted(form.seriesId)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>车系必须是选择！</div>
+                                    </div>
+                                </div>
+                                <br /><br />
+                                <select  class="form-control modv2-inputg" name="carType" ng-change="change()" ng-model="item.vehicle_type_id"  required  select-car-type="">
+                                    <option value="">车辆类型</option>
+                                </select>
+                                <div class="has-feedback text-danger" ng-messages="form.carType.$error" ng-show="interacted(form.carType)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入车辆类型！</div>
+                                </div>
+                            </td>
+                            <th ><label ><span class="text-danger">*</span> 首次车辆注册日期：</label></th>
+                            <td colspan="2" >
+                            <span class="input-group datepicker modv2-sel-warap">
+                                <ung-datepicker ng-model="item.first_register_time" name="first_register_time" required=""></ung-datepicker>
+                            </span>
+                                <div class="has-feedback text-danger" ng-messages="form.first_register_time.$error" ng-show="interacted(form.first_register_time)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入首次车辆注册日期！</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th ><label ><span class="text-danger">*</span> 车辆识别代码（VIN）：</label></th>
+                            <td colspan="2">
+
+                                <input type="text" class="form-control modv2-inputg" name="vin" ng-model="item.vin" required maxlength="17" minlength="17">
+
+                                <div class="has-feedback text-danger" ng-messages="form.vin.$error" ng-show="interacted(form.vin)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入vin码！</div>
+                                    <div ng-message="maxlength"><i class="fa fa-info-circle"></i>vin码格式不正确！</div>
+                                    <div ng-message="minlength"><i class="fa fa-info-circle"></i>vin码格式不正确！</div>
+                                </div>
+                            </td>
+                            <th ><label ><span class="text-danger">*</span> 年检到期日期：</label></th>
+                            <td colspan="2">
+                            <span class="input-group datepicker modv2-sel-warap">
+                                <ung-datepicker-month ng-model="item.year_check_time" name="year_check_time" required=""></ung-datepicker-month>
+                               <!-- <ung-datepicker ng-model="item.year_check_time" name="year_check_time" required=""></ung-datepicker>-->
+                            </span>
+                                <div class="has-feedback text-danger" ng-messages="form.year_check_time.$error" ng-show="interacted(form.year_check_time)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入年检到期日期！</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th ><label ><span class="text-danger">*</span> 发动机号：</label></th>
+                            <td colspan="2">
+
+                                <input type="text" class="form-control modv2-inputg" name="engine_no" ng-model="item.engine_no" required >
+
+                                <div class="has-feedback text-danger" ng-messages="form.engine_no.$error" ng-show="interacted(form.engine_no)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入发动机号！</div>
+                                </div>
+                            </td>
+                            <th ><label ><span class="text-danger">*</span> 路桥费到期日期：</label></th>
+                            <td colspan="2">
+                            <span class="input-group datepicker modv2-sel-warap" style="display: inline-block">
+                                <ung-datepicker ng-model="item.road_bridge_time" ng-disabled="road_bridge_time_disabled" name="road_bridge_time" ng-required="road_bridge_time_required"></ung-datepicker>
+                            </span>
+                                <input type="checkbox" ng-model="item.w_road_bridge" /> 无
+                                <div class="has-feedback text-danger" ng-messages="form.road_bridge_time.$error" ng-show="interacted(form.road_bridge_time)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入路桥费到期日期！</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th ><label ><span class="text-danger">*</span> 发动机排量：</label></th>
+                            <td colspan="2">
+
+                                <input type="text" class="form-control modv2-inputg" name="displacement" ng-model="item.displacement" required>
+
+                                <div class="has-feedback text-danger" ng-messages="form.displacement.$error" ng-show="interacted(form.displacement)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入发动机排量！</div>
+                                    <div ng-message="numberValidator"><i class="fa fa-info-circle"></i>输入的发动机排量格式不正确！</div>
+                                </div>
+                            </td>
+                            <th ><label ><span class="text-danger">*</span> 商业险到期日期：</label></th>
+                            <td colspan="2">
+                            <span class="input-group  datepicker modv2-sel-warap" style="display: inline-block">
+                                <ung-datepicker ng-model="item.safe_business_time" name="safe_business_time"  ng-disabled="safe_business_time_disabled" ng-required="safe_business_time_required"></ung-datepicker>
+                            </span>
+                                <input type="checkbox" ng-model="item.w_safe_business"/> 无
+                                <div class="has-feedback text-danger" ng-messages="form.safe_business_time.$error" ng-show="interacted(form.safe_business_time)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入商业险到期日期！</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th ><label ><span class="text-danger">*</span> 变速箱：</label></th>
+                            <td colspan="2">
+                                <label class="pickbox"><input type="radio" ng-model="item.gearbox" required name="gearbox" value="1"/> 手动</label>
+                                <label class="pickbox"><input type="radio" ng-model="item.gearbox" required name="gearbox" value="2"/> 自动</label>
+                                <label class="pickbox"><input type="radio" ng-model="item.gearbox" required name="gearbox" value="3"/> 手自一体</label>
+                                <label class="pickbox"><input type="radio" ng-model="item.gearbox" required name="gearbox" value="4"/> 无级变速</label>
+                                <div class="has-feedback text-danger" ng-messages="form.gearbox.$error" ng-show="interacted(form.gearbox)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入发动机排量！</div>
+                                </div>
+                            </td>
+                            <th ><label ><span class="text-danger">*</span> 交强险到期日期：</label></th>
+                            <td colspan="2">
+                             <span class="input-group datepicker modv2-sel-warap" style="display: inline-block">
+                                <ung-datepicker ng-model="item.safe_force_time" name="safe_force_time"  ng-disabled="safe_force_time_disabled" ng-required="safe_force_time_required"></ung-datepicker>
+                             </span>
+                                <input type="checkbox"  ng-model="item.w_safe_force"/> 无
+                                <div class="has-feedback text-danger" ng-messages="form.safe_force_time.$error" ng-show="interacted(form.safe_force_time)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入交强险到期日期！</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th ><label ><span class="text-danger">*</span> 车辆使用性质：</label></th>
+                            <td colspan="2">
+                                <label class="pickbox"><input type="radio" ng-model="item.use_type" name="use_type" required value="1"/>非营运</label>
+                                <label class="pickbox"><input type="radio" ng-model="item.use_type" name="use_type" required value="2"/> 营运</label>
+                                <label class="pickbox"><input type="radio" ng-model="item.use_type" name="use_type" required value="3"/> 营转非</label>
+                                <div class="has-feedback text-danger" ng-messages="form.use_type.$error" ng-show="interacted(form.use_type)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入车辆使用性质！</div>
+                                </div>
+                            </td>
+                            <th ><label ><span class="text-danger">*</span> 表显里程：</label></th>
+                            <td colspan="2">
+                                <input type="text" class="form-control input-group modv2-inputg"  number-validator="" required  ng-model="item.mileage" name="mileage" style="display: inline-block; width: 120px;" />
+                                <select  ng-model="item.unit" class="form-control input-group modv2-inputg" required name="unit" ung-select-unit="1" style="display: inline-block; width:7em;"><option value="">请选择</option></select>
+                                （ 1英里=1.6公里）
+                                <div class="has-feedback text-danger" ng-messages="form.mileage.$error" ng-show="interacted(form.mileage)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入表显里程！</div>
+                                    <div ng-message="numberValidator"><i class="fa fa-info-circle"></i>请输入表显里程格式不正确！</div>
+                                </div>
+                                <div class="has-feedback text-danger" ng-messages="form.unit.$error" ng-show="interacted(form.unit)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请选择单位！</div>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th><h4 class="box-title">甲方（卖方）信息</h4></th>
+                            <td colspan="2">
+                                <table class="table modv2-table table-hover small-table">
+                                    <tr>
+                                        <th width="25%"><label ><span class="text-danger">*</span> 卖方姓名：</label>  </th>
+                                        <td>
+                                            <input type="text" class="form-control modv2-inputg" name="seller_name" ng-model="item.seller_name" required  />
+                                            <div class="has-feedback text-danger" ng-messages="form.seller_name.$error" ng-show="interacted(form.seller_name)">
+                                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入卖方姓名！</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="25%"><label ><span class="text-danger">*</span> 联系电话：</label>  </th>
+                                        <td>
+                                            <input type="text" class="form-control modv2-inputg" name="seller_phone" ng-model="item.seller_phone" required mobile-validator=""/>
+                                            <div class="has-feedback text-danger" ng-messages="form.seller_phone.$error" ng-show="interacted(form.seller_phone)">
+                                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入联系电话！</div>
+                                                <div ng-message="mobileValidator"><i class="fa fa-info-circle"></i>输入的联系电话格式不正确！</div>
+                                            </div>
+                                            <div class="has-feedback text-danger" ng-if="seller_phone_role">此电话为273员工电话</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="25%"><label ><span class="text-danger">*</span> 证件类型：</label>  </th>
+                                        <td>
+                                            <div class="vdb">
+                                                <select  class="form-control modv2-inputg vdb" name="seller_cert_type" ng-model="item.seller_cert_type"  ung-select-cert-type="item.seller_cert_other" required >
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                            <div class="vdb">
+                                                <input type="text" ng-model="item.seller_cert_other" name="seller_cert_other" class="form-control modv2-inputg" ng-required="seller_cert_other_require" style="display: none"/>
+                                            </div>
+                                            <div class="has-feedback text-danger" ng-messages="form.seller_cert_type.$error" ng-show="interacted(form.seller_cert_type)">
+                                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入证件类型！</div>
+                                            </div>
+                                            <div class="has-feedback text-danger" ng-messages="form.seller_cert_other.$error" ng-show="interacted(form.seller_cert_other)">
+                                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入证件类型名称！</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="25%"><label ><span class="text-danger">*</span> 证件号码：</label>  </th>
+                                        <td>
+                                            <input type="text" class="form-control modv2-inputg" name="seller_cert_no" ng-model="item.seller_cert_no" required  id-card-validator="seller_cert_valid"/>
+                                            <div class="has-feedback text-danger" ng-messages="form.seller_cert_no.$error" ng-show="interacted(form.seller_cert_no)">
+                                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入证件号码！</div>
+                                                <div ng-message="idCardValidator"><i class="fa fa-info-circle"></i>身份证号码格式不正确！</div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><label ><input type="checkbox" name="saleAgent" ng-model="saleAgent" /> 卖方代理人</label></td>
+                                    </tr>
+                                    <tr ng-if="saleAgent">
+                                        <td colspan="2">
+                                            <table class="table modv2-table table-hover small-table">
+                                                <tr>
+                                                    <th width="25%"><label ><span class="text-danger">*</span> 代理人：</label>  </th>
+                                                    <td>
+                                                        <input type="text" class="form-control modv2-inputg" name="seller_agent_name" ng-model="item.seller_agent_name" ng-required="saleAgent" ng-disabled="!saleAgent"/>
+                                                        <div class="has-feedback text-danger" ng-messages="form.seller_agent_name.$error" ng-show="interacted(form.seller_agent_name)" ng-if="saleAgent">
+                                                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代理人姓名！</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="25%"><label ><span class="text-danger">*</span> 联系电话：</label>  </th>
+                                                    <td>
+                                                        <input type="text" class="form-control modv2-inputg"  name="seller_agent_phone" required ng-model="item.seller_agent_phone" ng-disabled="!saleAgent"/>
+                                                        <div class="has-feedback text-danger" ng-messages="form.seller_agent_phone.$error" ng-show="interacted(form.seller_agent_phone)" >
+                                                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代理人联系电话！</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="25%"><label ><span class="text-danger">*</span> 证件类型：</label>  </th>
+                                                    <td>
+                                                        <div class="vdb">
+                                                            <select  class="form-control modv2-inputg " name="seller_agent_cert_type" ng-model="item.seller_agent_cert_type"  ung-select-cert-type="item.seller_agent_cert_other" ng-required="saleAgent">
+                                                                <option value="">请选择</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="vdb">
+                                                            <input type="text" ng-model="item.seller_agent_cert_other" name="seller_agent_cert_other" ng-required="seller_agent_cert_other_required"  class="form-control modv2-inputg" style="display: none"/>
+                                                         </div>
+                                                        <div class="has-feedback text-danger" ng-messages="form.seller_agent_cert_type.$error" ng-show="interacted(form.seller_agent_cert_type)">
+                                                            <div ng-message="required"><i class="fa fa-info-circle"></i>请选择代理人证件类型！</div>
+                                                        </div>
+                                                        <div class="has-feedback text-danger" ng-messages="form.seller_agent_cert_other.$error" ng-show="interacted(form.seller_agent_cert_other)">
+                                                            <div ng-message="required"><i class="fa fa-info-circle"></i>请选择代理人证件类型名称！</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="25%"><label ><span class="text-danger">*</span> 证件号码：</label>  </th>
+                                                    <td>
+                                                        <input type="text" class="form-control modv2-inputg" name="seller_agent_cert_no" ng-model="item.seller_agent_cert_no" id-card-validator="seller_agent_cert_valid"  ng-required="saleAgent" ng-disabled="!saleAgent"/>
+                                                        <div class="has-feedback text-danger" ng-messages="form.seller_agent_cert_no.$error" ng-show="interacted(form.seller_agent_cert_no)" ng-if="saleAgent">
+                                                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代理人证件号码！</div>
+                                                            <div ng-message="idCardValidator"><i class="fa fa-info-circle"></i>身份证号码格式不正确！</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <th><h4 class="box-title">乙方（买方）信息</h4></th>
+                            <td colspan="2">
+                                <table class="table modv2-table table-hover small-table">
+                                    <tr>
+                                        <th width="25%"><label ><span class="text-danger">*</span> 买方姓名：</label>  </th>
+                                        <td>
+                                            <input type="text" class="form-control modv2-inputg" name="buyer_name" ng-model="item.buyer_name" required  />
+                                            <div class="has-feedback text-danger" ng-messages="form.buyer_name.$error" ng-show="interacted(form.buyer_name)">
+                                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入买方姓名！</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="25%"><label ><span class="text-danger">*</span> 联系电话：</label>  </th>
+                                        <td>
+                                            <input type="text" class="form-control modv2-inputg" name="buyer_phone" ng-model="item.buyer_phone" required mobile-validator/>
+                                            <div class="has-feedback text-danger" ng-messages="form.buyer_phone.$error" ng-show="interacted(form.buyer_phone)">
+                                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入联系电话！</div>
+                                                <div ng-message="mobileValidator"><i class="fa fa-info-circle"></i>请输入联系电话必须11位！</div>
+                                            </div>
+                                            <div class="has-feedback text-danger" ng-if="buyer_phone_role">此电话为273员工电话</div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="25%"><label ><span class="text-danger">*</span> 证件类型：</label>  </th>
+                                        <td>
+                                            <div class="vdb">
+                                                <select  class="form-control modv2-inputg vdb" name="buyer_cert_type" ng-model="item.buyer_cert_type"  ung-select-cert-type="item.buyer_cert_other" required >
+                                                    <option value="">请选择</option>
+                                                </select>
+                                             </div>
+                                            <div class="vdb">
+                                                <input type="text" ng-model="item.buyer_cert_other" name="buyer_cert_other" ng-required="buyer_cert_other_required" class="form-control modv2-inputg" style="display: none"/>
+                                            </div>
+                                            <div class="has-feedback text-danger" ng-messages="form.buyer_cert_type.$error" ng-show="interacted(form.buyer_cert_type)">
+                                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入证件类型！</div>
+                                                <div ng-message="certValidator"><i class="fa fa-info-circle"></i>请输入证件格式不正确！</div>
+                                            </div>
+                                            <div class="has-feedback text-danger" ng-messages="form.buyer_cert_other.$error" ng-show="interacted(form.buyer_cert_other)">
+                                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入证件类型名称！</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th width="25%"><label ><span class="text-danger">*</span> 证件号码：</label>  </th>
+                                        <td>
+                                            <input type="text" class="form-control modv2-inputg" name="buyer_cert_no"  ng-model="item.buyer_cert_no" required id-card-validator="buyer_cert_valid" />
+                                            <div class="has-feedback text-danger" ng-messages="form.buyer_cert_no.$error" ng-show="interacted(form.buyer_cert_no)">
+                                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入证件号码！</div>
+                                                <div ng-message="idCardValidator"><i class="fa fa-info-circle"></i>身份证号码格式不正确！</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="2"><label ><input type="checkbox" name="bugAgent" ng-model="bugAgent" /> 买方代理人</label></td>
+                                    </tr>
+
+                                    <tr ng-if="bugAgent">
+                                        <td colspan="2">
+                                            <table class="table modv2-table table-hover small-table">
+                                                <tr>
+                                                    <th width="25%"><label ><span class="text-danger">*</span> 代理人：</label>  </th>
+                                                    <td>
+                                                        <input type="text" class="form-control modv2-inputg" name="buyer_agent_name" ng-model="item.buyer_agent_name" ng-required="bugAgent" ng-disabled="!bugAgent"/>
+                                                        <div class="has-feedback text-danger" ng-messages="form.buyer_agent_name.$error" ng-show="interacted(form.buyer_agent_name)" ng-if="bugAgent">
+                                                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代理人姓名！</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="25%"><label ><span class="text-danger">*</span> 联系电话：</label>  </th>
+                                                    <td>
+                                                        <input type="text" class="form-control modv2-inputg" name="buyer_agent_phone" ng-model="item.buyer_agent_phone" ng-required="bugAgent"   mobile-validator  ng-disabled="!bugAgent"/>
+                                                        <div class="has-feedback text-danger" ng-messages="form.buyer_agent_phone.$error" ng-show="interacted(form.buyer_agent_phone)" ng-if="bugAgent">
+                                                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代理人联系电话！</div>
+                                                            <div ng-message="mobileValidator"><i class="fa fa-info-circle"></i>请输入联系电话必须11位！</div>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th width="25%"><label ><span class="text-danger">*</span> 证件类型：</label>  </th>
+                                                    <td>
+                                                        <div class="vdb">
+                                                            <select class="form-control modv2-inputg" name="buyer_agent_cert_type" ng-model="item.buyer_agent_cert_type" ng-required="bugAgent" ung-select-cert-type="item.buyer_agent_cert_other"  >
+                                                                <option value="">请选择</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="vdb">
+                                                             <input type="text" ng-model="item.buyer_agent_cert_other" name="buyer_agent_cert_other" ng-required="buyer_agent_cert_other_required" id-card-validator="buyer_agent_cert_valid" class="form-control modv2-inputg" style="display: none"/>
+                                                       </div>
+                                                        <div class="has-feedback text-danger" ng-messages="form.buyer_agent_cert_type.$error" ng-show="interacted(form.buyer_agent_cert_type)">
+                                                            <div ng-message="required"><i class="fa fa-info-circle"></i>请选择代理人证件类型！</div>
+                                                        </div>
+                                                        <div class="has-feedback text-danger" ng-messages="form.buyer_agent_cert_other.$error" ng-show="interacted(form.buyer_agent_cert_other)">
+                                                            <div ng-message="required"><i class="fa fa-info-circle"></i>请选择代理人证件类型名称！</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="25%"><label ><span class="text-danger">*</span> 证件号码：</label>  </th>
+                                                    <td>
+                                                        <input type="text" class="form-control modv2-inputg" name="buyer_agent_cert_no" ng-model="item.buyer_agent_cert_no" cert-validator="item.buyer_agent_cert_type" ng-required="bugAgent" ng-disabled="!bugAgent"/>
+                                                        <div class="has-feedback text-danger" ng-messages="form.buyer_agent_cert_no.$error" ng-show="interacted(form.buyer_agent_cert_no)" ng-if="bugAgent">
+                                                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代理人证件号码！</div>
+                                                            <div ng-message="idCardValidator"><i class="fa fa-info-circle"></i>身份证号码格式不正确！</div>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><h4 class="box-title">甲方（卖方）地址</h4></th>
+                            <td colspan="2">
+                            <span class="modv2-inputg" style="display: inline-block">
+                                <input type="text" class="form-control" ng-model="item.a_address" name="a_address" >
+                             </span>
+                            </td>
+                            <th><h4 class="box-title">乙方（买方）地址</h4></th>
+                            <td colspan="2">
+                            <span class="modv2-inputg" style="display: inline-block">
+                                <input type="text" class="form-control" ng-model="item.b_address" name="b_address">
+                             </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th><h4 class="box-title"><span class="text-danger">*</span> 甲方（卖方）顾问</h4></th>
+                            <td colspan="2">
+                                <div class="form-group modv2-formg " style="margin-bottom: 10px;">
+                                    <select  class="form-control " style="width: 120px;" name="seller_tracer_province" ng-model="item.seller_tracer_province" ung-select-province=""  required >
+                                        <option value="">省份</option>
+                                    </select>
+                                </div>
+                                <div class="form-group modv2-formg " style="margin-bottom: 10px;">
+                                    <select  class="form-control "  style="width: 120px;" name="seller_tracer_city" ng-model="item.seller_tracer_city"  ung-select-city="item.seller_tracer_province" required>
+                                        <option value="">市/区</option>
+                                    </select>
+                                </div>
+                                <br/>
+                                <div class="form-group modv2-formg ">
+                                    <select  class="form-control "  style="width: 120px;" name="seller_tracer_shop" ng-model="item.seller_tracer_shop" ung-select-shop="item.seller_tracer_city" required>
+                                        <option value="">门店</option>
+                                    </select>
+                                </div>
+                                <div class="form-group modv2-formg ">
+                                    <select  class="form-control "  style="width: 120px;" name="seller_tracer" ng-change="seller_tracer_change()" ng-model="item.seller_tracer" ung-select-sale-man="item.seller_tracer_shop" required>
+                                        <option value="">顾问</option>
+                                    </select>
+                                </div>
+                                <div class="has-feedback text-danger" ng-messages="form.seller_tracer_province.$error" ng-show="interacted(form.seller_tracer_province)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请选择省份！</div>
+                                </div>
+                                <div class="has-feedback text-danger" ng-messages="form.seller_tracer_city.$error" ng-show="interacted(form.seller_tracer_city)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请选择市/区！</div>
+                                </div>
+                                <div class="has-feedback text-danger" ng-messages="form.seller_tracer_shop.$error" ng-show="interacted(form.seller_tracer_shop)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请选择门店！</div>
+                                </div>
+                                <div class="has-feedback text-danger" ng-messages="form.seller_tracer.$error" ng-show="interacted(form.seller_tracer)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请选择顾问！</div>
+                                </div>
+                            </td>
+                            <th><h4 class="box-title"><span class="text-danger">*</span> 乙方（买方）顾问</h4></th>
+                            <td colspan="2">
+                                <div class="form-group modv2-formg " style="margin-bottom: 10px;">
+                                    <select  class="form-control "  style="width: 120px;" name="buyer_tracer_province" ng-model="item.buyer_tracer_province"  ung-select-province=""  required>
+                                        <option value="">省份</option>
+                                    </select>
+                                </div>
+                                <div class="form-group modv2-formg " style="margin-bottom: 10px;">
+                                    <select class="form-control "  style="width: 120px;" name="buyer_tracer_city" ng-model="item.buyer_tracer_city" ung-select-city="item.buyer_tracer_province"   required>
+                                        <option value="">市/区</option>
+                                    </select>
+                                </div>
+                                <br/>
+                                <div class="form-group modv2-formg ">
+                                    <select class="form-control "  style="width: 120px;" name="buyer_tracer_shop" ng-model="item.buyer_tracer_shop" ung-select-shop="item.buyer_tracer_city" required>
+                                        <option value="">门店</option>
+                                    </select>
+                                </div>
+                                <div class="form-group modv2-formg ">
+                                    <select  class="form-control "  style="width: 120px;" name="buyer_tracer" ng-model="item.buyer_tracer" ng-change="buyer_tracer_change()" ung-select-sale-man="item.buyer_tracer_shop" required>
+                                        <option value="">顾问</option>
+                                    </select>
+                                </div>
+                                <div class="has-feedback text-danger" ng-messages="form.buyer_tracer_province.$error" ng-show="interacted(form.seller_tracer_province)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请选择省份！</div>
+                                </div>
+                                <div class="has-feedback text-danger" ng-messages="form.buyer_tracer_city.$error" ng-show="interacted(form.seller_tracer_city)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请选择市/区！</div>
+                                </div>
+                                <div class="has-feedback text-danger" ng-messages="form.buyer_tracer_shop.$error" ng-show="interacted(form.seller_tracer_shop)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请选择门店！</div>
+                                </div>
+                                <div class="has-feedback text-danger" ng-messages="form.buyer_tracer.$error" ng-show="interacted(form.seller_tracer)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请选择顾问！</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <table class="table modv2-table table-hover small-table">
+                        <tr>
+                            <td colspan="6">二、成交价格、交易保证（交易保证金标准：车辆成交价5%，不低于2000元）： </td>
+                        </tr>
+                        <tr>
+                            <th width="12%"><h4 class="box-title">1、成交价格</h4></th>
+                            <td colspan="6">
+                                <span class="text-danger">*</span> 约定车辆成交价为：
+                                <input type="text" class="form-control modv2-inputg" ng-model="item.sale_price"  name="sale_price" money-validator="" required style="display: inline-block"/>
+                                人民币<span class="text-danger">（裸车价，不含各类服务费）</span>
+                                <div class="has-feedback text-danger" ng-messages="form.sale_price.$error" ng-show="interacted(form.sale_price)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入约定车辆成交价！</div>
+                                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>请输入约定车辆成交价格式不正确！</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2"><h4 class="box-title">2、交易保证</h4></th>
+                            <td colspan="6">
+                                乙方愿支付交易保证金：
+                                <input type="text" class="form-control  modv2-inputg " ng-model="item.b_deposit_c2" name="b_deposit_c2"   style="display: inline-block"/>
+                                人民币，交由丙方1或丙方2保管。
+                            <!--    <div class="has-feedback text-danger" ng-messages="form.b_deposit_c2.$error" ng-show="interacted(form.b_deposit_c2)" >
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入乙方愿支付交易保证金！</div>
+                                </div>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <div class="vdb">
+                                    甲方愿支付交易保证金 ：
+                                    <input type="text" class="form-control modv2-inputg" ng-model="item.a_deposit_c2" name="a_deposit_c2" style="display: inline-block"/>
+                                    人民币，交由丙方1或丙方2保管。
+                                </div>
+                                <div class="vdb">
+                                    甲方愿交付 ：
+                                    <label class="pickbox"><input type="checkbox" ng-model="a_safekeeping_cert_c1_1" name="a_safekeeping_cert_c1" value="1"/> 车辆</label>
+                                    <label class="pickbox"><input type="checkbox" ng-model="a_safekeeping_cert_c1_2" name="a_safekeeping_cert_c1" value="2"/> 产权证</label>
+                                    <label class="pickbox"><input type="checkbox" ng-model="a_safekeeping_cert_c1_3" name="a_safekeeping_cert_c1" value="3"/> 行驶证</label>
+                                    <input type="text" class="form-control modv2-inputg" ng-model="item.a_safekeeping_cert_c1_other" name="a_safekeeping_cert_c1_other" style="display: inline-block"/>
+                                    等材料于丙方1保管。
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">三、车款结算 </td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">
+                                <h4 class="box-title">
+                                    <div class="vdb">
+                                        委托丙方1或丙方2车付宝代结算车款和过户
+                                    </div>
+                                    <div class="vdb">
+                                        <label class="pickbox"><input type="radio" ng-model="item.car_fee_balance_type" name="car_fee_balance_type" value="1"/> 委托丙方1（门店）过户</label>
+                                    </div>
+                                    <div class="vdb">
+                                        <label class="pickbox"><input type="radio" ng-checked="true" ng-model="item.car_fee_balance_type" name="car_fee_balance_type" value="2"/> 甲乙双方自行过户</label>
+                                    </div>
+
+                                </h4>
+                            </th>
+                            <td colspan="6">
+                                <div class="vdb">
+                                    ①乙方在 <span class="text-danger">*</span>
+                                      <span class="input-group datepicker modv2-sel-warap" style="display: inline-block">
+                                        <ung-datepicker ng-model="item.b_car_fee_time_c2"  required="" name="b_car_fee_time_c2" ></ung-datepicker>
+                                     </span>
+                                    前支付( <label class="pickbox"><input type="radio" name="b_car_fee_type" ng-model="item.b_car_fee_type" value="1"/> 全部</label>或 <label class="pickbox"><input type="radio"  name="b_car_fee_type" ng-model="item.b_car_fee_type" value="2"/> 部分</label>)车款 <span class="text-danger">*</span>
+                                    <input type="text" class="form-control  modv2-inputg " ng-model="item.b_car_fee_c2"  required name="b_car_fee_c2" money-validator=""  style="display: inline-block"/>
+                                    （含交易保证金）并交予丙方1或丙方2保管；
+
+
+                                    <span ng-if="item.b_car_fee_type == 2" style="margin-top: 10px; display: block">
+                                        乙方未支付的车辆余款
+                                        <input type="text" class="form-control  modv2-inputg " ng-model="item.b_remain_car_fee_c2" name="b_remain_car_fee_c2"   style="display: inline-block"/>
+                                        元在
+                                      <span class="input-group datepicker modv2-sel-warap" style="display: inline-block">
+                                        <ung-datepicker ng-model="item.b_remain_car_fee_time_c2"  name="b_remain_car_fee_time_c2" ></ung-datepicker>
+                                     </span>
+                                        交由丙方1或丙方2保管
+                                    </span>
+                                    <div class="has-feedback text-danger" ng-messages="form.b_car_fee_time_c2.$error" ng-show="interacted(form.b_car_fee_time_c2)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入支付全部或部分车款日期！</div>
+                                    </div>
+                                    <div class="has-feedback text-danger" ng-messages="form.b_car_fee_c2.$error" ng-show="interacted(form.b_car_fee_c2)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入支付全部或部分车款金额！</div>
+                                        <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>车款金额格式不正确！</div>
+                                    </div>
+                                </div>
+                                <div class="vdb">
+                                    ②乙方委托丙方1或丙方2：在 <span class="text-danger">*</span>
+                                     <span class="input-group datepicker modv2-sel-warap" style="display: inline-block">
+                                        <ung-datepicker ng-model="item.b_c2_car_fee_time" name="b_c2_car_fee_time" required></ung-datepicker>
+                                     </span>
+                                    当日支付部分车款 <span class="text-danger">*</span>
+                                    <input type="text" class="form-control  modv2-inputg " ng-model="item.b_c2_car_fee" required name="b_c2_car_fee" money-validator=""   style="display: inline-block"/>
+                                    给甲方；
+                                    <div class="has-feedback text-danger" ng-messages="form.b_c2_car_fee_time.$error" ng-show="interacted(form.b_c2_car_fee_time)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入委托日！</div>
+                                    </div>
+                                    <div class="has-feedback text-danger" ng-messages="form.b_c2_car_fee.$error" ng-show="interacted(form.b_c2_car_fee)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入车款金额！</div>
+                                        <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>车款金额格式不正确！</div>
+                                    </div>
+                                </div>
+                                <div class="vdb">
+
+                                </div>
+                                <div class="vdb">
+                                    <div ng-if="item.car_fee_balance_type!=2">
+                                        ③乙方委托丙方1：过户手续办理完结后 <span class="text-danger">*</span>
+                                        <input type="text" class="form-control  modv2-inputg " ng-model="item.b_c1_working_days" required name="b_c1_working_days" number-validator  style="display: inline-block;width: 5em;"/>
+                                        个工作日内由丙方1或丙方2将全部余款支付给甲方。
+                                    </div>
+                                    <div  ng-if="item.car_fee_balance_type==2">
+                                        ③甲乙双方自行过户，则甲方将车辆交付乙方后 <span class="text-danger">*</span>
+                                        <input type="text" class="form-control  modv2-inputg " ng-model="item.b_c1_working_days" required name="b_c1_working_days" number-validator  style="display: inline-block;width: 5em;"/>
+                                        个工作日内由丙方1或丙方2将全部余款支付给甲方。
+                                    </div>
+                                    <div class="has-feedback text-danger" ng-messages="form.b_c1_working_days.$error" ng-show="interacted(form.b_c1_working_days)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入过户手续办理工作日！</div>
+                                        <div ng-message="numberValidator"><i class="fa fa-info-circle"></i>工作日格式不正确！</div>
+                                    </div>
+                                </div>
+                                <div class="vdb">
+                                    ④卖方指定收款账户:
+                                    <table class="table modv2-table table-hover small-table">
+                                        <tr>
+                                            <th> <label ><span class="text-danger">*</span> 收款人姓名：</label></th>
+                                            <td class="form-inline">
+                                                <input type="text" class="form-control modv2-inputg"   required   ng-model="item.gathering_account_username" name="gathering_account_username"  disabled/>&nbsp;&nbsp;
+                                                <label class="pickbox"><input type="radio" name="payee_type" ng-model="item.sell_gathering_account_type" value="1" ng-checked="true"/> 卖方</label>
+                                                <label class="pickbox"><input type="radio" name="payee_type" ng-model="item.sell_gathering_account_type" value="2"/> 代理人</label>
+                                                <div class="has-feedback text-danger" ng-messages="form.gathering_account_username.$error" ng-show="interacted(form.gathering_account_username)">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入收款人姓名！</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th> <label ><span class="text-danger">*</span> 收款账号：</label></th>
+                                            <td>
+                                                <input type="text" class="form-control modv2-inputg"  required   ng-model="item.gathering_account" name="gathering_account" />
+                                                <div class="has-feedback text-danger" ng-messages="form.gathering_account.$error" ng-show="interacted(form.gathering_account)">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入收款账号！</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th> <label ><span class="text-danger">*</span> 开户行：</label></th>
+                                            <td>
+                                                <input type="text" class="form-control modv2-inputg"  required   ng-model="item.gathering_account_bank" name="gathering_account_bank" auto-complete />
+                                                <span class="text-danger">支持模糊搜索银行，例如：中国民生银行，可输入“民生”，在下拉列表中快速选择。</span>
+                                                <div class="has-feedback text-danger" ng-messages="form.gathering_account_bank.$error" ng-show="interacted(form.gathering_account_bank)">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入开户行！</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th> <label ><span class="text-danger">*</span> 开户支行：</label></th>
+                                            <td>
+                                                <input type="text" class="form-control modv2-inputg"  required   ng-model="item.gathering_account_bank_branch" name="gathering_account_bank_branch" auto-complete-branch=""  />
+                                                <div class="text-danger">支持模糊搜索银行，例如：中国民生银行福州鼓楼支行，可输入“民生 福州 鼓楼”，在下拉列表中快速选择。</div>
+                                                <div class="has-feedback text-danger" ng-messages="form.gathering_account_bank_branch.$error" ng-show="interacted(form.gathering_account_bank_branch)">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入开户支行！</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th> <label ><span class="text-danger">*</span> 收款人证件号：</label></th>
+                                            <td>
+                                                <input type="text" class="form-control modv2-inputg"  required   ng-model="item.gathering_account_card_no" name="gathering_account_card_no" disabled />
+                                                <div class="has-feedback text-danger" ng-messages="form.gathering_account_card_no.$error" ng-show="interacted(form.gathering_account_card_no)">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入收款人证件号！</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th> <label ><span class="text-danger">*</span> 联系电话：</label></th>
+                                            <td>
+                                                <input type="text" class="form-control modv2-inputg"  required   ng-model="item.gathering_account_phone" name="gathering_account_phone" minlength="11" maxlength="11" disabled/>
+                                                <div class="has-feedback text-danger" ng-messages="form.gathering_account_phone.$error" ng-show="interacted(form.gathering_account_phone)" >
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入联系电话！</div>
+                                                    <div ng-message="minlength"><i class="fa fa-info-circle"></i>请输入联系电话必须11位！</div>
+                                                    <div ng-message="maxlength"><i class="fa fa-info-circle"></i>请输入联系电话必须11位！</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                    </table>
+                                </div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <div class="vdb">
+                                    ①办理验车、过户转籍手续时间：在 <span class="text-danger">*</span>
+                                    <span class="input-group datepicker modv2-sel-warap" style="display: inline-block">
+                                        <ung-datepicker ng-model="item.change_start_time" name="change_start_time"  required="" max-date="item.change_end_time"></ung-datepicker>
+                                     </span>
+                                    至 <span class="text-danger">*</span>
+                                    <span class="input-group datepicker modv2-sel-warap" style="display: inline-block">
+                                        <ung-datepicker ng-model="item.change_end_time" name="change_end_time" required="" min-date="item.change_start_time"></ung-datepicker>
+                                     </span>
+                                    办理验车过户转籍手续。
+                                    <div class="has-feedback text-danger" ng-messages="form.change_start_time.$error" ng-show="interacted(form.change_start_time)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入办理验车、过户转籍手续开始时间！</div>
+                                    </div>
+                                    <div class="has-feedback text-danger" ng-messages="form.change_end_time.$error" ng-show="interacted(form.change_end_time)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入办理验车、过户转籍手续结束时间！</div>
+                                    </div>
+                                </div>
+                                <div class="vdb">
+                                    ②乙方指定过户人：乙方指定车辆变更至 <span class="text-danger">*</span>
+                                    <input type="text" class="form-control  modv2-inputg " ng-model="item.new_vehicle_owner" ng-readonly="new_vehicle_owner_readonly" required="" name="new_vehicle_owner"   style="display: inline-block"/>
+                                    其{{ cert_type }}号码为： <span class="text-danger">*</span>
+                                    <input type="text" class="form-control  modv2-inputg " ng-model="item.new_vehicle_owner_cert_no" ng-readonly="new_vehicle_owner_readonly"  required="" name="new_vehicle_owner_cert_no"  id-card-validator=""  style="display: inline-block"/>
+                                    <div class="has-feedback text-danger" ng-messages="form.new_vehicle_owner.$error" ng-show="interacted(form.new_vehicle_owner)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入办理验车、过户转籍手续开始时间！</div>
+                                    </div>
+                                    <div class="has-feedback text-danger" ng-messages="form.new_vehicle_owner_cert_no.$error" ng-show="interacted(form.new_vehicle_owner_cert_no)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入身份证号码！</div>
+                                        <div ng-message="idCardValidator"><i class="fa fa-info-circle"></i>身份证号码格式不正确！</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                四、服务项目 ：
+                                <label class="pickbox"><input type="checkbox" ng-disabled="true"    ng-model="service_items_1" name="service_items"  ng-value="1"/>信息服务</label>
+                                <label class="pickbox"><input type="checkbox" ng-disabled="true"    ng-model="service_items_2" name="service_items" ng-value="2"/>过户服务</label>
+                                <label class="pickbox"><input type="checkbox" ng-disabled="true"    ng-model="service_items_3" name="service_items" ng-value="3"/>平台服务（车况宝检测服务，延保产品服务等）</label>
+<!--
+                                <label class="pickbox"><input type="checkbox" ng-disabled="true"    ng-model="service_items_4" name="service_items" ng-value="4"/>延保产品服务</label>
+-->
+<!--
+                                <label class="pickbox"><input type="checkbox"   ng-model="service_items_5" name="service_items" ng-value="5"/>金融按揭服务</label>
+-->
+                                <label class="pickbox">其它服务</label>
+                                <input type="text" class="form-control  modv2-inputg " ng-model="item.service_items_other" name="service_items_other"   style="display: inline-block"/>
+
+                                <div class="detail ">
+                                    甲乙双方签订正式交易合同且交易车辆的车款或其他相关费用委托丙方2车付宝代结算情况下： <br/>
+                                    <div style="color: red">
+                                    <div style="text-decoration: underline">
+                                        1、丙方2提供车况宝检测服务，对车辆状况进行检测并出具检测报告，丙方2承诺检测失误90天内退车还款，。车辆检测项目、内容及承诺（检测失误90天内退车还款）的具体约定以丙方2出具的车况宝《车辆检测报告》和《车况宝退车保障书》为准。 <br/>
+                                    </div>
+                                    2、丙方2提供延保产品服务，具体的延保产品服务承诺以丙方2提供的相关“延保服务合同”为准。 <br/>
+                                    3、甲乙双方交易车辆时，“本合同约定车辆成交价”与“委托丙方2车付宝代结算金额”或与“《车辆检测报告》确定的退车保障价“不一致时，一旦发生车况宝检测失误，乙方提出退车还款时，以委托丙方2车付宝代结算“车款金额”为准。 <br/>
+                                    4、丙方2为甲乙双方提供车辆交易信息、车款代收代付与监管、车况检测及延保产品等服务；丙方1系丙方2落地运营服务商，受丙方2委托对甲乙双方提供线下交易约看、撮合、合同签订、代办过户等落地服务。
+                                    </div>
+                               </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">五、服务费用（以上服务费用应于车辆交付之前通过丙方1或丙方2车付宝支付完毕，单位：元）：     </td>
+                        </tr>
+                        <tr>
+                            <th ><h4 class="box-title">1、甲方承担</h4></th>
+                            <td style="width: 20%" colspan="1">
+                                <span class="text-danger">*</span> 信息服务 : <input type="text"  ng-model="item.a_brokerage" money-validator="" required name="a_brokerage" class="form-control input-sm input-ib">
+                                <div class="has-feedback text-danger" ng-messages="form.a_brokerage.$error" ng-show="interacted(form.a_brokerage)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入信息服务费！</div>
+                                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>请输入信息服务费格式不正确！</div>
+                                </div>
+                            </td>
+                            <td style="width: 20%"  colspan="1">
+                                <span class="text-danger">*</span> 平台服务费 : <input type="text"  ng-model="item.a_platform_fee" money-validator="" required name="a_platform_fee" class="form-control input-sm input-ib"  >
+                                <div class="has-feedback text-danger" ng-messages="form.a_platform_fee.$error" ng-show="interacted(form.a_platform_fee)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入平台服务费！</div>
+                                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>请输入平台服务费格式不正确！</div>
+                                </div>
+                            </td>
+                            <td style="width: 20%"  colspan="1">
+                                <span class="text-danger">*</span> 代办过户费 : <input type="text"  ng-model="item.a_anency_fee" money-validator="" required name="a_anency_fee" class="form-control input-sm input-ib"  >
+                                <div class="has-feedback text-danger" ng-messages="form.a_anency_fee.$error" ng-show="interacted(form.a_anency_fee)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代办过户费！</div>
+                                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>请输入代办过户费格式不正确！</div>
+                                </div>
+                            </td>
+
+                           <!-- <td >检测服务费 : <input type="text"  ng-model="item.a_check_fee" name="a_check_fee" class="form-control input-sm input-ib" ></td>-->
+                            <td style="width: 20%"  colspan="1">
+                                <span class="text-danger">*</span> 其他费用 : <input type="text"  ng-model="item.a_other_fee" money-validator=""   name="a_other_fee" class="form-control input-sm input-ib" required >
+                                <div class="has-feedback text-danger" ng-messages="form.a_other_fee.$error" ng-show="interacted(form.a_other_fee)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代办过户费！</div>
+                                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>请输入代办过户费格式不正确！</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th ><h4 class="box-title">2、乙方承担</h4></th>
+                            <td colspan="1">
+                                <span class="text-danger">*</span> 信息服务 : <input type="text"  ng-model="item.b_brokerage" money-validator required name="b_brokerage" class="form-control input-sm input-ib">
+                                <div class="has-feedback text-danger" ng-messages="form.b_brokerage.$error" ng-show="interacted(form.b_brokerage)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入信息服务！</div>
+                                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>请输入信息服务格式不正确！</div>
+                                </div>
+                            </td>
+                            <td style="width: 20%"  colspan="1">
+                                <span class="text-danger">*</span> 平台服务费 : <input type="text"  ng-model="item.b_platform_fee" money-validator="" required name="b_platform_fee" class="form-control input-sm input-ib"  >
+                                <div class="has-feedback text-danger" ng-messages="form.b_platform_fee.$error" ng-show="interacted(form.b_platform_fee)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入平台服务费！</div>
+                                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>请输入平台服务费格式不正确！</div>
+                                </div>
+                            </td>
+                            <td colspan="1">
+                                <span class="text-danger">*</span> 代办过户费 : <input type="text"  ng-model="item.b_anency_fee" money-validator required name="b_anency_fee" class="form-control input-sm input-ib">
+                                <div class="has-feedback text-danger" ng-messages="form.b_anency_fee.$error" ng-show="interacted(form.b_anency_fee)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代办过户费！</div>
+                                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>请输入代办过户费格式不正确！</div>
+                                </div>
+                             </td>
+
+                            <!--<td colspan="1">
+                                <span class="text-danger">*</span> 代办按揭费 : <input type="text"  ng-model="item.b_anency_mortgage_fee" money-validator required name="b_anency_mortgage_fee" class="form-control input-sm input-ib" value="0">
+                                <div class="has-feedback text-danger" ng-messages="form.b_anency_mortgage_fee.$error" ng-show="interacted(form.b_anency_mortgage_fee)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入其他费用！</div>
+                                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>请输入代办按揭费格式不正确！</div>
+                                </div>
+                            </td>-->
+                           <!-- <td >检测服务费 : <input type="text"  ng-model="item.b_check_fee" name="b_check_fee" class="form-control input-sm input-ib"></td>-->
+                            <td colspan="1">
+                                <span class="text-danger">*</span> 其他费用 : <input type="text"  ng-model="item.b_other_fee" money-validator required name="b_other_fee" class="form-control input-sm input-ib" value="0">
+                                <div class="has-feedback text-danger" ng-messages="form.b_other_fee.$error" ng-show="interacted(form.b_other_fee)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入其他费用！</div>
+                                    <div ng-message="moneyValidator"><i class="fa fa-info-circle"></i>请输入其他费用格式不正确！</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6">六、车辆及证件资料交付时间（本款约定即为交付，不另行办理交接手续）：</td>
+                        </tr>
+                        <tr>
+                            <th >1、交付时间</th>
+                            <td colspan="6">
+                                 <span class="text-danger">*</span>
+                                 <span class="input-group datepicker modv2-sel-warap input-ib" >
+                                        <ung-datepicker ng-model="item.delivery_time" name="delivery_time"  required=""></ung-datepicker>
+                                 </span>
+                                 <span class="input-group datepicker  input-ib">
+                                       <timepicker  ng-model="delivery_stime"  name="delivery_stime" required=""  ng-change="changed()" hour-step="1" minute-step="5" show-meridian="ismeridian"></timepicker>
+                                 </span>
+                                 <button type="button" class="btn btn-primary input-ib" ng-click="now()">现在</button>
+
+                                <div class="has-feedback text-danger" ng-messages="form.delivery_time.$error" ng-show="interacted(form.delivery_time)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入交付日期！</div>
+                                </div>
+                                <div class="has-feedback text-danger" ng-messages="form.delivery_stime.$error" ng-show="interacted(form.delivery_stime)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入交付时间！</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th >2、交付项目</th>
+                            <td colspan="6">
+                                <div class="vdb">
+                                    <label class="pickbox"><input type="checkbox" ng-model="delivery_items_1" name="delivery_items" ng-checked="true" disabled value="1"/> 车辆本身</label>
+                                    <label class="pickbox"><input type="checkbox" ng-model="delivery_items_2"  ng-checked="true" disabled value="2"/> 车辆钥匙</label>
+                                    <input type="text"  ng-model="item.delivery_items_keycount" name="delivery_items_keycount" class="form-control modv2-inputg input-ib" required ng-pattern="/^([1-9]{1})([0-9]{0,7})$/" style="display: inline-block; width: 5em;"> 把
+                                    <label class="pickbox" ><input type="checkbox" ng-model="delivery_items_3" name="delivery_items"  ng-checked="true" disabled value="3"/> 机动车行驶证</label>
+                                    <label class="pickbox" ><input type="checkbox" ng-model="delivery_items_4" name="delivery_items"  ng-checked="true" disabled value="4"/> 机动车登记证</label>
+                                    <label class="pickbox" ><input type="checkbox" ng-model="delivery_items_5" name="delivery_items"  value="5"/> 车辆购置附加费凭证</label>
+                                    <label class="pickbox" ><input type="checkbox" ng-model="delivery_items_6" name="delivery_items"  value="6"/> 机动车辆保险单</label>
+                                    <label class="pickbox" ><input type="checkbox" ng-model="delivery_items_7" name="delivery_items"  value="7"/> 营运证</label>
+                                    <label class="pickbox" ><input type="checkbox" ng-model="delivery_items_8"_name="delivery_items"  value="8"/> 身份证复印件</label>
+                                </div>
+                                <div class="vdb">
+                                    其他：
+                                    <input type="text"  ng-model="item.delivery_items_other" name="delivery_items_other" class="form-control modv2-inputg input-ib" style="display: inline-block; ">
+                                    <!--共
+                                    <input type="text"  ng-model="item.delivery_items_number" name="delivery_items_number" required ng-pattern="/^([1-9]{1})([0-9]{0,7})$/" class="form-control modv2-inputg input-ib"  style="display: inline-block; width: 5em;"> 件-->
+                                </div>
+                                <div class="has-feedback text-danger" ng-messages="form.delivery_items_keycount.$error" ng-show="interacted(form.delivery_items_keycount)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>车辆钥匙把数！</div>
+                                    <div ng-message="pattern"><i class="fa fa-info-circle"></i>请输入数字！</div>
+                                </div>
+                                <!--<div class="has-feedback text-danger" ng-messages="form.delivery_items_number.$error" ng-show="interacted(form.delivery_items_number)">
+                                    <div ng-message="required"><i class="fa fa-info-circle"></i>其它的件数！</div>
+                                    <div ng-message="pattern"><i class="fa fa-info-circle"></i>请输入数字！</div>
+                                </div>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">七、关于按揭约定：</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <div class="vdb">
+                                    <label class="pickbox" ><input type="checkbox"  ng-model="mortgage_set_1" name="mortgage_set" value="1" /> </label> 买方申请金融按揭，如因买方原因申请不通过，买方支付丙方2
+                                    <input type="text"  ng-model="item.mortgage_brokerage"  ng-disabled="mortgage_set_1_disabled" ng-required="mortgage_set_1_required" name="mortgage_brokerage" class="form-control modv2-inputg"  style="display: inline-block; width: 200px; ">
+                                    元信息服务费，支付卖方
+                                    <input type="text"  ng-model="item.mortgage_compensation"   ng-disabled="mortgage_set_1_disabled" name="mortgage_compensation" class="form-control modv2-inputg" ng-required="mortgage_set_1_required" style="display: inline-block; width: 200px; ">
+                                    元补偿，合同自动解除。
+                                    <div class="has-feedback text-danger" ng-messages="form.mortgage_brokerage.$error" ng-show="interacted(form.mortgage_brokerage)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入信息服务费！</div>
+                                    </div>
+                                    <div class="has-feedback text-danger" ng-messages="form.mortgage_compensation.$error" ng-show="interacted(form.mortgage_compensation)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入补偿金额！</div>
+                                    </div>
+                                </div>
+                                <div class="vdb">
+                                    <label class="pickbox" ><input type="checkbox"   ng-model="mortgage_set_2" name="mortgage_set" value="2"/> </label>
+                                    买方申请金融按揭，如因买方原因申请不通过，买方以现金方式支付，合同继续履行。
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                八、其它约定事项：
+                                <input type="text"  name="other_agreement" class="form-control " ng-model="item.other_agreement" >
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="text-right">
+                    <div class="vdb">
+                        签订日期：<span class="input-group datepicker modv2-sel-warap" style="display: inline-block" >
+                                        <ung-datepicker ng-model="item.sign_time" name="sign_time" required=""></ung-datepicker>
+                                     </span>
+                        <div class=" text-danger" ng-messages="form.sign_time.$error" ng-show="interacted(form.sign_time)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入签订日期！</div>
+                        </div>
+                    </div>
+                    <div class="vdb"> 经办人：{{ dept_name }} - {{ operator }} </div>
+
+
+                </div>
+            </div>
+            <div class="fixedbar text-center" style="width: 90%">
+                <button class="btn btn-primary modv2-btn" type="button" ng-click="saveDraft()" >保存为草稿</button>
+                <button class="btn btn-primary modv2-btn" >生成并打印</button>
+                <button class="btn btn-primary modv2-btn" type="button" ng-click="back()">取消</button>
+            </div>
+
+    </form>
+    </div>
+
+</section>
+<!-- /.content -->
+
+

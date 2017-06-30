@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest versionCode="0.5">
+    <application setting="false">
+        <name><![CDATA[投票]]></name>
+        <identifie><![CDATA[vote]]></identifie>
+        <version><![CDATA[1.0]]></version>
+        <ability><![CDATA[投票模块]]></ability>
+        <description><![CDATA[投票系统，图片、文字，单选，多选]]></description>
+        <author><![CDATA[ffcsteam]]></author>
+        <url><![CDATA[]]></url>
+    </application>
+    <platform>
+        <subscribes>
+        </subscribes>
+        <handles>
+            <message type="text" />
+        </handles>
+        <rule embed="true">
+            <option title="编辑投票选项" do="option" state="" />
+            <option title="查看投票结果" do="result" state="" />
+        </rule>
+        <menus embed="false">
+        </menus>
+    </platform>
+    <install><![CDATA[
+CREATE TABLE IF NOT EXISTS `ims_vote_fans` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from_user` varchar(50) NOT NULL,
+  `rid` int(11) NOT NULL,
+  `option` varchar(100) NOT NULL COMMENT '最后一次投票的选项',
+  `vote_num` int(11) NOT NULL COMMENT '投票次数',
+  `vote_time` int(10) NOT NULL COMMENT '最后一次投票时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ims_vote_logs` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'fans_vote_表中的id',
+  `rid` int(10) NOT NULL,
+  `vfid` int(10) NOT NULL COMMENT 'vote_fans表中的id',
+  `from_user` varchar(50) NOT NULL,
+  `vote_time` int(10) NOT NULL COMMENT '投票时间时间',
+  `option` varchar(100) NOT NULL COMMENT '选择的编号',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ims_vote_option` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) unsigned NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `thumb` varchar(60) NOT NULL,
+  `content` text NOT NULL,
+  `vote_num` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ims_vote_reply` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) unsigned NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `thumb` varchar(60) NOT NULL,
+  `vote_title` varchar(50) NOT NULL,
+  `vote_type` tinyint(4) NOT NULL COMMENT '0:单选文字,1: 多选文字,2:单选图片,3多选图片   ',
+  `start_time` int(10) NOT NULL COMMENT '起始时间',
+  `end_time` int(10) NOT NULL COMMENT '结束时间',
+  `interval` int(4) NOT NULL COMMENT '投票时间间隔,0表示一个粉丝一个只能投一票，N表示N天投一票',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+]]></install>
+    <uninstall><![CDATA[]]></uninstall>
+    <upgrade><![CDATA[]]></upgrade>
+</manifest>

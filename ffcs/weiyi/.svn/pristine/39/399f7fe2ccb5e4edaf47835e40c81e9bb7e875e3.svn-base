@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="微盟、微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" name="Keywords">
+    <meta content="微盟，国内最大的微信公众智能服务平台，微盟八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" name="Description">
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/bootstrap_min.css?2013-12-17-1" media="all"/>
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/bootstrap_responsive_min.css?2013-12-17-1"
+          media="all"/>
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/style.css?2013-12-17-1" media="all"/>
+    <link rel="stylesheet" type="text/css"
+          href="http://stc.weimob.com/css/plugins/daterangepicker/daterangepicker.css?2013-12-17-1" media="all"/>
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/todc_bootstrap_button.css?2013-12-17-1"
+          media="all"/>
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/themes.css?2013-12-17-1" media="all"/>
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/inside.css?2013-12-17-1" media="all"/>
+    <script type="text/javascript" src="http://stc.weimob.com/src/jQuery.js?2013-12-17-1"></script>
+    <script type="text/javascript" src="http://stc.weimob.com/src/bootstrap_min.js?2013-12-17-1"></script>
+    <script type="text/javascript"
+            src="http://stc.weimob.com/src/plugins/validation/jquery_validate_min.js?2013-12-17-1"></script>
+    <script type="text/javascript"
+            src="http://stc.weimob.com/src/plugins/validation/jquery_validate_methods.js?2013-12-17-1"></script>
+
+    <script type="text/javascript"
+            src="http://stc.weimob.com/src/plugins/daterangepicker/moment_min.js?2013-12-17-1"></script>
+    <script type="text/javascript"
+            src="http://stc.weimob.com/src/plugins/daterangepicker/daterangepicker.js?2013-12-17-1"></script>
+    <script type="text/javascript" src="http://stc.weimob.com/src/inside.js?2013-12-17-1"></script>
+    <title>国内最大的微信公众服务平台</title>
+    <link rel="shortcut icon" href="http://stc.weimob.com/img/favicon.ico"/>
+    <!--[if lte IE 9]>
+    <script src="http://stc.weimob.com/src/watermark.js"></script><![endif]-->
+    <!--[if IE 7]>
+    <link href="http://stc.weimob.com/css/font_awesome_ie7.css" rel="stylesheet"/><![endif]-->
+
+    <link href="./resource/script/kindeditor/themes/default/default.css" rel="stylesheet" />
+    <script src="./resource/script/kindeditor/kindeditor-min.js"></script>
+    <script src="./resource/script/kindeditor/lang/zh_CN.js"></script>
+    <script src="./resource/script/kindeditor/kindeditor.config-upfile.js"></script>
+</head>
+<body>
+<script src="/templates/kindeditor/kindeditor-min.js"></script>
+<body>
+<div id="main">
+    <div class="container-fluid">
+
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-title">
+                        <div class="span10">
+                            <h3><i class="icon-edit"></i>发布优惠券
+                                <small>发布现金抵用券和打折优惠券信息</small>
+                            </h3>
+                        </div>
+                        <div class="pull-left"><a class="btn btn-sm btn-gray" href="Javascript:window.history.go(-1)">返回</a></div>
+                    </div>
+
+                    <div class="box-content">
+                        <form action="/micromember.php?act=coupon&actType=save" method="post"
+                              class="form-horizontal form-validate">
+                            <input type="hidden" name="aid" value="33636"/>
+                            <input type="hidden" name="id" value=""/>
+
+                            <div class="control-group">
+                                <label for="title" class="control-label">优惠券名称：</label>
+
+                                <div class="controls">
+                                    <input type="text" name="title" id="title" value="" class="input-large"
+                                           data-rule-required="true"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">选择人群</label>
+
+                                <div class="controls crowd">
+                                    <div class="inline">
+                                        <label class="radio inline">
+                                            <input type="radio" name="crowd_type" value="0" checked="checked"/>所有会员
+                                        </label>
+                                    </div>
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $("input[name='crowd_type']").click(function () {
+                                                var $ckone = $("#ckone"), cktwo = $("#cktwo");
+                                                if ($(this).hasClass("dmoney")) {
+                                                    $ckone.show();
+                                                    cktwo.hide();
+                                                }
+                                                else if ($(this).hasClass("mmoney")) {
+                                                    $ckone.hide();
+                                                    cktwo.show();
+                                                } else {
+                                                    $ckone.hide();
+                                                    cktwo.hide();
+                                                }
+                                                ;
+                                            });
+                                        })
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="time">有效期</label>
+
+                                <div class="controls">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-calendar"></i></span>
+                                        <input type="text" name="time" readonly="" id="time"
+                                               class="daterangepick input-xlarge" data-rule-required="true"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="type">类型</label>
+
+                                <div class="controls inline">
+                                    <label class="radio inline">
+                                        <input type="radio" name="type" value="1" checked="checked"/>打折优惠券　
+                                    </label>
+                                    <label class="radio inline">
+                                        <input type="radio" name="type" value="2"/>现金抵用券
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="nums">数量</label>
+
+                                <div class="controls inline">
+                                    每个用户可以获得：<input type="text" name="nums" id="nums" value="" class="input-mini"
+                                                    data-rule-required="true" value="1" data-rule-number="true"/> 张券
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="info">使用说明</label>
+
+                                <div class="controls">
+                                    <textarea class="input-large" name="info" id="info" data-rule-required="true"
+                                              style="width:350px;height:100px;"></textarea>
+                                    <span class="help-inline">在此说明券的使用方式，如最低消费金额，优惠券打折信息，不与其他优惠同时使用、节假日不可使用等。</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button id="bsubmit1" type="submit" class="btn btn-sm btn-primary">
+                                    保存
+                                </button>
+                                <button type="button" class="btn btn-sm" onclick="Javascript:window.history.go(-1)">取消</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var seting = {
+        themeType: "simple",
+        resizeType: 1,
+        syncType: "",
+        allowPreviewEmoticons: false,
+        items: [
+            'source', 'undo', 'redo', 'plainpaste', 'plainpaste', 'wordpaste', 'clearhtml', 'quickformat', 'selectall', 'fullscreen', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'hr',
+            'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+            'insertunorderedlist', '|', 'emoticons', 'image', 'link', 'unlink', 'preview'],
+        allowFileManager: true,
+        width: "80%",
+        afterCreate: function () {
+            this.sync();
+        },
+        afterBlur: function () {
+            this.sync();
+        }
+    }
+    var editor1;
+    KindEditor.ready(function (K) {
+        editor1 = K.create('#info', seting);
+
+    });
+
+
+</script>
+</body>
+</body>
+</html>

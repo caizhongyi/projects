@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>易信拜年赢好礼！</title>
+    <meta name="keywords" content="keywords"/>
+    <meta name="description" content="description"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
+    <link rel="shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="favicon.ico"/>
+
+    <!-- web style  -->
+    <link rel="stylesheet" type="text/css" media="all" href="./source/modules/userapi/template/css/share.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="./source/modules/userapi/template/css/zero.mobile.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="./source/modules/userapi/template/css/layout.css"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- header -->
+<header class="header">
+    <img src="./source/modules/userapi/template/bainian_img/banner.jpg" alt="" class="banner"/>
+</header>
+<!-- /header -->
+
+<!-- container -->
+<section class="container">
+    <div class="text-warning notice">
+        活动时间：2014年1月23日至2月18日（农历小年至元宵节） <br>
+        用户范围：福建地区易信用户<br>
+    </div>
+    <form class="form">
+        <div class="form-group"><i class=""></i>参与号码：</div>
+        <div  class="form-group"><input type="text" style="width: 70%;" name="mobile" value="{if !empty($mobile)}{$mobile}{/if}"/></div>
+
+    </form>
+
+    <div class="">
+        <button class="btn-post text-center return" style=" background: none repeat scroll 0 0 #F76B08 ;border: 1px solid #E66000;border-radius: 10px; box-shadow: 3px 3px 5px #666666;color: #FFFFFF;font-size: 14px;padding: 5px 30px;margin:0 0 10px 0;" >我 要 拜 年</button>
+    </div>
+    <div class="message-tip text-success" id= "sharemsg">
+    </div>
+    <script type="text/javascript">
+        $(document).on('click','.btn-post', function(){
+            $(this).attr('disabled','disabled');
+            var that = this;
+            var mobile =$("input[name='mobile']").val();
+            reg = /^0{0,1}(13[0-9]|145|15[0-9]|153|156|18[0-9])[0-9]{8}$/i;
+            if (!reg.test(mobile) ) {
+                $('#sharemsg').removeClass('text-success text-error').show().html('手机号码格式有误！').addClass('text-error').fadeOut(10000);
+                $("input[name='mobile']").focus();
+                $(that).removeAttr('disabled');
+                return false;
+            }
+            $.post('{$bainian_url}',{mobile:mobile},
+                    function (data) {
+                        if (data.errno == 200) {
+                            $('#sharemsg').removeClass('text-success text-error').show().html('报名成功！').addClass('text-success');
+                        } else {
+                            $('#sharemsg').removeClass('text-success text-error').show().html(data.error).addClass('text-error');
+                        }
+                        $(that).removeAttr('disabled');
+                    },'json');
+        });
+    </script>
+    <div class="module-wy" style="margin-bottom: -60%">
+        <div class="module-header"><i class="icon-title">活动规则：</i></div>
+        <div class="module-body">
+            <p>
+                用<span class="text-notice">易信</span>发送<span class="text-notice">免费</span>互动消息(<span class="text-notice">图文、贺卡、视频</span>等)、免费<span class="text-notice">短信</span>、<span class="text-notice">电话留言</span>给好友<span class="text-notice">拜年</span>。系统将记录累计积分进行排名抽大奖。
+            </p>
+			<table style="width:100%;" align="center" border="1" bordercolor="#636363" cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr>
+						<td>
+							奖项
+						</td>
+						<td>
+							抽奖范围&nbsp;&nbsp;&nbsp;&nbsp;<br />
+						</td>
+						<td>
+							获奖名额<br />
+						</td>
+						<td>
+							奖品<br />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							一等奖<br />
+						</td>
+						<td>
+							累积积分800分以上（含800分）的用户<br />
+						</td>
+						<td>
+							1名<br />
+						</td>
+						<td>
+							ipad min(价值2100元)<br />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							二等奖<br />
+						</td>
+						<td>
+							累计积分300分以上（含300分）的用户<br />
+						</td>
+						<td>
+							10名<br />
+						</td>
+						<td>
+							小米盒子（价值300元）<br />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							三等奖<br />
+						</td>
+						<td>
+							<span id="__kindeditor_bookmark_start_15__"></span>累计积分100分以上（含300分）的用户<br />
+						</td>
+						<td>
+							100名<br />
+						</td>
+						<td>
+							50元11888电话充值卡<br />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							鼓励奖<br />
+						</td>
+						<td>
+							所有参加活动的用户<br />
+						</td>
+						<td>
+							500名<br />
+						</td>
+						<td>
+							2元11888电话充值卡<br />
+						</td>
+					</tr>
+				</tbody>
+		</table>
+        </div>
+        <div class="module-header"><i class="icon-title">积分规则：</i></div>
+        <div class="module-body">
+            <p>
+                1、发送互动消息：每使用10次易信基本消息功能，通过向易信好友发送文字、贺卡图片、拜年视频等可获得1分； <br>
+                2、朋友圈：每在朋友圈发送1个消息（文字、贺卡、视频）均可获得1分；<br>
+                3、发送免费电话留言：使用易信每发送1条免费电话留言可获得2分；<br>
+                4、发送免费短信：使用易信每发送1条免费短信可获得1分。<br>
+                注：发送相同内容只可获一次积分，每天50条免费短信和5条免费电话留言，对方回复电话留言也免费。<br>
+            </p>
+        </div>
+        
+
+    </div>
+</section>
+<!-- footer -->
+<footer class="footer"><img src="./source/modules/userapi/template/bainian_img/footer.png" alt=""/></footer>
+<!-- /footer -->
+
+
+</body>
+</html>

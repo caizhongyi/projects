@@ -1,0 +1,86 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微会员'),array('title'=>'会员管理'),array('title'=>'会员信息'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-cog"></i> 会员信息
+    </h1>
+</div>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form">
+        <input name="type" type="hidden" value="carttype"/>
+        <input name="id" type="hidden" value="{$member['id']}"/>
+        <table id="form"
+               class="tb reply-news-edit">
+            <tr>
+                <th>会员编号</th>
+                <td>{$member['number']}</td>
+            </tr>
+            <tr>
+                <th>姓名</th>
+                <td>{$fans['realname']}</td>
+            </tr>
+
+            <tr>
+                <th>昵称</th>
+                <td>{$fans['nickname']}</td>
+            </tr>
+            <tr>
+                <th>QQ号码</th>
+                <td>{$fans['qq']}</td>
+            </tr>
+            <tr>
+                <th>手机号码</th>
+                <td>{$fans['mobile']}</td>
+            </tr>
+            <tr>
+                <th>性别</th>
+                <td>{if $fans['sex']==0}未设置{elseif ($fans['sex']==1)}男{else}女{/if}</td>
+            </tr>
+            <tr>
+                <th>年龄</th>
+                <td>{$fans['age']}</td>
+            </tr>
+            <tr>
+                <th>最后签到时间</th>
+                <td>{php echo date('Y-m-d H:i:s',$member['lasttime'])}</td>
+            </tr>
+            <tr>
+                <th>签到次数</th>
+                <td>{$member['count']}</td>
+            </tr>
+            <tr>
+                <th>积分</th>
+                <td>{$member['credit']}</td>
+            </tr>
+            <tr>
+                <th>会员卡</th>
+                <td>
+                    <select name="cardid" id="cardid" >
+                        {loop $cardInfo $row}
+                        <option  value="{$row['id']}">{$row['name']}</option>
+                        {/loop}
+                    </select>
+                </td>
+            </tr>
+            <script type="text/javascript">
+                var sysbg = '{$member['cardid']}';
+                $('#cardid option').each(function(index){
+                    if($(this).val() == sysbg){
+                        $(this).attr('selected','selected');
+                    }
+                });
+            </script>
+
+
+            <tr>
+                <th></th>
+                <td>
+                    <input name="submit" type="submit" value="修改会员卡设置" class="btn btn-primary " />
+                    <input name="submit" type="button" value="返回" class="btn btn-primary " onclick="javascript:history.go(-1);" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+{template 'common/footer'}

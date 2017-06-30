@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Keywords" content="微易中心">
+    <meta name="Description" content="微易中心">
+    <!-- Mobile Devices Support @begin -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Mobile Devices Support @end -->
+    <link rel="shortcut icon" href="http://stc.weimob.com/img/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="./resource/style/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./resource/style/index.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./resource/script/formvalidator/formvalidator.css" media="all">
+
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./resource/script/bootstrap.js"></script>
+
+    <script type="text/javascript" src="./resource/script/formvalidator/formvalidator.js"></script>
+    <script type="text/javascript" src="./resource/script/formvalidator/formvalidatorregex.js"></script>
+    <script type="text/javascript" src="./resource/script/placeholder.js"></script>
+    <title>登录-微易中心</title>
+
+</head>
+
+
+<body>
+<div id="header" class="head head-nobg">
+    <div class="top">
+        <div class="topnav">
+            <a href="{php echo create_url('index');}" target="_blank">微易首页</a>|
+            <a href="{php echo create_url('member/login');}" target="_blank">登录</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <form  class="form-horizontal form-box" action="" method="post">
+        <div class="form-header">
+            <span class="pull-left">轻松绑定公众帐号，只需三步！</span>
+        </div>
+
+        <div class="stepbar stepbar-separate stepbar-three">
+            <div class="stepbar-inner">
+                <div class="stepbar-item first active">
+                    <span class="stepbar-number"><em>1</em></span>
+                    <span class="stepbar-desc">填写您的公众帐号信息</span>
+                    <hr class="stepbar-progrees">
+                </div>
+                <div class="stepbar-item">
+                    <span class="stepbar-number"><em>2</em></span>
+                    <span class="stepbar-desc">请将此URL及Token填到<span class="account_type">微信</span>公众平台</span>
+                    <hr class="stepbar-progrees">
+                </div>
+                <div class="stepbar-item last">
+                    <span class="stepbar-number"><em>3</em></span>
+                    <span class="stepbar-desc">设置用户欢迎信息及默认回复语</span>
+                    <hr class="stepbar-progrees">
+                </div>
+            </div>
+        </div>
+        <div class="form-body">
+            <div class="control-group">
+                <label class="control-label" for="username">选择您公众帐号所在平台:</label>
+                <div class="controls">
+                    {if empty($wechat['type'])}
+                    <label  class="radio"><input type="radio" name="type" value="1" checked/><i class="icon-weixin "></i></label><label  class="radio"><input type="radio" name="type" value="2"/><i class="icon-yixin"></i></label>
+                    {else}
+                    <label  class="radio"><input type="radio" name="type" value="1" {if $wechat['type'] ==1} checked{/if}/><i class="icon-weixin "></i></label><label  class="radio"><input type="radio" name="type" value="2" {if $wechat['type'] ==2} checked{/if}/><i class="icon-yixin"></i></label>
+                    {/if}
+                </div>
+            </div>
+            <script type="text/javascript">
+                $()
+            </script>
+            <div class="control-group">
+                <label class="control-label" for="username">公众帐号名称</label>
+                <div class="controls">
+                    <input name="name" id="username" placeholder="如  微易服务"  type="text" {if $wechat['name']} value="{$wechat['name']}" {/if}>
+                    <span class="maroon">*</span><span class="help-inline"> 输入您的公众帐号的名称，如  微易服务</span>
+                </div>
+            </div>
+            <input type="hidden" name="token" value="{$_W['token']}">
+            <div class="control-group">
+                <div class="controls">
+                   <!-- <button type="submit" id="reg-btn" class="btn-register" style="display:none;"></button>-->
+                    <button type="submit" class="btn btn-submit" name="submit" value="1">下一步</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#username').focus();
+        $('.account_type').html('{$accoutn_type_name}')
+    });
+    $("input[name='type']").change(function(){
+        var type = $(this).val();
+        if(type == 1){
+            $('.account_type').html('微信');
+        }else if(type ==2){
+            $('.account_type').html('易信');
+        }
+    });
+    $(function(){
+        $.formValidator.initConfig({wideword:true,autotip:true,formid:"regform",onerror:function(msg){},onsuccess:function(){
+            //return confirm('请确认您填写的身份认证信息，该信息再通过审核后将无法修改!');
+        }});
+//        $("#username").formValidator({onshow:"长度为6~16位字符，可以为“数字/字母/中划线/下划线”组成！",onfocus:"长度为6~16位字符，可以为“数字/字母/中划线/下划线”组成！",onerror:"输入使用云主机的具体需求必需4-20个字符！"})
+//                .inputValidator({min:10,max:300,onerror:"长度为6~16位字符，可以为“数字/字母/中划线/下划线”组成！"});
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+@import "../mixins/index";
+@import "core";
+
+.accordion {
+	.accordion-hd {
+		padding: 5px 10px;
+	}
+	.accordion-panel {
+		padding: 10px;
+		display: none;
+	}
+	.accordion-clip {
+		overflow: hidden;
+	}
+}
+
+.x-accordion:extend(.accordion) {
+	li {
+		.clearfix();
+		float: left;
+	}
+	.accordion-hd {
+		float: left;
+		padding: 10px 5px;
+	}
+	.accordion-panel {
+		float: left;
+	}
+}
+
+.default-accordion{
+
+}

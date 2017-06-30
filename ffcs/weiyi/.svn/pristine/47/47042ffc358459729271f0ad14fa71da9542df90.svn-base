@@ -1,0 +1,279 @@
+<?php
+/**
+ * Http协议
+ * 
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+defined('IN_IA') or exit('Access Denied');
+
+function ihttp_request($url, $post = '', $extra = array(), $timeout = 60) {
+	$urlset = parse_url($url);
+	if(empty($urlset['path'])) {
+		$urlset['path'] = '/';
+	}
+	if(!empty($urlset['query'])) {
+		$urlset['query'] = "?{$urlset['query']}";
+	}
+	if(empty($urlset['port'])) {
+		$urlset['port'] = '80';
+	}
+
+	if(function_exists('curl_init') && function_exists('curl_exec')) {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $urlset['scheme']. '://' .$urlset['host'].($urlset['port'] == '80' ? '' : ':'.$urlset['port']).$urlset['path'].$urlset['query']);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_HEADER, 1);
+		if($post) {
+			curl_setopt($ch, CURLOPT_POST, 1);
+			if (is_array($post)) {
+				$post = http_build_query($post);
+			}
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+		}
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+		curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+		curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:9.0.1) Gecko/20100101 Firefox/9.0.1');
+		if (!empty($extra) && is_array($extra)) {
+			$headers = array();
+			foreach ($extra as $opt => $value) {
+				if (strexists($opt, 'CURLOPT_')) {
+					curl_setopt($ch, constant($opt), $value);
+				} elseif (is_numeric($opt)) {
+					curl_setopt($ch, $opt, $value);
+				} else {
+					$headers[] = "{$opt}: {$value}";
+				}
+			}
+			if(!empty($headers)) {
+				curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			}
+		}
+		$data = curl_exec($ch);
+		$status = curl_getinfo($ch);
+		$errno = curl_errno($ch);
+		curl_close($ch);
+		if($errno || empty($data)) {
+			return false;
+		} else {
+			return http_response_parse($data);
+		}
+	}
+	$method = empty($post) ? 'GET' : 'POST';
+	$fdata = "{$method} {$urlset['path']}{$urlset['query']} HTTP/1.1\r\n";
+	$fdata .= "Host: {$urlset['host']}\r\n";
+	if(function_exists('gzdecode')) {
+		$fdata .= "Accept-Encoding: gzip, deflate\r\n";
+	}
+	$fdata .= "Connection: close\r\n";
+	if (!empty($extra) && is_array($extra)) {
+		foreach ($extra as $opt => $value) {
+			if (!strexists($opt, 'CURLOPT_')) {
+				$fdata .= "{$opt}: {$value}\r\n";
+			}
+		}
+	}
+	$body = '';
+	if ($post) {
+		if (is_array($post)) {
+			$body = http_build_query($post);
+		} else {
+			$body = urlencode($post);
+		}
+		$fdata .= 'Content-Length: ' . strlen($body) . "\r\n\r\n{$body}";
+	} else {
+		$fdata .= "\r\n";
+	}
+	$fp = fsockopen($urlset['host'], $urlset['port']);
+	stream_set_blocking($fp, true);
+	stream_set_timeout($fp, $timeout);
+	if (!$fp) {
+		return false;
+	} else {
+		fwrite($fp, $fdata);
+		$content = '';
+		while (!feof($fp))
+			$content .= fgets($fp, 512);
+		fclose($fp);
+		return http_response_parse($content);
+	}
+}
+
+function http_response_parse($data) {
+	$rlt = array();
+	$pos = strpos($data, "\r\n\r\n");
+	$split1[0] = substr($data, 0, $pos);
+	$split1[1] = substr($data, $pos + 4, strlen($data));
+	
+	$split2 = explode("\r\n", $split1[0], 2);
+	preg_match('/^(\S+) (\S+) (\S+)$/', $split2[0], $matches);
+	$rlt['code'] = $matches[2];
+	$rlt['status'] = $matches[3];
+	$rlt['responseline'] = $split2[0];
+	$header = explode("\r\n", $split2[1]);
+	$isgzip = false;
+	foreach ($header as $v) {
+		$row = explode(':', $v);
+		$key = trim($row[0]);
+		$value = trim($row[1]);
+		if (is_array($rlt['headers'][$key])) {
+			$rlt['headers'][$key][] = $value;
+		} elseif (!empty($rlt['headers'][$key])) {
+			$temp = $rlt['headers'][$key];
+			unset($rlt['headers'][$key]);
+			$rlt['headers'][$key][] = $temp;
+			$rlt['headers'][$key][] = $value;
+		} else {
+			$rlt['headers'][$key] = $value;
+		}
+		if(!$isgzip && strtolower($key) == 'content-encoding' && strtolower($value) == 'gzip') {
+			$isgzip = true;
+		}
+	}
+	if($isgzip && function_exists('gzdecode')) {
+		$rlt['content'] = gzdecode($split1[1]);
+	} else {
+		$rlt['content'] = $split1[1];
+	}
+	$rlt['meta'] = $data;
+	if($rlt['code'] == '100') {
+		return http_response_parse($rlt['content']);
+	}
+	return $rlt;
+}
+
+function ihttp_get($url) {
+	return ihttp_request($url);
+}
+
+function ihttp_post($url, $data) {
+	$headers = array('Content-Type' => 'application/x-www-form-urlencoded');
+	return ihttp_request($url, $data, $headers);
+}
+
+function ihttp_email($to, $subject, $body) {
+	set_time_limit(0);
+	$mail = $GLOBALS['_W']['setting']['mail'];
+	$mail['charset'] = 'utf-8';
+	if ($mail['smtp']['type'] == '1') {
+		$mail['smtp']['server'] = 'ssl://smtp.qq.com';
+		$mail['smtp']['port'] = 465;
+		$mail['smtp']['authmode'] = 1;
+	} elseif ($mail['smtp']['type'] == '3') {
+		$mail['smtp']['server'] = 'smtp.163.com';
+		$mail['smtp']['port'] = 25;
+	} else {
+		if (!empty($mail['smtp']['authmode'])) {
+			$mail['smtp']['server'] = 'ssl://' . $mail['smtp']['server'];
+		}
+	}
+	if (!empty($mail['smtp']['authmode'])) {
+		if (!extension_loaded('openssl')) {
+			return error(1, '请开启 php_openssl 扩展！');
+		}
+	}
+	$mail['smtp']['auth'] = 1;
+
+	$from = $mail['username'];
+	$from = '=?' . strtolower($mail['charset']) . '?B?' . base64_encode($mail['sender']) . '?= <' . $from . '>';
+	
+	$subject = stripslashes($subject);
+	$subject = str_replace(array("\r", "\n"), '', $subject);
+	$subject = '=?' . strtolower($mail['charset']) . '?B?' . base64_encode($subject) . '?=';
+	if (!empty($mail['signature'])) {
+		$body .= $mail['signature'];
+	}
+	$body = stripslashes($body);
+	$body = chunk_split(base64_encode(str_replace("\r\n.", " \r\n..", str_replace("\n", "\r\n", str_replace("\r", "\n", str_replace("\r\n", "\n", str_replace("\n\r", "\r", $body)))))));
+	$delimiter = "\r\n";
+	$headers = '';
+	$headers .= "From: {$from}{$delimiter}";
+	$headers .= "X-Priority: 3{$delimiter}";
+	$headers .= "X-Mailer: I-Group{$delimiter}";
+	$headers .= "MIME-Version: 1.0{$delimiter}";
+	$headers .= "Content-type: text/html; charset={$mail['charset']}{$delimiter}";
+	$headers .= "Content-Transfer-Encoding: base64{$delimiter}";
+
+	$host = "{$mail['smtp']['server']}:{$mail['smtp']['port']}";
+	if (!$fp = fsockopen($mail['smtp']['server'], $mail['smtp']['port']))
+		return error(1, 'can not connect to the SMTP server');
+	stream_set_blocking($fp, true);
+	$result = fgets($fp, 512);
+	if (substr($result, 0, 3) != '220') {
+		fclose($fp);
+		return error(1, $result);
+	}
+	fputs($fp, ($mail['smtp']['auth'] ? 'EHLO' : 'HELO') . " I-Group\r\n");
+	$result = fgets($fp, 512);
+	$code = substr($result, 0, 3);
+	if ($code != 220 && $code != 250) {
+		fclose($fp);
+		return error(1, "HELO/EHLO - {$result}");
+	}
+	while (true) {
+		if (substr($result, 3, 1) != '-' || empty($result))
+			break;
+		$result = fgets($fp, 512);
+	}
+	if ($mail['smtp']['auth']) {
+		fputs($fp, "AUTH LOGIN\r\n");
+		$result = fgets($fp, 512);
+		if (substr($result, 0, 3) != 334) {
+			fclose($fp);
+			return error(1, "AUTH LOGIN - {$result}");
+		}
+		fputs($fp, base64_encode($mail['username']) . "\r\n");
+		$result = fgets($fp, 512);
+		if (substr($result, 0, 3) != 334) {
+			fclose($fp);
+			return error(1, "USERNAME - {$result}", false);
+		}
+		fputs($fp, base64_encode($mail['password']) . "\r\n");
+		$result = fgets($fp, 512);
+		if (substr($result, 0, 3) != 235) {
+			fclose($fp);
+			return error(1, "PASSWORD - {$result}");
+		}
+	}
+	fputs($fp, "MAIL FROM: <" . preg_replace('/.*\<(.+?)\>.*/', '$1', $from) . ">\r\n");
+	$result = fgets($fp, 512);
+	if (substr($result, 0, 3) != 250) {
+		fclose($fp);
+		return error(1, "MAIL FROM - {$result}");
+	}
+	$tos = explode(',', $to);
+	foreach ($tos as $user) {
+		$user = trim($user);
+		if ($user) {
+			fputs($fp, "RCPT TO: <" . preg_replace('/.*\<(.+?)\>.*/', "$1", $user) . ">\r\n");
+			$result = fgets($fp, 512);
+			if (substr($result, 0, 3) != 250) {
+				fclose($fp);
+				return error(1, "RCPT TO - {$result}");
+			}
+		}
+	}
+	fputs($fp, "DATA\r\n");
+	$result = fgets($fp, 512);
+	if (substr($result, 0, 3) != 354) {
+		fclose($fp);
+		return error(1, "DATA - {$result}");
+	}
+	list($msec, $sec) = explode(' ', microtime());
+	$headers .= 'Message-ID: <' . date('YmdHis', $sec) . '.' . ($msec * 1000000) . '.' . substr($from, strpos($from, '@')) . '>' . $delimiter;
+	fputs($fp, 'Date: ' . date('r') . "\r\n");
+	fputs($fp, "To: {$to}\r\n");
+	fputs($fp, "Subject: {$subject}\r\n");
+	fputs($fp, "{$headers}\r\n");
+	fputs($fp, "\r\n\r\n");
+	fputs($fp, "{$body}\r\n.\r\n");
+	$result = fgets($fp, 512);
+	if (substr($result, 0, 3) != 250) {
+		fclose($fp);
+		return error(1, "END - {$result}");
+	}
+	fputs($fp, "QUIT\r\n");
+	fclose($fp);
+	return true;
+}

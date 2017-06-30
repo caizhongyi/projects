@@ -1,0 +1,24 @@
+<script>
+$(function(){
+	var $backToTopTxt = "返回顶部";
+	var $backToTopEle = $('<div class="backToTop">'+'<a href="#"></a>'+'</div>').appendTo($("body"))
+		.attr("title", $backToTopTxt).click(function() {
+			$("html, body").animate({ scrollTop: 0 }, 120);
+		});
+	var $backToTopFun = function() {
+		var st = $(document).scrollTop(), winh = $(window).height();
+		if(st > 0){
+			$backToTopEle.show();			
+		}else{
+			$backToTopEle.hide();			
+		}
+		//IE6下的定位
+		if (!window.XMLHttpRequest) {
+			$backToTopEle.css("top", st + winh - 166);
+			$fav.css("top", st + winh -100);
+		}
+	};
+	$(window).bind("scroll", $backToTopFun);
+	$backToTopFun();
+});
+</script>

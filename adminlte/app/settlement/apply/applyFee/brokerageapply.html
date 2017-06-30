@@ -1,0 +1,73 @@
+<form name="form" ng-submit="submit(form.$valid)"  role="form" novalidate>
+<table class="table modv2-table table-hover">
+    <tr>
+        <th><span class="text-danger">*</span> 申请信息服务费：</th>
+        <td colspan="3">
+            <span class="input-group modv2-inputg">
+                <input type="text" placeholder="申请信息服务费" id="car_fee" name="car_fee" class="form-control "  ng-model="submitter.fee" required max-number="item.max_detail.brokerage">
+                <div class="input-group-addon">元</div>
+            </span>
+            <span class="help-inline">最多申请：<span class="text-danger">{{ item.max_detail.brokerage }}</span>元（已申请支付：{{ item.applied.brokerage }} 元）</span>
+            <div class="has-feedback text-danger" ng-messages="form.car_fee.$error" ng-show="interacted(form.car_fee)">
+                <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入申请支付车款！</div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4"><h4 class="box-title text-danger">此处收款人为门店所属公司账户，申请到门店账号请申请服务费。</h4></th>
+    </tr>
+    <tr>
+        <th width="12%">
+            收款门店：
+        </th>
+        <td colspan="3">
+            <div class="form-group" select-store="">
+                <div class="form-group modv2-formg">
+                    <select id="province" class="form-control province" name="province" ng-model="submitter.province"  ng-options="item.id as item.name  for item in province "  >
+                        <option value="">省份</option>
+                    </select>
+                </div>
+                <div class="form-group modv2-formg">
+                    <select id="city" class="form-control city" name="city" ng-model="submitter.city"  ng-options="item.id as  item.name for item in city "  >
+                        <option value="">市/区</option>
+                    </select>
+                </div>
+                <div class="form-group modv2-formg">
+                    <select id="shop" class="form-control shop" name="shop" ng-model="submitter.to_dept_id"  ng-options="item.id as  item.name for item in shop" >
+                        <option value="">门店</option>
+                    </select>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th width="12%">
+            收款人姓名：
+        </th>
+        <td>
+            {{ item.c_payee_realname }}
+        </td>
+        <th width="12%">
+            收款账户：
+        </th>
+        <td>
+          {{ item.c_payee_card_number }}
+        </td>
+    </tr>
+    <tr>
+        <th width="12%">
+            收款银行：
+        </th>
+        <td>
+            {{ item.c_payee_bank }}
+        </td>
+        <th width="12%">
+            开户支行：
+        </th>
+        <td>
+            {{ item.c_payee_bank_branch }}
+        </td>
+    </tr>
+</table>
+        <button class="btn btn-primary modv2-btn" ng-disabled="submitted">提交申请</button>
+</form>

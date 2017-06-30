@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>分享易信有礼，赢取话费抽大奖！</title>
+    <meta name="keywords" content="keywords"/>
+    <meta name="description" content="description"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
+    <link rel="shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="favicon.ico"/>
+
+    <!-- web style  -->
+    <link rel="stylesheet" type="text/css" media="all" href="./source/modules/userapi/template/css/share.css"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- header -->
+<header class="header">
+    <img src="./source/modules/userapi/template/img/banner.png" alt="" class="banner"/>
+</header>
+<!-- /header -->
+
+<!-- container -->
+<section class="container">
+    <form class="form">
+        <div class="form-group"><i class="icon-personal"></i>添加号码</div>
+        <div  class="form-group"><input type="text" name="mobile[]"/><button class="btn-add" style="margin-left:10px;" type="button"><i class="icon-char">+</i><i class="icon-personal"></i></button></div>
+        <script type="text/javascript">
+         $(function(){
+             var arr = [];
+             $('.btn-add').click(function(){
+                 var $form = $(this).closest('form');
+                 if($form.children().length <=  6)
+                    $(this).closest('form').append(' <div  class="form-group"><input type="text" name="mobile[]"/></div>')
+             })
+         })
+        </script>
+    </form>
+
+    <div class="alert">
+        用易信，短信免费发，更有电话留言、国际漫游等免费功能等你体验！新注册天翼用户送300M流量，次月再送60M流量。全网用户关注“移动互联网应用”易信公众号赢取高端智能机等好礼！
+    </div>
+    <div class="center">
+        <button class="btn-post" >免 费 发 送</button>
+    </div>
+    <div class="message-tip text-success" id= "sharemsg">
+    </div>
+    <script type="text/javascript">
+        $(document).on('click','.btn-post', function(){
+            $(this).attr('disabled','disabled');
+            var that = this;
+            var share_mobile =[];
+            var has_mobile = false;
+            var check_mobile = true;;
+            $("input[name='mobile[]']").each(function(index){
+                reg = /^0{0,1}(13[0-9]|145|15[0-9]|153|156|18[0-9])[0-9]{8}$/i;
+                var mobile = $(this).val();
+                share_mobile.push(mobile);
+                if (!reg.test(mobile) && mobile.length!=0) {
+                    $('#sharemsg').removeClass('text-success text-error').show().html('第'+(index+1)+'手机号码格式有误！').addClass('text-error').fadeOut(10000);
+                    $(this).focus();
+                    $(that).removeAttr('disabled');
+                    check_mobile =false;
+                    return false;
+                }
+                if(mobile.length!=0 && check_mobile){
+                    has_mobile = true;
+                    $.ajax('{$check_url}' , {
+                        data : {share_mobile:mobile},
+                        type : 'post',
+                        async : false,
+                        dataType:'json',
+                        success:  function (data) {
+                            if (data.errno != '200') {
+                                $('#sharemsg').removeClass('text-success text-error').show().html('第'+(index+1)+'个'+data.error).addClass('text-error').fadeOut(10000);
+                                $(that).removeAttr('disabled');
+                                check_mobile =false;
+                                return false;
+                            }
+                        }
+                    });
+                }
+                if(!check_mobile){
+                    $(this).focus();
+                    $(that).removeAttr('disabled');
+                    return false;
+                }
+            })
+            if(!check_mobile){
+                return false;
+                $(that).removeAttr('disabled');
+            }
+            if(!has_mobile){
+                $('#sharemsg').removeClass('text-success text-error').show().html('分享号码不为空！').addClass('text-error').fadeOut(10000);
+                $(that).removeAttr('disabled');
+                return false;
+            }
+            $.post('{$show_url}',{share_mobile:share_mobile},
+                    function (data) {
+                        if (data.errno == 200) {
+                            $('#sharemsg').removeClass('text-success text-error').show().html('分享成功').addClass('text-success').fadeOut(10000);
+                        } else {
+                            $('#sharemsg').removeClass('text-success text-error').show().html(data.error).addClass('text-error').fadeOut(10000);
+                        }
+                        $(that).removeAttr('disabled');
+                    },'json');
+        });
+    </script>
+    <div class="summary clearfix">
+        <div class="pull-left">
+            <label><i class="icon-time"></i><span>活动时间</span></label>
+            <label><i class="icon-object"></i><span>参与对象</span></label>
+            <label><i class="icon-file"></i><span>活动规则</span></label>
+        </div>
+        <div class="main">
+            2014年1月——6月 <br>
+            天翼智能机用户
+        </div>
+    </div>
+    <p>
+        1.天翼用户通过易信分享功能对好友进行分享。如若分享成功，赠送2元话费，分享无上限。（成功分享指的是所分享的用户从未注册过易信，通过分享链接成功安装并注册易信。） <br>
+    </p>
+    <p>
+        2.移动、联通用户分享成功，即可获得 2元
+    </p>
+    <p>
+        3.分享者对同一用户重复分享，不重复计算。（被分享者如收到多条分享短信，以点击的那条为有效分享）
+    </p>
+    <p>
+        4.天翼用户直接充值至分享者账户，异网用户在7个工作日内以短信方式发送卡账号、密码至分享者手机。
+    </p>
+    <p>
+        5.用户通过分享有礼页面发送的短信完全免费。
+    </p>
+</section>
+
+<!-- footer -->
+<div class="clearfix" style="overflow: hidden;"><div class="text-success pull-left" style="padding-top: 45px;">&nbsp;免费好玩又有赢，易信开启免费社交时代！</div><img class="pull-right" src="./source/modules/userapi/template/img/adv.png" alt=""/></div>
+<footer class="footer"></footer>
+<!-- /footer -->
+
+
+</body>
+</html>

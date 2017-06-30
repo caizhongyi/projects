@@ -1,0 +1,92 @@
+@charset "gb2312";
+/* CSS Document */
+/* Style Sheet
+/* Use for:
+/* Created :2013-03-13
+/* Update:
+/* Author:lincaiming
+ */
+ 
+/* css reset */
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, big, em, font, img, strong, tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0;}
+table { border-collapse:collapse; border-spacing:0;}
+fieldset, img { border:0;}
+button,input,select,textarea{ font-size:12px;}
+ol,ul,li{ list-style:none}
+h1, h2, h3, h4, h5, h6 { font-size:100%;}
+
+.clear{clear:both; font-size:0; line-height:0; overflow:hidden; height:0;}
+body{ color:#000000; background:url(../images/bg.gif) repeat-y #000; font-size:12px;}
+a{ text-decoration:none; color:#b43807;}
+a:hover{ color:#572804;}
+
+.menu{ width:230px; position:absolute; left:0; top:0; overflow:hidden;}
+.logo{ background:url(../images/logo.jpg) no-repeat; width:230px; height:107px;}
+.logo a{ width:100%; height:100%; display:block; text-indent:-200px; overflow:hidden;}
+.menu .menuall li{ width:230px; height:84px; margin-bottom:1px;}
+.menu .menuall li a{ width:100%; height:100%; text-indent:-200px; overflow:hidden; display:block;} 
+.menu .menuall li.menu1 a{ background:url(../images/menu.jpg) no-repeat; width:230px; height:84px;}
+.menu .menuall li.menu1 a:hover{ background-position:-230px 0;}
+.menu .menuall li.menu1 a.on{background-position:-230px 0;}
+.menu .menuall li.menu2 a{ background:url(../images/menu.jpg) no-repeat 0 -85px;}
+.menu .menuall li.menu2 a:hover{ background-position:-230px -85px;}
+.menu .menuall li.menu2 a.on{background-position:-230px -85px;}
+.menu .menuall li.menu3 a{ background:url(../images/menu.jpg) no-repeat 0 -170px;}
+.menu .menuall li.menu3 a:hover{ background-position:-230px -170px;}
+.menu .menuall li.menu3 a.on{background-position:-230px -170px;}
+.menu .menuall li.menu4 a{ background:url(../images/menu.jpg) no-repeat 0 -255px;}
+.menu .menuall li.menu4 a:hover{ background-position:-230px -255px;}
+.menu .menuall li.menu4 a.on{background-position:-230px -255px;}
+.menu .menuall li.menu5 a{ background:url(../images/menu.jpg) no-repeat 0 -340px;}
+.menu .menuall li.menu5 a:hover{ background-position:-230px -340px;}
+.menu .menuall li.menu5 a.on{background-position:-230px -340px;}
+.menu .menuall li.menu6 a{ background:url(../images/menu.jpg) no-repeat 0 -425px;}
+.menu .menuall li.menu6 a:hover{ background-position:-230px -425px;}
+.menu .menuall li.menu6 a.on{background-position:-230px -425px;}
+
+.othermenu{ width:230px; height:350px; padding:15px 0 0 20px; background:url(../images/othermenu.gif) no-repeat;}
+.othermenu li{ float:left; display:inline; width:87px; height:76px; margin:0 11px 7px 0;}
+.othermenu li a{ display:block; width:100%; height:100%; text-indent:-200px; overflow:hidden;}
+.othermenu li.m1 a{ background:url(../images/othermenu1.gif) no-repeat; width:87px;  }
+.othermenu li.m1 a:hover{ background-position:0 -76px;}
+.othermenu li.m2 a{ background:url(../images/othermenu1.gif) no-repeat -98px 0; }
+.othermenu li.m2 a:hover{ background-position:-98px -76px;}
+.othermenu li.m3 a{ background:url(../images/otherm2.gif) no-repeat -0px 0;}
+.othermenu li.m3 a:hover{ background-position:-185px -0px;}
+.othermenu li.m4 a{ background:url(../images/otherm2.gif) no-repeat -98px 0; }
+.othermenu li.m4 a:hover{ background-position:-283px -0px;}
+.othermenu li.m5 a{ background:url(../images/otherm2.gif) no-repeat 0px -83px; }
+.othermenu li.m5 a:hover{ background-position:-185px -83px;}
+.othermenu li.m6 a{ background:url(../images/otherm2.gif) no-repeat -98px -83px; }
+.othermenu li.m6 a:hover{ background-position:-283px -83px;}
+.content{ position:absolute; top:28px; left:230px;}
+.t1{ background:url(../images/t1.jpg) no-repeat; width:655px; height:93px; text-indent:-200px; overflow:hidden;}
+.subtitle{ font-size:18px; width:655px; height:48px; line-height:48px; font-weight:bold;font-family: "Microsoft YaHei","яе╨з"; text-align:center; color:#5d0503;}
+.whatis{ width:627px; height:222px; margin:10px 0 0 29px; overflow:hidden;}
+.whatis dt{ float:left; display:inline; width:343px; line-height:22px; padding-right:30px; }
+.whatis dt p{ text-indent:2em;}
+.whatis dd{ float:left; display:inline; width:230px;}
+.whatis dd a{ display:block; width:225px; height:49px; margin-bottom:5px; text-indent:-200px; overflow:hidden; margin-bottom:5px;}
+a.btn1{ background:url(../images/btn2.gif) no-repeat;}
+a.btn1:hover{ background-position:-225px 0;}
+a.btn2{ background:url(../images/btn2.gif) no-repeat 0 -52px;}
+a.btn2:hover{ background-position:-225px -52px;}
+a.btn3{ background:url(../images/btn2.gif) no-repeat 0 -106px;}
+a.btn3:hover{ background-position:-225px -106px;}
+
+.gex{ width:248px; float:left; display:inline; margin:0 0 0 7px;}
+   .gex .t{ background:url(../images/gext.gif) no-repeat; width:244px; height:44px; text-indent:-200px; overflow:hidden;}
+   .gex dl{ padding:15px 0 0 12px;}
+   .gex dl dt{ line-height:30px; height:30px; overflow:hidden; color:#572804; font-weight:bold;} 
+   .gex dl dt span{ background:url(../images/icon.gif) no-repeat; width:25px; height:30px; text-align:center; font-weight:bold; display:inline-block; line-height:26px; margin-right:5px;}
+   .gex dl dd{ line-height:21px; height:42px; overflow:hidden; position:relative;}
+   .seemore{ background:url(../images/icon.gif) no-repeat -24px -77px; width:76px; height:22px; display:inline-block; left:143px; top:19px; position:absolute; text-align:center;}
+   .vedio{ background:url(../images/vedio.gif) no-repeat; width:478px; height:307px; float:left; display:inline; margin:10px 0 0 0;}
+   .vedio .con{ width:460px; height:285px; padding:10px 0 0 10px;}
+.newspage{ background:#ffd33c; height:985px; width:300px; position:absolute; right:-280px; top:0; overflow:visible;}
+.icon_new{ background:url(../images/dian.png) no-repeat; width:132px; height:266px; display:block; margin:300px 0 0 -132px; z-index:2px; position:absolute;}
+
+
+.fullbg{ background:url(../images/wrap_bg.jpg) no-repeat 230px 0; overflow-x:hidden; width:100%; height:985px;}
+.footer{ background:#000; color:#8C8C8C; text-align:center; padding:30px 0; line-height:18px;}
+.footer a{ color:#8C8C8C;}

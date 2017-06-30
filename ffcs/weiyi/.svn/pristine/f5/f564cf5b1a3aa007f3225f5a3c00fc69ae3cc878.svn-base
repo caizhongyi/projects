@@ -1,0 +1,29 @@
+{templateWithTemplet 'mobile/header','default'}
+<link type="text/css" rel="stylesheet" href="./themes/mobile/css/common.css">
+<link type="text/css" rel="stylesheet" href="./themes/mobile/css/font-awesome.css">
+<link type="text/css" rel="stylesheet" href="./themes/mobile/css/reset.css">
+<link type="text/css" rel="stylesheet" href="./themes/mobile/default/css/list.css">
+<section>
+    <div>
+        <ul class="list_ul">
+            {loop $newsInfo $row}
+            <li>
+                <a class="tbox" style="text-decoration: none" href="{php echo create_url('mobile/channel', array('name' => 'detail', 'id' => $row['id'], 'templetid'=>$_GPC['templetid'],'weid' => $_W['weid']))}">
+                    <dd>
+                        <div>
+                            <img src="{$_W['attachurl']}{$row['thumb']}">
+                        </div>
+                    </dd>
+                    <dt>
+                        <hgroup>
+                            <h1>{$row['title']}</h1>
+                            <h2>{php echo date('Y-m-d H:i:s', $row['createtime'])}</h2>
+                        </hgroup>
+                    </dt>
+                </a>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+</section>
+{templateWithTemplet 'mobile/footer','default'}

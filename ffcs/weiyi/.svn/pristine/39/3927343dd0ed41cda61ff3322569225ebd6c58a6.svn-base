@@ -1,0 +1,75 @@
+<?php
+/**
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+defined('IN_IA') or exit('Access Denied');
+checkaccount();
+$do = !empty($_GPC['do']) ? $_GPC['do'] : 'display';
+require_once IA_ROOT . '/source/model/payment.mod.php';
+
+if ($do == 'display') {
+    $list = get_list($_W['weid']);
+} elseif ($do == 'install') {
+    if (checksubmit('submit')) {
+        if (empty($_GPC['name'])) {
+            message('请输入支付方式名称！');
+        }
+        $info = $infos = array();
+        $infos = get_payment($_GPC['pay_code']);
+        $config = $infos['config'];
+        foreach ($_GPC['config_name'] as $key => $value) {
+            $config[$value]['value'] = trim($_GPC['config_value'][$key]);
+        }
+        $info['config'] = json_encode($config);
+        $info['name'] = $_GPC['name'];
+        $info['pay_name'] = $_GPC['pay_name'];
+        $info['pay_desc'] = $_GPC['description'];
+        $info['id'] = $_GPC['id'];
+        $info['pay_code'] = $_GPC['pay_code'];
+        $info['order'] = intval($_GPC['order']);
+        $info['status'] = '1';
+        $info['version'] = $infos['version'];
+        $info['userid'] = $_W['weid'];
+        pdo_insert('pay_payment', $info);
+        if(pdo_insertid()){
+            message('支付模块安装成功！', create_url('pay/payment/display'), 'success');
+        }
+    }else{
+        $infos = get_payment($_GPC['code']);
+        extract($infos);
+    }
+} elseif ($do == 'uninstall') {
+    $id = intval($_GPC['id']);
+    pdo_delete('pay_payment',array('id'=>$id));
+    message('支付模块卸载成功！', create_url('pay/payment/display'), 'success');
+} elseif ($do == 'post') {
+    if (checksubmit('submit')) {
+        if (empty($_GPC['name'])) {
+            message('请输入支付方式名称！');
+        }
+        $info = $infos = array();
+        $infos = get_payment($_GPC['pay_code']);
+        $config = $infos['config'];
+        foreach ($_GPC['config_name'] as $key => $value) {
+            $config[$value]['value'] = trim($_GPC['config_value'][$key]);
+        }
+        $info['config'] = json_encode($config);
+        $info['name'] = $_GPC['name'];
+        $info['pay_name'] = $_GPC['pay_name'];
+        $info['pay_desc'] = $_GPC['description'];
+        $info['id'] = $_GPC['id'];
+        $info['pay_code'] = $_GPC['pay_code'];
+        $info['order'] = intval($_GPC['order']);
+        $info['status'] = '1';
+        $info['version'] = $infos['version'];
+        $info['userid'] = $_W['weid'];
+        pdo_update('pay_payment', $info, array('id' => $info['id']));
+        message('支付模块更新成功！', create_url('pay/payment/display'), 'success');
+    }else{
+        $id = intval($_GPC['id']);
+        $infos = pdo_fetch("select * from ".tablename('pay_payment')." where id='".$id."'");
+        extract($infos);
+        $config = json_decode($config,1);
+    }
+}
+template('pay/payment');

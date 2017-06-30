@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>能力体验</title>
+    <link rel="stylesheet"  href="./resource/style/jquery.mobile-1.3.1.css">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <script src="./resource/script/jquery-1.7.2.min.js"></script>
+    <script src="./resource/script/jquery.mobile-1.3.1.min.js"></script>
+    <script src="./resource/script/jquery.FlexSlider/jquery.flexslider-min.js"></script>
+    <script type="text/javascript">
+    function update_tip(){
+    	var $pop = $('.ui-page:visible').find('.popupInfo');
+		$.ajax({
+			url:"index.php?act=module&name=userapi&do=get_record",
+	        type:'post',
+            data:"date="+new Date().getTime(),
+            dataType:'text',
+	        success:function(rs){
+	        	rs?eval("var rs="+rs+";"):'';
+	        	if(rs.status >= 0){
+	        		$pop.html(rs.msg);
+	        		$pop.popup("open");
+	   			}
+	        	return true;
+			}
+		});
+	}
+	$(function(){
+		window.setInterval(update_tip,2000);
+	});
+    </script>
+    <style>
+		.called-div .ui-btn-inner{padding:5px 10px; font-size:16px;	font-weight:normal;}
+    </style>
+</head>
+
+<body>
+<div data-role="popup" id="popupInfo" class="ui-content popupInfo" data-theme="e" style="max-width:350px;"></div>
+<!-- <div data-role="page" id="home"> -->
+    <header data-role="header">
+        <h1>多方通话</h1>
+    </header>
+    <div data-role="content">
+        请输入您的手机号码作为主叫号码：
+        <input name="user" class="user" value="{$calling}" placeholder="电话号码" data-theme="c" type="text"  />
+        <div class="phonetip" style="font-size:12px;color:green;"></div><br/>
+       <div class="called-div"> 输入被叫号码： <a class="add" href="javascript:;"  data-role="button"  data-inline="true" >添加</a> 
+        	<a class="delete" data-rel="popup" data-position-to="window" data-role="button" data-inline="true"  data-theme="b" data-transition="pop" >减少</a>
+        </div>
+        <div class="cls-div">
+        	<input name="called[]" class="calleds" value="" placeholder="电话号码" data-theme="c" type="text" />
+        </div>
+        <div class="phonetip1" style="font-size:12px;color:green;"></div>
+      <div data-role="controlgroup" data-type="horizontal" >
+            <a class="mutil" href="javascript:;"  data-role="button"  data-inline="true" >多方通话</a>
+            <script type="text/javascript">
+            	var totalcount = 1;
+	            $(document).off('click.add').on('click.add','.add' , function(){
+	            	if(totalcount > 10){
+	            		var  $page =$(this).closest('.ui-page');
+	            		var $pop = $page.find('.popupInfo');
+	            		$pop.html('最多只能添加10个号码');
+	            		$pop.popup("open");
+	            		return false;
+	            	}
+	            	var $page = $(this).closest('.ui-page');
+	            	var html = '<input name="called[]" class="calleds" value="" placeholder="电话号码" data-theme="c" type="text" />';
+	            	var clsdiv = $page.find('.cls-div');
+	            	$(html).appendTo(clsdiv).textinput();
+	            	totalcount++;
+	            	
+	        	}).off('click.delete').on('click.delete','.delete' , function(){
+	        		if(totalcount ==1){
+	            		var  $page =$(this).closest('.ui-page');
+	            		var $pop = $page.find('.popupInfo');
+	            		$pop.html('至少要保留一个被叫号码');
+	            		$pop.popup("open");
+	            		return false;
+	            	}
+	            	var $page = $(this).closest('.ui-page');
+	            	var clsdiv = $page.find('.cls-div');
+	            	clsdiv.children().last().remove();
+	            	totalcount -- ;
+	        	});
+            	
+            	$(document).off('keyup.userphone').on('keyup.userphone','.user' , function(){
+            		var val = $(this).val();
+            		var bool = new RegExp('^[0-9]{11}$').test(val);
+            		var $phonetip = $(this).closest('.ui-page').find('.phonetip');
+            		if(bool) {
+            			$phonetip.html('电话号码输入正确 <input type="button" class="btn phone-confirm" value="确认"/>');
+            		}else $phonetip.html('请输入正确的电话号码');
+            	});
+            	$(document).off('click.phoneconfirm').on('click.phoneconfirm','.phone-confirm' , function(){
+            		var $user = $(this).closest('.ui-page').find('.user');
+            		var $phonetip = $(this).closest('.ui-page').find('.phonetip');
+            		var $pop = $(this).closest('.ui-page').find('.popupInfo');
+            		var $calling = $user.val();
+            		
+            		$.ajax({
+                        url:"index.php?act=module&name=userapi&do=set_calling",
+                        type:'post',
+                        data:"calling="+$calling+"&date="+new Date().getTime(),
+                        dataType:'text',
+            	   		success:function(rs){
+            	   			rs?eval("var rs="+rs+";"):'';
+            	   			if(rs.status > 0){
+            	   				//$user.attr('readonly', 'readonly');
+            	   				$phonetip.html('');
+            	   			}
+            	   			$pop.html(rs.msg);
+            	   			$pop.popup("open");
+        	   				return true;
+            	   		}
+                    });
+            	});
+            	$(document).off('click.mutil').on('click.mutil','.mutil' , function(){
+            		var  $page =$(this).closest('.ui-page');
+            		var $pop = $page.find('.popupInfo');
+            		var $phonetip = $page.find('.phonetip1');
+            		$pop.html('');
+            		var calleds = '';
+            		var reg = new RegExp('^[0-9]{11}$');
+            		var errormsg = '';
+					$('input[name="called[]"]', $page).each(function(){
+						var val = $.trim($(this).val());
+						if(!reg.test(val)) {
+							errormsg += val +',';
+						}
+						calleds += val + ',';
+            		});
+					
+					 if(errormsg != ''){
+						$phonetip.html('电话号码['+errormsg.substring(0,errormsg.length-1)+']格式错误'); return false;
+					}
+            		
+            		if(calleds == ''){
+            			$phonetip.html('被叫号码不能为空'); return false;
+            		}
+            		calleds = calleds.substring(0,calleds.length-1);
+            		var arr = calleds.split(',');
+            		var len = arr.length;
+            		if(len > 10){ $phonetip.html('最多只能填写10个号码'); return false;}
+            		
+                    $.ajax({
+                        url:"index.php?act=module&name=userapi&do=talks",
+                        type:'post',
+                        data:"calleds="+calleds+"&date="+new Date().getTime(),
+                        dataType:'text',
+            	   		success:function(rs){
+            	   			rs?eval("var rs="+rs+";"):'';
+            	   			if(rs.status >= -1){
+            	   				$pop.html(rs.msg);
+            	   				$pop.popup("open");
+            	   			}
+        	   				return true;
+            	   		}
+                    });
+                });
+            </script>
+        </div>
+       
+    </div>
+
+    <footer data-role="footer">
+        <h2>智能管道开放合作论坛</h2>
+    </footer>
+
+</body>
+</html>

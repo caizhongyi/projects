@@ -1,0 +1,140 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active">  短信用量 </li>
+    </ol>
+    
+    
+    <!-- 用于操作短信通道状态修改 -->
+    <input type="text"  id="ch_channel"  ng-model="ch_channel"   value="" style="display:none;">
+	<input type="text"  id="ch_status"  ng-model="ch_status"   value="" style="display:none;">
+                
+</section>
+<!-- Main content -->
+<section class="content slide" >
+    <div class="box">
+       
+        <div class="box-body  no-padding">
+            <table class="table table-hover text-center">
+                <tbody>
+                <tr>
+                    <th width="5%">ID</th>
+                    <th width="8%">sp通道</th>
+                    <th width="10%">剩余条数</th>
+                    <th width="10%">昨日用量/异常</th>
+                    <th width="10%">前日用量/异常</th>
+                    <th width="10%">本月用量/异常</th>
+                    <th width="10%">操作</th>
+                </tr>
+                <tr class="list-animation">
+                    <td>1</td>
+                    <td>国度</td>
+                    <!-- 
+                    <td>{{list.guoduNum}}</td>
+                    <td>{{list.yesNum}}/{{list.yesFaultNum}}</td>
+                    <td>{{list.beforeNum}}/{{list.beforeFaultNum}}</td>
+                    <td>{{list.monthNum}}/{{list.monthFaultNum}}</td> -->
+                    
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    
+                  
+                  
+                  
+                  <a href="javascript:;" ng-show="GuoduSmsList == 2" ng-click="confirm(1, 'GuoduSms')" >
+                    	已停用(点此启用)
+                    	</a>
+                    	<a href="javascript:;"   ng-show="GuoduSmsList == 1" ng-click="confirm(2, 'GuoduSms')" >
+                    	已启用(点此停用)
+                    	</a>
+                    	
+                  <!--
+                    <a href="javascript:;"  ng-show="!GuoduSmsSt" ng-click="confirm(2, 'GuoduSms')" >
+                    	启用
+                    	</a>
+                    	<a href="javascript:;"   ng-show="GuoduSmsSt" ng-click="confirm(1, 'GuoduSms')" >
+                    	停用
+                    	</a>
+                    	-->
+                    	</td>
+                   
+                </tr>
+                <tr class="list-animation">
+                    <td>2</td>
+                    <td>未来无线</td>
+                    <!-- 
+                    <td>{{list.futureNum}}</td>
+                    <td>{{list.yesNum_future}}/{{list.yesFaultNum_future}}</td>
+                    <td>{{list.befNum_future}}/{{list.befFaultNum_future}}</td>
+                    <td>{{list.monthNum_future}}/{{list.monthFaultNum_future}}</td>
+                     -->
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    <a href="javascript:;"  ng-show="WeilaiSmsList == 1" ng-click="confirm(2, 'WeilaiSms')" >
+                    	已启用(点此停用)
+                    	</a>
+                    	<a href="javascript:;"   ng-show="WeilaiSmsList == 2" ng-click="confirm(1, 'WeilaiSms')" >
+                    	已停用(点此启用)
+                    	</a>
+                    <!-- 
+                    	 <a href="javascript:;"  ng-show="!WeilaiSmsSt" ng-click="confirm(2, 'WeilaiSms')" >
+                    	启用
+                    	</a>
+                    	<a href="javascript:;"   ng-show="WeilaiSmsSt" ng-click="confirm(1, 'WeilaiSms')" >
+                    	停用
+                    	</a>
+                    	-->
+                    	
+                    	
+                    	</td>
+                   
+                </tr>
+                </tbody>
+            </table>
+
+        </div><!-- /.box-body -->
+        
+    </div>
+
+</section>
+<!-- /.content -->
+
+<script type="text/ng-template" id="tpl-confirm.html">
+    <form role="form" name="addForm"  novalidate >
+<div class="modal-header">
+
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+<span>确定修改？</span>
+        </div>
+
+<!--
+        <div class="modal-body">
+            <div class="form form-inline">
+                <div class="form-group">
+                     
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="请输入到账时间" id="confirm_date" class="form-control" name="confirm_date" ng-model="dateTime"  required value="" >
+                </div>
+            </div>
+        </div>
+-->
+        <div class="modal-footer">
+            <button class="btn btn-primary modv2-btn" ng-click="check_ok()" type="button" >确认</button>
+            <button class="btn btn-primary modv2-btn"  ng-click="cancel()" type="button" >取消</button>
+        </div>
+-
+    </form>
+</script>

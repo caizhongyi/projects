@@ -1,0 +1,172 @@
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active"> 应用类型 </li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content slide" >
+    <div class="box">
+        <div class="box-header ">
+            <h3 class="box-title">
+                <button class="btn btn-primary" type="button" ng-click="addInfo()">新增类型</button>
+                <br />
+                <br />
+            </h3>
+
+            <div class="form ">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label >应用名称:</label>
+                        <input type="text" placeholder="应用名称" ng-change="searchChange()" ng-model="searchData.app" class="form-control" >
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label >状态:</label>
+                        <select  class="form-control input-control" name="status" ng-model="searchData.status"  ng-options="item.type as item.name for item in appstatusList" >
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4 row">
+                        <div class="col-md-4">
+                            <label class="btn-block" >&nbsp;</label>
+                            <button class="btn btn-default" ng-click="searchInfo()"><i class="fa fa-search"></i> 搜索</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div><!-- /.box-header -->
+        <div class="box-body  no-padding">
+            <table class="table table-hover text-center">
+                <tbody>
+                <tr>
+                	<th width="5%">ID</th>
+                    <th width="10%">应用名称</th>
+                    <th width="10%">应用码</th>
+                    <th width="10%">创建时间</th>
+                    <th width="10%">状态</th>
+                    <th width="10%">负责人</th>
+                    <th width="5%">操作</th>
+                </tr>
+                <tr ng-repeat="appList in list" class="list-animation">
+                	<td>{{appList.id}}</td>
+                    <td>{{appList.app}}</td>
+                    <td>{{appList.app_code}}</td>
+                    <td>{{appList.create_time * 1000 |  date:"yyyy-MM-dd HH:mm:ss"}}</td>
+                    <td>{{appList.status | appstatusFilter }}</td>
+                    <td>{{appList.charger}}</td>
+                    <td>
+                        <div class="btn-group">
+                            <div class="btn-group" dropdown is-open="status.isopen">
+                                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                                    操作 <span class="caret"></span>
+                                </button>
+                                
+                                
+                                <ul class="dropdown-menu" role="menu">
+                                    
+                                    <li>
+                                    <a href="javascript:;" ng-click="confirm(0)" >
+                                    <i class="fa fa-edit"></i> 上线</a>
+                                    </li>
+                                    <li>
+                                    <a href="javascript:;" ng-click="confirm(2)" >
+                                    <i class="fa fa-edit"></i> 停用</a>
+                                    </li>
+                                    <li>
+                                    <a href="javascript:;" ng-click="editInfo()" >
+                                    <i class="fa fa-edit"></i> 修改</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            
+            <!-- 用于审核，上线，停用 状态修改 -->
+                <input type="text"  id="ch_id"  ng-model="ch_id"   value="" style="display:none;">
+				<input type="text"  id="ch_status"  ng-model="ch_status"   value="" style="display:none;">
+                
+
+        </div><!-- /.box-body -->
+        <div class="box-footer clearfix ">
+            <pagination num-pages="numPages"  boundary-links="true" max-size="maxSize"   ng-change="pageChanged()" total-items="totalItems" ng-model="currentPage" class="pagination pull-right no-margin" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+        </div>
+    </div>
+</section>
+
+<script type="text/ng-template" id="tpl-confirm.html">
+    <form role="form" name="addForm"  novalidate >
+<div class="modal-header">
+
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+<span>确定修改？</span>
+        </div>
+
+<!--
+        <div class="modal-body">
+            <div class="form form-inline">
+                <div class="form-group">
+                     
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="请输入到账时间" id="confirm_date" class="form-control" name="confirm_date" ng-model="dateTime"  required value="" >
+                </div>
+            </div>
+        </div>
+-->
+        <div class="modal-footer">
+            <button class="btn btn-primary modv2-btn" ng-click="check_ok()" type="button" >确认</button>
+            <button class="btn btn-primary modv2-btn"  ng-click="cancel()" type="button" >取消</button>
+        </div>
+-
+    </form>
+</script>
+<!--
+<script type="text/ng-template" id="tpl-add.html">
+    <div class="modal-header">
+        <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+        <h3 class="modal-title">添加类型</h3>
+    </div>
+    <form role="form" name="appForm" class="form-horizontal" ng-submit="ok(appForm.$valid)" novalidate>
+        <div class="modal-body">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="add-app" class="col-sm-2 control-label">应用名称:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="应用名称" id="add-app" class="form-control" name="app" ng-model="item.app" value="{{ item.app }}"  >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="add-app_code" class="col-sm-2 control-label">应用码:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="问题码" id="add-app_code" class="form-control" name="app_code" ng-model="item.app_code" value="{{ item.app_code}}"  >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="add-status" class="col-sm-2 control-label">状态:</label>
+                    <div class="col-sm-10">
+                        <select name="status" id="add-status" class="form-control"   ng-model="item.status" ng-options="item.name for item in appstatusList">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button  type="submit" class="btn btn-primary"  >确定</button>
+            <a class="btn btn-warning" ng-click="cancel()">取消</a>
+        </div>
+    </form>
+</script>
+-->

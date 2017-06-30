@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head><title>{$row['title']}</title>
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" type="text/css"
+          href="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/client-page1a1cdb.css"/>
+
+    <style>  #nickname {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 90%;
+    }
+
+    ol, ul {
+        list-style-position: inside;
+    }</style>
+    <style>  #activity-detail .page-content .text {
+        font-size: 16px;
+    }</style>
+</head>
+<body id="activity-detail">
+<div class="page-bizinfo">
+    <div class="header"><h1 id="activity-name">{$row['title']}</h1>
+
+        <p class="activity-info"><span id="post-date" class="activity-meta no-extra">{if !empty($row['createtime'])}{php echo date('Y-m-d',$row['createtime']);}{/if}</span> <span
+                class="activity-meta"></span> <a  {if ($weid == Mobile_Internet_Id)} href = "yixin://opencard?pid=NzI1ODA4OC03MjU4MDg4LTEzODQyMjQ4OTA="{else}href="javascript:;"{/if} id="post-user" class="activity-meta"><span>
+                {if !empty($we_name)}{$we_name}{/if}</span><i class="icon_link_arrow"></i></a></p></div>
+</div>
+<div class="page-content">
+    <div class="media" id="media"><img
+            src="{$row['thumb']}"
+            onerror="this.parentNode.removeChild(this)"
+           />
+    </div>
+    <div class="text"><p>
+        {$row['content']}
+
+    </div>
+{if !empty($row['url'])}
+<p class="page-toolbar"><a href="{if !empty($row['url'])}{$row['url']}{else}javascript:;{/if}" class="page-url">阅读原文</a>
+{/if}
+</body>
+</html>

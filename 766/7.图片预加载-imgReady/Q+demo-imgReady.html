@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>imgReady</title>
+</head>
+
+<body>
+
+<h1>imgReady</h1>
+<p class="tips">图片头数据加载就绪事件</p>
+<p><strong>下载：</strong></p>
+<p><a id="down" data-href="http://goo.gl/KBp5a" href="http://www.planeart.cn/demo/imgReady/imgReady.js">imgReady.js</a></p>
+<p><strong>相关文章：</strong></p>
+<p><a href="http://www.planeart.cn/?p=1121">再谈javascript图片预加载技术</a></p>
+<p><strong>演示：</strong></p>
+</div>
+
+<div style="height:40px; line-height:40px;"><input type="text" id="path" value="http://www.planeart.cn/demo/imgReady/vistas24.jpg" /> <input type="button" id="submit" value="加 载" /> <label><input id="checkbox" type="checkbox">显示图片</label> 
+<a id="clsCache" href="#" style="color:#0259C4;">清空缓存</a><em class="tips">（浏览器会缓存加载过后的图片）</em></div>
+<div id="status" style="display:none">
+  <p><strong>通过文件头信息获取尺寸：</strong> <span id="statusReady"></span><p>
+	<p><strong>通过加载完毕后获取尺寸：</strong> <span id="statusLoad"></span></p>
+</div>
+
+<div id="imgWrap"></div>
+<div id="url"></div>
+<div id="ur2"></div>
+
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
+<script type="text/javascript" src="imgReady.js"></script>
+<script type="text/javascript">
+var $ = function (id) {
+	return document.getElementById(id);
+};
+
+var Timer = function (){
+	this.startTime = (new Date()).getTime();
+};
+Timer.prototype.stop = function(){
+	return (new Date()).getTime() - this.startTime;
+};
+
+var imgUrl,
+	checkboxFn,
+	path		= $('path'),
+	submit		= $('submit'),
+	checkbox	= $('checkbox'),
+	clsCache	= $('clsCache'),
+	status		= $('status'),
+	statusReady	= $('statusReady'),
+	statusLoad	= $('statusLoad'),
+	imgWrap		= $('imgWrap');
+
+submit.disabled = false;	
+submit.onclick = function () {
+	//pic array
+	var pic=new Array('',"http://i02.static.olcdn.com/manhua/201201/21/1287/269445140_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/269445141_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/269445142_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/269445143_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/269445144_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/269445145_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/269445146_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/269445147_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/269445148_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/269445149_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/2694451410_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/2694451411_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/2694451412_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/2694451413_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/2694451414_33132.jpg","http://i02.static.olcdn.com/manhua/201201/21/1287/2694451415_33132.jpg");
+
+
+	var that = this,
+		time = new Timer();
+	
+	imgUrl = path.value;
+	status.style.display = 'block';
+	statusLoad.innerHTML = statusReady.innerHTML = 'Loading...';
+	
+	// 参数: 图片地址, 尺寸就绪事件, 完全加载事件, 加载错误事件
+	var i,str=str2='',url1=url2='';
+	for(i=0; i<pic.length; i++){
+		imgReady(pic[i], function () {
+			str += '<br />图片:'+ i +'<br/>耗时 ' + (time.stop() / 1000) +' 秒. 宽度: ' + this.width + '; 高度: ' + this.height;
+			url1+='<br />'+this.width+' * '+this.height+';';
+			statusReady.innerHTML = str;
+			//statusReady.innerHTML = '耗时 ' + (time.stop() / 1000) +' 秒. 宽度: ' + this.width + '; 高度: ' + this.height;
+			checkboxFn();
+		}, function () {
+			str2 += '<br />图片:'+ i +'<br/>耗时 ' + (time.stop() / 1000) +' 秒. 宽度: ' + this.width + '; 高度: ' + this.height;
+			statusLoad.innerHTML = str2;
+			url2+='<br />'+this.width+' * '+this.height+';';
+			//statusLoad.innerHTML = '耗时 ' + (time.stop() / 1000) +' 秒. 宽度: ' + this.width + '; 高度: ' + this.height;
+		}, function () {
+			statusLoad.innerHTML = statusReady.innerHTML = '耗时 ' + (time.stop() / 1000) +' 秒. 加载错误！';
+		});
+	}
+	$('url').innerHTML = url1;
+	$('url2').innerHTML = url2;
+};
+
+clsCache.onclick = function () {
+	var value = path.value;
+	path.value = (value.split('?')[1] ? value.split('?')[0] : value) + '?' + new Date().getTime();
+	status.style.display = 'none';
+	imgWrap.innerHTML = '';
+	return false;
+};
+
+checkbox.onclick = checkbox.onchange = checkboxFn = function () {
+	imgWrap.innerHTML = imgUrl && checkbox.checked ? '<img src="' + imgUrl + '" />' : '';
+};
+checkbox.checked = false;
+
+$('down').onclick = function () {
+	window.open(this.getAttribute('data-href') || this.href);	
+	return false;
+}
+
+</script>
+
+</body>
+</html>

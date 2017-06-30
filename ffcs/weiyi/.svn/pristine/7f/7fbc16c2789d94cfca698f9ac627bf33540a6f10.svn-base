@@ -1,0 +1,73 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微生活'),array('title'=>'喜帖管理'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-book"></i> 喜帖管理
+    </h1>
+</div>
+
+<div class="main">
+    <p>
+        <a href="{php echo create_url('site/module/add', array('name' => 'lxymarry'));}" class="btn btn-sm btn-primary"><i class="icon-plus"></i>添加喜帖</a>
+    </p>
+
+	<div>
+		<form action="site.php" method="get">
+		<input type="hidden" name="act" value="module" />
+		<input type="hidden" name="do" value="manager" />
+		<input type="hidden" name="name" value="lxymarry" />
+        <table class="table table-striped table-bordered table-hover">
+			<tbody>
+				<tr>
+					<th width="150">新郎/新娘姓名</th>
+					<td width="203">
+						<input class="span6" name="keyword" id="" type="text" value="{$_GPC['keyword']}">
+					</td>
+				</tr>
+				<tr class="search-submit">
+				   <td colspan="2"><button class="btn pull-right span2 btn-primary"><i class="icon-search icon-large"></i> 搜索</button></td>
+				 </tr>
+			</tbody>
+		</table>
+		</form>
+	</div>
+	<div class="rule">
+        <table class="table table-striped table-bordered table-hover">
+			<thead class="navbar-inner">
+				<tr>
+					<th style="width:200px;">标题</th>
+					<th style="width:200px;"><span style="width:100px;">新郎/新娘</span></th>
+					<th style="width:100px;">婚礼日期</th>
+					<th style="">密码</th>
+
+					<th style="min-width:60px;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				{loop $list $item}
+				<tr>
+					<td>{$item['title']}</td>
+					<td>{php echo $item['xl_name'].'/'.$item['xn_name']}</td>
+					<td>{$item['hy_time']}</td>
+					<td>{$item['pwd']}</td>
+
+					<td>
+                    		<a href="{php echo $this->createWebUrl('infolist', array('sid' => $item['id']))}" class="btn btn-small btn-primary" title="查看赴宴信息及收到祝福"><i class="icon-search"></i></a>
+						<a href="{php echo $this->createWebUrl('add', array('id' => $item['id']))}" class="btn btn-small btn-success" title="编辑"><i class="icon-edit"></i></a>
+						<a onclick="return confirm('删除喜帖将删除所有关联赴宴及祝福记录，确认吗？');return false;" href="{php echo $this->createWebUrl('delete', array('id' => $item['id']))}" class="btn btn-small btn-danger" title="删除"><i class="icon-remove"></i></a>
+					                    
+                    </td>
+				</tr>
+				{/loop}
+			</tbody>
+			<tr>
+				<td colspan="6">
+					<input name="token" type="hidden" value="{$_W['token']}" />
+					<input type="submit" class="btn btn-primary" name="submit" value="提交" />
+				</td>
+			</tr>
+		</table>
+		{$pager}
+	</div>
+</div>
+{template 'common/footer'}

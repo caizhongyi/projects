@@ -1,0 +1,101 @@
+<link href="./resource/ace/assets/css/daterangepicker.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="./resource/script/daterangepicker.js"></script>
+<script type="text/javascript" src="./resource/script/date/date.js"></script>
+
+<input type="hidden" name="reply_id" value="{$reply['id']}" />
+<div class="alert alert-block alert-new">
+	<a class="close" data-dismiss="alert">×</a>
+	<h4 class="alert-heading">添加试卷信息</h4>
+
+	<table>
+		<tbody>
+			{if !empty($reply['id'])}
+			<tr>
+				<th>菜单</th>
+				<td><a href="{php echo create_url('site/module', array('do' => 'option', 'name' => 'exam', 'id' => $reply['rid']))}">添加考题</a>
+                <a href="{php echo create_url('site/module', array('do' => 'knowledge', 'name' => 'exam', 'id' => $reply['rid']))}">&nbsp;添加知识库&nbsp;</a>
+              <a target="_blank" href="{php echo create_url('site/module', array('do' => 'result', 'name' => 'exam', 'id' => $reply['rid']))}">查看考试结果</a>
+              </td>
+			</tr>{/if}
+			<tr>
+				<th>标题</th>
+				<td>
+					<input type="text" id="" class="span7" placeholder="" name="title" value="{$reply['title']}">
+				</td>
+			</tr>        
+			<tr>
+				<th>图片</th>
+				<td>
+					<div id="" class="uneditable-input reply-edit-cover">
+						<div class="detail">
+							<span class="pull-right">大图片建议尺寸：700像素 * 300像素</span>
+                            <div  class="ace-file-input ">
+                                <label data-title="上传" class="file-label selected"><span data-title="上传的文件" class="file-name"><i class="icon-file"></i></span></label>
+                            </div>
+                            <input type="button" id="user-picture" fieldname="picture{$namesuffix}" class="btn btn-mini reply-edit-cover-upload" value="<i class='icon-upload-alt'></i> 上传" style="" />
+							<button type="button" class="btn btn-mini  btn-upload-delete reply-news-edit-cover-remove" id="upload-delete" onclick="doDeleteItemImage(this, 'user-picture-value')" style="{if empty($reply['thumb'])} display:none;{/if}"><i class="icon-remove"></i> 删除</button>
+						</div>
+						{if !empty($reply['thumb'])}
+						<input type="hidden" name="picture-old" value="{$reply['thumb']}">
+						<div id="upload-file-view" class="upload-view">
+							<input type="hidden" id="user-picture-value" value="{$reply['thumb']}">
+							<img width="100" src="{$_W['attachurl']}{$reply['thumb']}">&nbsp;&nbsp;
+						</div>
+						{else}
+						<div id="upload-file-view"></div>
+						{/if}
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>回复简介</th>
+				<td>
+					<textarea style="height:150px;" name="description" class="span7" cols="60">{$reply['description']}</textarea>
+					<div class="help-block">用于图文显示的简介</div>
+				</td>
+			</tr>
+			<tr>
+				<th>页面标题</th>
+				<td>
+					<input type="text" id="" class="span7" placeholder="" name="vote_title" value="{$reply['exam_title']}">
+				</td>
+			</tr>  
+
+            <script type="text/javascript">
+                $("input[name=vote_type]").change(function(){
+
+                    var vote_type;
+                    vote_type = parseInt($("input[name=vote_type]:checked").val());
+                    if(vote_type==1 || vote_type==3){
+                        $("#maxitem").show();
+                    }else{
+                        $("#maxitem").hide();
+                    }
+                })
+            </script>
+
+            <tr>
+                <th>活动时间</th>
+                <td>
+                    <input type="hidden" value="{$reply['start_time']}" name="start">
+                    <input type="hidden" value="{$reply['end_time']}" name="end">
+                    <button id="date-range" class="form-control" type="button">
+                        <span class="date-title">{$reply['start_time']} 至 {$reply['end_time']}</span>
+                        <i class="icon-caret-down"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th>答题时间</th>
+                <td>
+                    <input type="text" id="interval" class="span7" placeholder="" name="interval" value="{$reply['exam_time']}">
+                    <div>设置用户的答题时间，单位分钟</div>
+                </td>
+            </tr>
+ 		</tbody>
+	</table>
+ </div>
+<script type="text/javascript">
+kindeditor($('#rule'));
+kindeditorUploadBtn($('#user-picture'));
+</script>

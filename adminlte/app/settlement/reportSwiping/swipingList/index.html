@@ -1,0 +1,288 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active">  {{ $state.current.page.title }} </li>
+    </ol>
+</section>
+<style>
+    .modal-lg {
+        width: 1200px;
+    }
+</style>
+<!-- Main content -->
+<section class="content slide" >
+    <div class="box"  >
+        <div class="box-header " senior-table="reportSwiping">
+            <div class="form form-inline form-alignment">
+                <div class="form-group">
+                    <label class="form-label">开始时间</label>
+                    <span class="input-group datepicker modv2-sel-warap modv2-sel-warap" datepicker-click="startdOpened">
+                        <input type="hidden"  ng-model="searchCondition.start_date" />
+                        <input placeholder="日/月" type="datetime"  name="start_date"  required ng-model="start_date" sync="searchCondition.start_date" class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="startdOpened" datepicker-options="dateOptions"  ng-required="true"  current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">结束时间</label>
+                    <span class="input-group datepicker modv2-sel-warap modv2-sel-warap" datepicker-click="endOpened">
+                        <input type="hidden"  ng-model="searchCondition.end_date"/>
+                        <input placeholder="日/月" type="datetime"  name="end_date"  required ng-model="end_date" sync="searchCondition.end_date" class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="endOpened" datepicker-options="dateOptions"  ng-required="true"  min-date="start_date" current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">订单类型</label>
+                    <select  class="form-control input-control" name="is_jhc" ng-model="searchCondition.is_jhc">
+                        <option value="">请选择</option>
+                        <option value="0">普通业务</option>
+                        <option value="1">巨好车业务</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label class="form-label" >收款行</label>
+                        <select select-bank="" id="bank" class="form-control input-control" name="bank" ng-model="searchCondition.bank"  select-bank=""  >
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" > 刷卡渠道</label>
+                        <select select-channel="" id="pay_channel" class="form-control input-control" name="pay_channel" ng-model="searchCondition.pay_channel"  select-channel=""  >
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">收款类型</label>
+                        <select select-pay-channel-type="" id="pay-channel_type" class="form-control input-control" name="pay-channel-type"
+                                ng-model="searchCondition.pay_channel_type" select-pay-channel-type="">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" select-store="">
+                        <div class=" modv2-formg">
+                            <label class="form-label" >门店名称</label>
+                            <select id="province" class="form-control province" name="province" ng-model="searchCondition.province"  ng-options="item.id as item.name  for item in province "  >
+                                <option value="">省份</option>
+                            </select>
+                        </div>
+                        <div class=" modv2-formg">
+                            <select id="city" class="form-control city" name="city" ng-model="searchCondition.city"  ng-options="item.id as  item.name for item in city "  >
+                                <option value="">市/区</option>
+                            </select>
+                        </div>
+                        <div class=" modv2-formg">
+                            <select id="shop" class="form-control shop" name="shop" ng-model="searchCondition.dept_id"  ng-options="item.id as  item.name for item in shop" >
+                                <option value="">门店</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <button class="btn btn-default" ng-click="searchInfo()"><i class="fa fa-search"></i> 搜索</button>
+                        <button class="btn btn-primary modv2-btn" type="button" ng-click="showExcel()">导出表格</button>
+                    </div>
+                    <div class="form-group" ng-show="utils.hasCode('settlement|sealinfo|seal')">
+                        <label class="">&nbsp;</label>
+                        <button class="btn btn-primary modv2-btn" ng-click="sealAccount()" type="button">封账 </button>
+                    </div>
+                    <div class="form-group" ng-show="utils.hasCode('settlement|sealinfo|getsealinfo')">
+                        <label class="">&nbsp;</label>
+                        <button class="btn btn-primary modv2-btn" ng-click="viewSeal()" type="button">查看封账 </button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <table class="table table-hover" >
+                <tbody>
+                <tr>
+                    <th>序号</th>
+                    <th>省份</th>
+                    <th>城市</th>
+                    <th>门店名称</th>
+                    <th>创建订单数</th>
+                    <th>已完善合同数</th>
+                    <th>收款笔数</th>
+                    <th>收款金额</th>
+                    <th ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">收款手续费</th>
+                    <th ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">应到账金额</th>
+                </tr>
+                <tr ng-repeat="item1 in list" class="list-animation">
+                    <td class="text-center">{{ $index + 1 }}
+                    <td class="text-center">{{ item1.province_name }}</td>
+                    <td class="text-center">{{ item1.city_name }}</td>
+                    <td class="text-center">{{ item1.dept_name }}</td>
+                    <td class="text-center">{{ item1.orderNo }}</td>
+                    <td class="text-center">{{ item1.is_status }}</td>
+                    <td class="text-center">{{ item1.entry_no }}</td>
+                    <td class="text-right">￥{{ item1.payment_amount | price}}</td>
+                    <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item1.handling_fee | price}}</td>
+                    <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item1.payment_amount - item1.handling_fee | price}}</td>
+                </tr>
+                <tr>
+                    <td class="text-center">合计</td>
+                    <td class="text-center" colspan="3"></td>
+                    <td class="text-center">{{ item.order_no}}</td>
+                    <td class="text-center">{{ item.isstatus_total}}</td>
+                    <td class="text-center">{{ item.entry_no}}</td>
+                    <td class="text-right">￥{{ item.fee1_total | price}} </td>
+                    <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item.fee2_total | price}} </td>
+                    <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item.fee_total | price}} </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div><!-- /.box-body -->
+
+    </div>
+</section>
+<!-- /.content -->
+<script type="text/ng-template" id="tpl-seal-account.html">
+        <div class="modal-header">
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+            <h3 class="modal-title">封账</h3>
+        </div>
+        <div class="box-header" style="padding: 20px">
+            <div class="form form-inline form-alignment">
+                <div class="form-group">
+                    <span class="input-group datepicker modv2-sel-warap modv2-sel-warap" datepicker-click="startdOpened">
+                        <ung-datepicker-month ng-model="item.month" name="month"></ung-datepicker-month>
+                    </span>
+                </div>
+                <div class="form-group ">
+                    <button class="btn btn-default" ng-click="searchInfo()"><i class="fa fa-search"></i> 搜索</button>
+                </div>
+                <div class="form-group">
+                    <label class="">&nbsp;</label>
+                    <button class="btn btn-primary modv2-btn" ng-click="dialogSealAccount()" type="button">封账 </button>
+                </div>
+                <div class="form-group">
+                    <label class="">&nbsp;</label>
+                    <button class="btn btn-primary modv2-btn" ng-click="cancel()" type="button">关闭 </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <table class="table table-hover" >
+                    <tbody>
+                    <tr>
+                        <th>序号</th>
+                        <th>省份</th>
+                        <th>城市</th>
+                        <th>门店名称</th>
+                        <th>创建订单数</th>
+                        <th>已完善合同数</th>
+                        <th>收款笔数</th>
+                        <th>收款金额</th>
+                        <th ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">收款手续费</th>
+                        <th ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">应到账金额</th>
+                    </tr>
+                    <tr ng-repeat="item1 in list" class="list-animation">
+                        <td class="text-center">{{ $index + 1 }}
+                        <td class="text-center">{{ item1.province_name }}</td>
+                        <td class="text-center">{{ item1.city_name }}</td>
+                        <td class="text-center">{{ item1.dept_name }}</td>
+                        <td class="text-center">{{ item1.orderNo }}</td>
+                        <td class="text-center">{{ item1.is_status }}</td>
+                        <td class="text-center">{{ item1.entry_no }}</td>
+                        <td class="text-right">￥{{ item1.payment_amount | price}}</td>
+                        <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item1.handling_fee | price}}</td>
+                        <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item1.payment_amount - item1.handling_fee | price}}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">合计</td>
+                        <td class="text-center" colspan="3"></td>
+                        <td class="text-center">{{ item.order_no}}</td>
+                        <td class="text-center">{{ item.isstatus_total}}</td>
+                        <td class="text-center">{{ item.entry_no}}</td>
+                        <td class="text-right">￥{{ item.fee1_total | price}} </td>
+                        <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item.fee2_total | price}} </td>
+                        <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item.fee_total | price}} </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div><!-- /.box-body -->
+        </div>
+</script>
+<script type="text/ng-template" id="tpl-view-seal.html">
+    <div class="modal-header">
+        <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+        <h3 class="modal-title">查看封账</h3>
+    </div>
+    <div class="box-header" style="padding: 20px">
+        <div class="form form-inline form-alignment">
+            <div class="form-group">
+                    <span class="input-group datepicker modv2-sel-warap modv2-sel-warap" datepicker-click="startdOpened">
+                        <ung-datepicker-month ng-model="item.month" name="month"></ung-datepicker-month>
+                    </span>
+            </div>
+            <div class="form-group ">
+                <button class="btn btn-default" ng-click="view()"><i class="fa fa-search"></i> 查看</button>
+            </div>
+            <div class="form-group">
+                <label class="">&nbsp;</label>
+                <button class="btn btn-primary modv2-btn" ng-click="cancel()" type="button">关闭 </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <table class="table table-hover" >
+                <tbody>
+                <tr>
+                    <th>序号</th>
+                    <th>省份</th>
+                    <th>城市</th>
+                    <th>门店名称</th>
+                    <th>创建订单数</th>
+                    <th>已完善合同数</th>
+                    <th>收款笔数</th>
+                    <th>收款金额</th>
+                    <th ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">收款手续费</th>
+                    <th ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">应到账金额</th>
+                </tr>
+                <tr ng-repeat="item1 in list" class="list-animation">
+                    <td class="text-center">{{ $index + 1 }}
+                    <td class="text-center">{{ item1.province_name }}</td>
+                    <td class="text-center">{{ item1.city_name }}</td>
+                    <td class="text-center">{{ item1.dept_name }}</td>
+                    <td class="text-center">{{ item1.orderNo }}</td>
+                    <td class="text-center">{{ item1.is_status }}</td>
+                    <td class="text-center">{{ item1.entry_no }}</td>
+                    <td class="text-right">￥{{ item1.payment_amount | price}}</td>
+                    <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item1.handling_fee | price}}</td>
+                    <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item1.payment_amount - item1.handling_fee | price}}</td>
+                </tr>
+                <tr>
+                    <td class="text-center">合计</td>
+                    <td class="text-center" colspan="3"></td>
+                    <td class="text-center">{{ item.order_no}}</td>
+                    <td class="text-center">{{ item.isstatus_total}}</td>
+                    <td class="text-center">{{ item.entry_no}}</td>
+                    <td class="text-right">￥{{ item.fee1_total | price}} </td>
+                    <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item.fee2_total | price}} </td>
+                    <td class="text-right" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay,cfb.caiwu')">￥{{ item.fee_total | price}} </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div><!-- /.box-body -->
+    </div>
+</script>
+<script type="text/ng-template" id="tpl-confirm.html">
+    <form role="form" name="addForm">
+        <div class="modal-header">
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+            <h3 class="modal-title">提示</h3>
+        </div>
+        <div class="modal-body text-center">
+            {{msg}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary modv2-btn" ng-click="ok()" type="button" ng-disabled="submitted">确认</button>
+            <button class="btn btn-primary modv2-btn"  ng-click="cancel()" type="button" >取消</button>
+        </div>
+    </form>
+</script>

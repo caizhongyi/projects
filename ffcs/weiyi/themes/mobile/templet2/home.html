@@ -1,0 +1,19 @@
+{template 'mobile/header'}
+{template 'mobile/member'}
+<div class="user-box">
+	<a href="{php echo create_url('mobile/module', array('name' => 'fans', 'weid' => $_W['weid'], 'do' => 'profile'))}" class="box-item">
+		<i class="icon-user"></i>
+		<span>我的资料</span>
+	</a>
+	{loop $navs $nav}
+	<a href="{$nav['url']}" class="box-item">
+		{if empty($nav['css']['icon']['icon'])}
+		<i style="background:url({$_W['attachurl']}{$nav['icon']}) no-repeat;background-size:cover;"></i>
+		{else}
+		<i class="{$nav['css']['icon']['icon']}" style="{$nav['css']['icon']['style']}"></i>
+		{/if}
+		<span style="{$nav['css']['name']}">{$nav['name']}</span>
+	</a>
+	{/loop}
+</div>
+{template 'mobile/footer'}

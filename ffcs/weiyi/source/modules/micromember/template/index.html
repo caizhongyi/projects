@@ -1,0 +1,131 @@
+<!DOCTYPE >
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="./source/modules/micromember/template/css/fans.css" media="all" />
+    <script type="text/javascript" src="./source/modules/micromember/template/js/zepto.js"></script>
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+    <title>会员卡</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport">
+    <meta name="format-detection" content="telephone=no">
+</head>
+
+<body id="card" ondragstart="return false;" onselectstart="return false;">
+<section class="body">
+<div id="overlay"></div>
+<div class="cardcenter">
+    <div class="card">
+        <img class="cardbg" src="{if ($card_info['bgtype']==1&&!empty($card_info['sysbackground']))}
+                                            {$card_info['sysbackground']}
+                                        {else}
+                                            {$_W['attachurl']}{$card_info['background']}
+                                        {/if}
+                                        ">
+        <img id="cardlogo" class="logo" src="{$_W['attachurl']}{$card_info['icon']}">
+        <h1 style="color: {$card_info['namecolor']}">{$card_info['name']}</h1>
+        <strong class="pdo verify" style="{$card_info['numcolor']}">
+            <span id="cdnb"><em>普通会员</em>N0:{$num}</span>
+        </strong>
+    </div>
+    <p class="explain">
+        <span>使用时向服务员出示此卡</span>
+    </p>
+</div>
+<div class="cardexplain">
+    <a href="{$signin_url}">
+        <div class="pointinfodiv">
+            <div class="pointwrap split">
+                <div class="pointtitle">消费总额</div>
+                <div class="pointvalue">{$micromember_info['usermoney']}</div>
+            </div>
+                <div class="pointwrap split">
+                    <div  class="pointtitle">积分</div>
+                    <div  class="pointvalue">{$micromember_info['credit']}</div>
+            </div>
+            <div class="pointwrap">
+                <div  class="pointtitle">剩余总额</div>
+                <div  class="pointvalue">{$micromember_info['money']}</div>
+            </div>
+        </div>
+    </a>
+
+    <ul class="round" >
+        <li>
+            {if $newCount['total']>0}
+                <a href="{$newsurl}">
+                <span>最新通知<em class="error">{$newCount['total']}</em></span>
+               </a>
+            {else}
+                <a href="{$newsurl}">
+                <span>最新通知</span>
+                </a>
+            {/if}
+        </li>
+        <li>
+            <a href="{$cardrighturl}">
+                <span>会员特权</span>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span>会员优惠券<em class="ok">1</em></span>
+            </a>
+        </li>
+        <li>
+            <a href="">
+                <span>积分换礼品<em class="ok">1</em></span>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="round" id="powerandgift">
+        <li>
+            {if $signed}
+            <a href="{$signin_url}">
+                <span>签到赚积分<em class="ok" id="signed">今日已签到</em></span>
+            </a>
+            {else}
+           <a href="{$signin_url}">
+                <span>签到赚积分<em class="error" id="unsigned">今日未签到</em></span>
+            </a>
+            {/if}
+        </li>
+        <li>
+            <a href="{$account_url}">
+                <span>个人资料</span>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="round" >
+        <li><a href="{$cardinfourl}"><span>会员卡说明</span></a>
+        </li>
+        <li><a href="{$subbusinessurl}"><span>适用门店电话及地址</span></a>
+        </li>
+    </ul>
+    <ul class="round">
+        <li class="addr">
+            <a href="{$address}">
+                <span>地址: {$business_info['address']}</span>
+            </a>
+        </li>
+        <li class="tel">
+            <a href="tel:{$business_info['phonenum']}">
+                <span>电话: {$business_info['phonenum']}</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="plugback">
+    <a href="javascript:history.back(-1)">
+        <div class="plugbg themeStyle">
+            <span class="plugback"></span>
+        </div>
+    </a>
+</div>
+</section>
+
+</body>
+</html>

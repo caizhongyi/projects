@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>3.幻灯片效果-滚动效果</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<style>
+/*slide*/
+.backToTop { display:none; width:18px; line-height:1.2; padding:5px 0; background-color:#000; color:#fff; font-size:12px; text-align:center; position:fixed; _position:absolute; left:50%; margin-left:500px; bottom:100px; _bottom:"auto"; cursor:pointer; opacity:.6; filter:Alpha(opacity=60); }
+</style>
+<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+<script src="js/back_top.js"></script>
+<script type="text/javascript" src="js/scrolling_img.js"></script>
+</head>
+<body>
+<!-- wrapper -->
+<div class="main">
+<!--目录-->
+<h2>766通用JS效果 目录：（以下效果，经测试，兼容FF10.0/IE6,7,8,9/360 4.1.1.6/遨游 3.1.5/世界之窗3.2）</h2>
+<p class="descirpt" style="background:#f1f1f1; border:1px solid #369;">
+	<a href="0.index.html">0.首页-JQuery基础使用教程</a><br />
+	<a href="1.fade.html">1.幻灯片效果-淡入淡出 + 返回顶部</a><br />
+	<a href="2.stepScroll.html">2.幻灯片效果-单块内容滚动</a><br />
+	<span>3.滚动效果</span><br />
+	<a href="4.textScroll.html">4.文本滚动效果</a><br />
+	<a href="5.tab.html">5.选项卡/标签切换效果+图片切换后载效果</a><br />
+	<a href="6.menu.html">6.下拉菜单/级联菜单效果</a><br />
+	<a href="7.ie6png.html">7.IE6 png bug</a><br />
+	<a href="8.ie6fixed.html">8.IE6 fixed bug</a><br />
+</p>
+<!--目录 end-->
+<!--滚动特效***************************************************-->
+<h2>滚动效果</h2>
+<p class="descirpt">描述：滚动特效，鼠标移动到左/右/上/下按钮上，可以改变滚动方向，适用于图片滚动展示、图片+标题滚动展示。<br />
+	<strong style="color:#f00;">注意：</strong>保证需要滚动的内容宽度/高度大于所要显示出来的内容的宽度/高度；请在内容多的时候使用滚动效果。内容少，不需要滚动的时候，不建议使用</p>
+<h3 class="h3">范例1：自右向左滚动 ←</h3>
+<textarea style="height:400px; width:978px;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*scrollerimg*/	
+		#scrollerimg{ position:relative; width:980; height:163px; margin:10px auto; }
+			.imgleft,.imgright{ background:url(images/btn_arrow.png); width:30px; height:120px; position:absolute; top:50%; margin-top:-60px; overflow:hidden; text-indent:-999em; }
+			.imgleft{ left:0; }
+			.imgright{ background-position:-50px 0; right:0; }
+			.scrollerimg_left {width:900px;height:163px;overflow:hidden; margin:0 auto;}
+			.scrollerimg_left li{height:163px; width:210px; overflow:hidden; line-height:20px; font-size:12px; float:left; padding-right:20px;}
+			.scrollerimg_left li img{height:163px; width:210px;}
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/scrolling_img.js"></script>
+		<script>
+		$(function(){ 
+			/*scrollerimg*/
+			$('.scrollerimg_left').scrollerimg({direction:'left'});		//默认最简单的方式。作用于$(".scrollerimg_left")内容上。滚动方向：←
+		});
+		</script>
+	</head>
+	<body>
+		<div id="scrollerimg">
+			<div class="scrollerimg_left">
+				<ul>
+					<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62629.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62629.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a></li>
+				</ul>
+			</div>
+			<a href="#" class="imgleft">左</a><a href="#" class="imgright">右</a>
+		</div>
+	</body>
+</html>
+
+备注：html中的<li></li>中的内容可以根据需要填写，范例的内容只是推荐使用的模式。这种滚动效果，比较适用于图、图+标题、文字。文字滚动有另外的JS特效可以使用，所以范例只给出图、图+标题俩种。
+</textarea>
+<style>
+/*scrollerimg*/	
+#scrollerimg{ position:relative; width:980; height:163px; margin:10px auto; }
+	.imgleft,.imgright{ background:url(images/btn_arrow.png); width:30px; height:120px; position:absolute; top:50%; margin-top:-60px; overflow:hidden; text-indent:-999em; }
+	.imgleft{ left:0; }
+	.imgright{ background-position:-50px 0; right:0; }
+	.scrollerimg_left {width:900px;height:163px;overflow:hidden; margin:0 auto;}
+	.scrollerimg_left li{height:163px; width:210px; overflow:hidden; line-height:20px; font-size:12px; float:left; padding-right:20px;}
+	.scrollerimg_left li img{height:163px; width:210px;}
+</style>
+<script>
+$(function(){ 
+	/*scrollerimg*/
+	$('.scrollerimg_left').scrollerimg({direction:'left'});		//默认最简单的方式。作用于$(".scrollerimg_left")内容上。滚动方向：←
+});
+</script>
+<p class="menu_title">图/初始滚动方向：←</p>
+<div id="scrollerimg">
+	<div class="scrollerimg_left">
+		<ul>
+			<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a></li>
+			<li><a href="#"><img src="pics/thumb_b_62629.jpg" /></a></li>
+			<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a></li>
+			<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a></li>
+			<li><a href="#"><img src="pics/thumb_b_62435.jpg" /></a></li>
+			<li><a href="#"><img src="pics/thumb_b_62387.jpg" /></a></li>
+			<li><a href="#"><img src="pics/thumb_b_62372.jpg" /></a></li>
+			<li><a href="#"><img src="pics/thumb_b_62377.jpg" /></a></li>
+		</ul>
+	</div>
+	<a href="#" class="imgleft">左</a><a href="#" class="imgright">右</a> </div>
+<div class="clear"></div>	
+<!--滚动特效 end***************************************************-->
+
+<!--滚动特效***************************************************-->
+<h3 class="h3">范例2：自左向右滚动 →</h3>
+<textarea style="height:400px; width:978px; float:left;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*scrollerimg2*/
+		#scrollerimg2{ position:relative; width:980px; height:193px; margin:10px auto; }
+			.imgleft,.imgright{ background:url(images/btn_arrow.png); width:30px; height:120px; position:absolute; top:50%; margin-top:-60px; overflow:hidden; text-indent:-999em; }
+			.imgleft{ left:0; }
+			.imgright{ background-position:-50px 0; right:0; }
+			.scrollerimg_right {width:900px;height:193px;overflow:hidden; margin:0 auto;}
+			.scrollerimg_right li{height:193px; width:210px; overflow:hidden; font-size:12px; float:left; padding-right:20px;}
+			.scrollerimg_right li p{ height:20px; line-height:20px; text-align:center; overflow:hidden; }
+			.scrollerimg_right li img{height:163px; width:210px;}
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/scrolling_img.js"></script>
+		<script>
+		$(function(){ 
+			/*scrollerimg*/
+			$('.scrollerimg_right').scrollerimg({	//以下是所有参数，因大部分参数一般都不进行修改，平时调用的时候，只要按照上面这样，只写一个方向参数
+				 isEqual:true,//所有滚动的元素长宽是否相等,true,false；一般不修改
+				 loop: 0,//循环滚动次数，0时无限；一般不修改
+				 direction: 'right',//初始滚动方向，'left','right','up','down'；根据需要修改方向，这边的滚动方向：→
+				 scrollAmount:1,//步长；暂不修改
+				 scrollDelay:60//时长；暂不修改
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<div id="scrollerimg2">
+			<div class="scrollerimg_right">
+				<ul>
+					<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a><p><a href="#">轻音少女show1</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62629.jpg" /></a><p><a href="#">轻音少女show2</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a><p><a href="#">轻音少女show3</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a><p><a href="#">轻音少女show4</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a><p><a href="#">轻音少女show5</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62629.jpg" /></a><p><a href="#">轻音少女show6</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a><p><a href="#">轻音少女show7</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a><p><a href="#">轻音少女show8</a></p></li>
+				</ul>
+			</div>
+			<a href="#" class="imgleft">左</a><a href="#" class="imgright">右</a>
+		</div>
+	</body>
+</html>
+
+备注：html中的<li></li>中的内容可以根据需要填写，范例的内容只是推荐使用的模式。这种滚动效果，比较适用于图、图+标题、文字。文字滚动有另外的JS特效可以使用，所以范例只给出图、图+标题俩种。
+</textarea>
+
+<style>
+/*scrollerimg2*/
+#scrollerimg2{ position:relative; width:980px; height:193px; margin:10px auto; }
+	.imgleft,.imgright{ background:url(images/btn_arrow.png); width:30px; height:120px; position:absolute; top:50%; margin-top:-60px; overflow:hidden; text-indent:-999em; }
+	.imgleft{ left:0; }
+	.imgright{ background-position:-50px 0; right:0; }
+	.scrollerimg_right {width:900px;height:193px;overflow:hidden; margin:0 auto;}
+	.scrollerimg_right li{height:193px; width:210px; overflow:hidden; font-size:12px; float:left; padding-right:20px;}
+	.scrollerimg_right li p{ height:20px; line-height:20px; text-align:center; overflow:hidden; }
+	.scrollerimg_right li img{height:163px; width:210px;}
+</style>
+<script>
+$(function(){ 
+	/*scrollerimg*/
+	$('.scrollerimg_right').scrollerimg({	//以下是所有参数，因大部分参数一般都不进行修改，平时调用的时候，只要按照上面这样，只写一个方向参数
+         isEqual:true,//所有滚动的元素长宽是否相等,true,false；一般不修改
+         loop: 0,//循环滚动次数，0时无限；一般不修改
+         direction: 'right',//初始滚动方向，'left','right','up','down'；根据需要修改方向，这边的滚动方向：→
+         scrollAmount:1,//步长；暂不修改
+         scrollDelay:60//时长；暂不修改
+	});
+});
+</script>
+<p class="menu_title">图+标题/初始滚动方向：→</p>
+<div id="scrollerimg2">
+	<div class="scrollerimg_right">
+		<ul>
+			<li><a href="#"><img src="pics/thumb_b_62273.jpg" /></a><p><a href="#">轻音少女show1</a></p></li>
+			<li><a href="#"><img src="pics/thumb_b_62249.jpg" /></a><p><a href="#">轻音少女show2</a></p></li>
+			<li><a href="#"><img src="pics/thumb_b_62173.jpg" /></a><p><a href="#">轻音少女show3</a></p></li>
+			<li><a href="#"><img src="pics/thumb_b_62227.jpg" /></a><p><a href="#">轻音少女show4</a></p></li>
+			<li><a href="#"><img src="pics/thumb_b_62106.jpg" /></a><p><a href="#">轻音少女show5</a></p></li>
+			<li><a href="#"><img src="pics/thumb_b_27208.jpg" /></a><p><a href="#">轻音少女show6</a></p></li>
+			<li><a href="#"><img src="pics/thumb_b_26995.jpg" /></a><p><a href="#">轻音少女show7</a></p></li>
+			<li><a href="#"><img src="pics/thumb_b_62506.jpg" /></a><p><a href="#">轻音少女show8</a></p></li>
+		</ul>
+	</div>
+	<a href="#" class="imgleft">左</a><a href="#" class="imgright">右</a> </div>
+<div class="clear"></div>
+<!--滚动特效 end***************************************************-->
+
+<!--滚动特效***************************************************-->
+<h3 class="h3">范例3：自上向下滚动 ↓</h3>
+<textarea style="height:400px; width:978px; float:left;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*scrollerimg3*/
+		#scrollerimg3{ position:relative; width:180px; height:470px; margin:10px auto; overflow:hidden; }
+			.imgup,.imgdown{ background:url(images/btn_arrow.png) -110px 0; width:120px; height:30px; position:absolute; left:50%; margin-left:-60px; overflow:hidden; text-indent:-999em; }
+			.imgup{ top:0; }
+			.imgdown{ background-position:-110px -43px; bottom:0; }
+			.scrollerimg_down {width:180px;height:390px;overflow:hidden; margin:40px auto;}
+			.scrollerimg_down li{height:130px; width:168px; margin:0 auto; overflow:hidden; line-height:20px; font-size:12px; padding:5px 0; }
+			.scrollerimg_down li img{height:130px; width:168px;}
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/scrolling_img.js"></script>
+		<script>
+		$(function(){ 
+			/*scrollerimg*/
+			$('.scrollerimg_down').scrollerimg({direction: 'down'});	//滚动方向：↓
+		});
+		</script>
+	</head>
+	<body>
+		<div id="scrollerimg3">
+			<div class="scrollerimg_down">
+				<ul>
+					<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62629.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62629.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a></li>
+				</ul>
+			</div>
+			<a href="#" class="imgup">上</a><a href="#" class="imgdown">下</a>
+		</div>
+	</body>
+</html>
+
+备注：html中的<li></li>中的内容可以根据需要填写，范例的内容只是推荐使用的模式。这种滚动效果，比较适用于图、图+标题、文字。文字滚动有另外的JS特效可以使用，所以范例只给出图、图+标题俩种。
+</textarea>
+
+<style>
+/*scrollerimg3*/
+#scrollerimg3{ position:relative; width:180px; height:470px; margin:10px auto; overflow:hidden; }
+	.imgup,.imgdown{ background:url(images/btn_arrow.png) -110px 0; width:120px; height:30px; position:absolute; left:50%; margin-left:-60px; overflow:hidden; text-indent:-999em; }
+	.imgup{ top:0; }
+	.imgdown{ background-position:-110px -43px; bottom:0; }
+	.scrollerimg_down {width:180px;height:390px;overflow:hidden; margin:40px auto;}
+	.scrollerimg_down li{height:130px; width:168px; margin:0 auto; overflow:hidden; line-height:20px; font-size:12px; padding:5px 0; }
+	.scrollerimg_down li img{height:130px; width:168px;}
+</style>
+<script>
+$(function(){ 
+	/*scrollerimg*/
+	$('.scrollerimg_down').scrollerimg({direction: 'down'});	//滚动方向：↓
+});
+</script>
+<div style="width:200px; padding:0 10px 0 0; overflow:hidden;">
+	<p class="menu_title">图/初始滚动方向：↓</p>
+	<div id="scrollerimg3">
+		<div class="scrollerimg_down">
+			<ul>
+				<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a></li>
+				<li><a href="#"><img src="pics/thumb_b_62629.jpg" /></a></li>
+				<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a></li>
+				<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a></li>
+				<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a></li>
+				<li><a href="#"><img src="pics/thumb_b_62629.jpg" /></a></li>
+				<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a></li>
+				<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a></li>
+			</ul>
+		</div>
+		<a href="#" class="imgup">左</a><a href="#" class="imgdown">右</a> </div>
+	<div class="clear"></div>
+</div>
+<!--滚动特效 end***************************************************-->
+
+<!--滚动特效***************************************************-->
+<h3 class="h3">范例4：自下向上滚动 ↑</h3>
+<textarea style="height:400px; width:978px; float:left;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*scrollerimg4 ↑*/
+		#scrollerimg4{ position:relative; width:180px; height:470px; margin:10px auto; overflow:hidden; }
+			.imgup,.imgdown{ background:url(images/btn_arrow.png) -110px 0; width:120px; height:30px; position:absolute; left:50%; margin-left:-60px; overflow:hidden; text-indent:-999em; }
+			.imgup{ top:0; }
+			.imgdown{ background-position:-110px -43px; bottom:0; }
+			.scrollerimg_up {width:180px;height:390px;overflow:hidden; margin:40px auto;}
+			.scrollerimg_up li{height:160px; width:168px; overflow:hidden; font-size:12px; float:left; padding:5px 0; }
+			.scrollerimg_up li p{ height:20px; line-height:20px; text-align:center; overflow:hidden; }
+			.scrollerimg_up li img{height:130px; width:168px;}
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/scrolling_img.js"></script>
+		<script>
+		$(function(){ 
+			/*scrollerimg*/
+			$('.scrollerimg_up').scrollerimg({direction: 'up'});	//滚动方向：↑
+		});
+		</script>
+	</head>
+	<body>
+		<div id="scrollerimg4">
+			<div class="scrollerimg_up">
+				<ul>
+					<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a><p><a href="#">轻音少女show1</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62629.jpg" /></a><p><a href="#">轻音少女show2</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a><p><a href="#">轻音少女show3</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a><p><a href="#">轻音少女show4</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a><p><a href="#">轻音少女show5</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62629.jpg" /></a><p><a href="#">轻音少女show6</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a><p><a href="#">轻音少女show7</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a><p><a href="#">轻音少女show8</a></p></li>
+				</ul>
+			</div>
+			<a href="#" class="imgup">上</a><a href="#" class="imgdown">下</a>
+		</div>
+	</body>
+</html>
+
+备注：html中的<li></li>中的内容可以根据需要填写，范例的内容只是推荐使用的模式。这种滚动效果，比较适用于图、图+标题、文字。文字滚动有另外的JS特效可以使用，所以范例只给出图、图+标题俩种。
+</textarea>
+
+<style>
+/*scrollerimg4 ↑*/
+#scrollerimg4{ position:relative; width:180px; height:470px; margin:10px auto; overflow:hidden; }
+	.imgup,.imgdown{ background:url(images/btn_arrow.png) -110px 0; width:120px; height:30px; position:absolute; left:50%; margin-left:-60px; overflow:hidden; text-indent:-999em; }
+	.imgup{ top:0; }
+	.imgdown{ background-position:-110px -43px; bottom:0; }
+	.scrollerimg_up {width:180px;height:390px;overflow:hidden; margin:40px auto;}
+	.scrollerimg_up li{height:160px; width:168px; overflow:hidden; font-size:12px; float:left; padding:5px 0; }
+	.scrollerimg_up li p{ height:20px; line-height:20px; text-align:center; overflow:hidden; }
+	.scrollerimg_up li img{height:130px; width:168px;}
+</style>
+<script>
+$(function(){ 
+	/*scrollerimg*/
+	$('.scrollerimg_up').scrollerimg({direction: 'up'});	//滚动方向：↑
+});
+</script>
+<div style="width:200px; overflow:hidden;">
+		<p class="menu_title">图+标题/初始滚动方向：↑</p>
+		<div id="scrollerimg4">
+			<div class="scrollerimg_up">
+				<ul>
+					<li><a href="#"><img src="pics/thumb_b_62635.jpg" /></a><p><a href="#">轻音少女show1</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62601.jpg" /></a><p><a href="#">轻音少女show2</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62627.jpg" /></a><p><a href="#">轻音少女show3</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62609.jpg" /></a><p><a href="#">轻音少女show4</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62579.jpg" /></a><p><a href="#">轻音少女show5</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62533.jpg" /></a><p><a href="#">轻音少女show6</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62506.jpg" /></a><p><a href="#">轻音少女show7</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62440.jpg" /></a><p><a href="#">轻音少女show8</a></p></li>
+				</ul>
+			</div>
+			<a href="#" class="imgup">左</a><a href="#" class="imgdown">右</a> </div>
+		<div class="clear"></div>
+	</div>
+<!--滚动特效 end***************************************************-->
+</div>
+<!-- wrapper end -->
+
+</body>
+</html>

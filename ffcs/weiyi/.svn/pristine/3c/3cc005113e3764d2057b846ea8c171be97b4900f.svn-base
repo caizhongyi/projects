@@ -1,0 +1,134 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="./source/modules/micromember/template/css/fans.css" media="all" />
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+    <title>签到赚积分</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+</head>
+
+<body id="cardintegral" ondragstart="return false;" onselectstart="return false;">
+<section class="body">
+
+<div class="qiandaobanner">
+    <a href="javascript:history.go(-1);">
+        <img src="./source/modules/micromember/template/images/qiandao.jpg">
+    </a>
+</div>
+
+
+<div class="cardexplain">
+{if $signed}
+    <a class="receive" id="qiandao">
+        <span class="red">今天你已经签到了</span>
+    </a>
+{else}
+    <a class="receive" id="signin">
+        <span class="error">我要签到！</span>
+    </a>
+{/if}
+<div class="jifen-box" style="margin-top:13px;">
+    <ul class="zongjifen">
+        <li>
+            <div class="fengexian">
+                <p>总积分</p>
+                <span>{$user_info['credit']}</span>
+            </div>
+        </li>
+        <li>
+            <div class="fengexian">
+                <p>签到积分</p>
+                <span>{php echo intval($micromember_info['credit']);}</span>
+            </div>
+        </li>
+        <li>
+            <div class="fengexian">
+                <p>签到次数</p>
+                <span>{php echo intval($micromember_info['count'])}</span>
+            </div>
+        </li>
+    </ul>
+    <div class="clr"></div>
+</div>
+
+<div class="jifen-box header_highlight">
+    {if empty($signin_logs_infos)}
+        <p class="error" style="text-align: center;color: red;">您本月还未签到,赶快来签到吧！</p>
+    {else}
+        <div class="tab month_sel">
+            <span class="title">本月签到详情</span>
+        </div>
+        <div class="accordion_child">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="integral_table">
+            <thead>
+            <tr>
+                <th  width="75%">日期</th>
+                <th>所获积分</th>
+            </tr>
+            </thead>
+            <tbody>
+            {php $credits = 0;}
+                {loop $signin_logs_infos $info}
+                    <tr>
+                        <td>{php echo date('Y年m月d日 H点s分i秒',$info['time'])}</td>
+                        <td>{$info['credit']}</td>
+                    </tr>
+                    {php $credits += $info['credit'];}
+                {/loop}
+            </tbody>
+            <tfoot id="tfoot">
+            <tr>
+                <td class="right">本月合计：</td>
+                <td><span class="heji">+{$credits}</span></td>
+            </tr>
+            </tfoot>
+
+        </table>
+        </div>
+    {/if}
+</div>
+
+<div class="window" id="windowcenter">
+    <div class="content">
+        <div id="txt"></div>
+    </div>
+</div>
+</div>
+
+<div class="plugback">
+    <a href="javascript:history.back(-1)">
+        <div class="plugbg themeStyle">
+            <span class="plugback"></span>
+        </div>
+    </a>
+</div>
+
+
+<script type="text/javascript" language="javascript">
+    $("#signin").click(function () {
+        if($(this).attr('disabled')){
+            return;
+        }
+        $(this).attr('disabled','disabled');
+        $.post('{$sign_url}',
+                function (data) {
+                    if (data.errno == 200) {
+                        alert('签到成功！');
+                        window.location.reload();
+                    } else {
+                        alert(data.error);
+//                        alert('无数据更新或系统繁忙！');
+                    }
+                },'json');
+    });
+    function alert(title){
+        $("#windowcenter").slideToggle("slow");
+        $("#txt").html(title);
+        setTimeout('$("#windowcenter").slideUp(500)',2000);
+    }
+</script>
+</section>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<?php
+/**
+* 权限判断
+*/
+
+class menu {
+	private $menu = 'ims_menu';
+	private $priv = 'ims_menu_priv';
+	
+	/**
+	 * 按父ID查找菜单子项
+	 * @param integer $parentid   父菜单ID
+	 * @param integer $with_self  是否包括他自己
+	 */
+	function admin_menu($parentid, $with_self = 0) {
+		global $_W;
+		if($_W['uid']){
+			$parentid = intval($parentid);
+			if(!$_W['isfounder'])
+				$sql = "select * from ".$this->menu." as a, ".$this->priv." as b where parentid = ".$parentid." and groupid = ".$_W['member']['groupid']." and display = 1 and a.id = b.menuid order by listorder asc";
+			else
+				$sql = "select * from ".$this->menu." where parentid = ".$parentid." and display = 1 order by listorder asc";
+			$result = pdo_fetchall($sql);
+			if($with_self) {
+				$result2[] = pdo_query("select * from ".$this->menu." where id = ".$parentid);
+				$result = array_merge($result2,$result);
+			}
+			//权限检查
+			if($_W['isfounder']) return $result;
+			$array = array();
+			/* $privdb = pc_base::load_model('admin_role_priv_model');
+			 $siteid = param::get_cookie('siteid'); */
+			foreach($result as $v) {
+				$action = $v['d'];
+				if(preg_match('/^public_/',$action)) {
+					$array[] = $v;
+				} else {
+					if(preg_match('/^ajax_([a-z]+)_/',$action,$_match)) $action = $_match[1];
+					$where = "m='".$v['m']."' and a='".$v['a']."'";
+					if(!empty($v['d'])) $where .= " and d='".$v[d]."'";
+					//当代码写在modules下的时候验证name参数
+					if($v['m'] == 'index' && $v['a'] == 'module' && !empty($v['n'])){
+						$where .= " and n = '".$v['n']."'";
+					}
+			
+					if($_W['member']['groupid']){
+						$where .= " and groupid = ".$_W['member']['groupid'];
+						$r = pdo_fetch("select * from ".$this->menu." as a,".$this->priv." as b where ".$where." and a.id=b.menuid");
+					}else{
+						$r = false;
+					}
+					if($r) $array[] = $v;
+				}
+			}
+			return $array;
+		}
+		return '';
+	}
+	
+	/**
+	 * 检查权限
+	 * */
+	public function check_priv(){
+		global $_W, $_GPC;
+		return true;
+		if($_W['uid']){
+			if($_W['isfounder']) return true;
+			$file = explode('/', $_SERVER['PHP_SELF']);
+			$m = substr($file[2], 0, sizeof($file[2])-5); //取文件名
+			$a = isset($_GPC['act']) && !empty($_GPC['act']) ? $_GPC['act'] : '';
+			$d = isset($_GPC['do']) && !empty($_GPC['do']) ? $_GPC['do'] : '';
+			$n = isset($_GPC['name']) && !empty($_GPC['name']) ? $_GPC['name'] : '';
+			
+			if(preg_match('/^public_/', $a) || preg_match('/^ajax_/', $a)) return true;
+			if(preg_match('/^public_/', $d) || preg_match('/^ajax_/', $d)) return true;
+			
+			$common_service = array(
+						array( //选择图标
+							'm' => 'site','a' => 'icon','d' => '','n' => ''
+						),
+						array( //上传
+							'm' => 'index','a' => 'attachment','d' => '','n' => ''
+						),
+						array( //上传
+								'm' => 'member','a' => 'register','d' => '','n' => ''
+						),
+						array( //上传
+								'm' => 'member','a' => 'login','d' => '','n' => ''
+						),
+						array( //上传
+								'm' => 'account','a' => 'blind','d' => '','n' => ''
+						),
+					);
+			foreach ($common_service as $service){
+				if($m == $service['m'] && $a == $service['a']){
+					if(!empty($service['d']) && $d == $service['d']){
+						if(!empty($service['n']) && $n == $service['n']){
+							return true;
+						}
+						return true;
+					}
+					return true;
+				}
+			}
+			
+			if($_W['member']['groupid']){
+				$groupid = $_W['member']['groupid'];
+				$sql = "select * from ims_menu as a, ims_menu_priv as b where b.groupid = ".$groupid." and a.m = '".$m."'";
+				if(!empty($a)){
+					$sql .= " and a.a='".$a."'";
+				}
+				if(!empty($d)){
+					$sql .= " and a.d='".$d."'";
+				}
+				if(!empty($n)){
+					$sql .= " and a.n='".$n."'";
+				}
+				$sql .= " and a.id = b.menuid";
+				$result = pdo_fetch($sql);
+			}else{
+				$result = false;
+			}
+			
+			if($result === false) message('您没有权限操作该项', '');
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+?>

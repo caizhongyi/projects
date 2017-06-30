@@ -1,0 +1,133 @@
+<?php
+/**
+ * 微站频道
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+
+defined('IN_IA') or exit('Access Denied');
+
+$pageSize = 10;
+$page = empty($_GPC['page'])?0:$page;
+$name = $_GPC['name'] ? $_GPC['name'] : 'index';
+
+$path = "{$_W['template']['source']}/mobile/{$_W['account']['template']}/";
+if (!file_exists($path . $name . '.html')) {
+    $_W['account']['template'] = 'default';
+    $filename = "{$_W['template']['source']}/mobile/default/";
+}
+if (!file_exists($path . $name . '.html')) {
+    //header("Location: site.php?act=channel&name=index");
+    //exit('您访问的页面不存在');
+}
+//20131204 claude  fix always user default templet
+$templetid = empty($_GPC['templetid'])?$_W['account']['styleid']:$_GPC['templetid'];
+
+$templetInfo = pdo_fetch("select * from ".tablename('site_templates')." where id= '{$templetid}'");
+
+$styles = pdo_fetchall("SELECT variable, content FROM ".tablename('site_styles')." WHERE templateid = '{$templetid}'", array(), 'variable');
+if (!empty($styles)) {
+    foreach ($styles as $variable => $value) {
+        if (strexists($value['content'], 'images/')) {
+            $value['content'] = $_W['attachurl'] . $value['content'];
+        }
+        if (($variable == 'logo' || $variable == 'indexbgimg' || $variable == 'ucbgimg') && !strexists($value['content'], 'http://')) {
+            //20131204 claude  fix always user default templet
+            if (!empty($_GPC['templetid'])){
+                $value['content'] = $_W['siteroot'] . 'themes/mobile/'.$templetInfo['name'].'/images/' . $value['content'];
+            }else{
+                $value['content'] = $_W['siteroot'] . 'themes/mobile/'.$_W['account']['template'].'/images/' . $value['content'];
+            }
+        }
+        $styles[$variable] = $value['content'];
+    }
+}
+
+if ($name == 'index') {
+    $position = 1;
+    $title = $_W['account']['name'] . '微站';
+} elseif ($name == 'home') {
+    $title = '个人中心';
+    $position = 2;
+    if (empty($_W['uid']) && empty($_W['fans']['from_user'])) {
+        message('非法访问，请重新点击链接进入个人中心！');
+    }
+} elseif ($name == 'list') {
+    $title = '列表';
+    $categoryid = $_GPC['category'];
+    $sqlstr = tablename('article')." where  ccate={$categoryid})";
+
+    $category = pdo_fetch("select * from ".tablename('category')." where id=".$categoryid);
+    if(!empty($category)){
+        $parentid = $category['parentid'];
+        if($parentid == 0){
+            $sqlstr = tablename('article')." where pcate =".$categoryid."";
+        }
+    }
+
+
+    $newsInfo = pdo_fetchall("select * from ".$sqlstr." limit ".$page.",".$pageSize);
+    $total = pdo_fetch("select count(1) as total from ".$sqlstr);
+    $totalPage = ceil($total['total'] / $pageSize);
+    $totalPage = $totalPage == 0 ? 1 : $totalPage;
+    if($page == 0){
+        $prepageurl = "";
+    }else{
+        $prepageurl = create_url('mobile/channel', array('name' => 'list', 'category' => $categoryid ,'templetid'=>$templetid , 'weid'=>$_GPC['weid'] , '$page'=> $page-1));
+    }
+    if($page+1 == $totalPage){
+        $nextpageurl = "";
+    }else{
+        $nextpageurl = create_url('mobile/channel', array('name' => 'list', 'category' => $categoryid,'templetid'=>$templetid ,  'weid'=>$_GPC['weid'] , 'page'=> $page+1));
+    }
+    $categoryInfo = getCategory($_GPC['weid']);
+} elseif ($name == 'detail') {
+    $title = '详细';
+    $sqlstr = "select * from ".tablename('article')." where  id=".$_GPC['id'];
+    $newsInfo = pdo_fetch($sqlstr);
+    $categoryInfo = getCategory($_GPC['weid']);
+    $user = pdo_fetch("select *from ".tablename('wechats')." where weid =".$_GPC['weid']);
+} elseif ($name == 'album') {
+    $pindex = max(1, intval($_GPC['page']));
+    $psize = 20;
+    $albumlist = pdo_fetchall("SELECT * FROM ".tablename('album')." WHERE weid = '{$_W['weid']}' AND isview = '1' ORDER BY displayorder DESC LIMIT " . ($pindex - 1) * $psize .',' .$psize);
+    $total = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('album') . " WHERE isview = '1'");
+    $result['pager'] = pagination($total, $pindex, $psize);
+} elseif ($name == 'photo') {
+    $id = intval($_GPC['id']);
+    $album = pdo_fetch("SELECT * FROM ".tablename('album')." WHERE id = :id", array(':id' => $id));
+    if (empty($album)) {
+        message('相册不存在或是已经被删除！');
+    }
+    $result['list'] = pdo_fetchall("SELECT * FROM ".tablename('album_photo')." WHERE albumid = :albumid ORDER BY displayorder DESC", array(':albumid' => $album['id']));
+}
+
+$navs = pdo_fetchall("SELECT name, url, icon, css, position FROM ".tablename('site_nav')." WHERE (position = '$position' OR position = '3') AND status = 1 and weid=".$_W['weid']." ORDER BY displayorder DESC");
+$slides = pdo_fetchall("SELECT * FROM ".tablename('article')." WHERE type like '%f%' and weid=".$_W['weid']." ORDER BY id asc");
+if (!empty($navs)) {
+    foreach ($navs as $index => &$row) {
+        if (!strexists($row['url'], 'weid=')) {
+            $row['url'] .= strexists($row['url'], '?') ?  '&weid='.$_W['weid'] : '?weid='.$_W['weid'];
+        }
+        $row['css'] = unserialize($row['css']);
+        if ($row['position'] == '3') {
+            unset($row['css']['icon']['font-size']);
+        }
+        $row['css']['icon']['style'] = "color:{$row['css']['icon']['color']};font-size:{$row['css']['icon']['font-size']}px;";
+        $row['css']['name'] = "color:{$row['css']['name']['color']};";
+        if ($row['position'] == '3') {
+            $quick[] = $row;
+            unset($navs[$index]);
+        }
+    }
+    unset($row);
+}
+
+function getCategory($weid){
+    return pdo_fetchall("select * from ".tablename('category')." where weid=".$weid." and enabled=1");
+}
+
+if(empty($templetid)){
+    template('mobile/'.$name);
+}else{
+    templateWithTemplet('mobile/'.$name,$templetInfo['name']);
+}

@@ -1,0 +1,132 @@
+{template 'header'}
+
+<link type="text/css" rel="stylesheet" href="./source/modules/shopping/images/common.css">
+<script type="text/javascript">
+    $('body').addClass('no-header');
+</script>
+<div class="header clearfix">
+    <a class="go_link" onclick="history.go(-1);" href="###"><b></b></a>
+    <a class="go_home" href="{php echo $this->createMobileUrl('list');}"></a>
+</div>
+<!--<div id="banner_box" class="box_swipe">
+    <ul>
+        <li>
+            <a href="mobile.php?act=module&name=site&id=37&do=detail&weid=54">
+                <img src="http://42.121.125.119/vieasy/resource/attachment/images/2014/01/u69i0DvpVU7BHMcCIqcu0q57rdv5mz.jpg" onerror="this.src='./themes/mobile/images/noimage.jpg'" alt="关于福富" style="width:100%;" />
+            </a>
+        </li>
+        <li>
+            <a href="mobile.php?act=module&name=site&id=36&do=detail&weid=54">
+                <img src="http://42.121.125.119/vieasy/resource/attachment/images/2014/01/isJQsi2Uaql2Edas5ZLgeGLjstGo4a.png" onerror="this.src='./themes/mobile/images/noimage.jpg'" alt="微易平台介绍" style="width:100%;" />
+            </a>
+        </li>
+    </ul>
+    <ol>
+        <li class="on"></li>
+        <li></li>
+    </ol>
+
+</div>
+<script>
+    $(function(){
+        new Swipe(document.getElementById('banner_box'), {
+            speed:500,
+            auto:3000,
+            callback: function(){
+                var lis = $(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
+            }
+        });
+    });
+</script>-->
+
+<form action="" method="post">
+<input type="hidden" name="id" value="{$goodsid}" />
+<div class="mobile-img">
+	{if !empty($goods['thumb'])}<img src="{$_W['attachurl']}{$goods['thumb']}" />{/if}
+</div>
+
+    <div class="container">
+        <h1>{$goods['title']}</h1>
+        <div class="form ">
+            <div class="form-group">
+                <span class="form-label">售价:</span>￥<span class="price">{$goods['marketprice']}</span>
+            </div>
+           <!-- <div class="form-group">
+                <span class="form-label">原价:</span><span class="overline">￥12122</span></span>
+            </div>-->
+            {if $goods['total'] != -1}
+            <div class="form-group">
+                <span class="form-label">库存:</span><strong>{$goods['total']}</strong>件</span>
+            </div>
+            {/if}
+            <div class="form-group">
+                <span class="form-label">简介:</span>{$goods['description']}</span>
+            </div>
+            <div class="form-group">
+                <span class="form-label">购买数量:</span>{$goods['content']}</span>
+            </div>
+            <div class="form-group">
+                <span class="form-label">购买数量:</span><input type="text" name="count" value="1" /><!--<strong>12131</strong>件--></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="token" value="{$_W['token']}" />
+                <button class="btn btn-buy" type="submit" name="submit">立即购买</button>
+              <!--  <button class="btn btn-addcard">加入购物车</button>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-div img-rounded">
+        <div class="mobile-hd">商品详细描述</div>
+        <div class="mobile-content">
+            {$goods['content']}
+        </div>
+    </div>
+
+<!--<div class="mobile-div img-rounded">
+	<div class="mobile-hd">商品详细描述</div>
+	<div class="mobile-content">
+		{$goods['content']}
+	</div>
+</div>
+<div class="mobile-div img-rounded">
+	<div class="mobile-hd">商品其他信息</div>
+	<div class="mobile-content">
+		<table class="form-table">
+			<tr>
+				<th>名称</th>
+				<td><span>{$goods['title']}</span></td>
+			</tr>
+			<tr>
+				<th>售价</th>
+				<td><span>{$goods['marketprice']}</span></td>
+			</tr>
+			
+			{if $goods['total'] != -1}
+			<tr>
+				<th>库存</th>
+				<td><span>{$goods['total']}</span></td>
+			</tr>
+			{/if}
+			<tr>
+				<th>购买数量</th>
+				<td><input type="text" name="count" value="1" /></td>
+			</tr>
+			<tr>
+				<th>简介</th>
+				<td><span>{$goods['description']}</span></td>
+			</tr>
+			<tr>
+				<th>内容</th>
+				<td><span>{$goods['content']}</span></td>
+			</tr>
+		</table>
+	</div>
+</div>-->
+<!--<div class="mobile-submit">
+	<input type="hidden" name="token" value="{$_W['token']}" />
+	<input type="submit" name="submit" class="btn btn-sm btn-primary btn-success submit"  value="购买">
+</div>-->
+</form>
+{template 'footer'}

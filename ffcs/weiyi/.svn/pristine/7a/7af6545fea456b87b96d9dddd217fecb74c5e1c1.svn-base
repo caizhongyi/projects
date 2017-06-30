@@ -1,0 +1,52 @@
+<link type="text/css" rel="stylesheet" href="./resource/ace/assets/css/daterangepicker.css" />
+<script type="text/javascript" src="./resource/script/daterangepicker.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#date-range').daterangepicker({
+		format: 'YYYY-MM-DD',
+		startDate: $(':hidden[name=start]').val(),
+		endDate: $(':hidden[name=end]').val(),
+		locale: {
+			applyLabel: '确定',
+			cancelLabel: '取消',
+			fromLabel: '从',
+			toLabel: '至',
+			weekLabel: '周',
+			customRangeLabel: '日期范围',
+			daysOfWeek: moment()._lang._weekdaysMin.slice(),
+			monthNames: moment()._lang._monthsShort.slice(),
+			firstDay: 0
+		}
+	}, function(start, end){
+		$('#date-range .date-title').html(start.format('YYYY-MM-DD') + ' 至 ' + end.format('YYYY-MM-DD'));
+		$(':hidden[name=start]').val(start.format('YYYY-MM-DD'));
+		$(':hidden[name=end]').val(end.format('YYYY-MM-DD'));
+		$('form[method=get]')[0].submit();
+	});
+});
+function range(days) {
+	var start = moment().add('days', 0 - days).format('YYYY-MM-DD');
+	var end = moment().format('YYYY-MM-DD');
+	$('#date-range .date-title').html(start + ' 至 ' + end);
+	$(':hidden[name=start]').val(start);
+	$(':hidden[name=end]').val(end);
+	$('form[method=get]')[0].submit();
+}
+</script>
+<form action="" method="get" class="form-inline">
+	<input type="hidden" name="act" value="{$_GPC['act']}" />
+	<input type="hidden" name="do" value="{$_GPC['do']}" />
+	<input type="hidden" name="name" value="{$_GPC['name']}" />
+	<div>
+		<input name="searchtype" type="hidden" value="{$_GPC['searchtype']}" />
+		<input name="start" type="hidden" value="{php echo date('Y-m-d', $starttime)}" />
+		<input name="end" type="hidden" value="{php echo date('Y-m-d', $endtime)}" />
+		<button class="form-control date span4" id="date-range"  type="button"><span class="date-title">{php echo date('Y-m-d', $starttime)} 至 {php echo date('Y-m-d', $endtime)}</span> <i class="icon-caret-down"></i></button>
+		<div class="btn-group">
+			<a href="javascript:;" onclick="range(7);" class="btn {if $period == '7'}btn-primary{/if}">7天</a>
+			<a href="javascript:;" onclick="range(14);" class="btn {if $period == '14'}btn-primary{/if}">14天</a>
+			<a href="javascript:;" onclick="range(30);" class="btn {if $period == '30'}btn-primary{/if}">30天</a>
+			<a href="javascript:;" onclick="range(60);" class="btn {if $period == '60'}btn-primary{/if}">60天</a>
+		</div>
+	</div>
+</form>

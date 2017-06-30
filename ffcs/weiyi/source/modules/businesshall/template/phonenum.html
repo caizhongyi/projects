@@ -1,0 +1,168 @@
+{php $_W['breadcrumb'] = array(array('title'=>'营业厅商城'),array('title'=>'套餐管理'))}
+{template 'common/header'}
+{if  $operation == 'post'||$operation == 'detail'}
+<div class="page-header" xmlns="http://www.w3.org/1999/html">
+    <h1>
+        <i class="icon-book"></i> 套餐管理
+    </h1>
+</div>
+<div class="main">
+    <form action="site.php?act=module&do=phonenum&name=businesshall&op=post" method="post" class="form-horizontal form" enctype="multipart/form-data">
+        <input type="hidden" name="phone_package_id" value="{$phonenum['phone_package_id']}" />
+        <table class="tb" id="phonenumtab">
+            <tr>
+                <th><label for="">套餐名称</label></th>
+                <td style="width:300px;">
+                    <input type="text" name="phonenum_name" class="span3" value="{$phonenum['phonenum_name']}" />
+                </td>
+                <td ></td>
+            </tr>
+            <tr>
+                <th><label for="">套餐生失效情况</label></th>
+                <td>
+                    <label for="inuse1" class="radio inline">
+                        <input type="radio" name="inuse" value="1" id="inuse1" {if empty($phonenum) || $phonenum['inuse'] == 1} checked="true" {/if} /> 是</label>
+                    &nbsp;&nbsp;&nbsp;
+                    <label for="inuse2" class="radio inline">
+                        <input type="radio" name="inuse" value="0" id="inuse2" {if  !empty($phonenum) && $phonenum['inuse'] == 0} checked="true" {/if} /> 否</label>
+                    <span class="help-block"></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="">预存话费类型</label></th>
+                <td style="width:300px;">
+                    <input type="text" name="pre_deposit" class="span3" value="{$phonenum['pre_deposit']}" /> 元
+                </td>
+                <td ></td>
+            </tr>
+            <tr>
+                <th><label for="">每月最低消费额</label></th>
+                <td style="width:300px;">
+                    <input type="text" name="min_consumption" class="span3" value="{$phonenum['min_consumption']}" /> 元
+                </td>
+                <td ></td>
+            </tr>
+            <tr>
+                <th><label for="">号码价格</label></th>
+                <td style="width:300px;">
+                    <input type="text" name="phonenum_price" class="span3" value="{$phonenum['phonenum_price']}" /> 元
+                </td>
+                <td ></td>
+            </tr>
+            <tr>
+                <th><label for="">套餐描述</label></th>
+                <td style="width:300px;">
+                    <input type="text" name="desc" class="span3" value="{$phonenum['desc']}" />
+                </td>
+                <td ></td>
+            </tr>
+
+            <script>
+                function deletenum(id){
+                    if(!confirm('确认删除号码?')){
+                        return false;
+                    }
+                    if(id<0){//负数表示新增的
+                        id=0-id;
+                        var delinput=document.getElementById("newdiv"+id);
+                        delinput.parentNode.removeChild(delinput);
+                    }else {//正数表示数据库中有数据，需要对后台处理
+                    var delinput=document.getElementById("div"+id);
+                    var res=$.ajax({url:"site.php?act=module&op=deletenum&name=businesshall&do=phonenum&phonenum_id="+id,async:false});
+                    delinput.parentNode.removeChild(delinput);
+                    }
+                }
+                var nums =0;
+                function addnum(){
+                    var numstd=document.getElementById("numstd");
+                    var numsd=document.getElementById("nums");
+                    nums++;
+                    var div =document.createElement("div");
+                    div.id="newdiv"+nums;
+                    div.style="float: left;";
+                    div.innerHTML  ="<input  type=\"text\" name=\"newnums"+nums+"\" id=\"newnums"+nums+"\"  style=\"width: 105px;\" > "
+                            +"</input> <a href = 'javascript:;' onclick=\"javascript:deletenum(-"+nums+");\">×</a>&nbsp;&nbsp;&nbsp;";
+                    numstd.appendChild(div);
+                    numsd.value=nums;
+                }
+            </script>
+            <tr>
+                <th><label for="">套餐所含号码</label></th>
+                <td colspan="2" style="padding-right: 200px;" id="numstd">
+                    {loop $nums $num}
+                    <div id="div{$num['phonenum_id']}" style="float: left;">
+                    <input  type="text" name="num{$num['phonenum_id']}" id="num{$num['phonenum_id']}"  value="{$num['phonenum']}" style="width: 105px;" >
+                    </input> <a  href = 'javascript:;' onclick="javascript:deletenum({$num['phonenum_id']});">×</a>&nbsp;&nbsp;&nbsp;
+                    </div>
+                    {/loop}
+                </td>
+            </tr>
+            <tr  id="trsubmit">
+                <th></th>
+                <td>
+                    <input type="hidden"  name="nums" id="nums"  />
+                    <input class="btn btn-sm btn-primary" style="width: 100px;margin-right: 50px;"  type="button" onclick="javascript:addnum();" value="新增号码" ></input>
+                    <input name="submit" type="submit" value="提交" class="btn btn-sm btn-primary">
+                <input type="hidden" name="token" value="{$_W['token']}" /></td>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{elseif  $operation == 'display'||$operation == 'delete'}
+<div class="page-header">
+    <h1>
+        <i class="icon-cogs"></i> 号码管理
+    </h1>
+</div>
+<div class="main">
+    <p>
+        <a href="{php echo $this->createWebUrl('phonenum', array('name' => 'businesshall', 'op' => 'post'))}" class="btn btn-sm btn-primary">
+            <i class="icon-pencil"></i>添加新套餐</a>
+    </p>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="navbar-inner">
+        <tr>
+            <th style="width:30px;">ID</th>
+            <th style="width:200px;">套餐名</th>
+            <th style="width:150px;">预存话费类型(元)</th>
+            <th style="width:100px;">每月最低消费</th>
+            <th style="width:100px;">号码价格</th>
+            <th style="width:250px;">描述</th>
+            <th style="width:120px;">状态</th>
+            <th style="width:120px; text-align:right;">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {loop $list $item}
+        <tr>
+            <td>{$item['phone_package_id']}</td>
+            <td>{$item['phonenum_name']}</td>
+            <td>{$item['pre_deposit']}</td>
+            <td>
+                {php if($item['min_consumption']==0) echo "无限制";else echo $item['min_consumption'];}
+            </td>
+            <td>{$item['phonenum_price']}</td>
+            <td>{$item['desc']}</td>
+            <td>{php if($item['inuse']==0) echo "失效";else echo "生效";}</td>
+            <td style="text-align:right;">
+                <a style="margin-right: 20px;" href="{php echo $this->createWebUrl('phonenum', array('op' => 'delete', 'phone_package_id' => $item['phone_package_id']))}">
+                    {php if($item['inuse']==0) echo "生效";else echo "失效";}
+                </a>
+                <a href="{php echo $this->createWebUrl('phonenum', array('op' => 'detail', 'phone_package_id' => $item['phone_package_id']))}">管理套餐</a>
+            </td>
+        </tr>
+        {/loop}
+        </tbody>
+        <!--tr>
+            <td></td>
+            <td colspan="10">
+                <input name="token" type="hidden" value="{$_W['token']}" />
+                <input type="submit" class="btn btn-primary" name="submit" value="提交" />
+            </td>
+        </tr-->
+    </table>
+    {$pager}
+</div>
+{/if}
+{template 'common/footer'}

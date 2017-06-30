@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+<title>iScroll demo: carousel</title>
+<!--	<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>-->
+	<script src="zepto-1.0.js"></script>
+<script type="text/javascript" src="../../build/iscroll.js"></script>
+	<link rel="stylesheet" href="index.css"/>
+<!--
+<script type="text/javascript">
+
+var myScroll;
+
+function loaded () {
+	//$('#wrapper').height($(window).height())
+
+	myScroll = new IScroll('#wrapper', {
+		scrollY: true,
+		scrollX: false,
+	//	hScroll : true,
+		//vScroll : true,
+		//hScrollbar : true, //隐藏水平方向的滚动条。
+		//vScrollbar : true, //隐藏水平方向的滚动条。
+		bounce : true ,
+		momentum: false, //设置是否开始惯性，关闭此效果可节省资源
+		snap: true, //可以通过设置snap参数为指定标签来设定捕捉对象。比如捕捉li标签
+		snapSpeed: 400,
+		keyBindings: true,
+		indicators: {
+			el: document.getElementById('indicator'),
+			resize: false
+		}
+	});
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+</script>
+-->
+
+	<script type="text/javascript">
+
+		var myScroll;
+
+		function loaded () {
+			$('.slide').height($(window).height())
+			myScroll = new IScroll('.wrapper', {
+				scrollX: false,
+				scrollY: true,
+				momentum: false,
+				snap: true,
+				bounce : true
+				/*startY : 1,
+				startX : 1*/
+			});
+			myScroll.on('scrollEnd' , function(e ,params){
+				console.log(this.currentPage.pageY)
+			})
+		}
+
+		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	</script>
+<style type="text/css">
+		* {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		html {
+			-ms-touch-action: none;
+		}
+
+		body,ul,li {
+			padding: 0;
+			margin: 0;
+			border: 0;
+		}
+
+		body {
+			font-size: 12px;
+			font-family: ubuntu, helvetica, arial;
+			overflow: hidden; /* this is important to prevent the whole page to bounce */
+		}
+
+
+
+	</style>
+</head>
+<body onload="loaded()">
+
+<div class="snap">
+	<div class="wrapper">
+		<div class="scroller">
+			<div class="slide" style="background: red">slider</div>
+			<div class="slide"  style="background: blue">slider</div>
+			<div class="slide"  style="background: yellow">slider</div>
+			<div class="slide"  style="background: black">slider</div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+
+</html>

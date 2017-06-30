@@ -1,0 +1,11 @@
+
+{if $action == 'nav' && empty($do)}
+    <p>
+        <a class="btn btn-sm btn-primary" href="{php echo create_url('site/nav/post');}"><i class="icon-pencil"></i>{if $id}更新导航{else}添加导航 {/if}</a>
+    </p>
+
+{/if}
+
+{if $action == 'nav' && $do == 'post'}
+
+{/if}

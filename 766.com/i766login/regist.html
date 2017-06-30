@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>登入</title>
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<meta name="keywords" content="keywords" />
+<meta name="description" content="description" />
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>  
+<link rel="stylesheet" type="text/css" media="all" href="css/framework.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
+<script type="text/javascript" src="js/html5.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js" ></script>
+</head>
+<body>
+<!-- header -->
+<header class="header">
+	<!-- nav -->
+    <nav class="header-nav">
+    	<a href="#">登录<span></span></a><a href="#"  class="selected">注册<span></span></a>
+    </nav>
+    <!-- end nav -->
+</header>
+<!-- end header -->
+
+<div class="loginbox">
+    <div class="box-inner">
+        <a class="close" href="javascript:;"></a>
+        <form class="form">
+            <ul class="login">
+                <li><input type="text" class="text" placeholder="昵称/电子邮箱"/></li>
+                <li><input type="password" class="text" placeholder="输入密码"/></li>
+                <li class="buttons"><input type="submit" class="button submit" value="登 录"/></li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+
+<!-- container -->
+<div class="container">
+    
+    <section class="clearfix regsec">
+        <form class="form regform">
+            <ul>
+                <li><input id="user" type="text" class="text" placeholder="输入通行证" require/><span user class="tips">6~20位字符，由字母与数字组成，只能以字母开头</span></li>
+                <li><input id="password" type="password" class="text" placeholder="输入密码" require/><span password class="tips">6~16位字符，字母区分大小写</span></li>
+                <li><input id="passwordconform" type="password" class="text" placeholder="确认密码" equal="#password" require/><span passwordconform class="tips">请重新输入一遍</span></li>
+                <li><input id="emal" type="text" class="text" placeholder="输入安全邮箱"/><span emal class="tips" >为了您的帐号安全，请认真填写邮箱</span></li>
+                <li><input id="identify" type="text" class="text identify" placeholder="输入验证码" require/><img src="pic/reg.png" alt="" class="identifyimg"><span>看不清？</span><a href="">换一个</a><span identify class="tips">为了您的帐号安全，请认真填写邮箱</span></li>
+                <li><input type="checkbox" class="checkbox">我已确认并同意《766游戏网网络服务条款》</li>
+            </ul>
+            <div class="buttons"><input type="submit" class="button submit" value="注 册"/>已有通行证？ <a href="javascript:;" class="showlogin">马上登录</a></div>
+        </form>
+    </section>
+
+</div>
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer-wrap">
+	<footer class="footer"><script type="text/javascript" src="http://js.ue.766.com/comm/flc.js"></script></footer>
+</div>
+<!-- end footer -->
+
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<!--[if lte IE 6]><script type="text/javascript" src="js/DD_belatedPNG_0.0.8a-min.js" ></script><script type="text/javascript"> DD_belatedPNG.fix('div,a,img,input,a,span,li,ul,dl,dd,dt');</script> <![endif]-->
+<script type="text/javascript" src="js/jquery.core.js"></script>
+<script type="text/javascript" src="js/jquery.ui.validator.js"></script>
+<script type="text/javascript" src="js/jquery.ui.overlay.js"></script>
+<script type="text/javascript" src="js/jquery.ui.dialog.js"></script>
+<script type="text/javascript">
+    var dialog ;
+
+	$('input[type=text],input[type=password]').focus(function(){
+		$(this).addClass('focus');
+	}).blur(function(){
+		$(this).removeClass('focus');
+	});
+    dialog = new $.lib.ui.dialog('.loginbox',{
+        target : {
+            hide : '.close'
+        }
+    });
+
+    $('.showlogin').click(function(){
+        dialog.show();
+    })
+
+    new $.lib.ui.validator('.regform');
+</script>
+</body>
+</html>

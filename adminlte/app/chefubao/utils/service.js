@@ -1,0 +1,1 @@
+angular.module('chefubao.utils.service', [])

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>html model</title>
+<!-- The site is designed by cnfol.com,Inc 05/2009 -->
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<meta name="keywords" content="keywords" />
+<meta name="description" content="description" />
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/sq.css"/>
+<script type="text/javascript" src="js/html5.js"></script>
+</head>
+<body>
+
+<div class="container container1">
+
+</div>
+<div class="dialog" style="display: none;">
+    <form class="form" onsubmit="return false">
+        <ul>
+            <li><label for="user">用户名：</label><input id="user" class="text" type="text" require><span class="tips" user></span></li>
+            <li><label for="password">输入密码：</label><input id="password" class="text" type="password" require><span class="tips" password></span></li>
+            <li><label for="passwordconform">确认密码：</label><input id="passwordconform" class="text" type="password" require equal="#password"><span class="tips" passwordconform></span></li>
+        </ul>
+        <div class="center"><input type="submit" value="" class="submit"></div>
+    </form>
+</div>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.7.2.min.js" ></script>
+<!-- 常用插件库 -->
+<script type="text/javascript" src="js/jquery.class.min.js" ></script>
+<script type="text/javascript" src="js/Class.dialog.js" ></script>
+<script type="text/javascript" src="js/Class.validate.js" ></script>
+<!--[if lte IE 6]><script type="text/javascript" src="js/DD_belatedPNG_0.0.8a-min.js" ></script><script type="text/javascript"> DD_belatedPNG.fix('div,a,img,input,a,span,li,ul,dl,dd,dt');</script> <![endif]-->
+<script type="text/javascript">
+       var dialog =  new Class.dialog('.dialog',{ effect : 'fade',context : '.container'});
+       var validate = new Class.validate('.form',{ effect : 'fade'});
+       $('.container').click(function(){
+            dialog.show();
+       })
+       validate.on('itemfocus',function(e,$input,$tips){
+            if($($input).attr('id') == 'user'){
+                $.post('http://g.wp.766.com/gameapi/checkUserIsExist',{
+                    username : $('#user').val()
+                },function(data){
+                    if(data == 1){
+                        $('#user').next().text('用户名已存在!').removeClass('tips-success').addClass('tips-error');
+                    }
+                })
+            }
+       });
+       validate.on('submit',function(e){
+           $.post('http://g.wp.766.com/gameapi/register/',{
+               username : $('#user').val(),
+               password : $('#password').val()
+           },function(data){
+                if(data == 1){
+                    location.href = 'http://g.766.com/track?utm_source=ad_20121109&utm_medium=banner&utm_term=rxhzw&utm_content=s3&utm_campaign=8113';
+                }
+                else if(data == -2){
+                    $('#user').next().text('用户名已存在!').removeClass('tips-success').addClass('tips-error');
+                }
+                else if(data == -4){
+                   $('#user').next().text('用户名格式错误!').removeClass('tips-success').addClass('tips-error');
+                }
+                else if(data == -5){
+                   $('#password').next().text('密码格式错误!').removeClass('tips-success').addClass('tips-error');
+                }
+                else
+                {
+                    alert('注册失败!');
+                }
+           })
+
+           return false;
+       })
+
+</script>
+</body>
+</html>

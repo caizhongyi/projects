@@ -1,0 +1,82 @@
+{template 'header'}
+<body>
+<link href="./themes/mobile/css/slide.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="./themes/mobile/default/script/swipe.js"></script>
+<!--幻灯片-->
+<div style="-webkit-transform:translate3d(0,0,0);">
+    <div id="banner_box" class="box_swipe" style="visibility: visible;">
+        <ul style="list-style: none; width: 1280px; transition: 500ms; -webkit-transition: 500ms; -webkit-transform: translate3d(-640px, 0, 0);">
+            {loop $slides $slide}
+            <li style="width: 640px; display: table-cell; vertical-align: top;">
+                <a href="{php echo create_url('mobile/channel', array('name' => 'detail', 'id' => $slide['id'], 'templetid'=>$_GPC['templetid'],'weid' => $_W['weid']))}">
+                    <img src="{$_W['attachurl']}{$slide['thumb']}" alt="{$slide['title']}" style="width:100%;">
+                </a>
+            </li>
+            {/loop}
+        </ul>
+        <ol>
+            {php $slideNum = 1;}
+            {loop $slides $vv}
+            <li{if $slideNum == 1} class="on"{/if}></li>
+            {php $slideNum++;}
+            {/loop}
+        </ol>
+    </div>
+</div>
+<script>
+    $(function(){
+        new Swipe(document.getElementById('banner_box'), {
+            speed:500,
+            auto:3000,
+            callback: function(){
+                var lis = $(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
+            }
+        });
+        if($('#banner_box ul li').length == 1){
+            $('#banner_box ul').css('-webkit-transform','');
+        }
+    });
+</script>
+
+<!--导航菜单-->
+<!--<img class="bgimg" src="{php echo $styles[$name.'bgimg']}"/>-->
+<div class="body" style="padding-bottom: 52px">
+
+    <header>
+        <div class="snower">
+            <script type="text/javascript"></script>
+            <script type="text/javascript" src="./themes/mobile/css/snower.css"></script>
+        </div>
+    </header>
+
+    <section>
+        {if $navs}
+        <ul class="list_font">
+            {loop $navs $nav}
+            <li>
+                <a href="{$nav['url']}&templetid={$_GPC['templetid']}&page=0">
+                    <div><span class="{$nav['css']['icon']['icon']}""></span></div>
+                    <div><p>{$nav['name']}</p></div>
+                </a>
+            </li>
+            {/loop}
+        </ul>
+        {else}
+        <a href="http://www.we7.cc" class="box-item">
+            <i class="icon-home"></i>
+            <span style="{$nav['css']['name']}">微擎</span>
+        </a>
+        <a href="http://bbs.we7.cc" class="box-item">
+            <i class="icon-comment"></i>
+            <span style="{$nav['css']['name']}">论坛</span>
+        </a>
+        <a href="mobile.php?act=channel&name=home&weid={$_W['weid']}" class="box-item">
+            <i class="icon-user"></i>
+            <span style="{$nav['css']['name']}">个人中心</span>
+        </a>
+        {/if}
+    </section>
+</div>
+
+{template 'footer'}

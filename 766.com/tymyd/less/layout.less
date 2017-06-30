@@ -1,0 +1,171 @@
+﻿@charset "utf-8";
+
+/**
+ 1.控件命名:
+ 例如 ： .blue-btn, .bold-btn,.gray-btn 等
+ 如果是默认的则为: .default-btn
+
+ 2.私有成员命名
+ .control{
+ 	.hd{}
+ 	.bd{}
+ }
+
+ 如果产生冲突时才用私有
+
+  .control{
+ 	.control-hd{}
+ 	.control-bd{}
+ }
+
+ 3.多种样式切换页面请用multiple-style.less页面;
+   命名成不能出现 css 样式中的名称。
+   例如不能出现 .blue-btn.等;
+   应为.default-btn,.com-btn,.login,bbs-control等
+*/
+
+@import "controls/init.less";
+@import "controls/reset.less";
+//@import "controls/buttons.less";
+//@import "controls/icons.less";
+//@import "controls/pages.less";
+//@import "controls/dialog.less";
+//@import "controls/inputs.less";
+//@import "controls/tips.less";
+//@import "controls/articles.less";
+//@import "controls/list.less";
+//@import "controls/navs.less";
+//@import "controls/tabs.less";
+//@import "controls/toobar.less";
+//@import "controls/trees.less";
+//@import "controls/forms.less";
+//@import "controls/mods.less";
+//@import "controls/progress.less";
+//@import "controls/searchs.less";
+//@import "controls/publish.less";
+
+@base-url : "";
+
+/* -- template -- */
+.header,
+.footer,
+.container
+{ margin:0 auto; width:980px; }
+
+.nav{
+	a{
+		color: #000;
+		font-size: 36px;
+		text-decoration: none;
+		margin: 0 10px;
+	}
+	border-bottom: 1px solid #9f280d;
+	.selected{
+		border-bottom: 2px solid #9f280d;
+		color: #9f280d;
+	}
+	padding: 4px 0;
+	margin-left: -100px;
+}
+
+.index{
+	.background('index.jpg',center);
+	text-align: center;
+	height: 1080px;
+	.btn{
+		position: relative;
+		display: inline-block;
+		width: 219px;
+		height: 55px;
+		top: 45%;
+	}
+}
+
+.game{
+	.background('bg.jpg',center);
+	height: 1080px;
+}
+
+.wrap{
+	margin: 0 auto;
+	width: 1006px;
+	.nav{
+		text-align: right;
+		padding-top:149px;
+		margin-left:--77px;
+		margin-bottom: 20px;
+	}
+	.clearfix();
+}
+
+.content{
+	padding: 20px;
+	background: #202021;
+	.opacity(0.8);
+	.scroll-y(450px);
+	margin:0px 0 0 50px;
+	color: #fff;
+
+}
+
+p{
+	margin-bottom: 10px;
+	line-height: 25px;
+}
+ 
+.tabs{
+	a{
+		display: inline-block;
+		.size(70px,93px);
+		.background('page.png');
+		position: absolute;
+		top: 160px;
+	}
+	.prev{
+		left: 10px;
+	}
+	.next{
+		right: 10px;
+		background-position:  -60px 0;
+	}
+	.prev-disabled{background-position:  0 -60px;}
+	.next-disabled{background-position:  -60px -60px;}
+	background: #202021;
+	margin-left: 10px;
+	position:relative;
+	.clip{
+		height: 403px;
+		width: 779px;
+		overflow: hidden;
+		margin-left: 110px;
+	}
+	.opacity(0.8);
+	li{
+		position: relative;
+		.layer,.layer-msg{
+			position: absolute;
+			bottom : 0;
+			color: #fff;
+			width: 100%;
+			left: 0;
+			.vertical-middle(50px);
+			display: block;
+			top:auto;
+		}
+		.layer{
+			background: #000;
+			.opacity(0.6);
+		}
+		.layer-msg{
+			margin-left: 10px;
+			background: none;
+		}
+	}
+}
+
+.message{
+	padding: 20px;
+	background: #202021;
+	color: #fff ;
+}
+/* -- end template -- */

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="http://js.olcdn.com/lib/utf8/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="http://js.olcdn.com/index/v2/cookie.js" charset="gb2312"></script>
+<script>
+ $(function(){
+	 var arr	=	[];
+	 var strs = new Array(); 
+	 //var choose_opt	=	getCookie('choose_opt');
+	 $(".main02_l_3_con ul li").click(function(){
+		 var ckid=$(this).attr('name');		 
+		    arr.push(ckid);
+		  	if(arr.length >= 3){
+		  		$(".main02_l_3_con ul li").attr("class","");
+ 
+		  		show_result(arr);
+				arrjoin = arr.join(",");
+				strs = arrjoin.split(","); 
+				for (i=0;i<strs.length ;i++ ){
+			        $("#check_opt_"+strs[i]).attr("class","select");
+			    } 
+				/* 最后处理 */
+				
+				arr.splice(0,1);
+				reset_cookies(arr);
+			}else{
+				$("#check_opt_"+ckid).attr("class","select");
+				reset_cookies(arr);
+				if(arr.length == 3){
+					alert(1);
+				}
+			} 
+	 });
+ });
+
+ function show_result(arrs){
+		var opt1	=	parseInt(arrs[0]);
+		var opt2	=	parseInt(arrs[1]);
+		var opt3	=	parseInt(arrs[2]);
+		
+		$.ajax({
+			url:'http://hd.766.com/market/sgsjhc',
+			dataType:'json',
+			data:'opt1='+opt1+'&opt2='+opt2+'&opt3='+opt3+'&callback=?',
+			type:'get',
+			success:function(data){
+				if(data.url==undefined){
+					var htmlp = data.zyname;
+				}else{
+					var htmlp = '<a style="color:yellow;" href="'+data.url+'" target="_blank">'+data.zyname+'</a>';
+				}
+				$(".main02_l_3_con p").html(htmlp);				
+			}
+		});
+	}
+ function reset_cookies(v){
+		delCookie('choose_opt');
+		addCookie('choose_opt',v);
+	}
+</script>
+</head>
+
+<body>
+  <div class="main02_l_3">
+				     <h2>请选择职业</h2>
+					  <div class="main02_l_3_con">
+					     <ul>
+						     <li name="1" id="check_opt_1">格斗</li>
+							 <li name="2" id="check_opt_2">幻术</li>
+							 <li name="3" id="check_opt_3">铁壁</li>
+							 <li name="4" id="check_opt_4">意志</li>
+							 <li name="5" id="check_opt_5">死亡</li>
+							 <li name="6" id="check_opt_6">野性</li>
+							 <li name="7" id="check_opt_7">元素</li>
+							 <li name="8" id="check_opt_8">暗杀</li>
+							 <li name="9" id="check_opt_9">吟游</li>
+							 <li name="10" id="check_opt_10">生命</li>
+						  </ul>
+						  <p>请先选择属性</p>
+					  </div>
+				  </div>
+</body>
+</html>

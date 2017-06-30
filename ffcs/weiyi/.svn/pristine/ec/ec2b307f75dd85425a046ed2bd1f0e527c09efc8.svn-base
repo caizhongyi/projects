@@ -1,0 +1,40 @@
+{template 'header'}
+{template 'slide'}
+<body onload="setColors();">
+
+<div class="body" style="padding-bottom: 52px">
+    <!--导航-->
+    <section>
+        {if $navs}
+        <ul class="list_font" id="menu">
+            {loop $navs $nav}
+            <li>
+                <a href="{$nav['url']}">
+                    {if empty($nav['css']['icon']['icon'])}
+                    <div>
+                        <span style="background:url({$_W['attachurl']}{$nav['icon']}) no-repeat;background-size:cover;"></span>
+                    </div>
+                    {else}
+                    <div>
+                    <span class="{$nav['css']['icon']['icon']}">
+
+                    </span>
+                    </div>
+                    {/if}
+                    <div>
+                        <p>{$nav['name']}</p>
+                    </div>
+                </a>
+            </li>
+            {/loop}
+        </ul>
+        {else}
+        <a href="mobile.php?act=channel&name=home&weid={$_W['weid']}" class="box-item">
+            <i class="icon-user"></i>
+            <span style="{$nav['css']['name']}">个人中心</span>
+        </a>
+        {/if}
+    </section>
+</div>
+
+{template 'footer'}

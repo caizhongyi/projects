@@ -1,0 +1,72 @@
+@import "../mixins/index";
+@import "core";
+
+/* tips */
+.tips,.bottom-tips ,.left-tips,.right-tips{
+	position: relative;
+	display: inline-block;
+	.tips-inner {
+		position: absolute;
+		left: 0;
+		top: -50px;
+		width: 200px;
+		.tips-arrow {
+			position: absolute;
+			bottom: -20px;
+			width: 20px;
+			height: 20px;
+			left: 20%;
+		}
+		.tips-content {
+			position: relative;
+			padding: 10px;
+			z-index: 1;
+		}
+		.tips-bg {
+			height: 100%;
+			.opacity(0.5);
+			width: 100%;
+			position: absolute;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+		}
+		.tips-content, .tips-bg {
+			background: #ddd;
+			_background: #ddd;
+		}
+	}
+}
+
+.bottom-tips {
+	.tips-inner {
+		top: auto;
+		bottom: -50px;
+		.tips-arrow {
+			top: -20px;
+		}
+	}
+}
+
+.left-tips {
+	.tips-inner {
+		top: 0;
+		left: -220px;
+		.tips-arrow {
+			right: -20px;
+			left: "auto";
+			top: 20%;
+		}
+	}
+}
+
+.right-tips {
+	.tips-inner {
+		top: 0;
+		right: -20px;
+		left: "auto";
+		.tips-arrow {
+			left: -20px;
+			top: 20%;
+		}
+	}
+}

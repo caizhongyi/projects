@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <link href="css/mobiscroll.custom-2.16.1.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/mobiscroll.custom-2.16.1.min.js" type="text/javascript"></script>
+
+    <script src="dev/js/mobiscroll.core-2.5.2-zh.js" type="text/javascript"></script>
+
+</head>
+<body>
+<style>
+    .dwwr{ width: auto !important;}
+</style>
+
+<ul id="demo" style="display:none">
+    <li data-val="0">0
+        <ul>
+            <li data-val="3">3W</li>
+            <li data-val="5">5W</li>
+            <li data-val="10">10W</li>
+            <li data-val="20">20W</li>
+            <li data-val="30">30W</li>
+            <li data-val="40">40W</li>
+            <li data-val="100">100W</li>
+            <li data-val="500">500W</li>
+            <li data-val="1000">1000W</li>
+        </ul>
+    </li>
+    <li data-val="3">3W
+        <ul>
+            <li data-val="5">5W</li>
+            <li data-val="10">10W</li>
+            <li data-val="20">20W</li>
+            <li data-val="30">30W</li>
+            <li data-val="40">40W</li>
+            <li data-val="100">100W</li>
+            <li data-val="500">500W</li>
+            <li data-val="1000">1000W</li>
+        </ul>
+    </li>
+    <li data-val="5">5W
+        <ul>
+            <li data-val="10">10W</li>
+            <li data-val="20">20W</li>
+            <li data-val="30">30W</li>
+            <li data-val="40">40W</li>
+            <li data-val="100">100W</li>
+            <li data-val="500">500W</li>
+            <li data-val="1000">1000W</li>
+        </ul>
+    </li>
+    <li data-val="10">10W
+        <ul>
+            <li data-val="20">20W</li>
+            <li data-val="30">30W</li>
+            <li data-val="40">40W</li>
+            <li data-val="100">100W</li>
+            <li data-val="500">500W</li>
+            <li data-val="1000">1000W</li>
+        </ul>
+    </li>
+    <li data-val="20">20W
+        <ul>
+            <li data-val="30">30W</li>
+            <li data-val="40">40W</li>
+            <li data-val="100">100W</li>
+            <li data-val="500">500W</li>
+            <li data-val="1000">1000W</li>
+        </ul>
+    </li>
+    <li data-val="30">30W
+        <ul>
+            <li data-val="40">40W</li>
+            <li data-val="100">100W</li>
+            <li data-val="500">500W</li>
+            <li data-val="1000">1000W</li>
+        </ul>
+    </li>
+    <li data-val="40">40W
+        <ul>
+            <li data-val="100">100W</li>
+            <li data-val="500">500W</li>
+            <li data-val="1000">1000W</li>
+        </ul>
+    </li>
+    <li data-val="50">50W
+        <ul>
+            <li data-val="100">100W</li>
+            <li data-val="500">500W</li>
+            <li data-val="1000">1000W</li>
+        </ul>
+    </li>
+</ul>
+
+
+<script>
+    $(function () {
+
+        $("#demo").mobiscroll().treelist({
+            lang: "zh",
+         //    fixedWidth: [400,400,400],
+            defaultValue  : [50 ,500],
+            placeholder: '选择价格',
+            headerText: function (valueText) { return "选择价格"; }
+          /*  formatResult: function (array) { //返回自定义格式结果
+                console.log(array)
+                return $('#treelist>li').eq(array[0]).children('span').text() +' '+ $('#treelist>li').eq(array[0]).find('ul li').eq(array[1]).text().trim(' ');
+            }*/
+        });
+
+    })
+</script>
+
+</body>
+</html>

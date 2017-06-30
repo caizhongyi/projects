@@ -1,0 +1,142 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: yangey
+ * Date: 13-12-16
+ * Time: 下午8:00
+ */
+defined('IN_IA') or exit('Access Denied');
+$actType = $_GPC['actType'];
+$actType = empty($actType) ? "list" : $actType;
+
+if ($actType == "list") {
+    $pMax =  $_GPC['pMax'];
+    $pMin =  $_GPC['pMin'];
+    $pMax = empty($pMax) ? 10 : $pMax;
+    $pMin = empty($pMin) ? 0 : $pMin;
+
+    $url = create_url('rule/post', array('type' => 'list'));
+    $queryUrl = create_url('micromember/coupon', array('type' => 'list'));
+    //查询，分页，
+    $keyWord = $_GPC['keyword-input'];
+    $type = $_GPC['query_type'];
+    $typetemp = $type;
+    $sql = "SELECT a.*,b.name
+              FROM ims_micromember_coupon a,
+                   ims_micromember_coupon_type b
+             WHERE a.type=b.id and a.status=1 and  weid = {$_W['weid']}";
+    if(!empty($type)){
+        if(0!=$type)
+        $sql = $sql." and a.type=".$type;
+    }
+
+    if(!empty($keyWord)){
+        $sql = $sql." and a.title like '%".$keyWord."%'";
+    }
+
+    $sql = $sql." order by id desc limit ".$pMin.",".$pMax;
+
+    $couponList = pdo_fetchall($sql);
+    template('micromember/coupon/list');
+    return;
+}
+
+if ($actType == "edit") {
+    template('micromember/coupon/edit');
+    return;
+}
+
+if ($actType == "detail") {
+    $r_couponId = $_GPC['couponId'];
+    $r_keyWord = $_GPC['keyword-input'];
+    $r_queryType = $_GPC['query_type'];
+
+    $sql = "SELECT a.*,b.username,c.title
+              FROM ims_micromember_coupon_log a,ims_members b,ims_micromember_coupon c
+             WHERE a.uid=b.uid
+               AND a.coupon_Id=c.id
+               AND b.status=0
+               AND a.weid = {$_W['weid']}
+               AND a.status=1
+               AND coupon_id={$r_couponId} ";
+
+    if(!empty($r_queryType)&&!empty($r_keyWord)){
+        if("all"==$r_queryType){
+            $sql = $sql." AND (b.username like '%".$r_keyWord.
+                "%' or b.username like '%".$r_keyWord.
+                "%' or b.username like '%".$r_keyWord."%')";
+        }
+        if("membername"==$r_queryType)
+            $sql = $sql." AND b.username like '%".$r_keyWord."%'";
+        if("phone"==$r_queryType)
+            $sql = $sql." AND a.phone_no like '%".$r_keyWord."%'";
+        if("SN"==$r_queryType)
+            $sql = $sql." AND a.sn like '%".$r_keyWord."%'";
+    }
+
+    $sql = $sql." order by  a.use_status,a.get_date desc";
+
+
+    $r_detailList = pdo_fetchall($sql);
+
+    template('micromember/coupon/detail');
+    return;
+}
+
+if($actType == "update"){
+
+}
+
+//删除优惠券
+if($actType == "delete"){
+    $couponId = $_GPC['couponId'];
+    $coupon_data = array(
+        'status' => 0,
+    );
+
+    $update = pdo_update("micromember_coupon",$coupon_data,array( 'weid' => $_W['weid'],'id'=>$couponId));
+    if($update){
+        message('优惠券删除成功', create_url('micromember/coupon'));
+    }else{
+        message('优惠券删除失败', create_url('micromember/coupon'));
+    }
+}
+
+if ($actType == "add") {
+    $submit = $_GPC['submit'];
+    //获取会员等级列表
+    template('micromember/coupon/add');
+    return;
+}
+
+//保存操作
+if ($actType == "save") {
+    $permoney = $_GPC['permoney'];
+    $allmoney = $_GPC['allmoney'];
+    $money = 11;
+    $time = $_GPC['time'];
+    $times = explode( ' - ', $time );
+    $type = $_GPC['type'];
+    $nums = $_GPC['nums'];
+    $info = $_GPC['info'];
+
+    $coupon_data = array(
+        'weid' => $_W['weid'],
+        'title' => $_GPC['title'],
+        'user_group' => (int)$_GPC['crowd_type'],
+        'type' => (int)$_GPC['type'],
+        'begin_date' => $times[0],
+        'end_date' =>  $times[1],
+        'create_date' => date('Y-m-d H:i:s', time()),
+        'conpon_desc' => $_GPC['info'],
+        'get_num' => (int)$_GPC['nums'],
+        'group_param' => (int)$$money
+    );
+    if(pdo_insert('micromember_coupon', $coupon_data)){
+        message('优惠券添加成功', create_url('micromember/coupon'));
+    }else{
+        message('优惠券添加失败', create_url('micromember/coupon'));
+    }
+
+    return;
+}

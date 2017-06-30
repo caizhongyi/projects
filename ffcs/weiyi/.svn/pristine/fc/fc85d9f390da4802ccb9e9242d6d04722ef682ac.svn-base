@@ -1,0 +1,57 @@
+{php $_W['breadcrumb'] = array(array('title'=>'自动回复'),array('title'=>'常用服务接入'))}
+{template 'common/header'}
+<style>
+.table td span{display:inline-block;}
+.table td input{margin-bottom:0;}
+</style>
+<script type="text/javascript">
+$(function(){
+	$('.ace-switch').on('change', function (e, data) {
+		var rids = [];
+		$('input[name="switch-field"]:checked').each(function(){
+			rids.push($(this).val());
+		});
+		$.post(location.href, {'rids': rids.toString()}, function(dat){
+		});
+	});
+});
+</script>
+
+<div class="page-header">
+	<h1>
+		<i class="icon-cogs"></i> 常用服务接入
+	</h1>
+</div>
+<form action="" method="post">
+<div class="main">
+	<div style="padding:15px;">
+		<table class="table table-hover">
+			<thead class="navbar-inner">
+				<tr>
+					<th style="width:200px;">服务名称</th>
+					<th style="min-width:260px;">功能说明</th>
+					<th style="width:60px;">状态</th>
+				</tr>
+			</thead>
+			<tbody>
+				{loop $ds $row}
+				<tr>
+					<td>{$row['title']}</td>
+					<td>{$row['description']}</td>
+					<td>
+						<!-- <div class="make-switch" data-on-label="启用" data-off-label="停用">
+							<input type="checkbox" value="{$row['rid']}"{$row['switch']} />
+						</div> -->
+						<label>
+							<input type="checkbox" class="ace ace-switch" name="switch-field" value="{$row['rid']}" {$row['switch']} />
+							<span class="lbl"></span>
+						</label>
+					</td>
+				</tr>
+				{/loop}
+			</tbody>
+		</table>
+	</div>
+</div>
+</form>
+{template 'common/footer'}

@@ -1,0 +1,115 @@
+/*遮罩*/
+.mask { width: 100%; height: 100%; position: fixed; top: 0; left: 0; background: #000; filter: alpha(opacity=70); -moz-opacity: .70; opacity: .70; z-index: 1500;}
+
+/*基本样式*/
+.mod-pop { position: absolute; background: #fff; z-index: 1501;}
+.mod-pop .hd { height: 50px; position: relative;}
+.mod-pop .hd h3 { padding: 0 0 0 26px; height: 48px; line-height: 48px; border: 1px solid #ebebeb; background: #f9f9f9; font-size: 16px; color: #494949; font-weight: bold;}
+.mod-pop .hd .close { display: block; width: 60px; height: 60px; background: #393939; text-align: center; line-height: 60px; position: absolute; top: 0; right: -60px; cursor: pointer;}
+.mod-pop .hd .i-close { width: 38px; height: 38px; background-position: -50px -50px; margin: 11px 0 0 0;}
+.mod-pop .bd { padding: 34px 0 0 0; position: relative;}
+.mod-pop .bd-tit { font-size: 16px; font-weight: bold; color: #383838; margin: -11px 65px 0 65px; padding: 0 0 7px 0;}
+.mod-pop .line { height: 0; border-bottom: 1px solid #ececec; margin: 0 65px 30px 65px;}
+.mod-form-item { position: relative; padding: 0 0 30px 0; color: #494949; margin: 0 65px;}
+.mod-form-item .tit { display: inline-block; width: 116px; height: 42px; line-height: 42px; position: absolute; top: 0; left: -136px; text-align: right; padding: 0 20px 0 0;}
+.mod-form-item .star { color: #fc5300; margin: 0 4px 0 0;}
+.mod-form-item .error { position: absolute; color: #fc5300; left: 0; bottom: 6px;}
+.mod-form-item .i-error { width: 16px; height: 16px; background-position: -100px -50px; margin: 0 6px 3px 0;}
+.mod-form-item .i-must, .mod-form-item .i-must-cgb { display: inline-block; width: 0; height: 0; border-style: solid; border-width: 7px 7px 0 0; border-color: #f40 transparent transparent transparent; position: absolute; top: 0; *top: 1px; left: 0;}
+.mod-form-item .i-must-cgb { border-color: #d70000 transparent transparent transparent;}
+.mod-form-item .unit { position: absolute; top: 1px; *top: 2px; right: 1px; background: #fff; display: inline-block; color: #989898; height: 40px; line-height: 40px; padding: 0 20px;}
+.mod-form-item .code { vertical-align: middle; display: inline-block; margin: 0 0 0 34px;}
+.mod-form-item .code img { width: 90px; height: 40px;}
+.mod-form-item .checkbox-item { margin: 0 18px 0 0;}
+.mod-pop .checkbox1 { margin: 0 8px 2px 0; *margin-bottom: 0; vertical-align: middle; display: inline-block; width: 13px;}
+.mod-form-item .textarea1, .mod-form-item .input1 { font-size: 14px; font-family: Microsoft YaHei; color: #989898; border: 1px solid #ececec; padding: 10px 12px; background: #fff; width: 304px;}
+.mod-form-item .textarea1 { height: 96px; line-height: 24px; padding: 8px 12px;}
+.mod-form-item .input1 { height: 20px; line-height: 20px; vertical-align: middle;}
+.mod-form-item .input-short { width: 134px; margin-right: 10px;}
+.mod-form-item .btn-box button { width: 160px; height: 40px; text-align: center; font-family: Microsoft YaHei; color: #494949; background: #f5f5f5; border: 1px solid #ececec; cursor: pointer; font-size: 16px;}
+.mod-form-item .btn-box .b-r { margin: 0 10px 0 0;}
+.mod-form-item .btn-box .orange { background: #fc5300; border: 1px solid #fc5300; color: #fff;}
+.mod-form-item .btn-box .red { background: #d70000; border: 1px solid #c60000; color: #fff;}
+.mod-form-item .get-code, .mod-form-item .get-code2 { display: inline-block; width: 158px; height: 40px; border: 1px solid #ffe2ac; background: #fff3dd; color: #f59f00; text-align: center; line-height: 40px; cursor: pointer; vertical-align: middle;}
+.mod-form-item .get-code2 { background: #f2f2f2; border: 1px solid #ececec; color: #494949;}
+.mod-form-item .get-code-cant { background: #f2f2f2; border: 1px solid #ececec; color: #989898;}
+.mod-pop .remind { line-height: 25px; color: #989898; margin: -18px 65px 0 65px;}
+.mod-pop .remind2 { margin: -17px 65px 23px 65px; line-height: 25px; color: #989898;}
+.mod-pop .remind2 dt { font-weight: bold; color: #2f3031;}
+.mod-pop .hot { color: #fc5300;}
+.mod-pop .hot-cgb { color: #d70000;}
+.mod-pop strong.hot, .mod-pop strong.hot-cgb { font-weight: bold;}
+.mod-pop .mod-result { text-align: center; padding: 40px 0; color: #989898; margin: 0 65px;}
+.mod-pop .mod-result .img i { width: 90px; height: 90px; margin: 0 0 16px 0;}
+.mod-pop .mod-result .img .i-thanks { background-position: 0 -250px;}
+.mod-pop .mod-result .img .i-success { background-position: -100px -250px;}
+.mod-pop .mod-result .img .i-remind { background-position: -200px -250px;}
+.mod-pop .mod-result .tit { font-size: 24px; font-weight: bold; color: #2f3031;}
+.mod-pop .mod-result .con { line-height: 24px;}
+.mod-form-item-ex-checkbox .tit { line-height: 20px;}
+.mod-form-item-ex-error .input1 { border-color: #d70000; color: #d70000;}
+.mod-form-item-ex .tit { left: 0; height: 35px; line-height: 1.5; top: -48px; padding: 13px 0 0 0; width: 100%; text-align: left;}
+.mod-pop .mod-form-ex { padding: 38px 0 0 0;}
+.mod-pop .left-info { width: 205px; height: 276px; background: #f5f5f5; border: 1px solid #ececec; color: #494949; line-height: 25px; position: absolute; top: 30px; left: 55px; padding: 15px 0 0 0;}
+.mod-pop .left-info p { margin: 0 15px;}
+.mod-pop .checkbox-list { overflow: hidden; *zoom: 1; margin: -19px 65px 15px 65px; color: #2f3031;}
+.mod-pop .checkbox-list-item { width: 165px; float: left; display: inline; height: 44px; line-height: 44px;}
+
+/*用户登录*/
+.mod-pop-ex-login { width: 440px;}
+.mod-pop-ex-login .hd { height: 50px;}
+.mod-pop-ex-login .hd h3 { font-size: 24px; margin: 0 20px; height: 49px; border: 0; border-bottom: 1px solid #ececec; background: none; text-align: center; padding: 0; font-weight: normal;}
+.mod-pop-ex-login .hd h3 .move { display: inline-block; padding: 0 14px; background: #fff; position: relative; top: 24px;}
+.mod-pop-ex-login .bd { padding: 40px 0 0 0;}
+.mod-pop-ex-login .mod-form-item { margin-left: 50px; margin-right: 50px; padding-bottom: 36px;}
+.mod-pop-ex-login .input1 { width: 314px;}
+.mod-pop-ex-login .login-item1 { overflow: hidden; margin: -10px 50px 17px 50px;}
+.mod-pop-ex-login .login-item1 .login-item-l { float: left; display: inline;}
+.mod-pop-ex-login .login-item-r { float: right; display: inline;}
+.mod-pop-ex-login .login-item-r a { color: #1886e4;}
+.mod-pop-ex-login .btn-box button { width: 340px;}
+.mod-pop-ex-login .login-item2 { overflow: hidden; margin: -4px 20px 37px 20px; padding: 21px 30px 0 30px; border-top: 1px solid #ececec;}
+.mod-pop-ex-login .login-item2 .login-item-l { float: left; display: inline;}
+.mod-pop-ex-login .login-item2 .login-item-l .tit { vertical-align: middle; margin: 0 14px 0 0;}
+.mod-pop-ex-login .login-item2 .login-item-l .link-login { margin: 0 9px 0 0; cursor: pointer;}
+.mod-pop-ex-login .login-item2 .login-item-l .link-login .i-sina { width: 41px; height: 40px; background-position: -150px -50px;}
+.mod-pop-ex-login .login-item2 .login-item-l .link-login .i-qq { width: 41px; height: 40px; background-position: -200px -50px;}
+.mod-pop-ex-login .login-item2 .login-item-r { margin: 10px 0 0 0;}
+.mod-pop-ex-login .mod-form-item .get-code { width: 106px; position: absolute; top: 0; *top: 1px; right: 0;}
+.mod-pop-ex-login .mod-form-item .get-code-cant { background: #d6d6d6; border: 1px solid #d6d6d6; color: #fff;}
+
+/*投诉与建议*/
+.mod-pop-ex-beef { width: 710px;}
+.mod-pop-ex-beef .bd { height: 436px;}
+.mod-pop-ex-beef .mod-form-item { margin-left: 136px; margin-right: 50px;}
+.mod-pop-ex-beef .textarea1, .mod-pop-ex-beef .input1 { width: 498px;}
+.mod-pop-ex-beef .textarea1 { height: 142px;}
+.mod-pop-ex-beef .btn-box button { width: 252px;}
+.mod-pop-ex-beef .btn-box .b-r { margin: 0 20px 0 0;}
+.mod-pop-ex-beef .remind { line-height: 1.5; color: #494949; margin: 0 0 0 60px;}
+
+/*我要出价*/
+.mod-pop-ex-price { width: 460px;}
+.mod-pop-ex-price .bd { height: 294px;}
+
+/*免费发送到手机*/
+.mod-pop-ex-send { width: 676px;}
+.mod-pop-ex-send .bd { height: 329px;}
+.mod-pop-ex-send .mod-form-item, .mod-pop-ex-send .remind { margin-left: 291px; margin-right: 55px;}
+
+/*举报*/
+.mod-pop-ex-report { width: 460px;}
+.mod-pop-ex-report .bd { height: 531px;}
+.mod-pop-ex-report .mod-result { padding-top: 128px;}
+.mod-pop-ex-report .mod-result-ex { padding-top: 0; padding-bottom: 23px; margin-top: -9px;}
+
+/*预约看车*/
+.mod-pop-ex-look { width: 460px;}
+.mod-pop-ex-look .bd { height: 294px;}
+
+/*保存提示*/
+.mod-pop-ex-save { width: 460px;}
+.mod-pop-ex-save .bd { height: 294px;}
+.mod-pop-ex-save .mod-result { padding-top: 8px; padding-bottom: 36px;}
+.mod-pop-ex-save .mod-result .img i { margin-bottom: 22px;}
+.mod-pop-ex-save .mod-result .con { text-align: left; font-size: 16px; color: #494949; line-height: 28px;}

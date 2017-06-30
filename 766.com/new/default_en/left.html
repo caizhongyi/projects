@@ -1,0 +1,30 @@
+	{assign source=get_tpl_list_nav() name=tree/}
+			   {if $tree}
+              <div id="menubox">
+			  	  {loop source=$tree item=$nav}
+				   <div onClick="showhide_obj('title{print $nav['key']/}','icon{print $nav['key']/}')" class="new_li" style="_height:20px; _line-height:20px;">
+				    {if $nav['child']}<font id='icon{print $nav['key']/}' class="icon_plus">-</font>{/if}
+						<a href="{print $nav['url']/}" {print $nav['target']/} title="{print $nav['cate_name']/}">{print $nav['cate_name']/}</a></div>
+					  <div id="title{print $nav['key']/}"   style="display:block;">
+					  	  {loop source=$nav['child']}
+						 	 <span id="menu1_1"  onclick="show_this('select1_1')">
+							 <a href="{print $v['url']/}" target="_blank" class="new_li_2">{print $v['cate_name']/}</a></span>
+						  {/loop}
+					 </div>
+				  {/loop}
+             </div>
+			   {else}
+			   <div id="menubox">
+			   	{loop source=nav_middle() item=$nav_child} 
+					<div onClick="showhide_obj('title1','icon1')" class="new_li" style="_height:20px; _line-height:20px;">
+				    {if $nav['child']}<font id='icon1' class="icon_plus">-</font>{/if}
+						<a href="{print $nav_child['url']/}" {print $nav['target']/} title="{print $nav['cate_name']/}">{print $nav_child['cate_name']/}</a></div>
+					  <div id="title1"   style="display:block;">
+					  	  {loop source=$nav['child']}
+						 	 <span id="menu1_1"  onclick="show_this('select1_1')">
+							 <a href="{print $v['url']/}" target="_blank" class="new_li_2">{print $v['cate_name']/}</a></span>
+						  {/loop}
+					 </div>
+				{/loop}
+				</div>
+			 {/if}

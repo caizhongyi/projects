@@ -1,0 +1,18 @@
+<!---把以下文本复制到记事本里面，然后保存成 .htm 格式文件，用IE打开就可以预览效果了--->
+
+<script language="JavaScript">
+function toDesktop(sUrl,sName){
+try  
+{
+var WshShell = new ActiveXObject("WScript.Shell");
+var oUrlLink = WshShell.CreateShortcut(WshShell.SpecialFolders("Desktop") + "\\" + sName + ".url");
+oUrlLink.TargetPath = sUrl;
+oUrlLink.Save();
+}  
+catch(e)  
+{  
+     alert("当前IE安全级别不允许操作！");  
+}
+}
+</script>
+<input name="btn" type="button" id="btn" value="添加桌面快捷方式" onClick="toDesktop('http://www.766.com','766游戏网')">

@@ -1,0 +1,39 @@
+{php $_W['breadcrumb'] = array(array('title'=>'系统管理'),array('title'=>'菜单管理 '))}
+{template 'common/header'}
+<script type="text/javascript">
+function confirmurl(url,message) {
+	if(confirm(message)) {location.href = url;}
+}
+
+</script>
+<div class="page-header">
+    <h1>
+        <i class="icon-globe "></i> 菜单管理
+    </h1>
+</div>
+<ul class="nav nav-tabs">
+    <li class="active"><a href="{php echo create_url('setting/menu');}">菜单管理</a></li>
+    <li ><a href="{php echo create_url('setting/menu',array('do'=>'add'))}">添加菜单</a></li>
+</ul><br/>
+<div class="main">
+<form name="myform" action="{php echo create_url('setting/menu/listorder');}" method="post">
+    <table width="100%" class="table">
+        <thead>
+            <tr>
+	            <th width="80" style="text-align:center;">排序</th>
+	            <th width="100" style="text-align:center;">id</th>
+	            <th style="text-align:center;">菜单名称</th>
+				<th style="text-align:center;">操作</th>
+            </tr>
+        </thead>
+	<tbody>
+    	{$categorys}
+	</tbody>
+    </table>
+  
+    <input type="submit" class="btn btn-primary" name="dosubmit" value="排序" /></div>
+
+</form>
+</div>
+
+{template 'common/footer'}

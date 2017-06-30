@@ -1,0 +1,23 @@
+<?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: linruijuan
+ * Date: 14-1-7
+ * Time: 下午4:09
+ * To change this template use File | Settings | File Templates.
+ * 微团购模块
+ */
+define('IN_SYS', true);
+require 'source/bootstrap.inc.php';
+checklogin();
+checkaccount();
+$actions = array('display','create','delete');
+
+if (in_array($_GPC['act'], $actions)) {
+    $action = $_GPC['act'];
+} else {
+    $action = 'display';
+}
+
+$controller = 'groupbuying';
+require router($controller, $action);

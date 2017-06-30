@@ -1,0 +1,43 @@
+{template 'common/header'}
+	<div class="main">
+		<form action="" method="post" class="form-horizontal form" onsubmit="return formcheck(this)">
+			<h4>全局设置</h4>
+			<table class="tb">
+				<tr>
+					<th>授权地址安全模式</th>
+					<td>
+						<label for="radio_1" class="radio inline"><input type="radio" name="authmode" id="radio_1" value="1" {if empty($_W['setting']['authmode']) || $_W['setting']['authmode'] == 1} checked{/if} /> 宽松</label>
+						<label for="radio_0" class="radio inline"><input type="radio" name="authmode" id="radio_0" value="2" {if !empty($_W['setting']['authmode']) && $_W['setting']['authmode'] == 2} checked{/if} /> 严格</label>
+						<div class="help-block">设置严格模式时，系统提供给用户的授权地址时效为3分钟，在这个时间内用户没有点击则失效。并且在严格模式下，授权地址为一次性地址，用户点击后该地址自动失效。但不会影响已授权过的用户。</div>
+					</td>
+				</tr>
+			</table>
+			<table class="tb">
+				<tr>
+					<th></th>
+					<td>
+						<button type="submit" class="btn btn-primary span3" name="submit" value="提交">提交</button>
+						<input type="hidden" name="token" value="{$_W['token']}" />
+					</td>
+				</tr>
+			</table>
+			<h4>系统锁操作</h4>
+			<table class="tb">
+				<tr>
+					<th>删除升级锁</th>
+					<td>
+						<input name="bae_delete_update" type="submit" value="删除" class="btn" />
+						<div class="help-block">升级“微翼”系统时，需要先删除升级锁，确保升级正常进行。</div>
+					</td>
+				</tr>
+				<tr>
+					<th>删除安装锁</th>
+					<td>
+						<input name="bae_delete_install" type="submit" value="删除" class="btn" />
+						<div class="help-block">重新安装“微翼”系统时，需要先删除安装锁。</div>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+{template 'common/footer'}

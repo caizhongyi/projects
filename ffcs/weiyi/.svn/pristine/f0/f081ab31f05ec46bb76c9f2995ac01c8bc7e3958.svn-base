@@ -1,0 +1,187 @@
+{php $_W['breadcrumb'] = array(array('title'=>'公众号管理'),array('title'=>'公众号列表'),array('title'=>设置公众号 ))}
+{template 'common/header'}
+
+<div class="page-header">
+    <h1>
+        <i class="icon-laptop"></i> {if empty($id)}
+			添加公众帐号
+			{else}
+			设置公众号
+			{/if}
+    </h1>
+</div>
+	<div class="main">
+			<ul class="nav  nav-tabs">
+				<li class="active"><a href="#accont-common" data-toggle="tab">普通模式</a></li>
+				<li><a href="#accont-press" data-toggle="tab">一键获取模式</a></li>
+			</ul>
+			<form action="" method="post" class="form-horizontal tab-content">
+			<input type="hidden" name="id" value="{$wechat['weid']}" />
+			<div id="accont-common" class="tab-pane fade active in">
+				<div class="sub-item" id="table-list">
+					<div class="sub-content">
+						<table class="tb">
+							<tr>
+								<th><label for="">公众号名称</label></th>
+								<td>
+									<input type="text" name="name" class="span6" value="{$wechat['name']}" autocomplete="off">
+									<label for="adv-setting" class="checkbox inline">
+										<input type="checkbox" id="adv-setting" hideclass="adv-setting"{if $wechat['key'] && $wechat['secret']} checked='true'{/if}> 服务号
+									</label>
+									<span class="help-block">您可以给此公众号起一个名字, 方便下次修改和查看.</span>
+								</td>
+							</tr>
+							<tr>
+								<th><label for="">公众号类型</label></th>
+								<td>
+									<select name="type" id="type" onchange="verifyGen()">
+										<option value="1" {if $wechat['type'] == 1} selected{/if}>微信公众平台</option>
+										<option value="2" {if $wechat['type'] == 2} selected{/if}>易信公众平台</option>
+									</select>
+									<span class="help-block">您可以给此公众号起一个名字, 方便下次修改和查看.</span>
+								</td>
+							</tr>
+							{if !empty($id)}
+							<tr>
+								<th style="color:red">接口地址</th>
+								<td>
+									<input type="text" class="span6" value="{$_W['siteroot']}api.php?hash={$wechat['hash']}" readonly="readonly" autocomplete="off"/>
+									<div class="help-block">设置“微信公众平台接口”配置信息中的接口地址</div>
+								</td>
+							</tr>
+							<tr>
+								<th style="color:red">微信Token</th>
+								<td>
+									<input type="text" name="wetoken" class="span6" value="{$wechat['token']}" readonly="readonly" /> <a href="javascript:;" onclick="tokenGen();">生成新的</a>
+									<div class="help-block">与微信公众平台接入设置值一致，必须为英文或者数字，长度为3到32个字符. 请妥善保管, Token 泄露将可能被窃取或篡改微信平台的操作数据.</div>
+								</td>
+							</tr>
+							{/if}
+							<tr class="hide adv-setting">
+								<th>公众号AppId</th>
+								<td>
+									<input type="text" name="key" class="span6" value="{$wechat['key']}" autocomplete="off"/>
+									<div class="help-block">请填写微信公众平台后台的AppId</div>
+								</td>
+							</tr>
+							<tr class="hide adv-setting">
+								<th>公众号AppSecret</th>
+								<td>
+									<input type="text" name="secret" class="span6" value="{$wechat['secret']}" autocomplete="off"/>
+									<div class="help-block">请填写微信公众平台后台的AppSecret, 只有填写这两项才能管理自定义菜单</div>
+								</td>
+							</tr>
+							<tr>
+								<th><label for="">微信号</label></th>
+								<td>
+									<input type="text" name="account" class="span6" value="{$wechat['account']}" autocomplete="off" />
+									<span class="help-block">您的微信帐号，本平台支持管理多个微信公众号</span>
+								</td>
+							</tr>
+							<tr>
+								<th><label for="">原始帐号</label></th>
+								<td>
+									<input type="text" name="original" class="span6" value="{$wechat['original']}" autocomplete="off" />
+									<span class="help-block">微信公众帐号的原ID串，<a href="index.php?act=help&amp;do=wx_uid" target="blank">怎么查看微信的原始帐号？</a></span>
+								</td>
+							</tr>
+							{if !empty($wechat['username'])}
+							<tr>
+								<th><label for="">二维码</label></th>
+								<td>
+									<img class="img-polaroid" src="{$_W[attachurl]}/qrcode_{$wechat['weid']}.jpg?weid={$wechat['account']}" width="150" />
+								</td>
+							</tr>
+							{/if}
+							{if !empty($wechat['username'])}
+							<tr>
+								<th><label for="">头像</label></th>
+								<td>
+									<img class="img-polaroid" src="{$_W[attachurl]}/headimg_{$wechat['weid']}.jpg?weid={$wechat['account']}" width="85" />
+								</td>
+							</tr>
+							{/if}
+							<tr>
+								<th></th>
+								<td>
+									<input name="submit" type="submit" value="提交" class="btn btn-primary span2" />
+									<input type="hidden" name="token" value="{$_W['token']}" />
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div id="accont-press" class="tab-pane fade">
+				<div class="sub-item">
+					<h4 class="sub-title"> <small>在一键获取模式下设置用户名密码后，程序会自动采集您的公众号相关信息。我们不会保存您的公众号的用户名密码。</small></h4>
+				</div>
+				<div class="sub-item" id="table-list">
+					<div class="sub-content">
+						<table class="tb">
+							<tr>
+								<th><label for="">公众登录用户</label></th>
+								<td>
+									<input type="text" name="wxusername" id="username" class="span6" value="{$wechat['username']}" autocomplete="off" onblur="verifyGen()" />
+									<span class="help-block">请输入你的公众平台用户名</span>
+								</td>
+							</tr>
+							<tr>
+								<th><label for="">公众登录密码</label></th>
+								<td>
+									<input type="password" name="wxpassword" class="span6" value="" autocomplete="off"  />
+									<span class="help-block">请输入你的公众平台密码</span>
+								</td>
+							</tr>
+							<tr style="display:none;">
+								<th><label for="">登录验证码</label></td>
+								<td>
+									<input type="text" name="verify" class="txt grid-1 alpha pin" value="" autocomplete="off" />
+									<span class="help-inline"><img src="" id="imgverify"> <a href="javascript:;" onclick="verifyGen()">换一张</a></span>
+								</td>
+							</tr>
+							<tr>
+								<th></th>
+								<td>
+									<label class="checkbox inline"><input type="checkbox" name="islogin" value="1" checked="checked" /> 是否验证登录</label>
+									<div class="help-inline">&nbsp;勾选此选项后，提交后将验证您的微信帐号。如果有任何异常信息，请取消此选项。</div>
+								</td>
+							</tr>
+							{if !empty($wechat['username'])}
+							<tr>
+								<th></th>
+								<td>
+									<a href="{php echo create_url('account/sync', array('id' => $wechat['weid']))}">同步微信公众平台帐号信息</a>
+									<div class="help-block">填写公众号帐号密码后，如果发现信息没有同步成功，请点击此选项进行手动同步。</div>
+								</td>
+							</tr>
+							{/if}
+							<tr>
+								<th></th>
+								<td>
+									<input name="submit" type="submit" value="提交" class="btn btn-primary span2" />
+									<input type="hidden" name="token" value="{$_W['token']}" />
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			</form>
+	</div>
+<script type="text/javascript">
+<!--
+	var codeurl = {'1':'https://mp.weixin.qq.com/cgi-bin/verifycode', '2':'https://plus.yixin.im/captcha'};
+	function verifyGen() {
+		if ($('#username').val()) {
+			var type = $('#type').val() ? $('#type').val() : 1;
+			$('#imgverify').attr('src', codeurl[type] + '?username='+$('#username').val()+'&r='+Math.round(new Date().getTime()));
+			$('#imgverify').parent().parent().parent().show();
+		} else {
+			//message('请先输入微信公众平台用户名');
+		}
+	}
+	verifyGen();
+//-->
+</script>
+{template 'common/footer'}

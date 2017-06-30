@@ -1,0 +1,195 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active"> {{ $state.current.page.title }}</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content slide">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">
+                <button class="btn btn-primary" type="button">卖车信息</button>
+                <br/>
+                <br/>
+            </h3>
+        </div>
+
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body  no-padding">
+        <table class="table table-hover text-center">
+            <tbody>
+            <tr>
+                <th width="5%">ID</th>
+                <th width="5%">昵称</th>
+                <th width="5%">城市</th>
+                <th width="10%">联系电话</th>
+                <th>车辆信息</th>
+                <th width="5%">海报样式</th>
+                <th width="5%">来源</th>
+                <th width="5%">卖车信息</th>
+                <th width="5%">买车信息</th>
+                <th width="5%">分享信息</th>
+                <th width="10%">添加时间</th>
+                <th width="5%">是否领取</th>
+                <th width="10%">是否符合领取条件</th>
+                <th width="10%">操作</th>
+
+            </tr>
+            <tr ng-repeat="item in list" class="list-animation">
+                <td>{{item.id}}</td>
+                <td>{{item.nickname}}</td>
+                <td>{{item.city}}</td>
+                <td>{{item.phone}}</td>
+                <td><a href="javascript:;" ng-click="saleCarInfo()" class="modv2-num">{{item.brand}}}</a> <br/></td>
+                <td>{{item.theme}}</td>
+                <td>{{item.source}}</td>
+                <td>
+                    <a href="javascript:;" ng-click="saleCarInfo()" class="modv2-num">{{item.sale_car = 1}}</a> <br/>
+                </td>
+                <td>
+                    <a href="javascript:;" ng-click="buyCarInfo()" class="modv2-num">{{item.counters.want}}</a> <br/>
+                </td>
+                <td>
+                    <a href="javascript:;" ng-click="shareCarInfo()" class="modv2-num">{{item.counters.shared}}</a>
+                    <br/>
+                <td>{{item.created_at}}</td>
+                <td>{{item.is_fit}}</td>
+                <td>{{item.is_received}}</td>
+
+                <td>
+                    <div class="btn-group">
+                        <div class="btn-group" dropdown is-open="status.isopen">
+                            <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle
+                                    ng-disabled="disabled">
+                                操作 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="javascript:;" ng-click="edit()"><i class="fa fa-edit"></i> 修改</a></li>
+                                <li class="divider"></li>
+                                <li><a href="javascript:;" ng-click="finish()"><i class="fa fa-trash-o"></i>删除</a></li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix ">
+        <pagination boundary-links="true" ng-change="pageChanged()" max-size="maxSize" total-items="totalItems"
+                    ng-model="currentPage" class="pagination pull-right no-margin" previous-text="&lsaquo;"
+                    next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    </div>
+    </div>
+
+</section>
+<!-- /.content -->
+
+<script type="text/ng-template" id="tpl-add.html">
+    <div class="modal-header">
+        <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span
+                aria-hidden="true">×</span></button>
+        <h3 class="modal-title">卖车信息</h3>
+    </div>
+    <form role="form" name="tokenForm" class="form-horizontal" ng-submit="create(tokenForm.$valid)" novalidate>
+        <div class="modal-body">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="add-use" class="col-sm-2 control-label">用户昵称:</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="姓名" id="add-use" class="form-control" name="use"
+                               ng-model="item.use" value="{{ item.role_nickname }}">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="add-channel" class="col-sm-2 control-label">海报来源:</label>
+
+                    <div class="col-sm-10">
+                        <select id="add-channel" name="channel" class="form-control" ng-model="item.channel"
+                                value="{{item.role_source}}">
+                            <option value="1">公众号</option>
+                            <option value="2">服务号</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="add-signature" class="col-sm-2 control-label">车辆描述:</label>
+
+                <div class="col-sm-10">
+                    <input type="text" placeholder="【273二手车】" id="add-memo" class="form-control" name="memo"
+                           ng-model="item.memo" value="{{ item.role_memo }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="add-token" date-trigger="datepicker" class="col-sm-2 control-label">奖品兑换码:</label>
+
+                <div class="col-sm-10">
+                    <p class="input-group">
+                        <input type="text" id="add-token" class="form-control" ng-model="item.token"
+
+                                >
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" ng-click="getToken()">重新生成</button>
+
+                            </span>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="is_allow_up" class="col-sm-2 control-label">领奖品:</label>
+
+                <div class="col-sm-2">
+                    <input type="radio" name="true" checked>是
+                    <input type="radio" name="false">否
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+        </div><!--ng-disabled="itemForm.$invalid"-->
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="item.submit(tokenForm)">提交</button>
+
+        </div>
+    </form>
+</script>
+<script type="text/ng-template" id="tpl-delete.html">
+    <form role="form" name="noticeForm" >
+        <div class="modal-header">
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+            <h3 class="modal-title">消息删除提醒</h3>
+        </div>
+        <div class="modal-body">
+            <form role="form">
+                <div class="box-body">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <span ng-if="!res.code" style="color:red;">删除成功！</span>
+                            <span ng-if="res.code" style="color:red;">{{ res.msg }}</span>
+                        </div>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box-body -->
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary modv2-btn" ng-click="cancel()" type="button" >我知道了</button>
+        </div>
+    </form>
+</script>

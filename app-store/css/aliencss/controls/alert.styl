@@ -1,0 +1,58 @@
+-default-size = 5px 15px;
+-size = (-default-size[0] - 2*2 ) (-default-size[1] - 2*2 )
+
+.alert
+  padding:default-size;
+  margin-bottom: 20px
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #eee;
+  hr
+    height: 0
+  h4
+    margin-top: 0; color: inherit;
+  p,ul
+    margin-bottom: 0;
+  p + p
+    margin-top: 5px;
+
+  &-dismissable
+    padding-right: 35px;
+    .close 
+      position: relative;
+      top: -2px;
+      right: -21px;
+      color: inherit;
+  &-shadow
+    box-shadow: 0 0 5px  #ddd + 50%;
+
+span.alert
+  display inline-block
+  vertical-align middle
+  margin-bottom 0
+
+types ?= {}
+
+for item in types
+  .alert-{item}
+    input-color = types[item];
+    border-color: input-color;
+    background-color: input-color + 90%;
+    color: input-color;
+    hr
+      border-top-color:input-color;
+    .alert-link
+      color: input-color;
+    &.alert-shadow
+      box-shadow: 0 0 5px input-color + 50%;
+
+
+for i in sizes
+  .alert-{i}
+    padding : -size[0] -size[1]
+    -size[0] = -size[0] + 2
+    -size[1] = -size[1] + 2
+
+.alert-transparent
+  background: transparent;
+

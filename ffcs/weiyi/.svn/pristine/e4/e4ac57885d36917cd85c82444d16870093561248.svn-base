@@ -1,0 +1,101 @@
+<?php
+/**
+ * 获取支付类型列表
+ */
+function get_list($userid=0) {
+    $list = get_payment();
+    $install = get_intallpayment('',$userid);
+    if(is_array($list)) {
+        foreach ($list as $code => $payment ) {
+            if (isset($install[$code])) {
+                $install[$code]['pay_desc'] = $list[$code]['pay_desc'];
+                unset($list[$code]);
+            }
+        }
+    }
+    $all = @array_merge($install, $list);
+    return array('data' => $all,
+        array(
+            'all' => count($all),
+            'install' => count($install)
+        )
+    );
+}
+
+/**
+ * 获取插件目录信息
+ * @param unknown_type $code
+ */
+function get_payment( $code = '') {
+    $modules = read_payment(IA_ROOT.'/source/library/payment');
+    foreach($modules as $payment) {
+        if ( empty($code) || $payment['code']) {
+            $config = array();
+            foreach ($payment['config'] as $conf) {
+                $name = $conf['name'];
+                $conf['name'] = $conf['language'];
+                if ($conf['type'] == 'select') {
+                    $conf['range'] = $payment['service_types'];
+                }
+                $config[$name] = $conf;
+            }
+        }
+        $payment_info[$payment['code']] = array(
+            "id" => 0,
+            "pay_code" => $payment['code'],
+            "pay_name" => $payment['name'],
+            "pay_desc" => $payment['desc'],
+            "config" => $config,
+            "status" => '0',
+            "order" => "",
+            "version" => $payment['version'],
+            "userid"=>""
+        );
+    }
+    if (empty($code)) {
+        return $payment_info;
+    } else {
+        return $payment_info[$code];
+    }
+}
+
+/**
+ * 取得数据库中的支付列表
+ * @param $code
+ */
+function get_intallpayment($code = '',$userid=0)
+{
+    if (empty($code)) {
+        $intallpayment = array();
+        $result = pdo_fetchall("SELECT * FROM ".tablename('pay_payment')." where userid='$userid'");
+        foreach($result as $r) {
+            $r['pay_code'] = ucwords($r['pay_code']);
+            $intallpayment[$r['pay_code']] = $r;
+        }
+        return $intallpayment;
+    } else {
+        return  pdo_fetch("select * from ".tablename('pay_payment')." where pay_code='".ucwords($code)."' and userid='$userid'");
+    }
+
+}
+
+/**
+ * 读取插件目录中插件列表
+ * @param unknown_type $directory
+ */
+function read_payment($directory = ".") {
+    $dir = @opendir($directory);
+    $set_modules = true;
+    $modules = array();
+    while (($file = @readdir($dir))!== false) {
+        if ( preg_match( "/^[A-Z]{1}.*?\\.class.php\$/", $file ) ) {
+            include_once( $directory.'/'.$file );
+        }
+    }
+    @closedir($dir);
+    foreach ($modules as $key => $value ) {
+        asort($modules[$key] );
+    }
+    asort( $modules );
+    return $modules;
+}

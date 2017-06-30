@@ -1,0 +1,63 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微活动'),array('title'=>$cur_module['title']),array('title'=>'添加'.$cur_module['title']))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-book"></i> 添加{$cur_module['title']}
+    </h1>
+</div>
+<div class="main">
+	<p>
+        <a href="{php echo create_url('rule/post',array('module'=>$cur_module['name'],'activity'=>1))}" class="btn btn-sm btn-primary"><i class="icon-pencil"></i>添加{$cur_module['title']}</a>
+	</p>
+	<div class="rule">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="sample-table-1">
+            <thead>
+                <tr>
+                    <th class="center">规则名称</th>
+                    <th class="center">关键字</th>
+                    <th class="">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            {loop $list $row}
+            <tr>
+                <td class="center">
+                        {$row['name']}
+                </td>
+
+                <td class="center">
+                    {loop $row['keywords'] $kw}
+                    <span class="label  label-success">{$kw['content']}</span>
+                    {/loop}
+                </td>
+                <td>
+                    <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                        {if is_array($_W['account']['welcome']) && $_W['account']['welcome']['id'] == $row['id']}<a href="{php echo create_url('rule/system/cancel', array('type' => 'welcome'))}" onclick="ajaxopen(this.href, message);return false;" style="color:#FF3300" switch="1">取消欢迎信息</a>{else}<a href="{php echo create_url('rule/system/set', array('id' => $row['id'], 'type' => 'welcome'))}" onclick="ajaxopen(this.href, message);return false;" switch="0">设为欢迎信息</a>{/if}
+                        {if is_array($_W['account']['default']) && $_W['account']['default']['id'] == $row['id']}<a href="{php echo create_url('rule/system/cancel', array('type' => 'default'))}" onclick="ajaxopen(this.href, message);return false;" style="color:#FF3300" switch="1">取消默认回复</a>{else}<a href="{php echo create_url('rule/system/set', array('id' => $row['id'], 'type' => 'default'))}" onclick="ajaxopen(this.href, message);return false;" switch="0">设为默认回复</a>{/if}
+
+                        <a target="main" href="{php echo create_url('site/module/trend', array('name' => 'stat', 'id' => $row['id']))}">使用率走势</a>
+                        {if $row['options']}
+                        {loop $row['options'] $opt}
+                        <a href="{$opt['link']}" target="_blank">{$opt['title']}</a>
+                        {/loop}
+                        {/if}
+                        <a onclick="return confirm('删除规则将同时删除关键字与回复，确认吗？');return false;" href="{php echo create_url('rule/delete', array('id' => $row['id'], 'type' => 'rule'))}">删除</a><a href="{php echo create_url('rule/post', array('id' => $row['id']))}">编辑</a>
+                    </div>
+                </td>
+            </tr>
+            {/loop}
+            </tbody>
+        </table>
+        </div>
+	</div>
+	{$pager}
+</div>
+<script type="text/javascript">
+<!--
+	var category = {php echo json_encode($children)};
+
+//-->
+</script>
+
+{template 'common/footer'}

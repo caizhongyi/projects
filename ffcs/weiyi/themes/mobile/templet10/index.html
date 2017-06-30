@@ -1,0 +1,25 @@
+{template 'header'}
+{template 'slide'}
+<link rel="stylesheet" type="text/css" href="./themes/mobile/templet10/style/css.css" media="all" />
+<div class="body">
+<!-- LOGO -->
+<div class="header">
+		<div class="logo">
+			<img src="./themes/mobile/templet10/style/logo.jpg" width="213" height="29" alt="" style="width:auto!important; max-width:213px;" />
+		</div>
+</div>
+
+<!-- 分类导航 -->
+<div class="main" style="padding-top:10px; padding-bottom:50px;">
+		<ul class="list_ul_common">
+			{loop $navs $nav}
+			<li class="card_lol">
+				<a href="{$nav['url']}" class="tbox">
+				<div><p>{$nav['name']}</p></div>
+				</a>
+			</li>
+			{/loop}
+		</ul>
+</div>
+</div>
+{template 'footer'}

@@ -1,0 +1,115 @@
+<?php
+/**
+ * 获取充值方式信息
+ * @param unknown_type $pay_id
+ * @return unknown
+ */
+function get_payment($pay_id) {
+    $pay_id = intval($pay_id);
+    $result = array();
+    $result = pdo_fetch("select * from ".tablename('pay_payment')." where id='".$pay_id."'");
+    return $result;
+}
+
+/**
+ * 获取充值方式信息
+ * @param unknown_type $code   支付代码
+ * @param unknown_type $userid 用户id
+ * @return unknown
+ */
+function get_payment_by_code($code,$userid) {
+    $code = trim($code);
+    $userid = trim($userid);
+    $result = array();
+    $result = pdo_fetch("select * from ".tablename('pay_payment')." where pay_code='".$code."' and userid='".$userid."'");
+    return $result;
+}
+
+/**
+ * 获取充值类型
+ */
+function get_paytype($userid) {
+    $result = pdo_fetchall("SELECT * FROM ".tablename('pay_payment')." where userid='$userid' order by order desc,id desc");
+    $info = array();
+    foreach($result as $r) {
+        $info[] = $r;
+    }
+    return $info;
+}
+
+/**
+ * 返回响应地址
+ */
+function return_url($code, $is_api = 0){
+    global $_W;
+    if($is_api){
+        return $_W['siteroot'].create_url('pay/respond/respond_post',array('code'=>$code,'userid'=>$_W['weid']));
+    }
+    else {
+        return $_W['siteroot'].create_url('pay/respond/respond_get',array('code'=>$code,'userid'=>$_W['weid']));
+    }
+}
+
+function logging($message = '') {
+    $filename = IA_ROOT . '/data/logs/pay_log.log';
+    mkdirs(dirname($filename));
+    $content = date('Y-m-d H:i:s') . ":\n------------\n";
+    if(is_string($message)) {
+        $content .= "String:\n{$message}\n";
+    }
+    if(is_array($message)) {
+        $content .= "Array:\n";
+        foreach($message as $key => $value) {
+            $content .= sprintf("%s : %s ;\n", $key, $value);
+        }
+    }
+    if($message == 'get') {
+        $content .= "GET:\n";
+        foreach($_GET as $key => $value) {
+            $content .= sprintf("%s : %s ;\n", $key, $value);
+        }
+    }
+    if($message == 'post') {
+        $content .= "POST:\n";
+        foreach($_POST as $key => $value) {
+            $content .= sprintf("%s : %s ;\n", $key, $value);
+        }
+    }
+    $content .= "\n";
+
+    $fp = fopen($filename, 'a+');
+    fwrite($fp, $content);
+    fclose($fp);
+}
+
+function unserialize_config($cfg){
+    if (is_string($cfg) ) {
+        $arr = json_decode($cfg,1);
+        $config = array();
+        foreach ($arr AS $key => $val) {
+            $config[$key] = $val['value'];
+        }
+        return $config;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * 付款成功处理订单
+ * @param unknown_type $order_id   订单id
+ * @return unknown
+ */
+function update_success_order($order_id){
+
+}
+
+/**
+ * 回调成功处理订单状态
+ * @param unknown_type $order_id   订单id
+ * @param unknown_type $order_status   订单状态
+ * @return unknown
+ */
+function update_recode_status_by_order_id($order_id,$order_status){
+
+}

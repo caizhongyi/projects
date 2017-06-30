@@ -1,0 +1,261 @@
+.panel {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+.panel .panel-header,
+.panel .panel-body,
+.panel .panel-footer {
+  padding: 5px 10px;
+}
+.panel .panel-header {
+  background: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+.panel .contain {
+  display: block;
+}
+.panel .panel-body {
+  display: none;
+  border-top: 1px solid #ddd;
+}
+.panel.active .panel-body {
+  display: block;
+}
+.panel .icon.pull-right {
+  margin-top: 5px;
+}
+.panel .icon-chevron-up:before,
+.panel .icon-chevron-down:before {
+  content: "\f078";
+}
+.panel .icon-minus-sign:before,
+.panel .icon-plus-sign:before {
+  content: "\f055";
+}
+.panel.active .icon-chevron-up:before,
+.panel.active .icon-chevron-down:before {
+  content: "\f077";
+}
+.panel.active .icon-minus-sign:before,
+.panel.active .icon-plus-sign:before {
+  content: "\f056";
+}
+.panel-shadow {
+  -moz-box-shadow: 0 0 5px #eee;
+  -webkit-box-shadow: 0 0 5px #eee;
+  -o-box-shadow: 0 0 5px #eee;
+  -ms-box-shadow: 0 0 5px #eee;
+  box-shadow: 0 0 5px #eee;
+}
+.panel-default {
+  border-color: #fff;
+  -moz-box-shadow: 0 0 5px #fff;
+  -webkit-box-shadow: 0 0 5px #fff;
+  -o-box-shadow: 0 0 5px #fff;
+  -ms-box-shadow: 0 0 5px #fff;
+  box-shadow: 0 0 5px #fff;
+}
+.panel-default .panel-header {
+  background: #fff;
+  color: #fff;
+  border-color: #fff;
+}
+.panel-default.panel-shadow {
+  -moz-box-shadow: 0 0 5px #fff;
+  -webkit-box-shadow: 0 0 5px #fff;
+  -o-box-shadow: 0 0 5px #fff;
+  -ms-box-shadow: 0 0 5px #fff;
+  box-shadow: 0 0 5px #fff;
+}
+.panel-link {
+  border-color: transparent;
+  -moz-box-shadow: 0 0 5px transparent50%;
+  -webkit-box-shadow: 0 0 5px transparent50%;
+  -o-box-shadow: 0 0 5px transparent50%;
+  -ms-box-shadow: 0 0 5px transparent50%;
+  box-shadow: 0 0 5px transparent50%;
+}
+.panel-link .panel-header {
+  background: transparent90%;
+  color: transparent;
+  border-color: transparent;
+}
+.panel-link.panel-shadow {
+  -moz-box-shadow: 0 0 5px transparent50%;
+  -webkit-box-shadow: 0 0 5px transparent50%;
+  -o-box-shadow: 0 0 5px transparent50%;
+  -ms-box-shadow: 0 0 5px transparent50%;
+  box-shadow: 0 0 5px transparent50%;
+}
+.panel-primary {
+  border-color: #428bca;
+  -moz-box-shadow: 0 0 5px #a1c5e4;
+  -webkit-box-shadow: 0 0 5px #a1c5e4;
+  -o-box-shadow: 0 0 5px #a1c5e4;
+  -ms-box-shadow: 0 0 5px #a1c5e4;
+  box-shadow: 0 0 5px #a1c5e4;
+}
+.panel-primary .panel-header {
+  background: #ecf3fa;
+  color: #428bca;
+  border-color: #428bca;
+}
+.panel-primary.panel-shadow {
+  -moz-box-shadow: 0 0 5px #a1c5e4;
+  -webkit-box-shadow: 0 0 5px #a1c5e4;
+  -o-box-shadow: 0 0 5px #a1c5e4;
+  -ms-box-shadow: 0 0 5px #a1c5e4;
+  box-shadow: 0 0 5px #a1c5e4;
+}
+.panel-info {
+  border-color: #5bc0de;
+  -moz-box-shadow: 0 0 5px #ade0ef;
+  -webkit-box-shadow: 0 0 5px #ade0ef;
+  -o-box-shadow: 0 0 5px #ade0ef;
+  -ms-box-shadow: 0 0 5px #ade0ef;
+  box-shadow: 0 0 5px #ade0ef;
+}
+.panel-info .panel-header {
+  background: #eff9fc;
+  color: #5bc0de;
+  border-color: #5bc0de;
+}
+.panel-info.panel-shadow {
+  -moz-box-shadow: 0 0 5px #ade0ef;
+  -webkit-box-shadow: 0 0 5px #ade0ef;
+  -o-box-shadow: 0 0 5px #ade0ef;
+  -ms-box-shadow: 0 0 5px #ade0ef;
+  box-shadow: 0 0 5px #ade0ef;
+}
+.panel-muted {
+  border-color: #999;
+  -moz-box-shadow: 0 0 5px #ccc;
+  -webkit-box-shadow: 0 0 5px #ccc;
+  -o-box-shadow: 0 0 5px #ccc;
+  -ms-box-shadow: 0 0 5px #ccc;
+  box-shadow: 0 0 5px #ccc;
+}
+.panel-muted .panel-header {
+  background: #f5f5f5;
+  color: #999;
+  border-color: #999;
+}
+.panel-muted.panel-shadow {
+  -moz-box-shadow: 0 0 5px #ccc;
+  -webkit-box-shadow: 0 0 5px #ccc;
+  -o-box-shadow: 0 0 5px #ccc;
+  -ms-box-shadow: 0 0 5px #ccc;
+  box-shadow: 0 0 5px #ccc;
+}
+.panel-success {
+  border-color: #5cb85c;
+  -moz-box-shadow: 0 0 5px #aedcae;
+  -webkit-box-shadow: 0 0 5px #aedcae;
+  -o-box-shadow: 0 0 5px #aedcae;
+  -ms-box-shadow: 0 0 5px #aedcae;
+  box-shadow: 0 0 5px #aedcae;
+}
+.panel-success .panel-header {
+  background: #eff8ef;
+  color: #5cb85c;
+  border-color: #5cb85c;
+}
+.panel-success.panel-shadow {
+  -moz-box-shadow: 0 0 5px #aedcae;
+  -webkit-box-shadow: 0 0 5px #aedcae;
+  -o-box-shadow: 0 0 5px #aedcae;
+  -ms-box-shadow: 0 0 5px #aedcae;
+  box-shadow: 0 0 5px #aedcae;
+}
+.panel-warning {
+  border-color: #f0ad4e;
+  -moz-box-shadow: 0 0 5px #f8d6a7;
+  -webkit-box-shadow: 0 0 5px #f8d6a7;
+  -o-box-shadow: 0 0 5px #f8d6a7;
+  -ms-box-shadow: 0 0 5px #f8d6a7;
+  box-shadow: 0 0 5px #f8d6a7;
+}
+.panel-warning .panel-header {
+  background: #fef7ed;
+  color: #f0ad4e;
+  border-color: #f0ad4e;
+}
+.panel-warning.panel-shadow {
+  -moz-box-shadow: 0 0 5px #f8d6a7;
+  -webkit-box-shadow: 0 0 5px #f8d6a7;
+  -o-box-shadow: 0 0 5px #f8d6a7;
+  -ms-box-shadow: 0 0 5px #f8d6a7;
+  box-shadow: 0 0 5px #f8d6a7;
+}
+.panel-danger {
+  border-color: #d9534f;
+  -moz-box-shadow: 0 0 5px #eca9a7;
+  -webkit-box-shadow: 0 0 5px #eca9a7;
+  -o-box-shadow: 0 0 5px #eca9a7;
+  -ms-box-shadow: 0 0 5px #eca9a7;
+  box-shadow: 0 0 5px #eca9a7;
+}
+.panel-danger .panel-header {
+  background: #fbeeed;
+  color: #d9534f;
+  border-color: #d9534f;
+}
+.panel-danger.panel-shadow {
+  -moz-box-shadow: 0 0 5px #eca9a7;
+  -webkit-box-shadow: 0 0 5px #eca9a7;
+  -o-box-shadow: 0 0 5px #eca9a7;
+  -ms-box-shadow: 0 0 5px #eca9a7;
+  box-shadow: 0 0 5px #eca9a7;
+}
+.panel-light {
+  border-color: #c4caa5;
+  -moz-box-shadow: 0 0 5px #e2e4d2;
+  -webkit-box-shadow: 0 0 5px #e2e4d2;
+  -o-box-shadow: 0 0 5px #e2e4d2;
+  -ms-box-shadow: 0 0 5px #e2e4d2;
+  box-shadow: 0 0 5px #e2e4d2;
+}
+.panel-light .panel-header {
+  background: #f9faf6;
+  color: #c4caa5;
+  border-color: #c4caa5;
+}
+.panel-light.panel-shadow {
+  -moz-box-shadow: 0 0 5px #e2e4d2;
+  -webkit-box-shadow: 0 0 5px #e2e4d2;
+  -o-box-shadow: 0 0 5px #e2e4d2;
+  -ms-box-shadow: 0 0 5px #e2e4d2;
+  box-shadow: 0 0 5px #e2e4d2;
+}
+.panel-group .panel {
+  margin-bottom: 0;
+}
+.panel-group .panel + .panel {
+  margin-top: -1px;
+}
+.panel-horizontal {
+  display: block;
+}
+.panel-horizontal:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.panel-horizontal .panel,
+.panel-horizontal .panel-header,
+.panel-horizontal .panel-body {
+  float: left;
+  height: 300px;
+}
+.panel-horizontal .panel-header {
+  width: 60px;
+}
+.panel-horizontal .panel + .panel {
+  margin: 0 0 0 -1px;
+}
+.panel-horizontal .panel-body {
+  border-top: none;
+  border-left: 1px solid #ddd;
+}

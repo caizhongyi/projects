@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>绑定手机</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
+    <link rel="stylesheet" type="text/css" href="./source/modules/userapi/template/css/fans.css" media="all"/>
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+
+</head>
+
+<body id="fans">
+<div class="qiandaobanner"><img src="./source/modules/micromember/template/images/user.jpg">
+</div>
+<div class="cardexplain">
+    <li class="nob">
+        <div class="beizhu">为了确保投票的有效性，请输入您的手机号</div>
+    </li>
+    <ul class="round">
+
+        <li>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                <tr>
+                <th>手机号码</th>
+                <td><input name="mobile" class="px" id="mobile" value="{$user_info['mobile']}" type="text"
+                           placeholder="请输入您的电话"></td>
+                </tr>
+            </table>
+        </li>
+
+    </ul>
+    <div class="footReturn">
+        <a id="showcard" class="submit">绑定手机号码</a>
+        <a id="activity" class="submit" style="display: none;" >绑定手机号码</a>
+        <div class="window" id="windowcenter">
+            <div id="title" class="wtitle">绑定手机号码<span class="close" id="alertclose"></span></div>
+            <div class="content">
+                <div id="txt"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var oLay = document.getElementById("overlay");
+        $(document).ready(function () {
+            $("#showcard").click(function () {
+                reg = /^0{0,1}(13[0-9]|145|15[0-9]|153|156|18[0-9])[0-9]{8}$/i;
+                if (!reg.test($("#mobile").val())) {
+                    alertdiy("错误,请输入11位的手机号！");
+                    return false;
+                }
+                var submitData = {
+                    mobile: $("#mobile").val(),
+                    action: "edit"
+                };
+                $.post('{$loclurl}', submitData,
+                        function (data) {
+                            if (data.errno == 200) {
+                                var herf = '<a style="color: red;" href="'+data.url+'">“进入投票”</a>'
+                                alertdiy('您已成功通过验证，请参与投票！页面将在两秒后跳转投票页面，如页面未跳转请点击'+herf);
+                                
+                                setTimeout(function(){window.location.href=data.url;},2000);
+                            } else {
+                                alertdiy(data.error);
+                            }
+                        },'json');
+            });
+            $("#windowclosebutton").click(function () {
+                $("#windowcenter").slideUp(500);
+                oLay.style.display = "none";
+            });
+            $("#alertclose").click(function () {
+                $("#windowcenter").slideUp(500);
+                oLay.style.display = "none";
+            });
+            function alertdiy(title) {
+                $("#windowcenter").slideToggle("slow");
+                $("#txt").html(title);
+                setTimeout('$("#windowcenter").slideUp(500)', 5000);
+            }
+        })
+    </script>
+</div>
+
+</body>
+</html>

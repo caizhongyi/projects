@@ -1,0 +1,76 @@
+<?php
+/**
+ * 版权设置
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+
+defined('IN_IA') or exit('Access Denied');
+include model('setting');
+$settings = pdo_fetch('SELECT * FROM ' . tablename('settings') . " WHERE `key` = :key", array(':key' => 'copyright'));
+$settings = iunserializer($settings['value']);
+
+if (checksubmit('submit')) {
+	$data = array(
+		'sitename' => $_GPC['sitename'],
+		'url' => strexists($_GPC['url'], 'http://') ? $_GPC['url'] : "http://{$_GPC['url']}",
+		'statcode' => $_GPC['statcode'],
+		'footerleft' => $_GPC['footerleft'],
+		'footerright' => $_GPC['footerright'],
+		'flogo' => $_GPC['flogo_old'],
+		'blogo' => $_GPC['blogo_old'],
+		'lng' => $_GPC['lng'],
+		'lat' => $_GPC['lat'],
+		'address' => $_GPC['address'],
+		'phone' => $_GPC['phone'],
+		'qq' => $_GPC['qq'],
+		'email' => $_GPC['email'],
+	);
+	if (!empty($_FILES['flogo']['tmp_name'])) {
+		file_delete($_GPC['flogo_old']);
+		$upload = file_upload($_FILES['flogo']);
+		if (is_error($upload)) {
+			message($upload['message'], '', 'error');
+		}
+		$data['flogo'] = $upload['path'];
+	}
+	
+	if (!empty($_FILES['blogo']['tmp_name'])) {
+		file_delete($_GPC['blogo_old']);
+		$upload = file_upload($_FILES['blogo']);
+		if (is_error($upload)) {
+			message($upload['message'], '', 'error');
+		}
+		$data['blogo'] = $upload['path'];
+	} 
+	setting_save($data, 'copyright');
+	$data = array(
+		'template' => $_GPC['template'],
+	);
+	
+	setting_save($data, 'basic');
+	message('更新设置成功！', create_url('setting/copyright'));
+}
+if (checksubmit('fileupload-flogo-delete')) {
+	file_delete($_GPC['fileupload-flogo-delete']);
+	$settings['flogo'] = '';
+	setting_save($settings, 'copyright');
+	message('删除成功！', referer(), 'success');
+}
+if (checksubmit('fileupload-blogo-delete')) {
+	file_delete($_GPC['fileupload-blogo-delete']);
+	$settings['blogo'] = '';
+	setting_save($settings, 'copyright');
+	message('删除成功！', referer(), 'success');
+}
+
+$path = IA_ROOT . '/themes/web/';
+if (is_dir($path)) {
+	if ($handle = opendir($path)) {
+		while (false !== ($templatepath = readdir($handle))) {
+			if ($templatepath != '.' && $templatepath != '..') {
+				$template[] = $templatepath;
+			}
+		}
+	}
+}
+template('setting/copyright');

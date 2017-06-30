@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Keywords" content="微易中心">
+    <meta name="Description" content="微易中心">
+    <!-- Mobile Devices Support @begin -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Mobile Devices Support @end -->
+    <link rel="shortcut icon" href="http://stc.weimob.com/img/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="./resource/style/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./resource/style/index.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./resource/script/formvalidator/formvalidator.css" media="all">
+
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./resource/script/bootstrap.js"></script>
+
+    <script type="text/javascript" src="./resource/script/formvalidator/formvalidator.js"></script>
+    <script type="text/javascript" src="./resource/script/formvalidator/formvalidatorregex.js"></script>
+    <script type="text/javascript" src="./resource/script/placeholder.js"></script>
+    <title>登录-微易中心</title>
+
+</head>
+
+<body>
+<div id="header" class="head head-nobg">
+    <div class="top">
+        <div class="topnav">
+            <a href="{php echo create_url('index');}" target="_blank" title="微易首页" hidefocus="true" onfocus="this.blur();">微易首页</a>|
+            <a href="{php echo create_url('member/login');}" title="登录" hidefocus="true" onfocus="this.blur();">登录<i class="arrow"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <form id="regform" class="form-horizontal form-box form-reg" action="{php echo create_url('member/tpl');}"   method="post">
+        <span class="form-marking"></span>
+        <div class="form-header">
+            <span class="pull-left">注册新用户</span>
+            <span class="pull-right">欢迎您注册网站会员，如果您已拥有账户，则可在此 <a href="{php echo create_url('member/login');}" title="登录" hidefocus="true" onfocus="this.blur();" class="btn btn-submit btn-mini">登录</a></span>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="username">公众号类型</label>
+            <div class="controls">
+                <select name="type" id="type" onchange="verifyGen()">
+                    <option value="1">微信公众平台</option>
+                    <option value="2" selected>易信公众平台</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="username">公众登录用户</label>
+            <div class="controls">
+                <input name="username" id="username" type="text" onblur="verifyGen()">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="password">公众登录密码</label>
+            <div class="controls">
+                <input name="password" id="password"
+                       type="password">
+            </div>
+        </div>
+        <div class="control-group ">
+            <label class="control-label" for="password">登录验证码</label>
+            <div class="controls">
+                <input type="text" name="verify" class="txt grid-1 alpha pin" value="" autocomplete="off" />
+                <span class="help-inline"><img src="" id="imgverify"> <a href="javascript:;" onclick="verifyGen()">换一张</a></span>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input type="hidden" name="submit" value="1"/>
+                <input type="hidden" name="token" value="{$_W['token']}" />
+                <button type="submit"  class="btn btn-submit">马上注册</button>
+            </div>
+        </div>
+        <div class="form-footer"></div>
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    var codeurl = {'1':'https://mp.weixin.qq.com/cgi-bin/verifycode', '2':'https://plus.yixin.im/captcha'};
+    function verifyGen() {
+        if ($('#username').val()) {
+            var type = $('#type').val() ? $('#type').val() : 1;
+            $('#imgverify').attr('src', codeurl[type] + '?username='+$('#username').val()+'&r='+Math.round(new Date().getTime()));
+            $('#imgverify').parent().parent().parent().show();
+        }
+    }
+    $(function(){
+        verifyGen();
+        $.formValidator.initConfig({wideword:true,autotip:true,formid:"regform",onerror:function(msg){},onsuccess:function(){ }});
+        $("#username").formValidator({onshow:"请输入你的公众平台用户名",onfocus:"请输入你的公众平台用户名",onerror:"请输入你的公众平台用户名"}).regexValidator({regexp:"email",datatype:"enum",onerror:"公众平台用户名格式错误"});
+        $("#password").formValidator({onshow:"请输入你的公众平台密码",onfocus:"请输入你的公众平台密码",onerror:"请输入你的公众平台密码"}).inputValidator({min:1,max:100,onerror:"请输入正确的公众平台密码"});
+        /*$("#email").formValidator({onshow:"邮箱将与支付及优惠相关，请填写正确的邮箱",onfocus:"邮箱将与支付及优惠相关，请填写正确的邮箱",oncorrect:"邮箱格式正确"}).regexValidator({regexp:"email",datatype:"enum",onerror:"邮箱将与支付及优惠相关，请填写正确的邮箱"}) .ajaxValidator({
+            type : "post",
+            url : "{php echo create_url('member/check');}",
+            data :"",
+            datatype : "html",
+            async:'false',
+            success : function(data){
+                if( data == "1" ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+            buttons: $("#dosubmit"),
+            onerror : "禁止注册或者邮箱已存在",
+            onwait : "检测邮箱是否已存在..."
+        });*/
+    });
+</script>
+</body>
+</html>

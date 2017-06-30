@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="0.51,0.52">
+	<application setting="false">
+		<name><![CDATA[库文件]]></name>
+		<identifie><![CDATA[businessoffice]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<type><![CDATA[other]]></type>
+		<ability><![CDATA[营业厅文件库管理]]></ability>
+		<description><![CDATA[营业厅文件库管理]]></description>
+		<author><![CDATA[ffcsteam]]></author>
+		<url><![CDATA[]]></url>
+	</application>
+	<platform>
+		<subscribes>
+		</subscribes>
+		<handles>
+			<message type="text" />
+		</handles>
+		<rule embed="false" />
+	</platform>
+	<bindings>
+        <menu>
+        <entry title="文件库列表" do="display" />
+        </menu>
+	</bindings>
+	<install><![CDATA[
+     CREATE TABLE IF NOT EXISTS  `ims_businessoffice_library` (
+	  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+	  `uid` int(10) NOT NULL COMMENT '编辑者uid',
+	  `groupid` int(10) NOT NULL COMMENT '所属用户组',
+	  `title` varchar(50) NOT NULL,
+	  `description` varchar(255) NOT NULL,
+	  `thumb` varchar(100) NOT NULL,
+	  `content` text NOT NULL,
+	  `createtime` int(10) NOT NULL COMMENT '创建时间',
+	  `keyword` varchar(50) DEFAULT NULL,
+	  `parent_uid` int(10) DEFAULT '0',
+	  `flag` int(10) DEFAULT '0',
+	  `lib_status` int(11) DEFAULT '1' COMMENT '1代表正常状态',
+	  `cat_id` int(10) DEFAULT '0',
+	  PRIMARY KEY (`id`)
+	) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+    CREATE TABLE IF NOT EXISTS `ims_businessoffice_library_log` (
+      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      `rid` int(10) unsigned NOT NULL,
+      `library_id` int(10) unsigned NOT NULL,
+      `flag` int(10) DEFAULT '0',
+      `keyword` varchar(50) DEFAULT NULL,
+      `uid` int(10) DEFAULT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+	CREATE TABLE IF NOT EXISTS `ims_businessoffice_library_cat` (
+	  `cat_id` int(10) NOT NULL AUTO_INCREMENT,
+	  `category` varchar(100) NOT NULL,
+	  `describe` varchar(255) DEFAULT NULL,
+	  `type_id` int(11) DEFAULT '1',
+	  PRIMARY KEY (`cat_id`)
+	) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+            ]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

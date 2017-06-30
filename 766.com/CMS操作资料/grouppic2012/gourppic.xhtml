@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>ͼƬ��6385</title>
+<link rel="stylesheet" href="http://cms2.766.com/css/gourppic.css"/>
+<script type="text/javascript" src="http://cms2.766.com/script/grouppic.js"></script>
+<script type="text/javascript">
+	var imageGroup =  <!--infoContent-->;	
+	var cookie,image, mode,dialog,player,urlLocate,smallImage,bigImage,keyword;
+	
+	$.onReady(function() {
+		
+		//cookie����
+		cookie = new Cookie();
+		image = new Image(imageGroup);
+		
+		//url���ͼƬ������ı�
+		urlLocate = new UrlLocate(image);
+		var page = urlLocate.getPage();
+		
+		//Сͼ����
+		smallImage = new SmallImage(image, page, $('outerSmallImage'), $('innerSmallImage'));
+		
+		//��ʾ�����Ի���
+		dialog = new Dialog($('dialog'));
+		
+		//ͼƬ����
+		player = new Player($('playTime').value, dialog);
+		
+		//�õ�Ƭģʽ
+		mode = new Mode(image, $('listMode'), $('showMode'), player, dialog);
+		mode.showMode();
+		
+		//����BigImage��setInfo���������imageGroup�滻ҳ������ʱҪ�滻�ı�ǩ
+		BigImage.prototype.setInfo = function(id) {
+			var pic = this.image.getPic(id);
+			$('image').src = pic.bigImgPath;
+			$('image').alt = pic.title;
+			$('infoTitle').innerHTML = imageGroup.infoTitle;
+				$('infoSecondTitle').innerHTML = imageGroup.infoSecondTitle;
+			
+			$('infoGuide').innerHTML = imageGroup.infoGuide;
+			$('infoLabel').innerHTML = pic.description;
+			this.smallImage.indexMove(id);
+		}
+		
+		bigImage = new BigImage(image, $('image'), page, urlLocate, dialog, smallImage, player, mode);
+		bigImage.setInfo(image.pics[page-1].id);
+		
+		//���ü�����ʾ
+		keyword = new Keyword($('keyTip'), 10, player, cookie, bigImage);
+		document.onkeydown = function(evt) {
+			keyword.keyDown(evt);
+		}
+		keyword.hasKeyTipCookie();		
+	});
+</script>
+</head>
+
+<body>
+<div  align="center">
+	<div style="width: 930px">
+    	<div class="picHeader">
+			<div class="htitle">
+				<h1>���⣺<span id="infoTitle"></span></h1>
+				<br/>
+				<h1>���ű��⣺<span id="infoSecondTitle"></span></h1>
+			</div>
+        </div>
+        <div id="keyTip" >
+       		<span style="border: 1px #000 solid;font-size: 12px;">֧��->,<-����ͼƬ</span>
+       		<br/>
+       	</div>
+       
+        <div id="showMode">
+	        <div>
+	        	<span><a href="javascript:window.location.href = imageGroup.preImgGrpUrl;">��һ��ͼ</a></span>
+	        	    
+	        	<span>
+	        		<select id="playTime">
+	        			<option value="1">1��</option>
+	        			<option value="2">2��</option>
+	        			<option value="3">3��</option>
+	        			<option value="4">4��</option>
+	        			<option value="5">5��</option>
+	        			<option value="6">6��</option>
+	        			<option value="7">7��</option>
+	        			<option value="8">8��</option>
+	        			<option value="9">9��</option>
+	        			<option value="10">10��</option>
+	        		</select>
+	        		<a href="javascript:void(0)" onclick="player.setTime($('playTime').value);player.play(bigImage);return false;">����</a>
+	        	</span>
+	        	<span><a href="javascript:void(0)" onclick="player.stop();return false;">��ͣ</a></span>
+	        	<span><a href="javascript:void(0)" onclick="player.setTime($('playTime').value);player.replay(bigImage);return false;">���²���</a></span>
+	        	    
+	        	<span><a href="javascript:void(0)" onclick="mode.listMode();return false;">�б�ģʽ</a></span>
+	        	    
+	      		<span><a href="javascript:window.location.href = imageGroup.nextImgGrpUrl;">��һ��ͼ</a></span>
+	       	</div>
+	        <div>
+	        	<table width="100%">
+	        		<tr>
+	        			<td><a href="javascript:void(0)" onclick="player.stop();bigImage.pre();return false;">��һ��</a></td>
+	        			<td>
+	        				<img id="image" width="800" height="550" style="cursor: pointer;" onclick="player.stop();bigImage.next();"/>
+						</td>
+	        			<td><a href="javascript:void(0)" onclick="player.stop();bigImage.next();return false;">��һ��</a></td>
+	        		</tr>
+	        	</table>
+			</div>
+	        <div>
+	        	<p>ͼƬ������:</p>
+	        	<p><span id="infoGuide"></span></p>
+				<br/>
+				<p>����ͼƬ����:</p>
+	        	<p><span id="infoLabel"></span></p>
+	        </div>
+	        <div>
+	        	<table>
+	        	<tr>
+	        		<td>
+	        			<a href="javascript:void(0)" onclick="smallImage.leftMove();return false;"><<</a>
+					</td>
+	        		<td>
+	        			<div id="outerSmallImage" style="background: #FFF;overflow: hidden;border: 1px dashed #CCC;width: 750px;">
+	        				<div style="float: left;width: 10000%;">
+	        					<div id="innerSmallImage" style="float: left;">
+	        						<!-- ������ͨ��javascript���?img��ǩ-->
+	        					</div>
+	        				</div>
+	        			</div>
+	        		</td>
+	        		<td>
+	        			<a href="javascript:void(0)" onclick="smallImage.rightMove();return false;">>></a>
+	        		</td>
+	        	</tr>
+	        	</table>
+	 		</div>
+	 		<div id="dialog" class="dialog">
+				<div>
+					<p>���Ѿ����������ͼ�?/p>
+					<p>
+						<a href="javascript:void(0)" onclick="player.replay(bigImage);return false;">���²���</a>
+						<a href="javascript:window.location.href = imageGroup.nextImgGrpUrl;">������һ��ͼ</a>
+					</p>
+					<p><a href="javascript:void(0)" onclick="dialog.hide();return false;">�ر�</a></p>
+				</div>
+			</div>
+ 		</div>
+ 		<div id="listMode">
+ 			<a href="javascript:void(0)" onclick="mode.showMode();return false;">�õ�ģʽ</a><br/>
+			<!--
+				����ͨ��javascript��̬������<div>,<div>��ǩ���һ�У�һ�������Ż���������ͼ�?��һ��div��ǩ���ĸ�������<span>��
+				<span>��ǩ��һ��<img>��ǩ,<span>��ʽ��listModeImageSpan���ã�<img>��ʽ��listModeImage���ã�
+				��ͼƬid��1234�����£�
+				<div>
+					<span class="listModeImageSpan">
+						<img class="listModeImage" id="l_1234" name="1234" src="����url" alt="����" onclick="bigImage.gotoImage(this.name)" /> 
+					</span>
+				</div>
+				����
+			-->
+ 		</div>
+ 	</div>
+</div>
+<br/>
+<br/>
+<br/>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微会员'),array('title'=>'会员管理'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-cog"></i> 会员管理
+    </h1>
+</div>
+<div class="main">
+    <!--<div class="search">-->
+    <div>
+        <form action="" method="post">
+            <input type="hidden" name="type" value="list" />
+            <table class="table table-striped table-bordered table-hover">
+                <tbody>
+                <tr>
+                    <th>会员名称</th>
+                    <td>
+                        <input class="span6" name="realname" type="text" value="{$queryRealname}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>手机号码</th>
+                    <td>
+                        <input class="span6" name="mobile" type="text" value="{$queryMobile}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>会员编号</th>
+                    <td>
+                        <input class="span6" name="number"  type="text" value="{$queryNumber}">
+                    </td>
+                </tr>
+                <tr class="search-submit">
+                    <td colspan="2"><button class="btn btn-sm btn-primary"><i class="icon-search icon-large"></i> 搜索</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <div class="rule">
+
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>会员编号</th>
+                    <th>姓名</th>
+                    <th>手机号码</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            {loop $member $row}
+            <tr>
+                <td>{$row['number']}</td>
+                <td>{$row['realname']}</td>
+                <td>{$row['mobile']}</td>
+                <td>
+                    <span><a href="{php echo create_url('micromember/member', array('from_user' => $row['from_user'],'type'=>'detail'))}">详细</a></span>
+                </td>
+                <td>{$row['number']}</td>
+            </tr>
+            {/loop}
+        </table>
+
+    </div>
+    {$pager}
+</div>
+
+{template 'common/footer'}

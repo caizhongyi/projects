@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/base.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="layout">
+    <div class="layout-right">
+        <div class="other-video">
+            <a href="#">其它视频推荐</a>
+        </div>
+        <div class="carousel y-carousel p-carousel">
+            <a class="carousel-prev jcarousel-prev" href="javascript:void(0)"></a>
+            <span class="carousel-clip jcarousel-clip">
+                <ul class="carousel-list jcarousel-list">
+                    <li><a href="javascript:void(0)"><img src="http://i04.static.olcdn.com/rcp/201205/07/13363654204507.jpg" alt="">name</a></li>
+                    <li><a href="javascript:void(0)"><img src="http://i04.static.olcdn.com/rcp/201205/07/13363654204507.jpg" alt="">name</a></li>
+                    <li><a href="javascript:void(0)"><img src="http://i04.static.olcdn.com/rcp/201205/07/13363654204507.jpg" alt="">name</a></li>
+                    <li><a href="javascript:void(0)"><img src="http://i04.static.olcdn.com/rcp/201205/07/13363654204507.jpg" alt="">name</a></li>
+                    <li><a href="javascript:void(0)"><img src="http://i04.static.olcdn.com/rcp/201205/07/13363654204507.jpg" alt="">name</a></li>
+                    <li><a href="javascript:void(0)"><img src="http://i04.static.olcdn.com/rcp/201205/07/13363654204507.jpg" alt="">name</a></li>
+                </ul>
+            </span>
+            <a class="carousel-next jcarousel-next" href="javascript:void(0)"></a>
+        </div>
+    </div>
+    <div class="layout-main"><img src="http://i04.static.olcdn.com/rcp/201205/07/13363654204507.jpg" alt=""></a></div>
+</div>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" >
+    $('.y-carousel').jcarousel({vertical:true,scroll: 2});
+    $('.jcarousel-list li').click(function(){
+        var src = $(this).find('img').attr('src');
+        $('.layout-main img').attr('src',src);
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+@import "../mixins/mixins.less";
+
+//init style
+@color       : #666;
+@link-color : #D3C2A6;
+@list-style : inherit;
+@family 	  : '宋体',arial,tahoma;
+@em 		  :  red;
+@background :  #fff;
+@font-size  :  12px;
+
+body{
+	color: @color;
+	font-size: @font-size ;
+	line-height: 1.5;
+	font-family: @family;
+	background:@background ;
+}
+em{ color: @em;}
+a{
+	color: @link-color;
+}
+li,ul,ol{
+	list-style: @list-style;
+}
+
+h1{
+	font-size: 16px;
+}
+h2,h3,h4,h5,h6{
+	font-size: 14px;
+}
+p{
+	font-size: 12px;
+}
+
+//.left{ .left();}
+//.right{ .right();}
+.bold{font-weight: bold;}
+//.clearfixs{ .clearfix();}
+
+.error{color: red;}
+.success{ color: green;}
+
+.section {
+	margin: 10px 0;
+}
+
+.hover{
+	position: relative;
+	.hover-panel{
+		display: none;
+		position: absolute;
+	}
+	&:hover {
+		.hover-panel {
+			display: block;
+		}
+	}
+}
+
+.arrow{
+	.arrow();
+}
+
+.horizontal-group{
+	li,.group-item{
+		margin-bottom: 10px;
+	}
+}
+
+.vertical-group{
+	li,.group-item{
+		margin-right: 10px;
+	}
+}

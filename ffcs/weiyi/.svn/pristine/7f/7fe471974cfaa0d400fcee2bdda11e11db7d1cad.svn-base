@@ -1,0 +1,54 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微活动 '),array('title'=>$modules[$modulename]['title']))}
+{template 'common/header'}
+{template 'activity/table'}
+<div class="main">
+	<div class="rule">
+		{loop $list $row}
+		<table class="tb table table-bordered">
+			<tr class="control-group">
+				<td class="rule-content">
+					<h4>
+						<span class="pull-right"><a onclick="return confirm('删除活动将同时删除关键字与回复，确认吗？');return false;" href="{php echo create_url('activity/delete', array('id' => $row['id'], 'type' => 'activity'))}">删除</a><a href="{php echo create_url('activity/post', array('id' => $row['id'],'module' => $row['module']))}">编辑</a></span>
+						{$row['name']} <small>（{$_W['modules'][$row['module']]['title']}）</small>
+					</h4>
+				</td>
+			</tr>
+			<tr class="control-group">
+				<td class="rule-kw">
+					<div>
+						{loop $row['keywords'] $kw}
+						<span>{$kw['content']}</span>
+						{/loop}
+					</div>
+				</td>
+			</tr>
+			<tr class="control-group">
+				<td class="rule-manage">
+					<span class="rule-type pull-right">
+					{if $row['cate'][0]}<a href="#">{$row['cate'][0]['name']}</a>{/if}
+					{if $row['cate'][1]}<a href="#">{$row['cate'][1]['name']}</a>{/if}
+					</span>
+					<div>
+						{if is_array($_W['account']['welcome']) && $_W['account']['welcome']['id'] == $row['id']}<a href="{php echo create_url('rule/system/cancel', array('type' => 'welcome'))}" onclick="ajaxopen(this.href, message);return false;" style="color:#FF3300" switch="1">取消欢迎信息</a>{else}<a href="{php echo create_url('rule/system/set', array('id' => $row['id'], 'type' => 'welcome'))}" onclick="ajaxopen(this.href, message);return false;" switch="0">设为欢迎信息</a>{/if}
+						{if is_array($_W['account']['default']) && $_W['account']['default']['id'] == $row['id']}<a href="{php echo create_url('rule/system/cancel', array('type' => 'default'))}" onclick="ajaxopen(this.href, message);return false;" style="color:#FF3300" switch="1">取消默认回复</a>{else}<a href="{php echo create_url('rule/system/set', array('id' => $row['id'], 'type' => 'default'))}" onclick="ajaxopen(this.href, message);return false;" switch="0">设为默认回复</a>{/if}
+						<a target="main" href="{php echo create_url('stat/trend/rule', array('id' => $row['id']))}">使用率走势</a>
+						{if $row['options']}						
+						{loop $row['options'] $opt}
+						<a href="{$opt['link']}" target="_blank">{$opt['title']}</a>
+						{/loop}
+						{/if}
+					</div>
+				</td>
+			</tr>
+		</table>
+		{/loop}
+	</div>
+	{$pager}
+</div>
+<script type="text/javascript">
+<!--
+	var category = {php echo json_encode($children)};
+
+//-->
+</script>
+{template 'common/footer'}

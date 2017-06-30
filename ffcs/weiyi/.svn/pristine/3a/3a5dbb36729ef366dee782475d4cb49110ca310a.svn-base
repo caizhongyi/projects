@@ -1,0 +1,199 @@
+
+{template 'common/header'}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="微盟、微信营销、微信代运营、微信定制开发、微信托管、微网站、微商城、微营销" name="Keywords">
+    <meta content="微盟，国内最大的微信公众智能服务平台，微盟八大微体系：微菜单、微官网、微会员、微活动、微商城、微推送、微服务、微统计，企业微营销必备。" name="Description">
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/bootstrap_min.css?2013-12-18-1" media="all" />
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/bootstrap_responsive_min.css?2013-12-18-1" media="all" />
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/style.css?2013-12-18-1" media="all" />
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/todc_bootstrap.css?2013-12-18-1" media="all" />
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/themes.css?2013-12-18-1" media="all" />
+    <link rel="stylesheet" type="text/css" href="http://stc.weimob.com/css/inside.css?2013-12-18-1" media="all" />
+    <script type="text/javascript" src="http://stc.weimob.com/src/jQuery.js?2013-12-18-1"></script>
+    <script type="text/javascript" src="http://stc.weimob.com/src/bootstrap_min.js?2013-12-18-1"></script>
+    <script type="text/javascript" src="http://stc.weimob.com/src/inside.js?2013-12-18-1"></script>
+    <title>微盟（Weimob）—国内最大的微信公众服务平台</title>
+    <link rel="shortcut icon" href="http://stc.weimob.com/img/favicon.ico" />
+    <!--[if lte IE 9]><script src="http://stc.weimob.com/src/watermark.js"></script><![endif]-->
+    <!--[if IE 7]><link href="http://stc.weimob.com/css/font_awesome_ie7.css" rel="stylesheet" /><![endif]-->
+</head>
+<body>
+<!--[if lte IE 9]>
+<script src="/static/js/watermark.js"></script>
+<![endif]-->
+<body>
+<div id="main">
+    <div class="container-fluid">
+
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-title">
+                        <div class="span8">
+                            <h3><i class="icon-table"></i>优惠券消费管理</h3>
+                        </div>
+                        <div class="span4">
+                            <form action="/micromember.php" method="get" class="form-horizontal">
+                                <input type="text" id="keyword-input" name="keyword-input"
+                                       value="{$r_keyWord}" style="width:140px;" class="input-small-z" placeholder="输入关键字"
+                                       data-rule-required="true" />
+                                <input type="hidden" name="act" value="coupon"/>
+                                <input type="hidden" name="actType" value="detail">
+                                <input type="hidden" name="couponId" value="{$r_couponId}">
+                                <select class="input-small" name="query_type">
+                                    <option value="all" selected="selected">全部</option>
+                                    <option value="membername" {if strcmp('membername',$r_keyWord)==0} selected="selected" {/if} >用户名</option>
+                                    <option value="phone" {if strcmp('phone',$r_keyWord)==0} selected="selected" {/if}>电话</option>
+                                    <option value="SN" {if strcmp('SN',$r_keyWord)==0} selected="selected" {/if}>SN码</option>
+                                </select>
+                                <button class="btn btn-sm btn-primary" type="submit">查询</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="box-content">
+                        <div class="alert">
+                            <div>
+                                <span class="send-count">优惠券 SN码派发：1张</span>已消费：0张
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span12 control-group">
+                                <div class="span2">
+                                    <a class="btn btn-sm btn-info" href="javascript:location.reload()"><i class="icon-refresh"></i></a>
+                                </div>
+
+                                <div class="pull-left datatabletool">
+                                    <button class="btn btn-sm btn-primary" title="批量启用"><i class="icon-check-sign"></i>批量启用</button>
+                                    <button class="btn btn-sm" title="批量停用"><i class="icon-ban-circle"></i>批量停用</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid dataTables_wrapper">
+                            <form action="/plus/formajax.php" method="post" class="form-horizontal">
+                                <table id="listTable" class="table table-bordered table-hover  dataTable">
+                                    <thead>
+                                    <tr>
+                                        <th class='with-checkbox'>
+                                            <input type="checkbox" class="check_all" /></th>
+                                        <th>名称</th>
+                                        <th>用户名</th>
+                                        <th>电话</th>
+                                        <th>SN码</th>
+                                        <th>SN码派发时间</th>
+                                        <th>使用时间</th>
+                                        <th>消费门店</th>
+                                        <th>消费金额/(元)</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {loop $r_detailList $row}
+                                    <tr>
+                                        <td class="with-checkbox">
+                                            <input type="checkbox" name="check" value="1"/>
+                                        </td>
+                                        <td>{$row['title']}</td>
+                                        <td>{$row['username']}</td>
+                                        <td>{$row['phone_no']}</td>
+                                        <td>{$row['sn']}</td>
+                                        <td>{$row['get_date']}</td>
+                                        <td>{$row['use_date']}</td>
+                                        <td>未知</td>
+                                        <td>0.00</td>
+                                        <td>
+                                            {if 0==$row['use_status']}
+                                            <span class="label label-satgreen">未使用</span>
+                                            {/if}
+                                            {if 1==$row['use_status']}
+                                            <span class="label label-satgray">已使用</span>
+                                            {/if}
+                                        </td>
+                                        <td>
+                                            {if 0==$row['use_status']}
+                                            <a class="btn use" data-codeid='19613' href='javascript:void(0)' title="立即使用"><i class="icon-check"></i>立即使用</a>
+                                            {/if}
+                                        </td>
+                                    </tr>
+                                    {/loop}
+                                    </tbody>
+                                </table>
+                            </form>
+                            <div class="dataTables_paginate paging_full_numbers"><span>       </span></div>                            </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="myModal2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="Form1" action="" method="post" class="form-horizontal ">
+                <input type="hidden" name="id" value="1425"/>
+                <input type="hidden" name="aid" value="33636"/>
+                <input type="hidden" name="usetype" value="2"/>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><i class="icon-check"></i>立即使用</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="control-group">
+                        <label class="control-label" for="price">消费金额</label>
+                        <div class="controls">
+                            <div class="input-append">
+                                <input type="text" placeholder="金额" name="price" id="price" class="input-small" />
+                                <span class="add-on"><i class="icon-cny"></i></span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="price">消费类型</label>
+                        <div class="controls">
+                            <select name="payment" class="input-small" style="width:110px;">
+                                <option value="0" >现金消费</option>
+                                <option value="1" >会员卡余额消费</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="store_id">消费门店</label>
+                        <div class="controls">
+                            <select class="input-medium" name="store_id">
+                                <option value="0">请选择消费门店</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" id="codeid" name="codeid" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-sm btn-primary">提交</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("tr").delegate(".use", "click", function () {
+            $("#price").val("");
+            $("#codeid").val($(this).attr("data-codeid"));
+            $("#myModal2").modal("show");
+        });
+    });
+
+</script>
+</body></body>
+</html>

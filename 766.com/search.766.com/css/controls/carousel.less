@@ -1,0 +1,61 @@
+@import "../mixins/index";
+@import "core";
+
+.carousel {
+	.clearfix();
+	.carousel-clip {
+		overflow: hidden;
+		width: 490px;
+		display: block;
+	}
+	.carousel-list {
+		.clearfix();
+		li {
+			float: left;
+			margin: 0 10px;
+		}
+		img {
+			width: 100px;
+			height: 100px;
+		}
+		.carousel-prev, .carousel-next {
+			width: 20px;
+			height: 70px;
+		}
+		.carousel-clip,
+		.carousel-prev,
+		.carousel-next {
+			vertical-align: middle;
+			float: left;
+		}
+	}
+}
+
+.vertical-carousel:extend(.carousel) {
+	.carousel-list {
+		li {
+			float: none;
+			margin: 10px 0;
+			width: 100%;
+		}
+		.carousel-clip {
+			overflow: hidden;
+			height: 243px;
+		}
+		.carousel-clip, .carousel-prev, .carousel-next {
+			vertical-align: middle;
+			float: none;
+			width: 100px;
+			display: block;
+			margin: 0 auto;
+		}
+		.carousel-prev, .carousel-next {
+			text-align: center;
+			height: auto;
+		}
+	}
+}
+
+.default-carousel{
+
+}

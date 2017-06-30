@@ -1,0 +1,73 @@
+@import "../mixins/mixins.less";
+
+
+.dialog {
+	position: fixed;
+	width: 500px;
+	padding: 5px;
+	z-index: 10;
+	display: none;
+	.content {
+		position: relative;
+		z-index: 1;
+		background: #fff;
+	}
+	.bg {
+		height: 100%; .opacity(0.5);
+		width: 100%;
+		position: absolute;
+		_display: none;
+		margin: -5px;
+		box-shadow: 1px 1px 5px #000;
+		background: #ddd;
+	}
+	.bg, .content {
+		border: 1px solid #ddd;
+		border-radius: 5px;
+	}
+	.hd {
+		padding: 10px;
+		border-bottom: 1px solid #ddd;
+		h3, .title {
+			float: left;
+			height: 100%;
+		}
+	}
+	.hd, .bd, .ft {
+		padding: 10px;.clearfix();
+	}
+	.ft {
+		text-align: right;
+		.btn {
+			margin-right: 10px;
+		}
+	}
+}
+
+.alert:extend(.dialog){
+	.bd {
+		text-align: center;
+		.icon {
+			margin-right: 10px;
+		}
+		.icon, .msg {.inline-block();
+		}
+	}
+	.ft {
+		text-align: center;
+	}
+}
+
+.overlay () {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	.opacity(0.5);
+}
+
+.default-dialog{
+
+}
+

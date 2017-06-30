@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>我的标题</title>
+    <meta name="keywords" content="keywords"/>
+    <meta name="description" content="description"/>
+
+    <!-- author  -->
+    <!--<meta name="author" content=""/>-->
+    <!-- copyright  -->
+    <!--<meta name="copyright" content="2001-2010 Comsenz Inc."/>-->
+    <!-- web label  -->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+    <!-- web ico  -->
+    <link rel="shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="favicon.ico"/>
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../js/html5.js"></script>
+    <![endif]-->
+    <!-- base style  -->
+    <link rel="stylesheet" type="text/css" media="all" href="../component/bootstrap/css/bootstrap.min.css"/>
+
+    <!-- web style  -->
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/template.css"/>
+
+    <!-- basic scripts -->
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" ></script> -->
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+    </script>
+    <![endif]-->
+
+
+</head>
+<body>
+
+<!-- header -->
+<header class="header">
+    <div class="container">
+        <a href="" class="logo"><img src="../img/logo.png" alt=""/></a>
+        <span class="user"><a class="sms-tip"><i class="icon icon-mail"></i>短信群发</a>测试 <a href="">[退出]</a></span>
+        <nav class="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="">短信管理</a></li>
+                <li><a href="">客户管理</a></li>
+                <li><a href="">模板管理 <span class="badge pull-right">12</span></a></li>
+                <li class="active"><a href="">我的套餐</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- /header -->
+
+
+
+<div class="container">
+    <fieldset>
+        <legend>创建短信模板</legend>
+
+        <form action="" class="form">
+            <div class="form-group">
+                <label><span class="form-label">模板名称：</span><input type="text" class="form-control" placeholder="短信测试4"/></label><span class="form-inline">（请输入短信模板的自定义名称）</span>
+            </div>
+        </form>
+        <div class="clearfix">
+            <div class="pull-right mobile">
+                <div class="mobile-info">
+                    <div class="mobile-tpl" contenteditable="">
+                        <div id="div_request_example" style="height: 100%;">
+                        尊敬的<span class="tag-danger" >用户<a href="javascript:;" class="delete"  contenteditable="false">×</a></span>，
+                        您的验证码为<span class="tag-danger">验证码<a href="javascript:;" class="delete"  contenteditable="false">×</a></span>本验证码3分钟内有效，感谢您的 使用！<span class="tag-success">职位</span> ：经理助理。[中国电信]
+                        </div>
+                        <div class="mobile-fixedbar">单条短信最多300字符，已输入138字 </div>
+                    </div>
+
+                    <div class="mobile-tpl" style="display: none;" >
+                        <span class="glyphicon glyphicon-pencil"></span> 请您在此编辑模板，并预览模板效果。
+                        <div class="mobile-fixedbar">单条短信最多300字符，已输入138字 </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="main">
+                <fieldset>
+                    <legend>标签列表</legend>
+                    <div class="templates-tags">
+                        <span  class="tag-danger">客户姓名<a href="javascript:;" class="delete"  contenteditable="false">×</a></span>
+                        <span  class="tag-danger">性别<a href="javascript:;" class="delete"  contenteditable="false">×</a></span>
+                        <span  class="tag-danger">地区<a href="javascript:;" class="delete"  contenteditable="false">×</a></span>
+                        <span  class="tag-danger">邮箱<a href="javascript:;" class="delete"  contenteditable="false">×</a></span>
+                        <span  class="tag-danger">个体属性<a href="javascript:;" class="delete"  contenteditable="false">×</a></span>
+                        <span  class="tag-danger">更新时间<a href="javascript:;" class="delete"  contenteditable="false">×</a></span>
+                        <span  class="tag-danger">职位<a href="javascript:;" class="delete"  contenteditable="false">×</a></span>
+                        <span  class="tag-success">客户姓名<a href="javascript:;" class="delete"  contenteditable="false">×</a></span>
+                        <div>
+                            <a href="javascript:;" data-toggle="modal" data-target="#modalTags" class="tag-success"><i>+</i>添加自定义标签</a>(<span class="text-danger">红色</span>标签表示系统固定标签，<span class="text-success">绿色</span>标签表示自定义标签)
+                        </div>
+                        <div class="text-center options"><button class="btn btn-danger">编 辑</button></div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<!-- footer -->
+<footer class="footer">
+    增值电信业务经营许可证A2.B1.B2-20040001 [京网文[2011]0814-291号] | 京ICP备09031924号 <br>
+    Copyright © 中国电信集团 版权所有
+</footer>
+<!-- /footer -->
+
+
+<div id="modalTags" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">添加自定义标签</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" class="form">
+                    <div class="form-group">
+                        <label><span class="form-label">参数名称：</span><input type="text" class="form-control" placeholder="输入文本"/></label>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="form-label">参数类型：</span><select name="" id="" class="form-control">
+                            <option value="">选择类型</option></select></label>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="form-label">字符长度：</span><input type="text" class="form-control" placeholder="输入您的字节长度"/></label>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="form-label">参数描述：</span><textarea class="form-control"></textarea></label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-target="#modalConform" data-toggle="modal">添加</button>
+                <button type="button" class="btn btn-original" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="modalConform" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">添加自定义标签</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" class="form">
+                    <div class="form-group">
+                        <label><span class="form-label">参数名称：</span><input type="text" class="form-control" placeholder="输入文本"/></label>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="form-label">参数类型：</span><select name="" id="" class="form-control">
+                            <option value="">选择类型</option></select></label>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="form-label">字符长度：</span><input type="text" class="form-control" placeholder="输入您的字节长度"/></label>
+                    </div>
+                    <div class="form-group">
+                        <label><span class="form-label">参数描述：</span><textarea class="form-control"></textarea></label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">添加</button>
+                <button type="button" class="btn btn-original" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript" src="../component/bootstrap/js/bootstrap.min.js"></script>
+<!-- placeholer 支持所有浏览器 -->
+<script type="text/javascript" src="../js/jquery.placeholder.js"></script>
+<script type="text/javascript" src="../js/jquery.jdraggable.min.js"></script>
+<script type="text/javascript" src="../js/countermark/jquery.countermark.js"></script>
+<script type="text/javascript">
+    $('.templates-tags').countermark({ container : '#div_request_example ' , item : 'span'})
+</script>
+<!-- global  -->
+<script type="text/javascript" src="js/global.js"></script>
+
+</body>
+</html>

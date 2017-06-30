@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s0="http://www.bnet.cn/v3.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/">
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="http://www.bnet.cn/v3.0">
+<s:element name="getEncodeString">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" form="unqualified" name="decode" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="getEncodeStringResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" form="unqualified" name="getEncodeStringResponse" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="getPortalResult">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" form="unqualified" name="reqXML" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="getPortalResultResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" form="unqualified" name="getPortalResultResponse" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="getPortalRequest">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" form="unqualified" name="streamingno" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" form="unqualified" name="rand" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="getPortalRequestResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" form="unqualified" name="getPortalRequestResponse" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="getEncodeStringSoapIn">
+<wsdl:part name="parameters" element="s0:getEncodeString"/>
+</wsdl:message>
+<wsdl:message name="getEncodeStringSoapOut">
+<wsdl:part name="parameters" element="s0:getEncodeStringResponse"/>
+</wsdl:message>
+<wsdl:message name="getPortalResultSoapIn">
+<wsdl:part name="parameters" element="s0:getPortalResult"/>
+</wsdl:message>
+<wsdl:message name="getPortalResultSoapOut">
+<wsdl:part name="parameters" element="s0:getPortalResultResponse"/>
+</wsdl:message>
+<wsdl:message name="getPortalRequestSoapIn">
+<wsdl:part name="parameters" element="s0:getPortalRequest"/>
+</wsdl:message>
+<wsdl:message name="getPortalRequestSoapOut">
+<wsdl:part name="parameters" element="s0:getPortalRequestResponse"/>
+</wsdl:message>
+<wsdl:portType name="BnetForSIWSSoap">
+<wsdl:operation name="getEncodeString">
+<wsdl:input message="tns:getEncodeStringSoapIn"/>
+<wsdl:output message="tns:getEncodeStringSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="getPortalResult">
+<wsdl:input message="tns:getPortalResultSoapIn"/>
+<wsdl:output message="tns:getPortalResultSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="getPortalRequest">
+<wsdl:input message="tns:getPortalRequestSoapIn"/>
+<wsdl:output message="tns:getPortalRequestSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="BnetForSIWSSoap" type="tns:BnetForSIWSSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="getEncodeString">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getPortalResult">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getPortalRequest">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="BnetForSIWSSoap12" type="tns:BnetForSIWSSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="getEncodeString">
+<soap12:operation soapAction="" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getPortalResult">
+<soap12:operation soapAction="" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getPortalRequest">
+<soap12:operation soapAction="" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="BnetForSIWS">
+<wsdl:port name="BnetForSIWSSoap" binding="tns:BnetForSIWSSoap">
+<soap:address location="http://bnetforap.fj.bnet.cn/AsyncInterfaceForSI/v1_2/BnetForSIWS.asmx"/>
+</wsdl:port>
+<wsdl:port name="BnetForSIWSSoap12" binding="tns:BnetForSIWSSoap12">
+<soap12:address location="http://bnetforap.fj.bnet.cn/AsyncInterfaceForSI/v1_2/BnetForSIWS.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

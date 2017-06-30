@@ -1,0 +1,33 @@
+{template 'header'}
+{template 'slide'}
+<body>
+<link href="./themes/mobile/css/common.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/css/reset.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/css/snower.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/templet3/css/home.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="./themes/mobile/js/maivl.js"></script>
+<div class="body">
+
+    <section>
+        {if $navs}
+        <ul class="list_ul">
+            {loop $navs $nav}
+            <li>
+                <a href="{$nav['url']}">
+                    <figure>
+                        <div style="background-image:url({$_W['attachurl']}{$nav['icon']});">&nbsp;</div>
+                        <figcaption style="height:33px; overflow:hidden;">{$nav['name']}</figcaption>
+                    </figure>
+                </a>
+            </li>
+            {/loop}
+        </ul>
+    </section>
+    {else}
+    <a href="mobile.php?act=channel&name=home&weid={$_W['weid']}" class="box-item">
+        <i class="icon-user"></i>
+        <span style="{$nav['css']['name']}">个人中心</span>
+    </a>
+    {/if}
+</div>
+{template 'footer'}

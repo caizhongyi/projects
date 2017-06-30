@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>轮播</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="css/swipe.css"/>
+</head>
+<body style="">
+<style>
+
+</style>
+<div class="swipe" id="slider">
+    <ul class="swipe-list">
+        <li style="">
+            <a data-273-click-log="/wap/banner@etype=click@banner=lottery"
+               href="http://m.273.cn/?_mod=Lottery&_dir=ckb">
+                <img src="http://sta.273.com.cn/app/wap_v2/pics/banner_cj.jpg" class="i-img"/>
+            </a>
+        </li>
+        <li style="">
+            <a data-273-click-log="/wap/banner@etype=click@banner=ensure" href="/ensure/default.html">
+                <img src="http://sta.273.com.cn/app/wap_v2/pics/banner_ensure.jpg" class="i-img"/>
+            </a>
+        </li>
+        <li style="">
+            <a data-273-click-log="/wap/banner@etype=click@banner=maiche" href="/pub/">
+                <img src="http://sta.273.com.cn/app/wap_v2/pics/banner_mc.jpg" class="i-img"/>
+            </a>
+        </li>
+        <li style="">
+            <a data-273-click-log="/wap/banner@etype=click@banner=hezuo" href="http://yqzq.cn/app/a/11593">
+                <img src="http://sta.273.com.cn/app/wap_v2/pics/banner_yqzq.jpg" class="i-img"/>
+            </a>
+        </li>
+    </ul>
+    <div class="banner-num">
+        <span class="on"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<script type="text/javascript" src="/mod.js"></script>
+<script type="text/javascript">
+    var Swipe = require('js/swipe'), $ = require('zepto')
+    var $slider = $('#slider');
+    Swipe($slider[0], {
+        auto: 5000, //0为不自动播放,大于0表示毫秒
+        continuous: true,
+        callback: function (pos) {
+            var $numSpan = $slider.find('.banner-num span')
+            $numSpan.removeClass('on');
+            $($numSpan[pos]).addClass('on');
+        }
+    });
+    $slider.height('auto')
+</script>
+</body>
+</html>

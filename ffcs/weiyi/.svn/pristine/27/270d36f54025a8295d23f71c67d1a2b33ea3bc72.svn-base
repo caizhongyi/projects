@@ -1,0 +1,326 @@
+<?php
+/**
+ * 微商城模块微站定义
+ *
+ * @author WeEngine Team
+ * @url
+ */
+defined('IN_IA') or exit('Access Denied');
+
+class ShoppingModuleSite extends WeModuleSite {
+
+	public function getHomeTiles() {
+		return array(
+			array('title'=>'商城', 'url'=> $this->createMobileUrl('list'))
+		);
+	}
+
+	public function doMobilelist() {
+		global $_GPC, $_W;
+		$this->checkAuth();
+		$pindex = max(1, intval($_GPC['page']));
+		$psize = 20;
+		$condition = '';
+
+		if (!empty($_GPC['ccate'])) {
+			$cid = intval($_GPC['ccate']);
+			$condition .= " AND ccate = '{$cid}'";
+		} elseif (!empty($_GPC['pcate'])) {
+			$cid = intval($_GPC['pcate']);
+			$condition .= " AND pcate = '{$cid}'";
+		}
+
+		$children = array();
+		$category = pdo_fetchall("SELECT * FROM ".tablename('shopping_category')." WHERE weid = '{$_W['weid']}' ORDER BY parentid ASC, displayorder DESC");
+		foreach ($category as $index => $row) {
+			if (!empty($row['parentid'])){
+				$children[$row['parentid']][] = $row;
+				unset($category[$index]);
+			}
+		}
+		$list = pdo_fetchall("SELECT * FROM ".tablename('shopping_goods')." WHERE weid = '{$_W['weid']}' AND status = '1' $condition ORDER BY displayorder DESC, id DESC LIMIT ".($pindex - 1) * $psize.','.$psize);
+		$total = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('shopping_goods') . " WHERE weid = '{$_W['weid']}'");
+		$pager = pagination($total, $pindex, $psize);
+		include $this->template('list');
+	}
+
+	public function doMobileUpdateCart() {
+		global $_GPC, $_W;
+		$result = array('status' => 0, 'message' => '');
+		$operation = $_GPC['op'];
+		$goodsid = intval($_GPC['goodsid']);
+
+		$goods = pdo_fetch("SELECT id, type, total FROM ".tablename('shopping_goods')." WHERE id = :id", array(':id' => $goodsid));
+		if (empty($goods)) {
+			$result['message'] = '抱歉，该商品不存在或是已经被删除！';
+			message($result, '', 'ajax');
+		}
+		
+		if ($goods['total'] > -1 && $goods['total'] == 0) {
+			$result['message'] = '抱歉，该商品库存不足！';
+			message($result, '', 'ajax');
+		}
+		if ($goods['type'] == '1') {
+			if (pdo_fetchcolumn("SELECT id, total FROM ".tablename('shopping_cart')." WHERE from_user = :from_user AND weid = '{$_W['weid']}' AND goodstype = '2'", array(':from_user' => $_W['fans']['from_user']))) {
+				$result['message'] = '抱歉，虚拟物品与实体物品请分开购买！';
+				message($result, '', 'ajax');
+			}
+		} elseif ($goods['type'] == '2') {
+			if (pdo_fetchcolumn("SELECT id, total FROM ".tablename('shopping_cart')." WHERE from_user = :from_user AND weid = '{$_W['weid']}' AND goodstype = '1'", array(':from_user' => $_W['fans']['from_user']))) {
+				$result['message'] = '抱歉，虚拟物品与实体物品请分开购买！';
+				message($result, '', 'ajax');
+			}
+		}
+		$row = pdo_fetch("SELECT id, total FROM ".tablename('shopping_cart')." WHERE from_user = :from_user AND weid = '{$_W['weid']}' AND goodsid = :goodsid", array(':from_user' => $_W['fans']['from_user'], ':goodsid' => $goodsid));
+
+		if (empty($row['id'])) {
+			if ($operation == 'reduce') {
+				$result['message'] = '您并没有购买此商品！';
+				$result['total'] = 0;
+				message($result, '', 'ajax');
+			}
+			$data = array(
+				'weid' => $_W['weid'],
+				'goodsid' => $goodsid,
+				'goodstype' => $goods['type'],
+				'from_user' => $_W['fans']['from_user'],
+				'total' => '1',
+			);
+			pdo_insert('shopping_cart', $data);
+		} else {
+			$row['total'] = $operation == 'reduce' ? ($row['total'] - 1) : ($row['total'] + 1);
+			if ($row['total'] > $goods['total']) {
+				$result['message'] = '抱歉，该商品库存不足！';
+				message($result, '', 'ajax');
+			}
+			if (empty($row['total'])) {
+				pdo_delete('shopping_cart', array('from_user' => $_W['fans']['from_user'], 'weid' => $_W['weid'], 'goodsid' => $goodsid));
+			} else {
+				$data = array(
+					'total' => $row['total'],
+				);
+				pdo_update('shopping_cart', $data, array('from_user' => $_W['fans']['from_user'], 'weid' => $_W['weid'], 'goodsid' => $goodsid));
+			}
+		}
+		$result['status'] = 1;
+		$result['message'] = '商品数据更新成功！';
+		$result['total'] = intval($data['total']);
+		message($result, '', 'ajax');
+	}
+
+	public function doMobileMyCart() {
+		global $_W, $_GPC;
+		$this->checkAuth();
+		if (checksubmit('submit')) {
+			$goodstype = intval($_GPC['goodstype']) ? intval($_GPC['goodstype']) : 1;
+			$cart = pdo_fetchall("SELECT * FROM ".tablename('shopping_cart')." WHERE goodstype = '{$goodstype}' AND weid = '{$_W['weid']}' AND from_user = '{$_W['fans']['from_user']}'", array(), 'goodsid');
+			if (!empty($cart)) {
+				$goods = pdo_fetchall("SELECT id, title, thumb, marketprice, unit, total FROM ".tablename('shopping_goods')." WHERE id IN ('".implode("','", array_keys($cart))."')");
+				if (!empty($goods)) {
+					foreach ($goods as $row) {
+						if (empty($cart[$row['id']]['total'])) {
+							continue;
+						}
+						if ($row['total'] < $cart[$row['id']]['total']) {
+							message('抱歉，“'.$row['title'].'”此商品库存不足！', $this->createMobileUrl('mycart'), 'error');
+						}
+						$price += (floatval($row['marketprice']) * intval($cart[$row['id']]['total']));
+					}
+				}
+				$data = array(
+					'weid' => $_W['weid'],
+					'from_user' => $_W['fans']['from_user'],
+					'ordersn' => strtolower(random(8)),
+					'price' => $price,
+					'status' => 0,
+					'sendtype' => intval($_GPC['sendtype']),
+					'paytype' => intval($_GPC['paytype']),
+					'goodstype' => intval($_GPC['goodstype']),
+					'createtime' => TIMESTAMP,
+				);
+				pdo_insert('shopping_order', $data);
+				$orderid = pdo_insertid();
+				//插入订单商品
+				foreach ($goods as $row) {
+					if (empty($row)) {
+						continue;
+					}
+					pdo_insert('shopping_order_goods', array(
+						'weid' => $_W['weid'],
+						'goodsid' => $row['id'],
+						'orderid' => $orderid,
+						'total' => $cart[$row['id']]['total'],
+						'createtime' => TIMESTAMP,
+					));
+				}
+				//清空购物车
+				pdo_delete('shopping_cart', array('weid' => $_W['weid'], 'from_user' => $_W['fans']['from_user']));
+				//变更商品库存
+				if (!empty($goods)) {
+					foreach ($goods as $row) {
+						if (empty($cart[$row['id']]['total'])) {
+							continue;
+						}
+						pdo_update('shopping_goods', array('total' => $row['total'] - $cart[$row['id']]['total']), array('id' => $row['id']));
+					}
+				}
+				//更新粉丝资料
+				fans_update($_W['fans']['from_user'], array(
+					'realname' => $_GPC['realname'],
+					'resideprovince' => $_GPC['resideprovince'],
+					'residecity' => $_GPC['residecity'],
+					'residedist' => $_GPC['residedist'],
+					'address' => $_GPC['address'],
+					'mobile' => $_GPC['mobile'],
+					'qq' => $_GPC['qq'],
+				));
+				message('提交订单成功，现在跳转至付款页面...', $this->createMobileUrl('pay', array('orderid' => $orderid)), 'success');
+			} else {
+				message('抱歉，您的购物车里没有任何商品，请先购买！', $this->createMobileUrl('list'), 'error');
+			}
+		}
+		$goodstype = 1;
+		$cart = pdo_fetchall("SELECT * FROM ".tablename('shopping_cart')." WHERE goodstype = '{$goodstype}' AND weid = '{$_W['weid']}' AND from_user = '{$_W['fans']['from_user']}'", array(), 'goodsid');
+		if (empty($cart)) {
+			$goodstype = 2;
+			$cart = pdo_fetchall("SELECT * FROM ".tablename('shopping_cart')." WHERE goodstype = '{$goodstype}' AND weid = '{$_W['weid']}' AND from_user = '{$_W['fans']['from_user']}'", array(), 'goodsid');
+		}
+		if (!empty($cart)) {
+			$goods = pdo_fetchall("SELECT id, title, thumb, marketprice, unit FROM ".tablename('shopping_goods')." WHERE id IN ('".implode("','", array_keys($cart))."')");
+		}
+		if (empty($goods)) {
+			message('抱歉，您的购物车里没有任何商品，请先购买！', $this->createMobileUrl('list'), 'error');
+		}
+		$profile = fans_search($_W['fans']['from_user'], array('realname', 'resideprovince', 'residecity', 'residedist', 'address', 'mobile', 'qq'));
+		include $this->template('cart');
+	}
+
+	public function doMobilePay() {
+		global $_W, $_GPC;
+		$this->checkAuth();
+		$orderid = intval($_GPC['orderid']);
+		$order = pdo_fetch("SELECT * FROM ".tablename('shopping_order')." WHERE id = :id", array(':id' => $orderid));
+		if ($order['status'] != '0') {
+			message('抱歉，您的订单已经付款或是被关闭，请重新进入付款！', $this->createMobileUrl('myorder'), 'error');
+		}
+		$profile = fans_search($_W['fans']['from_user'], array('credit2'));
+		if (checksubmit('paytype1')) {
+			if ($order['paytype'] != 1) {
+				message('抱歉，您的支付方式不正确，请重新提交订单！', $this->createMobileUrl('myorder'), 'error');
+			}
+			if ($profile['credit2'] < $order['price']) {
+				message('抱歉，您帐户的余额不够支付该订单，请充值！', create_url('mobile/module/charge', array('name' => 'fans', 'weid' => $_W['weid'])), 'error');
+			}
+			if (fans_update($_W['fans']['from_user'], array('credit2' => $profile['credit2'] - $order['price']))) {
+				pdo_update('shopping_order', array('status' => 1), array('id' => $orderid));
+				message('余额付款成功！', $this->createMobileUrl('myorder'), 'success');
+			} else {
+				message('余额付款失败，请重试！', $this->createMobileUrl('myorder'), 'error');
+			}
+			
+		}
+		if ($order['paytype'] == '2' && (empty($_W['account']['payment']) || empty($_W['account']['payment']['alipay']))) {
+			message('网站未设置支付相关参数，请联系管理员！');
+		}
+		if (checksubmit('paytype2')) {
+			require_once model('payment');
+			$fee = $order['price'];
+			$record = array();
+			$record['weid'] = $_W['weid'];
+			$record['openid'] = $_W['fans']['from_user'];
+			$record['type'] = 'shopping-order';
+			$record['tid'] = $order['id'];
+			$record['fee'] = $fee;
+			$record['status'] = '0';
+			if(pdo_insert('paylog', $record)) {
+				$plid = pdo_insertid();
+				if($plid) {
+					$params = array();
+					$params['tid'] = $plid;
+					$params['user'] = $_W['fans']['from_user'];
+					$params['fee'] = $fee;
+					$params['title'] = $_W['account']['name'] . "商城订单{$order['ordersn']}付款 {$fee} 元";
+					$ret = alipay_build($params, $_W['account']['payment']['alipay']);
+					if($ret['url']) {
+						header("location: {$ret['url']}");
+						exit();
+					}
+				}
+			}
+			message('充值操作失败, 请稍后重试.');
+		}
+
+		include $this->template('pay');
+	}
+
+	public function doMobileClear() {
+		global $_W, $_GPC;
+		$this->checkAuth();
+		//清空购物车
+		pdo_delete('shopping_cart', array('weid' => $_W['weid'], 'from_user' => $_W['fans']['from_user']));
+		message('清空购物车成功！', $this->createMobileUrl('list'), 'success');
+	}
+
+	public function doMobileMyOrder() {
+		global $_W, $_GPC;
+		$this->checkAuth();
+		$pindex = max(1, intval($_GPC['page']));
+		$psize = 20;
+		$list = pdo_fetchall("SELECT * FROM ".tablename('shopping_order')." WHERE weid = '{$_W['weid']}' AND from_user = '{$_W['fans']['from_user']}' ORDER BY id DESC LIMIT ".($pindex - 1) * $psize.','.$psize, array(), 'id');
+		$total = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('shopping_order') . " WHERE weid = '{$_W['weid']}' AND from_user = '{$_W['fans']['from_user']}'");
+		$pager = pagination($total, $pindex, $psize);
+
+		if (!empty($list)) {
+			foreach ($list as &$row) {
+				$goodsid = pdo_fetchall("SELECT goodsid FROM ".tablename('shopping_order_goods')." WHERE orderid = '{$row['id']}'", array(), 'goodsid');
+				$goods = pdo_fetchall("SELECT id, title, thumb, unit, marketprice FROM ".tablename('shopping_goods')."  WHERE id IN ('".implode("','", array_keys($goodsid))."')");
+				$row['goods'] = $goods;
+			}
+		}
+		include $this->template('order');
+	}
+	
+	public function doMobileDetail() {
+		global $_W, $_GPC;
+		$this->checkAuth();
+		$goodsid = intval($_GPC['id']);
+		$goods = pdo_fetch("SELECT * FROM ".tablename('shopping_goods')." WHERE id = :id", array(':id' => $goodsid));
+		if (empty($goods)) {
+			message('抱歉，商品不存在或是已经被删除！');
+		}
+		if (checksubmit('submit')) {
+			$_GPC['count'] = intval($_GPC['count']);
+			if ($goods['total'] > -1 && $goods['total'] < $_GPC['count']) {
+				message('抱歉，该商品库存不足！');
+			}
+			$row = pdo_fetch("SELECT id, total FROM ".tablename('shopping_cart')." WHERE from_user = :from_user AND weid = '{$_W['weid']}' AND goodsid = :goodsid", array(':from_user' => $_W['fans']['from_user'], ':goodsid' => $goodsid));
+			if (empty($row['id'])) {
+				$data = array(
+					'weid' => $_W['weid'],
+					'goodsid' => $goodsid,
+					'goodstype' => $goods['type'],
+					'from_user' => $_W['fans']['from_user'],
+					'total' => $_GPC['count'],
+				);
+				pdo_insert('shopping_cart', $data);
+			} else {
+				$data = array(
+					'total' => $row['total'] + $_GPC['count'],
+				);
+				if ($goods['total'] > -1 && $goods['total'] < $data['total']) {
+					message('抱歉，该商品库存不足！');
+				}
+				pdo_update('shopping_cart', $data, array('from_user' => $_W['fans']['from_user'], 'weid' => $_W['weid'], 'goodsid' => $goodsid));
+			}
+			message('添加商品成功，请去“我的购物车”提交订单！', $this->createMobileUrl('list'), 'success');
+		}
+		include $this->template('detail');
+	}
+
+	private function checkAuth() {
+		global $_W;
+		if (empty($_W['fans']['from_user'])) {
+			message('非法访问，请重新点击链接进入个人中心！');
+		}
+	}
+}

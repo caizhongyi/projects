@@ -1,0 +1,462 @@
+{template 'common/header'}
+
+
+{template 'home/welcome'}
+<div class="main">
+    <div class="row">
+        <div class="col-sm-8">
+            <div id="recent-box" class="widget-box transparent">
+                <div class="widget-header">
+                    <h4 class="lighter smaller">
+                        数据汇总
+                    </h4>
+                </div>
+
+                <div class="widget-body">
+                    <div class="widget-main padding-4">
+                        <div class="alert alert-warning alert-mini">
+                            <a  class="alert-enter">
+                                <i class="icon-cog"></i>管理 ＞
+                            </a>
+                            <h4>游玩服务<small>（微信公众号）</small></h4>
+                        </div>
+
+                        <div class="infobox-container">
+                            <div class="infobox infobox-master infobox-dark">
+                                <div class="infobox-icon btn-success">
+                                    <i class="icon-comment"></i>
+                                </div>
+
+                                <div class="infobox-data">
+                                    <div class="infobox-content">新消息</div>
+                                    <div class="infobox-content">3</div>
+                                </div>
+                            </div>
+
+                            <div class="infobox infobox-master infobox-dark">
+                                <div class="infobox-icon btn-primary">
+                                    <i class="icon-user"></i>
+                                </div>
+
+                                <div class="infobox-data">
+                                    <div class="infobox-content">新增人数</div>
+                                    <div class="infobox-content">3</div>
+                                </div>
+                            </div>
+
+                            <div class="infobox infobox-master infobox-dark">
+                                <div class="infobox-icon btn-info">
+                                    <i class="icon-bar-chart"></i>
+                                </div>
+
+                                <div class="infobox-data">
+                                    <div class="infobox-content">总用户数</div>
+                                    <div class="infobox-content">56</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-right slider-option"><a href="javascript:;">展开趋势分析 ＞</a></div>
+
+                        <div class="slider-panel">
+                            <div  class="widget-box transparent">
+                                <div class="widget-header">
+                                <div class="widget-toolbar no-border">
+                                    <ul  class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#task-tab-1" data-toggle="tab">新消息</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#member-tab-1" data-toggle="tab">新增人数</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#comment-tab-1" data-toggle="tab">总用户数</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="tab-content padding-8 overflow-visible">
+                                <div class="tab-pane active" id="task-tab-1">
+                                    <div id="sales-charts-1"></div>
+                                </div>
+
+                                <div class="tab-pane" id="member-tab-1">
+                                  <!--  <div id="sales-charts"></div>-->
+                                </div><!-- member-tab -->
+
+                                <div class="tab-pane" id="comment-tab-1">
+                                    <!--<div id="sales-charts"></div>-->
+                                </div>
+                                <script type="text/javascript" src="./resource/ace/assets/js/flot/jquery.flot.min.js"></script>
+                                <script src="./resource/ace/assets/js/flot/jquery.flot.resize.min.js"></script>
+
+                                <script type="text/javascript">
+                                    var d1 = [];
+                                    for (var i = 0; i < Math.PI * 2; i += 0.5) {
+                                        d1.push([i, Math.sin(i)]);
+                                    }
+
+                                    var d2 = [];
+                                    for (var i = 0; i < Math.PI * 2; i += 0.5) {
+                                        d2.push([i, Math.cos(i)]);
+                                    }
+
+                                    var d3 = [];
+                                    for (var i = 0; i < Math.PI * 2; i += 0.2) {
+                                        d3.push([i, Math.tan(i)]);
+                                    }
+
+                                    var sales_charts = $('#sales-charts-1').css({'width':'100%' , 'height':'220px'});
+                                    $.plot("#sales-charts-1", [
+                                        { label: "Domains", data: d1 },
+                                        { label: "Hosting", data: d2 },
+                                        { label: "Services", data: d3 }
+                                    ], {
+                                        hoverable: true,
+                                        shadowSize: 0,
+                                        series: {
+                                            lines: { show: true },
+                                            points: { show: true }
+                                        },
+                                        xaxis: {
+                                            tickLength: 0
+                                        },
+                                        yaxis: {
+                                            ticks: 10,
+                                            min: -2,
+                                            max: 2,
+                                            tickDecimals: 3
+                                        },
+                                        grid: {
+                                            backgroundColor: { colors: [ "#fff", "#fff" ] },
+                                            borderWidth: 1,
+                                            borderColor:'#555'
+                                        }
+                                    });
+
+                                </script>
+                            </div>
+                        </div>
+                        <div class="alert alert-warning alert-mini">
+                            <a  class="alert-enter">
+                                <i class="icon-cog"></i>管理 ＞
+                            </a>
+                            <h4>游玩服务<small>（微信公众号）</small></h4>
+                        </div>
+
+                        <div class="infobox-container">
+                            <div class="infobox infobox-master infobox-dark">
+                                <div class="infobox-icon btn-success">
+                                    <i class="icon-comment"></i>
+                                </div>
+
+                                <div class="infobox-data">
+                                    <div class="infobox-content">新消息</div>
+                                    <div class="infobox-content">3</div>
+                                </div>
+                            </div>
+
+                            <div class="infobox infobox-master infobox-dark">
+                                <div class="infobox-icon btn-primary">
+                                    <i class="icon-user"></i>
+                                </div>
+
+                                <div class="infobox-data">
+                                    <div class="infobox-content">新增人数</div>
+                                    <div class="infobox-content">3</div>
+                                </div>
+                            </div>
+
+                            <div class="infobox infobox-master infobox-dark">
+                                <div class="infobox-icon btn-info">
+                                    <i class="icon-bar-chart"></i>
+                                </div>
+
+                                <div class="infobox-data">
+                                    <div class="infobox-content">总用户数</div>
+                                    <div class="infobox-content">56</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-right slider-option"><a href="javascript:;">展开趋势分析 ＞</a></div>
+
+                        <div class="slider-panel" >
+                           <div  class="widget-box transparent">
+                            <div class="widget-header">
+                                <div class="widget-toolbar no-border">
+                                    <ul id="recent-tab" class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#task-tab" data-toggle="tab">新消息</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#member-tab" data-toggle="tab">新增人数</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#comment-tab" data-toggle="tab">总用户数</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                           <div class="tab-content padding-8 overflow-visible">
+                            <div class="tab-pane active" id="task-tab">
+                                <div id="sales-charts"></div>
+                            </div>
+
+                            <div class="tab-pane" id="member-tab">
+                                <!--  <div id="sales-charts"></div>-->
+                            </div><!-- member-tab -->
+
+                            <div class="tab-pane" id="comment-tab">
+                                <!--<div id="sales-charts"></div>-->
+                            </div>
+                            <script type="text/javascript" src="./resource/ace/assets/js/flot/jquery.flot.min.js"></script>
+                            <script type="text/javascript">
+                                var d1 = [];
+                                for (var i = 0; i < Math.PI * 2; i += 0.5) {
+                                    d1.push([i, Math.sin(i)]);
+                                }
+
+                                var d2 = [];
+                                for (var i = 0; i < Math.PI * 2; i += 0.5) {
+                                    d2.push([i, Math.cos(i)]);
+                                }
+
+                                var d3 = [];
+                                for (var i = 0; i < Math.PI * 2; i += 0.2) {
+                                    d3.push([i, Math.tan(i)]);
+                                }
+
+                                var sales_charts = $('#sales-charts').css({'width':'100%' , 'height':'220px'});
+                                $.plot("#sales-charts", [
+                                    { label: "Domains", data: d1 },
+                                    { label: "Hosting", data: d2 },
+                                    { label: "Services", data: d3 }
+                                ], {
+                                    hoverable: true,
+                                    shadowSize: 0,
+                                    series: {
+                                        lines: { show: true },
+                                        points: { show: true }
+                                    },
+                                    xaxis: {
+                                        tickLength: 0
+                                    },
+                                    yaxis: {
+                                        ticks: 10,
+                                        min: -2,
+                                        max: 2,
+                                        tickDecimals: 3
+                                    },
+                                    grid: {
+                                        backgroundColor: { colors: [ "#fff", "#fff" ] },
+                                        borderWidth: 1,
+                                        borderColor:'#555'
+                                    }
+                                });
+
+                            </script>
+                        </div>
+                        </div>
+
+                        <script type="text/javascript">
+                            $(function(){
+                                $('.slider-panel').eq(1).hide();
+                                $('.slider-option').click(function(){
+                                    $(this).next().stop(true,true).slideDown().siblings('.slider-panel').stop(true,true).slideUp();
+                                })
+                            })
+                        </script>
+                    </div><!-- /widget-main -->
+                </div><!-- /widget-body -->
+            </div><!-- /widget-box -->
+        </div>
+
+        <div class="col-sm-4">
+            <div class="widget-box transparent">
+                <div class="widget-header widget-header-flat">
+                    <h4 class="lighter">
+                        二维码及头像
+                    </h4>
+
+                    <div class="widget-toolbar">
+                        <a data-action="collapse" href="#">
+                            <i class="icon-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="widget-body"><div class="widget-body-inner" >
+                    <div class="widget-main padding-20 center">
+                        <img src="./resource/image/code.jpg" alt=""/><br><br>
+                        <img src="./resource/image/card.jpg" alt=""/>
+                    </div><!-- /widget-main -->
+                </div></div><!-- /widget-body -->
+            </div><!-- /widget-box -->
+
+            <div class="widget-box transparent">
+                <div class="widget-header widget-header-flat">
+                    <h4 class="lighter">
+                        系统公告
+                    </h4>
+
+                    <div class="widget-toolbar">
+                        <a data-action="collapse" href="#">
+                            <i class="icon-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="widget-body"><div class="widget-body-inner" >
+                    <div class="widget-main padding-4">
+                        <ul class="list nav-list list-striped">
+                            <li><span class="pull-right">5.633</span><span class="list-info">文字内容文字……</span></li>
+                            <li><span class="pull-right">5.633</span><span class="list-info">文字内容文字……</span></li>
+                            <li><span class="pull-right">5.633</span><span class="list-info">文字内容文字……</span></li>
+                            <li><span class="pull-right">5.633</span><span class="list-info">文字内容文字……</span></li>
+                            <li><span class="pull-right">5.633</span><span class="list-info">文字内容文字……</span></li>
+                            <li><span class="pull-right">5.633</span><span class="list-info">文字内容文字……</span></li>
+                            <li><span class="pull-right">5.633</span><span class="list-info">文字内容文字……</span></li>
+                        </ul>
+                    </div><!-- /widget-main -->
+                </div></div><!-- /widget-body -->
+            </div><!-- /widget-box -->
+        </div>
+    </div>
+    <br>
+    <div class="alert alert-mini alert-warning">
+        <h4>快捷操作</h4>
+    </div>
+
+    <div class="infobox-container text-left">
+        <a class="infobox infobox-grey infobox-small infobox-dark infobox-center">
+            <span class="infobox-data">
+                <span class="infobox-content">
+                    首次关注欢迎语
+                </span>
+            </span>
+        </a>
+        <a class="infobox infobox-blue infobox-small infobox-dark infobox-center">
+            <span class="infobox-data">
+                <span class="infobox-content">
+                    关键字回复
+                </span>
+            </span>
+        </a>
+        <a class="infobox infobox-green infobox-small infobox-dark infobox-center">
+             <span class="infobox-data">
+                 <span class="infobox-content">
+                    自定义菜单
+                 </span>
+             </span>
+        </a>
+        <a class="infobox infobox-blue infobox-small infobox-dark infobox-center">
+            <span class="infobox-data">
+                <span class="infobox-content">
+                    规则设置
+                 </span>
+            </span>
+        </a>
+        <a class="infobox infobox-pink infobox-small infobox-dark infobox-center">
+            <span class="infobox-data">
+                 <span class="infobox-content">
+                     幸运大转盘
+                 </span>
+             </span>
+        </a>
+        <a class="infobox infobox-blue2  infobox-small infobox-dark infobox-center">
+            <span class="infobox-data">
+                <span class="infobox-content">
+                     砸蛋
+                 </span>
+             </span>
+        </a>
+        <a class="infobox infobox-orange2 infobox-small infobox-dark infobox-center">
+             <span class="infobox-data">
+                 <span class="infobox-content">
+                     微官网
+                 </span>
+             </span>
+        </a>
+        <a class="infobox infobox-red infobox-small infobox-dark infobox-center">
+            <span class="infobox-data">
+                <span class="infobox-content">
+                     微会员
+                 </span>
+            </span>
+        </a>
+        <a class="infobox infobox-pink  infobox-small infobox-dark infobox-center">
+            <span class="infobox-data">
+                <span class="infobox-content">
+                      微活动
+                 </span>
+            </span>
+        </a>
+    </div>
+</div>
+
+<div class="main">
+    <div class="section">
+        <div class="account">
+            <div class="account-item">公共账号名称：我们的小伙伴（易信公共号）</div>
+            <div class="account-item">测验绑定状态： <a href="">未绑定</a> (未验证，说明您的公共账号可能存在未绑定成功的情况。)</div>
+        </div>
+        <div class="infobox-container infobox-container-master">
+            <div class="infobox infobox-master infobox-dark">
+                <div class="infobox-icon btn-success">
+                    <i class="icon-comment"></i>
+                </div>
+
+                <div class="infobox-data">
+                    <div class="infobox-content">新消息</div>
+                    <div class="infobox-content">3</div>
+                </div>
+            </div>
+
+            <div class="infobox infobox-master infobox-dark">
+                <div class="infobox-icon btn-primary">
+                    <i class="icon-user"></i>
+                </div>
+
+                <div class="infobox-data">
+                    <div class="infobox-content">新增人数</div>
+                    <div class="infobox-content">3</div>
+                </div>
+            </div>
+
+            <div class="infobox infobox-master infobox-dark">
+                <div class="infobox-icon btn-info">
+                    <i class="icon-bar-chart"></i>
+                </div>
+
+                <div class="infobox-data">
+                    <div class="infobox-content">总用户数</div>
+                    <div class="infobox-content">56</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="alert alert-mini alert-warning">
+            <h4>系统公告</h4>
+            <a href="" class="alert-enter">更多 ＞</a>
+        </div>
+
+        <ol class="list">
+            <li>内容内容内容内容内容内容内容内容内容内容……</li>
+            <li>内容内容内容内容内容内容内容内容内容内容……</li>
+            <li>内容内容内容内容内容内容内容内容内容内容……</li>
+            <li>内容内容内容内容内容内容内容内容内容内容……</li>
+            <li>内容内容内容内容内容内容内容内容内容内容……</li>
+            <li>内容内容内容内容内容内容内容内容内容内容……</li>
+            <li>内容内容内容内容内容内容内容内容内容内容……</li>
+        </ol>
+    </div>
+</div>
+
+{template 'common/footer'}

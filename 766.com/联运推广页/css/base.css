@@ -1,0 +1,224 @@
+﻿/* -------------------------------------------
+   class	:	reset 
+   author 	: 	czy
+   qq 		:	274142680
+   ver		:	1.0.0.0
+   date		:	2011-12-28
+	--------------------------------------------*/
+
+html{overflow-y:scroll;}
+body{font:14px/1.231 '宋体',arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;color:#333; margin:0 auto;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;word-break:break-all;}
+
+/* textarea */
+p{text-indent:2em; }
+blockquote{ margin-bottom:10px;}
+q:before,q:after{content:'';}
+blockquote,p{ line-height:22px;}
+/* end textarea */
+
+/* h1 - h6 */
+h1{ font-size:16px;}
+h2{ font-size:14px;}
+h3, h4, h5, h6{ font-size:14px;}
+h1, h2, h3, h4, h5, h6,caption{ font-weight:bold;}
+/* end h1 - h6 */
+
+/*h1,h2,h3,h4,h5,h6,pre,code,address,caption,cite,em,strong,th{ }*/
+ul,ol,dl,li,dd,dt{list-style:none; }
+
+/* table */
+table{border-collapse:collapse;border-spacing:0;}
+table th,
+table td{ padding:3px 5px;text-align:center;}
+table caption{text-align:center;}
+/* end table */
+
+fieldset,img,abbr,acronym{border:0;}
+legend{color:#000;}
+abbr,acronym{font-variant:normal;}
+
+sup{vertical-align:text-top;} 
+sub{vertical-align:text-bottom;}
+
+
+button,input[type="reset"],input[type="button"],input[type="submit"] {cursor:pointer; }
+input{font-family:'Verdana';}
+/* Opera requires 1px of padding to render with contemporary native chrome */
+/*  fonts  */
+select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif;}
+pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;font:inherit;}
+/* end  fonts  */
+
+/*  others  */
+ins {text-decoration: none;}
+del {text-decoration: line-through;} 
+/* end  others  */
+
+/* make IE scale images properly */
+img {-ms-interpolation-mode:bicubic;}
+
+/*  自定义初始化  */
+a{color:#333;text-decoration: none;cursor:pointer; }
+a:hover {text-decoration: underline; }
+/*a:active,a:visited { color:#005a9c; }*/
+
+/* html5 elements */
+article,aside,audio,bb,canvas,datagrid,datalist,details,dialog,eventsource,figure,footer,hgroup,header,mark,menu,meter,nav,output,progress,section,video{ margin:0; padding:0;display:block; zoom:1;} 
+
+/* -----------------------------------------
+	framework  ver 1.0
+	-----------------------------------------*/
+.equal { padding-bottom:32767px; margin-bottom: -32767px;overflow:hidden; } 
+.overflow { overflow:hidden;_overflow:visible;_zoom:1; }
+.left { float:left;*display:inline;_margin-right:-3px; }
+.right { float:right;*display:inline;_margin-left:-3px; } 
+
+/*  font */
+.f12 { font-size:12px; }
+.f14 { font-size:14px; }
+.f16 { font-size:16px; }
+.f18 { font-size:18px; }
+.blod {font-weight:bold;}
+/*  end font size  */
+
+/* colors */
+.red { color:red;}
+.green { color:green;}
+.blue {color:blue;}
+.yellow {color:yellow;}
+/* end  colors */
+
+/* word */
+.txt-l {text-align:left;}
+.txt-r {text-align:right;}
+.txt-j {text-align:justify;text-justify:inter-ideograph;}
+.center { text-align:center; }
+.out-center{ margin-left:auto; margin-right:auto;}
+/*end  word */
+
+/* 超过的字以...显示 */
+.ellip{display: block;width: 300px;overflow: hidden;white-space: nowrap;-o-text-overflow: ellipsis;_text-overflow: ellipsis; text-overflow: ellipsis;}
+/* firefox only  
+.ellip:not(p) {clear: both;}   
+.ellip:not(p) a {max-width: 300px;float: left;}   
+.ellip:not(p):after {content: "..."; float: left;width: 25px;padding-left: 1px;}*/
+/* end 超过的字以...显示 */
+
+/* 去a线边框 */
+a{blr:expression(this.onFocus=this.blur()); /* IE */outline:none;/* FF */}
+.hf:focus {outline:none;}
+/* end 去a线边框 */
+
+/* shadhow */
+.shadow {
+	-moz-box-shadow:1px 1px 5px #999;/* For Firefox3.6+ */
+	-webkit-box-shadow:1px 1px 5px #999;/* For Chrome5+,Safari5+ */
+	box-shadow:1px 1px 5px #999;/* For Latest Opera */
+	overflow:hidden;
+}
+/* radius */
+.radius
+{
+	-moz-border-radius:5px;
+	-khtml-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px
+}
+
+/* button && text */
+.clear-btn{ border:none; display:inline-block; *margin-right:5px; text-decoration:none; cursor: pointer;}
+.clear-btn:hover{ text-decoration:none;}
+.text,.textarea,.select{ border:1px solid #ddd; background:#fff; padding:2px 4px;}
+.text,textarea,select{background:#fff;}
+.button,.icon{ display:inline-block; vertical-align:middle;}
+/* end  button && text */
+
+/* zero height */
+.height-zero{height:0;line-height:0;overflow:hidden; font-size:0;}
+.hide{display:none;}
+
+
+/*  clear  */
+.clear{display:block;height:0;line-height:0;font-size:0;visibility:hidden;clear:both;}
+.clearfix{zoom:1;}
+.clearfix:after{content:".";height:1%;display:block;height:0;line-height:0;font-size:0;visibility:hidden;clear:both; *display:none;} 
+/*  end clear  */
+
+.inline{ display:inline-block; *display:inline; zoom:1;}
+.fluid
+{
+    float: none;
+    width: auto;
+	_overflow:visible;
+	zoom:1;
+}
+/*---------------------------------------------------------
+   plugins
+   ---------------------------------------------------------*/
+/* public */
+.list{ margin:10px;}
+.list li{ margin:5px 0;}
+.section{ margin:10px 0;}
+.disable {color:#999; text-decoration:none; cursor:default;}
+.disable:hover{ text-decoration:none;} 
+/* end public */
+
+/* article */
+.article-list{margin:10px;}
+.article-list li{padding:10px 0;}
+.article{padding:10px;}
+.article h1{ margin:10px 0 ; text-align:center; font-size:20px;}
+/* end article */
+
+/* template */
+.side{ float:left; _margin-right:-3px;}
+.subside{ float:right; _margin-left:-3px;}
+.main{display:block; zoom:1;background:lime;} 
+/* end template */
+
+/* mod */
+.hd,
+.bd,
+.ft{ padding:10px;}
+/* end  mod */
+
+/* nav */
+.nav{ margin:10px 0;}
+.nav li{ display:inline-block;*display:inline; *zoom:1;}
+/* end  nav */
+
+/* sitenav && sitemap */
+.sitenav,.sitemap{ margin:10px 0;}
+.sitenav a,.sitemap a{ margin:0 10px;}
+
+.sitemap{text-align:center;}
+/* end  sitenav && sitemap */
+
+/* form */
+.form li{zoom:1; margin:10px 0;}
+.form li:after{content:".";height:1%;display:block;height:0;line-height:0;font-size:0;visibility:hidden;clear:both; *display:none;}
+.form .label,
+.form .inputs,
+.form .tips{ display:inline-block; *display:inline; *zoom:1; vertical-align:middle;}
+.form .submit{ text-align:center; margin:10px 0;}
+.form .button{ margin:0 10px; display:inline-block;}
+/* end  form */
+
+/* tabs */
+.tabs-nav{zoom:1;}
+.tabs-nav:after{content:".";height:1%;display:block;height:0;line-height:0;font-size:0;visibility:hidden;clear:both; *display:none;}
+.tabs-nav li{ display:inline-block; *display:inline; *zoom:1; padding:5px 10px;}
+.tabs-panel li{display:none;}
+/* end  tabs */
+
+/* pager */
+.pager{text-align:center;}
+.pager a,.pager span{ margin-right:5px;display:inline-block; vertical-align:middle;}
+
+/* -----------------------------------------
+	end framework
+	-----------------------------------------*/
+
+

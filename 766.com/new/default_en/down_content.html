@@ -1,0 +1,25 @@
+{include head/}
+<body>
+{include nav/}
+  <!--main_ny-->
+ {include left/}
+    <!--new ned-->
+    <!--end-->
+    <div class="main_about_r">
+      <div class="main_about_r_title">{print weblangs('location')/}:{position source=position/} > {print content('style_title')/}</div>
+      <div class="main_about_r_con">
+        <div class="main_about_r_con_top"></div>
+        <div class="main_about_r_con_min">
+          <div class="main_about_r_con_min_title">{print content('title')/}<p>{print weblangs('content_hits')/}:<script language="javascript" src="{path includes/}/hits.php?id={print content('id')/}"></script></p></div>
+          <div class="main_about_r_con_min_con">
+           	<a href="{print content('down')/}" target="_self">{print weblangs('tpl_down')/}</a>
+        </div>
+        <div class="main_about_r_con_bom"></div>
+      </div>
+    </div>
+  </div>
+  <!--main_ny end--> 
+  <div class="line"></div>
+   {include foot/}
+</body>
+</html>

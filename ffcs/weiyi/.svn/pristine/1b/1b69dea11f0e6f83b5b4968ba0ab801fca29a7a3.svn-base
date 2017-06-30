@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>个人资料</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
+    <link rel="stylesheet" type="text/css" href="./source/modules/userapi/template/css/fans.css" media="all"/>
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+
+</head>
+<body id="fans">
+<div class="qiandaobanner"><img src="./source/modules/userapi/template/images/user.jpg">
+</div>
+<div class="cardexplain">
+    <li class="nob">
+        <div class="beizhu">填写以下信息以便得到更好的服务</div>
+    </li>
+    <ul class="round">
+        <li>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                <tr>
+                    <th>真实姓名</th>
+                    <td><input name="realname" type="text" class="px" id="realname" value="{$user_info['realname']}"
+                               placeholder="请输入您的真实姓名"></td>
+                </tr>
+            </table>
+        </li>
+        <li>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                <tr>
+                    <th>手机号码</th>
+                    <td><input name="mobile" class="px" id="mobile" value="{$user_info['mobile']}" type="text"
+                               placeholder="请输入您的电话"></td>
+                </tr>
+            </table>
+        </li>
+        <li>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                <tr>
+                    <th>QQ号码</th>
+                    <td><input name="qq" class="px" id="qq" value="{$user_info['qq']}" type="text"
+                               placeholder="请输入您的QQ号码"></td>
+                </tr>
+            </table>
+        </li>
+        <li>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                <tr>
+                    <th>性别</th>
+                    <td>
+                        <select name="gender" class="dropdown-select" id="gender">
+                            <option class="dropdown-option">请选择你的性别</option>
+                            <option value="1"
+                            {if $user_info['gender']==1}selected{/if}>男</option>
+                            <option value="2"
+                            {if $user_info['gender']==2}selected{/if}>女</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </li>
+        <li>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                <tr>
+                    <th>年龄</th>
+                    <td><input name="age" type="text" class="px" id="age" value="{$user_info['age']}"
+                               placeholder="请输入您的年龄"></td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+
+
+    <div class="footReturn">
+        <a id="showcard" class="submit">登记会员信息</a>
+
+        <div class="window" id="windowcenter">
+            <div id="title" class="wtitle">登记会员信息<span class="close" id="alertclose"></span></div>
+            <div class="content">
+                <div id="txt"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var oLay = document.getElementById("overlay");
+        $(document).ready(function () {
+
+            $("#showcard").click(function () {
+                if ($("#mobile").val() == '') {
+                    alertdiy('手机号码必须填写');
+                    return false;
+                }
+                reg = /^0{0,1}(13[0-9]|145|15[0-9]|153|156|18[0-9])[0-9]{8}$/i;
+                if (!reg.test($("#mobile").val())) {
+                    alertdiy("错误,请输入11位的手机号！");
+                    return false;
+                }
+                var submitData = {
+                    realname: $("#realname").val(),
+                    qq: $("#qq").val(),
+                    gender: $("#gender").val(),
+                    mobile: $("#mobile").val(),
+                    age: $("#age").val(),
+                    action: "edit"
+                };
+                $.post('{$loclurl}', submitData,
+                        function (data) {
+                            if (data.errno == 200) {
+                                alertdiy('更新成功！');
+                                setTimeout(function(){history.back();return;
+                                    var opened=window.open('about:blank','_self');
+                                    opened.opener=null;
+                                    opened.close();},2000);
+                            } else {
+                                alertdiy('无数据更新或系统繁忙！');
+                            }
+                        },'json');
+            });
+            $("#windowclosebutton").click(function () {
+                $("#windowcenter").slideUp(500);
+                oLay.style.display = "none";
+            });
+            $("#alertclose").click(function () {
+                $("#windowcenter").slideUp(500);
+                oLay.style.display = "none";
+            });
+
+            function alertdiy(title) {
+                $("#windowcenter").slideToggle("slow");
+                $("#txt").html(title);
+                setTimeout('$("#windowcenter").slideUp(500)', 4000);
+            }
+        })
+    </script>
+</div>
+
+</body>
+</html>

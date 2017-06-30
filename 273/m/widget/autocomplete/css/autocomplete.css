@@ -1,0 +1,48 @@
+.autocomplete{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    visibility: hidden;
+    width: 150px;
+    box-shadow: 0 0 1px #ddd;
+    opacity: 0;
+    transition:opacity .2s ease-in-out;
+    background: #fff;
+    font-size: 13px;
+    overflow: hidden;
+    /*max-height: 300px;
+    overflow-y: auto;*/
+}
+
+.autocomplete ul ,.autocomplete li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.autocomplete li{
+}
+
+.autocomplete-loading{
+    color: #999;
+}
+.autocomplete-loading,.autocomplete li a{
+    padding: 7px 10px;
+}
+.autocomplete li a{
+    display: block;
+    color: #666;
+}
+.autocomplete li a:hover,.autocomplete li.active a{
+    background: #ddd;
+}
+
+.autocomplete li a ,.autocomplete li a:hover{
+    text-decoration: none;
+}
+
+.autocomplete-in{
+    visibility: inherit;
+    opacity: 1;
+}

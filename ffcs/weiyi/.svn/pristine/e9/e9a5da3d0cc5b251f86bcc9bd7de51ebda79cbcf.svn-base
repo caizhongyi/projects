@@ -1,0 +1,221 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微站功能 '),array('title'=>'文章管理'))}
+{template 'common/header'}
+<!--<ul class="nav nav-tabs">-->
+	<!--<li {if $do == 'post'}class="active"{/if}><a href="{php echo create_url('site/article/post');}">添加文章</a></li>-->
+	<!--<li {if $do == 'display'}class="active"{/if}><a href="{php echo create_url('site/article/display');}">文章列表</a></li>-->
+<!--</ul>-->
+<div class="page-header">
+    <h1>
+        <i class="icon-book"></i>
+        {if $action == 'article' && $do == 'display'}文章管理{/if}
+        {if $action == 'article' && $do == 'post' && !$id}添加文章{/if}
+        {if $action == 'article' && $do == 'post' && $id}修改文章{/if}
+    </h1>
+</div>
+{if $action == 'article' && $do == 'display'}
+<p>
+    <a class="btn btn-sm btn-primary" href="{php echo create_url('site/article/post');}"><i class="icon-pencil"></i>添加文章</a>
+    <a class="btn btn-sm btn-primary" href="{php echo create_url('site/news/all');}"><i class="icon-signin"></i>导入文章</a>
+</p>
+{/if}
+
+<style>
+.table td span{display:inline-block;margin-top:4px;}
+.table td input{margin-bottom:0;}
+</style>
+{if $do == 'display'}
+<div class="main">
+	<div class="search">
+		<form action="site.php" method="get">
+		<input type="hidden" name="act" value="article" />
+		<input type="hidden" name="do" value="display" />
+		<table class="table table-striped table-bordered table-hover">
+			<tbody>
+				<tr>
+					<th>关键字</th>
+					<td>
+						<input class="span6" name="keyword" id="" type="text" value="{$_GPC['keyword']}">
+					</td>
+				</tr>
+				<tr>
+					<th>分类</th>
+					<td>
+						<select class="span3" style="margin-right:15px;" name="cate_1" onchange="fetchChildCategory(this.options[this.selectedIndex].value)">
+							<option value="0">请选择一级分类</option>
+							{loop $category $row}
+							{if $row['parentid'] == 0}
+							<option value="{$row['id']}" {if $row['id'] == $_GPC['cate_1']} selected="selected"{/if}>{$row['name']}</option>
+							{/if}
+							{/loop}
+						</select>
+						<select class="span3" id="cate_2" name="cate_2">
+							<option value="0">请选择二级分类</option>
+							{if !empty($_GPC['cate_1']) && !empty($children[$_GPC['cate_1']])}
+							{loop $children[$_GPC['cate_1']] $row}
+							<option value="{$row[0]}" {if $row[0] == $_GPC['cate_2']} selected="selected"{/if}>{$row[1]}</option>
+							{/loop}
+							{/if}
+						</select>
+					</td>
+				</tr>
+
+				 <tr>
+					<td colspan="2" style="vertical-align: middle"><button class="btn btn-sm btn-primary"><i class="icon-search icon-large"></i> 搜索</button></td>
+				 </tr>
+			</tbody>
+		</table>
+		</form>
+	</div>
+	<div>
+		<table class="table table-striped table-bordered table-hover">
+			<thead class="navbar-inner">
+				<tr>
+					<th style="width:30px;">ID</th>
+					<th>标题</th>
+					<th style="width:180px;">属性</th>
+					<th style="width:150px; text-align:left;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				{loop $list $item}
+				<tr>
+					<td>{$item['id']}</td>
+					<td><a href="{php echo create_url('site/article/post', array('id' => $item['id']))}">{$item['title']}</a></td>
+					<!--td>{php echo cutstr(strip_tags($item['content']), 100)}</td-->
+					<td>
+						{if $item['type'] && strstr($item['type'], 'h,')}<span class="label label-success">头条</span>{/if}
+						{if $item['type'] && strstr($item['type'], 'c,')}<span class="label label-success">推荐</span>{/if}
+						{if $item['type'] && strstr($item['type'], 'f,')}<span class="label label-success">幻灯</span>{/if}
+						{if $item['type'] && strstr($item['type'], 's,')}<span class="label label-success">滚动</span>{/if}
+					</td>
+					<td style="text-align:left;"><span><a href="{php echo create_url('site/article/post', array('id' => $item['id']))}" title="编辑"><i class="icon-edit"></i>编辑</a>&nbsp;&nbsp;<a onclick="return confirm('此操作不可恢复，确认吗？'); return false;" href="{php echo create_url('site/article/delete', array('id' => $item['id']))}" title="删除"><i class="icon-remove-sign"></i>删除</a></span></td>
+				</tr>
+				{/loop}
+                <tr>
+                    <td colspan="4">
+                        <input name="token" type="hidden" value="{$_W['token']}" />
+                        <input type="submit" class="btn btn-sm btn-primary" name="submit" value="提交" />
+                    </td>
+                </tr>
+			</tbody>
+		</table>
+		{$pager}
+	</div>
+</div>
+<script type="text/javascript">
+<!--
+	var category = {php echo json_encode($children)};
+//-->
+</script>
+{elseif $do == 'post'}
+<div class="main">
+	<form class="form-horizontal form" action="" method="post" enctype="multipart/form-data" onsubmit="return formcheck(this)">
+		<input type="hidden" name="id" value="{$articleitem[id]}">
+		<!--<h4>文章管理</h4>-->
+		<table class="tb">
+			{if !empty($articleitem)}
+			<tr>
+				<th><label for="">访问地址</label></th>
+				<td>
+					<a href="{php echo create_url('mobile/channel', array('name' => 'detail', 'newsid' => $_GPC['id'], 'weid' => $_W['weid']))}" target="_blank">{php echo create_url('mobile/channel', array('name' => 'detail', 'newsid' =>$_GPC['id'], 'weid' => $_W['weid']))}</a>
+					<span class="help-block">您可以根据此地址，添加回复规则，设置访问。</span>
+				</td>
+			</tr>
+			{/if}
+			<tr>
+				<th><label for="">标题</label></th>
+                <td>
+                    <input type="text" class="span6" placeholder="" name="title" value="{$articleitem['title']}">
+                </td>
+			</tr>
+			<tr>
+				<th><label for="">自定义属性</label></th>
+				<td>
+					<label class="checkbox inline"><input type="checkbox" name="option[]" value="h" {if $articleitem['type'] && in_array('h', $articleitem['type'])} checked{/if}> 头条[h]</label>
+					<label class="checkbox inline"><input type="checkbox" name="option[]" value="c" {if $articleitem['type'] && in_array('c', $articleitem['type'])} checked{/if}> 推荐[c]</label>
+					<label class="checkbox inline"><input type="checkbox" name="option[]" value="f" {if $articleitem['type'] && in_array('f', $articleitem['type'])} checked{/if}> 幻灯[f]</label>
+					<label class="checkbox inline"><input type="checkbox" name="option[]" value="s" {if $articleitem['type'] && in_array('s', $articleitem['type'])} checked{/if}> 滚动[s]</label>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="">文章来源</label></th>
+				<td>
+					<input type="text" class="span3" placeholder="" name="source" value="{$articleitem['source']}">
+					<label for="writer" class="checkbox inline" style="margin-right:15px;">文章作者</label>
+					<input type="text" class="span2" id="writer" name="author" value="{$articleitem['author']}">
+				</td>
+			</tr>
+			<tr>
+				<th><label for="">缩略图</label></th>
+				<td>
+					<div class="fileupload fileupload-new" data-provides="fileupload">
+						<div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;">{if $articleitem['thumb']}<img src="{$_W['attachurl']}{$articleitem['thumb']}" width="200" />{/if}</div>
+						<div>
+							<span class="btn btn-sm btn-primary btn-file"><span class="fileupload-new">选择图片</span><span class="fileupload-exists">更改</span><input name="thumb" type="file" /></span>
+							<a href="#" class="btn-sm fileupload-exists" data-dismiss="fileupload">移除</a>
+							{if $articleitem['thumb']}<button type="submit" name="fileupload-delete" value="{$articleitem['thumb']}" class="btn btn-sm fileupload-new">删除</button>{/if}
+						</div>
+					</div>
+					<span class="help-block"></span>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="">文章分类</label></th>
+				<td>
+					<select class="span3" style="margin-right:15px;" name="cate_1" onchange="fetchChildCategory(this.options[this.selectedIndex].value);buildModuleForm($(this.options[this.selectedIndex]).attr('module'));">
+						<option value="0">请选择一级栏目</option>
+						{loop $category $row}
+						{if $row['parentid'] == 0}
+						<option value="{$row['id']}" module="{$row['module']}" {if $row['id'] == $articleitem['pcate'] || $row['id'] == $_GPC['pcate']} selected="selected"{/if}>{$row['name']}</option>
+						{/if}
+						{/loop}
+					</select>
+					<select class="span3" name="cate_2" id="cate_2" onchange="buildModuleForm($(this.options[this.selectedIndex]).attr('module'));"><option value="0">请选择二级栏目</option>
+					{if $articleitem['ccate']}
+					{loop $children[$articleitem['pcate']] $row}
+						<option value="{$row[0]}" module="{$row[2]}" {if $row[0] == $articleitem['ccate']} selected="selected"{/if}>{$row[1]}</option>
+					{/loop}
+					{/if}
+					{if $_GPC['ccate']}
+					{loop $children[$_GPC['pcate']] $row}
+						<option value="{$row[0]}" module="{$row[2]}" {if $row[0] == $_GPC['ccate']} selected="selected"{/if}>{$row[1]}</option>
+					{/loop}
+					{/if}
+					</select>
+					<input type="hidden" name="module" id="module" value="">
+				</td>
+			</tr>
+			<tr>
+				<th></th>
+				<td><label class="checkbox inline"><input type="checkbox" name="autolitpic" value="1" checked="true">提取内容的第一个图片为缩略图</label></td>
+			</tr>
+			<tr>
+				<th>内容</th>
+				<td>
+					<textarea style="height:400px; width:100%;" class="span7 richtext-clone" name="content" cols="70" id="reply-add-text">{$articleitem['content']}</textarea>
+				</td>
+			</tr>
+		</table>
+
+		<table class="tb">
+			<tr>
+				<th></th>
+				<td>
+					<button type="submit" class="btn btn-primary" name="submit" value="提交">提交</button>
+					<input type="hidden" name="token" value="{$_W['token']}" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<script type="text/javascript">
+<!--
+	var category = {php echo json_encode($children)};
+	kindeditor($('.richtext-clone'));
+//-->
+
+!function(e){var t=function(t,n){this.$element=e(t),this.type=this.$element.data("uploadtype")||(this.$element.find(".thumbnail").length>0?"image":"file"),this.$input=this.$element.find(":file");if(this.$input.length===0)return;this.name=this.$input.attr("name")||n.name,this.$hidden=this.$element.find('input[type=hidden][name="'+this.name+'"]'),this.$hidden.length===0&&(this.$hidden=e('<input type="hidden" />'),this.$element.prepend(this.$hidden)),this.$preview=this.$element.find(".fileupload-preview");var r=this.$preview.css("height");this.$preview.css("display")!="inline"&&r!="0px"&&r!="none"&&this.$preview.css("line-height",r),this.original={exists:this.$element.hasClass("fileupload-exists"),preview:this.$preview.html(),hiddenVal:this.$hidden.val()},this.$remove=this.$element.find('[data-dismiss="fileupload"]'),this.$element.find('[data-trigger="fileupload"]').on("click.fileupload",e.proxy(this.trigger,this)),this.listen()};t.prototype={listen:function(){this.$input.on("change.fileupload",e.proxy(this.change,this)),e(this.$input[0].form).on("reset.fileupload",e.proxy(this.reset,this)),this.$remove&&this.$remove.on("click.fileupload",e.proxy(this.clear,this))},change:function(e,t){if(t==="clear")return;var n=e.target.files!==undefined?e.target.files[0]:e.target.value?{name:e.target.value.replace(/^.+\\/,"")}:null;if(!n){this.clear();return}this.$hidden.val(""),this.$hidden.attr("name",""),this.$input.attr("name",this.name);if(this.type==="image"&&this.$preview.length>0&&(typeof n.type!="undefined"?n.type.match("image.*"):n.name.match(/\.(gif|png|jpe?g)$/i))&&typeof FileReader!="undefined"){var r=new FileReader,i=this.$preview,s=this.$element;r.onload=function(e){i.html('<img src="'+e.target.result+'" '+(i.css("max-height")!="none"?'style="max-height: '+i.css("max-height")+';"':"")+" />"),s.addClass("fileupload-exists").removeClass("fileupload-new")},r.readAsDataURL(n)}else this.$preview.text(n.name),this.$element.addClass("fileupload-exists").removeClass("fileupload-new")},clear:function(e){this.$hidden.val(""),this.$hidden.attr("name",this.name),this.$input.attr("name","");if(navigator.userAgent.match(/msie/i)){var t=this.$input.clone(!0);this.$input.after(t),this.$input.remove(),this.$input=t}else this.$input.val("");this.$preview.html(""),this.$element.addClass("fileupload-new").removeClass("fileupload-exists"),e&&(this.$input.trigger("change",["clear"]),e.preventDefault())},reset:function(e){this.clear(),this.$hidden.val(this.original.hiddenVal),this.$preview.html(this.original.preview),this.original.exists?this.$element.addClass("fileupload-exists").removeClass("fileupload-new"):this.$element.addClass("fileupload-new").removeClass("fileupload-exists")},trigger:function(e){this.$input.trigger("click"),e.preventDefault()}},e.fn.fileupload=function(n){return this.each(function(){var r=e(this),i=r.data("fileupload");i||r.data("fileupload",i=new t(this,n)),typeof n=="string"&&i[n]()})},e.fn.fileupload.Constructor=t,e(document).on("click.fileupload.data-api",'[data-provides="fileupload"]',function(t){var n=e(this);if(n.data("fileupload"))return;n.fileupload(n.data());var r=e(t.target).closest('[data-dismiss="fileupload"],[data-trigger="fileupload"]');r.length>0&&(r.trigger("click.fileupload"),t.preventDefault())})}(window.jQuery)
+
+</script>
+{/if}
+{template 'common/footer'}

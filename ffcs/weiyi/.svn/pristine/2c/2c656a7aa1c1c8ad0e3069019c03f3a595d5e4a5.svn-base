@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="mqq-bottom-ad" content="no"/>
+    <title>{$reply_info['title']}</title>
+    <link href="./source/modules/exam/template/css/answer.css" type="text/css" rel="stylesheet">
+    <link href="./source/modules/exam/template/css/style_s.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="./resource/script/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="./source/modules/exam/template/js/Date.min.js"></script>
+
+</head>
+<body onload="CountDown(30)">
+
+<div id="content" class="main fontSize2">
+    <p class="title" align="left">{$reply_info['title']}</p>
+    <div id="answerHint">本次答题共<span>{php echo count($answer);}</span>道，
+        总分为<span>{php $_score = 0; foreach ($score_val as $_score_val) $_score += $_score_val; echo $_score; }</span>分，
+        请在<span>{$reply_info['exam_time']}</span>分钟内完成答题，否则系统将会自动提交。
+    </div>
+   <div id="exam_time" class="" style="display: none">
+       <?php
+        if (count($exam_val)==0)
+        {
+            $time_str = $reply_info['exam_time'] * 60;
+        }
+        else
+        {
+            $time_val = $exam_val[0]['end_exam_time'] - TIMESTAMP;
+            $yourmin = (int)($time_val%(3600)/60);
+            $yoursec= (int)($time_val%(3600)%60);
+            if ($yourmin< 0 && $yoursec <0)
+            {
+                $time_str = 1;
+            }
+            else
+            {
+                $time_str = $yourmin*60 +  $yoursec;
+            }
+
+        }
+        echo $time_str;
+    ?>
+
+   </div>
+
+
+    <br>
+
+    <div class="moreOperator">
+        <div class="share" id="share">
+        </div>
+    </div>
+</div>
+
+<div id="VoteContainer" class="voteContainer">
+    <div class="voteBox voteBefore">
+        {if !empty($radio_option)}
+        <form id='frm' class="form-horizontal form" action="{php echo $this->createMobileUrl('list', array( 'name' => 'exam', 'id' => $rid,'from_user' => $_GPC['from_user'], 'action' => 'exam'))}" method="post"  >
+            <input type="hidden" value="{$rid}" name="id">
+            {php $url = $_W['siteroot'].$this->createMobileUrl('update', array( 'name' => 'exam', 'id' => $rid,'from_user' => $_GPC['from_user'], 'action' => 'exam'));}
+            <input type="hidden" value="{$url}" name="url" id="url">
+        <div class="voteIcon"> 一、单选题</div>
+        {php $i=1;}
+        {php $result = array();}
+        {loop $radio_option $radion}
+        <div class="voteList" max="0" need="1" projectid="5872528">
+            <div class="voteTitle"><strong>{$i}.</strong>{$radion['title']}</div>
+            <ul class="listBtn">
+                {php $result=explode("<p>", htmlspecialchars_decode($radion['content']));}
+                <?php
+                for ($j=0; $j<count($result); $j++)
+                {
+                        $_str_val = str_replace("</p>",'',$result[$j]);
+                            $str_val = trim($_str_val);
+                            if (empty($str_val)){
+                                continue;
+                            }
+                     $str = chr(ord('A')+$j);
+              ?>
+                <li class=""><h5></h5>
+                    <label ><p><input type="radio" name="radio_btn[{$radion['id']}]" value="{$str}" {if $_option_val[$radion['id']]==$str}checked{/if}/> {$str_val}</p></label>
+
+                </li>
+                <?php
+                }
+              ?>
+            </ul>
+        </div>
+            {php $i++;}
+            {/loop}
+        {/if}
+
+        {if !empty($radio_check)}
+        <div class="voteIcon"> 二、多选题</div>
+        {php $i=1;}
+        {php $result = array();}
+        {loop $radio_check $radion}
+        <div class="voteList" max="0" need="1" projectid="5872528">
+            <div class="voteTitle"><strong>{$i}.</strong>{$radion['title']}</div>
+            <ul class="listBtn">
+                {php $result=explode("<p>", htmlspecialchars_decode($radion['content']));}
+                <?php
+                for ($j=0; $j<count($result); $j++)
+                {
+                    $_str_val = str_replace("</p>",'',$result[$j]);
+                        $str_val = trim($_str_val);
+                        if (empty($str_val)){
+                        continue;
+                        }
+                     $str = chr(ord('A')+$j);
+              ?>
+                <li class=""><h5></h5>
+                <label ><p><input type="checkbox" name="check_btn[{$radion['id']}][]" value="{$str}" {if strstr($_option_val[$radion['id']],$str)}checked{/if}/> {$str_val}</p></label>
+                </li>
+                <?php
+                }
+              ?>
+            </ul>
+        </div>
+        {php $i++;}
+        {/loop}
+            <div class="submitBtnDiv">
+                    <input type="hidden" name="comment_id" value="1" />
+                    <button class="btn-block submitBtn" id="exam"  name="sd_submit"
+                    {if $is_expired}
+                    {if $is_not_indate} disabled title="活动还未开始！"{else} disabled title="活动已结束！"{/if}
+                    {/if} >
+                    {if $is_expired}
+                    {if $is_not_indate}
+                    活动还没开始
+                    {else}
+                    活动已经结束
+                    {/if}
+                    {else}
+                    提交
+                    {/if}
+                    </button>
+                </div>
+                <input type="hidden" name="token" value="{$_W['token']}" />
+        </form>
+        {/if}
+</div>
+
+
+<div id="countdownDiv"><span id="countdownSpan"></span></div>
+
+    <script type="text/javascript">
+        <!--
+        var maxtime = document.getElementById("exam_time").innerHTML;
+        function CountDown()
+        {
+
+            if(maxtime>=0)
+            {
+                minutes = Math.floor(maxtime/60);
+                seconds = Math.floor(maxtime%60);
+
+                msg = "距离结束还有 " + (( minutes < 10 ) ? ("0" + minutes) : minutes)+" 分 "+((seconds < 10) ? "0" + seconds : seconds)+" 秒";
+                document.all["countdownSpan"].innerHTML=msg;
+                //if(maxtime == 5*60) alert('注意，还有5分钟!');
+                --maxtime;
+            }
+            else
+            {
+                clearInterval(timer);
+                //location.replace(document.getElementById("url").value);
+                document.getElementById("frm").submit();
+                //alert(document.getElementById("url").value);
+            }
+        }
+        /* $.post('',$('#frm').serializeArray(),function( data ){
+
+        })*/
+        timer = setInterval("CountDown()",1000);
+        //-->
+    </script>
+
+    <script type="text/javascript">
+        <!--
+        function post_data()
+        {
+           var urls = document.getElementById("url").value;
+            $.post(urls,$('#frm').serializeArray(),function( data ){
+
+            });
+
+            //console.log($('#frm').serializeArray());
+        }
+
+        timer = setInterval("post_data()",10000);
+        //-->
+    </script>
+
+    <script type="text/javascript">
+        $('#VoteContainer').on('click','.radio',function(){
+            $(this).addClass('checked').parent().siblings().find('.radio').removeClass('checked')
+        }).on('click','.checkbox',function(){
+                    $(this).toggleClass('checked')
+                })
+
+        /*$.coundown = {
+            timer : null,
+            start : function(){
+                var now = new Date().getTime() + 120000;
+                var self =  this;
+                this.timer = setInterval(function(){
+                    var date = new Date(now), sec =  new Date().diffSec(date);
+                    $('#countdownSpan').html(sec);
+                    if(sec <= 0 ) self.stop();
+                }, 1000 )
+            },
+            stop : function(){
+                clearInterval(this.timer);
+            }
+        }
+        $.coundown.start();*/
+
+
+    </script>
+</div>
+</body>
+
+
+</html>
+

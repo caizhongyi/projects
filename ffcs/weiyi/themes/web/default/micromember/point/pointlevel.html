@@ -1,0 +1,100 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微会员'),array('title'=>'等级管理'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-cog"></i> 等级管理
+    </h1>
+</div>
+<ul class="nav nav-tabs">
+    <li ><a href="{php echo create_url('micromember/pointset',array('type'=>'pointset'))}">积分设置</a></li>
+    <li class="active"><a href="{php echo create_url('micromember/pointset',array('type'=>'pointlevel'))}">等级设置</a></li>
+</ul>
+
+<div class="main">
+    <div class="rule">
+
+        <table class="tb table table-bordered">
+            <tr class="control-group">
+                <td class="rule-content">
+                    <h4>等级名称</h4>
+                </td>
+                <td class="rule-content">
+                    <h4>开始积分</h4>
+                </td>
+                <td class="rule-content">
+                    <h4>结束积分</h4>
+                </td>
+                <td class="rule-content">
+                    <h4>操作</h4>
+                </td>
+            </tr>
+            {loop $pointlevelInfo $row}
+            <tr class="control-group">
+                <td class="rule-content">
+                    <h6>
+                        {$row['name']}
+                    </h6>
+                </td>
+                <td class="rule-content">
+                    <h6>
+                        {$row['startpoint']}
+                    </h6>
+                </td>
+                <td class="rule-content">
+                    <h6>
+                        {$row['endpoint']}
+                    </h6>
+                </td>
+                <td class="rule-content">
+                    <h6>
+                        <span class="pull-left">
+                            <a onclick="return confirm('删除该等级，确认吗？');return false;"
+                               href="{php echo create_url('micromember/pointset', array('id' => $row['id'], 'type' => 'deletelevel'))}">删除</a>
+                        </span>
+                    </h6>
+                </td>
+            </tr>
+            {/loop}
+        </table>
+
+
+
+        <form action="" method="post" class='form-horizontal form-validate'
+              style=" border: 1px #ccc solid; padding: 30px; width: 500px; height: 300px;">
+            <input type="hidden" name="type" value="pointlevel"/>
+
+            <div class="control-group">
+                <label class="control-label" for="name">
+                    等级名称</label>
+                <div class="controls">
+                    <input type="text" name="name" id="name" value="" />
+
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="startpoint">
+                    开始积分</label>
+                <div class="controls">
+                    <input type="text" name="startpoint" id="startpoint" value="" />
+
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="endpoint">
+                    结束积分</label>
+                <div class="controls">
+                    <input type="text" name="endpoint" id="endpoint" value="" />
+
+                </div>
+            </div>
+            <div style="margin-left: 180px;">
+                <button  name="submit" type="submit" value="提交"  data-loading-text="提交中..." class="btn btn-primary">添加等级</button>
+                <input type="hidden" name="token" value="{$_W['token']}" />
+            </div>
+        </form>
+
+    </div>
+    {$pager}
+</div>
+{template 'common/footer'}

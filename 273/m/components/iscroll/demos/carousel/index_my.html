@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+<title>iScroll demo: carousel</title>
+	<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../build/iscroll.js"></script>
+	<link rel="stylesheet" href="carousel.css"/>
+<script type="text/javascript">
+
+var myScroll;
+
+function loaded () {
+	var width = $(window).width(), len = $('.slide').length;
+	$('.slide,.wrapper').width( width )
+	$('.scroller').width( width	* len )
+	$('.indicator').width( (6 + 5) * len - 5 )
+	myScroll = new IScroll('.wrapper', {
+		scrollX: true,
+		scrollY: false,
+		momentum: false,
+		snap: true,
+		snapSpeed: 400,
+		keyBindings: true,
+		indicators: {
+			el: $('.indicator')[0],
+			resize: false
+		}
+	});
+
+	$('.wrapper').on('mouseenter',function(){
+		myScroll.interval && clearInterval(myScroll.interval);
+	}).on('mouseleave',function(){
+		myScroll.auto();
+	})
+	myScroll.auto = function(){
+		return myScroll.interval = setInterval(function(){
+			if( myScroll.currentPage.pageX >= len - 1){
+				myScroll.goToPage(0,0);
+			}
+			else{
+				myScroll.next();
+			}
+		},5000)
+	}
+	myScroll.interval = myScroll.auto();
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+</script>
+
+	<style type="text/css">
+		* {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		html {
+			-ms-touch-action: none;
+		}
+
+		body, ul, li {
+			padding: 0;
+			margin: 0;
+			border: 0;
+		}
+
+		body {
+			font-size: 12px;
+			font-family: ubuntu, helvetica, arial;
+			overflow: hidden; /* this is important to prevent the whole page to bounce */
+		}
+
+
+
+	</style>
+</head>
+<body onload="loaded()">
+
+<div class="viewport carousel">
+	<div class="wrapper">
+		<div class="scroller">
+			<div class="slide">
+				<div class="painting giotto"></div>
+			</div>
+			<div class="slide">
+				<div class="painting leonardo"></div>
+			</div>
+			<div class="slide">
+				<div class="painting gaugin"></div>
+			</div>
+			<div class="slide">
+				<div class="painting warhol"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="indicator" >
+	<div class="dotty"></div>
+	<span class="dotty-default"></span><span class="dotty-default"></span><span class="dotty-default"></span><span class="dotty-default"></span>
+</div>
+
+</body>
+</html>

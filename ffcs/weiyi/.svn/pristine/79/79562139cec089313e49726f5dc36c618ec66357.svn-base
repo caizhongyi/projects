@@ -1,0 +1,141 @@
+<?php
+/**
+ * 图文模块详细页面
+ * @author WeEngine Team
+ */
+defined('IN_IA') or exit('Access Denied');
+
+class UserapiModuleSite extends WeModuleSite {
+	public function doMobile_mobile_blind() {
+        global $_GPC;
+        $from_user = $_GPC['from_user'];
+        $user_info = pdo_fetch("SELECT * FROM ".tablename('fans')." WHERE from_user = '".$from_user."' and weid=".$_GET['weid']." limit 1" );
+        $mobile = $user_info['mobile'];
+        $loclurl = $this->createMobileUrl('_mobile_blind', array('name' => 'userapi', 'do' => '_mobile_blind','weid'=>4, 'from_user' => $from_user));
+        if($_GPC['action']=='edit'){
+            $user_info_data = array(
+                'nickname' => $_GPC['nickname'],
+                'realname' => $_GPC['realname'],
+                'mobile' => $_GPC['mobile'],
+                'qq' => $_GPC['qq'],
+                'gender' => $_GPC['gender'],
+                'age' => $_GPC['age'],
+                'from_user'=>$from_user,
+                'weid'=>$_GET['weid'],
+                'avatar'=>' '
+            );
+            if ($user_info==false) {
+                $user_info_data['createtime']=time();
+                if(pdo_insert('fans', $user_info_data)){
+                    echo json_encode(array('errno'=>200,'url'=>$loclurl));
+                }else{
+                    echo json_encode(array('errno'=>-1,'error'=>'添加错误'));
+                }
+            } else {
+                if(pdo_update('fans', $user_info_data, array('from_user' => $from_user,'weid'=>$_GET['weid']))!==false){
+                    echo json_encode(array('errno'=>200,'url'=>$loclurl));
+                }else{
+                    echo json_encode(array('errno'=>-2));
+                }
+            }
+            die();//ajax请求入口直接关闭
+        }
+        if(empty($mobile)){
+            include $this->template('blind_mobile');
+        }else{
+            include $this->template('member_info');
+        }
+        exit;
+	}
+
+    public function doMobile_es_share() {
+        global $_GPC;
+        $from_user = authcode(base64_decode($_GPC['from_user']), 'DECODE');
+        $user_info = pdo_fetch("SELECT * FROM ".tablename('fans')." WHERE from_user = '".$from_user."' and weid=".$_GET['weid']." limit 1" );
+
+        if($_GPC['action']=='share'){
+            $mobile = $user_info['mobile'];
+            $post_url = "http://42.121.125.119:8080/tyfx/service/shareMessage";
+
+            $receiver = $_GPC['share_mobile'] ? addslashes($_GPC['share_mobile']) : '';
+            if(empty($receiver)){
+                echo json_encode(array('errno'=>-1,'error'=>'分享号码不为空'));
+                die();
+            }
+            if(!fj_phone($receiver)){
+                echo json_encode(array('errno'=>-2,'error'=>'您分享的手机号码不属于福建省，分享失败！'));
+                die();
+            }
+            $msg = "用易信，短信免费发，更有电话留言、国际漫游等免费功能等你体验！新注册天翼用户送300M流量，次月再送60M流量。全网用户关注“移动互联网应用”易信公众号赢取高端智能机等好礼！";
+            $request = "<tyft_share_request><msIsdn>".$mobile."</msIsdn>";
+            $request .= "<destTermIds>".$receiver."</destTermIds>";
+            $request .= "<msgcontent>".$msg."</msgcontent>";
+            $request .= "<webSrc>1065946832</webSrc>";
+            $request .= "</tyft_share_request>";
+            $res = $this->es_execute($post_url, $request);
+            if($res['code'] == 200){
+                $logs = pdo_fetch("SELECT * FROM ".tablename('share_logs')." WHERE from_user = '".$from_user."' and weid=".$_GET['weid']." and receive_phone = '".$receiver."' and send_phone = '".$mobile."' limit 1" );
+                if(!$logs){
+                    pdo_insert('share_logs',array('from_user'=>$from_user,'weid'=>$_GET['weid'],'receive_phone'=>$receiver,'send_phone'=>$mobile,'send_time'=>TIMESTAMP));
+
+                }
+            }
+            echo json_encode(array('errno'=>$res['code'],'error'=>$res['msg']));
+            die();
+        }else{
+            $show_url = $this->createMobileUrl('_es_share',array( 'name' => 'userapi','action'=>'share','weid'=>Mobile_Internet_Id,'from_user' => $_GPC['from_user']));
+            include $this->template('share');
+        }
+    }
+
+    public function es_execute($url, $request){
+        $response = $this->post($url, $request);
+        $res_string = simplexml_load_string($response);
+        $res = explode(',',$res_string);
+        $code = trim($res['0']);
+        $msg = trim($res['1']);
+        $num = 0;
+        while($code == '108'&& $num<3){
+            sleep(1);
+            $num++;
+            $response = $this->post($url, $request);
+            $res_string = simplexml_load_string($response);
+            $res = explode(',',$res_string);
+            $code = trim($res['0']);
+            $msg = trim($res['1']);
+        }
+        if($code ==0){
+            $code =200;
+            $msg ='分享成功！';
+            //分享成功入库
+        }
+        return array('code'=>$code,'msg'=>$msg);
+    }
+
+    /**
+     * 接口返回信息
+     * */
+    public function es_response($status, $msg){
+        if($status == 0){ //0为成功码 其余为异常
+            $code = sha1(md5($msg.'weiyi123456'));
+            setcookie('checkcode', $msg);
+        }elseif($status == 108){ //每秒10条的发送限制!
+            //稍后重试
+        }
+    }
+
+    public function post($url , $params = '' , $header = array()){
+        $ch = curl_init();// 初始化CURL句柄
+        curl_setopt($ch, CURLOPT_URL, $url);//设置请求的URL
+        //curl_setopt($ch, CURLOPT_PORT, 80); //设置端口
+        curl_setopt($ch, CURLOPT_POST, 1);//启用POST提交
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);//忽略ssl验证
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);//设置POST提交的字符串
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);// 设为TRUE把curl_exec()结果转化为字串，而不是直接输出
+        //curl_setopt($ch, CURLOPT_PROXY, '192.168.13.19:7777');//设置代理服务器
+        curl_setopt($ch,CURLOPT_HTTPHEADER,$header);//设置HTTP头信息
+        $response = curl_exec($ch);//执行预定义的CURL
+        curl_close($ch);//关闭CURL
+        return $response;
+    }
+}

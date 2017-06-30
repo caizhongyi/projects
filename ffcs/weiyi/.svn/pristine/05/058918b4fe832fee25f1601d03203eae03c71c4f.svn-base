@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Keywords" content="微易中心">
+    <meta name="Description" content="微易中心">
+    <!-- Mobile Devices Support @begin -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Mobile Devices Support @end -->
+    <link rel="shortcut icon" href="http://stc.weimob.com/img/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="./resource/style/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./resource/style/index.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./resource/script/formvalidator/formvalidator.css" media="all">
+
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./resource/script/bootstrap.js"></script>
+
+    <script type="text/javascript" src="./resource/script/formvalidator/formvalidator.js"></script>
+    <script type="text/javascript" src="./resource/script/formvalidator/formvalidatorregex.js"></script>
+    <script type="text/javascript" src="./resource/script/placeholder.js"></script>
+    <title>登录-微易中心</title>
+
+</head>
+<body>
+<div id="header" class="head head-nobg">
+    <div class="top">
+        <div class="topnav">
+            <a href="{php echo create_url('index');}" target="_blank">微易首页</a>|
+            <a href="{php echo create_url('member/login');}" target="_blank">登录</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <form  class="form-horizontal form-box" action="#">
+        <div class="form-header">
+            <span class="pull-left">轻松绑定公众账号，只需三步！</span>
+        </div>
+
+        <div class="stepbar stepbar-separate stepbar-three">
+            <div class="stepbar-inner">
+                <div class="stepbar-item first ">
+                    <span class="stepbar-number"><em>1</em></span>
+                    <span class="stepbar-desc">填写您的公共账号信息</span>
+                    <hr class="stepbar-progrees">
+                </div>
+                <div class="stepbar-item active">
+                    <span class="stepbar-number"><em>2</em></span>
+                    <span class="stepbar-desc">请将此URL及Token填到微信公众平台</span>
+                    <hr class="stepbar-progrees">
+                </div>
+                <div class="stepbar-item last">
+                    <span class="stepbar-number"><em>3</em></span>
+                    <span class="stepbar-desc">设置用户欢迎信息及默认回复语</span>
+                    <hr class="stepbar-progrees">
+                </div>
+            </div>
+        </div>
+        <div class="form-body">
+            <div class="control-group">
+                <label class="control-label" for="username">URL：</label>
+                <div class="controls">
+                    <input class="span5" name="cp_url" id="" placeholder="URL" value="{$url}"  type="text"><a href="javascript:;" id="cp_url">复制</a>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="username">Token：</label>
+                <div class="controls">
+                    <input class="span5" name="cp_token" id="" placeholder="Token" value="{$token}"  type="text"><a href="javascript:;" id="cp_token">复制</a>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <a type="button" class="btn btn-submit" href="{$pre_url}">上一步</a>
+                    <a type="button" class="btn btn-submit" href="{$next_url}">下一步</a>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+    <div><img src="./resource/image/index/teach.jpg" alt=""/></div>
+    <a class="scrollup" href="javascript:;" title="TOP">TOP</a>
+    <script type="text/javascript" src="./resource/script/jquery.scrollUp.min.js"></script>
+    <script type="text/javascript">
+        $('.scrollup').scrollUp();
+    </script>
+</div>
+<script type="text/javascript" src="./resource/script/jquery.zclip.min.js"></script>
+<script>
+    $(function() {
+        $("#cp_url").zclip({
+            path:'./resource/script/ZeroClipboard.swf',
+            copy:$('[name="cp_url"]').val()
+        });
+        $("#cp_token").zclip({
+            path:'./resource/script/ZeroClipboard.swf',
+            copy:$('[name="cp_token"]').val()
+        });
+    });
+</script>
+
+</body>
+</html>

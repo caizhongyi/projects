@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+</head>
+<body>
+
+<div class="timeline clearfix">
+<script type="text/javascript">
+    $(function(){
+        $(".t-column-box").tab();
+    });
+</script>
+<span class="min-dot m1" id="top">最新</span>
+<span class="min-dot m2" id="y2013">2013</span>
+<span class="max-dot m3">查看更多</span>
+<span class="max-dot m4"><a href="top">TOP</a></span>
+<!-- t-l -->
+<div class="t-l">
+    <!-- t-column -->
+    <div class="t-column">
+        <em class="arrow-dot"></em>
+        <em class="arrow-bg"></em>
+        <h3 id="month1">一月</h3>
+        <div class="t-column-box">
+            <ul class="tabtit3 tab_menu">
+                <li class="select">专题</li>
+                <li>活动</li>
+                <li>视频</li>
+                <li>新闻</li>
+            </ul>
+            <!-- tabcon tab_main -->
+            <div class="tabcon tab_main" style="display: block;">
+                <CMS action="LIST" return="List" NodeID="19270" Num="1" where="c.Photo !='' "  />
+                <LOOP name="List" var="var" key="key">
+                    <div class="picbox">
+                        <a href="[$var.URL]" target="_blank" title="[$var.Title]"><img src="[$var.Photo]" /></a>
+                        <div class="txt">
+                            <h4><a href="[$var.URL]" target="_blank" title="[$var.Title]">[$var.Title]</a></h4>
+                            <p>状态：<if test="$var.Sort==1"><span style="color:#666">已过期</span><else><span>正在进行</span></if></p>
+                            <p>截止时间：[$var.SubTitle]</p>
+                            <if test="$var.Sort==1">已结束<else><a class="btn" href="[$var.URL]">去参加</a></if>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <if test="!empty($var.Intro)">[$var.Intro]<else>[@CsubStr(no_html($var.Content),0,40)]</if>
+                    </div>
+                </loop>
+            </div>
+            <!-- tabcon tab_main end -->
+            <!-- tabcon tab_main -->
+            <div style="display:none" class="tabcon tab_main">
+                <ul class="piclist5">
+                    <CMS action="LIST" return="List" NodeID="19271" Num="2" where="c.Photo !='' "  />
+                    <LOOP name="List" var="var" key="key">
+                        <li>
+                            <if test="$var.Sort==1">
+                                <img src="[$var.Photo]" />
+                                <p>已过期[$var.ShortTitle]-[$var.SubTitle]</p>
+                                <else>
+                                    <a href="[$var.URL]" target="_blank" title="[$var.Title]"><img src="[$var.Photo]" /></a>
+                                    <p><em>进行中</em><i>[$var.ShortTitle]-[$var.SubTitle]</i></p>
+                            </if>
+                        </li>
+                    </loop>
+                </ul>
+                <div class="alist">
+                    <CMS action="LIST" return="List" NodeID="19271" Num="5" />
+                    <LOOP name="List" var="var" key="key">
+                        <a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a> |
+                    </loop>
+                </div>
+            </div>
+            <!-- tabcon tab_main end -->
+            <!-- tabcon tab_main -->
+            <div style="display:none" class="tabcon tab_main">
+                <ul class="piclist5">
+                    <CMS action="LIST" return="List" NodeID="19272" Num="2" where="c.Photo !='' "  />
+                    <LOOP name="List" var="var" key="key">
+                        <li><a href="[$var.URL]" target="_blank" title="[$var.Title]"><span></span><img src="[$var.Photo]" /></a><p><a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></p></li>
+                    </loop>
+                </ul>
+                <ul class="list3">
+                    <CMS action="LIST" return="List" NodeID="19272" Num="4" />
+                    <LOOP name="List" var="var" key="key">
+                        <li><a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></li>
+                    </loop>
+                </ul>
+            </div>
+            <!-- tabcon tab_main end -->
+            <!-- tabcon tab_main -->
+            <div style="display:none" class="tabcon tab_main">
+                <ul class="list">
+                    <CMS action="LIST" return="List" NodeID="19273" Num="6" />
+                    <LOOP name="List" var="var" key="key">
+                        <li><code>[@date('m-d', $var.PublishDate)]</code><a href="[$var.NodeURL]">[[$var.NodeName]]</a> <a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></li>
+                    </loop>
+                </ul>
+            </div>
+            <!-- tabcon tab_main end -->
+        </div>
+    </div>
+    <!-- t-column end -->
+    <!-- t-column -->
+    <div class="t-column">
+        <em class="arrow-dot"></em>
+        <em class="arrow-bg"></em>
+        <h3 id="month3">三月</h3>
+        <div class="t-column-box">
+            <ul class="tabtit3 tab_menu">
+                <li class="select">专题</li>
+                <li>活动</li>
+                <li>视频</li>
+                <li>新闻</li>
+            </ul>
+            <!-- tabcon tab_main -->
+            <div class="tabcon tab_main" style="display: block;">
+                <CMS action="LIST" return="List" NodeID="19278" Num="1" where="c.Photo !='' "  />
+                <LOOP name="List" var="var" key="key">
+                    <div class="picbox">
+                        <a href="[$var.URL]" target="_blank" title="[$var.Title]"><img src="[$var.Photo]" /></a>
+                        <div class="txt">
+                            <h4><a href="[$var.URL]" target="_blank" title="[$var.Title]">[$var.Title]</a></h4>
+                            <p>状态：<if test="$var.Sort==1"><span style="color:#666">已过期</span><else><span>正在进行</span></if></p>
+                            <p>截止时间：[$var.SubTitle]</p>
+                            <if test="$var.Sort==1">已结束<else><a class="btn" href="[$var.URL]">去参加</a></if>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <if test="!empty($var.Intro)">[$var.Intro]<else>[@CsubStr(no_html($var.Content),0,40)]</if>
+                    </div>
+                </loop>
+            </div>
+            <!-- tabcon tab_main end -->
+            <!-- tabcon tab_main -->
+            <div style="display:none" class="tabcon tab_main">
+                <ul class="piclist5">
+                    <CMS action="LIST" return="List" NodeID="19279" Num="2" where="c.Photo !='' "  />
+                    <LOOP name="List" var="var" key="key">
+                        <li>
+                            <if test="$var.Sort==1">
+                                <img src="[$var.Photo]" />
+                                <p>已过期[$var.ShortTitle]-[$var.SubTitle]</p>
+                                <else>
+                                    <a href="[$var.URL]" target="_blank" title="[$var.Title]"><img src="[$var.Photo]" /></a>
+                                    <p><em>进行中</em><i>[$var.ShortTitle]-[$var.SubTitle]</i></p>
+                            </if>
+                        </li>
+                    </loop>
+                </ul>
+                <div class="alist">
+                    <CMS action="LIST" return="List" NodeID="19279" Num="5" />
+                    <LOOP name="List" var="var" key="key">
+                        <a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a> |
+                    </loop>
+                </div>
+            </div>
+            <!-- tabcon tab_main end -->
+            <!-- tabcon tab_main -->
+            <div style="display:none" class="tabcon tab_main">
+                <ul class="piclist5">
+                    <CMS action="LIST" return="List" NodeID="19280" Num="2" where="c.Photo !='' "  />
+                    <LOOP name="List" var="var" key="key">
+                        <li><a href="[$var.URL]" target="_blank" title="[$var.Title]"><span></span><img src="[$var.Photo]" /></a><p><a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></p></li>
+                    </loop>
+                </ul>
+                <ul class="list3">
+                    <CMS action="LIST" return="List" NodeID="19280" Num="4" />
+                    <LOOP name="List" var="var" key="key">
+                        <li><a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></li>
+                    </loop>
+                </ul>
+            </div>
+            <!-- tabcon tab_main end -->
+            <!-- tabcon tab_main -->
+            <div style="display:none" class="tabcon tab_main">
+                <ul class="list">
+                    <CMS action="LIST" return="List" NodeID="19281" Num="6" />
+                    <LOOP name="List" var="var" key="key">
+                        <li><code>[@date('m-d', $var.PublishDate)]</code><a href="[$var.NodeURL]">[[$var.NodeName]]</a> <a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></li>
+                    </loop>
+                </ul>
+            </div>
+            <!-- tabcon tab_main end -->
+        </div>
+    </div>
+    <!-- t-column end -->
+</div>
+<!-- t-l end -->
+<!-- t-r -->
+<div class="t-r">
+    <!-- t-column -->
+    <div class="t-column">
+        <em class="arrow-dot"></em>
+        <em class="arrow-bg"></em>
+        <h3 id="month2">二月</h3>
+        <div class="t-column-box">
+            <ul class="tabtit3 tab_menu">
+                <li class="select">专题</li>
+                <li>活动</li>
+                <li>视频</li>
+                <li>新闻</li>
+            </ul>
+            <!-- tabcon tab_main -->
+            <div class="tabcon tab_main" style="display: block;">
+                <CMS action="LIST" return="List" NodeID="19274" Num="1" where="c.Photo !='' "  />
+                <LOOP name="List" var="var" key="key">
+                    <div class="picbox">
+                        <a href="[$var.URL]" target="_blank" title="[$var.Title]"><img src="[$var.Photo]" /></a>
+                        <div class="txt">
+                            <h4><a href="[$var.URL]" target="_blank" title="[$var.Title]">[$var.Title]</a></h4>
+                            <p>状态：<if test="$var.Sort==1"><span style="color:#666">已过期</span><else><span>正在进行</span></if></p>
+                            <p>截止时间：[$var.SubTitle]</p>
+                            <if test="$var.Sort==1">已结束<else><a class="btn" href="[$var.URL]">去参加</a></if>
+                        </div>
+                    </div>
+                    <div class="intro">
+                        <if test="!empty($var.Intro)">[$var.Intro]<else>[@CsubStr(no_html($var.Content),0,40)]</if>
+                    </div>
+                </loop>
+            </div>
+            <!-- tabcon tab_main end -->
+            <!-- tabcon tab_main -->
+            <div style="display:none" class="tabcon tab_main">
+                <ul class="piclist5">
+                    <CMS action="LIST" return="List" NodeID="19275" Num="2" where="c.Photo !='' "  />
+                    <LOOP name="List" var="var" key="key">
+                        <li>
+                            <if test="$var.Sort==1">
+                                <img src="[$var.Photo]" />
+                                <p>已过期[$var.ShortTitle]-[$var.SubTitle]</p>
+                                <else>
+                                    <a href="[$var.URL]" target="_blank" title="[$var.Title]"><img src="[$var.Photo]" /></a>
+                                    <p><em>进行中</em><i>[$var.ShortTitle]-[$var.SubTitle]</i></p>
+                            </if>
+                        </li>
+                    </loop>
+                </ul>
+                <div class="alist">
+                    <CMS action="LIST" return="List" NodeID="19275" Num="5" />
+                    <LOOP name="List" var="var" key="key">
+                        <a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a> |
+                    </loop>
+                </div>
+            </div>
+            <!-- tabcon tab_main end -->
+            <!-- tabcon tab_main -->
+            <div style="display:none" class="tabcon tab_main">
+                <ul class="piclist5">
+                    <CMS action="LIST" return="List" NodeID="19276" Num="2" where="c.Photo !='' "  />
+                    <LOOP name="List" var="var" key="key">
+                        <li><a href="[$var.URL]" target="_blank" title="[$var.Title]"><span></span><img src="[$var.Photo]" /></a><p><a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></p></li>
+                    </loop>
+                </ul>
+                <ul class="list3">
+                    <CMS action="LIST" return="List" NodeID="19276" Num="4" />
+                    <LOOP name="List" var="var" key="key">
+                        <li><a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></li>
+                    </loop>
+                </ul>
+            </div>
+            <!-- tabcon tab_main end -->
+            <!-- tabcon tab_main -->
+            <div style="display:none" class="tabcon tab_main">
+                <ul class="list">
+                    <CMS action="LIST" return="List" NodeID="19277" Num="6" />
+                    <LOOP name="List" var="var" key="key">
+                        <li><code>[@date('m-d', $var.PublishDate)]</code><a href="[$var.NodeURL]">[[$var.NodeName]]</a> <a href="[$var.URL]" title="[$var.Title]" >[$var.Title]</a></li>
+                    </loop>
+                </ul>
+            </div>
+            <!-- tabcon tab_main end -->
+        </div>
+    </div>
+    <!-- t-column end -->
+
+
+</div>
+<!-- t-r end -->
+</div>
+</body>
+</html>

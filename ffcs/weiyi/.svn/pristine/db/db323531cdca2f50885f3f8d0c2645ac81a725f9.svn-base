@@ -1,0 +1,95 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微会员'),array('title'=>'会员管理'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-cog"></i> 会员管理
+    </h1>
+</div>
+<div class="main">
+    <div class="search">
+        <form action="" method="post">
+            <input type="hidden" name="type" value="list" />
+            <table class="table table-bordered tb">
+                <tbody>
+                <tr>
+                    <th>会员名称</th>
+                    <td>
+                        <input class="span6" name="realname" type="text" value="{$queryRealname}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>手机号码</th>
+                    <td>
+                        <input class="span6" name="mobile" type="text" value="{$queryMobile}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>会员编号</th>
+                    <td>
+                        <input class="span6" name="number"  type="text" value="{$queryNumber}">
+                    </td>
+                </tr>
+                <tr class="search-submit">
+                    <td colspan="2"><button class=" pull-right btn btn-sm btn-primary"><i class="icon-search icon-large"></i> 搜索</button></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <div class="rule">
+
+        <table class="tb table table-bordered">
+            <tr class="control-group" >
+                <td class="rule-content">
+                    <h4>
+                        会员编号
+                    </h4>
+                </td>
+                <td class="rule-content">
+                    <h4>
+                        姓名
+                    </h4>
+                </td>
+                <td class="rule-content">
+                    <h4>
+                        手机号码
+                    </h4>
+                </td>
+                <td class="rule-content">
+                    <h4>
+                        <span class="pull-right">操作</span>
+                    </h4>
+                </td>
+            </tr>
+            {loop $member $row}
+            <tr class="control-group">
+                <td class="rule-content">
+                    <h4>
+                        {$row['number']}
+                    </h4>
+                </td>
+                <td class="rule-content">
+                    <h4>
+                        {$row['realname']}
+                    </h4>
+                </td>
+                <td class="rule-content">
+                    <h4>
+                        {$row['mobile']}
+                    </h4>
+                </td>
+                <td class="rule-content">
+                    <h4>
+                        <span class="pull-right"><a href="{php echo create_url('micromember/member', array('from_user' => $row['from_user'],'type'=>'detail'))}">详细</a></span>
+                    </h4>
+                </td>
+            </tr>
+            {/loop}
+        </table>
+
+    </div>
+    {$pager}
+</div>
+
+{template 'common/footer'}

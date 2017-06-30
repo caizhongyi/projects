@@ -1,0 +1,336 @@
+﻿@charset "utf-8";
+@import "../controls/css3.less";
+
+.en-font (...){
+	font:12px/1.5 arial,tahoma,'宋体';
+}
+.cn-font (...){
+	font:12px/1.5 '宋体',tahoma,arial;
+}
+.number-font (...) {
+	font-family: tahoma,arial,'宋体';
+}
+// Drop shadows
+.size (@width , @height,...) {
+	width: @width;
+	height: @height;
+}
+.pos (@left : 0 , @top : 0 ,...){
+	left : @left;
+	top:  @top;
+}
+
+//文章列表hover颜色由#333变蓝色
+.link-hover(@color:#333 , @hover-color:#1992B1){
+	color: @color;
+	&:hover{
+		color: @hover-color;
+	}
+}
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+.text-overflow (...) {
+	.inline-block();
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.no-decoration (...){
+	&:hover{text-decoration: none;}
+}
+// CSS image replacement
+// -------------------------
+// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+.hide-text (...) {
+	font: 0/0 a;
+	color: transparent;
+	text-shadow: none;
+	background-color: transparent;
+	border: 0;
+}
+
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+
+.clearfix(...){
+	&:after {
+		visibility: hidden;
+		display: block;
+		font-size: 0;
+		content: " ";
+		clear: both;
+		height: 0;
+	}
+	*zoom:1;
+}
+
+
+.min-height (@height: 300px,...) {
+	_height: @height;
+	_overflow: "visible";
+	min-height: @height;
+}
+
+.inline-block (...) {
+	display: inline-block;
+	vertical-align: middle;
+}
+.ie7-inline-block (...) {
+	*display: inline; /* IE7 inline-block hack */
+	*zoom: 1;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.opacity (@val: 0.8,...) {
+	@pval: @val*100;
+	filter: ~"alpha(opacity = @{pval})";
+	opacity: @val;
+}
+
+.block-center (...) {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.vertical-middle (@height: 22px,...) {
+	height: @height;
+	line-height: @height;
+}
+
+.display-toggle (@selector,...) {
+	position: relative;
+	(~"@{selector}") {
+		display: none;
+		position: absolute;
+	};
+	&:hover {
+		(~"@{selector}") {
+			display: block;
+		}
+	}
+}
+
+.left (...){
+	float: left;
+	_margin-right:-3px;
+}
+
+.right (...){
+	float: right;
+	_margin-left:-3px;
+}
+
+.nowrap (...){white-space:nowrap;}
+
+.fluid (...){
+	float: none;
+	width: auto;
+	_overflow:visible;
+	zoom:1;
+}
+
+.empty (...){
+	height:0;line-height:0;overflow:hidden; font-size:0;
+}
+
+.show (...){
+	display: block;
+}
+.hide (...){
+	display: none;
+}
+
+.text-right (...){ text-align: right; }
+.text-left (...){ text-align: left; }
+.text-center (...){text-align: center;}
+.text-justify (...){text-align:justify;text-justify:inter-ideograph;}
+
+.full-horizontal-list (@spacing : 10px , ...){
+	.clearfix();
+	.li,.item{
+		float: left;
+		margin-right: @spacing;
+	}
+	.last {
+		margin-right: 0;
+	}
+}
+.group (@spacing:5px,...) {
+	span,a,input{margin: 0 @spacing; vertical-align: middle;}
+}
+
+.textarea (@width:100%,@height:150px,...){
+	width: @width;
+	max-width: @width;
+	height: @height;
+}
+
+.btn (...){
+	.inline-block();
+	cursor:pointer;
+	.no-decoration();
+	.text-center();
+}
+.auto-btn (@padding:0 15px,...){
+	.btn();
+	padding:@padding;
+}
+.auto-border-btn (@padding:0 15px,@border:1px solid #ddd,...){
+	.auto-btn(@padding);
+	border:@border;
+	border-radius: 5px;
+}
+
+@icon-tpl-width : 15px;
+@icon-tpl-height : 15px;
+.icon (@width: 15px, @height : 15px,...) {
+	@icon-tpl-width : @width;
+	@icon-tpl-height : @height;
+	vertical-align: middle;
+	display: inline-block;
+	height: @height;
+	padding-left:@width;
+}
+.icon-item (@row, @col,...){
+	background-position: -@col*@width -@row*@height;
+}
+.icon-row-item (@item,...){
+	background-position: 0 -@item*@height;
+}
+.icon-col-item (@item,...){
+	background-position: -@item*@width 0;
+}
+.make-icons(@name, @row: 1, @col: 5, @width: 15px, @height: 15px){
+	/* @len : @row * @col;
+	.icon(@rowIndex,@colIndex,@width,@height) when (@rowIndex < @row),(@colIndex < @col){
+	  @index : @rowIndex + (@rowIndex * @colIndex);
+	  @posX : -@rowIndex*@width;
+	  @posX : -@colIndex*@height;
+	  (~".@{name}-@{index}"){
+		background-position: @width @height;
+	  }
+	  .icon( @rowIndex + 1,@colIndex,@width,@height);
+	}
+	.icon(@rowIndex,@colIndex,@width,@height) when (@rowIndex >= @row){
+	  .icon(0,@colIndex + 1,@width,@height);
+	}
+	.icon(@rowIndex,@colIndex,@width,@height){
+
+	}
+	.icon(0,0,@width,@height);*/
+}
+
+.background (@url, @prop: no-repeat,@root:'../images/',...){
+	background:url('@{root}@{url}') @prop;
+}
+
+.arrow ( ...) {
+	font-size: 0;
+	height: 0;
+	width: 0;
+	vertical-align: middle;
+	line-height: 0;
+	border-style: solid;
+
+}
+.t-arrow (@color: #666, @size: 5px,...) {
+	//.arrow(@size);
+	border-width: @size;
+	border-color: ~"transparent transparent @{color} transparent";
+}
+.b-arrow (@color: #666, @size: 5px,...) {
+	//.arrow(@size);
+	border-width: @size;
+	border-color: ~'@{color} transparent transparent transparent';
+}
+.l-arrow (@color: #666, @size: 5px,...) {
+	//.arrow(@size);
+	border-width: @size;
+	border-color: ~'transparent @{color} transparent transparent';
+}
+.r-arrow (@color: #666, @size: 5px,...) {
+	//.arrow(@size);
+	border-width: @size;
+	border-color: ~'transparent transparent transparent @{color}';
+}
+@arrow-revise: 0.8;
+.lt-arrow (@color: #666, @size: 5px,...) {
+	//.arrow(@size * @arrow-revise);
+	border-width: @size* @arrow-revise;
+	border-color: ~" @{color} transparent transparent  @{color}";
+}
+.tl-arrow (@color: #666, @size: 5px,...) {
+	.lt-arrow(@color, @size);
+}
+
+.bl-arrow(@color: #666, @size: 5px,...) {
+	//.arrow(@size* @arrow-revise);
+	border-width: @size* @arrow-revise;
+	border-color: ~"transparent transparent @{color} @{color}";
+}
+.lb-arrow (@color: #666, @size: 5px,...) {
+	.bl-arrow(@color, @size);
+}
+
+.rb-arrow (@color: #666, @size: 5px,...) {
+	//.arrow(@size* @arrow-revise);
+	border-width: @size* @arrow-revise;
+	border-color: ~"transparent @{color} @{color} transparent";
+}
+.br-arrow (@color: #666, @size: 5px,...) {
+	.rb-arrow(@color, @size);
+}
+
+.tr-arrow (@color: #666, @size: 5px,...) {
+	//.arrow(@size* @arrow-revise);
+	border-width: @size* @arrow-revise;
+	border-color: ~"@{color} @{color} transparent transparent";
+}
+.rt-arrow (@color: #666, @size: 5px,...) {
+	.tr-arrow(@color, @size);
+}
+
+
+.ie6-scroll-parent (...){
+	position: relative;
+}
+.scroll (@width : 100px , @height : 100px ,...){
+	overflow: auto;
+	height:@height;
+	width: @width;
+	position: relative;
+}
+.scroll-y ( @height : 100px ,...){
+	overflow-y: auto;
+	height: @height;
+	position: relative;
+}
+.scroll-x (@width : 100px  ,...){
+	overflow-x: auto;
+	width: @width;
+	position: relative;
+}
+
+.no-indent (...){
+	text-indent: 0;
+}
+.nowrap (...){white-space:nowrap;}
+
+.grid (@width:100px,@height:100px,@spacing:5px,...){
+	.clearfix();
+	.size(100px,100px);
+	li{
+		float: left;
+		margin:spacing ;
+	}
+}
+
+
+
+
+
+
+

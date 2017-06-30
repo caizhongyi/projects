@@ -1,0 +1,15 @@
+@import "../mixins/mixins.less";
+
+.tree{
+	@indent : 20px;
+	a{&:hover{text-decoration: none;} }
+	li{
+		padding-left: @indent;
+		.node{
+			padding-left: @indent * 2;
+		}
+		li{
+			padding-left: @indent * 3;
+		}
+	}
+}

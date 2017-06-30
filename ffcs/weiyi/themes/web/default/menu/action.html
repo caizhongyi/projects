@@ -1,0 +1,15 @@
+<ul class="nav nav-tabs">
+	<li class="{$current['url']}"><a href="#url" data-toggle="tab">设定链接</a></li>
+	<li class="{$current['rule']}"><a href="#rules" data-toggle="tab">指向到指定规则</a></li>
+</ul>
+
+<div class="tab-content" style="padding:10px 0;">
+	<div class="tab-pane{$current['url']}" id="url">
+		<div class="well">
+			<input class="span8" id="ipt-url" type="text" />
+			<span class="help-block">指定点击此菜单时要跳转的链接（注：链接需加http://）</span>
+			<span class="help-block"><strong>注意: 由于接口限制. 如果你没有网页oAuth接口权限, 这里输入链接直接进入微站个人中心时将会有缺陷(有可能获得不到当前访问用户的身份信息. 如果没有oAuth接口权限, 建议你使用图文回复的形式来访问个人中心)</strong></span>
+		</div>
+	</div>
+	<div class="tab-pane{$current['rule']}" id="rules"></div>
+</div>

@@ -1,0 +1,211 @@
+{template 'common/header'}
+<div class="main">
+	<form class="form-horizontal form" action="" method="post" enctype="multipart/form-data" onsubmit="return formcheck(this)">
+		<input type="hidden" name="id" value="{$rid}">
+      <h4>添加选项 <small>这里提交的是图片选项，图片格式自己调整好以后上上传</small></h4>
+		<table class="tb">
+	<tr>
+				<th><label for="">选项</label></th>
+				<td id="module-form">
+<div id="news-list">
+		{if !empty($reply)}
+		{loop $reply $key $news}
+		<div id="news-wrap-item-{$key}" class="alert alert-block alert-new wrap-item">
+			<a data-dismiss="alert" class="close">×</a><h4 class="alert-heading">添加回复内容</h4>
+			<div id="news-children-list">
+			{php include $this->template('item')}
+			</div>
+			<div class="reply-news-edit-button"><a href="javascript:;" onclick="newsHandler.buildForm('{$key}')" class="btn"><i class="icon-plus"></i> 添加多条内容</a></div>
+		</div>
+		{/loop}
+	{/if}		
+</div>
+                                          
+<a href="javascript:;" onclick="newsHandler.buildItem()" class="add-reply-button"><i class="icon-plus"></i> 添加选项内容</a>
+<!--span class="help-block">根据此处设置对应的回复内容，可设置多个。</span-->
+<script type="text/html" id="news-form-html">
+			<div id="show" class="alert alert-info reply-news-list  hide">
+	<div class="reply-news-list-cover"><img src="http://bcs.duapp.com/weixin003/" alt=""></div>
+	<div class="reply-news-list-detail">
+		<div class="title"></div>
+		<div class="content"></div>
+		<span class="pull-right"><a onclick="doDeleteItem('(itemid)')" href="javascript:;" style="margin-right:5px;">删除</a><a onclick="newsHandler.doEditItem('(itemid)', '(wrapitemid)')" href="javascript:;">编辑</a></span>
+	</div>
+</div>
+<table id="form" class="tb reply-news-edit ">
+	<tr>
+		<th>选项标题</th>
+		<td>
+			<input type="text" id="" class="span7" placeholder="" name="news-title-new[(wrapitemid)][]" value="">
+		</td>
+	</tr>
+	<tr>
+		<th>选项图片</th>
+		<td>
+			<!-- 此处增加class="reply-news-edit-cover-1"为编辑状态，反之则不显示封面图片，隐藏删除按钮 -->
+			<div id="" class="uneditable-input reply-edit-cover">
+				<div class="detail">
+					<span class="pull-right">大图片建议尺寸：700像素 * 300像素</span>
+                    <div  class="ace-file-input ">
+                        <label data-title="上传" class="file-label selected"><span data-title="上传的文件" class="file-name"><i class="icon-file"></i></span></label>
+                    </div>
+					<input type="button" id="news-picture" fieldname="news-picture-new[(wrapitemid)][]" class="btn btn-mini reply-edit-cover-upload" value="<i class='icon-upload-alt'></i> 上传" style="" />
+					<button type="button" class="btn btn-mini btn-upload-delete  reply-news-edit-cover-remove" id="upload-delete" onclick="doDeleteItemImage(this, 'news-picture-value')" style=" display:none;"><i class="icon-remove"></i> 删除</button>
+				</div>
+								<div id="upload-file-view"></div>
+							</div>
+		</td>
+	</tr>
+	<tr>
+		<th>简要描述</th>
+		<td>
+			<textarea style="height:80px;" class="span7" cols="70" name="news-description-new[(wrapitemid)][]"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<th>内容介绍</th>
+		<td>
+			<textarea style="height:200px; width:535px;" class="span7 richtext-clone" name="news-content-new[(wrapitemid)][]" cols="70" id="reply-add-text"></textarea>
+		</td>
+	</tr>
+</table>
+</script>
+
+<script type="text/javascript">
+<!--
+	var newsHandler = {
+		'buildItem' : function() {
+			var item = $('<div class="alert alert-block alert-new wrap-item"></div>');
+			var size = $('#news-list').find('.wrap-item').size();
+			var itemid = 'news-wrap-item-' + size;
+			while ($('#news-list').find('#' + itemid).size() >= 1) {
+				var itemid = 'news-wrap-item-' + (++size);
+			}
+			html = '<a class="close" data-dismiss="alert">×</a><h4 class="alert-heading">添加投票选项</h4><div id="news-children-list"></div>';
+			item.attr('id', itemid);
+			item.html(html);
+			$('#news-list').append(item);
+			this.buildForm(size);
+		},
+		'buildForm' : function(itemid) {
+			if ($('#news-children-list .item', $('#' + itemid)).size() >= 8) {
+				message('单条图文信息最多添加八条内容！', '', 'error');
+				return false;
+			}
+			this.updateList();
+			var itemojb = $('#news-wrap-item-' + itemid);
+			var obj = buildAddForm('news-form-html', $('#news-children-list', itemojb));
+			obj.html(obj.html().replace(/\(wrapitemid\)/gm, itemojb.attr('id')));
+
+			kindeditor($('#news-children-list', itemojb).find('.richtext-clone'));
+			$('.reply-edit-cover-upload', obj).each(function(){
+				if ($(this).css('display') != 'none') {
+					kindeditorUploadBtn($(this));
+				}
+			});
+		},
+		'doEditItem' : function(itemid, wrapitemid) {
+			this.updateList();
+			var parent = $('#' + itemid, $('#' + wrapitemid));
+			$('#form', parent).css('display', 'block');
+			$('#show', parent).css('display', 'none');
+		},
+		'updateList' : function(itemid) {
+			$('#news-list .item').each(function(){
+				$(this).find('#show').css('display', 'block').siblings().css('display', 'none');
+				if ($(this).index() == 0) {
+					$(this).find('#show').addClass('reply-news-list-first');
+				}
+				var thumb = $(this).find('#upload-file-view img').attr('src');
+				if (typeof thumb != 'undefined') {
+					$(this).find('#show img').attr('src', thumb);
+				}
+				$(this).find('#show .title').html($(this).find("#form input[name^='news-title']").val());
+				$(this).find('#show .content').html($(this).find("#form textarea[name^='news-description']").val());
+			});
+		}
+	};
+		kindeditor($('.richtext-clone'));
+	$('.reply-edit-cover-upload').each(function(){
+		kindeditorUploadBtn($(this));
+	});
+	//-->
+</script>									</td>
+			</tr>
+			<tr>
+				<th></th>
+				<td>
+					<button type="submit" class="btn btn-primary" name="submit" value="提交">提交</button>
+					<input type="hidden" name="token" value="83fbb403" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<script type="text/javascript">
+<!--
+	var category = "";
+	var keywordHandler = {
+		'buildForm' : function() {
+			var obj = buildAddForm('keyword-item-html', $('#keyword-list'));
+			obj.find('.btn-group .btn').on('click', function(){
+				$(this).parent().next().html($(this).attr('description'));
+				obj.find('#keyword-type-new').val($(this).attr('value'));
+			});
+			obj.find('#form').show();
+			obj.find('#show').hide();
+		},
+		'doAdd' : function(itemid) {
+			var parent = $('#' + itemid);
+			if ($('.keyword-name-new', parent).val() == '') {
+				message('请输入关键字！', '', 'error');
+				return false;
+			}
+			var typetips = $('.active', parent).html();
+			$('#show #type', parent).html(typetips);
+			$('#show #content', parent).html($('.keyword-name-new', parent).val());
+			$('#show', parent).css('display', 'block');
+			$('#form', parent).css('display', 'none');
+					}, 
+		'doEditItem' : function(itemid) {
+			$('#keyword-list .item').each(function(){
+				$('#form', $(this)).css('display', 'none');
+				$('#show', $(this)).css('display', 'block');		
+			});
+			doEditItem(itemid);
+		}
+	};
+
+	function buildModuleForm(module) {
+		try {
+			$.ajax({
+			  url: "setting.php?act=module&do=form&id=36",
+			  type: "GET",
+			  data: {'name' : module},
+			  dataType: "html"
+			}).done(function(s) {
+				if (s && s.indexOf('"type":"error"') >= 0) {
+					message('请重新选择公众号！', 'rule.php?act=post&', 'error');
+					return false;
+				}
+				formCheckers = [];
+				$('#module-form').html(s);
+			});
+		}
+		catch (e) {
+		}
+	}
+
+	function formcheck(form) {
+		
+	}
+
+		$('.btn-group .btn').on('click', function(){
+		$(this).parent().next().html($(this).attr('description'));
+		$(this).parent().parent().find('#keyword-type-new').val($(this).attr('value'));
+	});
+	//-->
+</script>
+{template 'common/footer'}
+  
+	

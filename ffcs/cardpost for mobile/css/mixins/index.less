@@ -1,0 +1,123 @@
+@charset "utf-8";
+@import "css3";
+
+.font{
+    .en(){
+        font:12px/1.5 arial,tahoma,'宋体';
+    }
+    .cn(){
+        font:12px/1.5 '宋体',tahoma,arial;
+    }
+    .number(){
+        font-family: tahoma,arial,'宋体';
+    }
+}
+
+.pull(@val){
+    .pull-left{ padding-left: @val;}
+    .pull-right{ padding-right:@val;}
+}
+.push(@val){
+    .push-left{ margin-left: @val;}
+    .push-right{ margin-right:@val;}
+}
+
+.width(@val , @padding:0 ){
+    width : (@val - @padding * 2);
+}
+
+.text-width(@val){
+    width: @val;
+    max-width: @val;
+}
+
+// Drop shadows
+.size (@width , @height) {
+    width: @width;
+    height: @height;
+}
+.position (@left , @top ){
+    left : @left;
+    top:  @top;
+}
+
+.min-height (@height: 300px) {
+    _height: @height;
+    _overflow: "visible";
+    min-height: @height;
+}
+/*
+* filter 渐变滤镜详细用法，[参见这里]
+* StartColorStr 和 EndColorStr:
+*    #4c000000 是 30% 透明度的 #000000 的意思
+*    组成: # + 透明度 + 颜色
+*    算法: Math.floor(0.6 * 255).toString(16);
+*/
+.opacity (@val) {
+    @opacity : (@val * 100 );
+    filter: ~"alpha(opacity = @{opacity})";
+    opacity : @val ;
+    //background : rgba(0, 0, 0, @val);
+   // @color : `Math.floor(0.6 * 255).toString(16)`;
+  //  filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=@color, EndColorStr=@color)/9;
+}
+
+.vertical-middle (@height: 22px) {
+    height: @height;
+    line-height: @height;
+}
+
+.textarea (@width:100%,@height:150px){
+    width: @width;
+    max-width: @width;
+    height: @height;
+}
+
+/**
+    html :
+    <span class="star">
+         <i class="star-half"></i>
+    </span>
+*/
+.star(@width,@height ,@count : 5){
+    display:inline-block;
+    @half :@width/2;
+    width: (@width * @count);
+    height: 10px;
+    i{
+        height: 100%;
+        // width: @width;
+    }
+    .star-half {
+        width: @half;
+    }
+    @m : 1;
+    .make(@m) when (@m < @count){
+        .star-@{m}{
+            width: @width;
+        }
+        .star-@{m}-half{
+            width: (@width * @m + @half);
+        }
+        @n : (@count + 1);
+        .make(@n);
+    }
+    .make(@m);
+}
+
+.image(@root:'../images/'){
+    .get(@url , @attr: no-repeat){
+        background:url('@{root}@{url}') @attr;
+    }
+    .offset(@left, @top){
+        background-position: @left @top;
+    }
+}
+
+.media-callback () {}
+.media (@min-width:500px,@max-width:1024px){
+    @media only screen and (min-width:@min-width) and (max-width: @max-width){
+        .media-callback();
+    }
+}
+

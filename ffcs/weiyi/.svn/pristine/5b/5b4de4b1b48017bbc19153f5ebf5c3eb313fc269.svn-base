@@ -1,0 +1,44 @@
+<?php
+/**
+ * 设置商家信息
+ */
+defined('IN_IA') or exit('Access Denied');
+
+if (checksubmit('submit')) {
+	global $_W, $_GPC;
+	
+    
+}else{
+	global $_GPC;
+	$do = $_GPC['do'] ? $_GPC['do'] : '';
+	if($do == 'delete_checked'){ //删除多个选项
+		$ids = $_GPC['ids'] ? trim($_GPC['ids'], ',') : '';
+		if(empty($ids)) message('参数传递错误。',  create_url('micromember/apis'));
+		$sql = "delete from ims_fuse_apis where id in (".$ids.")";
+		$bool =pdo_query($sql);
+		if($bool){
+			echo 1;exit();
+		}
+		echo 0; exit();
+	}elseif($do == 'delete'){ //根据id删除单个选项
+		$id = $_GPC['id'] ? $_GPC['id'] : 0;
+		if($id == 0) message('参数传递错误。',  create_url('micromember/apis'));
+		$bool = pdo_delete('fuse_apis', array('id'=>$id));
+		if($bool){
+			echo 1;exit();
+		}
+		echo 0; exit();
+	}elseif($do == 'modify'){
+		
+	}
+	
+	$page = $_GPC['page'] ? intval($_GPC['page']) : 1;
+	$pagesize = 10;
+	$sql = "select * from ims_fuse_apis where weid=".$_W['weid']." order by id desc limit ".(($page-1)*$pagesize).",".$pagesize;
+	$result = pdo_fetchall($sql);
+	$_sql = "select count(*) as count from ims_fuse_apis";
+	$totalcount = pdo_fetchall($_sql);
+	$pagetool = pagination($totalcount[0]['count'], $page, $pagesize);
+	// echo create_url('micromember/apis', array('do'=>'delete'));
+    template('micromember/apis');
+}

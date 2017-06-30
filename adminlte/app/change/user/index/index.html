@@ -1,0 +1,185 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a></li>
+        <li class="active">  {{ $state.current.page.title }} </li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content slide" >
+    <div class="box">
+        <div class="box-header">
+
+
+            <div class="form-inline">
+                <div class="form-group">
+                    <label class="btn-block" >真实姓名:</label>
+                    <input type="text" placeholder="真实姓名" value="" ng-model="search.real_name" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label class="btn-block" > 用户名:</label>
+                    <input type="text" placeholder=" 用户名"  ng-model="search.username" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label class="btn-block" > 手机号码:</label>
+                    <input type="text" placeholder=" 手机号码"  ng-model="search.telphone" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label class="btn-block" >注册类型:</label>
+
+                    <select type="text" ng-model="search.giste_type" class="form-control">
+                        <option></option>
+                        <option ng-repeat="giste_type in gisteTypeList" ng-selected="search.giste_type == giste_type.type" value="{{giste_type.type}}">{{giste_type.name}}</option>
+
+                    </select>
+                </div>
+                 
+                <div class="form-group">
+                    <label class="btn-block">&nbsp;</label>
+                    <button class="btn btn-default" ng-click="searchAction()"><i class="fa fa-search"></i> 搜索</button>
+                </div>
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body  no-padding">
+            <table class="table table-hover text-center">
+                <tbody>
+                    <tr>
+                        <th>用户帐号</th>
+                        <th>用户名</th>
+                        <th>微信openid</th>
+                        <th>真实姓名</th>
+                        <th>昵称</th>
+                        <th>手机</th>
+                        <th>注册类型</th>
+                        <th>注册时间</th>
+                        <th>所属门店</th>
+                        <th>最后登录时间</th>
+                        <th>关注微信公众平台时间</th>
+                        <th>所在城市</th>
+                        <th width="10%">操作</th>
+                    </tr>
+
+                    <tr ng-repeat="item in list">
+                        <td>{{item.user_id}}</td>
+                        <td>{{item.username}}</td>
+                        <td>{{item.openid}}</td>
+                        <td>{{item.real_name}}</td>
+                        <td>{{item.nickname}}</td>
+                        <td>{{item.telphone}}</td>
+                        <td>{{item.giste_type| type}}</td>
+                        <td>{{item.registe_date * 1000 | date:"yyyy-MM-dd hh:mm:ss"  }}</td>
+                        <td>{{item.dept_name}}</td>
+                        <td>{{item.last_login_time * 1000 | date:"yyyy-MM-dd hh:mm:ss"  }}</td>
+                        <td>{{item.follow_time * 1000 | date:"yyyy-MM-dd hh:mm:ss"  }}</td>
+                        <td>{{item.city_name}}</td>
+                        <td>
+                            <div class="btn-group">
+                                <div class="btn-group" dropdown is-open="status.isopen">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                                        操作 <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="javascript:;" ng-click="edit($index)" ><i class="fa fa-edit"></i> 修改</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div><!-- /.box-body -->
+        <div class="box-footer clearfix ">
+            <pagination boundary-links="true"  ng-change="pageChanged()" total-items="totalItems" items-per-page="itemsPerPage"  ng-model="currentPage" class="pagination pull-right no-margin" max-size="10"
+                        previous-text="上一页" next-text="下一页" first-text="首页" last-text="末页"></pagination>
+        </div>
+
+    </div>
+
+</section>
+<!-- /.content -->
+
+<script type="text/ng-template" id="tpl-update.html">
+    <div class="modal-header">
+        <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+        <h3 class="modal-title">编辑用户信息</h3>
+    </div>
+    <div class="modal-body">
+        <form role="form" name="userForm" class="form-horizontal" ng-submit="update(userForm.$valid)" >
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="update-user_id" class="col-sm-2 control-label">用户名:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="用户名" id="update-username" class="form-control" name="username" ng-model="item.username" value="{{ item.username }}"   >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="update-real_name"  class="col-sm-2 control-label">真实姓名:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="真实姓名" id="update-real_name" class="form-control" name="real_name" ng-model="item.real_name" value="{{ item.real_name }}" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="update-telphone"  class="col-sm-2 control-label">手机:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="手机" id="update-telphone" class="form-control" name="telphone" ng-model="item.telphone" value="{{ item.telphone }}" >
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="update-type"  class="col-sm-2 control-label">注册类型:</label>
+                    <div class="col-sm-10">
+                        <select  id="update-giste_type" name="giste_type" class="form-control" ng-model="item.giste_type">
+                            <option value="1">个人</option>
+                            <option value="2">办证人员</option>
+                            <option value="3">二手车商</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="update-registe_date"  class="col-sm-2 control-label">注册时间aaa:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="注册时间aaa" id="update-registe_date" class="form-control" name="registe_date" ng-model="item.registe_date" value="{{ item.registe_date }}" ng-readonly="true"  >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="update-last_login_time"  class="col-sm-2 control-label">最后登录时间:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="最后登录时间" id="update-last_login_time" class="form-control" name="last_login_time" ng-model="item.last_login_time" value="{{ item.last_login_time }}" ng-readonly="true"  >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="update-follow_time"  class="col-sm-2 control-label">关注微信公众平台时间:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="关注微信公众平台时间" id="update-follow_time" class="form-control" name="follow_time" ng-model="item.follow_time" value="{{ item.follow_time }}" ng-readonly="true"  >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="update-city_name"  class="col-sm-2 control-label">所在城市:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="所在城市" id="update-city_name" class="form-control" name="city_name" ng-model="item.city_name" value="{{ item.city_name }}" ng-readonly="true"  >
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit" >确定</button>
+                    <button class="btn btn-warning" ng-click="cancel()">取消</button>
+                </div>
+            </div><!-- /.box-body -->
+        </form>
+    </div>
+</script>
+

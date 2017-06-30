@@ -1,0 +1,97 @@
+<html>
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>元旦快乐</title>
+		
+	<script src="../showcard_nosound.js"></script>
+
+	<script>
+		gSizeMode = 'bodywidth';
+		gAnimateMode = 'print';
+		gSound = 'http://pds27.egloos.com/pds/201312/02/32/shengdan1.mp3'
+		gColor = 'yellow';
+		gTextAreaLeft = 0.0762;
+		gTextAreaTop = 0.1;
+		gTextAreaWidth = 0.8;
+		gTextAreaHeight = 0.45;		
+		gCardTextNoWrap ='元旦快乐';
+		gCardText ='时间过得似箭快，<br>一晃而过元旦来，<br>鼎故辞旧喜迎春，<br>二零一三阔步迈，<br>开拓进取干事业，<br>再铸辉煌佳业绩。<br>祝元旦快乐。';		
+	// script place
+	</script>
+<script>
+	(function(){
+		var onBridgeReady = function () {
+		var appId = '',
+		imgUrl = 'http://61.154.164.33:10001/cardpost/kas/61.154.164.33:10001/cardpost/kas/weika/kas/new2.htm/kas/images/yuangdan/46/410340.gif',
+		link = location.href,
+		title = '微贺卡',
+		desc = '送你一棵圣诞树，提前祝你圣诞快乐！越早转发，今年收到的圣诞礼物越多哈！';
+		
+	// 发送给好友;
+		WeixinJSBridge.on('menu:share:appmessage', function(argv){
+			WeixinJSBridge.invoke('sendAppMessage',{
+				'img_url' : imgUrl,
+				'img_width' : '640',
+				'img_height' : '640',
+				'link' : link,
+				'desc' : desc,
+				'title' : title
+				}, function(res) {});
+		});
+	// 分享到朋友圈;
+		WeixinJSBridge.on('menu:share:timeline', function(argv){
+			WeixinJSBridge.invoke('shareTimeline',{
+			'img_url' : imgUrl,
+			'img_width' : '640',
+			'img_height' : '640',
+			'link' : link,
+			'desc' : desc,
+			'title' : desc
+			}, function(res) {
+			});
+		});
+		var audio = document.getElementById('bgsound');
+		audio.src = gSound;
+		audio.play();
+	};
+	
+	if(document.addEventListener){
+	document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+	} else if(document.attachEvent){
+	document.attachEvent('WeixinJSBridgeReady' , onBridgeReady);
+	document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+	}
+	})();
+</script>
+   </head>
+
+
+<body onLoad="onLoad();" onclick='javascript:playsound()'>
+
+
+
+
+<img src="../images/yuangdan/46/440660.gif" width="100%">
+
+<div id="ruler" style="width:100%;height:0"></div>
+<audio id="bgsound" loop></audio>
+<div id="textsuper" style="position:absolute;top:-1000;left:-1000;overflow-x:hidden;overflow-y:hidden;z-index:4" onclick='javascript:playsound()'>
+	<div id="textsub" style='color:black;line-height:80pt;position:relative;font-size:70;' onclick='javascript:playsound()'>
+		<b id="textcontent">
+        </b>
+    </div>
+</div>
+
+<div id="invite" style="position:absolute;left:60%;top:80%;z-index:2000">
+
+	<a href=""><img style="width:200%" src="../../../img02.taobaocdn.com/imgextra/i2/242029042/T2HMVLXBFXXXXXXXXX_!!242029042.gif"></a><br>
+
+</div>
+
+<script type="text/javascript" src="../js/global.js"></script>
+</body>
+
+</html>

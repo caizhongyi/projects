@@ -1,0 +1,24 @@
+{template 'common/header'}
+<div class="main">
+<form action="" class="form-horizontal form" method="post" enctype="multipart/form-data">
+<input type="hidden" name="from_user" value="{$from_user}" />
+	<h4>修改用户积分及余额</h4>
+	<table class="tb">
+		<tr>
+			<th><label for="">积分</label></th>
+			<td><input type="text" name="credit1" value="{$profile['credit1']}" class="span5"></td>
+		</tr>
+		<tr>
+			<th><label for="">余额</label></th>
+			<td><input type="text" name="credit2" value="{$profile['credit2']}" class="span5"></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td>
+				<button type="submit" class="btn btn-primary btn-sm" name="submit" value="提交">提交</button>
+				<input type="hidden" name="token" value="{$_W['token']}" />
+			</td>
+		</tr>
+	</table>
+</div>
+{template 'common/footer'}

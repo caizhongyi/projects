@@ -1,0 +1,174 @@
+{template 'header'}
+
+<link type="text/css" rel="stylesheet" href="./source/modules/shopping/images/common.css">
+<script type="text/javascript" src="./source/modules/shopping/images/jquery.spinner.min.js"></script>
+<!--<script type="text/javascript">
+    $('body').addClass('no-header');
+</script>-->
+<div class="header clearfix">
+    <a class="go_link" onclick="history.go(-1);" href="###"><b></b></a>
+    <a class="go_home" href="{php echo $this->createMobileUrl('list');}"></a>
+</div>
+<!--<div id="banner_box" class="box_swipe">
+    <ul>
+        <li>
+            <a href="mobile.php?act=module&name=site&id=37&do=detail&weid=54">
+                <img src="http://42.121.125.119/vieasy/resource/attachment/images/2014/01/u69i0DvpVU7BHMcCIqcu0q57rdv5mz.jpg" onerror="this.src='./themes/mobile/images/noimage.jpg'" alt="关于福富" style="width:100%;" />
+            </a>
+        </li>
+        <li>
+            <a href="mobile.php?act=module&name=site&id=36&do=detail&weid=54">
+                <img src="http://42.121.125.119/vieasy/resource/attachment/images/2014/01/isJQsi2Uaql2Edas5ZLgeGLjstGo4a.png" onerror="this.src='./themes/mobile/images/noimage.jpg'" alt="微翼平台介绍" style="width:100%;" />
+            </a>
+        </li>
+    </ul>
+    <ol>
+        <li class="on"></li>
+        <li></li>
+    </ol>
+
+</div>
+<script>
+    $(function(){
+        new Swipe(document.getElementById('banner_box'), {
+            speed:500,
+            auto:3000,
+            callback: function(){
+                var lis = $(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
+            }
+        });
+    });
+</script>-->
+
+<form action="" method="post">
+    <input type="hidden" name="id" value="{$goodsid}" />
+
+    <div id="banner_box" class="box_swipe">
+        <ul>
+            <li> {if !empty($goods['thumb'])}<img src="{$_W['attachurl']}{$goods['thumb']}" />{/if}</li>
+            <li> {if !empty($goods['thumb'])}<img src="{$_W['attachurl']}{$goods['thumb']}" />{/if}</li>
+        </ul>
+        <ol>
+            <li class="on"></li>
+            <li></li>
+        </ol>
+    </div>
+    <script>
+        $(function(){
+            new Swipe(document.getElementById('banner_box'), {
+                speed:500,
+                auto:3000,
+                callback: function(){
+                    var lis = $(this.element).next("ol").children();
+                    lis.removeClass("on").eq(this.index).addClass("on");
+                }
+            });
+        });
+    </script>
+    <!--<div class="mobile-img">
+        {if !empty($goods['thumb'])}<img src="{$_W['attachurl']}{$goods['thumb']}" />{/if}
+    </div>-->
+
+    <div class="container">
+        <h1>{$goods['title']}</h1>
+        <div class="form ">
+            <div class="form-group">
+                <span class="form-label">售价:</span>￥<span class="price" data-unitprice="{$goods['marketprice']}">{$goods['marketprice']}</span>
+            </div>
+            <!-- <div class="form-group">
+                 <span class="form-label">原价:</span><span class="overline">￥12122</span></span>
+             </div>-->
+
+            <div class="form-group">
+                <span class="form-label">简介:</span>{$goods['description']}</span>
+            </div>
+            <div class="form-group">
+                <span class="form-label">购买数量:</span>
+                <span class="input-group input-spinner spinner-large">
+                    <a class="add-on spinner-down" href="javascript:;">-</a><input type="text" name="count"  data-max="{$goods['total']}" data-min="1"  value="1"/><a class="add-on spinner-up"  href="javascript:;">+</a>
+                </span>&nbsp;
+                {if $goods['total'] != -1}
+                    <strong>{$goods['total']}</strong>件
+                {/if}
+                <script type="text/javascript">
+                    function accMul(arg1,arg2)
+                    {
+                        var m=0,s1=arg1.toString(),s2=arg2.toString();
+                        try{m+=s1.split(".")[1].length}catch(e){}
+                        try{m+=s2.split(".")[1].length}catch(e){}
+                        return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m);
+                    }
+                    //给Number类型增加一个mul方法，调用起来更加方便。
+                    Number.prototype.mul = function (arg){
+                        return accMul(arg, this);
+                    };
+                    $(function(){
+                        $('.input-spinner').spinner().on('changed',function( e , val ,  increate ){
+                            var $price = $('.price');
+                            $price.html(parseFloat($price.attr('data-unitprice')).mul(val));
+                        }).trigger('changed',parseFloat($('.input-spinner input').val()))
+                    })
+                </script>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="token" value="{$_W['token']}" />
+                <input class="btn btn-buy" type="submit" value="加入购物车" name="submit">
+                <input class="btn btn-addcard" type="button" value="立即购买" >
+        </div>
+    </div>
+
+    <div class="mobile-div img-rounded">
+        <div class="mobile-hd">商品详细描述</div>
+        <div class="mobile-content">
+            {$goods['content']}
+        </div>
+    </div>
+
+    <!--<div class="mobile-div img-rounded">
+        <div class="mobile-hd">商品详细描述</div>
+        <div class="mobile-content">
+            {$goods['content']}
+        </div>
+    </div>
+    <div class="mobile-div img-rounded">
+        <div class="mobile-hd">商品其他信息</div>
+        <div class="mobile-content">
+            <table class="form-table">
+                <tr>
+                    <th>名称</th>
+                    <td><span>{$goods['title']}</span></td>
+                </tr>
+                <tr>
+                    <th>售价</th>
+                    <td><span>{$goods['marketprice']}</span></td>
+                </tr>
+
+                {if $goods['total'] != -1}
+                <tr>
+                    <th>库存</th>
+                    <td><span>{$goods['total']}</span></td>
+                </tr>
+                {/if}
+                <tr>
+                    <th>购买数量</th>
+                    <td><input type="text" name="count" value="1" /></td>
+                </tr>
+                <tr>
+                    <th>简介</th>
+                    <td><span>{$goods['description']}</span></td>
+                </tr>
+                <tr>
+                    <th>内容</th>
+                    <td><span>{$goods['content']}</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>--><!--
+    <div class="mobile-submit">
+        <input type="hidden" name="token" value="{$_W['token']}" />
+        <input type="submit" name="submit" class="btn btn-sm btn-primary btn-success submit"  value="购买">
+    </div>-->
+
+</form>
+{template 'footer'}

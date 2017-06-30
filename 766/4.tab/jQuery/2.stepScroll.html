@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>2.幻灯片效果-单块内容滚动</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<style>
+/*slide*/
+.backToTop { display:none; width:30px; line-height:20px; padding:5px 0; background:#000; color:#fff; font-size:12px; text-align:center; position:fixed; _position:absolute; left:50%; margin-left:500px; bottom:100px; _bottom:"auto"; cursor:pointer; opacity:.6; filter:Alpha(opacity=60); }
+</style>
+<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/back_top.js"></script>
+<script type="text/javascript" src="js/stepScroll.js"></script>
+</head>
+<body>
+<!-- wrapper -->
+<div class="main">
+<!--目录-->
+<h2>766通用JS效果 目录：（以下效果，经测试，兼容FF10.0/IE6,7,8,9/360 4.1.1.6/遨游 3.1.5/世界之窗3.2）</h2>
+<p class="descirpt" style="background:#f1f1f1; border:1px solid #369;">
+	<a href="0.index.html">0.首页-JQuery基础使用教程</a><br />
+	<a href="1.fade.html">1.幻灯片效果-淡入淡出 + 返回顶部</a><br />
+	<span>2.幻灯片效果-单块内容滚动</span><br />
+	<a href="3.scroll.html">3.滚动效果</a><br />
+	<a href="4.textScroll.html">4.文本滚动效果</a><br />
+	<a href="5.tab.html">5.选项卡/标签切换效果+图片切换后载效果</a><br />
+	<a href="6.menu.html">6.下拉菜单/级联菜单效果</a><br />
+	<a href="7.ie6png.html">7.IE6 png bug</a><br />
+	<a href="8.ie6fixed.html">8.IE6 fixed bug</a><br />
+</p>
+<!--目录 end-->
+
+<!--1.幻灯片效果-->
+<h2>幻灯片效果</h2>
+<p class="descirpt">描述：幻灯片效果；每次向左边滚动一个li的内容
+	li里面的内容可以是任意html代码
+</p><br />
+<h3 class="h3">范例：</h3>
+<!--范例1***************************************************-->
+<textarea style="height:400px; width:978px;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		.container{ width:850px; margin:20px auto 0; }
+		.container,.scrollDiv{ position:relative; }
+			.scrollDiv{ margin:0 auto; font-size:12px; width:816px; height:107px; overflow:hidden; }
+				.scrollDiv ul{ position:absolute; width:400%; }
+				.scrollDiv li{ line-height:24px; width:199px; margin:0 5px 0 0; background:#ccc; height:107px; overflow:hidden; display:inline; float:left;}
+			.rightscroll,.leftscroll{ position:absolute; top:50%; display:block; background:#ddd; text-align:center; line-height:24px; width:22px; height:24px; margin-top:-10px; overflow:hidden; }
+				.leftscroll{ left:-28px; }
+				.rightscroll{ right:-28px; background-position:-135px -76px; }
+			.scrollDiv img{ width:191px; height:99px; padding:3px; background:#500f94; border:1px solid #230541; overflow:hidden; }
+			.scrollContent{ float:left; width:206px;}
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/stepScroll.js"></script>
+		<script type='text/javascript'>
+			//使用插件
+			$(function(){
+				/*
+				$(".container").stepScroll({
+					aniTime:500,				//动画时间，单位：毫秒
+					autoPlay:true,				//是否自动轮播
+					btn_left:'.rightscroll',	//左滚动按钮的类名
+					btn_right:'.leftscroll',	//右滚动按钮的类名
+					scrollTime:3000				//轮播时间，单位：毫秒
+				});
+				*/
+				$(".container").stepScroll({ scrollTime:2000 });
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container" id="stepScroll">
+			<div class="scrollDiv">
+				<ul>
+					<li><a href="#"><img src="pics/thumb_b_62601.jpg" /></a></li>
+					<li><a href="#"><img style="width:100px; float:left;" src="pics/thumb_b_62579.jpg" /></a><p style="width:72px; float:right;">我是文字内容，也可以有<a href="#">链接</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62440.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62372.jpg" /></a></li>
+					<li><p style="line-height:20px; text-indent:24px; height:100px; padding:3px; overflow:hidden;"><a href="#">滚动的内容可以是多种多样，不一定要都是图片</a></p></li>
+					<li><a href="#"><img src="pics/thumb_b_62435.jpg" /></a></li>
+					<li><a href="#"><img src="pics/thumb_b_62377.jpg" /></a></li>
+				</ul>
+			</div>
+			<a href="#" class="leftscroll">左</a>
+			<a href="#" class="rightscroll">右</a>
+		</div>
+	</body>
+</html>
+
+</textarea>
+<style type="text/css">
+.container{ width:850px; margin:20px auto 0; }
+.container,.scrollDiv{ position:relative; }
+	.scrollDiv{ margin:0 auto; font-size:12px; width:816px; height:107px; overflow:hidden; }
+		.scrollDiv ul{ position:absolute; width:400%; }
+		.scrollDiv li{ line-height:24px; width:199px; margin:0 5px 0 0; background:#ccc; height:107px; overflow:hidden; display:inline; float:left;}
+	.rightscroll,.leftscroll{ position:absolute; top:50%; display:block; background:#ddd; text-align:center; line-height:24px; width:22px; height:24px; margin-top:-10px; overflow:hidden; }
+		.leftscroll{ left:-28px; }
+		.rightscroll{ right:-28px; background-position:-135px -76px; }
+	.scrollDiv img{ width:191px; height:99px; padding:3px; background:#500f94; border:1px solid #230541; overflow:hidden; }
+	.scrollContent{ float:left; width:206px;}
+</style>
+<script type='text/javascript'>
+//使用插件
+$(function(){
+	$(".container").stepScroll({ scrollTime:2000 });
+});
+</script>
+<div class="container" id="stepScroll">
+	<div class="scrollDiv">
+		<ul>
+			<li><a href="#"><img src="pics/thumb_b_62601.jpg" /></a></li>
+			<li><a href="#"><img style="width:100px; float:left;" src="pics/thumb_b_62579.jpg" /></a><p style="width:72px; float:right;">我是文字内容，也可以有<a href="#">链接</a></p></li>
+			<li><a href="#"><img src="pics/thumb_b_62440.jpg" /></a></li>
+			<li><a href="#"><img src="pics/thumb_b_62372.jpg" /></a></li>
+			<li><p style="line-height:20px; text-indent:24px; height:100px; padding:3px; overflow:hidden;"><a href="#">滚动的内容可以是多种多样，不一定要都是图片</a></p></li>
+			<li><a href="#"><img src="pics/thumb_b_62435.jpg" /></a></li>
+			<li><a href="#"><img src="pics/thumb_b_62377.jpg" /></a></li>
+		</ul>
+	</div>
+	<a href="#" class="leftscroll">左</a>
+	<a href="#" class="rightscroll">右</a>
+</div>
+<br />
+<br />
+<!--范例1 end***************************************************-->
+</div>
+<!-- wrapper end -->
+
+</body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="http://js.olcdn.com/lib/gb2312/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="http://js.olcdn.com/net/v1/gb2312/jquery.alCommon.js"></script>
+<script type='text/javascript'>
+//使用插件
+$(function(){
+$("#ue_tab1").tab();
+$("#ue_tab2").tab();
+$("#ue_tab3").tab();
+});
+</script>
+<script type="text/javascript">
+//动画显示-2
+$(function(){
+$("#ShowButton_2").click(
+function(){
+     if($("#ShowDiv").css("display")=='none'){
+$("#ShowDiv").slideDown();
+$("#ShowDiv");
+     $("#ShowButton_2").val("隐藏");
+     }
+     else{
+$("#ShowDiv").slideUp();
+     $("#ShowButton_2").val("显示");
+     }
+});
+});
+</script>
+<script>
+   var $al766_BackText2 = "返回顶部";	
+var $al766_BackBox2 = $('<div class="net_search"><ul><li class="back1"><b><a title="返回顶部" href="#top" target="_self"></a></b></li><li class="back3"><a title="前往底部" href="#footer" target="_self" ></a></ul></div>').appendTo($("body"));
+	//title属性设置成该文字
+	$(".gotoTop").click(function() {
+		$("html, body").animate({ scrollTop: 0 }, 120);
+});
+var $al766_BackFunc2 = function() {
+	//获取滚动条高度和浏览器宽度
+	var st = $(document).scrollTop(), winh = $(window).height();
+	(st > 0)? $al766_BackBox2.show(): $al766_BackBox2.hide();	
+	//IE6下的定位
+	if (!window.XMLHttpRequest) {
+		$al766_BackBox2.css("top", st + winh - 166);	
+	}
+};
+//为滚动事件绑定函数
+$(window).bind("scroll", $al766_BackFunc2);
+$al766_BackFunc2();
+</script>
+</head>
+<body>
+<div class="fullbg">
+<!--main-->
+	   <div class="wrapper">
+		   <div class="header"></div>
+			<!--nav-->
+			<div class="nav">
+			   <a href="" class="a1" title="游戏专区"></a>
+				<a href="" class="a2" title="韩服资讯"></a>
+				<a href="" class="a3" title="国服进度"></a>
+				<a href="" class="a4" title="游戏资料"></a>
+				<a href="" class="a5" title="火爆视频"></a>
+				<a href="" class="a6" title="美图图廊"></a>
+				<a href="" class="a7" title="玩家论坛"></a>
+			 	<li href="" class="a8" title="查看更多" id="ShowButton_2"></li>
+			    <div class="more_con" id="ShowDiv">
+			   <ul>
+				 <li><a href="">玩家论坛玩家论坛</a></li>
+				 <li><a href="">玩家论坛玩家论坛</a></li>
+				 <li><a href="">玩家论坛玩家论坛</a></li>
+				 <li><a href="">玩家论坛玩家论坛</a></li>
+				 <li><a href="">玩家论坛玩家论坛</a></li>
+				 <li><a href="">玩家论坛玩家论坛</a></li>
+				 <li><a href="">玩家论坛玩家论坛</a></li>
+				 <li><a href="">玩家论坛玩家论坛</a></li>
+				 <li><a href="">玩家论坛玩家论坛</a></li>
+				</ul>
+			</div>
+			</div>
+			
+			<!--nav end-->
+			<!--main_01-->
+			<div class="main01_l">
+			   <!--1-->
+			   <div class="main01_l_l">
+				   <h2><code>更多>></code>美图图廊</h2>
+					<div class="main01_l_con">
+					   <ul>
+						   <li><img src="images/header1.jpg" /><h3>玩家论坛玩家论坛</h3><p>玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛</p></li>
+							<li><img src="images/header1.jpg" /><h3>玩家论坛玩家论坛</h3><p>玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛</p></li>
+							<li><img src="images/header1.jpg" /><h3>玩家论坛玩家论坛</h3><p>玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛</p></li>
+							<li><img src="images/header1.jpg" /><h3>玩家论坛玩家论坛</h3><p>玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛</p></li>
+							<li><img src="images/header1.jpg" /><h3>玩家论坛玩家论坛</h3><p>玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛</p></li>
+							<li><img src="images/header1.jpg" /><h3>玩家论坛玩家论坛</h3><p>玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛</p></li>
+						</ul>
+					</div>
+				</div>
+				<!--1 end-->
+				 <!--2-->
+			   <div class="main01_l_l m_l" id="ue_tab3">
+				   <h2><code>更多>></code>美图图廊</h2>
+					<div class="main01_l_con">
+					   <ul>
+						   <li><img src="images/header1.jpg" /><h3>玩家论坛玩家论坛</h3><p>玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛</p></li>
+							<li><img src="images/header1.jpg" /><h3>玩家论坛玩家论坛</h3><p>玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛玩家论坛</p></li>
+						</ul>
+						<ul class="main01_l_turn tab_menu">
+						   <li>上古世纪</li><li>上古世纪</li><li>上古世纪</li><li>上古世纪</li><li>上古世纪</li><li>上古世纪</li><li>上古世纪</li><li>上古世纪</li>
+						</ul>
+						<div class="main01_l_turn_con tab_main">
+						  <ul>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  </ul>
+						</div>
+							<div class="main01_l_turn_con tab_main">
+						  <ul>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  </ul>
+						</div>
+							<div class="main01_l_turn_con tab_main">
+						  <ul>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  </ul>
+						</div>
+							<div class="main01_l_turn_con tab_main">
+						  <ul>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  </ul>
+						</div>
+							<div class="main01_l_turn_con tab_main">
+						  <ul>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  </ul>
+						</div>
+							<div class="main01_l_turn_con tab_main">
+						  <ul>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  </ul>
+						</div>
+							<div class="main01_l_turn_con tab_main">
+						  <ul>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  </ul>
+						</div>
+							<div class="main01_l_turn_con tab_main">
+						  <ul>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  <li><code>[09-11]</code>官方微博会在6月20日公布获奖名单</li>
+						  </ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<!--2 end-->
+			</div>
+			<div class="main01_r" >
+			    <div class="main01_r_con_b">
+				     <div class="img">
+					     <ul>
+						     <li><a href=""><img src="images/header1.jpg" /></a></li>
+							  <li><a href=""><img src="images/header1.jpg" /></a></li>
+							  <li><a href=""><img src="images/header1.jpg" /></a></li>
+						  </ul>
+					  </div>
+					  <div class="img">
+					     <ul>
+						     <li><a href=""><img src="images/header1.jpg" /></a></li>
+							  <li><a href=""><img src="images/header1.jpg" /></a></li>
+							  <li><a href=""><img src="images/header1.jpg" /></a></li>
+						  </ul>
+					  </div>
+					  <div class="img">
+					     <ul>
+						     <li><a href=""><img src="images/header1.jpg" /></a></li>
+							  <li><a href=""><img src="images/header1.jpg" /></a></li>
+							  <li><a href=""><img src="images/header1.jpg" /></a></li>
+						  </ul>
+					  </div>
+				 </div>
+				 <div class="pagedot">
+				 <a class="left prev" href="javascript:void(0);"></a>
+				 <div class="goto" data-index ="0"></div>
+				 <div class="goto" data-index ="1"></div>
+				 <div class="goto current" data-index ="2"></div>
+				 <a class="right next" href="javascript:void(0);"></a>
+				 </div>
+			</div>
+			<script type="text/javascript">
+					var $items = $('.main01_r_con_b > div'),
+					    index = 2 ,
+						 $navs = $('.goto'),
+						 $next = $('.next').click(function(){
+							var i = index + 1 ;
+							if(i >= $items.length){ i =0 ;}
+						   $items.hide();
+						 	$items.eq(i).stop(true,true).fadeIn();
+							$navs.removeClass('current');
+							$navs.eq(i).addClass('current'); 
+							index = i;	 
+						 }),
+						 $prev = $('.prev').click(function(){
+							var i = index - 1 ;
+							if(i < 0){ i = $items.length - 1; }
+							$items.hide();
+						 	$items.eq(i).stop(true,true).fadeIn();
+							$navs.removeClass('current');
+							$navs.eq(i).addClass('current'); 
+							index = i;	 
+					    });
+						 $navs.click(function(){
+							$items.hide();
+						 	$items.eq($(this).attr('data-index')).stop(true,true).fadeIn();
+							$navs.removeClass('current');
+							$(this).addClass('current'); 
+						 })
+			</script>
+			<div class="clear"></div>
+			<!--main_01_end-->
+			<!--main02-->
+			  <!--2-left-->
+			  <div class="main02_l">
+			     <div class="main02_l_1">
+				     <h2>美图图廊</h2>
+					  <ul>
+					     <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+					  </ul>
+				  </div>
+				  <!--2-->
+				  <div class="main02_l_2">
+				     <h2>美图图廊</h2>
+					  <ul>
+					     <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+						  <li><a href="">官方微博会在6月20日公布获</a></li>
+					  </ul>
+				  </div>
+				  <!--3-->
+				<iframe src="left.html" width="172" height="200" scrolling="no" frameborder="0"></iframe>
+				  <!--4-->
+				  <div class="main02_l_4">
+				     <h2>美图图廊</h2>
+					  <div class="main02_l_4_con">
+					     <ul>
+						     <li><img src="images/header1.jpg" /><p><a href="">美图图廊美图图廊美图图廊美图图廊</a></p></li>
+							  <li><img src="images/header1.jpg" /><p><a href="">美图图廊美图图廊美图图廊美图图廊</a></p></li>
+							  <li><img src="images/header1.jpg" /><p><a href="">美图图廊美图图廊美图图廊美图图廊</a></p></li>
+						  </ul>
+					  </div>
+				  </div>
+			  </div>
+			  <!--2-middle-->
+			  <div class="main02_m">
+			     <!--1-->
+				  <div class="search">
+				     <input class="input_01" />
+					  <input type="button" class="btn_01" />
+					  <p><a href="">美图图廊</a></p>
+					  <p><a href="">美图图廊</a></p>
+					  <p><a href="">美图图廊</a></p>
+					  <p><a href="">美图图廊</a></p>
+				  </div>
+				  <div class="main02_m_1" id="ue_tab1">
+				     <h2><code>更多>></code>美图图廊
+					   <ul class="turn tab_menu">
+							   <li class="select">美图图廊</li>
+								<li>美图图廊</li>
+								<li>美图图廊</li>
+								<li>美图图廊</li>
+						  </ul>
+					  </h2>
+					  <div class="main02_m_1_con tab_main">
+					      <div>
+					      <dl><a href=""><img src="images/header1.jpg" /></a></dl>
+							<dt>上古世纪中国风活动开启</dt>
+							<dd>上古世纪中国风活动开启上古世纪中国风活动开启上古世纪中国风活动开启</dd>
+							</div>
+							<ul>
+							   <li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国活动开启上古世纪</a></p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风活动开启上古世纪</p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风活动开启上古世纪</p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风活动开启上古世纪</p></li>
+							</ul>
+					  </div>
+					    <div class="main02_m_1_con tab_main">
+					      <div>
+					      <dl><a href=""><img src="images/header1.jpg" /></a></dl>
+							<dt>上古世纪中国风活动开启</dt>
+							<dd>上古世纪中国风活动开启上古世纪中国风活动开启上古世纪中国风活动开启</dd>
+							</div>
+							<ul>
+							   <li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古中国风活动开启上古世纪</a></p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风活动开启上古世纪</p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风活动开启上古世纪</p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风活动开启上古世纪</p></li>
+							</ul>
+					  </div>
+					    <div class="main02_m_1_con tab_main">
+					      <div>
+					      <dl><a href=""><img src="images/header1.jpg" /></a></dl>
+							<dt>上古世纪中国风活动开启</dt>
+							<dd>上古世纪中国风活动开启上古世纪中国风活动开启上古世纪中国风活动开启</dd>
+							</div>
+							<ul>
+							   <li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风活动开启上古世纪</p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风活动开启上古世纪</p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风活启上古世纪</p></li>
+							</ul>
+					  </div>
+					    <div class="main02_m_1_con tab_main">
+					      <div>
+					      <dl><a href=""><img src="images/header1.jpg" /></a></dl>
+							<dt>上古世纪中国风活动开启</dt>
+							<dd>上古世纪中国风活动开启上古世纪中国风活动开启上古世纪中国风活动开启</dd>
+							</div>
+							<ul>
+							   <li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风开启上古世纪</p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风活开启上古世纪</p></li>
+								<li><a href=""><img src="images/header1.jpg" /></a><p>上古世纪中国风活动开启上古世纪</p></li>
+							</ul>
+					  </div>
+				  </div>
+				  <div class="clear"></div>
+				  <!--2-->
+				  <div class="main02_m_2">
+				      <div class="main02_m_2_1">
+						    <h2><code>更多>></code>美图图廊</h2>
+							<div class="con">
+							   <div>
+								   <dl>上古世纪中国风活动</dl>
+									<dt>上古世纪中国风活动</dt>
+								</div>
+								<em>上古世纪中国风活动</em>
+								<ul>
+								   <li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+									<li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+									<li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+									<li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+									<li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+									<li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+								</ul>
+							</div>
+							<h2 class="m_t"><code>更多>></code>美图图廊</h2>
+							   <div class="con2">
+							   <ul >
+								   <li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+									<li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+									<li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+								</ul>
+							</div>
+						</div>
+						<!--3-->
+					 <div class="main02_m_2_2">
+					     <h2><code>更多>></code>美图图廊</h2>
+						 <div class="con">
+						    <ul>
+							   <li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+								<li><a href="">上古世纪中国风活动上古世纪中世纪国风</a></li>
+								<li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+								<li><a href="">上古世纪中国风活动上古世纪中世纪中国风</a></li>
+								<li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+								<li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+								<li><a href="">上古世纪中国风活动上世古世纪中国风</a></li>
+								<li><a href="">上古世纪中国风活动上古世纪世纪中世纪中国风</a></li>
+								<li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+								<li><a href="">上古世纪中国风动上古世纪中世纪中国风</a></li>
+							 </ul>
+						 </div>
+						 <p class="m_t"><a href=""><img src="images/header1.jpg" /></a></p>
+					 </div>
+					 <!--3 end-->
+				  </div>
+				  <!--4-->
+				   <div class="main02_m_3" id="ue_tab2">
+					  <h2><code>更多>></code>美图图廊
+					     <ul class="turn tab_menu">
+							   <li class="select">美图图廊</li>
+								<li>美图图廊</li>
+								<li>美图图廊</li>
+								<li>美图图廊</li>
+						  </ul>
+					  </h2>
+					  <div class="main02_m_3_con tab_main">
+					     <ul>
+						   <li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+						  </ul>
+					  </div>
+					   <div class="main02_m_3_con tab_main">
+					     <ul>
+						   <li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+						  </ul>
+					  </div>
+					   <div class="main02_m_3_con tab_main">
+					     <ul>
+						   <li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+						  </ul>
+					  </div>
+					   <div class="main02_m_3_con tab_main">
+					     <ul>
+						   <li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪中国风活动开启上古世纪</a></p></li>
+						  </ul>
+					  </div>
+					</div> 
+				  <!--4 end-->
+   </div>
+			  <!--2-right-->
+			  <div class="main02_r">
+			    <!--1-->
+				 <div class="main02_r_1">
+				     <h2>美图图廊</h2>
+					  <a href=""><img src="images/1.gif" /></a>
+					  <a href=""><img src="images/2.gif" /></a>
+					  <a href=""><img src="images/3.gif" /></a>
+					  <a href=""><img src="images/4.gif" /></a>
+					  <a href=""><img src="images/5.gif" /></a>
+					  <a href=""><img src="images/6.gif" /></a>
+					  <div class="clear"></div>
+				 </div>
+				  
+				 <!--2-->
+				 <div class="main02_r_2">
+				   <h2>美图图廊</h2>
+					<ul>
+					  <li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+					  <li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+					  <li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+					  <li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+					  <li><a href="">上古世纪中国风活动上古世纪中国风</a></li>
+					</ul>
+				 </div>
+				 <!--3-->
+				 <div class="main02_r_3">
+				   <h2>美图图廊</h2>
+					<div class="main02_r_3_con">
+					   <ul>
+						   <li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪</a></p></li>
+							<li><a href=""><img src="images/header1.jpg" /></a><p><a href="">上古世纪</a></p></li>
+						</ul>
+					</div>
+				 </div>
+				 <!--4-->
+				 <div class="main02_r_4">
+				   <h2>美图图廊</h2>
+					<div class="main02_r_4_con">
+					   <ul>
+						   <li>游戏名称：上古世纪</li>
+							<li>游戏名称：上古世纪</li>
+							<li>游戏名称：上古世纪</li>
+							<li>游戏名称：上古世纪</li>
+							<li>游戏名称：上古世纪</li>
+							<li>游戏名称：上古世纪</li>
+							<li>游戏名称：<a href="">上古世纪</a></li>
+						</ul>
+					</div>
+				 </div>
+				 <!--4 end-->
+			  </div>
+			  <div class="clear"></div>
+			<!--main02 end-->
+			<!--link-->
+			<div class="link">
+			  <div class="net_search"><li>站内搜索：</li><li><input class="net_input" onblur="if(this.value==''){this.value='上古世纪';this.style.color='#fff';}" onfocus="if(this.value=='上古世纪')this.value='';this.style.color='#ccc';" value="上古世纪"/ /></li>
+			  <li><input class="net_btn" type="button" /></li>
+			  <li><b><a href="#"  class="gotoTop">回到顶部</a></b></li>
+			  </div>
+			  <div class="net_link">
+			     <dl>
+				     <dt>热点新闻</dt>
+					  <dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd>
+				  </dl>
+				   <dl>
+				     <dt>热点新闻</dt>
+					  <dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd>
+				  </dl>
+				   <dl>
+				     <dt>热点新闻</dt>
+					  <dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd>
+				  </dl>
+				   <dl>
+				     <dt>热点新闻</dt>
+					  <dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd>
+				  </dl>
+				   <dl>
+				     <dt>热点新闻</dt>
+					  <dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd>
+				  </dl>
+				   <dl>
+				     <dt>热点新闻</dt>
+					  <dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd>
+				  </dl>
+				   <dl>
+				     <dt>热点新闻</dt>
+					  <dd><a href="">热点新闻</a></dd><dd>热点新闻</dd><dd>热点新闻</dd><dd>热点新闻</dd>
+				  </dl>
+			  </div>
+			  <div class="link_name"><b>友情链接：</b>上古世纪  上古世纪  上古世纪  上古世纪  上古世纪  上古世纪  上古世纪  上古世纪  上古世纪  上古世纪  上古世纪  上古世纪  上古世纪  上古世纪  </div>
+			</div>
+			<div class="clear"></div>
+			<!--link end-->
+	</div>
+	<div class="footer">
+		<script type="text/javascript" src="http://js.ue.766.com/common/flc.js"></script>
+	</div>
+	 <!--main end-->	
+</div>
+</body>
+</html>

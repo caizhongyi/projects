@@ -1,0 +1,104 @@
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active"> 编辑应用</li>
+    </ol>
+</section>
+<section class="content slide" >
+    <div class="box">
+        
+        <div style="border:1px solid #D6D6D6;width: 65%" class="box-body  no-padding">
+            <h3 class="box-title" style="margin-left: 20%;font-size: 20px;">编辑应用</h3>
+            <form role="appForm" name="appForm" class="form-horizontal" ng-submit="ok(appForm.$valid)" novalidate>
+                <div class="modal-body" >
+                    <div class="box-body" >
+                        <div class="form-group">
+                            <label for="app_id" class="col-sm-2 control-label">应用ID:</label>
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="应用ID" class="form-control" id="app_id"  name="app_id" ng-model="list.appid" value=""  disabled>
+                            </div>
+                        </div>
+                        <div class="form-group" >
+                            <label  class="col-sm-2 control-label">应用名称：</label>
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="应用名称" class="form-control" id="name"  name="app" ng-model="list.app" value=""  >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">使用者:</label>
+                            <div class="col-sm-3">
+                                <select  class="form-control input-control" name="status" ng-model="list.users" ng-options=" item.name as item.name for item in usersList" >
+                                    <option value="">请选择</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        
+                        <!-- 扩展部分 -->
+                        <div class="form-group" ng-bind-html="extend|to_trusted">  
+                        </div>
+                        
+                        
+                        <!--
+                        <div class="form-group" >
+                            <label  class="col-sm-2 control-label">扩展号：</label>
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="扩展号" class="form-control" id="append_id"  name="append_id" ng-model="item.append_id" value="{{app.append_id}}"  >
+                            </div>
+                        </div>
+                        <div class="form-group" >
+                            <label  class="col-sm-2 control-label">签名：</label>
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="签名" class="form-control" id="signup"  name="signup" ng-model="item.signup" value="{{app.signup}}"  >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">SP通道:</label>
+                            <div class="col-sm-3">
+                                <select  class="form-control input-control" name="status" ng-model="item.channel"  ng-options="item.type as item.name for item in channelList" >
+                                    <option value="">请选择</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">使用者:</label>
+                            <div class="col-sm-3">
+                                <select  class="form-control input-control" name="status" ng-model="item.users"  ng-options=" item.name as item.name for item in usersList" >
+                                    <option value="">请选择</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <label  class="col-sm-2 control-label">启用回调地址:</label>
+                                <label style="width:100px;" class="col-sm-1 control-label"><input type="checkbox"  ng-model="item.checked"/>&nbsp;&nbsp;勾选启用</label>
+                            </div>
+                            <div class="col-sm-7" style="border:1px solid #D6D6D6;height: 80px;" >
+                                <div style="padding-top: 8px;">
+                                    <label  class=" control-label">回调地址URL:</label>&nbsp;&nbsp;
+                                    <input  placeholder="回调地址URL"  style="width:248px;height: 35px;" id="url"  name="url" ng-model="item.URL" value=""  >
+                                    <label  class="col-sm-15 control-label">功能配置：（勾选前需要填写正确的回调地址，相关文档：鉴权接口说明）</label>
+                                </div>
+
+                            </div>
+                        </div>
+                        -->
+
+                    </div>
+                <!-- /.box-body -->
+                </div>
+                <!--ng-disabled="itemForm.$invalid"-->
+                <div class="modal-footer">
+                    <button  type="submit" class="btn btn-primary " style="margin-right: 62%" >提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

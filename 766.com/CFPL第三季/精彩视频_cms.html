@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>精彩视频</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="video">
+	<h2>精彩视频</h2>
+	<ul>
+		<CMS action="LIST" return="List" NodeID="8409" Num="5" where="c.Photo !='' "  /> 
+		<LOOP name="List" var="var" key="key"> 
+			  <li><a href="[$var.URL]" target="_blank" title="[$var.Title]"><img src="[$var.Photo]" /><p>[$var.Title]</p></a></li>
+		</loop>
+	</ul>
+</div>
+</body>
+</html>

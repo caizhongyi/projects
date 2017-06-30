@@ -1,0 +1,1241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>英雄内页</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript" src="http://js.olcdn.com/lib/gb2312/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="http://js.olcdn.com/net/v1/gb2312/jquery.alCommon.js"></script>
+<script>
+	$(function(){
+		$("#tab1").tab({con:'.tab_main1'});
+		$("#tab2").tab({con:'.tab_main2'});
+		$("#tab3").tab({con:'.tab_main3'});
+		$("#tab4").tab();
+		$("#tab5").tab();
+		$("#tab6").tab();
+
+
+        $('.itemlist li').click(function(){
+           $('.heroequip ul li').not(':[data-item]').eq(0).html($(this).find('img').clone()).attr('data-item',$(this).attr('data-item') || 0);
+        });
+
+        var $heroequip = $('.heroequip ul li').mouseup(function(e){
+            if(e.button == 2){
+                $(this).removeAttr('data-item').empty();
+            }
+        }).bind('contextmenu',function(){ return false});
+
+        $('.btnequip a.clear').click(function(){
+            $heroequip.removeAttr('data-item').empty();
+        })
+	});
+</script>
+
+<body>
+<div class="fullbg2">
+	<!-- wrapper -->
+	<div class="wrapper">
+		<div class="header2"></div>
+		<!-- nav2 -->
+		<div class="nav2">
+			<!-- bbs -->
+			<div class="bbs bbs2">
+				<a class="btnbbs" href="#" hidefocus="true">进入论坛</a>
+				<ul>
+					<li><a href="#">新手指南</a></li>
+					<li><a href="#">职业选择</a></li>
+				</ul>
+			</div>
+			<!-- bbs end -->
+			<!-- nav -->
+			<div class="nav snav">
+				<a href="#" hidefocus="true">专区首页</a>
+				<a href="#" hidefocus="true">百科全书</a>
+				<a href="#" hidefocus="true">游戏资讯</a>
+				<a href="#" hidefocus="true">职业技能</a>
+				<a href="#" hidefocus="true">游戏视频</a>
+				<a href="#" hidefocus="true">截图画廊</a>
+				<a href="#" hidefocus="true" class="bgnone">百科全书</a>
+			</div>
+			<!-- nav end -->
+			<div class="hottag">
+				<a href="#">小猫推荐</a>
+				<a href="#">最好用的</a>
+				<a href="#">免费剑灵</a>  
+				<a href="#">小猫推荐</a> 
+				<a href="#">最好用的</a> 
+				<a href="#">免费剑灵</a>  
+				<a href="#">小猫推荐</a> 
+				<a href="#">最好用的</a> 
+				<a href="#">免费剑灵</a> 
+			</div>
+		</div>
+		<!-- nav2 end -->
+		<!-- main -->
+		<div class="main">
+			<!-- column -->
+			<div class="column bd1">
+				<div class="columnbox bd2">
+					<!-- heroitem -->
+					<div class="heroitem bd1 fr" id="tab1">
+						<ul class="tabtit tab_menu">
+							<li class="select">基础装备</li>
+							<li>合成装备</li>
+							<li>神秘商店</li>
+						</ul>
+						<!-- tab_main1 -->
+						<div class="bd2 heroitemcon tab_main1" id="tab2">
+							<ul class="tabitem tab_menu">
+								<li class="select">
+									<span class="s1"></span>
+									<p>消耗</p>
+								</li>
+								<li>
+									<span class="s2"></span>
+									<p>属性</p>
+								</li>
+								<li>
+									<span class="s3"></span>
+									<p>军备</p>
+								</li>
+								<li>
+									<span class="s4"></span>
+									<p>奥术</p>
+								</li>
+								<li>
+									<span class="s5"></span>
+									<p>武器</p>
+								</li>
+								<li>
+									<span class="s6"></span>
+									<p>圣物</p>
+								</li>
+							</ul>
+							<div class="itemlist tab_main2">
+								<ul>
+									<li data-item="99">
+										<span>2</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li data-item="99">
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li data-item="99">
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li  data-item="99">
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li data-item="99">
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li  data-item="99">
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li  data-item="99">
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li  data-item="99">
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li data-item="99">
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li data-item="99">
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li data-item="99">
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+							<div class="itemlist tab_main2" style="display:none">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+							<div class="itemlist tab_main2" style="display:none">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+							<div class="itemlist tab_main2" style="display:none">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+							<div class="itemlist tab_main2" style="display:none">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+							<div class="itemlist tab_main2" style="display:none">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- tab_main1 end -->
+						<!-- tab_main1 -->
+						<div class="bd2 heroitemcon tab_main1" style="display:none" id="tab3">
+							<ul class="tabitem tab_menu">
+								<li class="select">
+									<span class="s1"></span>
+									<p>消耗</p>
+								</li>
+								<li>
+									<span class="s2"></span>
+									<p>属性</p>
+								</li>
+								<li>
+									<span class="s3"></span>
+									<p>军备</p>
+								</li>
+								<li>
+									<span class="s4"></span>
+									<p>奥术</p>
+								</li>
+								<li>
+									<span class="s5"></span>
+									<p>武器</p>
+								</li>
+								<li>
+									<span class="s6"></span>
+									<p>圣物</p>
+								</li>
+							</ul>
+							<div class="itemlist tab_main3">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+							<div class="itemlist tab_main3" style="display:none">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+							<div class="itemlist tab_main3" style="display:none">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+							<div class="itemlist tab_main3" style="display:none">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+							<div class="itemlist tab_main3" style="display:none">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+							<div class="itemlist tab_main3" style="display:none">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- tab_main1 end -->
+						<!-- tab_main1 -->
+						<div class="bd2 heroitemcon tab_main1" style="display:none">
+							<div class="itemlist">
+								<ul>
+									<li>
+										<span>0</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>50</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>奶酪</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>艾西菲的远古祭祀</p>
+									</li>
+									<li>
+										<span>100</span>
+										<img src="pic/ad1.jpg">
+										<p>小净化药水</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- tab_main1 end -->
+					</div>
+					<!-- heroitem end -->
+					<!-- herointro -->
+					<div class="herointro bd1">
+						<div class="heroinrobox bd2">
+							<img src="pic/ad1.jpg" />
+							<div class="herotxt">
+								<h2><b>风暴之灵</b> - Storm   英雄统称：<span>(Storm,Storm Spirit,蓝猫)</span></h2>
+								<div class="txt">
+									<p>
+									风暴之灵，正如其名，是狂风和暴雨的野性凝成人形的自然之力。他狂放，乐天，恣意挥洒！就像个受人喜爱的大叔一样，他给所到之处充满欢乐的能量。但事实上，创造出他的是一起灾难。几个世代前，在悲叹山脉远处的平原上，很多人正因干旱和饥荒而挨饿。一个名叫风暴烈酒的元素使，使用禁忌的咒语召唤了风暴之灵。
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- herointro end -->
+					<!-- heroinfo -->
+					<div class="heroinfo bd1">
+						<h2 class="bd2"><span>英雄定位：</span> 打架核心,Gank,先手,中单,打野,切入,逃生</h2>
+						<div class="bd2 clearfix">
+							<!-- herolv -->
+							<div class="herolv">
+								<ul>
+									<li class="l1">HP:530/530</li>
+									<li class="l2">MP:530/530</li>
+								</ul>
+								<div class="herolvbox">
+									<span>LV -</span>
+									<p>2</p>
+									<span>LV +</span>
+								</div>
+							</div>
+							<!-- herolv end -->
+							<!-- heroinfolist -->
+							<ul class="heroinfolist">
+								<li>力量：19</li>
+								<li class="select">智力：23<em></em></li>
+								<li>敏捷：22</li>
+							</ul>
+							<!-- heroinfolist end -->
+							<!-- heroinfolist -->
+							<ul class="heroinfolist bghi2">
+								<li>攻击：45-55</li>
+								<li>护甲：5</li>
+								<li>移动：295</li>
+							</ul>
+							<!-- heroinfolist end -->
+							<div id="tab4">
+								<ul class="tabtit2 tab_menu">
+									<li class="select">比赛阵容推荐</li>
+									<li>克制英雄推荐</li>
+								</ul>
+								<ul class="piclist tab_main">
+									<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+									<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+									<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+									<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+									<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+								</ul>
+								<ul class="piclist tab_main" style="display:none">
+									<li><a href="#"><img src="pic/ad1.jpg"><p>2黑暗贤者</p></a></li>
+									<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+									<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+									<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+									<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- heroinfo end -->
+					<!-- heroequip -->
+					<div class="heroequip bd1">
+						<h2 class="bd2">装备栏</h2>
+						<div class="bd2 h230">
+							<ul>
+								<li><img src="pic/ad1.jpg"></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+							<div class="btnequip">
+								<a href="javascript:void(0)" class="clear">清空出装</a>
+								<a href="javascript:void(0)" class="share">分享出装</a>
+							</div>
+						</div>
+					</div>
+					<!-- heroequip end -->
+				<div class="clear4"></div>
+				</div>
+			</div>
+			<!-- column end -->
+			<div class="clear10"></div>
+			<!-- column -->
+			<div class="column bd1">
+				<h3>技能介绍</h3>
+				<div class="columnbox bd2" id="tab5">
+					<ul class="tabskill tab_menu">
+						<li class="select"><img src="pic/ad1.jpg"><p>黑暗贤者(F)</p></li>
+						<li><img src="pic/ad1.jpg"><p>黑暗贤者(F)</p></li>
+						<li><img src="pic/ad1.jpg"><p>黑暗贤者(F)</p></li>
+						<li><img src="pic/ad1.jpg"><p>黑暗贤者(F)</p></li>
+					</ul>
+					<div class="ctxt tab_main">
+						<p>蓝猫的初期打钱能力会强很多，魔耗也相对较多。前期1级的v就能保证80%的减速效果，7级后满电子涡流可以让蓝猫的控制力更上一个台阶。</p>
+						<p>1.残影R是一个4秒cd的AOE技能，相当不错的打钱技能</p>
+						<p>2.电子涡流E是一个2.5秒的控制及位移技能</p>
+						<p>3.超负荷V是一个被动加攻及范围减速的优秀被动技</p>
+						<p>4.大招球状闪电是一个0cd的blink技能，同时能造成相当可观的aoe伤害，蓝猫真正的核心技能。</p>
+					</div>
+					<div class="ctxt tab_main" style="display:none">
+						<p>2蓝猫的初期打钱能力会强很多，魔耗也相对较多。前期1级的v就能保证80%的减速效果，7级后满电子涡流可以让蓝猫的控制力更上一个台阶。</p>
+						<p>1.残影R是一个4秒cd的AOE技能，相当不错的打钱技能</p>
+						<p>2.电子涡流E是一个2.5秒的控制及位移技能</p>
+						<p>3.超负荷V是一个被动加攻及范围减速的优秀被动技</p>
+						<p>4.大招球状闪电是一个0cd的blink技能，同时能造成相当可观的aoe伤害，蓝猫真正的核心技能。</p>
+					</div>
+					<div class="ctxt tab_main" style="display:none">
+						<p>3蓝猫的初期打钱能力会强很多，魔耗也相对较多。前期1级的v就能保证80%的减速效果，7级后满电子涡流可以让蓝猫的控制力更上一个台阶。</p>
+						<p>1.残影R是一个4秒cd的AOE技能，相当不错的打钱技能</p>
+						<p>2.电子涡流E是一个2.5秒的控制及位移技能</p>
+						<p>3.超负荷V是一个被动加攻及范围减速的优秀被动技</p>
+						<p>4.大招球状闪电是一个0cd的blink技能，同时能造成相当可观的aoe伤害，蓝猫真正的核心技能。</p>
+					</div>
+					<div class="ctxt tab_main" style="display:none">
+						<p>4蓝猫的初期打钱能力会强很多，魔耗也相对较多。前期1级的v就能保证80%的减速效果，7级后满电子涡流可以让蓝猫的控制力更上一个台阶。</p>
+						<p>1.残影R是一个4秒cd的AOE技能，相当不错的打钱技能</p>
+						<p>2.电子涡流E是一个2.5秒的控制及位移技能</p>
+						<p>3.超负荷V是一个被动加攻及范围减速的优秀被动技</p>
+						<p>4.大招球状闪电是一个0cd的blink技能，同时能造成相当可观的aoe伤害，蓝猫真正的核心技能。</p>
+					</div>
+				</div>
+			</div>
+			<!-- column end -->
+			<div class="clear10"></div>
+			<!-- column -->
+			<div class="column bd1" id="tab6">
+				<ul class="tabtit3 tab_menu">
+					<li class="select">前期出装</li>
+					<li>中期出装</li>
+					<li>后期出装</li>
+				</ul>
+				<ul class="piclist tab_main">
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+				</ul>
+				<ul class="piclist tab_main" style="display:none">
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者2</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+				</ul>
+				<ul class="piclist tab_main" style="display:none">
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者3</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+					<li><a href="#"><img src="pic/ad1.jpg"><p>黑暗贤者</p></a></li>
+				</ul>
+			</div>
+			<!-- column end -->
+			<div class="clear10"></div>
+			<!-- column -->
+			<div class="column bd1">
+				<h3>推荐加点方案</h3>
+				<div class="columnbox bd2">
+					<div class="imglist">
+						<img src="pic/ad1.jpg">
+						<img src="pic/ad1.jpg">
+						<img src="pic/ad1.jpg">
+						<img src="pic/ad1.jpg">
+						<img src="pic/ad1.jpg">
+						<img src="pic/ad1.jpg">
+						<img src="pic/ad1.jpg">
+						<img src="pic/ad1.jpg">
+						<img src="pic/ad1.jpg">
+						<img src="pic/ad1.jpg">
+					</div>
+					<div class="ctxt">
+						<p>蓝猫的初期打钱能力会强很多，魔耗也相对较多。前期1级的v就能保证80%的减速效果，7级后满电子涡流可以让蓝猫的控制力更上一个台阶。</p>
+						<p>1.残影R是一个4秒cd的AOE技能，相当不错的打钱技能</p>
+						<p>2.电子涡流E是一个2.5秒的控制及位移技能</p>
+						<p>3.超负荷V是一个被动加攻及范围减速的优秀被动技</p>
+						<p>4.大招球状闪电是一个0cd的blink技能，同时能造成相当可观的aoe伤害，蓝猫真正的核心技能。</p>
+					</div>
+				</div>
+			</div>
+			<!-- column end -->
+			<div class="clear10"></div>
+			<!-- column -->
+			<div class="column bd1">
+				<h3>英雄视频推荐</h3>
+				<div class="columnbox bd2">
+					<ul class="piclist2">
+						<li><a href="#"><span></span><img src="pic/ad1.jpg"><p>熊猫人之谜场景战役绿石熊猫人之谜场景战役绿石</p></a></li>
+						<li><a href="#"><span></span><img src="pic/ad1.jpg"><p>熊猫人之谜场景战役绿石熊猫人之谜场景战役绿石</p></a></li>
+						<li><a href="#"><span></span><img src="pic/ad1.jpg"><p>熊猫人之谜场景战役绿石熊猫人之谜场景战役绿石</p></a></li>
+						<li><a href="#"><span></span><img src="pic/ad1.jpg"><p>熊猫人之谜场景战役绿石熊猫人之谜场景战役绿石</p></a></li>
+						<li><a href="#"><span></span><img src="pic/ad1.jpg"><p>熊猫人之谜场景战役绿石熊猫人之谜场景战役绿石</p></a></li>
+						<li><a href="#"><span></span><img src="pic/ad1.jpg"><p>熊猫人之谜场景战役绿石熊猫人之谜场景战役绿石</p></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- column end -->
+			<div class="clear10"></div>
+			<!-- column -->
+			<div class="column bd1">
+				<h3>英雄攻略</h3>
+				<div class="columnbox bd2">
+					<ul class="list3">
+						<li><a href="#">残影R是一个4秒cd的AOE技能，相当不错的打钱技能</a></li>
+						<li><a href="#">电子涡流E是一个2.5秒的控制及位移技能</a></li>
+						<li><a href="#">超负荷V是一个被动加攻及范围减速的优秀被动技</a></li>
+						<li><a href="#">大招球状闪电是一个0cd的blink技能，同时能造成相当可观的aoe伤害，蓝猫真正的核心技能。</a></li>
+						<li><a href="#">残影R是一个4秒cd的AOE技能，相当不错的打钱技能</a></li>
+						<li><a href="#">电子涡流E是一个2.5秒的控制及位移技能</a></li>
+						<li><a href="#">超负荷V是一个被动加攻及范围减速的优秀被动技</a></li>
+						<li><a href="#">大招球状闪电是一个0cd的blink技能，同时能造成相当可观的aoe伤害，蓝猫真正的核心技能。</a></li>
+						<li><a href="#">残影R是一个4秒cd的AOE技能，相当不错的打钱技能</a></li>
+						<li><a href="#">电子涡流E是一个2.5秒的控制及位移技能</a></li>
+						<li><a href="#">超负荷V是一个被动加攻及范围减速的优秀被动技</a></li>
+						<li><a href="#">大招球状闪电是一个0cd的blink技能，同时能造成相当可观的aoe伤害，蓝猫真正的核心技能。</a></li>
+						<li><a href="#">大招球状闪电是一个0cd的blink技能，同时能造成相当可观的aoe伤害，蓝猫真正的核心技能。</a></li>
+						<li><a href="#">残影R是一个4秒cd的AOE技能，相当不错的打钱技能</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- column end -->
+			<div class="clear10"></div>
+		</div>
+		<!-- main end -->
+	</div>
+	<!-- wrapper end -->
+	<!-- footer -->
+	<div class="footer">
+		<script type="text/javascript" src="http://js.ue.766.com/common/flc.js"></script>
+	</div>
+	<!-- footer end -->
+</div>
+
+</body>
+</html>

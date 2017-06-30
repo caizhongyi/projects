@@ -1,0 +1,52 @@
+<?php 
+/**
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+defined('IN_IA') or exit('Access Denied');
+$pindex = max(1, intval($_GPC['page']));
+$psize = 20;
+$where = "WHERE 1=1";
+$condition = '';
+if (isset($_GPC['status'])) {
+	$where .= " and status = '".intval($_GPC['status'])."'";
+}
+
+//添加用户查询条件
+if (!empty($_GPC['keyword'])) {
+    $condition .= " AND username LIKE :username";
+    $params[':username'] = "%{$_GPC['keyword']}%";
+}
+
+if (!empty($_GPC['cate_1'])){
+    $groupid = intval($_GPC['cate_1']);
+    $condition .= "  AND groupid = '{$groupid}'";
+}
+
+//将用户身份放入数组
+$group_val = array();
+$_group_val = pdo_fetchall('SELECT * from ims_members_group ');
+foreach ($_group_val as $_group_key=>$_group_v){
+    $group_val[$_group_v['id']] = $_group_v['name'];
+}
+
+$where .=$condition;
+$sql = 'SELECT * FROM ' . tablename('members') .$where . " LIMIT " . ($pindex - 1) * $psize .',' .$psize;
+
+if(!empty($_W['member']['groupid']) && $_W['member']['groupid'] == CHANNEL_GROUP_ID){
+    $sql = 'SELECT * FROM ' . tablename('members') . " as a, ".tablename('members_channel')." as b WHERE b.parentid = ".$_W['uid']." and a.uid = b.childid and a.status = '".intval($_GPC['status'])."'.$condition. LIMIT " . ($pindex - 1) * $psize .',' .$psize;
+    $_sql = 'SELECT COUNT(*) FROM ' . tablename('members') . " as a, ".tablename('members_channel')." as b WHERE b.parentid = ".$_W['uid']." and a.uid = b.childid and a.status = '".intval($_GPC['status'])."'".$condition;
+    $total = pdo_fetchcolumn($_sql, $params);
+}else{
+    $total = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('members') . $where, $params);
+}
+$members = pdo_fetchall($sql, $params);
+$pager = pagination($total, $pindex, $psize);
+
+$founders = explode(',', $_W['config']['setting']['founder']);
+foreach($members as &$m) {
+	$m['founder'] = in_array($m['uid'], $founders);
+    $m['group_name'] = pdo_fetchcolumn('SELECT name FROM ' . tablename('members_group') . ' WHERE id="'.$m['groupid'].'"');
+}
+
+$usergroups = pdo_fetchall("SELECT id, name FROM ".tablename('members_group'), array(), 'id');
+template('member/display');

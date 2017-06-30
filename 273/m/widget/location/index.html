@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="location.css"/>
+</head>
+<body>
+<div id="main">
+      <button id="js_show_location">click</button>
+</div>
+<div id="js_location_box"></div>
+<script type="text/javascript" src="/mod.js"></script>
+<script>
+    var Location = require('location'), $ = require('zepto');
+    new Location({
+         target: '#js_show_location',
+         setVal: function(data) {
+             // data = {city_name: "南京", city_id: 75, district_name: "", district_id: 0}
+             console.log( data )
+         }
+    })
+
+</script>
+</body>
+</html>

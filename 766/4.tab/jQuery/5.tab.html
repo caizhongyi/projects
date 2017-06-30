@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>5.选项卡/标签切换效果+图片切换后载效果</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<style>
+/*slide*/
+.backToTop { display:none; width:18px; line-height:1.2; padding:5px 0; background-color:#000; color:#fff; font-size:12px; text-align:center; position:fixed; _position:absolute; left:50%; margin-left:500px; bottom:100px; _bottom:"auto"; cursor:pointer; opacity:.6; filter:Alpha(opacity=60); }
+</style>
+<script type="text/javascript" src="../../jslib/jquery-1.4.4.min.js"></script>
+<script src="js/back_top.js"></script>
+<script type="text/javascript" src="js/tab.js"></script>
+</head>
+<body>
+<!-- wrapper -->
+<div class="main">
+<!--目录-->
+<h2>766通用JS效果 目录：（以下效果，经测试，兼容FF10.0/IE6,7,8,9/360 4.1.1.6/遨游 3.1.5/世界之窗3.2）</h2>
+<p class="descirpt" style="background:#f1f1f1; border:1px solid #369;">
+	<a href="0.index.html">0.首页-JQuery基础使用教程</a><br />
+	<a href="1.fade.html">1.幻灯片效果-淡入淡出 + 返回顶部</a><br />
+	<a href="2.stepScroll.html">2.幻灯片效果-单块内容滚动</a><br />
+	<a href="3.scroll.html">3.滚动效果</a><br />
+	<a href="4.textScroll.html">4.文本滚动效果</a><br />
+	<span>5.选项卡/标签切换效果+图片切换后载效果</span><br />
+	<a href="6.menu.html">6.下拉菜单/级联菜单效果</a><br />
+	<a href="7.ie6png.html">7.IE6 png bug</a><br />
+	<a href="8.ie6fixed.html">8.IE6 fixed bug</a><br />
+</p>
+<!--目录 end-->
+
+<h2>tab/标签切换 + 切换内容后载</h2>
+<p class="descirpt">描述：用于标签切换，可选切换方式为鼠标滑过(mouseover)和鼠标点击(click，默认方式)；可以建立任意个标签切换</p>
+<!--begin***************************************************-->
+<h3 class="h3">范例：</h3>
+<textarea style="height:400px;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*tab*/
+		#tab { padding:20px; float:left; }
+		#tab .tab_menu{ border-bottom:1px solid #000; height:30px; border-left:1px solid #000; width:400px;}
+		#tab .tab_menu li{ width:80px; height:29px; line-height:30px; float:left; text-align:center; cursor:pointer; overflow:hidden; border:1px solid #000; border-width:1px 1px 0 0; background:#ddd;}
+		#tab .tab_menu li.select{ color:#f00; background:#fff; font-weight:bold; }
+		#tab .tab_main{ font-size:24px; border:1px solid #000; border-top:none; width:400px; height:400px; display:none; text-align:center;}
+		#tab .tab_main img{ width:210px; height:163px; margin-top:125px; display:inline; }
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/tab.js"></script>
+		<script>
+		$(function(){
+			//参数可为:click(点击),mouseover(鼠标滑过);不填写参数则默认为鼠标点击效果
+			//需要几个标签切换，就写几条调用语句
+			/*
+			$("#tab").tab({
+				box : '#tab',		//大容器
+				menu : '.tab_menu',	//标签菜单
+				menuList : 'li',	//菜单单元块
+				current : '.select',//被选中的标签菜单块的样式名
+				con : '.tab_main',	//被切换的容器名
+				blank : 'http://img.ue.766.com/common/blank.gif', //默认空白图片地址
+				mouseType : 'click' //默认鼠标控制标签方式有'click'和'mouseover'
+			});
+			*/
+			$("#tab").tab();
+		});
+		</script>
+	</head>
+	<body>
+		<div id="tab">
+			<ul class="tab_menu">
+				<li class="select">tab_菜单一</li>
+				<li>tab_菜单二</li>
+				<li>tab_菜单三</li>
+				<li>tab_菜单四</li>
+			</ul>
+			<div class="tab_main"> <img src="pics/thumb_b_80035.jpg"/> </div>
+			<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62653.jpg"/> </div>
+			<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62645.jpg"/> </div>
+			<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62649.jpg"/> </div>
+		</div>
+	</body>
+</html>
+
+备注：
+<img src="" imgsrc="xxxx" />格式说明 - src是常用的图片地址属性； imgsrc是表示图片后载。通常第一个tab_main里面的图片不做后载，后面的几个切换内容中的图片做后载。如果不需要图片后载效果，修改成<img src="xxx" />即可。（注：只有这个标签切换JS有后载功能，其他地方使用imgsrc属性是无效的）
+</textarea>
+
+<style>
+/*tab*/
+#tab { padding:20px; float:left; }
+#tab .tab_menu{ border-bottom:1px solid #000; height:30px; border-left:1px solid #000; width:400px;}
+#tab .tab_menu li{ width:80px; height:29px; line-height:30px; float:left; text-align:center; cursor:pointer; overflow:hidden; border:1px solid #000; border-width:1px 1px 0 0; background:#ddd;}
+#tab .tab_menu li.select{ color:#f00; background:#fff; font-weight:bold; }
+#tab .tab_main{ font-size:24px; border:1px solid #000; border-top:none; width:400px; height:400px; display:none; text-align:center;}
+#tab .tab_main img{ width:210px; height:163px; margin-top:125px; display:inline; }
+</style>
+<script>
+$(function(){
+	$("#tab").tab();
+});
+</script>
+
+<div id="tab">
+	<div>
+	<ul class="tab_menu">
+		<li class="select">tab_菜单一</li>
+		<li>tab_菜单二</li>
+		<li>tab_菜单三</li>
+		<li>tab_菜单四</li>
+	</ul>
+	</div>
+	<div class="tab_main"> <img src="pics/thumb_b_80035.jpg"/> </div>
+	<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62653.jpg"/> </div>
+	<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62645.jpg"/> </div>
+	<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62649.jpg"/> </div>
+</div>
+<div class="clear"></div>
+<!--end***************************************************-->
+
+<!--begin***************************************************-->
+<h3 class="h3">范例2：标签切换嵌套</h3>
+<textarea style="height:400px;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*tab*/
+		#tab1 { padding:20px; float:left; }
+		#tab1 .tab_menu{ border-bottom:1px solid #000; font-size:12px; height:30px; border-left:1px solid #000; width:400px;}
+		#tab1 .tab_menu li{ width:80px; height:29px; line-height:30px; float:left; text-align:center; cursor:pointer; overflow:hidden; border:1px solid #000; border-width:1px 1px 0 0; background:#ddd;}
+		#tab1 .tab_menu li.select{ color:#f00; background:#fff; font-weight:bold; }
+		#tab1 .tab_main{ font-size:24px; border:1px solid #000; border-top:none; width:400px; height:400px; display:none; text-align:center;}
+		#tab2 { padding:20px; float:left; }
+		#tab2 .tab_menu{ border-bottom:1px solid #000; height:30px; border-left:1px solid #000; width:300px;}
+		#tab2 .tab_menu li{ width:80px; height:29px; line-height:30px; float:left; text-align:center; cursor:pointer; overflow:hidden; border:1px solid #000; border-width:1px 1px 0 0; background:#ddd;}
+		#tab2 .tab_menu li.select{ color:#f00; background:#fff; font-weight:bold; }
+		#tab2 .tab_main{ font-size:24px; border:1px solid #000; border-top:none; width:300px; height:300px; display:none; text-align:center;}
+		#tab2 .tab_main img{ width:210px; height:163px; margin-top:125px; display:inline; }
+		#tab3 { padding:20px; float:left; }
+		#tab3 .tab_menu{ border-bottom:1px solid #000; height:30px; border-left:1px solid #000; width:300px;}
+		#tab3 .tab_menu li{ width:80px; height:29px; line-height:30px; float:left; text-align:center; cursor:pointer; overflow:hidden; border:1px solid #000; border-width:1px 1px 0 0; background:#ddd;}
+		#tab3 .tab_menu li.select{ color:#f00; background:#fff; font-weight:bold; }
+		#tab3 .tab_main{ font-size:24px; border:1px solid #000; border-top:none; width:300px; height:300px; display:none; text-align:center;}
+		#tab3 .tab_main img{ width:210px; height:163px; margin-top:125px; display:inline; }
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/tab.js"></script>
+		<script>
+		$(function(){
+			//参数可为:click(点击),mouseover(鼠标滑过);不填写参数则默认为鼠标点击效果
+			//需要几个标签切换，就写几条调用语句
+			/*
+			$("#tab").tab({
+				box : '#tab',		//大容器
+				menu : '.tab_menu',	//标签菜单
+				menuList : 'li',	//菜单单元块
+				current : '.select',//被选中的标签菜单块的样式名
+				con : '.tab_main',	//被切换的容器名
+				blank : 'http://img.ue.766.com/common/blank.gif', //默认空白图片地址
+				mouseType : 'click' //默认鼠标控制标签方式有'click'和'mouseover'
+			});
+			*/
+			$("#tab1").tab({
+				box:'#tab1',
+				mouseType:'mouseover'
+			});
+			$("#tab2").tab({
+				box:'#tab2'
+			});
+			$("#tab3").tab({
+				box:'#tab3'
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<div id="tab1">
+			<ul class="tab_menu">
+				<li class="select">tab_菜单一</li>
+				<li>tab_菜单二</li>
+				<li>tab_菜单三</li>
+				<li>tab_菜单四</li>
+			</ul>
+			<div class="tab_main">
+				<div id="tab2">
+					<ul class="tab_menu">
+						<li class="select">tab_菜单一</li>
+						<li>tab_菜单二</li>
+						<li>tab_菜单三</li>
+						<li>tab_菜单四</li>
+					</ul>
+					<div class="tab_main"> <img src="pics/thumb_b_80035.jpg"/> </div>
+					<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62653.jpg"/> </div>
+					<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62645.jpg"/> </div>
+					<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62649.jpg"/> </div>
+				</div>
+			</div>
+			<div class="tab_main">
+				<div id="tab3">
+					<ul class="tab_menu">
+						<li class="select">tab_菜单一</li>
+						<li>tab_菜单二</li>
+						<li>tab_菜单三</li>
+						<li>tab_菜单四</li>
+					</ul>
+					<div class="tab_main"> <img src="pics/thumb_b_80035.jpg"/> </div>
+					<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62653.jpg"/> </div>
+					<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62645.jpg"/> </div>
+					<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62649.jpg"/> </div>
+				</div>
+			</div>
+			<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62645.jpg"/> </div>
+			<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62649.jpg"/> </div>
+		</div>
+	</body>
+</html>
+
+备注：
+<img src="" imgsrc="xxxx" />格式说明 - src是常用的图片地址属性； imgsrc是表示图片后载。通常第一个tab_main里面的图片不做后载，后面的几个切换内容中的图片做后载。如果不需要图片后载效果，修改成<img src="xxx" />即可。（注：只有这个标签切换JS有后载功能，其他地方使用imgsrc属性是无效的）
+</textarea>
+
+<style>
+/*tab*/
+#tab1 { padding:20px; float:left;}
+#tab1 .tab_menu{ border-bottom:1px solid #000; height:30px; font-size:12px; border-left:1px solid #000; }
+#tab1 .tab_menu li{ width:80px; height:29px; line-height:30px; float:left; text-align:center; cursor:pointer; overflow:hidden; border:1px solid #000; border-width:1px 1px 0 0; background:#ddd;}
+#tab1 .tab_menu li.select{ color:#f00; background:#fff; font-weight:bold; }
+#tab1 .tab_main{ font-size:24px; border:1px solid #000; border-top:none; width:400px; height:400px; display:none; text-align:center;}
+#tab1 .tab_main img{ width:210px; height:163px; margin-top:125px; display:inline; }
+#tab2 { padding:20px; float:left; }
+#tab2 .tab_main{ font-size:24px; border:1px solid #000; border-top:none; width:300px; height:300px; display:none; text-align:center;}
+#tab2 .tab_main img{ width:210px; height:163px; margin-top:125px; display:inline; }
+#tab3 { padding:20px; float:left; }
+#tab3 .tab_main{ font-size:24px; border:1px solid #000; border-top:none; width:300px; height:300px; display:none; text-align:center;}
+#tab3 .tab_main img{ width:210px; height:163px; margin-top:125px; display:inline; }
+</style>
+
+<script type="text/javascript" src="js/tab.js"></script>
+<script>
+$(function(){
+	//参数可为:click(点击),mouseover(鼠标滑过);不填写参数则默认为鼠标点击效果
+	//需要几个标签切换，就写几条调用语句
+	/*
+	$("#tab").tab({
+		box : '#tab',		//大容器
+		menu : '.tab_menu',	//标签菜单
+		menuList : 'li',	//菜单单元块
+		current : '.select',//被选中的标签菜单块的样式名
+		con : '.tab_main',	//被切换的容器名
+		blank : 'http://img.ue.766.com/common/blank.gif', //默认空白图片地址
+		mouseType : 'click' //默认鼠标控制标签方式有'click'和'mouseover'
+	});
+	*/
+	$("#tab1").tab({
+		box:'#tab1',
+		mouseType:'mouseover'
+	});
+	$("#tab2").tab({
+		box:'#tab2'
+	});
+	$("#tab3").tab({
+		box:'#tab3'
+	});
+});
+</script>
+
+<div id="tab1">
+	<ul class="tab_menu">
+		<li class="select">tab1_菜单一</li>
+		<li>tab1_菜单二</li>
+		<li>tab1_菜单三</li>
+		<li>tab1_菜单四</li>
+	</ul>
+	<div class="tab_main">
+		<div id="tab2">
+			<ul class="tab_menu">
+				<li class="select">tab2_菜单一</li>
+				<li>tab2_菜单二</li>
+				<li>tab2_菜单三</li>
+				<li>tab2_菜单四</li>
+			</ul>
+			<div class="tab_main"> <img src="pics/thumb_b_62653.jpg"/> </div>
+			<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62645.jpg"/> </div>
+			<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62649.jpg"/> </div>
+			<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_80035.jpg"/> </div>
+		</div>
+	</div>
+	<div class="tab_main">
+		<div id="tab3">
+			<ul class="tab_menu">
+				<li class="select">tab3_菜单一</li>
+				<li>tab3_菜单二</li>
+				<li>tab3_菜单三</li>
+				<li>tab3_菜单四</li>
+			</ul>
+			<div class="tab_main"> <img src="pics/thumb_b_62645.jpg"/> </div>
+			<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_80035.jpg"/> </div>
+			<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62653.jpg"/> </div>
+			<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62649.jpg"/> </div>
+		</div>
+	</div>
+	<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62645.jpg"/> </div>
+	<div class="tab_main"> <img src="" imgsrc="pics/thumb_b_62649.jpg"/> </div>
+</div>
+<div class="clear"></div><br />
+<br />
+
+<!--end***************************************************-->
+<embed width="460" height="372" wmode="transparent" flashvars="playMovie=true&amp;isAutoPlay=true&amp;auto=1&amp;autoPlay=true&amp;adss=0" allowfullscreen="true" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" quality="high" src="http://player.pptv.com/v/QeBs6lK4KGawFH3jUw.swf" id="VideoPlay1337321103713" name="VideoPlay1337321103713">
+</div>
+<!-- wrapper end -->
+
+</body>
+</html>

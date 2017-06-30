@@ -1,0 +1,154 @@
+@import "../mixins/index";
+
+select, input, .label-text, .combo {
+	vertical-align: middle;
+	width: 150px;
+}
+
+.radio, input[type=radio],
+.checkbox, input[type=checkbox] {
+	margin-right: 10px;
+	vertical-align: middle;
+}
+.checkbox, input[type=checkbox] {
+	margin-top: -2px;
+}
+
+.text, .textarea, .select, .combo, .label-text {
+	padding: 2px 5px;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+	color: #000;
+	&:focus {
+		border-color: rgba(82, 168, 236, 0.8);
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+		outline: 0 none;
+	}
+}
+.textarea, textarea {
+	vertical-align: top;
+	width: 200px;
+	max-width: 100%;
+}
+input.identify {
+	width: 50px;
+}
+
+
+/* combo */
+.combo {
+	.clearfix();
+	width: 150px;
+	font-size: 12px;
+	position: relative;
+	display: inline-block;
+	.combo-icon, input, a {
+		display: inline-block;
+		padding: 2px;
+		vertical-align: middle;
+		height: 16px;
+		margin-bottom: 2px;
+	}
+	a, .combo-icon {
+		width: 20px;
+		padding: 0;
+	}
+	.combo-input, input {
+		border: none;
+		padding: 0;
+		height: 100%;
+		background: transparent;
+	}
+	.combo-input {
+		float: left;
+		text-align: left;
+		overflow: hidden;
+		white-space: nowrap;
+		-o-text-overflow: ellipsis;
+		_text-overflow: ellipsis;
+		text-overflow: ellipsis;
+	}
+	.combo-icon {
+		float: right;
+		border-color: #666 transparent transparent transparent;
+		border-style: solid;
+		border-width: 5px;
+		font-size: 0;
+		height: 0;
+		width: 0;
+		margin-top: 5px;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+.combo-list {
+	position: absolute;
+	display: none;
+	background: #fff;
+	border: 1px solid #ddd;
+	z-index: 11;
+	overflow-y: auto;
+	ul {
+		overflow-y: auto;
+		li {
+			padding: 5px;
+			&:hover {
+				background: #ddd;
+			}
+		}
+	}
+}
+
+/* ---- label text ----  */
+//text 无focus效果
+.text-noeffect (){
+	border-color: none;
+	box-shadow: none;
+}
+.label-text {
+	width: 200px;
+	display: inline-block;
+	background:#fff;
+	.text {
+		border: none;
+		width: 130px;
+		background: transparent;
+		.text-noeffect ();
+		&:focus{
+			.text-noeffect ();
+		}
+	}
+	label {
+		display: inline-block;
+		vertical-align: middle;
+		text-align: right;
+		width: 50px;
+	}
+}
+
+/* placeholder */
+.placeholder-label {
+	color: #999;
+	left: 5px;
+}
+
+.search-text{
+  .clearfix();
+  @width: 270px;
+  @input-width:220px;
+  width: @width;
+  background-color: #fff;
+  border:1px solid #ddd;
+  .text{
+    border: none;
+    width:@input-width;
+    float: left;
+  }
+  .icon{
+    height: 25px;
+    width: @width - @input-width - 10px;
+  }
+}

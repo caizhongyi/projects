@@ -1,0 +1,20 @@
+@import "../mixins/index";
+@import "core";
+
+.search-input{
+	.clearfix();
+	@width: 270px;
+	@input-width:220px;
+	width: @width;
+	background-color: #fff;
+	border:1px solid #ddd;
+	.text{
+		border: none;
+		width:@input-width;
+		float: left;
+	}
+	.icon{
+		height: 25px;
+		width: @width - @input-width - 10px;
+	}
+}

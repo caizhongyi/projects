@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{$reply_info['title']}</title>
+    <link rel="stylesheet"  href="./resource/style/jquery.mobile-1.3.1.css">
+    <link rel="stylesheet"  href="./source/modules/vote/template/css/style.css"/>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="./resource/script/jquery-1.7.2.min.js"></script>
+    <style type="text/css">
+        .image{  display: block;font-size: 18px;}
+        .image img{ display: inline-block; width: 100px; vertical-align: middle;padding:0 10px;}
+    </style>
+</head>
+<body>
+
+<div class="wrap">
+    <div class="vote">
+        <h1>{$reply_info['vote_title']}</h1>
+        <div class="summary"><span class="date">投票时间：{php echo date('Y-m-d',$reply_info['start_time'])}至{php echo date('Y-m-d',$reply_info['end_time'])}</span></div>
+        <div class="content">
+            <div class="titlebar">{if $select_type=='radio'}单选{else}多选{/if}投票，<em>共有{$vote_counts}人次参与选票</em></div>
+            <ul class="vote-list unstyled">
+                {loop $vote_option_infos $item}
+                <li>
+                    <a class="title image" title="{$item['title']}"><img src="{$_W['attachurl']}{$item['thumb']}" alt="001"/>{$item['title']}</a>
+                    <div class="progressbar  progress-info progress-striped clearfix">
+                        <div class="progress">
+                            <div class="bar" style="width:{php echo ($item['vote_num']/$vote_counts*100);}%"></div>
+                        </div>
+                        <span class="percent"><label class="radio"><span>{php echo intval($item['vote_num']/$vote_counts*100);}%({$item['vote_num']})</span></label></span>
+                    </div>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+    setInterval(function(){window.location.reload();},5000)
+</script>

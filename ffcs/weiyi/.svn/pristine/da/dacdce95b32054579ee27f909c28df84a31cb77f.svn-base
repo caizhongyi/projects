@@ -1,0 +1,76 @@
+<!DOCTYPE link PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link href="./resource/ace/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="./resource/script/tree/jquery.treeTable.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src='./resource/script/jquery-1.7.2.min.js'></script>
+<script type="text/javascript" src="./resource/script/tree/jquery.treetable.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#dnd-example").treeTable({
+    	indent: 20
+    	});
+  });
+  function checknode(obj){
+      var chk = $("input[type='checkbox']");
+      var count = chk.length;
+      var num = chk.index(obj);
+      var level_top = level_bottom =  chk.eq(num).attr('level')
+      for (var i=num; i>=0; i--){
+	      var le = chk.eq(i).attr('level');
+	      if(eval(le) < eval(level_top)) 
+	      {
+	          chk.eq(i).attr("checked",true);
+	          var level_top = level_top-1;
+	      }
+      }
+      for (var j=num+1; j<count; j++){
+              var le = chk.eq(j).attr('level');
+              if(chk.eq(num).attr("checked")==true) {
+                  if(eval(le) > eval(level_bottom)) chk.eq(j).attr("checked",true);
+                  else if(eval(le) == eval(level_bottom)) break;
+              }
+              else {
+                  if(eval(le) > eval(level_bottom)) chk.eq(j).attr("checked",false);
+                  else if(eval(le) == eval(level_bottom)) break;
+              }
+      }
+  }
+  $(function(){
+	  $( "#clear-all").click(function(){
+          $( 'input[name="menuid[]"]:checked').each(function (){
+                    $( this).removeAttr( 'checked');
+          });
+	 });
+	 $("#check-all").click(function(){
+	     $( 'input[name="menuid[]"]').each(function (){
+	         if($(this).attr('checked') != 'checked'){
+	             $(this).attr('checked', 'checked');
+	         }
+	     });
+	 });
+
+  });
+</script>
+</head>
+<body>
+
+    <table width="100%" cellspacing="0">
+		<thead>
+		<tr>
+		<th class="text-l cu-span" style='padding-left:30px;'><span id="check-all" class="btn">全选</span>/<span id="clear-all" class="btn">取消</span></th>
+		</tr>
+		</thead>
+	</table>
+	<form name="myform" action="{php echo create_url('member/group/priv');}" method="post">
+	<input type="hidden" name="groupid" value="{$groupid}" />
+	<table width="100%" cellspacing="0" id="dnd-example">
+	<tbody>
+	{$categorys}
+	</tbody>
+	</table>
+		<input type="hidden"  class="btn btn-primary" name="dosubmit" id="dosubmit" value="提交" />
+	</form>
+		
+</body>
+</html>

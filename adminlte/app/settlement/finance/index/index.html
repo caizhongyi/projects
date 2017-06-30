@@ -1,0 +1,656 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active">  {{ $state.current.page.title }} </li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content slide" >
+    <div class="box" senior-table="finance">
+        <div class="box-header ">
+            <div class="form form-inline form-alignment">
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">订单号：</label>
+                    <input type="text" placeholder="订单号" ng-model="searchCondition.order_no" class="form-control" >
+                </div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">车牌号：</label>
+                    <input type="text" placeholder="车牌号"  ng-model="searchCondition.car_number" class="form-control" >
+                </div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">合同号：</label>
+                    <input type="text" placeholder="合同号"  ng-model="searchCondition.contract_no" class="form-control" >
+                </div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">费用类型：</label>
+                    <select id="fee_type" class="form-control input-control" ng-model="searchCondition.fee_type" name="fee_type"   select-apply-type="" ><option value="">请选择</option></select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">订单类型</label>
+                    <select  class="form-control input-control" name="order_type" ng-model="searchCondition.order_type" select-order-type="">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="form-group form-group-alignment">
+                        <label class="form-label">开始时间：</label>
+                    <span class="input-group datepicker modv2-sel-warap" datepicker-click="startdOpened">
+                        <input type="hidden"  ng-model="searchCondition.start_date" />
+                        <input placeholder="开始时间" type="datetime"  name="start_date"  required ng-model="start_date" sync="searchCondition.start_date" class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="startdOpened" datepicker-options="dateOptions"  ng-required="true"  current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+                    </span>
+                    </div>
+                    <div class="form-group form-group-alignment">
+                        <label class="form-label">结束时间：</label>
+                    <span class="input-group datepicker modv2-sel-warap" datepicker-click="endOpened">
+                     <input type="hidden"  ng-model="searchCondition.end_date"/>
+                     <input placeholder="结束时间" type="datetime"  name="end_date"  required ng-model="end_date" sync="searchCondition.end_date" class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="endOpened" datepicker-options="dateOptions"  ng-required="true"  min-date="start_date" current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+                    </span>
+                    </div>
+                    <div class="form-group  form-group-alignment">
+                        <label class="form-label">支付状态：</label>
+                        <select id="pay_status" class="form-control input-control" name="pay_status" ng-model="searchCondition.pay_status"  select-pay-status="" > <option value="">请选择</option></select>
+                    </div>
+                    <div class="form-group  form-group-alignment">
+                        <label class="form-label">付款银行：</label>
+                        <select id="pay_bank" class="form-control input-control" name="pay_bank" ng-model="searchCondition.pay_bank"  select-bank="" > <option value="">请选择</option></select>
+                    </div>
+                    <div class="form-group  form-group-alignment">
+                        <label class="form-label">凭证号</label>
+                        <select class="form-control input-control" name="pay_bank" ng-model="searchCondition.is_voucher"  select-yes-or-no="" > <option value="">请选择</option></select>
+                    </div>
+                </div>
+                <div class="form-group" select-store="">
+                    <div class="form-group modv2-formg">
+                        <label class="form-label">门店名称：</label>
+                        <select id="province" class="form-control province" name="province" ng-model="searchCondition.province"  ng-options="item.id as item.name  for item in province "  >
+                            <option value="">省份</option>
+                        </select>
+                    </div>
+                    <div class="form-group modv2-formg">
+                        <select id="city" class="form-control city" name="city" ng-model="searchCondition.city"  ng-options="item.id as  item.name for item in city "  >
+                            <option value="">市/区</option>
+                        </select>
+                    </div>
+                    <div class="form-group modv2-formg">
+                        <select id="shop" class="form-control shop" name="shop" ng-model="searchCondition.dept"  ng-options="item.id as  item.name for item in shop" >
+                            <option value="">门店</option>
+                        </select>
+                    </div>
+                    <div class="form-group modv2-formg">
+                        <label class="" >&nbsp;</label>
+                        <button class="btn btn-default" ng-click="searchInfo()"  type="button" ><i class="fa fa-search"></i> 搜索</button>
+                        <button class="btn btn-primary modv2-btn" type="button" ng-click="showPrint()">批量打印</button>
+                        <button type="button" ng-click="batchPay()" ng-hide="payCount < 1" class="btn btn-default">合并代付</button>
+                        <button class="btn btn-primary modv2-btn" type="button" ng-click="showExcel()">导出表格</button>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.box-header -->
+        <div class="text-right">金额合计：{{item.totalFee | price}}<!--；实时垫款金额：￥{{item.advancePayment.advance_fee | price}}；实时到账未付款金额：￥{{item.advancePayment.no_fee | price}}；</div>-->
+        <div class="box-body  no-padding">
+            <table class="table table-hover" >
+                <tbody>
+                <tr>
+                    <th width="4%"><label ><input type="checkbox" ng-show="utils.hasCode('settlement|finance|pay')" ng-change="selectAll()" ng-model="selected" /> 全选</label></th>
+                    <th width="5%"> 订单日期 </th>
+                    <th width="8%">门店名称</th>
+                    <th width="5%"> 订单号 </th>
+                    <th width="8%"> 合同号 </th>
+                    <th width="13%"> 收款信息 </th>
+                    <th width="9%" >车辆信息</th>
+                    <th width="5%" >费用类型</th>
+                    <th width="6%" >申请金额</th>
+                    <th width="5%">未付款</th>
+                    <th width="6%">审核状态</th>
+                    <th width="7%">支付凭证号</th>
+                    <th width="6%">支付状态</th>
+                    <th width="5%">订单类型</th>
+                    <th width="11%">操作</th>
+                </tr>
+                <tr ng-repeat="item in list" class="list-animation">
+                    <td style="text-align: center" title="{{item.id}}"><input type="checkbox" ng-model="item.selected" ng-change="selectItem()" ng-show="utils.hasCode('settlement|finance|pay') && item.pay_status == 0 && item.autopay_status == 0 && item.status == 2" /></td>
+                    <td class="text-center">
+                        {{ item.order_create_time  ? ( item.order_create_time * 1000 | date:"yyyy-MM-dd") : '' }}
+                    </td>
+                    <td  class="text-center">{{item.dept_name}}<br /><span style="color:red">{{item.is_bind ? '见证宝' : ''}}</span></td>
+                    <td >
+                        <span class="">{{item.order_no}}</span>
+                    </td>
+                    <td >
+                        {{item.order_contract.contract_no}}
+                    </td>
+                    <td >
+                        <span class=""></span> {{item.payee_realname}} <br/>
+                        <span class=""></span>  {{item.payee_bank_branch}} <br/>
+                    </td>
+                    <td >
+                        <span class=""></span> {{item.order_contract.car_number}} <br/>
+                        <span class=""></span>  {{item.order_contract.vehicle_brand}} {{item.order_contract.vehicle_series}} <br/>
+                    </td>
+                    <td  class="text-center">
+                        {{ item.fee_type }}
+                    </td>
+                    <td class="text-right">
+                        {{ item.fee | price }}
+                    </td>
+                    <td class="text-right">
+                        {{ item.unpay | price }}
+                    </td>
+                    <!-- 审核状态 -->
+                    <td class="text-center">
+                        {{ item.status_txt }}<br />
+                        {{ item.caiwu_check_note }}
+                    </td>
+                    <td  class="text-center">
+                        {{ item.voucher }}
+                    </td>
+                    <!-- 支付状态 -->
+                    <td  class="text-center">
+                        {{ item.pay_status_txt }}
+                    </td>
+                    <td  class="text-center">
+                        {{ item.order.is_jhc | order_type }}
+                    </td>
+                    <td >
+                        <a href="javascript:;" class="modv2-link" ng-show="utils.hasCode('settlement|finance|errorreturn') && item.pay_status == 1 && item.status == 2 && item.fee_type !== '错误退回' && (time - item.pay_time < 3600*24*5) && item.is_return != 1" ng-click="errorReturn()">错误退回</a>
+                        <div style="text-align: center" ng-if="item.is_return == 1">已退回</div>
+                        <a href="javascript:;" class="modv2-link" ng-show="utils.hasCode('settlement|finance|financepay') && item.pay_status == 0 && item.status == 2 && (item.autopay_status == 0 || item.autopay_status == 3)" ng-click="pay()">手动付款</a>
+                        <a href="javascript:;" class="modv2-link" ng-show="utils.hasCode('settlement|finance|financepay') && item.pay_status == 1 && item.status == 2 && item.voucher == ''" ng-click="voucher()">录入凭证号</a>
+                        <a href="javascript:;" class="modv2-link" ng-show="utils.hasCode('settlement|finance|pay') && item.pay_status == 0 && item.autopay_status == 0 && item.status == 2" ng-click="autoPay()">自动代付</a>
+                        <a href="javascript:;" class="modv2-link" ng-show="item.autopay_status != 0 && utils.hasCode('settlement|finance|pay')" ng-click="autoPayInfo()">{{item.autopay_status_txt}}</a>
+                        <a href="javascript:;" class="modv2-link" ng-click="showPrint()" ng-if="item.print_times == 0">打印付款审批单</a>
+                        <a href="javascript:;" class="modv2-link" ng-click="showPrint()" ng-if="item.print_times > 0">再次打印审批单</a>
+                        <a href="javascript:;" class="modv2-link" ng-show="utils.hasCode('settlement|apply|applyreject') && utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage') && item.status == 2 && item.fee_type != 9 && item.pay_status != 1  && item.order_contract.status != 3" ng-click="reject()">驳回</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="pay-bar"  ng-hide="payCount < 1">
+                <tr>
+                    <td width="70" align="center" class="select-all"><label ><input type="checkbox" ng-change="selectAll()" ng-model="selected" /> 全选</label></td>
+                    <td align="right">共<span class="fee-color">{{payCount}}</span>笔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合计代付：<span class="fee-color">￥{{paySum}}</span>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td width="125" align="right"><button type="button" ng-click="batchPay()" class="btn btn-default">合并代付</button></td>
+                </tr>
+            </table>
+        </div><!-- /.box-body -->
+        <div class="box-footer clearfix ">
+            <pagination num-pages="numPages"  boundary-links="true" max-size="maxSize"   ng-change="pageChanged()" total-items="totalItems" ng-model="currentPage" class="pagination pull-right no-margin" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+            <div class="pull-right ng-binding modv2-pageinfo">
+                <span class="modv2-pagecur"> {{currentPage}} </span> / {{numPages}} 页 | 共 {{ totalItems }} 条
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+
+<script type="text/ng-template" id="tpl-print.html">
+
+    <object id="LODOP_OB" width="0" height="0" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA">
+        <embed id="LODOP_EM" width="0" height="0" pluginspage="install_lodop32.exe" type="application/x-print-lodop">
+    </object>
+
+    <div class="box-header ">
+        <div class="form form-inline form-alignment">
+
+            <div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">开始时间：</label>
+                    <span class="input-group datepicker modv2-sel-warap" datepicker-click="startdOpened">
+                        <input type="hidden"  ng-model="searchCondition.start_date" />
+                        <input placeholder="开始时间" type="datetime"  name="start_date"  required ng-model="start_date" sync="searchCondition.start_date" class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="startdOpened" datepicker-options="dateOptions"  ng-required="true"  current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+                    </span>
+                </div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">结束时间：</label>
+                    <span class="input-group datepicker modv2-sel-warap" datepicker-click="endOpened">
+                     <input type="hidden"  ng-model="searchCondition.end_date"/>
+                     <input placeholder="结束时间" type="datetime"  name="end_date"  required ng-model="end_date" sync="searchCondition.end_date" class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="endOpened" datepicker-options="dateOptions"  ng-required="true"  min-date="start_date" current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+                    </span>
+                </div>
+            </div>
+            <div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">已打印</label>
+                    <input type="checkbox" name="printed_yes[]" ng-model="searchCondition.printed_yes" value="2">
+                </div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">未打印</label>
+                    <input type="checkbox" name="printed_no[]" ng-model="searchCondition.printed_no" value="3">
+                </div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">自动付款</label>
+                    <input type="checkbox" name="autopay_ten" ng-model="searchCondition.autopay_ten">
+                </div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">手动付款</label>
+                    <input type="checkbox" name="autopay_three" ng-model="searchCondition.autopay_three">
+                </div>
+            </div>
+            <div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">费用类型：</label>
+                    <select id="fee_type" class="form-control input-control" ng-model="searchCondition.fee_type" name="fee_type" ng-model="item.fee_type" select-pay-type="" > <option value="">请选择</option> </select>
+                </div>
+                <div class="form-group form-group-alignment"></div>
+                <div class="form-group  form-group-alignment">
+                    <label class="form-label">支付状态：</label>
+                    <select id="pay_status" class="form-control input-control" name="pay_status" ng-model="searchCondition.pay_status"  select-pay-status="" > <option value="">请选择</option> </select>
+                </div>
+                <div class="form-group  form-group-alignment">
+                    <label class="form-label">付款银行：</label>
+                    <select id="pay_bank" class="form-control input-control" name="pay_bank" ng-model="searchCondition.pay_bank"  select-bank="" > <option value="">请选择</option></select>
+                </div>
+            </div>
+            <div class="form-group" select-store="">
+                <div class="form-group modv2-formg">
+                    <label class="form-label">门店名称：</label>
+                    <select id="province" class="form-control province" name="province" ng-model="searchCondition.province"  ng-options="item.id as item.name  for item in province "  >
+                        <option value="">省份</option>
+                    </select>
+                </div>
+                <div class="form-group modv2-formg">
+                    <select id="city" class="form-control city" name="city" ng-model="searchCondition.city"  ng-options="item.id as  item.name for item in city "  >
+                        <option value="">市/区</option>
+                    </select>
+                </div>
+                <div class="form-group modv2-formg">
+                    <select id="shop" class="form-control shop" name="shop" ng-model="searchCondition.dept"  ng-options="item.id as  item.name for item in shop" >
+                        <option value="">门店</option>
+                    </select>
+                </div>
+                <div class="form-group modv2-formg">
+                    <label class="" >&nbsp;</label>
+                    <button class="btn btn-default" ng-click="showAllPrint()"  type="button" ><i class="fa fa-search"></i> 搜索</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary modv2-btn" type="submit" ng-click="printList()">确认打印</button>
+        <button class="btn btn-primary modv2-btn" ng-click="cancel()">取消</button>
+    </div>
+
+    <div class="modal-body" id="contain" style="font-size:14px;line-height:24px;">
+        <div id="installMessage"></div>
+
+        <div ng-if="items" ng-repeat="item in items">
+            <h3 style="margin-left:300px; margin-top:45px;">网银付款审批单
+                <a style="display:none" ng-click="delItems(item.id)" href="javascript:;">X</a>
+            </h3>
+            <div style="margin-left:95px">门店名称：{{item.dept_name}}</div>
+            <table cellspacing="0" cellpadding="0" bordercolor="#000000" border="1" >
+                <tr height="33">
+                    <td width="95" height="33">&nbsp;收款人名称</td>
+                    <td width="295"><div style="text-align: center">{{item.payee_realname}}</div></td>
+                    <td width="95">&nbsp;收款人证件号</td>
+                    <td width="230" colspan="2"><div>&nbsp;{{item.payee_idcard}}</div></td>
+                </tr>
+                <tr height="44">
+                    <td height="44">&nbsp;开户银行名称</td>
+                    <td style="text-align:right">
+                        {{item.payee_bank}}&nbsp;
+                        <div style="font-size: 12px">{{item.payee_bank_branch}}&nbsp;</div>
+                    </td>
+                    <td>&nbsp;账号</td>
+                    <td colspan="2"><div>&nbsp;{{item.payee_cardno}}</div></td>
+                </tr>
+                <tr height="33">
+                    <td height="33">&nbsp;付款金额</td>
+                    <td colspan="4">
+                        <div>&nbsp;{{item.chineseMoney}}<span style="margin-left: 60px"></span>
+                            ￥<span style="text-decoration:underline;">{{item.fee  | price }}</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr height="33">
+                    <td height="33">&nbsp;付款用途</td>
+                    <td colspan="4"><div>&nbsp;{{item.fee_type}}</div></td>
+                </tr>
+                <tr height="33">
+                    <td height="33">&nbsp;合同编号</td>
+                    <td><div>&nbsp;{{item.contract_no}}</div></td>
+                    <td>&nbsp;成交车车牌号</td>
+                    <td colspan="2"><div>&nbsp;{{item.car_number}}</div></td>
+                </tr>
+                <tr height="33">
+                    <td height="33">&nbsp;经办人</td>
+                    <td><div>&nbsp;{{item.create_user_name}}&nbsp;&nbsp;&nbsp;<span style="font-size: 12px">{{item.create_time*1000 | date:"yyyy年MM月dd日HH时mm分"}}</span></div></td>
+                    <td>&nbsp;店长审批</td>
+                    <td colspan="2"><div>&nbsp;{{item.dept_check_name}}&nbsp;&nbsp;&nbsp;<span style="font-size: 12px">{{item.dept_check_time*1000 | date:"yyyy年MM月dd日HH时mm分"}}</span></div></td>
+                </tr>
+                <tr height="33">
+                    <td height="33">&nbsp;财务审批</td>
+                    <td><div>&nbsp;{{item.caiwu_check_name}}&nbsp;&nbsp;&nbsp;<span style="font-size: 12px">{{item.caiwu_check_time*1000 | date:"yyyy年MM月dd日HH时mm分"}}</span></div></td>
+                    <td colspan="4"><div style="float:right">{{item.id}}&nbsp;&nbsp;&nbsp;&nbsp;</div></td>
+                </tr>
+            </table>
+        </div>
+        <div style="margin-top:10px" ng-if="item.dept_name">
+            <h3 style="margin-left:300px; margin-top:45px;">网银付款审批单
+                <a style="display:none;" ng-click="delItem(item.id)" href="javascript:;">X</a>
+            </h3>
+            <div style="margin-left:100px">门店名称：{{item.dept_name}}</div>
+            <table cellspacing="0" cellpadding="0" bordercolor="#000000" border="1">
+                <tr height="33">
+                    <td width="95" height="33">&nbsp;收款人名称</td>
+                    <td width="295"><div style="text-align: center">{{item.payee_realname}}</div></td>
+                    <td width="95">&nbsp;收款人证件号</td>
+                    <td width="230" colspan="2"><div>&nbsp;{{item.payee_idcard}}</div></td>
+                </tr>
+                <tr height="49">
+                    <td height="49">&nbsp;开户银行名称</td>
+                    <td style="text-align:right">
+                        {{item.payee_bank}}&nbsp;
+                        <div style="font-size: 12px">{{item.payee_bank_branch}}&nbsp;</div>
+                    </td>
+                    <td>&nbsp;账号</td>
+                    <td colspan="2"><div>&nbsp;{{item.payee_cardno}}</div></td>
+                </tr>
+                <tr height="33">
+                    <td height="33">&nbsp;付款金额</td>
+                    <td colspan="4">
+                        <div>&nbsp;{{item.chineseMoney}}<span style="margin-left: 60px"></span>
+                            ￥<span style="text-decoration:underline;">{{item.fee | price }}</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr height="33">
+                    <td height="33">&nbsp;付款用途</td>
+                    <td colspan="4"><div>&nbsp;{{item.fee_type}}</div></td>
+                </tr>
+                <tr height="33">
+                    <td height="33">&nbsp;合同编号</td>
+                    <td><div>&nbsp;{{item.order_contract.contract_no}}</div></td>
+                    <td>&nbsp;成交车车牌号</td>
+                    <td colspan="2"><div>&nbsp;{{item.order_contract.car_number}}</div></td>
+                </tr>
+                <tr height="33">
+                    <td height="33">&nbsp;经办人</td>
+                    <td><div>&nbsp;{{item.create_user_name}}&nbsp;&nbsp;&nbsp;<span style="font-size: 12px">{{item.create_time*1000 | date:"yyyy年MM月dd日HH时mm分"}}</span></div></td>
+                    <td>&nbsp;店长审批</td>
+                    <td colspan="2"><div>&nbsp;{{item.dept_check_name}}&nbsp;&nbsp;&nbsp;<span style="font-size: 12px">{{item.dept_check_time*1000 | date:"yyyy年MM月dd日HH时mm分"}}</span></div></td>
+                </tr>
+                <tr height="33">
+                    <td height="33">&nbsp;财务审批</td>
+                    <td><div>&nbsp;{{item.caiwu_check_name}}&nbsp;&nbsp;&nbsp;<span style="font-size: 12px">{{item.caiwu_check_time*1000 | date:"yyyy年MM月dd日HH时mm分"}}</span></div></td>
+                    <td colspan="4"><div style="float:right">{{item.id}}&nbsp;&nbsp;&nbsp;&nbsp;</div></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="tpl-pay.html">
+    <form role="form" name="addForm" ng-submit="submitAddForm(addForm.$valid)" >
+        <div class="modal-header">
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+            <h3 class="modal-title">您即将支付</h3>
+        </div>
+        <div class="modal-body">
+            <table class="pay-table">
+                <tr>
+                    <td class="pay-title">门店名称：</td>
+                    <td>{{item.dept_name}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">费用类型：</td>
+                    <td>{{item.fee_type}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">金额：</td>
+                    <td>{{item.fee}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">收款人：</td>
+                    <td>{{item.payee_realname}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">收款人账号：</td>
+                    <td>{{item.payee_cardno}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">开户银行：</td>
+                    <td>{{item.payee_bank_branch}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title"><span class="required">*</span> 支付凭证号：</td>
+                    <td><input type="text" placeholder="付款凭证号" id="voucher" class="form-control" ng-model="item.voucher" name="voucher" required></td>
+                </tr>
+                <tr>
+                    <td class="pay-title"><span class="required">*</span> 支付日期：</td>
+                    <td>
+                    <span class="input-group datepicker modv2-sel-warap" datepicker-click="pay_time">
+                        <input type="hidden"  ng-model="item.pay_time" />
+                        <input placeholder="开始时间" type="datetime" sync="item.pay_time"  name="pay_time" ng-model="pay_time111"  required class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="pay_time" datepicker-options="dateOptions"  ng-required="true" current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+                    </span>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pay-title"><span class="required">*</span> 付款行：</td>
+                    <td><select id="pay_bank" class="form-control input-control" required ng-model="item.pay_bank" name="pay_bank" select-bank="" >
+                        <option value="">请选择</option>
+                    </select></td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary modv2-btn" type="submit">确认支付</button>
+            <button class="btn btn-primary modv2-btn" type="button" ng-click="cancel()">取消</button>
+        </div>
+    </form>
+</script>
+
+<script type="text/ng-template" id="tpl-voucher.html">
+    <form role="form" name="addForm" ng-submit="submitAddForm(addForm.$valid)" >
+        <div class="modal-header">
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+            <h3 class="modal-title">录入凭证号</h3>
+        </div>
+        <div class="modal-body">
+            <table class="pay-table">
+                <tr>
+                    <td class="pay-title">门店名称：</td>
+                    <td>{{item.dept_name}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">费用类型：</td>
+                    <td>{{item.fee_type}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">金额：</td>
+                    <td>{{item.fee}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">收款人：</td>
+                    <td>{{item.payee_realname}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">收款人账号：</td>
+                    <td>{{item.payee_cardno}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">开户银行：</td>
+                    <td>{{item.payee_bank_branch}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title"><span class="required">*</span> 支付凭证号：</td>
+                    <td><input type="text" placeholder="付款凭证号" id="voucher" class="form-control" ng-model="item.voucher" name="voucher" required></td>
+                </tr>
+                <tr>
+                    <td class="pay-title"><span class="required">*</span> 支付日期：</td>
+                    <td>
+                    <span class="input-group datepicker modv2-sel-warap" datepicker-click="pay_time">
+                        <input type="hidden"  ng-model="item.pay_time" />
+                        <input placeholder="开始时间" type="datetime" sync="item.pay_time"  name="pay_time" ng-model="pay_time111"  required class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="pay_time" datepicker-options="dateOptions"  ng-required="true" current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+                    </span>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pay-title"><span class="required">*</span> 付款行：</td>
+                    <td><select id="pay_bank" class="form-control input-control" required ng-model="item.pay_bank" name="pay_bank" select-bank="" >
+                        <option value="">请选择</option>
+                    </select></td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary modv2-btn" type="submit">确认</button>
+            <button class="btn btn-primary modv2-btn" type="button" ng-click="cancel()">取消</button>
+        </div>
+    </form>
+</script>
+
+<script type="text/ng-template" id="tpl-autopay-info.html">
+        <div class="modal-header">
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+            <h3 class="modal-title">代付详情</h3>
+        </div>
+        <div class="modal-body">
+            <span ng-bind-html="item.autopay_note_trust"></span>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary modv2-btn" ng-click="cancel()">取消</button>
+        </div>
+</script>
+<style type="text/css">
+    .pay-title{
+        line-height: 40px;
+        text-align: right;
+        width: 150px;
+        font-weight: bold;
+        padding-right: 20px;
+    }
+    .pay-table input, .pay-table select {
+        width: 15.3em;
+    }
+    .pay-bar{
+        width: 100%;
+        border: 1px solid #c3c3c3;
+        margin: 10px 0;
+        font-size: 16px;
+    }
+    .pay-bar button{
+        background: #006600 none repeat scroll 0 0;
+        border: medium none;
+        border-radius: 0;
+        color: #fff;
+        width: 100%;
+    }
+    .pay-bar button:hover{
+        background-color: #008800 !important;
+        color: #fff;
+    }
+    .select-all {
+        font-size: 12px;
+    }
+    .fee-color{
+        color: #006600;
+        font-weight: bold;
+        margin: 0 5px;
+    }
+    .required { color: #ff0000}
+    #contain table{margin: 0 auto;}
+    #contain h3 a{float: right}
+
+    #contain h3:hover > a{display: block !important;}
+</style>
+<script type="text/ng-template" id="tpl-reject.html">
+    <form role="form" name="rejectForm" ng-submit="rejectSubmitAddForm(rejectForm.$valid)" novalidate >
+        <div class="modal-header">
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+            <h3 class="modal-title">付款审核驳回</h3>
+        </div>
+        <div class="modal-body">
+            <div class="box-body">
+                <div class="form-group">
+                     输入驳回原因：
+                </div>
+                <div class="form-group">
+                    <!--<input type="text" placeholder="输入原因" id="reject_check_note" class="form-control" name="reject_check_note" ng-model="reject_check_note"  required value=""   >-->
+                    <textarea class="form-control" placeholder="输入原因" id="reject_check_note" name="reject_check_note" ng-model="reject_check_note" required></textarea>
+                    <div class="has-feedback text-danger" ng-messages="rejectForm.reject_check_note.$error" ng-show="interacted(rejectForm.reject_check_note)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入原因！</div>
+                    </div>
+                    <div ng-if="check_error" class="text-danger"><i class="fa fa-info-circle"></i> {{check_error}}！</div>
+                </div>
+            </div><!-- /.box-body -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary modv2-btn" ng-disabled="submittedReject">确认</button>
+            <button class="btn btn-primary modv2-btn"  ng-click="cancel()" type="button" >取消</button>
+        </div>
+    </form>
+</script>
+
+<script type="text/ng-template" id="tpl-errorReturn.html">
+    <form role="form" name="addForm" ng-submit="submitErrorReturn(addForm.$valid)" >
+        <div class="modal-header">
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+            <h3 class="modal-title">付款信息错误返回</h3>
+        </div>
+        <div class="modal-body">
+            <table class="pay-table">
+                <tr>
+                    <td class="pay-title">门店名称：</td>
+                    <td>{{item.dept_name}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">费用类型：</td>
+                    <td>{{item.fee_type}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">金额：</td>
+                    <td>-{{item.fee}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">收款人：</td>
+                    <td>{{item.payee_realname}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">收款人账号：</td>
+                    <td>{{item.payee_cardno}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title">开户银行：</td>
+                    <td>{{item.payee_bank_branch}}</td>
+                </tr>
+                <tr>
+                    <td class="pay-title"><span class="required">*</span> 退回凭证号：</td>
+                    <td><input type="text" placeholder="退回凭证号" id="voucher" ng-model="item.voucher" class="form-control"  name="voucher" required></td>
+                </tr>
+                <tr>
+                    <td class="pay-title"><span class="required">*</span> 退回日期：</td>
+                    <td>
+                    <span class="input-group datepicker modv2-sel-warap" datepicker-click="pay_time">
+                        <input type="hidden"  ng-model="item.pay_time" />
+                        <input placeholder="开始时间" type="datetime" sync="item.pay_time"  name="pay_time" ng-model="pay_time111"  required class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="pay_time" datepicker-options="dateOptions"  ng-required="true" current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+                    </span>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pay-title"><span class="required">*</span> 退款付款行：</td>
+                    <td><select id="pay_bank" class="form-control input-control" required ng-model="item.pay_bank" name="pay_bank" select-bank="" >
+                        <option value="">请选择</option>
+                    </select></td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary modv2-btn" type="submit">确认支付</button>
+            <button class="btn btn-primary modv2-btn" type="button" ng-click="cancel()">取消</button>
+        </div>
+    </form>
+</script>

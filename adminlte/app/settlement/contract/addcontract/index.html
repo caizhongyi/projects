@@ -1,0 +1,738 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active">  {{ $state.current.page.title }} </li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content slide" >
+    <div class="box">
+        <form name="form" ng-submit="submit(form.$valid)"  role="form" novalidate>
+            <div class="box-header row">
+                <div class="col-md-6">
+                    <label >订单编号：</label>
+                    <span class="modv2-imp ">{{ item.order_no }}</span>
+                    <label style="margin-left: 50px;">收款账号：</label>
+                    <span>{{ item.sub_account }}</span>
+                    </span>
+                    <a href="javascript:;" class="badge badge-warning"  data-ng-click="noticeTransfer()" data-ng-show="userInfo.username == 'admin' || userInfo.username == '135400001'">通知转账收款</a>
+                </div>
+            </div><!-- /.box-header -->
+
+            <div class="modv2-bheader clearfix">
+                <div class="modv2-bheader-in ">
+                    <span class="modv2-c">车牌号码：{{ item.car_number }}</span>
+                </div>
+            </div>
+
+            <table class="table modv2-table table-hover small-table">
+                <tr>
+                    <th width="12%"><label ><span class="text-danger">*</span> 合同编号：</label></th>
+                    <td colspan="2" width="38%">
+                        <input type="text" class="form-control modv2-inputg input-ib" name="contract_no" ng-model="item.contract_no" ng-readonly="item.is_from_contract"  required ng-pattern="/[0-9]+/" >
+                        <button ng-click="updateContract()" ng-if="item.is_from_contract" type="button" class="btn btn-primary modv2-btn input-ib">获取巨好车合同</button>
+                        <div class="has-feedback text-danger" ng-messages="form.contract_no.$error" ng-show="interacted(form.contract_no)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入合同编号！</div>
+                            <div ng-message="pattern"><i class="fa fa-info-circle"></i>请输入合同编号格式不正确！</div>
+                        </div>
+                    </td>
+                    <th width="12%"><label ><span class="text-danger">*</span> 成交价：</label></th>
+                    <td colspan="2">
+                        <input type="text" class="form-control modv2-inputg"  name="sale_price" ng-pattern="/^([1-9]{1}[0-9]{0,7}|1000000000)$/"  ng-readonly="item.is_from_contract "  ng-model="item.sale_price" required  style="display: inline-block" />&nbsp;
+                        <span class="text-danger">(仅供参考)</span>
+                        <div class="has-feedback text-danger" ng-messages="form.sale_price.$error" ng-show="interacted(form.sale_price)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入成交价！</div>
+                            <div ng-message="pattern"><i class="fa fa-info-circle"></i>输入的成交价必须大于0小于100,000,000！</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%"><label ><span class="text-danger"></span> 车源编码：</label></th>
+                    <td colspan="2">
+
+                        <input type="text" class="form-control modv2-inputg input-ib" name="information_no" ng-model="item.information_no"  >
+                        <div class="has-feedback text-danger">
+
+                            非必填，可带出本店车源信息
+                        </div>
+                    </td>
+                    <th width="12%"><label ><span class="text-danger"></span> 信息服务费：</label></th>
+                    <td colspan="2">
+                        <input type="text" class="form-control modv2-inputg input-ib" name="brokerage" ng-model="item.brokerage"  ng-readonly="item.is_from_contract " >
+                        <span class="text-danger">(仅供参考)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label ><span class="text-danger">*</span> 车辆品牌：</label></th>
+                    <td colspan="2">
+					    <div style="float:left">
+                        <div class="vehicle">
+                            <input type="hidden" class="form-control modv2-inputg" name="brandId" ng-model="item.vehicle_brand_id" required  >
+                            <input type="text" class="form-control modv2-inputg" name="brandName" ng-model="item.vehicle_brand" ng-readonly="item.is_from_contract" ng-keypress="brandKeypress()" required  auto-complete-brand="item.vehicle_series" style="width: 15em" >
+                            <div class="vehicle-outer">
+                                <div class="vehicle-inner"style="min-height: 509px;;">
+                                    <div class="tip"><a class="close" href="javascript:;"></a>车辆品牌</div>
+                                    <div class="vechicle-nav">A</div>
+                                    <div class="list overflow">
+                                        <ul></ul>
+                                    </div>
+                                    <ul class="anchors">                  <li><a href="javascript:;">A</a></li>                  <li><a href="javascript:;">B</a></li>                  <li><a href="javascript:;">C</a></li>                  <li><a href="javascript:;">D</a></li>                  <li><a href="javascript:;">F</a></li>                  <li><a href="javascript:;">G</a></li>                  <li><a href="javascript:;">H</a></li>                  <li><a href="javascript:;">J</a></li>                  <li><a href="javascript:;">K</a></li>                  <li><a href="javascript:;">L</a></li>                  <li><a href="javascript:;">M</a></li>                  <li><a href="javascript:;">N</a></li>                  <li><a href="javascript:;">O</a></li>                  <li><a href="javascript:;">P</a></li>                  <li><a href="javascript:;">Q</a></li>                  <li><a href="javascript:;">R</a></li>                  <li><a href="javascript:;">S</a></li>                  <li><a href="javascript:;">T</a></li>                  <li><a href="javascript:;">W</a></li>                  <li><a href="javascript:;">X</a></li>                  <li><a href="javascript:;">Y</a></li>                  <li><a href="javascript:;">Z</a></li>          </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="has-feedback text-danger" ng-messages="form.brandName.$error" ng-show="interacted(form.brandName)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入车辆品牌！</div>
+                        </div>
+                        <div class="has-feedback text-danger" ng-messages="form.brandId.$error" ng-show="interacted(form.brandId)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>品牌必须是选择！</div>
+                        </div>
+					</div>
+                        <div style="float:left;margin-left:10px" ng-if="item.vehicle_brand_id">
+                            <div class="vehicle">
+                                <input type="hidden" class="form-control modv2-inputg" name="seriesId" ng-model="item.vehicle_series_id" required  >
+                                <input type="text" class="form-control modv2-inputg" name="seriesName" ng-readonly="item.is_from_contract" ng-model="item.vehicle_series" required  auto-complete-series="item.vehicle_type_id" style="width: 15em" >
+                                <div class="vehicle-outer">
+                                    <div class="vehicle-inner">
+                                        <div class="tip"><a class="close" href="javascript:;"></a>请选择车系</div>
+                                        <div class="list overflow">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="has-feedback text-danger" ng-messages="form.seriesName.$error" ng-show="interacted(form.seriesName)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i>请选择车系</div>
+                            </div>
+                            <div class="has-feedback text-danger" ng-messages="form.seriesId.$error" ng-show="interacted(form.seriesId)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i>车系必须是选择！</div>
+                            </div>
+                        </div>
+
+                        <!-- 车型 add on 20160616 -->
+                        <div style="float:left;margin-left:10px" ng-show=" (item.vehicle_series_id && item.hasVehicheModeList) ">
+                            <div class="vehicle">
+                                <input type="hidden" class="form-control modv2-inputg" name="modelId" ng-model="item.vehicle_model_id"   >
+                                <input type="text" class="form-control modv2-inputg" name="modelName" ng-readonly="item.is_from_contract" ng-model="item.vehicle_model"  source="vehicleList"  ng-change="vehicileChange()"  auto-complete-model="item.vehicle_model_id" style="width: 15em" >
+                                <div class="vehicle-outer">
+                                    <div class="vehicle-inner" style="width: 200px;">
+                                        <div class="tip"><a class="close" href="javascript:;"></a>请选择车型，若无车型请输入</div>
+                                        <div class="list overflow">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="has-feedback text-danger" ng-messages="form.modelName.$error" ng-show="interacted(form.modelName)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i>请选择车型</div>
+                            </div>
+                            <div class="has-feedback text-danger" ng-messages="form.modelId.$error" ng-show="interacted(form.modelId)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i>车型必须是选择！</div>
+                            </div>
+                        </div>
+                        <!-- end 20160616 -->
+                    </td>
+                    <th><label >出厂报价：</label></th>
+                    <td colspan="2">
+                        <span class="text-danger" ng-if="item.guide_price">{{item.guide_price}}万 + {{item.buy_tax}}万（购置税）</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%"><label ><span class="text-danger">*</span> 车辆类型：</label></th>
+                    <td colspan="2">
+                        <div ng-if="item.is_from_contract" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" class="disabled-layer ng-scope"></div>
+                        <select  class="form-control modv2-inputg" ng-readonly="item.is_from_contract " name="carType" ng-change="change()" ng-model="item.vehicle_type_id"  required  select-car-type="">
+                            <option value="">车辆类型</option>
+                        </select>
+                        <div class="has-feedback text-danger" ng-messages="form.carType.$error" ng-show="interacted(form.carType)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入车辆类型！</div>
+                        </div>
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                <tr>
+                    <th width="12%"><label ><span class="text-danger">*</span> 车辆识别代码（VIN）：</label></th>
+                    <td colspan="2">
+                        <input type="text" class="form-control modv2-inputg" name="frame_number" ng-model="item.frame_number" ng-readonly="item.is_from_contract" required maxlength="17" minlength="17">
+                        <div class="has-feedback text-danger" ng-messages="form.frame_number.$error" ng-show="interacted(form.frame_number)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入vin码！</div>
+                            <div ng-message="maxlength"><i class="fa fa-info-circle"></i>vin码格式不正确！</div>
+                            <div ng-message="minlength"><i class="fa fa-info-circle"></i>vin码格式不正确！</div>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><h4 class="box-title">甲方信息</h4></th>
+                    <td colspan="2">
+                        <table class="table modv2-table table-hover small-table">
+                            <tr>
+                                <th width="25%"><label ><span class="text-danger">*</span> 卖方姓名：</label>  </th>
+                                <td>
+                                    <input type="text" class="form-control modv2-inputg" name="seller_name" ng-model="item.seller_name" required  ng-readonly="item.is_from_contract " />
+                                    <div class="text-danger">请确保和合同卖方一致</div>
+                                    <div class="has-feedback text-danger" ng-messages="form.seller_name.$error" ng-show="interacted(form.seller_name)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入卖方姓名！</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="25%"><label ><span class="text-danger"></span> 联系电话：</label>  </th>
+                                <td>
+                                    <input type="text" class="form-control modv2-inputg" name="seller_phone" ng-model="item.seller_phone" ng-readonly="item.is_from_contract "/>
+                                    <div class="has-feedback text-danger" ng-if="seller_phone_role">此电话为273员工电话</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="25%"><label ><span class="text-danger">*</span> 证件类型：</label>  </th>
+                                <td>
+                                    <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" ng-if="item.is_from_contract"></div>
+                                    <select  class="form-control modv2-inputg" name="seller_cert_type" ng-model="item.seller_cert_type"  select-cert-type required ng-readonly="item.is_from_contract "></select>
+                                    <div class="has-feedback text-danger" ng-messages="form.seller_cert_type.$error" ng-show="interacted(form.seller_cert_type)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入证件类型！</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="25%"><label ><span class="text-danger">*</span> 证件号码：</label>  </th>
+                                <td>
+                                    <input type="text" class="form-control modv2-inputg" name="seller_cert_no" ng-model="item.seller_cert_no" required  cert-validator="item.seller_cert_type" ng-readonly="item.is_from_contract"/>
+                                    <div class="has-feedback text-danger" ng-messages="form.seller_cert_no.$error" ng-show="interacted(form.seller_cert_no)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入证件号码！</div>
+                                        <div ng-message="certValidator"><i class="fa fa-info-circle"></i>请输入证件格式不正确！</div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label ><input type="checkbox" name="saleAgent" ng-model="saleAgent" /> 卖方代理人</label></td>
+                            </tr>
+                            <tr ng-if="saleAgent">
+                                <td colspan="2">
+                                    <table class="table modv2-table table-hover small-table">
+                                        <tr>
+                                            <th width="25%"><label ><span class="text-danger">*</span> 代理人：</label>  </th>
+                                            <td>
+                                                <input type="text" class="form-control modv2-inputg" name="seller_agent_name" ng-model="item.seller_agent_name" ng-required="saleAgent" ng-readonly="item.is_from_contract "  ng-disabled="!saleAgent"/>
+                                                <div class="has-feedback text-danger" ng-messages="form.seller_agent_name.$error" ng-show="interacted(form.seller_agent_name)" ng-if="saleAgent">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代理人姓名！</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="25%"><label ><span class="text-danger"></span> 联系电话：</label>  </th>
+                                            <td>
+                                                <input type="text" class="form-control modv2-inputg"  name="seller_agent_phone" ng-model="item.seller_agent_phone" ng-readonly="item.is_from_contract " ng-disabled="!saleAgent"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="25%"><label ><span class="text-danger">*</span> 证件类型：</label>  </th>
+                                            <td>
+                                                <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;"  ng-if="item.is_from_contract " ></div>
+                                                <select  class="form-control modv2-inputg" name="seller_agent_cert_type" ng-model="item.seller_agent_cert_type" ng-readonly="item.is_from_contract " select-cert-type  ng-required="saleAgent"></select>
+                                                <div class="has-feedback text-danger" ng-messages="form.seller_agent_cert_type.$error" ng-show="interacted(form.seller_agent_cert_type)">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请选择代理人证件类型！</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="25%"><label ><span class="text-danger">*</span> 证件号码：</label>  </th>
+                                            <td>
+                                                <input type="text" class="form-control modv2-inputg" name="seller_agent_cert_no" ng-model="item.seller_agent_cert_no" ng-readonly="item.is_from_contract " cert-validator="item.seller_agent_cert_type"  ng-required="saleAgent" ng-disabled="!saleAgent"/>
+                                                <div class="has-feedback text-danger" ng-messages="form.seller_agent_cert_no.$error" ng-show="interacted(form.seller_agent_cert_no)" ng-if="saleAgent">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代理人证件号码！</div>
+                                                    <div ng-message="certValidator"><i class="fa fa-info-circle"></i>请输入证件格式不正确！</div>
+                                                </div>
+
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <th><h4 class="box-title">乙方信息</h4></th>
+                    <td colspan="2">
+                        <table class="table modv2-table table-hover small-table">
+                            <tr>
+                                <th width="25%"><label ><span class="text-danger">*</span> 买方姓名：</label>  </th>
+                                <td>
+                                    <input type="text" class="form-control modv2-inputg" name="buyer_name" ng-model="item.buyer_name" required ng-readonly="item.is_from_contract " />
+                                    <div class="text-danger">请确保和合同买方一致</div>
+                                    <div class="has-feedback text-danger" ng-messages="form.buyer_name.$error" ng-show="interacted(form.buyer_name)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入买方姓名！</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="25%"><label ><span class="text-danger">*</span> 联系电话：</label>  </th>
+                                <td>
+                                    <input type="text" class="form-control modv2-inputg" name="buyer_phone" ng-model="item.buyer_phone" required mobile-validator ng-readonly="item.is_from_contract "/>
+									<div class="has-feedback text-danger" ng-messages="form.buyer_phone.$error" ng-show="interacted(form.buyer_phone)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入联系电话！</div>
+                                        <div ng-message="mobileValidator"><i class="fa fa-info-circle"></i>请输入联系电话必须11位！</div>
+                                    </div>
+                                    <div class="has-feedback text-danger" ng-if="buyer_phone_role">此电话为273员工电话</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="25%"><label ><span class="text-danger">*</span> 证件类型：</label>  </th>
+                                <td>
+                                    <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" ng-if="item.is_from_contract "></div>
+                                    <select  class="form-control modv2-inputg" name="buyer_cert_type" ng-model="item.buyer_cert_type"  select-cert-type required  ng-readonly="item.is_from_contract "></select>
+                                    <div class="has-feedback text-danger" ng-messages="form.buyer_cert_type.$error" ng-show="interacted(form.buyer_cert_type)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入证件类型！</div>
+                                        <div ng-message="certValidator"><i class="fa fa-info-circle"></i>请输入证件格式不正确！</div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="25%"><label ><span class="text-danger">*</span> 证件号码：</label>  </th>
+                                <td>
+                                    <input type="text" class="form-control modv2-inputg" name="buyer_cert_no"  ng-model="item.buyer_cert_no" required cert-validator="item.buyer_cert_type" ng-readonly="item.is_from_contract "/>
+                                    <div class="has-feedback text-danger" ng-messages="form.buyer_cert_no.$error" ng-show="interacted(form.buyer_cert_no)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入证件号码！</div>
+                                        <div ng-message="certValidator"><i class="fa fa-info-circle"></i>请输入证件格式不正确！</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><label ><input type="checkbox" name="bugAgent" ng-model="bugAgent" /> 买方代理人</label></td>
+                            </tr>
+
+                            <tr ng-if="bugAgent">
+                                <td colspan="2">
+                                    <table class="table modv2-table table-hover small-table">
+                                        <tr>
+                                            <th width="25%"><label ><span class="text-danger">*</span> 代理人：</label>  </th>
+                                            <td>
+                                                <input type="text" class="form-control modv2-inputg" name="buyer_agent_name" ng-model="item.buyer_agent_name" ng-readonly="item.is_from_contract " ng-required="bugAgent" ng-disabled="!bugAgent"/>
+                                                <div class="has-feedback text-danger" ng-messages="form.buyer_agent_name.$error" ng-show="interacted(form.buyer_agent_name)" ng-if="bugAgent">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代理人姓名！</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="25%"><label ><span class="text-danger">*</span> 联系电话：</label>  </th>
+                                            <td>
+                                                <input type="text" class="form-control modv2-inputg" name="buyer_agent_phone" ng-model="item.buyer_agent_phone"  ng-readonly="item.is_from_contract " ng-required="bugAgent"   mobile-validator  ng-disabled="!bugAgent"/>
+												<div class="has-feedback text-danger" ng-messages="form.buyer_agent_phone.$error" ng-show="interacted(form.buyer_agent_phone)" ng-if="bugAgent">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代理人联系电话！</div>
+                                                    <div ng-message="mobileValidator"><i class="fa fa-info-circle"></i>请输入联系电话必须11位！</div>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th width="25%"><label ><span class="text-danger">*</span> 证件类型：</label>  </th>
+                                            <td>
+                                                <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" ng-if="item.is_from_contract "></div>
+                                                <select class="form-control modv2-inputg" name="buyer_agent_cert_type" ng-model="item.buyer_agent_cert_type" ng-readonly="item.is_from_contract " ng-required="bugAgent" select-cert-type  > </select>
+                                                <div class="has-feedback text-danger" ng-messages="form.buyer_agent_cert_type.$error" ng-show="interacted(form.buyer_agent_cert_type)">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请选择代理人证件类型！</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th width="25%"><label ><span class="text-danger">*</span> 证件号码：</label>  </th>
+                                            <td>
+                                                <input type="text" class="form-control modv2-inputg" name="buyer_agent_cert_no" ng-model="item.buyer_agent_cert_no" ng-readonly="item.is_from_contract " cert-validator="item.buyer_agent_cert_type" ng-required="bugAgent" ng-disabled="!bugAgent"/>
+                                                <div class="has-feedback text-danger" ng-messages="form.buyer_agent_cert_no.$error" ng-show="interacted(form.buyer_agent_cert_no)" ng-if="bugAgent">
+                                                    <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代理人证件号码！</div>
+                                                    <div ng-message="certValidator"><i class="fa fa-info-circle"></i>请输入证件格式不正确！</div>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th><h4 class="box-title">甲方顾问</h4></th>
+                    <td colspan="2">
+                        <div class="form-group modv2-formg" style="margin-bottom: 10px;">
+                            <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" ng-if="item.is_from_contract "></div>
+                            <select  class="form-control " name="seller_tracer_province" ng-model="item.seller_tracer_province" ung-select-province=""   ng-readonly="item.is_from_contract ">
+                                <option value="">省份</option>
+                            </select>
+                        </div>
+                        <div class="form-group modv2-formg" style="margin-bottom: 10px;">
+                            <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" ng-if="item.is_from_contract "></div>
+                            <select  class="form-control " name="seller_tracer_city" ng-model="item.seller_tracer_city"  ung-select-city="item.seller_tracer_province"  ng-readonly="item.is_from_contract ">
+                                <option value="">市/区</option>
+                            </select>
+                        </div>
+                        <br/>
+                        <div class="form-group modv2-formg">
+                            <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" ng-if="item.is_from_contract"></div>
+                            <select  class="form-control " name="seller_tracer_shop" ng-model="item.seller_tracer_shop" ung-select-shop="item.seller_tracer_city"  ng-readonly="item.is_from_contract ">
+                                <option value="">门店</option>
+                            </select>
+                        </div>
+                        <div class="form-group modv2-formg">
+                            <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" ng-if="item.is_from_contract "></div>
+                            <select  class="form-control " name="seller_tracer" ng-model="item.seller_tracer" ung-select-sale-man="item.seller_tracer_shop"  ng-readonly="item.is_from_contract">
+                                <option value="">顾问</option>
+                            </select>
+                        </div>
+                    </td>
+                    <th><h4 class="box-title">乙方顾问</h4></th>
+                    <td colspan="2">
+                        <div class="form-group modv2-formg" style="margin-bottom: 10px;">
+                            <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" ng-if="item.is_from_contract "></div>
+                            <select  class="form-control " name="buyer_tracer_province" ng-model="item.buyer_tracer_province"  ung-select-province=""   ng-readonly="item.is_from_contract ">
+                                <option value="">省份</option>
+                            </select>
+                        </div>
+                        <div class="form-group modv2-formg" style="margin-bottom: 10px;">
+                            <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" ng-if="item.is_from_contract "></div>
+                            <select class="form-control " name="buyer_tracer_city" ng-model="item.buyer_tracer_city" ung-select-city="item.buyer_tracer_province"  ng-readonly="item.is_from_contract"  >
+                                <option value="">市/区</option>
+                            </select>
+                        </div>
+                        <br/>
+                        <div class="form-group modv2-formg">
+                            <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" ng-if="item.is_from_contract "></div>
+                            <select class="form-control " name="buyer_tracer_shop" ng-model="item.buyer_tracer_shop" ung-select-shop="item.buyer_tracer_city"  ng-readonly="item.is_from_contract">
+                                <option value="">门店</option>
+                            </select>
+                        </div>
+                        <div class="form-group modv2-formg">
+                            <div class="disabled-layer" style="width: 244px; height: 40px; position: relative; z-index: 1; margin-bottom: -40px;" ng-if="item.is_from_contract "></div>
+                            <select  class="form-control " name="buyer_tracer" ng-model="item.buyer_tracer" ung-select-sale-man="item.buyer_tracer_shop" ng-readonly="item.is_from_contract ">
+                                <option value="">顾问</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th width="12%" rowspan="2">
+                        <h4 class="box-title"><span class="text-danger">*</span> 请上传合同照</h4>
+                    </th>
+                    <td colspan="4">
+                        <web-uploader id="uploader"  ng-model="item.contract_pic" required file-num-limit="10">
+                            <input  type="hidden" name="photo_contract" ng-model="item.contract_pic[0].url"  required/>
+                        </web-uploader>
+<!--                        <span class="btn btn-primary btn-file modv2-btn" ngf-select ngf-drop ng-model="contract_pic" ng-model-rejected="rejFiles"
+                              ngf-multiple="true" ngf-accept="accept" accept="image/*"
+                              ng-disabled="disabled" ngf-capture="capture"
+                              ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+                              ngf-min-size="minSize"  ngf-max-size="1024000 * 5"
+                              ngf-keep="true" ngf-keep-distinct="true"
+                              ngf-reset-model-on-click="resetModelOnClick"
+                              ngf-allow-dir="allowDir" class="drop-box" ngf-drop-available="dropAvailable">上传照片</span>
+                        <input  type="hidden" name="photo_contract" ng-model="contract_pic[0].url"  required/>-->
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                    <!--    <ul style="clear:both" ng-show="contract_pic.length > 0" class="response list-unstyled clearfix">
+                            <li class="sel-file" ng-repeat="f in contract_pic">
+                                <a href="{{src}}" ng-if="f.url" target="_blank"><img  ng-src="{{f.url}}"  class="thumb" ng-click="showImg(f.url)"></a>
+                                <img ng-if="!f.url"  ng-show="f.type.indexOf('image') > -1" ngf-src="f" class="thumb" ngf-accept="'image/*'">
+                                        <span class="progress" ng-show="f.progress >= 0">
+                                            <div style="width:{{f.progress}}%">{{f.progress}}%</div>
+                                        </span>
+                             &lt;!&ndash;   <button class="button" ng-click="f.upload.abort();f.upload.aborted=true"
+                                        ng-show="f.upload != null && f.progress < 100 && !f.upload.aborted">Abort
+                                </button>&ndash;&gt;
+                                <a href="javascript:;" class="delete" ng-click="delete(contract_pic)" >×</a>
+                                &lt;!&ndash;   {{f.name}} - size: {{f.size}}B - type: {{f.type}}&ndash;&gt;
+                                <a ng-show="f.result" href="javascript:void(0)" ng-click="f.showDetail = !f.showDetail">details</a>
+
+                                <div ng-show="f.showDetail">
+                                    <br/>
+                                    <div data-ng-show="f.result.result == null">{{f.result}}</div>
+                                    <ul>
+                                        <li ng-repeat="item in f.result.result">
+                                            <div data-ng-show="item.name">file name: {{item.name}}</div>
+                                            <div data-ng-show="item.fieldName">name: {{item.fieldName}}</div>
+                                            <div data-ng-show="item.size">size on the serve: {{item.size}}</div>
+                                            <div data-ng-show="item.value">value: {{item.value}}</div>
+                                        </li>
+                                    </ul>
+                                    <div data-ng-show="f.result.requestHeaders" class="reqh">request headers: {{f.result.requestHeaders}}</div>
+                                </div>
+                            </li>
+                        </ul>-->
+                        <div class="has-feedback text-danger" ng-messages="form.photo_contract.$error" ng-show="interacted(form.photo_contract)">
+                            <div ng-message="required "><i class="fa fa-info-circle"></i>请上传合同照片！</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table modv2-table table-hover small-table">
+                <tr>
+                    <th width="12%" rowspan="3">
+                        <h4 class="box-title"><span class="text-danger">*</span>上传资料</h4>
+                    </th>
+                    <td>
+                        <a href="" class="badge badge-info">车辆产权证（示例）或行驶证 （示例）</a>
+                        <a href="" class="badge badge-info">车主身份证</a>
+                        <a href="" class="badge badge-info">车主代理人身份证</a>
+                        <a href="" class="badge badge-info">买方身份证</a>
+                        支持多图片上传，支持PNG.JPG
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <web-uploader  ng-model="item.certificate_pic" required file-num-limit="10">
+                            <input  type="hidden" name="photo_data" ng-model="item.certificate_pic[0].url"  required/>
+                        </web-uploader>
+                        <!-- <span class="btn btn-primary btn-file modv2-btn" ngf-select ngf-drop  ng-model="certificate_pic"    ng-model-rejected="rejFiles"
+                               ngf-multiple="true" ngf-accept="accept" accept="image/*"
+                               ng-disabled="disabled" ngf-capture="capture"
+                               ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+                               ngf-min-size="minSize" ngf-max-size="1024000 * 5"
+                               ngf-keep="true" ngf-keep-distinct="true"
+                               ngf-reset-model-on-click="resetModelOnClick"
+                               ngf-allow-dir="allowDir" class="drop-box" ngf-drop-available="dropAvailable">&lt;!&ndash;<input type="file"/>&ndash;&gt;上传照片</span>
+                        <input  type="hidden" name="photo_data" ng-model="certificate_pic[0].url"  required/>-->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <!-- <ul  ng-show="certificate_pic.length > 0" class="response list-unstyled clearfix" >
+                            <li class="sel-file" ng-repeat="f in certificate_pic">
+                                <a href="{{src}}" ng-if="f.url" target="_blank"><img ng-src="{{f.url}}"  class="thumb" ng-click="showImg(f.url)"></a>
+                                <img ng-if="!f.url"  ng-show="f.type.indexOf('image') > -1" ngf-src="f"  class="thumb">
+                                <span class="progress" ng-show="f.progress >= 0">
+                                    <div style="width:{{f.progress}}%">{{f.progress}}%</div>
+                                </span>
+                                <a href="javascript:;" class="delete"  ng-click="delete(certificate_pic)" >×</a>
+                              &lt;!&ndash;  <button class="button" ng-click="f.upload.abort();f.upload.aborted=true"
+                                        ng-show="f.upload != null && f.progress < 100 && !f.upload.aborted">Abort
+                                </button>&ndash;&gt;
+                                &lt;!&ndash;   {{f.name}} - size: {{f.size}}B - type: {{f.type}}&ndash;&gt;
+                                <a ng-show="f.result" href="javascript:void(0)" ng-click="f.showDetail = !f.showDetail">details</a>
+
+                                <div ng-show="f.showDetail">
+                                    <br/>
+
+                                    <div data-ng-show="f.result.result == null">{{f.result}}</div>
+                                    <ul>
+                                        <li ng-repeat="item in f.result.result">
+                                            <div data-ng-show="item.name">file name: {{item.name}}</div>
+                                            <div data-ng-show="item.fieldName">name: {{item.fieldName}}</div>
+                                            <div data-ng-show="item.size">size on the serve: {{item.size}}</div>
+                                            <div data-ng-show="item.value">value: {{item.value}}</div>
+                                        </li>
+                                    </ul>
+                                    <div data-ng-show="f.result.requestHeaders" class="reqh">request headers: {{f.result.requestHeaders}}</div>
+                                </div>
+                            </li>
+                        </ul>-->
+                        <div class="has-feedback text-danger" ng-messages="form.photo_data.$error" ng-show="interacted(form.photo_data)">
+                            <div ng-message="required "><i class="fa fa-info-circle"></i>请上传证件照片！</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table modv2-table table-hover small-table">
+                <tr>
+
+                    <th width="12%" rowspan="8" colspan="2">
+                        委托结算金额
+                    </th>
+                    <td colspan="3">（订单总金额 <strong class="text-danger">{{ item.fee }}</strong>，以下款项总和应等于订单总金额）</td>
+                </tr>
+                <tr>
+
+                    <th width="12%" colspan="2"> <label ><span class="text-danger">*</span> 车款：</label></th>
+                    <td colspan="2">
+                        <div class="input-group modv2-inputg" ><input type="text" class="form-control text-right"  ng-pattern="/^([0-9]*|[0-9]*\.[0-9]*)$/"  required   ng-model="item.car_fee" name="car_fee" /> <div class="input-group-addon">元</div></div>
+                        <div class="has-feedback text-danger" ng-messages="form.car_fee.$error" ng-show="interacted(form.car_fee)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入车款！</div>
+                            <div ng-message="pattern"><i class="fa fa-info-circle"></i>输入的车款格式不正确！</div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th colspan="2"> <label ><span class="text-danger">*</span> 代办过户费：</label></th>
+                    <td colspan="2">
+                        <div class="input-group modv2-inputg" >
+                            <input type="text" class="form-control text-right" name="anency_fee"  ng-pattern="/^([0-9]*|[0-9]*\.[0-9]*)$/"  required ng-model="item.anency_fee"  value="0"/>
+                            <div class="input-group-addon">元</div>
+                        </div>
+                        <div class="has-feedback text-danger" ng-messages="form.anency_fee.$error" ng-show="interacted(form.anency_fee)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代办过户费！</div>
+                            <div ng-message="pattern"><i class="fa fa-info-circle"></i>输入的代办过户费格式不正确！</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2"> <label ><span class="text-danger">*</span> 过户费：</label></th>
+                    <td  colspan="2">
+                        <div class="input-group modv2-inputg" ><input type="text" ng-pattern="/^([0-9]*|[0-9]*\.[0-9]*)$/"  required class="form-control text-right" name="transfer_fee"  ng-model="item.transfer_fee"  value="0"/>
+                            <div class="input-group-addon">元</div>
+                         </div>
+                        <div class="has-feedback text-danger" ng-messages="form.transfer_fee.$error" ng-show="interacted(form.transfer_fee)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入过户费！</div>
+                            <div ng-message="pattern"><i class="fa fa-info-circle"></i>输入的过户费格式不正确！</div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th colspan="2" > <label ><span class="text-danger">*</span> 其它费用：</label></th>
+                    <td colspan="2">
+                        <div class="input-group modv2-inputg" ><input type="text" class="form-control text-right" name="other_fee" ng-pattern="/^([0-9]*|[0-9]*\.[0-9]*)$/"  required ng-model="item.other_fee"   value="0"/>
+                            <div class="input-group-addon">元</div></div>
+                        <div class="has-feedback text-danger" ng-messages="form.other_fee.$error" ng-show="interacted(form.other_fee)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入其它费用！</div>
+                            <div ng-message="pattern"><i class="fa fa-info-circle"></i>输入的其它费用格式不正确！</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr >
+                    <th colspan="2" > <label ><span class="text-danger">*</span> 信息服务费：</label></th>
+                    <td colspan="2">
+                        <span style="display: inline-block;; vertical-align:middle">
+                              <div class="input-group modv2-inputg"  ><input type="text" class="form-control text-right"  ng-pattern="/^([0-9]*|[0-9]*\.[0-9]*)$/" ng-readonly="item.is_jhc == 1"  required  ng-model="item.brokerage" name="brokerage" value="0"/> <div class="input-group-addon">元</div></div>
+                        </span>
+                        &nbsp;
+                        &nbsp;
+                        <span ng-if="item.is_jhc == 1" style="display: inline-block ; vertical-align:middle">
+                            门店预付款 ：{{ item.dept_payment }}
+                        </span>
+                        &nbsp;
+                        &nbsp;
+                        <span ng-if="item.is_jhc == 1" style="display: inline-block; vertical-align:middle">
+                            平台服务费 ：{{ item.platform_fee }}
+                        </span>
+                        <div class="has-feedback text-danger" ng-messages="form.brokerage.$error" ng-show="interacted(form.brokerage)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入代办过户费！</div>
+                            <div ng-message="pattern"><i class="fa fa-info-circle"></i>输入的信息服务费格式不正确！</div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr ng-if="hasPayee">
+                    <td colspan="6">
+                        <table class="table modv2-table table-hover small-table">
+                            <tr>
+                                <th> <label ><span class="text-danger">*</span> 收款人姓名：</label></th>
+                                <td class="form-inline">
+                                    <input type="text" class="form-control modv2-inputg"  ng-disabled="true" required   ng-model="item.payee_realname" name="payee_realname" />&nbsp;&nbsp;
+                                    <label class="pickbox"><input type="radio" name="payee_type" ng-model="item.payee_type" value="1"/> 卖方</label>
+                                    <label class="pickbox"><input type="radio" name="payee_type" ng-model="item.payee_type" value="2"/> 代理人</label>
+                                    <div class="has-feedback text-danger" ng-messages="form.payee_realname.$error" ng-show="interacted(form.payee_realname)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入收款人姓名！</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th> <label ><span class="text-danger">*</span> 收款账号：</label></th>
+                                <td>
+                                    <input type="text" class="form-control modv2-inputg"  required   ng-model="item.payee_cardno" name="payee_cardno" ng-readonly="item.is_from_contract "/>
+                                    <div class="has-feedback text-danger" ng-messages="form.payee_cardno.$error" ng-show="interacted(form.payee_cardno)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入收款账号！</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th> <label ><span class="text-danger">*</span> 开户行：</label></th>
+                                <td>
+                                    <input type="text" class="form-control modv2-inputg"  required   ng-model="item.payee_bank" name="payee_bank" auto-complete ng-readonly="item.is_from_contract"/>
+                                    <span class="text-danger">支持模糊搜索银行，例如：中国民生银行，可输入“民生”，在下拉列表中快速选择。</span>
+                                    <div class="has-feedback text-danger" ng-messages="form.payee_bank.$error" ng-show="interacted(form.payee_bank)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入开户行！</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th> <label ><span class="text-danger">*</span> 开户支行：</label></th>
+                                <td>
+                                    <input type="text" class="form-control modv2-inputg"  required   ng-model="item.payee_bank_branch" name="payee_bank_branch" auto-complete-branch=""  ng-readonly="item.is_from_contract"/>
+                                    <div class="text-danger">支持模糊搜索银行，例如：中国民生银行福州鼓楼支行，可输入“民生 福州 鼓楼”，在下拉列表中快速选择。</div>
+                                    <div class="has-feedback text-danger" ng-messages="form.payee_bank_branch.$error" ng-show="interacted(form.payee_bank_branch)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入开户支行！</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th> <label ><span class="text-danger">*</span> 收款人证件号：</label></th>
+                                <td>
+                                    <input type="text" class="form-control modv2-inputg"  required   ng-model="item.payee_idcard" name="payee_idcard" ng-readonly="item.is_from_contract"/>
+                                    <div class="has-feedback text-danger" ng-messages="form.payee_idcard.$error" ng-show="interacted(form.payee_idcard)">
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入收款人证件号！</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th> <label ><span class="text-danger">*</span> 联系电话：</label></th>
+                                <td>
+                                    <input type="text" class="form-control modv2-inputg"  required   ng-model="item.payee_mobile" name="payee_mobile" minlength="11" maxlength="11" ng-readonly="item.is_from_contract "/>
+                                    <div class="has-feedback text-danger" ng-messages="form.payee_mobile.$error" ng-show="interacted(form.payee_mobile)" >
+                                        <div ng-message="required"><i class="fa fa-info-circle"></i>请输入联系电话！</div>
+                                        <div ng-message="minlength"><i class="fa fa-info-circle"></i>请输入联系电话必须11位！</div>
+                                        <div ng-message="maxlength"><i class="fa fa-info-circle"></i>请输入联系电话必须11位！</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <button class="btn btn-primary modv2-btn" >保存</button>
+            <button class="btn btn-primary modv2-btn" type="button" ng-click="back()">返回</button>
+
+    </form>
+    </div>
+
+</section>
+<script type="text/ng-template" id="tpl-notice-transfer.html">
+    <form role="form" name="noticeForm" ng-submit="ok(noticeForm.$valid)" class="form-inline" novalidate="">
+        <div class="modal-header">
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+            <h3 class="modal-title">通知转账收款</h3>
+        </div>
+        <div class="modal-body">
+            <div class="box-body">
+                <div class="box-body">
+                    <div class="form-group" >
+                        <div>转账收款账号将以短信方式通知买主，买主可通过网银或手机银行转账付款。（17点以后及非工作日，单笔金额超过5万将无法实时到账，可建议买主拆分转账）</div>
+                        <div style="margin:10px;padding: 10px; border:2px dashed #ff7200;">您在273{{item.dept_name }}成交{{ item.car_number }}，可网银或手机银行转账至以下公司账号，收款人：福州车友网络科技有限公司，账号：302015********，收款银行：平安银行福州市分行。转账时请选择对公账户，请复制粘贴账号以防填写错误账号户名以此信息为准，请勿填写错误。到账时间以银行提示为准。（17点以后及非工作日，单笔金额超过5万将无法实时到账，建议拆分转账）</div>
+                        <div><span class="text-danger">*</span>付款人手机号：<input type="text" placeholder="手机号码" id="mobile" mobile-validator class="form-control modv2-inputg"  name="mobile"  ng-model="submitter.mobile" required>
+                            <div class="has-feedback text-danger" ng-messages="noticeForm.mobile.$error" ng-show="interacted(noticeForm.mobile)">
+                                <div ng-message="required"><i class="fa fa-info-circle"></i>请输入手机码！</div>
+                                <div ng-message="mobileValidator"><i class="fa fa-info-circle"></i>请输入手机码必须11位！</div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box-body -->
+        </div>
+        <div class="modal-footer">
+            <div class="form-group modv2-formg">
+                <button class="btn btn-default" type="submit"> 发送</button>
+                <button class="btn btn-primary modv2-btn" ng-click="cancel()" type="button" >取消</button>
+            </div>
+        </div>
+    </form>
+</script>
+<!-- /.content -->

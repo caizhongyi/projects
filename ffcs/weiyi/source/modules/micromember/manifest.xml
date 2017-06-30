@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest versionCode="0.5">
+    <application setting="false">
+        <name><![CDATA[微会员]]></name>
+        <identifie><![CDATA[micromember]]></identifie>
+        <version><![CDATA[1.0]]></version>
+        <ability><![CDATA[微会员]]></ability>
+        <description><![CDATA[微会员]]></description>
+        <author><![CDATA[ffcsteam]]></author>
+        <url><![CDATA[]]></url>
+    </application>
+    <platform>
+        <subscribes>
+        </subscribes>
+        <handles>
+            <message type="text" />
+        </handles>
+        <rule embed="true">
+        </rule>
+        <menus embed="false">
+        </menus>
+    </platform>
+    <install><![CDATA[ALTER TABLE  `ims_fans` ADD  `age` TINYINT (3) NOT NULL ;
+CREATE TABLE IF NOT EXISTS `ims_micromember_business` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `frontcover` varchar(120) NOT NULL COMMENT '商家封面连接',
+  `description` varchar(140) NOT NULL COMMENT '商家描述',
+  `address` varchar(120) NOT NULL COMMENT '商家',
+  `phonenum` varchar(13) NOT NULL DEFAULT '' COMMENT '联系电话',
+  `area_p` varchar(20) DEFAULT NULL COMMENT '省',
+  `area_c` varchar(20) DEFAULT NULL COMMENT '市',
+  `area_a` varchar(20) DEFAULT NULL COMMENT '区',
+  `category` varchar(30) DEFAULT NULL,
+  `place` varchar(30) DEFAULT NULL COMMENT '经纬度详情地址 ',
+  `lng` float(14,11) DEFAULT NULL COMMENT '经度',
+  `lat` float(14,11) DEFAULT NULL COMMENT '纬度',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='商家信息';
+CREATE TABLE IF NOT EXISTS `ims_micromember_card` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) NOT NULL,
+  `name` varchar(30) NOT NULL COMMENT '会员卡名称',
+  `namecolor` varchar(7) NOT NULL COMMENT '会员卡颜色',
+  `background` varchar(120) NOT NULL COMMENT '自己设置的会员卡背景',
+  `sysbackground` varchar(120) DEFAULT NULL COMMENT '系统自带的背景',
+  `bgtype` tinyint(2) DEFAULT NULL COMMENT '背景类型.1、系统；2、自己设置',
+  `icon` varchar(120) NOT NULL COMMENT '会员卡图标',
+  `numcolor` varchar(7) NOT NULL COMMENT '卡号颜色',
+  `pwd` varchar(20) NOT NULL COMMENT '商家兑换密码',
+  `description` text NOT NULL COMMENT '会员卡描述',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='微会员卡设置';
+CREATE TABLE IF NOT EXISTS `ims_micromember_reply` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `rid` int(10) unsigned NOT NULL,
+  `parentid` int(10) unsigned NOT NULL default '0',
+  `title` varchar(50) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `thumb` varchar(60) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `ims_micromember` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户编号',
+`weid` int(10) NOT NULL COMMENT '公众帐号ID',
+`from_user` varchar(50) NOT NULL COMMENT '微信openid',
+`lasttime` int(10) unsigned NOT NULL COMMENT '上次签到时间',
+`count` int(5) DEFAULT NULL COMMENT '签到次数',
+`credit` int(10) DEFAULT NULL COMMENT '签到积分',
+`number` int(10) DEFAULT NULL COMMENT '微会员编号',
+PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='签到信息表';
+CREATE TABLE IF NOT EXISTS `ims_micromember_signin_logs` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'fans_singin表中的id',
+  `singinid` int(10) DEFAULT NULL,
+  `time` int(10) DEFAULT NULL COMMENT '签到时间',
+  `credit` int(5) DEFAULT NULL COMMENT '本次签到获得的积分',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='用户签到日志表'
+
+    ]]></install>
+    <uninstall></uninstall>
+    <upgrade><![CDATA[]]></upgrade>
+</manifest>

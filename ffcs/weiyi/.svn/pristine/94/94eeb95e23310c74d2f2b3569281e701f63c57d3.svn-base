@@ -1,0 +1,34 @@
+{template 'mobile/header'}
+<!--{template 'mobile/member'}-->
+<div class="tabbable">
+	<ul class="nav nav-tabs ">
+		<li class="active"><a href="#tab1" data-toggle="tab">应用中心</a></li>
+		<li><a href="#tab2" data-toggle="tab">个人中心</a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane active" id="tab1">
+			<div class="user-box">
+				{loop $navs $nav}
+				<a href="{$nav['url']}#qq.com#wechat_redirect" class="box-item">
+					{if empty($nav['css']['icon']['icon'])}
+					<i style="background:url({$_W['attachurl']}{$nav['icon']}) no-repeat;background-size:cover;"></i>
+					{else}
+					<i class="{$nav['css']['icon']['icon']}" style="{$nav['css']['icon']['style']}"></i>
+					{/if}
+					<span style="{$nav['css']['name']}">{$nav['name']}</span>
+				</a>
+				{/loop}
+			</div>
+		</div>
+		<!--<div class="tab-pane" id="tab2">-->
+			<!--<div class="user-box">-->
+				<!--&lt;!&ndash;个人中心（会员卡）&ndash;&gt;-->
+				<!--<a href="{php echo create_url('mobile/module/myorder', array('name' => 'shopping', 'weid' => $_W['weid']))}#qq.com#wechat_redirect" class="box-item">-->
+					<!--<i class="icon-shopping-cart"></i>-->
+					<!--<span style="{$nav['css']['name']}">我的订单</span>-->
+				<!--</a>-->
+			<!--</div>-->
+		<!--</div>-->
+	</div>
+</div>
+{template 'mobile/footer'}

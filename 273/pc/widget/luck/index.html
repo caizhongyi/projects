@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="skin/default/luck.css"/>
+</head>
+<body>
+<button type="button" id="luck-btn">luck</button>
+<button type="button" class="luck-btn-custom">luck custom</button>
+<script type="text/javascript" src="/mod.js"></script>
+<script>
+    var luck = require('luck'), $ = require('jquery');
+
+    $('#luck-btn').click(function(){
+        luck.open({
+            title: ['猜猜看'],
+            content: '你是傻逼吗？',
+            btn: ['是','不是'],
+            yes: function() {
+                luck.open({content: '你是傻逼！', time:1500});
+            },
+            no: function() {
+                luck.open({content: '你不是傻逼！', time:1500});
+            }
+        });
+    })
+
+
+    $('.luck-btn-custom').click(function(){
+        // 自定义
+        luck.open({
+            type:1,
+            content: '<div>custom</div>',
+        });
+    })
+
+</script>
+</body>
+</html>

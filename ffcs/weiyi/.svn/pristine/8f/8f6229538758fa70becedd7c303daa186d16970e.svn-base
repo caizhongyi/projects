@@ -1,0 +1,214 @@
+<!DOCTYPE >
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/card.css" media="all">
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <title>会员卡</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          name="viewport">
+    <meta name="format-detection" content="telephone=no">
+</head>
+
+<body id="card" ondragstart="return false;" onselectstart="return false;">
+<section class="body">
+<div id="overlay"></div>
+<div class="cardcenter">
+    <div class="card">
+        <img class="cardbg" src="images/card_bg08.png"><img id="cardlogo" class="logo"
+                                                            src="images/20131014104548_77603.png">
+
+        <h1 style="color: #443C4D">We会员</h1>
+        <strong class="pdo verify" style="color: #223D1D">
+            <span id="cdnb"><em>普通会员</em>1000001</span>
+        </strong>
+    </div>
+    <p class="explain">
+        <span>使用时向服务员出示此卡</span>
+    </p>
+</div>
+<div class="cardexplain">
+    <!--会员积分信息-->
+    <div class="jifen-box">
+        <ul class="zongjifen">
+            <li>
+                <a href="http://www.weimob.com/userinfo/Cardshopping?memberid=4969&amp;wechatid=o7E9cuLEy1K0TtD5_YmtQ6GXjwBw&amp;id=1368&amp;pid=7829&amp;bid=15385">
+                    <div class="fengexian">
+                        <p>消费记录</p>
+                        <span>0元</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.weimob.com/webcard/signhistory?id=1368&amp;bid=15385&amp;pid=7829&amp;wechatid=o7E9cuLEy1K0TtD5_YmtQ6GXjwBw">
+                    <div class="fengexian">
+                        <p>剩余积分</p>
+                        <span>0分</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.weimob.com/userinfo/Cardshopping?memberid=4969&amp;wechatid=o7E9cuLEy1K0TtD5_YmtQ6GXjwBw&amp;id=1368&amp;pid=7829&amp;bid=15385">
+                    <p>剩余金额</p>
+                    <span>100元</span>
+                </a>
+            </li>
+        </ul>
+        <div class="clr"></div>
+    </div>
+    <!--<ul class="round" id="notice">
+        <li>
+            <a href="http://www.weimob.com/webcard/announce?pid=7829&amp;bid=15385&amp;wechatid=o7E9cuLEy1K0TtD5_YmtQ6GXjwBw">
+                <span>最新通知<em class="ok">0</em></span>
+            </a>
+            &lt;!&ndash; <a href="/userinfo/MemberNotice?cardid=4969&pid=7829&bid=15385&wechatid=o7E9cuLEy1K0TtD5_YmtQ6GXjwBw">
+                <span>最新通知<em class="ok">1</em></span>
+            </a> &ndash;&gt;
+        </li>
+        <li>
+            <a href="http://www.weimob.com/userinfo/MemberPrivilege?id=1368&amp;memberid=4969&amp;pid=7829&amp;bid=15385&amp;wechatid=o7E9cuLEy1K0TtD5_YmtQ6GXjwBw">
+                <span>会员卡特权<em class="ok">0</em></span>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.weimob.com/userinfo/MemberCoupon?id=1368&amp;memberid=4969&amp;pid=7829&amp;bid=15385&amp;wechatid=o7E9cuLEy1K0TtD5_YmtQ6GXjwBw">
+                <span>会员优惠券<em class="error">1</em></span>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.weimob.com/userinfo/MemberGift?id=1368&amp;memberid=4969&amp;pid=7829&amp;bid=15385&amp;wechatid=o7E9cuLEy1K0TtD5_YmtQ6GXjwBw">
+                <span>积分换礼品<em class="ok">0</em></span>
+            </a>
+        </li>
+    </ul>-->
+    <!---------------------->
+    <ul class="round" id="powerandgift">
+        <li>
+            <!-- webcard/signhistory?bid=801&pid=334&wechatid=oD1j9jr8mV-CmCen&m=05 -->
+            <a href="http://www.weimob.com/webcard/signhistory?id=1368&amp;bid=15385&amp;pid=7829&amp;wechatid=o7E9cuLEy1K0TtD5_YmtQ6GXjwBw">
+                <span>签到赚积分<em class="ok">今日已签到</em></span>
+            </a>
+         <!--   <a href="javascript:;">
+                <span>签到赚积分<em class="error">今日未签到</em></span>
+            </a>-->
+        </li>
+        <li>
+            <a href="http://www.weimob.com/userinfo/Userinfo?id=1368&amp;memberid=4969&amp;wechatid=o7E9cuLEy1K0TtD5_YmtQ6GXjwBw&amp;pid=7829&amp;bid=15385">
+                <span>个人资料</span>
+            </a>
+        </li>
+        <li><a href="http://www.weimob.com/userinfo/CardInfo?id=1368&amp;pid=7829&amp;bid=15385"><span>会员卡说明</span></a>
+        </li>
+        <li><a href="http://www.weimob.com/userinfo/Store?id=1368&amp;pid=7829&amp;bid=15385"><span>适用门店电话及地址</span></a>
+        </li>
+    </ul>
+    <!---------------------->
+
+    <ul class="round">
+        <li class="addr">
+            <a href="http://api.map.baidu.com/marker?location=26.117184192871,119.27552212129&amp;title=%E7%A6%8F%E5%BB%BA%E7%9C%81%E7%A6%8F%E5%B7%9E%E5%B8%82%E9%BC%93%E6%A5%BC%E5%8C%BA%E8%BD%AF%E4%BB%B6%E5%A4%A7%E9%81%93&amp;name=%E7%A6%8F%E5%BB%BA%E7%9C%81%E7%A6%8F%E5%B7%9E%E5%B8%82%E9%BC%93%E6%A5%BC%E5%8C%BA%E8%BD%AF%E4%BB%B6%E5%A4%A7%E9%81%93&amp;content=%E7%A6%8F%E5%B7%9E%E5%B8%82%E9%93%9C%E7%9B%98%E8%B7%AF%E8%BD%AF%E4%BB%B6%E5%A4%A7%E9%81%9389%E5%8F%B7A%E5%8C%BA12#%E6%A5%BC&amp;output=html&amp;src=weiba%7Cweiweb">
+                <span>地址: 福州市铜盘路软件大道89号A区12#楼</span>
+            </a>
+        </li>
+        <li class="tel">
+            <a href="tel:15059484010">
+                <span>电话: 15059484010</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="plugback">
+    <a href="javascript:history.back(-1)">
+        <div class="plugbg themeStyle">
+            <span class="plugback"></span>
+        </div>
+    </a>
+</div>
+<!--输入框-->
+<div class="window" id="windowcenter">
+    <div id="title" class="wtitle">领卡信息<span class="close" id="alertclose"></span></div>
+    <input id="id" name="id" value="1368" type="hidden">
+    <input id="bid" name="bid" value="15385" type="hidden">
+    <input id="pid" name="pid" value="7829" type="hidden">
+    <input id="wechatid" name="wechatid" value="o7E9cuLEy1K0TtD5_YmtQ6GXjwBw" type="hidden">
+
+    <div class="content">
+        <div id="txt">填写真实的姓名以及电话号码，即可获得会员卡，享受会员特权。</div>
+        <p>
+            <input name="truename" class="px" id="truename" placeholder="请输入您的姓名" type="text">
+        </p>
+
+        <p>
+            <input name="tel" class="px" id="tel" placeholder="请输入您的电话" type="tel">
+        </p>
+        <input value="确 定" name="确 定" class="txtbtn" id="windowclosebutton" type="button">
+    </div>
+</div>
+
+<!---->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#windowclosebutton").bind("click",
+                function () {
+                    var btn = $(this);
+                    var tel = $("#tel").val();
+                    var bid = $('#bid').val();
+                    var truename = $("#truename").val();
+                    var pid = $('#pid').val();
+                    var id = $('#id').val();
+                    var wechatid = $('#wechatid').val();
+                    if (truename == '' || "请输入名字!" == truename) {
+                        $("#truename").val("请输入名字!");
+                        return;
+                    }
+                    if (tel == '' || "手机号不对或为空!" == tel) {
+                        $("#tel").val("手机号不对或为空!");
+                        return;
+                    }
+                    //
+                    var submitData = {
+                        bid: bid,
+                        pid: pid,
+                        id: id,
+                        wechatid: wechatid,
+                        truename: truename,
+                        tel: tel,
+                        action: "setTel"
+                    };
+                    $.post('/Userinfo/Registerinfo/', submitData,
+                            function (data) {
+                                if (data.errno == 200) {
+                                    $("#windowcenter").slideUp(500);
+                                    $("#overlay").css("display", "none");
+                                    $("#cdnb").html(data.msg);
+                                    $("#notice").css("display", "");
+                                    $("#powerandgift").css("display", "");
+                                    window.location.href = data.url;
+                                } else {
+                                    $("#txt").html('<span style="color:red;">' + data.error + '</span>');
+                                }
+                            },
+                            "json");
+                });
+
+        $("#showcard").click(function () {
+            alert("填写真实的姓名以及电话号码，即可获得会员卡，享受会员特权。");
+            $("#overlay").css("display", "block");
+        });
+    });
+
+    $("#alertclose").click(function () {
+        $("#windowcenter").slideUp(500);
+        $("#overlay").css("display", "none");
+    });
+
+    function alert(title) {
+        $("#windowcenter").slideToggle("slow");
+        $("#txt").html(title);
+    }
+</script>
+</section>
+
+</body>
+</html>

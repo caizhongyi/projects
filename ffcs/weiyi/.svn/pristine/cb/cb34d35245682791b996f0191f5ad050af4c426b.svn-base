@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="Keywords" content=""/>
+    <meta name="Description" content=""/>
+    <!-- Mobile Devices Support @begin -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <!-- Mobile Devices Support @end -->
+    <link rel="shortcut icon" href=""/>
+    <link rel="stylesheet" type="text/css" href="./resource/style/bootstrap.min.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="./resource/style/actitity.css" media="all"/>
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+    <title></title>
+
+</head>
+<body>
+    <div class="header">
+        <div class="container clearfix">
+            <div class="logo">
+                <img src="./resource/image/vote-logo.png" alt=""/>投票
+            </div>
+        </div>
+    </div>
+
+    <div class="container article">
+        <h1>{$reply_info['title']}</h1>
+        <h3>投票时间：{php echo date('Y-m-d',$reply_info['start_time'])}至{php echo date('Y-m-d',$reply_info['end_time'])}</h3>
+
+        <div class="result">
+            <h2>{if $select_type=='radio'}单选{else}多选{/if}投票结果 <span class="text-warning">（共有{$vote_counts}人参与）</span></h2>
+            <ol>
+                {php $i=1;}
+                {loop $vote_option_infos $item}
+                <li>
+                    <div class="title"> {$item['title']}</div>
+                    <div class="progressbar clearfix">
+                        <span class="progress">
+                            <div class="bar" style="width: {php echo intval(($item['vote_num']/$vote_counts*100));}%"></div>
+                        </span>
+                        <span class="total">{php echo intval(($item['vote_num']/$vote_counts*100));}%<span class="text-warning">({$item['vote_num']})</span></span>
+                    </div>
+                </li>
+                {php $i++;}
+                {/loop}
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    setInterval(function(){window.location.reload();},5000)
+</script>

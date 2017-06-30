@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta name="viewport" content="width=device-width;initial-scale=1.0;maximum-scale=1.0;user-scalable=yes;" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="white">
+		<meta name="format-detection" content="telephone=no">
+<title>投票</title>
+<link href="./source/modules/vote/template/style/m.css" rel="stylesheet" type="text/css">
+<link href="./source/modules/vote/template/style/wall.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>  
+<script type="text/javascript" src="./source/modules/vote/template/js/jquery.blockUI.js"></script>  
+  
+</head>
+<body>
+<h1 style="text-align: center;">投票</h1>
+  {if $isvote == 0}<div id="top_msg" onclick="$('#top_msg').slideUp(500);">投票成功</div> {/if} 
+  <div class="form_line">{$reply['title']}投票系统</div>
+  <div class="form_center">单选投票，共有{$sumnum}人参与投票</div>
+<form method="post" action="{php echo create_url('index/module', array('do' => 'list', 'name' => 'vote','from_user'=>$_GPC['from_user'],'id'=>$rid));}" id="reg_form"> 
+{loop $list $v} 
+<div class="list">
+  	<div class="content">
+      <img src="{$v['thumb']}" alt="" class="msg_img" width="100%"/>
+      <br/><input type="radio" name="v" value="{$v['id']}"/> {$v['title']}
+ 	</div>
+  <div class="info"  {if $isvote == 1}  style="display:none" {/if} >得票数：{$v['vote_num']}（{$v['percent']}%）
+  		<br/><img class="vote_img" src="./source/modules/vote/template/images/blank.png" style="width: {$v['percent']}%;" title="{$v['vote_num']}（{$v['percent']}%）"/>
+  	</div>
+</div>
+{/loop} 
+ <div class="form_center"><input type="button"  value="投票" class="set_button" id="form_bt"/></div></form>
+<script type="text/javascript">
+$('#form_bt').click(function() {
+    var v = $(':radio[name="v"]:checked').val();
+  	if(typeof(v) == "undefined"){
+   		alert("请先投票，然后再提交"); 		
+    	return false;
+  	}
+	$.get("{php echo create_url('index/module', array('do' => 'ajax', 'name' => 'vote','u'=>$_GPC['from_user'],'id'=>$rid));}&oid="+v,function(data){
+      //提交数据
+      	if(data.status==0){
+           alert(data.msg); 
+		}else{
+		   location.href = "{php echo create_url('index/module', array('do' => 'list', 'name' => 'vote','from_user'=>$_GPC['from_user'],'id'=>$rid));}";	
+		}
+   }, "json");
+});
+</script>
+
+</script>
+
+<div class="foot"></div>
+</body>
+</html>

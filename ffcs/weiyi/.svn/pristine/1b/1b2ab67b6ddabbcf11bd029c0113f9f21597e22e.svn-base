@@ -1,0 +1,57 @@
+{template 'header'}
+<div data-role="page" data-theme="a">
+    <div data-role="header" data-position="inline">
+        <h1>{$title}</h1>
+    </div>
+    <style>
+        .fieldcontain label{vertical-align: middle;display: inline-block;width: 18%;}
+        .fieldcontain input,.fieldcontain div{width:77%;display: inline-block;}
+    </style>
+    <div class="main">
+        <div data-role="collapsible-set">
+            <div>
+                <h3>订单信息</h3>
+                <p>名称：{$item['name']}<br><br>
+                    单价：{$item['newprice']}元<br><br>
+                    限购：{$item['per_maxnum']}件<br><br>
+                </p>
+            </div>
+            <div>
+                <h3>详细信息</h3><br>
+            </div>
+        </div>
+        <form action="{$_W['siteroot']}{php echo $this->createMobileUrl('buying', array('id' => $item['id'],'from_user'=>$_GPC['from_user']))}" method="post" data-ajax="false" onsubmit="return check(this)">
+            <div class="fieldcontain"><label for="name">姓名：</label><input type="text" id="name" name="realname" /></div>
+            <div class="fieldcontain"><label for="phone">手机：</label><input type="text" id="phone" name="mobile"/></div>
+            <div class="fieldcontain"><label for="number">数量：</label><input type="text" id="number" name="number"/></div>
+            <div class="fieldcontain"><label for="address">地址：</label><input type="text" id="address" name="address"/></div>
+            <div style="margin:20px 0;"><input type="submit" name="submit" data-theme="a" value="提交"/></div>
+            <input type="hidden" name="token" value="{$_W['token']}" />
+        </form>
+    </div>
+    <script type="text/javascript">
+        function check(form) {
+            if (!form['realname'].value) {
+                alert('请输入您的真实姓名！');
+                return false;
+            }
+            if (!form['mobile'].value) {
+                alert('请输入您的手机号码！');
+                return false;
+            }
+            if (!/^1[358]{1}[0-9]{9}/.test(form['mobile'].value)) {
+                alert('请输入正确的手机号码！');
+                return false;
+            }
+            if (!form['number'].value) {
+                alert('请输入数量！');
+                return false;
+            }
+            if (!form['address'].value) {
+                alert('请输入地址！');
+                return false;
+            }
+            return true;
+        }
+    </script>
+    {template 'footer'}

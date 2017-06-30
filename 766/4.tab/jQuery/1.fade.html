@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>1.幻灯片效果-淡入淡出 + 返回顶部效果</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+</head>
+<body>
+<!-- wrapper -->
+<div class="main">
+<!--目录-->
+<h2>766通用JS效果 目录：（以下效果，经测试，兼容FF10.0/IE6,7,8,9/360 4.1.1.6/遨游 3.1.5/世界之窗3.2）</h2>
+<p class="descirpt" style="background:#f1f1f1; border:1px solid #369;">
+	<a href="0.index.html">0.首页-JQuery基础使用教程</a><br />
+	<span>1.幻灯片效果-淡入淡出 + 返回顶部</span><br />
+	<a href="2.stepScroll.html">2.幻灯片效果-单块内容滚动</a><br />
+	<a href="3.scroll.html">3.滚动效果</a><br />
+	<a href="4.textScroll.html">4.文本滚动效果</a><br />
+	<a href="5.tab.html">5.选项卡/标签切换效果+图片切换后载效果</a><br />
+	<a href="6.menu.html">6.下拉菜单/级联菜单效果</a><br />
+	<a href="7.ie6png.html">7.IE6 png bug</a><br />
+	<a href="8.ie6fixed.html">8.IE6 fixed bug</a><br />
+</p>
+<!--目录 end-->
+
+<!--范例***************************************************-->
+<h2>返回顶部效果</h2>
+<p class="descirpt">描述：样式可修改，默认不显示“返回顶部”按钮，页面向下滚动一点位置之后显示。点击后内容返回顶部<br />
+其中，提示的文字需要在js文件中修改。“返回顶部”按钮可以修改成图片样式。
+</p>
+<h3 class="h3">范例：</h3>
+<textarea style="height:400px;" readonly="readonly">
+<html>
+	<head>
+		<style>
+			/*slide*/
+			.backToTop { display:none; width:18px; line-height:1.2; padding:5px 0; background-color:#000; color:#fff; font-size:12px; text-align:center; position:fixed; _position:absolute; left:50%; margin-left:500px; bottom:100px; _bottom:"auto"; cursor:pointer; opacity:.6; filter:Alpha(opacity=60); }
+		</style>
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script src="js/back_top.js"></script>
+	</head>
+	<body>
+		<div style="height:1400px; width:800px; margin:0 auto"></div>
+	</body>
+</html>
+
+备注：
+1.不需要额外代码，修改样式即可
+2.注释：样式中得margin-left:501px;中的左边距为页面主体宽度的一半。当前范例的主体宽度为1000px;,所以左边距为500px
+</textarea>
+<style>
+/*slide*/
+.backToTop { display:none; width:18px; line-height:1.2; padding:5px 0; background-color:#000; color:#fff; font-size:12px; text-align:center; position:fixed; _position:absolute; left:50%; margin-left:500px; bottom:100px; _bottom:auto; cursor:pointer; opacity:.6; filter:Alpha(opacity=60); }
+</style>
+<script src="js/back_top.js"></script>
+<!--范例 end***************************************************-->
+
+<!--1.幻灯片效果-->
+<h2>幻灯片效果</h2>
+<p class="descirpt">描述：幻灯片效果；主要效果为具体内容+缩略内容的轮播。<br />
+	其中，具体内容可以是单独大图、大图+标题文字等<br />
+	缩略内容可以是简单的色块、数字+背景色、缩略图、文字标题等<br />
+</p><br />
+<h3 class="h3">范例1：大图+标记</h3>
+<!--范例1***************************************************-->
+<textarea style="height:400px; width:978px;" readonly="readonly">
+<html>
+	<head>
+		<style>
+			/* CSS Reset */
+			body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+			table { border-collapse: collapse; border-spacing: 0; }
+			fieldset, img { border: 0; }
+			input,select,textarea{ font-size:12px}
+			ol, ul { list-style: none; }
+			h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+			/* base */
+			body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+			/*幻灯*/
+			#alFade{ position:relative; background:#fff; overflow:hidden; padding:2px; border:1px solid #bababa; width:528px; height:171px; }
+			#alFade .alFade-pic,#alFade .alFade-pic li{ width:528px; height:171px; overflow:hidden; }
+			#alFade .alFade-pic li{ display:none; position:absolute; }
+			#alFade .alFade-pic img{ width:100%; height:100%; display:block; padding:0; border:0; }
+			#alFade .alFade-flag{ position:absolute; bottom:5px; right:0; }
+			#alFade .alFade-flag li{ cursor:pointer; width:8px; height:8px; text-indent:-999em; text-align:center; background:#ffc973; border:1px solid #ff9c00; color:#620F01; font-family:Arial, Helvetica, sans-serif; float:left; display:inline; margin:0 5px 0 0; }
+			#alFade .alFade-flag .alFade-on{ cursor:default; background:#7E5E21; border:1px solid #A76F24; color:#fff; }
+		</style>
+		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script src="js/fade.js"></script>
+		<script>
+		$(function(){
+			//alFade是一款淡入淡出实现幻灯效果的jQuery插件，完整的默认参数如下：
+			/*
+			$("#alFade").alFade({
+				box:'#alFade',			//容器DIV
+				pic:'.alFade-pic',		//图片DIV
+				title:'.alFade-flag',	//标题DIV
+				mouseType:'click',		//鼠标控制方式，click：点击显示大图，mouseover：鼠标滑过显示大图
+				on:'alFade-on',			//选中标签的类
+				flag:0,					//第一个显示的图片，一般不做修改
+				isAuto:true,			//是否自动播放，一般不做修改
+				timeScroll:3000			//轮播间隔，现在为3000毫秒，即3秒
+			});
+			*/
+			//什么参数都不写，则都为默认参数
+			//比如：$("#alFade").alFadeslider();
+			//本例中用到的js效果
+			$("#alFade").alFadeslider({box:'#alFade'});
+		});
+		</script>
+	</head>
+	<body>
+		<div id="alFade">
+			<ul class="alFade-pic">
+				<li><a href="#"><img src="pics/ad19.jpg" /></a></li>
+				<li><a href="#"><img src="pics/ad18.jpg" /></a></li>
+				<li><a href="#"><img src="pics/ad17.jpg" /></a></li>
+				<li><a href="#"><img src="pics/ad16.jpg" /></a></li>
+			</ul>
+			<ul class="alFade-flag">
+				<li class="alFade-on">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+	</body>
+</html>
+
+CMS调用：
+<div id="alFade">
+	<ul class="alFade-pic">
+		<CMS action="LIST" return="List" NodeID="1234" Num="4" where="c.Photo != ''" />
+		<loop name="List" var="var" key="key" start="1">
+			<li><a href="[$var.URL]" target="_blank" title="[$var.Title]"><img src="[$var.Photo]" border="0" /></a></li>
+		</loop>
+	</ul>
+	<ul class="alFade-flag">
+		<CMS action="LIST" return="List" NodeID="1234" Num="4" where="c.Photo != ''" />
+		<loop name="List" var="var" key="key" start="1">
+			<if test="$key==1">
+				<li class="alFade-on">[$key]</li>
+			<else>
+				<li>[$key]</li>
+			</if>
+		</loop>
+	</ul>
+</div>
+</textarea>
+<style type="text/css">
+/*幻灯*/
+#alFade{ position:relative; background:#fff; overflow:hidden; padding:2px; border:1px solid #bababa; width:528px; height:171px; }
+#alFade .alFade-pic,#alFade .alFade-pic li{ width:528px; height:171px; overflow:hidden; }
+#alFade .alFade-pic li{ display:none; /*position:absolute;*/ }
+#alFade .alFade-pic img{ width:100%; height:100%; display:block; padding:0; border:0; }
+#alFade .alFade-flag{ position:absolute; bottom:5px; right:0; }
+#alFade .alFade-flag li{ cursor:pointer; width:8px; height:8px; text-indent:-999em; text-align:center; background:#ffc973; border:1px solid #ff9c00; color:#620F01; font-family:Arial, Helvetica, sans-serif; float:left; display:inline; margin:0 5px 0 0; }
+#alFade .alFade-flag .alFade-on{ cursor:default; background:#7E5E21; border:1px solid #A76F24; color:#fff; }
+</style>
+<script src="js/fade.js"></script>
+<script>
+$(function(){
+	$("#alFade").alFadeslider({	box:'#alFade'});
+});
+</script>
+<div id="alFade">
+	<ul class="alFade-pic">
+		<li><a href="#"><img src="pics/ad19.jpg" /></a></li>
+		<li><a href="#"><img src="pics/ad18.jpg" /></a></li>
+		<li><a href="#"><img src="pics/ad17.jpg" /></a></li>
+		<li><a href="#"><img src="pics/ad16.jpg" /></a></li>
+	</ul>
+	<ul class="alFade-flag">
+		<li class="alFade-on">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+</div><br />
+<br />
+<!--范例1 end***************************************************-->
+
+<!--范例2***************************************************-->
+<h3 class="h3">范例2：大图+下方缩略图</h3>
+<textarea style="height:400px; width:978px;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*幻灯*/
+		#alFade1{ position:relative; background:#fff; overflow:hidden; padding:2px; border:1px solid #bababa; width:528px; }
+		#alFade1 .alFade-pic,#alFade1 .alFade-pic li{ width:528px; height:171px; overflow:hidden; }
+		#alFade1 .alFade-pic li{ display:none; position:absolute; }
+		#alFade1 .alFade-pic img{ width:100%; height:100%; display:block; padding:0; border:0; }
+		#alFade1 .alFade-flag{  }
+		#alFade1 .alFade-flag li{ cursor:pointer; width:126px; height:39px; padding:1px; border:2px solid #333; color:#620F01; font-family:Arial, Helvetica, sans-serif; float:left; display:inline; }
+		#alFade1 .alFade-flag li img{ display:block; width:126px; height:39px; }
+		#alFade1 .alFade-flag .alFade-on{ cursor:default; padding:0; border:3px solid #ff9c00; color:#fff; }
+		</style>
+		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script src="js/fade.js"></script>
+		<script>
+		$(function(){
+			$("#alFade1").alFadeslider({
+				box:'#alFade1',
+				mouseType:'mouseover'
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<div id="alFade1">
+			<ul class="alFade-pic">
+				<li><a href="#"><img src="pics/ad19.jpg" /></a></li>
+				<li><a href="#"><img src="pics/ad18.jpg" /></a></li>
+				<li><a href="#"><img src="pics/ad17.jpg" /></a></li>
+				<li><a href="#"><img src="pics/ad16.jpg" /></a></li>
+			</ul>
+			<ul class="alFade-flag">
+				<li class="alFade-on"><img src="pics/ad19.jpg" /></li>
+				<li><img src="pics/ad18.jpg" /></li>
+				<li><img src="pics/ad17.jpg" /></li>
+				<li><img src="pics/ad16.jpg" /></li>
+			</ul>
+		</div>
+	</body>
+</html>
+</textarea>
+<style type="text/css">
+/*幻灯*/
+#alFade1{ position:relative; background:#fff; overflow:hidden; padding:2px; border:1px solid #bababa; width:528px; }
+#alFade1 .alFade-pic,#alFade1 .alFade-pic li{ width:528px; height:171px; overflow:hidden; }
+#alFade1 .alFade-pic li{ display:none; position:absolute; }
+#alFade1 .alFade-pic img{ width:100%; height:100%; display:block; padding:0; border:0; }
+#alFade1 .alFade-flag{  }
+#alFade1 .alFade-flag li{ cursor:pointer; width:126px; height:39px; padding:1px; border:2px solid #333; color:#620F01; font-family:Arial, Helvetica, sans-serif; float:left; display:inline; }
+#alFade1 .alFade-flag li img{ display:block; width:126px; height:39px; }
+#alFade1 .alFade-flag .alFade-on{ cursor:default; padding:0; border:3px solid #ff9c00; color:#fff; }
+</style>
+<script>
+$(function(){
+	$("#alFade1").alFadeslider({box:'#alFade1',mouseType:'mouseover'});
+});
+</script>
+
+<div id="alFade1">
+	<ul class="alFade-pic">
+		<li><a href="#"><img src="pics/ad19.jpg" /></a></li>
+		<li><a href="#"><img src="pics/ad18.jpg" /></a></li>
+		<li><a href="#"><img src="pics/ad17.jpg" /></a></li>
+		<li><a href="#"><img src="pics/ad16.jpg" /></a></li>
+	</ul>
+	<ul class="alFade-flag">
+		<li class="alFade-on"><img src="pics/ad19.jpg" /></li>
+		<li><img src="pics/ad18.jpg" /></li>
+		<li><img src="pics/ad17.jpg" /></li>
+		<li><img src="pics/ad16.jpg" /></li>
+	</ul>
+</div><br />
+<br />
+<!--范例2 end***************************************************-->
+
+<!--范例3***************************************************-->
+<h3 class="h3">范例3：大图+缩略图左侧/右侧</h3>
+<textarea style="height:400px; width:978px;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/*幻灯*/
+		#alFade2{ position:relative; background:#fff; overflow:hidden; padding:2px; border:1px solid #bababa; width:630px; }
+		#alFade2 .alFade-image{ float:left; }
+		#alFade2 .alFade-image, #alFade2 .alFade-image li{ width:528px; height:171px; overflow:hidden; }
+		#alFade2 .alFade-image li{ display:none; position:absolute; }
+		#alFade2 .alFade-image img{ width:100%; height:100%; display:block; padding:0; border:0; }
+		#alFade2 .alFade-title{ float:right;  }
+		#alFade2 .alFade-title li{ cursor:pointer; width:94px; height:36px; margin-bottom:1px; padding:1px; border:2px solid #333; color:#620F01; font-family:Arial, Helvetica, sans-serif; }
+		#alFade2 .alFade-title li img{ display:block; width:94px; height:36px; }
+		#alFade2 .alFade-title .alFade-cur{ cursor:default; padding:0; border:3px solid #ff9c00; color:#fff; }
+		#alFade2 .text, #alFade2 .textBg{ position:absolute; bottom:0; width:100%; height:40px; overflow:hidden; }
+		#alFade2 .textBg{ opacity:.6; filter:Alpha(opacity=60); background:#000; }
+		#alFade2 .text h4, #alFade2 .text p{ padding:2px 5px 0; line-height:18px; font-size:12px; height:18px; overflow:hidden; margin:0; background:none; color:#fff }
+		</style>
+		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script src="js/fade.js"></script>
+		<script>
+		$(function(){
+			$("#alFade2").alFadeslider({
+				box:'#alFade2',			//容器DIV
+				pic:'.alFade-image',	//图片DIV
+				title:'.alFade-title',	//标题DIV
+				on:'alFade-cur',		//选中标签的类
+				flag:1,					//初始显示第2张图
+				timeScroll:4000			//5秒轮播		
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<div id="alFade2">
+			<ul class="alFade-image">
+				<li><a href="#"><img src="pics/ad19.jpg" /></a><div class="textBg"></div><div class="text"><h4>我是标题1</h4><p>可以使用文字标题，位置请自行修改样式</p></div></li>
+				<li><a href="#"><img src="pics/ad18.jpg" /></a><div class="textBg"></div><div class="text"><h4>我是标题22</h4><p>可以使用文字标题，位置请自行修改样式</p></div></li>
+				<li><a href="#"><img src="pics/ad17.jpg" /></a><div class="textBg"></div><div class="text"><h4>我是标题333</h4><p>可以使用文字标题，位置请自行修改样式</p></div></li>
+				<li><a href="#"><img src="pics/ad16.jpg" /></a><div class="textBg"></div><div class="text"><h4>我是标题4444</h4><p>可以使用文字标题，位置请自行修改样式</p></div></li>
+			</ul>
+			<ul class="alFade-title">
+				<li class="alFade-cur"><img src="pics/ad19.jpg" /></li>
+				<li><img src="pics/ad18.jpg" /></li>
+				<li><img src="pics/ad17.jpg" /></li>
+				<li><img src="pics/ad16.jpg" /></li>
+			</ul>
+		</div>
+	</body>
+</html>
+
+CMS调用：
+<div id="alFade2">
+	<ul class="alFade-image">
+		<CMS action="LIST" return="List" NodeID="1234" Num="4" where="c.Photo != ''" />
+		<loop name="List" var="var" key="key" start="1">
+			<li><a href="[$var.URL]" target="_blank" title="[$var.Title]"><img src="[$var.Photo]" border="0" /></a><div class="textBg"></div><div class="text"><h4>[$var.Title]</h4><p>[$var.Intro]</p></div></li>
+		</loop>
+	</ul>
+	<ul class="alFade-flag">
+		<CMS action="LIST" return="List" NodeID="1234" Num="4" where="c.Photo != ''" />
+		<loop name="List" var="var" key="key" start="1">
+			<if test="$key==1">
+				<!--小图一般需要编辑另外做一个缩略图,调用[$var.Thumb]标签；如果没有做缩略图，请修改成[$var.Photo]-->
+				<li class="alFade-cur"><img src="[$var.Thumb]" border="0" /></li>
+			<else>
+				<li><img src="[$var.Thumb]" border="0" /></li>
+			</if>
+		</loop>
+	</ul>
+</div>
+</textarea>
+<style type="text/css">
+/*幻灯*/
+#alFade2{ position:relative; background:#fff; overflow:hidden; padding:2px; border:1px solid #bababa; width:630px; }
+#alFade2 .alFade-image{ float:left; }
+#alFade2 .alFade-image, #alFade2 .alFade-image li{ width:528px; height:171px; overflow:hidden; }
+#alFade2 .alFade-image li{ display:none; position:absolute; }
+#alFade2 .alFade-image img{ width:100%; height:100%; display:block; padding:0; border:0; }
+#alFade2 .alFade-title{ float:right;  }
+#alFade2 .alFade-title li{ cursor:pointer; width:94px; height:36px; margin-bottom:1px; padding:1px; border:2px solid #333; color:#620F01; font-family:Arial, Helvetica, sans-serif; }
+#alFade2 .alFade-title li img{ display:block; width:94px; height:36px; }
+#alFade2 .alFade-title .alFade-cur{ cursor:default; padding:0; border:3px solid #ff9c00; color:#fff; }
+#alFade2 .text, #alFade2 .textBg{ position:absolute; bottom:0; width:100%; height:40px; overflow:hidden; }
+#alFade2 .textBg{ opacity:.6; filter:Alpha(opacity=60); background:#000; }
+#alFade2 .text h4, #alFade2 .text p{ padding:2px 5px 0; line-height:18px; font-size:12px; height:18px; overflow:hidden; margin:0; background:none; color:#fff }
+</style>
+<script>
+$(function(){
+	$("#alFade2").alFadeslider({
+		box:'#alFade2',			//容器DIV
+		pic:'.alFade-image',	//图片DIV
+		title:'.alFade-title',	//标题DIV
+		on:'alFade-cur',		//选中标签的类
+		flag:1,					//初始显示第2张图
+		timeScroll:4000			//5秒轮播		
+	});
+});
+</script>
+
+<div id="alFade2">
+	<ul class="alFade-image">
+		<li><a href="#"><img src="pics/ad19.jpg" /></a><div class="textBg"></div><div class="text"><h4>我是标题1</h4><p>可以使用文字标题，位置请自行修改样式</p></div></li>
+		<li><a href="#"><img src="pics/ad18.jpg" /></a><div class="textBg"></div><div class="text"><h4>我是标题22</h4><p>可以使用文字标题，位置请自行修改样式</p></div></li>
+		<li><a href="#"><img src="pics/ad17.jpg" /></a><div class="textBg"></div><div class="text"><h4>我是标题333</h4><p>可以使用文字标题，位置请自行修改样式</p></div></li>
+		<li><a href="#"><img src="pics/ad16.jpg" /></a><div class="textBg"></div><div class="text"><h4>我是标题4444</h4><p>可以使用文字标题，位置请自行修改样式</p></div></li>
+	</ul>
+	<ul class="alFade-title">
+		<li class="alFade-cur"><img src="pics/ad19.jpg" /></li>
+		<li><img src="pics/ad18.jpg" /></li>
+		<li><img src="pics/ad17.jpg" /></li>
+		<li><img src="pics/ad16.jpg" /></li>
+	</ul>
+</div><br />
+<!--范例3 end***************************************************-->
+</div>
+<!-- wrapper end -->
+
+</body>
+</html>

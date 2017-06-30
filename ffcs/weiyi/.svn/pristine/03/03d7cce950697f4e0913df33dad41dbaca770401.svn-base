@@ -1,0 +1,19 @@
+{if $_GPC['act']=='display'}
+    {php $_W['breadcrumb'] = array(array('title'=>'微活动'),array('title'=>$activity_title))}
+    {template 'common/header'}
+    <div class="page-header">
+        <h1>
+            <i class="icon-book"></i> {$activity_title}管理
+        </h1>
+    </div>
+{else}
+    {php $_W['breadcrumb'] = array(array('title'=>'微活动'),array('title'=>$activity_title),array('title'=>'添加'.$activity_title))}
+    {template 'common/header'}
+    <div class="page-header">
+        <h1>
+            <i class="icon-book"></i> 添加{$activity_title}
+        </h1>
+    </div>
+{/if}
+
+

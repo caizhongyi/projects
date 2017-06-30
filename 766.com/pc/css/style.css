@@ -1,0 +1,162 @@
+@charset "gb2312";
+/**
+* @site:	
+* @author:	yuzhihui
+* @create:	2012/8/20
+* @update:	
+*/
+
+/* CSS Reset */
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, big, em, font, img, strong, tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td { padding: 0; margin: 0; }
+table { border-collapse: collapse; border-spacing: 0; }
+fieldset, img { border: 0; }
+input, select, textarea { font-size:12px }
+ol, ul { list-style: none; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+a { text-decoration: none; color: #6c6c6c; }
+a:hover { text-decoration:underline; color: #6c6c6c; }
+.clear { clear:both; }
+.hide { display:none; }
+/* top*/
+body { background-color:#FFF; color: #6c6c6c; font-size: 12px; }
+.wrapper { margin: 0 auto; overflow: hidden; width:100%; height:100%; position:absolute; top:0; }
+.top { height:78px; width:100%; float:left; background: url("../images/top_02.jpg") repeat-x; }
+.top_l { background: url("../images/top_01.jpg") no-repeat scroll 0 0 transparent; width:582px; height:78px; float:left; }
+.top_r { background: url("../images/top_03.jpg") no-repeat scroll 0 0 transparent; width:306px; height:78px; float:right; }
+.main { width:100%; height:auto; float:left; background-color:#f7f7f7; }
+.left { background: url("../images/left_bg.jpg") repeat-y; width:268px; float:left; height:520px; overflow-x:none; overflow-y:hidden; }
+.befor_play { width:225px; height:auto; margin:14px 0 0 16px; display:inline; float:left; }
+.befor_play h2 { color:#175bb0; font-family:"微软雅黑", "黑体", "宋体"; font-size:14px; font-weight:bold; margin-bottom:10px; }
+.gamelist { width:215px; padding:0 0 0 10px; }
+.gamelist ul li { width:225px; height:55px; }
+.gamelist ul li img { float:left; width:38px; height:38px; border:1px solid #bdbdbd; margin:3px 0 0 3px; }
+.gamelist ul li span { float:left; color:#1470a5; line-height:40px; height:40px; margin-left:20px; }
+.gamelist ul li span a { color:#1470a5; }
+.lihover { background: url("../images/hover.jpg") no-repeat scroll right 0 transparent; width:225px; height:45px; }
+.list { width:100px; height:44px; margin-left:15px; float:left; }
+.list h3 { font-weight:bold; height:22px; line-height:22px; }
+.list p { overflow:hidden; height:22px; line-height:22px; }
+.up_down { width:32px; height:11px; background: url("../images/down.jpg") no-repeat scroll 0 0 transparent; margin:10px auto; cursor:pointer; }
+.up_down_hover { width:32px; height:11px; background: url("../images/up.jpg") no-repeat scroll 0 0 transparent; }
+.faver_game { width:225px; height:auto; margin:0 0 0 16px; display:inline; float:left; }
+.faver_game h2 { color:#175bb0; font-family:"微软雅黑", "黑体", "宋体"; font-size:14px; font-weight:bold; margin-bottom:10px; }
+.faver_game ul { margin:10px 0 0 10px; *margin:10px 0 0 0px;
+float:left; }
+.faver_game ul li { width:230px; height:115px; }
+.faver_game ul li img { width:103px; height:103px; float:left; border:1px solid #FFF; }
+.list_02 { width:110px; height:115px; margin-left:10px;  float:right; }
+.list_02 p { height:21px; line-height:21px; }
+.list_02 p a { width:46px; height:21px; display:inline-block; text-align:center; line-height:21px; color:#FFF; }
+.list_02 p a:hover { color:#FFF; }
+.btn_01 { color:#FFF; border:none; background: url("../images/btn_01.jpg") no-repeat scroll 0 0 transparent; width:46px; height:21px; cursor:pointer; }
+.btn_margin { margin-right:10px; display:inline; }
+.star { background: url("../images/star.jpg") no-repeat scroll 0 0 transparent; width:74px; height:15px; }
+.color_01 { color:#1470a5; font-weight:bold; margin-right:8px; }
+.color_02 { color:#ff9329; }
+.bg_tw { background: url("../images/tw.jpg") no-repeat scroll 0 0 transparent; width:220px; height:2px; float:left; margin:20px 0 0 15px; }
+.bg_tw_2 { background: url("../images/tw.jpg") no-repeat scroll 0 0 transparent; width:220px; height:2px; float:left; margin:2px 0 0 15px; *margin:2px 0 0 0px;
+}
+.right { background-color:#f7f7f7; text-align:center; overflow:hidden; }
+.flash_01 { width:714px; height:403px; margin:10px auto; background-color:#999; text-align:center; }
+.container { width:715px; height:176px; border:1px solid #d2d2d2; margin:10px auto; background-color:#f8f8f8; }
+.container, .scrollDiv { position:relative; }
+.scrollDiv ul { position:absolute; width:400%; }
+.flash_02_title { background: url("../images/title.jpg") no-repeat scroll 0 0 transparent; width:695px; height:31px; font-family:"微软雅黑", "黑体", "宋体"; font-size:14px; font-weight:bold; float:left; color:#175bb0; line-height:31px; padding-left:20px; }
+.scrollDiv { width:640px; height:115px; float:left; margin:20px 0 0 45px; display:inline; overflow:hidden; }
+.scrollDiv ul li { width:160px; height:103px; float:left; }
+.scrollDiv ul li img { width:137px; height:101px; border:1px solid #d4d6dd; }
+.leftscroll { background: url("../images/left.jpg") no-repeat scroll 0 0 transparent; display:inline-block; width:16px; height:46px; position:relative; top:50px; left:-670px; }
+.leftscroll a { width:16px; height:46px; display:block; }
+.mainbtn { height:30px; position:absolute; left:20px; top:-21px; line-height:28px; text-align:center; *width:300%;
+}
+.mainbtn ul li { float:left; }
+.select { background: url("../images/nav1.png") no-repeat scroll 0 0 transparent; width:95px; height:28px; vertical-align:middle; float:left; left:50px; *left:60px;
+margin-left:5px; top:69px; position:relative; display:inline; }
+.select2 { background: url("../images/nav2.png") no-repeat scroll -16px 0 transparent; width:16px; height:28px; vertical-align:middle; float:left; left:40px; *left:54px;
+margin-left:5px; top:69px; position:relative; display:inline; }
+.select_done { background: url("../images/nav1.png") no-repeat scroll -95px 0 transparent; width:94px; height:28px; vertical-align:middle; left:50px; *left:60px;
+float:left; margin-left:2px; top:69px; line-height:28px; position:relative; color:#FFF; overflow:hidden; }
+.select_done2 { background: url("../images/nav2.png") no-repeat scroll -33px 0 transparent; width:14px; height:28px; vertical-align:middle; float:left; left:45px; *left:55px;
+margin-left:5px; top:69px; position:relative; display:inline; overflow:hidden; }
+.select img { margin:5px 0 0 0; position:relative; top:3px; left:-4px; }
+.select_done img { margin:0; position:relative; top:3px; *top:6px;
+left:-4px; }
+.select span { height:28px; line-height:30px; *line-height:28px;
+}
+.btn_cz { width:109px; height:41px; float:right; margin:27px 11px 0 0; display:inline; }
+.btn_cz a { width:109px; height:41px; display:block; background: url("../images/cz.png") no-repeat scroll 0 0 transparent; }
+.btn_cz a:hover { background: url("../images/cz.png") no-repeat scroll -110px 0; width:109px; height:41px; }
+.rightscroll { background: url("../images/right.jpg") no-repeat scroll 0 0 transparent; display:inline-block; width:16px; height:41px; position:relative; }
+.left_pic { background-color:#CCC; width:2px; height:500px; float:left; }
+.right_pic { background-color:#CCC; width:2px; height:500px; float:right; }
+.game_pic { width:55px; height:55px; margin:10px 0 0 10px; border:1px solid #5e99bf; background: url("../images/pic.jpg") no-repeat scroll 0 0 transparent; float:left; }
+.game_word { height:22px; width:400px; float:right; top:15px; left:-170px; position:relative; }
+.game_word span { color:#d3d4d4; font-weight:bold; height:19px; line-height:19px; vertical-align:middle; width:35px; }
+.game_word span a { color:#d3d4d4; }
+.all_icon { float:left; margin-left:20px; color:#FFF; height:24px; line-height:24px; z-index:99; }
+.all_icon img { position:relative; top:3px; }
+.icon2_a a { width:15px; height:15px; display:block; background: url("../images/sound.png") no-repeat scroll 0 0; float:left; position:relative; top:5px; }
+.icon2_a a:hover { background: url("../images/sound.png") no-repeat -15px 0; width:15px; height:15px; display:block; }
+.alone_icon { float:right; margin-right:30px; font-weight:bold; color:#FFF; z-index:99; }
+.all_icon span a, .all_icon span a:hover { color:#FFF; }
+.alone_icon img { position:relative; top:3px; right:5px; }
+.righticon { background: url("../images/righticon.jpg") no-repeat scroll 0 0 transparent; width:21px; height:19px; display:inline-block; }
+.bottom { height:26px; width:100%; float:left; background: url("../images/bottom_02.jpg") repeat-x; }
+.hover_ricon { width:102px; height:20px; float:right; position:absolute; right:12px; top:2px; }
+.hover_ricon ul li { float:left; }
+.hover_ricon ul li.hover_01 a { width:30px; height:20px; display:block; background: url("../images/max_ion.png") no-repeat 0 0; }
+.hover_ricon ul li.hover_02 a { width:37px; height:20px; display:block; background: url("../images/min_ion.png") no-repeat 0 0; }
+.hover_ricon ul li.hover_03 a { width:35px; height:20px; display:block; background: url("../images/quit_ion.png") no-repeat 0 0; }
+.hover_ricon ul li.hover_01 a:hover { width:30px; height:20px; display:block; background: url("../images/max_ion.png") no-repeat -31px 0; }
+.hover_ricon ul li.hover_02 a:hover { width:37px; height:20px; display:block; background: url("../images/min_ion.png") no-repeat -36px 0; }
+.hover_ricon ul li.hover_03 a:hover { width:35px; height:20px; display:block; background: url("../images/quit_ion.png") no-repeat -35px 0; }
+.login { border:1px solid #d3d5dc; width:463px; padding-bottom:20px; float:left; }
+.login_title { background: url("../images/title_02.jpg") no-repeat scroll 0 0 transparent; width:443px; height:43px; line-height:38px; padding-left:20px; font-family:"微软雅黑", "黑体", "宋体"; font-size:14px; font-weight:bold; float:left; color:#175bb0; }
+.login_x a { width:36px; height:34px; float:right; left:420px; cursor:pointer; position:absolute; right:-4px; *top:0px;
+background: url("../images/x.png") no-repeat scroll 0 0 transparent; }
+.login_x a:hover { width:36px; height:34px; float:right; left:420px; cursor:pointer; position:absolute; *top:0px;
+background: url("../images/x.png") no-repeat scroll -36px 0 transparent; }
+.icon2_a { }
+.login_in { width:400px; height:85px; margin:15px 0 0 40px; display:inline; float:left; }
+.login_in span { color:#175bb0; text-decoration:underline; width:60px; margin-left:20px; display:inline; }
+.login_in p { height:40ppx; line-height:40px; }
+.input_01 { width:242px; height:26px; border:1px solid #d3d5dc; }
+.rm_key { width:170px; height:29px; margin:10px 0 0 90px; float:left; line-height:29px; display:inline; }
+.btn_type { width:233px; height:44px; margin:15px 0 0 100px; float:left; display:inline; }
+.btn_08 { background: url("../images/1.png") no-repeat scroll 0 0 transparent; width:100px; height:36px; border:none; cursor:pointer; float:left; color:#666; font-weight:bold; }
+.btn_09 { background: url("../images/2.png") no-repeat scroll 0 0 transparent; width:100px; height:36px; border:none; cursor:pointer; float:right; color:#666; font-weight:bold; }
+.login_toge { width:320px; height:26px; margin:20px 0 0 80px; display:inline; float:left; vertical-align:middle; line-height:26px; position:relative; }
+.login_toge b { width:55px; display:inline-block; text-align:center; margin-left:30px; display:inline; }
+.login_toge img { top:0px; position:absolute; }
+.login_after { height:290px; margin:10px 0 0 50px; display:inline; float:left; }
+.login_after p { height:44px; line-height:44px; }
+.login_after b { width:70px; display:inline-block; text-align:right; }
+.login_after span { color:#175bb0; font-weight:bold; }
+.float { left: 230px; top:183px; ; position: relative; *position:absolute; *left:202px; width: 197px; z-index: 99; }
+.float_01 { background: url("../images/float_01.png") no-repeat scroll 0 0 transparent; width:283px; height:23px; }
+.float_01 p { font-size:12px;  color:#1470A5; margin:4px 0 0 15px; display:inline; float:left; font-weight:bold;  }
+.float_01 span{ width:14px; height:14px;  float:right; margin:2px 2px 0 0; display:inline;}
+.float_01 span a{ width:14px; height:14px; display:block;}
+.float_02 { background: url("../images/float_02.png") repeat-y; width:283px; float:left; }
+.float_02 ul{ margin:0 0 0 30px; display:inline; float:left;}
+.float_02 ul li{ width:80px; height:24px; line-height:24px; float:left; text-align:left; display:inline; overflow:hidden;}
+.float_03 { background: url("../images/float_03.png") no-repeat scroll 0 0 transparent; width:283px; height:4px; float:left; }
+/* ���� */
+.jspContainer { overflow: hidden; position: relative; }
+.jspPane { position: absolute; }
+.jspVerticalBar { position: absolute; top: 0; right: 0; width: 6px; height: 100%; }
+.jspHorizontalBar { position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; }
+.jspVerticalBar *, .jspHorizontalBar * { margin: 0; padding: 0; }
+.jspCap { display: none; }
+.jspHorizontalBar .jspCap { float: left; }
+.jspTrack { background:#ddd; width:6px; position: relative; }
+.jspDrag { background:#369; height:281px; position: relative; top: 0; left: 0; cursor: pointer; }
+.jspHorizontalBar .jspTrack, .jspHorizontalBar .jspDrag { float: left; height: 100%; }
+.jspArrow { background:#999; text-indent: -20000px; display: block; cursor: pointer; }
+.jspArrow.jspDisabled { cursor: default; }
+.jspVerticalBar .jspArrow { height: 6px; }
+.jspHorizontalBar .jspArrow { width: 6px; float: left; height: 100%; }
+.jspVerticalBar .jspArrow:focus { outline: none; }
+.jspCorner { float: left; height: 100%; }
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner { margin: 0 -3px 0 0; }

@@ -1,0 +1,130 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <title>職一覧 ver90: Season2.Act8. 革新</title>
+    <link rel="stylesheet" href="asps.css" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="js/prototype1.7.js"></script>
+    <script type="text/javascript" src="js/asps100.js?004"></script>
+    <script type="text/javascript" src="js/encoder.js?004"></script>
+    <style type="text/css">
+        .layer{position: absolute;  line-height: 25px; left: 300px; top: 100px; width: 500px; background: #fff; border: 1px solid #ddd; padding: 10px; font-size: 12px; display: none; word-break: break-all;}
+        .layer label{ margin-right: 10px;}
+        .layer li{ list-style: none;}
+        .layer .close{ text-align: right; text-decoration: none; color: #666; }
+    </style>
+    <script type="text/javascript"><!--
+    window.onload=function(){
+        initAsps();
+    };
+    //-->
+    </script>
+    <link rel="stylesheet" type="text/css" href="http://st.shinobi.jp/img/services/homepage/commercial.css" /></head>
+<body>
+
+<div id="divform"></div>
+<div id="error_msg" style="display: none;"></div>
+<div class="hint_area" id="hint_area" style="display: none;">[hint here]</div>
+<iframe class="shim" id="shim" style="display: none;"></iframe>
+<div class="layer spinfo">
+     <div class="close"><a href="javascript:void(0)">x</a></div>
+    <ul>
+       <li>SP模似加点情况</li>
+       <li><script type="text/javascript">document.write(document.location.href);</script></li>
+       <li><label for="">职业：</label><span class="name"></span></li>
+       <li><label for="">等级：</label><span class="leave"></span></li>
+    </ul>
+    <ul>
+        <li><label for="">总SP：</label><span class="level_sp"></span></li>
+        <li><label for="">已用SP：</label><span class="used_sp"></span></li>
+        <li><label for="">剩SP：</label><span class="rest_sp"></span></li>
+    </ul>
+    <ul>
+        <li><label for="">总TP：</label><span class="level_tp"></span></li>
+        <li><label for="">已用TP：</label><span class="used_tp"></span></li>
+        <li><label for="">剩TP：</label><span class="rest_tp"></span></li>
+    </ul>
+    <ul>
+        <li><label for="">总QP：</label><span class="level_qp"></span></li>
+        <li><label for="">已用QP：</label><span class="used_qp"></span></li>
+        <li><label for="">剩QP：</label><span class="rest_qp"></span></li>
+    </ul>
+    <ul class="skills">
+
+    </ul>
+</div>
+<script type="text/javascript">
+    (function($){
+        window.showInfo = function(){
+
+            function getSelectedVal(){
+                var arr = $([]);
+                $('#mainform select').find(':selected').each(function(){
+
+                    if($(this).attr('slv') != 0 && $(this).attr('slv') != null)
+                        arr = arr.add({
+                            name : $(this).closest('.td_sel_skills').prevAll('.skill_label').find('.skill_label_div').text(),
+                            leave :  $(this).attr('llv')
+                        });
+                })
+                return arr;
+            }
+
+            var arr = getSelectedVal();
+
+            var data = {
+                name : '' ,
+                plv : $('#plv').val(),
+                sp : {
+                    level : $('#level_sp').val(),
+                    d : $('#dsp').val(),
+                    used : $('#used_sp').val(),
+                    rest : $('#rest_sp').val()
+                },
+                tp :{
+                    level : $('#level_tp').val(),
+                    used : $('#used_tp').val(),
+                    rest : $('#rest_tp').val()
+                } ,
+                qp : {
+                    level : $('#level_qp').val(),
+                    used : $('#used_qp').val(),
+                    rest : $('#rest_qp').val()
+                },
+                skills : arr
+            }
+
+            var sinfo = $('.spinfo');
+            sinfo.find('.name').text(data.name);
+            sinfo.find('.leave').text(data.plv);
+            sinfo.find('.used_sp').text(data.sp.used);
+            sinfo.find('.level_sp').text(data.sp.level);
+            sinfo.find('.rest_sp').text(data.sp.rest);
+
+            sinfo.find('.level_tp').text(data.tp.level);
+            sinfo.find('.rest_tp').text(data.tp.rest);
+            sinfo.find('.used_tp').text(data.tp.used);
+
+            sinfo.find('.level_qp').text(data.qp.level);
+            sinfo.find('.rest_qp').text(data.qp.rest);
+            sinfo.find('.used_qp').text(data.qp.used);
+
+            var skills = $('.skills').empty();
+            data.skills.each(function(){
+                if(this.name)
+                 skills.append('<li>'+  this.name  +',等级'+ this.leave  +'</li>')
+            })
+            $('.layer').stop(true).fadeIn();
+        };
+
+        $('.layer .close').click(function(e){
+            $('.layer').stop(true).fadeOut();
+        })
+
+
+    })(jQuery)
+
+</script>
+</body>
+</html>

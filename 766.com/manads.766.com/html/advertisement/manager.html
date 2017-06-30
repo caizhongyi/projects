@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>系统首页</title>
+
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  </head>
+
+  <body>
+  <table id="dg" toolbar="#tb"  pagination="true" sortName="id" sortOrder="desc" title="广告" fitColumns="true" class="datagrid">
+      <thead>
+      <tr>
+          <th data-options="field:'ck',checkbox:true">删除</th>
+          <th field="id" width="80">Item ID</th>
+          <th field="name" width="100">Product ID</th>
+          <th field="code" align="right" width="80">List Price</th>
+          <th field="addr" align="right" width="80">Unit Cost</th>
+      </tr>
+      </thead>
+  </table>
+  <a href="javascript:void(0);" class="easyui-linkbutton" >提交</a>
+  <div id="tb" style="padding:5px; height:auto; display: none">
+      <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="User.showWindow();">添加</a>
+  </div>
+
+  <div id="display-div" style="display: none">
+        <div id="user-window" class="easyui-dialog" title="添加用户" style="padding:10px 20px;width:500px;" buttons="#user-buttons"
+             iconCls="icon-add" modal="true" closed="true">
+             <form id="adv-form" method="post" class="form">
+                <table width="100%" cellspacing="5">
+                    <tr>
+                        <td align="right" width="120">广告样式：</td>
+                        <td><select class="easyui-combobox" name="" id=""></select></td>
+                    </tr>
+                    <tr>
+                        <td align="right" >广告分类：</td>
+                        <td><select class="easyui-combobox" name="" id=""></select></td>
+                    </tr>
+                    <tr>
+                        <td align="right" >广告位置：</td>
+                        <td><select class="easyui-combobox" name="" id=""></select></td>
+                    </tr>
+                    <tr>
+                        <td align="right" >时段：</td>
+                        <td><select class="easyui-combobox" name="" id=""></select></td>
+                    </tr>
+                    <tr>
+                        <td align="right" >XX时段和次数设置：</td>
+                        <td>
+                            00-02：<input type="text" style="width: 30px;"/>&nbsp;00-02：<input type="text" style="width: 30px;"/>&nbsp;00-02：<input type="text" style="width: 30px;"/>&nbsp;00-02：<input type="text" style="width: 30px;"/>&nbsp;00-02：<input type="text" style="width: 30px;"/>&nbsp;
+                            <br>
+                            00-02：<input type="text" style="width: 30px;"/>&nbsp;00-02：<input type="text" style="width: 30px;"/>&nbsp;00-02：<input type="text" style="width: 30px;"/>&nbsp;00-02：<input type="text" style="width: 30px;"/>&nbsp;00-02：<input type="text" style="width: 30px;"/>&nbsp;
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td align="right" valign="top" width="90">&nbsp;</td>
+                        <td>
+                            <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-ok" onclick="submitForm()">提交</a>
+                            <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-cancel" onclick="clearForm()">清空</a>
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+        </div>
+
+        <div id="user-buttons">
+            <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-ok" onclick="User.add();">确定</a>
+            <a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#user-window').dialog('close');">取消</a>
+        </div>
+    </div>
+
+
+  <script type="text/javascript" src="common/easyui/datagrid-detailview.js"></script>
+  <script type="text/javascript">
+
+      $(function(){
+          $('#dg').datagrid({
+              url:'data/grid.json',
+              view: detailview,
+              singleSelect : 0,
+              detailFormatter:function(index,row){
+                  return '<div id="ddv-' + index + '" style="padding:5px 0"></div>';
+              },
+
+              onExpandRow: function(index,row){
+                  $('#ddv-'+index).panel({
+                      height:80,
+                      border:false,
+                      cache:false,
+                      href:'datagrid21_getdetail.php?itemid='+row.itemid,
+                      onLoad:function(){
+                          $('#dg').datagrid('fixDetailRowHeight',index);
+                      }
+                  });
+                  $('#dg').datagrid('fixDetailRowHeight',index);
+              }
+          });
+      });
+
+      var User = {
+          showWindow: function() {
+              $('#user-window').dialog('open');
+          },
+
+          add: function() {
+              $.ajax({
+                  url: 'action/add.jsp',
+                  type: 'get',
+                  success: function(data) {
+                      $.messager.alert('操作提示', "添加成功", 'info');
+
+                      $('#user-window').dialog('close');
+                      $('#user-geid').datagrid("reload");
+                      $.messager.alert('错误提示', "添加失败", 'error', function() {
+                          alert("点击了失败后的按钮");
+                      });
+                  }
+              });
+
+              /*$('#user-form').form('submit', {
+               url: 'action/add.jsp',
+               onSubmit : function() {
+               return $(this).form('validate');
+               },
+               success : function(data) {
+               alert(data);
+               }
+               });*/
+          },
+
+          query: function() {
+              $('#user-geid').datagrid("reload", {id: 1, name: "aaa"});
+          }
+      };
+
+
+
+  </script>
+  </body>
+</html>

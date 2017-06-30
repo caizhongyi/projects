@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>{$row['title']}</title>
+<meta content="width=device-width,user-scalable=no" name="viewport">
+<style>
+html, body, h1, div, img, p, video {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    background-color: #fff;
+    font: 12.5pt/1.45 STHeiti, microsoft yahei, arial, '\5b8b\4f53';
+}
+
+.g-doc {
+}
+
+.m-detail {
+    position: relative;
+    margin: 0 auto;
+    padding: 40px 0 76px;
+    color: #666;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.m-detail .wrap {
+    margin: 0 40px;
+}
+
+.m-detail .tlt {
+    font-size: 15pt;
+    font-weight: normal;
+    color: #333;
+    font-weight: bold;
+}
+
+.m-detail .time {
+    font-size: 8pt;
+    color: #b9b9b9;
+}
+
+.m-detail .imgwrap {
+    margin: 10px 0;
+}
+
+.m-detail img {
+    display: block;
+    max-width: 100%;
+    margin: 5px auto;
+}
+
+.m-detail .content p {
+    margin: 0 0 12pt;
+}
+
+.m-detail .url {
+    margin-top: 20px;
+    font-size: 11pt;
+}
+
+.m-detail .interval {
+    margin: 10px 0;
+}
+
+.m-detail a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+.m-detail .u-btn {
+    font-size: 11pt;
+    position: absolute;
+    right: 10px;
+    bottom: 17px;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 1px #dadada;
+    text-align: center;
+    padding: 5px 14px;
+    color: #222;
+}
+
+.m-detail .u-btn:hover {
+    text-decoration: none;
+}
+
+#qbig {
+    position: absolute;
+    left: 12px;
+    bottom: 18px;
+    width: 24px;
+    height: 24px;
+}
+
+.m-detail a:hover {
+    text-decoration: underline;
+}
+
+.m-detail i {
+    font-style: italic;
+}
+
+.m-detail b {
+    font-weight: bold;
+}
+
+div.m-detail video {
+    width: 100%;
+    margin: 5px auto;
+}
+
+.m-detail .content-invalid #article_from_nick {
+    display: none
+}
+
+.m-detail .content-invalid  .u-btn, .m-detail .content-invalid  #qbig {
+    display: none;
+    visibility: hidden
+}
+
+#article_from_nick {
+    font-size: 11pt;
+    position: absolute;
+    left: 0px;
+    bottom: 0;
+    line-height: 50px;
+    right: 0px;
+    text-align: left;
+    border-top: 2px solid #ddd;
+    padding-left: 22px;
+    padding-top: 4px;
+    padding-bottom: 8px;
+}
+
+#article_from_nick a {
+    margin-right: 20px;
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+#article_from_nick a:before {
+}
+
+    /*   #unregist{
+    position:absolute;left:20px;width:40px; bottom: 0; height: 50px;
+    text-align: center;
+    color: #2270ac;
+    }*/
+.m-error {
+    margin: 25pt auto 0;
+    padding-top: 130pt;
+    text-align: center;
+    font-size: 14pt;
+    color: #808080;
+    background: url(/res/image/warm.png) no-repeat center 0;
+    -webkit-background-size: 110pt auto;
+    background-size: 110pt auto;
+}
+
+.m-detail-lg .wrap {
+    margin: 0 !important;
+}
+
+.m-detail-lg .texts {
+    margin: 0 40px;
+}
+
+.m-download {
+    border-bottom: 2px solid #ddd;
+    background-color: #f8f8f8;
+    padding: 3% 4%;
+    position: relative;
+    zoom: 1;
+}
+
+.m-download:after {
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    content: ".";
+}
+
+.m-download .logo {
+    float: left;
+    width: 30%;
+    max-width: 160px;
+}
+
+.m-download .link {
+    float: right;
+    width: 45%;
+    max-width: 240px;
+}
+
+@media screen and (max-width:719px) {
+    .m-detail {
+        padding-top: 28px;
+    }
+
+    .m-detail .wrap {
+        margin: 0 28px;
+    }
+
+    .m-detail-lg .texts {
+        margin: 0 28px;
+    }
+}
+
+@media screen and (max-width:639px) {
+    .m-detail {
+        padding-top: 24px;
+    }
+
+    .m-detail .wrap {
+        margin: 0 24px;
+    }
+
+    .m-detail-lg .texts {
+        margin: 0 24px;
+    }
+}
+
+@media screen and (max-width:479px) {
+    .m-detail {
+        padding-top: 18px;
+    }
+
+    .m-detail .wrap {
+        margin: 0 18px;
+    }
+
+    .m-detail-lg .texts {
+        margin: 0 18px;
+    }
+}
+
+@media screen and (max-width:319px) {
+    .m-detail {
+        padding-top: 12px;
+    }
+
+    .m-detail .wrap {
+        margin: 0 12px;
+    }
+
+    .m-detail-lg .texts {
+        margin: 0 12px;
+    }
+}
+</style>
+<style type="text/css"></style>
+</head>
+<body >
+<div class="g-doc">
+    <div class="m-detail ">
+        <div class="wrap ">
+            <div class="texts"><h1 class="tlt" title="{$row['title']}">{$row['title']}</h1></div>
+            <div class="texts"><p class="time"> {if !empty($row['createtime'])}{php echo date('Y-m-d',$row['createtime']);}{/if} </p></div>
+            <div class="imgwrap"><img
+                    src="{$row['thumb']}" alt=""></div>
+            <div class="content" id="content">
+                {$row['content']}
+                <div id="article_from_nick"><span
+                        href="yixin://opencard?pid=NzI1ODA4OC03MjU4MDg4LTEzODQyMjQ4OTA=">{if !empty($we_name)}{$we_name}{/if}</span></div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    /**
+     * 将query 字符串转换成对象
+     * @param {String} query query字符串
+     * @return {Object} 对象
+     */
+
+    function queryToObject(query) {
+        if (!query)
+            return;
+        var result = {};
+        var arr = query.split('&');
+        var item, arr1;
+        for (var i = 0, length = arr.length, item; i < length; i++) {
+            item = arr[i];
+            arr1 = item.split('=');
+            if (arr1[0]) {
+                result[decodeURIComponent(arr1[0])] = decodeURIComponent(arr1[1]);
+            }
+        }
+        return result;
+    }
+    function isTrue(str) {
+        return str === '1' || str === 'true' || str === 'yes';
+    }
+    function escape(str) {
+        return str.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;");
+    }
+
+    var article = "<P\><STRONG\>　　奖品设置：<BR\></STRONG\>　　一等奖：排名前50名用户中抽取1名，奖励iphone５s手机一部。<BR\>　　二等奖：排名前100名用户中抽取1名，奖励三星NOTE3手机一部。<BR\>　　三等奖：排名前1000名用户中抽取100名，奖励100元电信充值卡。<BR\>　　鼓励奖：排名前50名用户奖励100元话费；排名前100名用户奖励10元话费；排名前1000名用户奖励2元话费。<BR\>　　备注：不可重复中奖。<BR\><STRONG\>　　活动时间：</STRONG\>2013年11月11日-12月28日<BR\><STRONG\>　　参与对象：</STRONG\>福建全省易信用户。<BR\>　　<STRONG\>参与步骤：<BR\></STRONG\>　　1、下载易信客户端，下载链接http：//yixin.im/m/<BR\>　　2、安装并注册登录易信客户端，关注“移动互联网应用”公众账号。（在公众帐号中搜索“移动互联网应用”点击关注。）<BR\>　　3、报名参赛：　编写“<FONT color=\"#ff0000\" \>达人赛+易信关联的手机号</FONT\>”（如：达人赛13301234567）发送至“移动互联网应用”公众账号。<BR\>　　4、当用户报名5个工作日后，可向活动公众帐号<FONT color=\"#ff0000\" \>发送指令\"r\"</FONT\><FONT color=\"#000000\" \>，</FONT\>查询自己当前的排名。</P\>\r\n<P\><IMG src=\"https://nos.163.com/yixinpublic/pr_cv0k1d9gdhx6_ilw6nj0aw==_1383893912_3299120\"  \></P\>\r\n<P\>　　<STRONG\>活动规则：<BR\></STRONG\>　　根据参赛者在比赛期间实际新增活跃好友的人数、使用基本功能、兴趣群、朋友圈、公众帐号的互动程度来得出综合排名，活跃度越高的参赛者排名越靠前。发展数、积分等计算均从易信发布开始测算。<BR\>　　具体规则如下：<BR\>　　1、新增活跃好友：每增加一个活跃好友，增加5个积分。<BR\>　　2、易信基本功能使用：每使用易信基本功能，如文字、短信、电话留言等，增加1个积分。<BR\>　　3、兴趣群：每新建1个兴趣群增加5个积分，在群内发言一次增加1个积分。<BR\>　　4、朋友圈：每在朋友圈发送1个信息增加5个积分；用户每评价或被评价一次增加1个积分。<BR\>　　5、公众帐号的互动：每关注一个公众帐号增加3个积分；每和公众帐号互动一次增加1个积分。<BR\>　　<STRONG\>派奖说明：<BR\></STRONG\>　　1. 获得iphone5S、note3实物中奖：我们将通过手机短信通知，并在易信活动公众账号中公布，次月对奖品进行派发，通过电话通知具体领奖事宜，请保持电话畅通。<BR\>　　2. 电话充值卡中奖：天翼用户直接充值至账户，移动联通用户以短信形式发送卡号和密码，请注意查收。 <BR\>　　温馨提示：因中奖用户关机、无法接通等因素，连续五个工作日未能接到兑奖通知，将视为用户自动放弃兑奖。请关注移动互联网应用公众账号中奖通告。<BR\>　　<STRONG\>流量赠送：<BR\></STRONG\>　　电信/移动/联通全国用户来易信拉好友就能领取免费300M流量。<BR\>　　电信新注册用户免费赠送300M，移动/联通用户成功邀请6位好友注册易信，即可获得300M流量等值话费。（需要通过易信邀请好友注册，其他方式无效）详情点击：<A href=\"http://yixin.im/hd/liuliang/\"  \>http://yixin.im/hd/liuliang/</A\></P\><div id=\"article_from_nick\"  \><a href=\"yixin://opencard?pid=NzI1ODA4OC03MjU4MDg4LTEzODQyMjQ4OTA=\"  \>来自公众号：移动互联网应用</a\></div\>";
+
+    var unregistRaw = /yixin:\/\/opencard\?pid=([\w=]+)/.exec(article);
+    var qrContent;
+    if (unregistRaw) {
+        unregistHref = unregistRaw[0].replace('opencard', 'unrecv') + "&onUnrecvSuccess=onUnrecvSuccess";
+        qrContent = unregistRaw[1];
+    }
+
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{template 'header'}
+{template 'member'}
+<div class="business">
+	<div class="tabbable">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{php echo $this->createMobileUrl('detail', array('id' => $item['id']))}" data-toggle="tab">商家信息</a></li>
+			<li><a href="http://api.map.baidu.com/marker?location={$item['lat']},{$item['lng']}&title={$item['title']}&content={$content}&output=html&src=|">地图导航</a></li>
+		</ul>
+		<form action="" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="from_user" value="{$_W['fans']['from_user']}" />
+		<div class="tab-content" style="padding:0 10px; margin-top:10px;">
+			<div class="tab-pane active" id="tab1">
+				<div class="accordion">
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<span class="accordion-toggle"><span>商家名称</span>{$item['title']}</span>
+						</div>
+					</div>
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<span class="accordion-toggle"><span>行业</span>{$item['industry1']} > {$item['industry2']}</span>
+						</div>
+					</div>
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<span class="accordion-toggle" data-toggle="collapse" data-target="#collapseOne"><span>商家简介</span></span>
+						</div>
+						<div id="collapseOne" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								{$item['content']}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="accordion business">
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<span class="accordion-toggle"><span>电话</span><a href="tel:{$item['phone']}">{$item['phone']}</a></span>
+						</div>
+					</div>
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<span class="accordion-toggle"><span>QQ</span>{$item['qq']}</span>
+						</div>
+					</div>
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<span class="accordion-toggle"><span>详细地址</span></span>
+						</div>
+						<div id="collapseOne" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								<a href="http://api.map.baidu.com/marker?location={$item['lat']},{$item['lng']}&title={$item['title']}&content={$content}&output=html&src=|">{$item['address']}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</form>
+	</div>
+</div>
+{template 'footer'}

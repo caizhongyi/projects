@@ -1,0 +1,89 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微会员'),array('title'=>'优惠劵管理'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-book"></i> 优惠劵管理
+    </h1>
+</div>
+<div id="main">
+     <p>
+     <a class="btn btn-sm btn-primary" href="micromember.php?act=coupon&actType=add"><i
+                                            class="icon-plus"></i>发布优惠券</a>
+     <a class="btn btn-sm btn-primary" href="javascript:location.reload()"><i
+             class="icon-refresh"></i>刷新</a>
+     </p>
+    <div>
+        <form action="" method="post">
+            <input type="hidden" name="act" value="coupon"/>
+	        <input type="hidden" name="actType" value="list"/>
+	        <input type="hidden" name="query_type" value="{$type}"/>
+            <table class="table table-striped table-bordered table-hover">
+                <tbody>
+			 		<tr>
+                         <th>关键字</th>
+                         <td>
+                             <input class="span6"  name="keyword-input" id="" type="text" placeholder="请输入关键词" value="{$keyWord}" data-rule-required="true" />
+                         </td>
+	                </tr>
+				 	<tr>
+                        <th>状态</th>
+                        <td>
+                            <select name="query_type" class="form-control" style="width:110px; ">
+					            <option selected="selected" value="0">请选择类型</option>
+					            <option value="1" {if 1==$typetemp} selected="selected" {/if}>打折优惠券</option>
+					            <option value="2" {if 2==$typetemp} selected="selected" {/if}>现金抵用券</option>
+					        </select>
+                        </td>
+                    </tr>
+                    <tr class="search-submit">
+                        <td colspan="2"><button class="btn btn-sm btn-primary"><i class="icon-search"></i> 搜索</button></td>
+                    </tr>
+			 	</tbody>
+            </table>
+        </form>
+    </div>
+    
+    <div class="rule">
+	    <table class="table table-striped table-bordered table-hover">
+            <thead>
+               <tr>
+                  <th class='with-checkbox'>
+                      <input type="checkbox" class="check_all"/></th>
+                  <th>标题</th>
+                  <th>分类</th>
+                  <th>适用人群</th>
+                  <th>生效时间</th>
+                  <th>过期时间</th>
+                  <th>操作</th>
+               </tr>
+            </thead>
+	            <tbody>
+	               {loop $couponList $row}
+	               <tr>
+	                   <td class="with-checkbox">
+	                       <input type="checkbox" name="check"/></td>
+	                   <td>
+	                       <div class="answer_text">{$row['title']}</div>
+	                   </td>
+	                   <td>
+	                       {$row['name']}
+	                   </td>
+	                   <td>
+	                       所有用户
+	                   </td>
+	                   <td>{$row['begin_date']}</td>
+	                   <td>{$row['end_date']}</td>
+	                   <td>
+	                       <a class="btn btn-primary" href="micromember.php?act=coupon&actType=detail&couponId={$row['id']}" title="使用统计"><i class="icon-bar-chart"></i></a>
+	                       <a class="btn btn-warning" href="micromember.php?act=coupon&actType=edit&couponId={$row['id']}"  title="编辑"><i class="icon-edit"></i></a>
+	                       <a class="btn btn-danger" href="micromember.php?act=coupon&actType=delete&couponId={$row['id']}" title="删除"><i class="icon-remove"></i></a>
+	                   </td>
+	               </tr>
+	               {/loop}
+	          </tbody>
+         </table>
+         {$pager}
+    </div>
+</div>
+
+{template 'common/footer'}

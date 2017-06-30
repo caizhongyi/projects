@@ -1,0 +1,28 @@
+{template 'header'}
+{template 'slide'}
+<link rel="stylesheet" type="text/css" href="./themes/mobile/templet11/style/rain.css" media="all" />
+<link rel="stylesheet" type="text/css" href="./themes/mobile/templet11/style/rain.css" media="all" />
+<style type="text/css">
+    /*rain1*/
+    {php $b = $_W['styles']['indexbgimg'];}
+    #rain1 {
+    background: url({if empty($b)}http://bcs.duapp.com/baeimg/1joroYYvQI.jpg{else}{$b}{/if}) no-repeat scroll 0 bottom #530337;/*微站背景*/
+    background-size: 100% 100%;
+    }
+    #rain1 .catemenu li {border-top: 1px solid rgba(0, 0, 0, 0.17);}
+    #rain1 .catemenu a {border-right: 1px solid rgba(0, 0, 0, 0.17);color: #FFFFFF;}
+    #rain1 .catemenu {background-color: rgba(255, 255, 255, 0.14);}
+    .copyright {color: rgba(255, 255, 255, 0.48);}
+</style>
+
+<body id="rain1" screen_capture_injected="true" style="">
+<div class="catemenu">
+    <ul>
+    {loop $navs $nav}
+    <li><a href="{$nav['url']}">{$nav['name']}</a></li>
+    {/loop}
+    <div class="clr"></div>
+    </ul>
+</div>
+
+{template 'footer'}

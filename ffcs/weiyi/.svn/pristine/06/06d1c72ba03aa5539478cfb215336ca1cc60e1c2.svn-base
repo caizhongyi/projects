@@ -1,0 +1,129 @@
+<link href="./resource/ace/assets/css/daterangepicker.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="./resource/script/daterangepicker.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $('#date-range').daterangepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            startDate: $(':hidden[name=start]').val(),
+            endDate: $(':hidden[name=end]').val(),
+            locale: {
+                applyLabel: '确定',
+                cancelLabel: '取消',
+                fromLabel: '从',
+                toLabel: '至',
+                weekLabel: '周',
+                customRangeLabel: '日期范围',
+                daysOfWeek: moment()._lang._weekdaysMin.slice(),
+                monthNames: moment()._lang._monthsShort.slice(),
+                firstDay: 0
+            },
+            timePicker:true,
+            timePickerIncrement: 1,
+            timePicker12Hour : false,
+            buttonClasses : ['btn', 'btn-sm']
+        }, function(start, end){
+            $('#date-range .date-title').html(start.format('YYYY-MM-DD HH:mm:ss') + ' 至 ' + end.format('YYYY-MM-DD HH:mm:ss'));
+            $(':hidden[name=start]').val(start.format('YYYY-MM-DD HH:mm:ss'));
+            $(':hidden[name=end]').val(end.format('YYYY-MM-DD HH:mm:ss'));
+        });
+    });
+    function range(days) {
+        var start = moment().add('days', 0 - days).format('YYYY-MM-DD HH:mm:ss');
+        var end = moment().format('YYYY-MM-DD HH:mm:ss');
+        $('#date-range .date-title').html(start + ' 至 ' + end);
+        $(':hidden[name=start]').val(start);
+        $(':hidden[name=end]').val(end);
+        $('form[method=get]')[0].submit();
+    }
+</script>
+<input type="hidden" name="reply_id" value="{$reply['id']}" />
+<div class="alert alert-block alert-new">
+	<a class="close" data-dismiss="alert">×</a>
+	<h4 class="alert-heading">添加投票信息</h4>
+	<table>
+		<tbody>
+			{if !empty($reply['id'])}
+			<tr>
+				<th>菜单</th>
+				<td><a href="{php echo create_url('index/module', array('do' => 'option', 'name' => 'vote', 'id' => $reply['rid']))}">添加投票选项</a>
+              <a target="_blank" href="{php echo create_url('index/module', array('do' => 'result', 'name' => 'vote', 'id' => $reply['rid']))}">查看投票结果</a>
+              </td>
+			</tr>{/if}
+			<tr>
+				<th>标题</th>
+				<td>
+					<input type="text" id="" class="span7" placeholder="" name="title" value="{$reply['title']}">
+				</td>
+			</tr>        
+			<tr>
+				<th>图片</th>
+				<td>
+					<div id="" class="uneditable-input reply-edit-cover">
+						<div class="detail">
+							<span class="pull-right">大图片建议尺寸：700像素 * 300像素</span>
+                            <div  class="ace-file-input ">
+                                <label data-title="上传" class="file-label selected"><span data-title="上传的文件" class="file-name"><i class="icon-file"></i></span></label>
+                            </div>
+                            <input type="button" id="user-picture" fieldname="picture{$namesuffix}" class="btn btn-mini reply-edit-cover-upload" value="<i class='icon-upload-alt'></i> 上传" style="" />
+							<button type="button" class="btn btn-mini  btn-upload-delete reply-news-edit-cover-remove" id="upload-delete" onclick="doDeleteItemImage(this, 'user-picture-value')" style="{if empty($reply['thumb'])} display:none;{/if}"><i class="icon-remove"></i> 删除</button>
+						</div>
+						{if !empty($reply['thumb'])}
+						<input type="hidden" name="picture-old" value="{$reply['thumb']}">
+						<div id="upload-file-view" class="upload-view">
+							<input type="hidden" id="user-picture-value" value="{$reply['thumb']}">
+							<img width="100" src="{$_W['attachurl']}{$reply['thumb']}">&nbsp;&nbsp;
+						</div>
+						{else}
+						<div id="upload-file-view"></div>
+						{/if}
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>回复简介</th>
+				<td>
+					<textarea style="height:150px;" name="description" class="span7" cols="60">{$reply['description']}</textarea>
+					<div class="help-block">用于图文显示的简介</div>
+				</td>
+			</tr>
+			<tr>
+				<th>投票页面标题</th>
+				<td>
+					<input type="text" id="" class="span7" placeholder="" name="vote_title" value="{$reply['vote_title']}">
+				</td>
+			</tr>  
+			<tr>
+				<th>投票类型</th>
+				<td>
+				  <label class="radio inline"><input type="radio" name="vote_type" value="0" {if $reply['vote_type'] == 0} checked="true" {/if}>单选文字</label>&nbsp;&nbsp;
+				  <label class="radio inline"><input type="radio" name="vote_type" value="1" {if $reply['vote_type'] == 1} checked="true" {/if}>多选文字</label>&nbsp;&nbsp;
+                  <label class="radio inline"><input type="radio" name="vote_type" value="2" {if $reply['vote_type'] == 2} checked="true" {/if}>单选图片</label>&nbsp;&nbsp;
+                  <label class="radio inline"><input type="radio" name="vote_type" value="3" {if $reply['vote_type'] == 3} checked="true" {/if}>多选图片</label>&nbsp;&nbsp;
+   			      <div class="help-block">提交数据后，在编辑里面添加选项</div>
+				</td>
+			</tr>
+            <tr>
+                <th>投票时间</th>
+                <td>
+                    <input type="hidden" value="{$reply['start_time']}" name="start">
+                    <input type="hidden" value="{$reply['end_time']}" name="end">
+                    <button id="date-range" class="form-control" type="button">
+                        <span class="date-title">{$reply['start_time']} 至 {$reply['end_time']}</span>
+                        <i class="icon-caret-down"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th>投票时间间隔</th>
+                <td>
+                    <input type="text" id="interval" class="span7" placeholder="" name="interval" value="{$reply['interval']}">
+                    <div>N天后可再次投票，0 表示此粉丝只能投一次</div>
+                </td>
+            </tr>
+ 		</tbody>
+	</table>
+ </div>
+<script type="text/javascript">
+kindeditor($('#rule'));
+kindeditorUploadBtn($('#user-picture'));
+</script>

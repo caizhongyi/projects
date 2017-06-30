@@ -1,0 +1,260 @@
+<input type="hidden" name="reply_id" value="{$reply['id']}" />
+<div class="main">
+<div>
+<!--活动开始-->
+<div>
+    <h4>团购活动开始内容</h4>
+</div>
+<div>
+
+    <table class="tb">
+        <tbody>
+
+        <tr>
+            <th><label><span class="red">*</span>活动名称：</label></th>
+            <td><input type="text" class="span6" name="name" value="{$reply['name']}">
+                <span class="help-block">请不要多于50字!</span>
+            </td>
+            <td rowspan="8">
+                <div style="margin-left:20px">{if $reply['start_img']}<img id="pic" src="{$reply['start_img']}" width="373px">{else}<img id="pic" src="http://www.wxapi.cn/index/images/Groupbuying/Groupbuying-Start.jpg" width="373px">{/if}
+                    <br>
+                    {if $reply['start_img']}
+                    <input type="text" class="span6" name="start_img" value="{$reply['start_img']}" onblur="document.getElementById('pic').src=this.value;" style="width:373px;">
+                    {else}
+                    <input type="text" class="span6" name="start_img" value="http://www.wxapi.cn/index/images/Groupbuying/Groupbuying-Start.jpg" onblur="document.getElementById('pic').src=this.value;" style="width:373px;">
+                    {/if}
+                    <span class="help-block"> 填写活动开始图片网址</span>
+                </div>
+            </td>
+        </tr><tr>
+            <th><label><span class="red">*</span>团购简介：</label></th>
+            <td><textarea class="span6" name="summary" style="width:400px; height:125px">{$reply['summary']}</textarea>
+                <span class="help-block">请不要多于1000字!</span>
+
+            </td>
+
+        </tr><tr>
+            <th><label><span class="red">*</span>活动时间：</label></th>
+            <td>
+                {if $reply[starttime]}
+                <input type="text" class="px" name="starttime" value="{php echo date('Y-m-d H:i:s',$reply['starttime'])}" onclick="showcalendar(event,this,true);">
+                {else}
+                <input type="text" class="px" name="starttime" value="" onclick="showcalendar(event,this,true);">
+                {/if}
+                <label>到</label>
+                {if $reply['endtime']}
+                <input type="text" class="px" name="endtime" value="{php echo date('Y-m-d H:i:s',$reply['endtime'])}" onclick="showcalendar(event, this,true);">
+                {else}
+                <input type="text" class="px" name="endtime" value="" onclick="showcalendar(event, this,true);">
+                {/if}
+                <span class="help-block">活动时间只能在您的会员有效期内</span>
+            </td>
+        </tr>
+        <tr>
+            <th><label><span class="red">*</span>通知邮箱：</label></th>
+            <td><input type="text" class="span6" value="{$reply['email']}" name="email">
+                <span class="help-block red">当有用户团购的时候会通过此邮箱通知！建议使用QQ邮箱 例如:123456789@qq.com</span>
+            </td>
+        </tr>
+        <tr>
+            <th><label><span class="red">*</span>邮箱密码：</label></th>
+            <td><input class="span6" type="password" name="email_password" value="{$reply['email_password']}">
+                <span class="help-block red">邮箱登入密码！</span>
+            </td>
+        </tr>
+        <tr>
+            <th><label><span class="red">*</span>SMTP服务器：</label></th>
+            <td>
+                {if $reply['smtp']}
+                <input type="text" class="span6" name="smtp" value="{$reply['smtp']}" style="width:400px">
+                {else}
+                <input type="text" class="span6" name="smtp" value="smtp.qq.com" style="width:400px">
+                {/if}
+                <span class="help-block red">QQ邮箱服务器为 smtp.qq.com 网易邮箱服务器为 smtp.163.com 通常的邮件服务器都为smtp.xxx.com  QQ邮箱务必开启smtp服务</span>
+                <span class="help-block">可以在QQ邮箱里面设置开启！</span>
+            </td>
+        </tr>
+        <tr>
+            <th><label><span class="red">*</span>消费确认密码：</label></th>
+            <td><input type="text" class="span6" name="consume_password" value="{$reply['consume_password']}">
+                <span class="help-block red">输入正确的密码可以在手机端直接修改消费状态!</span>
+            </td>
+        </tr>
+        <tr>
+            <th><label><span class="red">*</span>活动描述及商品描述：</label></th>
+            <td>
+                <textarea style="height:400px; width:100%;" class="span7 richtext-clone" name="description" cols="70" id="reply-add-text">{$reply['description']}</textarea>
+            </td>
+        </tr>
+        <tr>
+            <th><label>特别提醒：</label></th>
+            <td>
+                <textarea class="span6" name="notice" style="width:400px; height:125px">{$reply['notice']}</textarea>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<!--活动结束-->
+<div>
+    <h4>团购活动结束内容</h4>
+</div>
+<div>
+
+    <table class="tb">
+        <tbody>
+        <tr>
+            <th><label><span class="red">*</span>活动结束公告主题：</label></th>
+            <td><input name="end_theme" type="text" class="span6" value="{$reply['end_theme']}">
+                <span class="help-block">请不要多于50字!</span>
+            </td>
+            <td rowspan="4"><div style="margin-left:20px">
+                {if $reply['end_img']}
+                <img id="end" src="{$reply['end_img']}" width="373px">
+                <input type="text" class="span6" name="end_img" onchange="document.getElementById('end').src=this.value;" value="{$reply['end_img']}" style="width:363px;">
+                {else}
+                <img id="end" src="http://www.wxapi.cn/index/images/activity/activity-coupon-end.jpg" width="373px">
+                <input type="text" class="span6" name="end_img" onchange="document.getElementById('end').src=this.value;" value="http://www.wxapi.cn/index/images/activity/activity-coupon-end.jpg" style="width:363px;">
+                {/if}
+                <span class="help-block"> 填写活动结束图片网址</span>
+            </div>
+            </td>
+        </tr>
+        <tr>
+            <th><label>活动结束说明：</label></th>
+            <td>
+                <textarea style="height:400px; width:100%;" class="span7 richtext-clone" name="end_description" cols="70" id="reply-add-text">{$reply['end_description']}</textarea>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<!--奖项设置-->
+<div>
+    <h4>商家信息设置</h4>
+</div>
+<div>
+
+    <table class="tb">
+        <tbody>
+        <tr>
+            <th><label>团购电话：</label></th>
+            <td><input type="text" class="span6" name="phonenum" value="{$reply['phonenum']}">
+            </td>
+            <td rowspan="3" valign="top">&nbsp;</td>
+        </tr>
+        <tr>
+            <th><label>联系地址</label>：</th>
+            <td>
+                <input name="address" type="text" class="span6" value="{$reply['address']}">
+            </td>
+            <td rowspan="3" valign="top">&nbsp;</td>
+        </tr>
+        <tr>
+            <th>
+                <label>收款支付宝：</label>
+            </th>
+
+            <td><input name="pay" type="text" class="span6" value="{$reply['pay']}">
+                <span class="help-block">如：myxnxxxxx@163.com</span>
+            </td>
+
+            <td rowspan="3" valign="top">
+
+            </td>
+        </tr>
+        <tr><th colspan="2"></th></tr>
+        </tbody>
+        <tbody>
+
+        <tr>
+            <th><label>商家介绍：</label></th>
+            <td>
+                <textarea class="span6" name="business_description" style="width:400px; height:350px">{$reply['business_description']}</textarea>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+</div>
+
+<!--团购设置-->
+<div>
+    <h4>团购设置</h4>
+</div>
+<div>
+
+    <table class="tb">
+        <tbody>
+        <tr>
+            <th><label>商品名字：</label></th>
+            <td><input type="text"  class="span6" name="businessname" value="{$reply['businessname']}"></td>
+            <td rowspan="7" valign="top">&nbsp;</td>
+        </tr>
+        <tr>
+            <th><label><span class="red">*</span>商品原价：</label></th>
+            <td><input type="text" class="span6" name="oldprice" value="{$reply['oldprice']}">
+            </td>
+            <td rowspan="7" valign="top">&nbsp;</td>
+        </tr>
+        <tr>
+            <th><label><span class="red">*</span>每人最多团购产品数：</label></th>
+            <td><input type="text" class="span6" name="per_maxnum" value="{$reply['per_maxnum']}">
+                <span class="help-block">0表示不限制！</span>
+            </td>
+            <td rowspan="7" valign="top">&nbsp;</td>
+        </tr>
+        <tr>
+            <th><label><span class="red">*</span>商品团购价：</label></th>
+            <td><input type="text" class="span6" name="newprice" value="{$reply['newprice']}">
+            </td>
+        </tr>
+        <tr>
+            <th><label>商品总数：</label></th>
+            <td><input type="text" class="span6" name="totalnum" value="{$reply['totalnum']}"></td>
+        </tr>
+        <tr>
+            <th><label><span class="red">*</span>最低参团人数：</label></th>
+            <td> <input name="least" type="text" class="span6" value="{$reply['least']}">
+                <span class="help-block">最小人数为1</span>
+            </td>
+        </tr>
+        <tr>
+            <th><label>虚拟参团人数：</label></th>
+            <td><input type="text" class="span6" name="virtualnum" value="{$reply['virtualnum']}">
+                <span class="help-block red">前台展示的参团人数=虚拟参团人数+有效参团人数!</span>
+            </td>
+        </tr>
+        <tr>
+            <th><label>版权设置：</label></th>
+            <td><textarea class="span6" name="copyrighte" style="width:400px; height:40px"></textarea> </td>
+        </tr>
+        <tr></tr>
+        <tr><th colspan="2"></th></tr>
+        </tbody>
+        <tbody style="display:none" id="jptr">
+        </tbody>
+
+    </table>
+</div>
+
+
+</div>
+</div>
+<script type="text/javascript">
+    <!--
+    var category = {php echo json_encode($children)};
+    kindeditor($('.richtext-clone'));
+    //-->
+
+    !function(e){var t=function(t,n){this.$element=e(t),this.type=this.$element.data("uploadtype")||(this.$element.find(".thumbnail").length>0?"image":"file"),this.$input=this.$element.find(":file");if(this.$input.length===0)return;this.name=this.$input.attr("name")||n.name,this.$hidden=this.$element.find('input[type=hidden][name="'+this.name+'"]'),this.$hidden.length===0&&(this.$hidden=e('<input type="hidden" />'),this.$element.prepend(this.$hidden)),this.$preview=this.$element.find(".fileupload-preview");var r=this.$preview.css("height");this.$preview.css("display")!="inline"&&r!="0px"&&r!="none"&&this.$preview.css("line-height",r),this.original={exists:this.$element.hasClass("fileupload-exists"),preview:this.$preview.html(),hiddenVal:this.$hidden.val()},this.$remove=this.$element.find('[data-dismiss="fileupload"]'),this.$element.find('[data-trigger="fileupload"]').on("click.fileupload",e.proxy(this.trigger,this)),this.listen()};t.prototype={listen:function(){this.$input.on("change.fileupload",e.proxy(this.change,this)),e(this.$input[0].form).on("reset.fileupload",e.proxy(this.reset,this)),this.$remove&&this.$remove.on("click.fileupload",e.proxy(this.clear,this))},change:function(e,t){if(t==="clear")return;var n=e.target.files!==undefined?e.target.files[0]:e.target.value?{name:e.target.value.replace(/^.+\\/,"")}:null;if(!n){this.clear();return}this.$hidden.val(""),this.$hidden.attr("name",""),this.$input.attr("name",this.name);if(this.type==="image"&&this.$preview.length>0&&(typeof n.type!="undefined"?n.type.match("image.*"):n.name.match(/\.(gif|png|jpe?g)$/i))&&typeof FileReader!="undefined"){var r=new FileReader,i=this.$preview,s=this.$element;r.onload=function(e){i.html('<img src="'+e.target.result+'" '+(i.css("max-height")!="none"?'style="max-height: '+i.css("max-height")+';"':"")+" />"),s.addClass("fileupload-exists").removeClass("fileupload-new")},r.readAsDataURL(n)}else this.$preview.text(n.name),this.$element.addClass("fileupload-exists").removeClass("fileupload-new")},clear:function(e){this.$hidden.val(""),this.$hidden.attr("name",this.name),this.$input.attr("name","");if(navigator.userAgent.match(/msie/i)){var t=this.$input.clone(!0);this.$input.after(t),this.$input.remove(),this.$input=t}else this.$input.val("");this.$preview.html(""),this.$element.addClass("fileupload-new").removeClass("fileupload-exists"),e&&(this.$input.trigger("change",["clear"]),e.preventDefault())},reset:function(e){this.clear(),this.$hidden.val(this.original.hiddenVal),this.$preview.html(this.original.preview),this.original.exists?this.$element.addClass("fileupload-exists").removeClass("fileupload-new"):this.$element.addClass("fileupload-new").removeClass("fileupload-exists")},trigger:function(e){this.$input.trigger("click"),e.preventDefault()}},e.fn.fileupload=function(n){return this.each(function(){var r=e(this),i=r.data("fileupload");i||r.data("fileupload",i=new t(this,n)),typeof n=="string"&&i[n]()})},e.fn.fileupload.Constructor=t,e(document).on("click.fileupload.data-api",'[data-provides="fileupload"]',function(t){var n=e(this);if(n.data("fileupload"))return;n.fileupload(n.data());var r=e(t.target).closest('[data-dismiss="fileupload"],[data-trigger="fileupload"]');r.length>0&&(r.trigger("click.fileupload"),t.preventDefault())})}(window.jQuery)
+
+</script>

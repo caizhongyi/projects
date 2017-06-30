@@ -1,0 +1,96 @@
+.viewport {
+    position: relative;
+    height: 240px;
+    margin: 0 auto;
+    background: #444;
+    overflow: hidden;
+}
+
+.carousel .wrapper {
+    width: 200px;
+    height: 240px;
+    margin: 0 auto;
+}
+
+.scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    width: 800px;
+    height: 240px;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+    background-color: #444;
+}
+
+.carousel .slide {
+    width: 200px;
+    height: 240px;
+    float: left;
+}
+
+.painting {
+    width: 140px;
+    height: 200px;
+    border-radius: 10px;
+    margin: 20px auto;
+    border: 1px solid #000;
+    box-shadow:
+    inset 2px 2px 6px rgba(255,255,255,0.6),
+    inset -2px -2px 6px rgba(0,0,0,0.6),
+    0 1px 8px rgba(0,0,0,0.8);
+}
+
+.giotto {
+    background: url(giotto.jpg);
+}
+
+.leonardo {
+    background: url(leonardo.jpg);
+}
+
+.gaugin {
+    background: url(gaugin.jpg);
+}
+
+.warhol {
+    background: url(warhol.jpg);
+}
+
+.indicator {
+    position: relative;
+    width: 110px;
+    height: 20px;
+    margin: 10px auto;
+}
+.dotty-default{
+    width: 6px;
+    height: 6px;
+    border-radius: 10px;
+    background: #444;
+    display: inline-block;
+}
+.dotty-default + .dotty-default{
+    margin-left: 5px;
+}
+.dotty {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 10px;
+    background:#fc5300;
+    top: 6px;
+}

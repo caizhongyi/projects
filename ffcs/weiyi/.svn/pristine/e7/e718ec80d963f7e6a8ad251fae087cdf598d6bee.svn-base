@@ -1,0 +1,29 @@
+<?php 
+/**
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+defined('IN_IA') or exit('Access Denied');
+$pindex = max(1, intval($_GPC['page']));
+$psize = 20;
+$where = "WHERE 1=1";
+if (isset($_GPC['status'])) {
+	$where = " and status = '".intval($_GPC['status'])."'";
+}
+$sql = 'SELECT * FROM ' . tablename('members') .$where . " LIMIT " . ($pindex - 1) * $psize .',' .$psize;
+
+if(!empty($_W['member']['groupid']) && $_W['member']['groupid'] == CHANNEL_GROUP_ID){
+    $sql = 'SELECT * FROM ' . tablename('members') . " as a, ".tablename('members_channel')." as b WHERE b.parentid = ".$_W['uid']." and a.uid = b.childid and a.status = '".intval($_GPC['status'])."' LIMIT " . ($pindex - 1) * $psize .',' .$psize;
+    $_sql = 'SELECT COUNT(*) FROM ' . tablename('members') . " as a, ".tablename('members_channel')." as b WHERE b.parentid = ".$_W['uid']." and a.uid = b.childid and a.status = '".intval($_GPC['status'])."'";
+    $total = pdo_fetchcolumn($_sql);
+}else{
+    $total = pdo_fetchcolumn('SELECT COUNT(*) FROM ' . tablename('members') . $where);
+}
+$members = pdo_fetchall($sql);
+$pager = pagination($total, $pindex, $psize);
+
+$founders = explode(',', $_W['config']['setting']['founder']);
+foreach($members as &$m) {
+	$m['founder'] = in_array($m['uid'], $founders);
+}
+
+template('member/display');

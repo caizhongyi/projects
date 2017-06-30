@@ -1,0 +1,141 @@
+<?php
+/**
+ * 图文模块详细页面
+ * @author WeEngine Team
+ */
+defined('IN_IA') or exit('Access Denied');
+
+class NewsModuleSite extends WeModuleSite {
+
+	public function doMobileDetail() {
+        global $_W, $_GPC;
+        $id = intval($_GPC['id']);
+        $weid = intval($_GPC['weid']);
+        $from_user = authcode(base64_decode($_GPC['from_user']), 'DECODE');
+        $wechats_info = pdo_fetch("SELECT * FROM " . tablename('wechats') . "where weid=" . $weid );
+        $we_name = isset($wechats_info)&&!empty($wechats_info['name'])?$wechats_info['name']:'';
+        $sql = "SELECT * FROM " . tablename('news_reply') . " WHERE `id`=:id";
+        $row = pdo_fetch($sql, array(':id'=>$id));
+        $sql = "SELECT * FROM " . tablename('rule') . " WHERE `id`=:id";
+        $rule = pdo_fetch($sql, array(':id'=>$row['rid']));
+        if (!empty($row['url'])) {
+            //图文源链接bug修复by hongmingjie 13/11/06
+            if(empty($row['islocation'])){
+                header("Location: ".$row['url']);
+            }
+        }
+        $row = istripslashes($row);
+        $row['thumb'] = $_W['attachurl'] . trim($row['thumb'], '/');
+	    $title = $row['title'];
+        include $this->template('detail');
+	}
+
+    /*
+     * 拓展模块，新增砸蛋，抽奖，投票等
+     */
+    public function doWebGetResource() {
+        global $_GPC, $_W;
+        $module = $_GPC['channel'];
+        $keyword = $_GPC['keyword'];
+        if (empty($keyword)) {
+            return '';
+        }
+        if ($module == 'article') {
+            $list = pdo_fetchall("SELECT * FROM ".tablename('article')." WHERE title LIKE '%{$keyword}%' AND weid = '{$_W['weid']}'");
+            if (!empty($list)) {
+                foreach ($list as $row) {
+                    $result[$row['id']] = array(
+                        'id' => $row['id'],
+                        'title' => $row['title'],
+                        'description' => cutstr(strip_tags($row['content']), 200),
+                        'picurl' => $row['thumb'],
+                        'url' => create_url('mobile/channel', array('name' => 'detail', 'id' => $row['id'], 'weid' => $_W['weid'])),
+                    );
+                }
+            }
+        } elseif ($module == 'album') {
+            $list = pdo_fetchall("SELECT * FROM ".tablename('album')." WHERE title LIKE '%{$keyword}%' AND weid = '{$_W['weid']}'");
+            if (!empty($list)) {
+                foreach ($list as $row) {
+                    $result[$row['id']] = array(
+                        'id' => $row['id'],
+                        'title' => $row['title'],
+                        'description' => cutstr(strip_tags($row['content']), 200),
+                        'picurl' => $row['thumb'],
+                        'url' => create_url('mobile/channel', array('name' => 'photo', 'id' => $row['id'], 'weid' => $_W['weid'])),
+                    );
+                }
+            }
+        } elseif ($module == 'business') {
+            $list = pdo_fetchall("SELECT * FROM ".tablename('business')." WHERE title LIKE '%{$keyword}%' AND weid = '{$_W['weid']}'");
+            if (!empty($list)) {
+                foreach ($list as $row) {
+                    $result[$row['id']] = array(
+                        'id' => $row['id'],
+                        'title' => $row['title'],
+                        'description' => cutstr(strip_tags($row['content']), 200),
+                        'picurl' => $row['thumb'],
+                        'url' => create_url('mobile/channel', array('name' => 'business', 'id' => $row['id'], 'weid' => $_W['weid'])),
+                    );
+                }
+            }
+        } elseif ($module == 'vote') {
+            $sql = "SELECT ii.id,ii.rid,i.weid,i.name as rulename,ii.title as votename,ii.description,ii.thumb from ".tablename('rule')." i,".tablename('vote_reply')." ii where i.id = ii.rid and i.weid = '{$_W['weid']}'and ii.title like '%{$keyword}%'";
+            $list = pdo_fetchall($sql);
+            if (!empty($list)) {
+                foreach ($list as $row) {
+                    $result[$row['id']] = array(
+                        'id' => $row['id'],
+                        'title' => $row['votename'],
+                        'description' => cutstr(strip_tags($row['description']), 200),
+                        'picurl' => $row['thumb'],
+                        'url' => create_url('mobile/module', array('name' => 'vote','do'=>'list','id' => $row['rid'], 'weid' => $_W['weid'])),
+                    );
+                }
+            }
+        }elseif($module == 'egg'){
+            $sql = "SELECT ii.id,ii.rid,i.weid,i.name as title,ii.description,ii.picture as thumb from ".tablename('rule')." i,".tablename('egg_reply')." ii where i.id = ii.rid and i.weid = '{$_W['weid']}' and i.name  like '%{$keyword}%'";
+            $list = pdo_fetchall($sql);
+            if (!empty($list)) {
+                foreach ($list as $row) {
+                    $result[$row['id']] = array(
+                        'id' => $row['id'],
+                        'title' => $row['title'],
+                        'description' => cutstr(strip_tags($row['description']), 200),
+                        'picurl' => $row['thumb'],
+                        'url' => create_url('mobile/module', array('name' => 'egg','do'=>'lottery','id' => $row['rid'])),
+                    );
+                }
+            }
+        }elseif($module == 'lotery'){
+            $sql = "SELECT ii.id,ii.rid,i.weid,i.name as title,ii.description,ii.picture as thumb from ".tablename('rule')." i,".tablename('lotery_reply')." ii where i.id = ii.rid and i.weid = '{$_W['weid']}' and i.name  like '%{$keyword}%'";
+            $list = pdo_fetchall($sql);
+            if (!empty($list)) {
+                foreach ($list as $row) {
+                    $result[$row['id']] = array(
+                        'id' => $row['id'],
+                        'title' => $row['title'],
+                        'description' => cutstr(strip_tags($row['description']), 200),
+                        'picurl' => $row['thumb'],
+                        'url' => create_url('mobile/module', array('name' => 'lotery','do'=>'lottery','id' => $row['rid'])),
+                    );
+                }
+            }
+        }elseif($module == 'scratch'){
+            $sql = "SELECT ii.id,ii.rid,i.weid,i.name as title,ii.description,ii.picture as thumb from ".tablename('rule')." i,".tablename('scratch_reply')." ii where i.id = ii.rid and i.weid = '{$_W['weid']}' and i.name  like '%{$keyword}%'";
+            $list = pdo_fetchall($sql);
+            if (!empty($list)) {
+                foreach ($list as $row) {
+                    $result[$row['id']] = array(
+                        'id' => $row['id'],
+                        'title' => $row['title'],
+                        'description' => cutstr(strip_tags($row['description']), 200),
+                        'picurl' => $row['thumb'],
+                        'url' => create_url('mobile/module', array('name' => 'scratch','do'=>'lottery','id' => $row['rid'])),
+                    );
+                }
+            }
+        }
+        include $this->template('resource');
+    }
+}

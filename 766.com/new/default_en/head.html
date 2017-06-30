@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="{print webinfo('web_description')/}">
+<meta name="keywords" content="{print webinfo('web_keywords')/}">
+<title>{print webinfo('web_name')/}</title>
+<link href="{path template/}/css/style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="{path template/}/js/jquery-1.4.2.js"></script>
+<script type="text/javascript" src="{path template/}/js/DD_belatedPNG.js" ></script>
+<script type="text/javascript" src="http://js.olcdn.com/lib/gb2312/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="http://js.olcdn.com/net/v1/gb2312/jquery.alCommon.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('.logo');
+</script>
+<script type="text/javascript">
+DD_belatedPNG.fix('.logo');
+</script>
+<script>
+$(function(){
+	$(".offer").tab();
+});
+</script>
+<script language="JavaScript" type="text/JavaScript">
+function showhide_obj(obj,icon)
+{
+obj=document.getElementById(obj);
+icon=document.getElementById(icon);
+ if (obj.style.display=="none") 
+  { 
+        //指定文档中的对象为div,仅适用于IE;   
+        div_list = document.getElementsByTagName("div");
+        for (i=0; i< div_list.length;i ++)
+        {
+          thisDiv = div_list[i]; 
+           if(thisDiv.id.indexOf("title")!=-1)//当文档div中的id含有list时,与charAt类似;
+           {
+            //循环把所有菜单链接都隐躲起来
+           thisDiv.style.display="none";
+           icon.innerHTML = "+";
+           }
+        } 
+ 
+   myfont=document.getElementsByTagName("font");
+   for(i=0;i<myfont.length;i++)
+    {
+    thisfont = myfont[i];
+   }
+    icon.innerHTML="-";
+    obj.style.display=""; //只显示当前链接
+}
+ else
+  {
+  //当前对象是打开的，就封闭它;
+   icon.innerHTML="+";
+   obj.style.display="none";
+   }
+ }
+
+function show_this(obj)
+{
+    obj=document.getElementById(obj);
+    if (obj.id==obj.id) 
+     {
+       blinkicon=document.getElementsByTagName("font");
+       for(x=0;x<blinkicon.length;x++)
+        {
+           if( blinkicon[x].id.indexOf("select")!=-1 && obj.id!=obj )
+            {
+               blinkicon[x].innerHTML=" ";
+            }
+        }
+          obj.innerHTML=">"; 
+     }
+     else
+     {
+           obj.innerHTML=" ";
+     }
+}
+//-->
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	jQuery.jq51menu = function(menuboxid,submenu){
+		var menuboxli = $(menuboxid+" li");
+		menuboxli.eq(0).find(submenu).show();
+		menuboxli.find("a:first").attr("href","javascript:;");
+		menuboxli.click( function () { 
+			$(this).addClass("thismenu").find(submenu).show().end().siblings("li").removeClass("thismenu").find(submenu).hide();
+		});
+	};
+	//调用方法，可重用
+	$.jq51menu("#menubox","div.submenu");
+});
+</script>
+</head>

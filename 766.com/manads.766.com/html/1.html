@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<!-- JS必须在body里导入 -->
+	<script type="text/javascript" src="js/1.js"></script>
+	
+	<table id="user-geid" class="easyui-datagrid" toolbar="#tb" style="display: none" 
+		fit="true" border="false" singleSelect="true"
+		pagination="true" fitColumns="true" url="data/grid.json">  
+        <thead>  
+            <tr>  
+                <th field="id" width="100">ID</th>  
+                <th field="code" width="100">CODE</th>
+                <th field="name" width="100">NAME</th>
+                <th field="addr" width="100">ADDR</th>
+            </tr>  
+        </thead>  
+    </table>
+    
+    <div id="display-div" style="display: none">
+    <div id="tb" style="padding:5px; height:auto; display: none">
+		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="User.showWindow();">添加</a>
+		类别搜索: <input id="search" name="search" tyle="width: 100% " >
+		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="User.query();">查询</a> 
+	</div>
+	
+    <div id="user-window" class="easyui-dialog" title="添加用户" style="padding:10px 20px;width:300px;" buttons="#user-buttons"
+		iconCls="icon-add" modal="true" closed="true">
+		<form id="user-form" method="post">
+			<table width="100%" cellspacing="5">
+			   <tr>
+					<td align="right" width="90">用户名称：</td>
+			       	<td>
+				   		<input name="username" type="text" style="width: 100%"></input>
+			       	</td>
+		       </tr>
+				<tr>
+			      	<td align="right" width="90">密码：</td>
+			       	<td>
+				       	<input name="username" type="text" style="width: 100%"></input>
+			       </td>
+		       </tr>
+			</table>
+		</form>
+	</div>
+
+	<div id="user-buttons">
+		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-ok" onclick="User.add();">确定</a>
+		<a href="javascript:void(0);" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#user-window').dialog('close');">取消</a>
+	</div>
+	</div>
+</body>
+</html>

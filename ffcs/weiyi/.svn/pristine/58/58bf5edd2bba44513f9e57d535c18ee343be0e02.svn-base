@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Keywords" content="微易中心">
+    <meta name="Description" content="微易中心">
+    <!-- Mobile Devices Support @begin -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Mobile Devices Support @end -->
+
+
+    <link rel="stylesheet" type="text/css" href="./resource/style/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./resource/style/index.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./resource/script/formvalidator/formvalidator.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./resource/ace/assets/css/common.css" media="all">
+
+
+    <script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="./resource/script/bootstrap.js"></script>
+
+    <script type="text/javascript" src="./resource/script/formvalidator/formvalidator.js"></script>
+    <script type="text/javascript" src="./resource/script/formvalidator/formvalidatorregex.js"></script>
+    <script type="text/javascript" src="./resource/script/placeholder.js"></script>
+    <script type="text/javascript" src="./resource/script/emotions.js"></script>
+    <script type="text/javascript" src="./resource/script/common.js"></script>
+    <title>登录-微易中心</title>
+
+</head>
+
+
+<body>
+<div id="header" class="head head-nobg">
+    <div class="top">
+        <div class="topnav">
+            <a href="{php echo create_url('index');}" target="_blank">微易首页</a>|
+            <a href="{php echo create_url('member/login');}" target="_blank">登录</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <form id="myform"  class="form-horizontal form-box" action="" method="post">
+        <div class="form-header">
+            <span class="pull-left">轻松绑定公众账号，只需三步！</span>
+        </div>
+
+        <div class="stepbar stepbar-separate stepbar-three">
+            <div class="stepbar-inner">
+                <div class="stepbar-item first ">
+                    <span class="stepbar-number"><em>1</em></span>
+                    <span class="stepbar-desc">填写您的公共账号信息</span>
+                    <hr class="stepbar-progrees">
+                </div>
+                <div class="stepbar-item ">
+                    <span class="stepbar-number"><em>2</em></span>
+                    <span class="stepbar-desc">请将此URL及Token填到微信公众平台</span>
+                    <hr class="stepbar-progrees">
+                </div>
+                <div class="stepbar-item last active">
+                    <span class="stepbar-number"><em>3</em></span>
+                    <span class="stepbar-desc">设置用户欢迎信息及默认回复语</span>
+                    <hr class="stepbar-progrees">
+                </div>
+            </div>
+        </div>
+        <div class="form-body">
+            <div class="control-group">
+                <label class="control-label" for="welcome">用户欢迎语：</label>
+                <div class="controls">
+                    <div class="textarea-face">
+                        <textarea name="welcome" id="welcome" ></textarea><a inputid="welcome" href="javascript:;" class="iconEmotion"><i class="icon icon-face"></i>添加表情</a>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="default">默认回复语：</label>
+                <div class="controls">
+                    <div class="textarea-face">
+                        <textarea name="default" id="default"></textarea><a inputid="default" href="javascript:;" class="iconEmotion"><i class="icon icon-face"></i>添加表情</a>
+
+
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="token" value="{$_W['token']}">
+            <input type="hidden" name="weid" value="{$id}">
+            <input type="hidden" name="step" value="3">
+            <div class="control-group">
+                <div class="controls">
+                    <button name="submit" class="hide" value="1"></button>
+                    <a type="button" class="btn btn-submit" href="{$pre_url}">上一步</a>
+                    <button type="button" class="btn btn-submit"    href="#myModal" data-toggle="modal" >下一步</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    
+    <a class="scrollup" href="javascript:;" title="TOP">TOP</a>
+    <script type="text/javascript" src="./resource/script/jquery.scrollUp.min.js"></script>
+    <script type="text/javascript">
+        $('.scrollup').scrollUp();
+    </script>
+</div>
+
+<div class="modal hide fade modal-message" id="myModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>完成绑定，测验一下</h3>
+    </div>
+    <div class="modal-body">
+        <p>用微信个人号关注您的公众号，收到您设置的用户欢迎语，说明您已经成功绑定！</p>
+        <p>若您已关注公共账号，用微信个人号给你的公众号发送"T"，收到“<em class="text-error">诚心成易</em>”，说明您已经成功绑定！</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:;" data-dismiss="modal" class="btn btn-cancle">重新绑定</a>
+        <a id="successblind"  href="javascript:;" class="btn btn-submit">成功绑定</a>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#successblind').click(function(){
+        console.log($('#myform'));
+        $(':submit').click();
+       /* $.post('account.php?act=blind', {'default': $('#default').val(),'welcome':$('#welcome').val(),step: 3, weid: $('[name="weid"]').val(),submit:1,token:$('[name="token"]').val()}, function (rs) {
+            alert(rs.errno);
+            if (rs.errno == 200) {
+                location.href = rs.url_route;
+            }else if(rs.errno == -1){
+                alert('失败')
+            }
+        }, 'json');*/
+
+    })
+</script>
+<div class="emotions" style="display:none;"></div>
+
+</body>
+</html>

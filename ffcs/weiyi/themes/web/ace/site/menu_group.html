@@ -1,0 +1,25 @@
+<table class="table table-hover" id="home" {if $position == 2} style="display:none;"{/if}>
+<thead >
+<tr>
+    <th colspan="3">分类菜单</th>
+</tr>
+</thead>
+<tbody>
+{loop $groupAll $item}
+<tr>
+    <td style="width:80px;"><a href="javascript:;" onclick="addGroupMenu('{$item['name']}', '{$item['url']}')">添加</a></td>
+    <td style="width:100px;">{$item['name']}</td>
+</tr>
+{/loop}
+</tbody>
+</table>
+
+<script type="text/javascript">
+    <!--
+    function addGroupMenu(title, url) {
+        $('#groupurl').val(url);
+        $('#name').val(title);
+        w.modal('hide');
+    }
+    //-->
+</script>

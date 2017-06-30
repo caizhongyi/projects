@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>分享易信有礼，赢取话费抽大奖！</title>
+    <meta name="keywords" content="keywords"/>
+    <meta name="description" content="description"/>
+    <link rel="shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="favicon.ico"/>
+
+    <!-- web style  -->
+    <link rel="stylesheet" type="text/css" media="all" href="./source/modules/userapi/template/css/share.css"/>
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='./resource/script/jquery-2.0.3.min.js'>"+"<"+"/script>");
+    </script>
+    <!-- <![endif]-->
+</head>
+<body>
+
+<!-- header -->
+<header class="header">
+    <img src="img/banner.png" alt="" class="banner"/>
+</header>
+<!-- /header -->
+
+<!-- container -->
+<section class="container">
+    <form class="form">
+        <div class="form-group"><i class="icon-personal"></i>添加号码</div>
+        <div  class="form-group"><input type="text" name="phone[]"/><button class="btn-add" style="margin-left:10px;" type="button"><i class="icon-char">+</i><i class="icon-personal"></i></button></div>
+        <script type="text/javascript">
+         $(function(){
+             var arr = [];
+             $('.btn-add').click(function(){
+                 var $form = $(this).closest('form');
+                 if($form.children().length <=  6)
+                    $(this).closest('form').append(' <div  class="form-group"><input type="text" name="phone[]"/></div>')
+             })
+         })
+        </script>
+    </form>
+    <div class="alert">
+        用易信，短信免费发，更有电话留言、国际漫游等免费功能等你体验！新注册天翼用户送300M流量，次月再送60M流量。全网用户关注“移动互联网应用”易信公众号赢取高端智能机等好礼！
+    </div>
+    <div class="center">
+        <button class="btn-post" >免 费 发 送</button>
+    </div>
+    <div class="message-tip text-success">
+          提示信息
+    </div>
+    <div class="summary clearfix">
+        <div class="pull-left">
+            <label><i class="icon-time"></i><span>活动时间</span></label>
+            <label><i class="icon-object"></i><span>参与对象</span></label>
+            <label><i class="icon-file"></i><span>活动规则</span></label>
+        </div>
+        <div class="main">
+            2014年1月——6月 <br>
+            天翼智能机用户
+        </div>
+    </div>
+    <p>
+        1.天翼用户通过易信分享功能对好友进行分享。如若分享成功，赠送2元话费，分享无上限。（成功分享指的是所分享的用户从未注册过易信，通过分享链接成功安装并注册易信。） <br>
+    </p>
+    <p>
+        2.移动、联通用户分享成功，即可获得 2元
+    </p>
+    <p>
+        3.分享者对同一用户重复分享，不重复计算。（被分享者如收到多条分享短信，以点击的那条为有效分享）
+    </p>
+    <p>
+        4.天翼用户直接充值至分享者账户，异网用户在7个工作日内以短信方式发送卡账号、密码至分享者手机。
+    </p>
+    <p>
+        5.用户通过分享有礼页面发送的短信完全免费。
+    </p>
+</section>
+
+<!-- footer -->
+<div class="text-right"><img src="img/adv.png" alt=""/></div>
+<footer class="footer"></footer>
+<!-- /footer -->
+
+
+</body>
+</html>

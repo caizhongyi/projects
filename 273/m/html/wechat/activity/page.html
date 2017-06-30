@@ -1,0 +1,138 @@
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+<meta charset="utf-8"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi" />
+<meta content="telephone=no" name="format-detection">
+<meta name="keywords" content=""> 
+<meta name="description" content=""> 
+<title>页面标题</title> 
+<link rel="stylesheet" href="css/layout.css "> 
+</head> 
+<body> 
+<div class="wrap"> 
+    <section>
+        <!--top-bg-->
+        <div class="top-bg">
+            <img src="img/bg2.jpg" class="i-img bg-img" />
+        </div>
+        <!--//top-bg-->
+        <!--content-->
+        <div class="content">
+            <div class="self-info mod-detail mod-detail-ex">
+                <div class="hd"><h2 class="tit">填写收货信息</h2></div>
+                <div class="bd">
+                    <form id="form" action="index.html">
+                        <div class="input-wrap input-txt">
+                            <input type="text" placeholder="姓名" name="username" class="input-in" />
+                        </div>
+                        <div class="input-wrap input-txt">
+                            <input type="text" placeholder="电话" name="mobile" class="input-in"/>
+                        </div>
+                        <div class="input-wrap input-txt input-txt-area">
+                            <textarea placeholder="收货地址"  name="address" class="input-in" rows="4"></textarea>
+                        </div>
+                        <div class="input-wrap input-btn">
+                            <input type="submit" value="提交"  class="input-in"/>
+                        </div>
+                    </form>
+                    <div class="tip">
+                        <h2 class="tit">说明</h2>
+                        <p class="txt">请您填写收货信息，工作人员将在7个工作日内与您联系寄送奖品。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--//content-->
+
+    </section>
+</div>
+<b class="mask" style="display: none"></b>
+<!--pop-box-->
+<div class="pop-box" style="display:none;">
+
+    <div class="pop-box-con" style="display: none" id="success"><!--弹窗-->
+        <a href="javascript:;" class="btn-close"><i class="ico ico-close"></i></a>
+        <div class="pop-in">
+            <div class="pic"><img src="img/cs-finish.png" width="181" alt="填写完毕" /></div>
+            <div class="b-btn">
+                <a href="#" class="b-btn-link">返回抽奖活动页面</a>
+                <a href="#" class="b-btn-link b-btn-link-ex">喊小伙伴一起来抽奖</a>
+            </div>
+        </div>
+    </div>
+    <div class="pop-box-con" style="display: none" id="message"><!--弹窗1-->
+        <a href="javascript:;" class="btn-close"><i class="ico ico-close"></i></a>
+        <div class="pop-in">
+            <div class="con">
+                <div class="t pop-msg">红包已发放至您的273微信服务号，请及时领取！</div>
+            </div>
+            <div class="b-btn">
+                <a href="javascript:;" class="b-btn-link" data-hide >关闭</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//pop-box-->
+    <script type="text/javascript" src="../../../mod.js"></script>
+    <script>
+        var $ = require('zepto');
+
+        // 弹出窗口
+        var Pop = {
+            $ :  $('.pop-box'),
+            init : function(){
+                var _this = this;
+                $('.mask').height($(document).height())
+                this.$.on('click','[data-hide],.ico-close',function(){
+                    _this.hide();
+                })
+                return this;
+            },
+            show : function( selector ){
+                this.$.find('.pop-box-con,.share-con').css({
+                    top : $(window).scrollTop()
+                })
+                $('.mask').show();
+                this.$.show().find( selector ).show().siblings('.pop-box-con,.share-con').hide();
+                return this;
+            },
+            hide : function(){
+                this.$.hide();
+            },
+            success : function(){
+                this.show('#success');
+                return this;
+            },
+            message : function( message ){
+                this.show('#message');
+                this.$.find('#message .pop-msg').html( message );
+                return this;
+            },
+        }.init();
+
+
+        $('#form').on('submit',function(){
+            var username = $('[name=username]').val();
+            var mobile = $('[name=mobile]').val();
+            var address = $('[name=address]').val();
+            if($.trim(username) == '' ){
+                Pop.message('请输入用户名！');
+                return false;
+            }
+            else if( $.trim(mobile) == '' ){
+                Pop.message('请输入电话！');
+                return false;
+            }else if( !/((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)/.test(mobile) ){
+                Pop.message('电话格式不正确！');
+                return false;
+            }else if( $.trim(address) == '' ){
+                Pop.message('请输入收货信息！');
+                return false;
+            }
+            return true;
+        })
+    </script>
+</body> 
+</html>

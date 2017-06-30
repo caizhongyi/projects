@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>易信拜年赢豪礼！</title>
+    <meta name="keywords" content="keywords"/>
+    <meta name="description" content="description"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
+    <link rel="shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="favicon.ico"/>
+
+    <!-- web style  -->
+    <link rel="stylesheet" type="text/css" media="all" href="./source/modules/userapi/template/css/share.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="./source/modules/userapi/template/css/zero.mobile.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="./source/modules/userapi/template/css/layout.css"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- header -->
+<header class="header">
+    <img src="./source/modules/userapi/template/bainian_img/banner.png" alt="" class="banner"/>
+</header>
+<!-- /header -->
+
+<!-- container -->
+<section class="container">
+    <div class="text-warning notice">
+        活动时间：&nbsp;&nbsp;2014年1月23日至2014年2月18日 <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（农历小年至元宵节后） <br>
+        用户范围：&nbsp;&nbsp;福建地区易信用户（包括电信、移动、联通用户） <br>
+    </div>
+    <form class="form">
+        <div class="form-group"><i class=""></i>参与号码：</div>
+        <div  class="form-group"><input type="text" style="width: 70%;" name="mobile" value="{if !empty($mobile)}{$mobile}{/if}"/></div>
+
+    </form>
+
+    <div class="">
+        <button class="btn-post text-center return" style=" background: none repeat scroll 0 0 #F76B08 ;border: 1px solid #E66000;border-radius: 10px; box-shadow: 3px 3px 5px #666666;color: #FFFFFF;font-size: 14px;padding: 5px 30px;margin:0 0 10px 0;" >我 要 拜 年</button>
+    </div>
+    <div class="message-tip text-success" id= "sharemsg">
+    </div>
+    <script type="text/javascript">
+        $(document).on('click','.btn-post', function(){
+            $(this).attr('disabled','disabled');
+            var that = this;
+            var mobile =$("input[name='mobile']").val();
+            reg = /^0{0,1}(13[0-9]|145|15[0-9]|153|156|18[0-9])[0-9]{8}$/i;
+            if (!reg.test(mobile) ) {
+                $('#sharemsg').removeClass('text-success text-error').show().html('手机号码格式有误！').addClass('text-error').fadeOut(10000);
+                $("input[name='mobile']").focus();
+                $(that).removeAttr('disabled');
+                return false;
+            }
+            $.post('{$bainian_url}',{mobile:mobile},
+                    function (data) {
+                        if (data.errno == 200) {
+                            $('#sharemsg').removeClass('text-success text-error').show().html('报名成功！').addClass('text-success').fadeOut(10000);
+                        } else {
+                            $('#sharemsg').removeClass('text-success text-error').show().html(data.error).addClass('text-error').fadeOut(10000);
+                        }
+                        $(that).removeAttr('disabled');
+                    },'json');
+        });
+    </script>
+    <div class="module-wy" style="margin-bottom: -60%">
+        <div class="module-header"><i class="icon-title">活动规则：</i></div>
+        <div class="module-body">
+            <div class="summary clearfix">
+                <div class="main">
+                    2014年1月——6月 <br>
+                    天翼智能机用户
+                </div>
+            </div>
+            <p>
+                1.天翼用户通过易信分享功能对好友进行分享。如若分享成功，赠送2元话费，分享无上限。（成功分享指的是所分享的用户从未注册过易信，通过分享链接成功安装并注册易信。） <br>
+            </p>
+            <p>
+                2.移动、联通用户分享成功，即可获得 2元
+            </p>
+            <p>
+                3.分享者对同一用户重复分享，不重复计算。（被分享者如收到多条分享短信，以点击的那条为有效分享）
+            </p>
+            <p>
+                4.天翼用户直接充值至分享者账户，异网用户在7个工作日内以短信方式发送卡账号、密码至分享者手机。
+            </p>
+            <p>
+                5.用户通过分享有礼页面发送的短信完全免费。
+            </p>
+        </div>
+    </div>
+</section>
+<!-- footer -->
+<footer class="footer"><img src="./source/modules/userapi/template/bainian_img/footer.png" alt=""/></footer>
+<!-- /footer -->
+
+
+</body>
+</html>

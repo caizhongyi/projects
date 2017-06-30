@@ -1,0 +1,36 @@
+{template 'header'}
+{template 'slide'}
+<body>
+<link href="./themes/mobile/css/common.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/css/reset.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/css/snower.css" rel="stylesheet" type="text/css" media="all">
+<link href="./themes/mobile/templet4/css/home.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="./themes/mobile/js/maivl.js"></script>
+<!--导航菜单-->
+<!--<img class="bgimg" src="{php echo $styles[$name.'bgimg']}"/>-->
+<div class="body">
+    <div class="head_pic_cirrus">
+        <img src="./themes/mobile/templet4/images/v22_1.png">
+    </div>
+
+    <section style="padding-bottom:20px;padding-top: 10px">
+        {if $navs}
+        <ul class="list_font">
+            {loop $navs $nav}
+            <li>
+                <a href="{$nav['url']}">
+                    <div><span class="{$nav['css']['icon']['icon']}"></span></div>
+                    <div><p>{$nav['name']}</p></div>
+                </a>
+            </li>
+            {/loop}
+        </ul>
+        {else}
+        <a href="mobile.php?act=channel&name=home&weid={$_W['weid']}" class="box-item">
+            <i class="icon-user"></i>
+            <span style="{$nav['css']['name']}">个人中心</span>
+        </a>
+        {/if}
+    </section>
+</div>
+{template 'footer'}

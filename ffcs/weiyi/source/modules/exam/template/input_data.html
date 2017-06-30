@@ -1,0 +1,46 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微活动 '),array('title'=>'考试','url'=> create_url('rule/display', array('do' => 'customlist', 'name' => 'exam', 'activity'=>1, 'module' => 'exam'))),array('title'=>'试题管理'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-pencil"></i> 批量导入题库
+    </h1>
+</div>
+
+<div class="main">
+
+    <table class="tb">
+        <tr>
+            <th style="width:80px;">数据导入</th>
+            <td>
+                <div>
+                    <form id="reply_form" style=" position: relative;" target="aa" action="{php echo create_url('site/module', array('do' => 'inputdata', 'name'=>'exam', 'id' => $rid))}" method="post" enctype="multipart/form-data" onsubmit="return confirm_check()">
+                        <input type="file" name="file" id="file" style="position: absolute; top: 0; left: 0;z-index:11;opacity:0;width: 56px;height: 34px;">
+                        <input type="hidden" name="import_data" value="1" >
+                        <input type="button"  name="" id ="upload_btn" value="上传" class="btn btn-sm btn-primary">
+                        <span id="file_show"></span>
+                        <button type="submit" class="btn btn-sm btn-primary" name="import_datas" value="导入">导入</button>
+                        <span style="color: red;">注：请导入不大于2M,xls,xlsx文件！ </span>
+                        点击下载模版：<a href="../../resource/attachment/example/知识库.xls">模版</a>
+                    </form>
+
+                    <script type="text/javascript">
+                        function confirm_check(){
+                            if($("#file").val().length ==0){
+                                alert("您还未上传文件！");
+                            }
+                            return confirm('确认导入');
+                        }
+                        $("#file").change(function(){
+                            $("#file_show").text($(this).val());
+                        })
+                    </script>
+                </div>
+
+            </td>
+
+        </tr>
+    </table>
+</div>
+{template 'common/footer'}
+  
+	

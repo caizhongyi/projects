@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="0.5">
+	<application setting="false">
+		<name><![CDATA[留言墙]]></name>
+		<identifie><![CDATA[message]]></identifie>
+		<version><![CDATA[1.1]]></version>
+		<type><![CDATA[]]></type>
+		<ability><![CDATA[留言墙]]></ability>
+		<description><![CDATA[留言墙，带审核，审核以后可以前台查看，也可以免审核。]]></description>
+		<author><![CDATA[超级无聊]]></author>
+		<url><![CDATA[]]></url>
+	</application>
+	<platform>
+		<subscribes>
+		</subscribes>
+		<handles>
+			<message type="text" />
+		</handles>
+		<rule embed="true" />
+	</platform>
+	<bindings>
+	</bindings>
+	<install><![CDATA[CREATE TABLE IF NOT EXISTS `ims_message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rid` int(11) NOT NULL,
+  `weid` int(11) NOT NULL,
+  `nickname` varchar(30) DEFAULT NULL,
+  `info` varchar(200) DEFAULT NULL,
+  `fid` int(11) DEFAULT '0',
+  `isshow` tinyint(1) DEFAULT '0',
+  `create_time` int(11) DEFAULT NULL,
+  `fromuser` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `ims_message_reply` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) unsigned NOT NULL,
+  `parentid` int(10) unsigned NOT NULL DEFAULT '0',
+  `title` varchar(50) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `thumb` varchar(60) NOT NULL,
+  `isshow` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

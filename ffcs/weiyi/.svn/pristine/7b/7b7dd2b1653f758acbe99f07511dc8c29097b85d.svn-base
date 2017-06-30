@@ -1,0 +1,27 @@
+<ul class="nav nav-tabs padding-24 tab-color-blue background-blue">
+    {if $modulename =='vote' ||  $_GPC['module']=='vote'}
+    <li {if $_GPC['act']=='post'} class="active"{/if}><a href="{php echo create_url('activity/post',array('module'=>'vote'))}">添加投票</a></li>
+    <li {if $_GPC['act']=='display'} class="active"{/if}><a href="{php echo create_url('activity/display',array('module'=>'vote'))}">管理活动</a></li>
+    {elseif $modulename =='wxwall' ||  $_GPC['module']=='wxwall'}
+    <li {if $_GPC['act']=='post'} class="active"{/if}><a href="{php echo create_url('activity/post',array('module'=>'wxwall'))}">添加活动墙</a></li>
+    <li  {if $_GPC['act']=='display'} class="active"{/if} ><a href="{php echo create_url('activity/display',array('module'=>'wxwall'))}">管理活动</a></li>
+    {elseif $modulename =='egg' ||  $_GPC['module']=='egg'}
+    <li {if $_GPC['act']=='post'} class="active"{/if}><a href="{php echo create_url('activity/post',array('module'=>'egg'))}">添加砸蛋</a></li>
+    <li  {if $_GPC['act']=='display'} class="active"{/if} ><a href="{php echo create_url('activity/display',array('module'=>'egg'))}">管理活动</a></li>
+    {elseif $modulename =='lotery' ||  $_GPC['module']=='lotery'}
+    <li {if $_GPC['act']=='post'} class="active"{/if}><a href="{php echo create_url('activity/post',array('module'=>'lotery'))}">添加大转盘</a></li>
+    <li  {if $_GPC['act']=='display'} class="active"{/if} ><a href="{php echo create_url('activity/display',array('module'=>'lotery'))}">管理活动</a></li>
+    {elseif $modulename =='scratch' ||  $_GPC['module']=='scratch'}
+    <li {if $_GPC['act']=='post'} class="active"{/if}><a href="{php echo create_url('activity/post',array('module'=>'scratch'))}">添加刮刮卡</a></li>
+    <li  {if $_GPC['act']=='display'} class="active"{/if} ><a href="{php echo create_url('activity/display',array('module'=>'scratch'))}">管理活动</a></li>
+    {elseif $modulename =='research' ||  $_GPC['module']=='research'}
+    <li {if $_GPC['act']=='post'} class="active"{/if}><a href="{php echo create_url('activity/post',array('module'=>'research'))}">添加活动</a></li>
+    <li  {if $_GPC['act']=='display'} class="active"{/if} ><a href="{php echo create_url('activity/display',array('module'=>'research'))}">管理活动</a></li>
+    <li {if $_GPC['do']=='post'} class="active"{/if}><a href="{php echo create_url('index/module',array('do'=>'post','name'=>'research'))}">添加自定义表单</a></li>
+    <li  {if $_GPC['do']=='display'} class="active"{/if} ><a href="{php echo create_url('index/module',array('do'=>'display','name'=>'research'))}">管理表单</a></li>
+    {else}
+    <li {if $_GPC['act']=='post'} class="active"{/if}><a href="{php echo create_url('activity/post',array('module'=>'egg'))}">添加活动</a></li>
+    <li  {if $_GPC['act']=='display'} class="active"{/if} ><a href="{php echo create_url('activity/display')}">管理活动</a></li>
+
+    {/if}
+</ul>

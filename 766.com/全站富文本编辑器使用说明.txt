@@ -1,0 +1,76 @@
+﻿1.全站富文本编辑器使用说明
+kindeditor
+http://js.olcdn.com/common/kindeditor-v4.1.6/kindeditor-4.1.6/examples/index.html
+
+http://js.olcdn.com/common/ckeditor_4.0.1.1_standard/ckeditor.js
+http://js.olcdn.com/common/ckeditor_4.0.1.1_standard/samples/index.html  示例
+http://js.olcdn.com/common/ckeditor_4.1_full/ckeditor/ckeditor.js
+http://js.olcdn.com/common/ckeditor_4.1_full/ckeditor/samples/index.html  示例
+http://js.olcdn.com/common/ckeditor_4.1_full/ckeditor/samples/plugins/toolbar/toolbar.html  toolbar 配置
+@example :
+    //初始化
+	CKEDITOR.on( 'instanceReady', function( evt ) {
+			var editor = evt.editor;
+			editor.setData( 'This editor has it\'s tabIndex set to <strong>' + editor.tabIndex + '</strong>' );
+
+			// Apply focus class name.
+			editor.on( 'focus', function() {
+				editor.container.addClass( 'cke_focused' );
+			});
+			editor.on( 'blur', function() {
+				editor.container.removeClass( 'cke_focused' );
+			});
+
+			// Put startup focus on the first editor in tab order.
+			if ( editor.tabIndex == 1 )
+				editor.focus();
+		});
+<textarea id="editor1" cols="80" id="editor4" rows="10" tabindex="1"></textarea>
+
+//CKEDITOR配置
+CKEDITOR.replace( 'editor1', {
+	    // Toolbar configuration generated automatically by the editor based on config.toolbarGroups.
+        config.toolbar = [
+        	{ name: 'document', groups: [ 'mode', 'document', 'doctools' ], items: [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
+        	                                                                        // 源码,保存，新建，预览，打印，模版
+        	{ name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+        	                                                                      // 剪切,拷贝，粘贴，粘贴无文本，Msword，撤
+        	{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ], items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
+        	{ name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
+        	'/',
+        	{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
+        	{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl' ] },
+        	{ name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+        	{ name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
+        	'/',
+        	{ name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+        	{ name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+        	{ name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
+        	{ name: 'others', items: [ '-' ] },
+        	{ name: 'about', items: [ 'About' ] }
+        ],
+
+        // Toolbar groups configuration.
+        config.toolbarGroups = [
+        	{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+        	{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+        	{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ] },
+        	{ name: 'forms' },
+        	'/',
+        	{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+        	{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+        	{ name: 'links' },
+        	{ name: 'insert' },
+        	'/',
+        	{ name: 'styles' },
+        	{ name: 'colors' },
+        	{ name: 'tools' },
+        	{ name: 'others' },
+        	{ name: 'about' }
+        ],
+    	removeButtons : 'Underline,Subscript,Superscript',
+    	filebrowserImageUploadUrl : './upload.php?type=img',  //上传路径
+    	filebrowserFlashUploadUrl : './upload.php?type=flash',  //上传路径
+    	enterMode : CKEDITOR.ENTER_BR,   //换行
+    	shiftEnterMode : CKEDITOR.ENTER_P //换行
+});

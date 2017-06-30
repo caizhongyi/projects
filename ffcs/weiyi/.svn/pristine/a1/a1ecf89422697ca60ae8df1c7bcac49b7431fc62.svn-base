@@ -1,0 +1,101 @@
+<?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: linruijuan
+ * Date: 14-1-7
+ * Time: 下午5:26
+ * To change this template use File | Settings | File Templates.
+ * 增加团购活动
+ */
+defined('IN_IA') or exit('Access Denied');
+checkaccount();
+
+$id = intval($_GPC['id']);
+if (!empty($id)) {
+    $groupitem = pdo_fetch("SELECT * FROM ".tablename('group_buying')." WHERE id = :id" , array(':id' => $id));
+    if (empty($groupitem)) {
+        message('抱歉，团购活动不存在或是已经删除！', '', 'error');
+    }
+}
+if (checksubmit('submit')) {
+    if(empty($_GPC['key'])){
+        message('关键词不能为空，请输入关键词！');
+    }elseif (empty($_GPC['name'])) {
+        message('活动名称不能为空，请输入活动名称！');
+    }elseif(empty($_GPC['summary'])){
+        message('团购简介不能为空，请输入团购简介！');
+    }elseif(empty($_GPC['starttime'])){
+        message('活动开始时间不能为空，请选择活动开始时间！');
+    }elseif(empty($_GPC['endtime'])){
+        message('活动结束时间不能为空，请选择活动结束时间！');
+    }elseif(empty($_GPC['email'])){
+        message('通知邮箱不能为空，请输入通知邮箱！');
+    }elseif(empty($_GPC['email_password'])){
+        message('邮箱密码不能为空，请输入邮箱密码！');
+    }elseif(empty($_GPC['consume_password'])){
+        message('消费确认密码不能为空，请输入消费确认密码！');
+    }elseif(empty($_GPC['description'])){
+        message('活动描述及商品描述不能为空，请输入活动描述及商品描述！');
+    }elseif(empty($_GPC['end_theme'])){
+        message('活动结束公告主题不能为空，请输入活动结束公告主题！');
+    }elseif(empty($_GPC['end_description'])){
+        message('活动结束说明不能为空，请输入活动结束说明！');
+    }elseif(empty($_GPC['phonenum'])){
+        message('团购电话不能为空，请输入团购电话！');
+    }elseif(empty($_GPC['address'])){
+        message('联系地址不能为空，请输入联系地址！');
+    }elseif(empty($_GPC['businessname'])){
+        message('商品名字不能为空，请输入商品名字！');
+    }elseif(empty($_GPC['oldprice'])){
+        message('商品原价不能为空，请输入商品原价！');
+    }elseif(empty($_GPC['per_maxnum'])){
+        message('每人最多团购产品数不能为空，请输入每人最多团购产品数！');
+    }elseif(empty($_GPC['newprice'])){
+        message('商品团购价不能为空，请输入商品团购价！');
+    }elseif(empty($_GPC['totalnum'])){
+        message('商品总数不能为空，请输入商品总数！');
+    }elseif(empty($_GPC['least'])){
+        message('最低参团人数不能为空，请输入最低参团人数！');
+    }elseif(empty($_GPC['virtualnum'])){
+        message('虚拟参团人数不能为空，请输入虚拟参团人数！');
+    }
+    $data = array(
+        'weid' => $_W['weid'],
+        'key' => $_GPC['key'],
+        'name' => $_GPC['name'],
+        'summary' => $_GPC['summary'],
+        'starttime' => strtotime($_GPC['starttime']),
+        'endtime' => strtotime($_GPC['endtime']),
+        'email' => $_GPC['email'],
+        'email_password' => $_GPC['email_password'],
+        'smtp' => $_GPC['smtp'],
+        'consume_password' => $_GPC['consume_password'],
+        'description' => $_GPC['description'],
+        'notice' => $_GPC['notice'],
+        'end_theme' => $_GPC['end_theme'],
+        'end_description' => $_GPC['end_description'],
+        'phonenum' => $_GPC['phonenum'],
+        'address' => $_GPC['address'],
+        'pay' => $_GPC['pay'],
+        'business_description' => $_GPC['business_description'],
+        'businessname' => $_GPC['businessname'],
+        'oldprice' => $_GPC['oldprice'],
+        'per_maxnum' => $_GPC['per_maxnum'],
+        'newprice' => $_GPC['newprice'],
+        'totalnum' => $_GPC['totalnum'],
+        'least' => $_GPC['least'],
+        'virtualnum' => $_GPC['virtualnum'],
+        'copyright' => $_GPC['copyright'],
+        'start_img' => $_GPC['start_img'],
+        'end_img' => $_GPC['end_img']
+    );
+    if (empty($id)) {
+        pdo_insert('group_buying', $data);
+    } else {
+        pdo_update('group_buying', $data, array('id' => $id));
+    }
+    message('团购活动更新成功！', create_url('groupbuying/display'), 'success');
+} else {
+    template('groupbuying/create');
+}
+

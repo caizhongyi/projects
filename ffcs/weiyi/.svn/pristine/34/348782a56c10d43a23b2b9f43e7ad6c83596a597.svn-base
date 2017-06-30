@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <title>
+        翼货架-小翼好机友
+    </title>
+    <link rel="stylesheet" type='text/css' href="css/style.css"/>
+
+    <!-- mobile jquery -->
+    <script type="text/javascript" src="../../../resource/script/zepto.min.js"></script>
+
+
+</head>
+<body>
+<header>
+    <nav class="clearfix">
+        <a class="current" href="/login/initLogin.action?type=mobile#/mobile">手机</a>
+        <a href="/login/initLogin.action?type=adsl&activity=&showIcon=&lzgh=&channelType=5#/adsl">装宽带</a>
+        <a href="/login/initLogin.action?type=clip#/clip">续宽带</a>
+        <span class="more">
+            <a href="/login/initLogin.action?type=app#/app">更多</a>
+           <ul>
+               <li><a href="">续宽带</a></li>
+               <li><a href="">续宽带</a></li>
+               <li><a href="">续宽带</a></li>
+               <li><a href="">续宽带</a></li>
+           </ul>
+        </span>
+        <script type="text/javascript">
+            $('nav .more').click(function(e){
+                e.stopPropagation()
+                $(this).toggleClass('shown')
+            })
+            $(document).click(function(){
+                $('nav .more').removeClass('shown')
+            })
+        </script>
+    </nav>
+</header>
+
+<ul class="mobile-lists">
+    <li class="item">
+        <div class="inner">
+            <div class="thumb">
+                <a href="#"><img src="{imageUrl}" alt=""></a>
+            </div>
+            <div class="info">
+                <p class="name">{name}</p>
+                <p>
+                    <span class="price">￥{price}</span>
+                    <a href="#" class="btn yellow buy">立即购买</a>
+                </p>
+            </div></div>
+    </li>
+    <li class="item">
+        <div class="inner">
+            <div class="thumb">
+                <a href="#"><img src="{imageUrl}" alt=""></a>
+            </div>
+            <div class="info">
+                <p class="name">{name}</p>
+                <p>
+                    <span class="price">￥{price}</span>
+                    <a href="#" class="btn yellow buy">立即购买</a>
+                </p>
+            </div></div>
+    </li>
+    <li class="item">
+        <div class="inner">
+            <div class="thumb">
+                <a href="#"><img src="{imageUrl}" alt=""></a>
+            </div>
+            <div class="info">
+                <p class="name">{name}</p>
+                <p>
+                    <span class="price">￥{price}</span>
+                    <a href="#" class="btn yellow buy">立即购买</a>
+                </p>
+            </div></div>
+    </li>
+    <li class="item">
+        <div class="inner">
+            <div class="thumb">
+                <a href="#"><img src="{imageUrl}" alt=""></a>
+            </div>
+            <div class="info">
+                <p class="name">{name}</p>
+                <p>
+                    <span class="price">￥{price}</span>
+                    <a href="#" class="btn yellow buy">立即购买</a>
+                </p>
+            </div></div>
+    </li>
+
+</ul>
+
+
+</body>
+</html>
+

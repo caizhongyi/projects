@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="{print weblangs('book')/}">
+<meta name="keywords" content="{print weblangs('book')/}">
+<title>{print weblangs('book')/}_{print webinfo('web_name')/}</title>
+<link href="{path template/}/images/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{path template/}/images/jquery.js"></script>
+<script type="text/javascript" src="{path template/}/images/nav.js"></script>
+</head>
+<body>
+{include head/}
+<div class="div_margin"></div>
+<div class="contain">
+<div class="box_title" style="background:none"><h2 class="position"><span>{print weblangs('location')/}:{position source=position/}  {print weblangs('book')/}</span></h2></div>
+<div class="book_contain">
+	<h2>{print weblangs('book')/}：</h2>
+	{loop source=$book}
+	<div class="book">
+		<div class="book_head">[{print $v['book_type']/}]:{print $v['book_name']/}&nbsp;<span class="title">{print $v['book_title']/}</span><span style="color:#0000FF">&nbsp;{print $v['pr_title']/}</span><span class="time">{print date('Y-m-d H:m:s',$v['addtime'])/}</span></div>
+		<div class="book_content">{print $v['book_content']/}</div>
+		{if $v['reply']}
+		<div class="book_reply">{print weblangs('member_msg43')/}：{print $v['reply']/}</div>
+		{/if}
+	</div><!--列表-->
+	{/loop}
+	<div class="page_fy">
+		{print $page/}
+ </div>
+</div>
+<div class="book_contain" style="margin-top:10px;">
+<div class="book_form">
+	<form action="?action=add&lang={print $lang/}" method="post" name="form">
+	{if $title}
+		<p><label>产品名称:</label>{print $title/}</p>
+	{/if}	
+		<p><label>{print weblangs('book_msg5')/}：</label><input name="book_name" style="width:200px; padding:2px 0" /></p>
+		<p><label>{print weblangs('member_reg_mail')/}:</label><input name="mail" style="width:200px; padding:2px 0"/></p>
+		<p><label>{print weblangs('web_type')/}：</label><input type="radio" name="book_type" value="0" checked="checked" style="margin:0 5px;"/>{print weblangs('liuyan')/}<input type="radio" name="book_type" value="1" style="margin:0 5px;"/>{print weblangs('toushu')/}<input type="radio" name="book_type" value="2" style="margin:0 5px;"/>{print weblangs('xunwen')/}<input type="radio" name="book_type" value="3" style="margin:0 5px;"/>{print weblangs('souhou')/}</p>
+		<p><label>{print weblangs('book_msg6')/}：</label><input name="book_title" style="width:400px;padding:2px 0" /></p>
+		<p style="height:100px;"><label>{print weblangs('book_msg7')/}：</label><textarea name="book_content" style="width:400px; height:100px;border:1px solid #E3E3E3;"></textarea></p>
+		<p>
+		<label>{print weblangs('member_login_code')/}：</label><input name="book_code" value="" style="width:50px; height:20px; line-height:20px; display:block; float:left; margin-right:3px; display:inline"/><img src="{path includes/}/code.php" name="code" border="0" id="code" style="display:block; float:left; cursor:pointer"/>
+		</p>
+		<p><input type="hidden" name="pr_id" value="{print $pr_id/}"/><input style="margin-left:80px;" type="submit" name="submit" value="{print weblangs('member_msg47')/}" /></p>
+	</form>
+</div>	
+</div>
+</div>
+{include foot/}
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active">  {{ $state.current.page.title }} </li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content slide" >
+    <div class="box">
+    <div class="box-header " senior-table="contract" >
+
+        <div class="form form-inline form-alignment">
+            <div class="form-group form-group-alignment">
+                <label class="form-label" >订单号：</label>
+                <input type="text" placeholder="订单号" ng-change="searchChange()" ng-model="searchCondition.order_no" class="form-control" >
+            </div>
+            <div class="form-group form-group-alignment">
+                <label class="form-label">车牌号：</label>
+                <input type="text" placeholder="车牌号" ng-change="searchChange()" ng-model="searchCondition.car_number" class="form-control" >
+            </div>
+            <div class="form-group form-group-alignment">
+                <label class="form-label">合同编号：</label>
+                <input type="text" placeholder="合同号" ng-change="searchChange()" ng-model="searchCondition.contract_no" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label class="form-label">订单类型</label>
+                <select  class="form-control input-control" name="order_type" ng-model="searchCondition.order_type" select-order-type="">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+            <div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">开始时间：</label>
+                   <span class="input-group datepicker modv2-sel-warap" datepicker-click="startdOpened">
+                                <input type="hidden"  ng-model="searchCondition.start_date" />
+                                <input placeholder="日/月" type="datetime"  name="start_date"  required ng-model="start_date" sync="searchCondition.start_date"
+                                       class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="startdOpened"
+                                       datepicker-options="dateOptions"  ng-required="true"  current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+
+                            </span>
+                </div>
+                <div class="form-group form-group-alignment">
+                    <label class="form-label">结束时间：</label>
+                  <span class="input-group datepicker modv2-sel-warap" datepicker-click="endOpened">
+                     <input type="hidden"  ng-model="searchCondition.end_date"/>
+                     <input placeholder="日/月" type="datetime"  name="end_date"  required ng-model="end_date" sync="searchCondition.end_date"
+                            class="form-control" datepicker-popup="yyyy-MM-dd"  is-open="endOpened"
+                            datepicker-options="dateOptions"  ng-required="true"  min-date="start_date" current-text="今天" clear-text="清空" close-text="关闭"  readonly />
+
+                </span>
+                </div>
+
+                <div class="form-group  ">
+                    <label class="form-label">合同状态：</label>
+                    <select  class="form-control input-control" name="status" ng-model="searchCondition.status" select-contract-status="" >
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+                <div class="form-group modv2-formg" ng-if="!utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay')">
+                    <label class="" >&nbsp;</label>
+                    <button class="btn btn-default" ng-click="searchInfo()"  type="button" ><i class="fa fa-search"></i> 搜索</button>
+                    <!-- <button class="btn btn-primary modv2-btn" type="button" ng-click="add()">添加一条</button>-->
+                </div>
+            </div>
+
+            <div class="form-group" select-store="" ng-if="utils.hasRoleCode('cfb.caiwu.recheck,cfb.caiwu.manage,cfb.caiwu.pay')">
+                <div class="form-group modv2-formg">
+                    <label class="form-label">门店名称：</label>
+                    <select id="province" class="form-control province" name="province" ng-model="searchCondition.province"  ng-options="item.id as item.name  for item in province "  >
+                        <option value="">省份</option>
+                    </select>
+                </div>
+                <div class="form-group modv2-formg">
+                    <select id="city" class="form-control city" name="city" ng-model="searchCondition.city"  ng-options="item.id as  item.name for item in city "  >
+                        <option value="">市/区</option>
+                    </select>
+                </div>
+                <div class="form-group modv2-formg">
+                    <select id="shop" class="form-control shop" name="shop" ng-model="searchCondition.dept"  ng-options="item.id as  item.name for item in shop" >
+                        <option value="">门店</option>
+                    </select>
+                </div>
+                <div class="form-group modv2-formg">
+                    <label class="" >&nbsp;</label>
+                    <button class="btn btn-default" ng-click="searchInfo()"  type="button" ><i class="fa fa-search"></i> 搜索</button>
+                    <!-- <button class="btn btn-primary modv2-btn" type="button" ng-click="add()">添加一条</button>-->
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /.box-header -->
+    <div class="box-body no-padding ">
+        <table class="table table-hover" >
+            <tbody>
+            <tr>
+                <th width="15%">订单信息</th>
+                <th width="20%">合同信息</th>
+                <th width="20%">车辆信息</th>
+                <th width="12%">卖方</th>
+                <th width="12%">买方</th>
+                <th width="10%">合同状态</th>
+                <th >订单类型</th>
+                <th width="">操作</th>
+            </tr>
+            <tr ng-repeat="item in list" class="list-animation">
+                <td >
+                    <span class="">订单号：</span><span class="modv2-num"> {{item.order_no}}</span> <br>
+                    <span class="">订单日期：</span>   {{item.create_time  ? (item.create_time * 1000 | date:"yyyy-MM-dd") : ''}} <br>
+                </td>
+                <td >
+                    <!-- <span ng-if="!item.contract_no">合同未完善</span> -->
+                    <span>
+                        <span class="">合同编号：</span>  <a href="javascript:;" ng-click="contractInfo()" class="modv2-num">{{ item.contract_no }}</a> <br/>
+                        <span class="">成交价：</span><span class="modv2-num2"> {{ item.sale_price }} </span>  <br/>
+                    </span>
+                </td>
+                <td >
+                    <span ng-if="!item.car_number">无</span>
+                    <span ng-if="item.car_number">
+                        <span class="">车牌号：</span>  {{item.car_number}} <br/>
+                        <span class="">车型品牌：</span>  {{item.vehicle_brand}} {{item.vehicle_series}}<br/>
+                    </span>
+                </td>
+                <td >
+                    <span class="">姓名：</span>  {{ item.seller_name }} <br/>
+                    <span class="">代理人：</span>  {{ item.seller_agent_name }} <br/>
+                </td>
+                <td >
+                    <span class="">姓名：</span>  {{ item.buyer_name }} <br/>
+                    <span class="">代理人：</span>  {{ item.buyer_agent_name }} <br/>
+                </td>
+                <td class="text-center">
+                    <span >{{ item.status_name }}</span>
+                    <div title="{{ item.check_note }}" class="text-danger text-ellipsis " style="width: 120px;margin: 0 auto;" ng-if="item.status == 3">{{ item.check_note }}</div>
+                </td>
+                <td  class="text-center">
+                    {{ item.order.is_jhc | order_type }}
+                </td>
+                <td>
+                    <a href="javascript:;"  class="modv2-link" ng-show="utils.hasCode('settlement|contract|contractcheck') && item.status == 1" ng-click="check()">审核</a>
+                    <a href="javascript:;"  class="modv2-link" ng-show="utils.hasCode('settlement|contract|contractrefund') && item.status == 2"  ng-click="return()">驳回</a>
+                    <a href="javascript:;"  class="modv2-link" ng-show="utils.hasCode('settlement|contract|addcontract') && item.status == 3"  ng-click="complete()">修改</a>
+                    <!-- <a href="javascript:;"  class="modv2-link" ng-show="utils.hasCode('settlement|contract|addcontract' && item.status == 0)"  ng-click="complete()">完善合同</a> -->
+                    <a href="javascript:;"  class="modv2-link" ng-click="contractInfo()">查看详情</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div><!-- /.box-body -->
+    <div class="box-footer clearfix ">
+        <pagination num-pages="numPages"  boundary-links="true" max-size="maxSize"   ng-change="pageChanged()" total-items="totalItems" ng-model="currentPage" class="pagination pull-right no-margin" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+        <div class="pull-right ng-binding modv2-pageinfo">
+            <span class="modv2-pagecur"> {{currentPage}} </span> / {{numPages}} 页 | 共 {{ totalItems }} 条
+        </div>
+    </div>
+    </div>
+</section>
+<!-- /.content -->
+
+
+
+
+<script type="text/ng-template" id="tpl-return.html">
+    <form role="form" name="addForm" ng-submit="submitAddForm(addForm.$valid)" novalidate >
+        <div class="modal-header">
+            <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+            <h3 class="modal-title">合同驳回</h3>
+        </div>
+        <div class="modal-body">
+            <div class="box-body">
+                <div class="form-group">
+                     输入驳回原因：
+                </div>
+                <div class="form-group">
+                    <!--<input type="text" placeholder="输入原因" id="check_note" class="form-control" name="check_note" ng-model="check_note"  required value=""   >-->
+                    <textarea class="form-control" placeholder="输入原因" id="check_note" name="check_note" ng-model="check_note" required></textarea>
+                    <div class="has-feedback text-danger" ng-messages="addForm.check_note.$error" ng-show="interacted(addForm.check_note)">
+                        <div ng-message="required"><i class="fa fa-info-circle"></i> 请输入原因！</div>
+                        <div ng-if="check_error"><i class="fa fa-info-circle"></i> {{check_error}}！</div>
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary modv2-btn" >确认</button>
+            <button class="btn btn-primary modv2-btn"  ng-click="cancel()" type="button" >取消</button>
+        </div>
+    </form>
+</script>

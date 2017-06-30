@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html lang="ko" prefix="og: http://ogp.me/ns#" class="ie8 no-js"><![endif]-->
+<!--[if !IE 8 ]><!-->
+<html prefix="og: http://ogp.me/ns#"
+      class=" js no-touch opacity cssanimations csstransforms csstransforms3d csstransitions" lang="ko"><!--<![endif]-->
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ArcheAge Preview</title>
+    <link rel="stylesheet" type="text/css" href="css/preview.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta name="decorator" content="null">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="http://img0.archeage.com/resources-201301100832/images/favicon.ico">
+
+    <script src="js/ga.js" async="" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery-1.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+    <script type="text/javascript" src="js/archeage.js"></script>
+    <script type="text/javascript" src="js/archeage_common_ui.js"></script>
+    <script type="text/javascript" src="js/preview_sns.js"></script>
+    <script type="text/javascript" src="js/preview_event.js"></script>
+    <script type="text/javascript" src="js/preview_service.js"></script>
+
+    <script type="text/javascript">
+
+        var isLogin = false;
+        var isCompleted = false;
+        var accountDomainUrl = "";
+        //slide 详细内容
+        var slideDetailOption = {
+        /*    'trailer':{ title:'hello', wikiUrl:'', hasMovie:'true'},
+            'world':{ title:'아키에이지 : 2천 년의 신화, 아키에이지의 세계관', wikiUrl:'http://board.archeage.com/wikis/%EC%B5%9C%EC%B4%88%EC%9D%98%20%EC%9B%90%EC%A0%95%EB%8C%80', hasMovie:'false'},
+            'race':{ title:'아키에이지 : 대륙의 정복자들, 누이안', wikiUrl:'http://board.archeage.com/wikis/%EB%88%84%EC%9D%B4%EC%95%88%20%EC%A2%85%EC%A1%B1%20%EC%86%8C%EA%B0%9C', hasMovie:'false'},
+            'race-elf':{ title:'아키에이지 : 숲의 은둔자들, 엘프', wikiUrl:'http://board.archeage.com/wikis/%EC%97%98%ED%94%84%20%EC%A2%85%EC%A1%B1%20%EC%86%8C%EA%B0%9C', hasMovie:'false'},
+            'race-hariharan':{ title:'아키에이지 : 대륙의 개척자들, 하리하란', wikiUrl:'http://board.archeage.com/wikis/%ED%95%98%EB%A6%AC%ED%95%98%EB%9E%80%20%EC%A2%85%EC%A1%B1%20%EC%86%8C%EA%B0%9C', hasMovie:'false'},
+            'race-ferre':{ title:'아키에이지 : 초원의 방랑자들, 페레', wikiUrl:'http://board.archeage.com/wikis/%ED%8E%98%EB%A0%88%20%EC%A2%85%EC%A1%B1%20%EC%86%8C%EA%B0%9C', hasMovie:'false'},
+            'job':{ title:'아키에이지 : 10가지 능력조합 120가지 직업', wikiUrl:'http://board.archeage.com/wikis/%EC%A7%81%EC%97%85%EB%B3%84%20%EB%8A%A5%EB%A0%A5%20%EA%B5%AC%EC%84%B1', hasMovie:'false'},
+            'place':{ title:'아키에이지 : 아키에이지의 멋진 풍경과 다양한 이야기', wikiUrl:'http://board.archeage.com/wikis/%EC%A7%80%EC%97%AD%20%EB%B0%8F%20%ED%80%98%EC%8A%A4%ED%8A%B8', hasMovie:'false'},
+            'ship':{ title:'아키에이지 : 이제는 바다다, 선박', wikiUrl:'http://board.archeage.com/wikis/%EC%84%A0%EB%B0%95', hasMovie:'false'},
+            'ship-warfare':{ title:'아키에이지 : 이제는 바다다, 선박', wikiUrl:'http://board.archeage.com/wikis/%ED%95%B4%EC%83%81%20%EC%A0%84%ED%88%AC', hasMovie:'true'},
+            'ship-kraken':{ title:'아키에이지 : 이제는 바다다, 선박', wikiUrl:'http://board.archeage.com/wikis/%ED%81%AC%EB%9D%BC%EC%BC%84', hasMovie:'true'},
+            'ship-boat':{ title:'아키에이지 : 나룻배로 즐기는 또 다른 즐거움', wikiUrl:'http://board.archeage.com/wikis/%EB%82%98%EB%A3%BB%EB%B0%B0', hasMovie:'false'},
+            'trade-main':{ title:'아키에이지 : 부자가 되는 지름길, 무역', wikiUrl:'http://board.archeage.com/wikis/%EB%AC%B4%EC%97%AD', hasMovie:'false'},
+            'trade-vehicle':{ title:'아키에이지 : 천리길을 한 걸음에! 빠른 이동수단', wikiUrl:'http://board.archeage.com/wikis/%ED%83%88%EA%B2%83', hasMovie:'false'},
+            'fly':{ title:'아키에이지 : 하늘을 정복한 자, 세계를 정복하리라!', wikiUrl:'http://board.archeage.com/wikis/%EB%82%A0%ED%8B%80', hasMovie:'false'},
+            'fly-movie':{ title:'아키에이지 : 하늘을 정복한 자, 세계를 정복하리라!', wikiUrl:'http://board.archeage.com/wikis/%EB%82%A0%ED%8B%80', hasMovie:'true'},
+            'fly-play':{ title:'아키에이지 : 날틀을 즐기는 또 다른 즐거움', wikiUrl:'http://board.archeage.com/wikis/%EB%82%A0%ED%8B%80', hasMovie:'false'},
+            'justice':{ title:'아키에이지 : 유죄 혹은 무죄, 재판', wikiUrl:'http://board.archeage.com/wikis/%EB%B2%94%EC%A3%84%EC%99%80%20%EC%9E%AC%ED%8C%90', hasMovie:'false'},
+            'justice-jail':{ title:'아키에이지 : 유죄 혹은 무죄, 재판', wikiUrl:'http://board.archeage.com/wikis/%EA%B0%90%EC%98%A5', hasMovie:'false'},
+            'pvp-main':{ title:'아키에이지 : 명예를 건 도전장', wikiUrl:'http://board.archeage.com/wikis/PVP', hasMovie:'false'},
+            'pvp-duel':{ title:'아키에이지 : 명예를 건 도전장', wikiUrl:'http://board.archeage.com/wikis/%EC%A0%84%ED%88%AC%ED%95%98%EA%B8%B0', hasMovie:'true'},
+            'pvp-warfare':{ title:'아키에이지 : 명예를 건 도전장', wikiUrl:'http://board.archeage.com/wikis/%EC%A0%84%ED%88%AC%ED%95%98%EA%B8%B0', hasMovie:'true'},
+            'life-main':{ title:'아키에이지 : 생산의 중심, 주택과 농장', wikiUrl:'http://board.archeage.com/wikis/%EC%A3%BC%EA%B1%B0', hasMovie:'false'},
+            'life-house':{ title:'아키에이지 : 내가 꾸민 나만의 특별한 공간', wikiUrl:'http://board.archeage.com/wikis/%EC%95%84%EC%9D%B4%ED%85%9C%20%EC%A2%85%EB%A5%98', hasMovie:'false'},
+            'siege-main':{ title:'아키에이지 : 원대륙에서 운명을 건 전쟁의 시작!', wikiUrl:'http://board.archeage.com/wikis/%EA%B3%B5%EC%84%B1%EC%A0%84%ED%88%AC', hasMovie:'false'},
+            'siege-movie':{ title:'아키에이지 : 원대륙에서 운명을 건 전쟁의 시작!', wikiUrl:'http://board.archeage.com/wikis/%EA%B3%B5%EC%84%B1%EC%A0%84%ED%88%AC', hasMovie:'true'}*/
+        };
+        var preview;
+    </script>
+    <script data-main="//img0.archeage.com/resources-201301100832/beta/js/preview/main.min" src="js/rj.js"></script>
+    <script src="js/main.js" data-requiremodule="main.min" data-requirecontext="_" async="" charset="utf-8"
+            type="text/javascript"></script>
+</head>
+
+<body style="display: block;">
+
+<div></div>
+<div id="viewport" style="">
+    <div id="topbar">
+          <ul>
+              <li><a href="">游戏专区</a></li>
+              <li><a href="" class="selected">韩服资讯</a></li>
+              <li><a href="">国服进度</a></li>
+              <li><a href="">游戏资料</a></li>
+              <li><a href="">火爆视频</a></li>
+              <li><a href="">美图图廊</a></li>
+              <li><a href="">玩家论坛</a></li>
+          </ul>
+
+    </div>
+    <script type="text/javascript">
+        (function($){
+            $('#topbar').hover(function(){
+                $(this).stop(true).animate({top : 0 });
+            },function(){
+                $(this).stop(true).animate({top : - 120 });
+            })
+        })(jQuery);
+    </script>
+
+    <div id="scrollPanel">
+
+        <div style="top: 0px; left: 0px;" id="currentUtil" class="util current"></div>
+
+        <div style="top: 922px; left: 0px;" id="helperUtil" class="util helper"></div>
+
+        <div style="top: 922px; left: 0px;" id="helperSlide" class="slide helper"></div>
+        <div style="top: 0px; left: 0px;" id="currentSlide" class="slide current">
+            <div id="index" class="index slide" data-id="index">
+                <div class="content">
+
+                </div>
+                <div class="bg"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="evtStar" style="display:none;">
+
+    </div>
+    <div class="menu" style="background: none repeat scroll 0% 0% transparent; width: 0pt; height: 0pt;"></div>
+</div>
+
+
+<div id="evtBridge" class="v130110" style="display:none">
+    <div class="panel">
+        <a href="http://www.archeage.com/events/running/28" target="_blank" class="e1">1</a>
+        <a href="http://www.archeage.com/events/running/15" target="_blank" class="e2">2</a>
+        <a href="http://www.archeage.com/events/running/19" target="_blank" class="e3">3</a>
+        <a href="http://www.archeage.com/events/running/26" target="_blank" class="e4">4</a>
+        <a href="http://www.archeage.com/events/running/17" target="_blank" class="e5">5</a>
+        <a href="http://www.archeage.com/events/running/23" target="_blank" class="e6">6</a>
+        <a href="http://www.archeage.com/events/running/25" target="_blank" class="e7">7</a>
+        <a href="http://www.archeage.com/events/running/27" target="_blank" class="e8">8</a>
+        <a href="javascript:;" class="btn-close" title="닫기">닫기</a>
+    </div>
+    <div class="bg"></div>
+</div>
+
+<div id="tempSlide">
+<div class="trailer slide" data-id="trailer">
+    <div class="content">
+        <div id="movieEndArea" style="position:absolute;left:250px;top:50%;display:none;">
+            <img src="images/mov_end.png">
+        </div>
+        <div class="menu-trailer" data-id="trailer">
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.class.js"></script>
+<script type="text/javascript" src="js/class.tabs.js"></script>
+<div class="index slide" data-id="index">
+    <img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/p1.jpg" alt="" class="bg-flexible">
+    <div class="content">
+        <ul class="index-pics">
+            <li>
+                <h3>
+                    <i class="num">1</i>初识上古世纪
+                </h3>
+                <a href="#world" class="section">
+                    <i class="btn-world back"></i>
+                    <i class="btn-world front"></i>
+                </a>
+                <p>作品既展现了磅礴辽阔的史诗性场景， 又展现了人与人之间微妙萌动的细腻感 情</p>
+            </li>
+            <li>
+                <h3>
+                    <i class="num">2</i>初识上古世纪
+                </h3>
+                <a href="#race" class="section">
+                    <i class="btn-race back"></i>
+                    <i class="btn-race front"></i>
+                </a>
+                <p>作品既展现了磅礴辽阔的史诗性场景， 又展现了人与人之间微妙萌动的细腻感 情</p>
+            </li>
+            <li>
+                <h3>
+                    <i class="num">3</i>初识上古世纪
+                </h3>
+                <a href="#job" class="section">
+                    <i class="btn-job back"></i>
+                    <i class="btn-job front"></i>
+                </a>
+                <p>作品既展现了磅礴辽阔的史诗性场景， 又展现了人与人之间微妙萌动的细腻感 情</p>
+            </li>
+            <li>
+                <h3>
+                    <i class="num">4</i>初识上古世纪
+                </h3>
+                <a href="#place" class="section">
+                    <i class="btn-place back"></i>
+                    <i class="btn-place front"></i>
+                </a>
+                <p>作品既展现了磅礴辽阔的史诗性场景， 又展现了人与人之间微妙萌动的细腻感 情</p>
+            </li>
+            <li>
+                <h3>
+                    <i class="num">5</i>初识上古世纪
+                </h3>
+                <a href="#ship" class="section">
+                    <i class="btn-ship back"></i>
+                    <i class="btn-ship front"></i>
+                </a>
+                <p>作品既展现了磅礴辽阔的史诗性场景， 又展现了人与人之间微妙萌动的细腻感 情</p>
+            </li>
+            <li>
+                <h3>
+                    <i class="num">6</i>初识上古世纪
+                </h3>
+                <a href="#trade" class="section">
+                    <i class="btn-trade back"></i>
+                    <i class="btn-trade front"></i>
+                </a>
+                <p>作品既展现了磅礴辽阔的史诗性场景， 又展现了人与人之间微妙萌动的细腻感 情</p>
+            </li>
+            <li>
+                <h3>
+                    <i class="num">7</i>初识上古世纪
+                </h3>
+                <a href="#fly" class="section">
+                    <i class="btn-fly back"></i>
+                    <i class="btn-fly front"></i>
+                </a>
+                <p>作品既展现了磅礴辽阔的史诗性场景， 又展现了人与人之间微妙萌动的细腻感 情</p>
+            </li>
+            <li>
+                <h3>
+                    <i class="num">8</i>初识上古世纪
+                </h3>
+                <a href="#justice" class="section">
+                    <i class="btn-justice back"></i>
+                    <i class="btn-justice front"></i>
+                </a>
+                <p>作品既展现了磅礴辽阔的史诗性场景， 又展现了人与人之间微妙萌动的细腻感 情</p>
+            </li>
+        </ul>
+
+    </div>
+    <div class="bg"></div>
+</div>
+<div class="world slide " data-id="world">
+    <img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/p2.jpg" alt=""
+         class="bg-flexible">
+
+    <div class="content">
+        <div class="layout">
+            <div class="left" data-loader="class-tabs">
+                <div class="view-box" data-options="region:'view'">
+                    <img alt="" src="pics/pp1.jpg">
+                </div>
+                <div class="small-pics" >
+                    <div class="clip" data-options="region:'nav-clip'" >
+                        <ul class="small-list" data-options="region:'carousel',item:'li'" >
+                            <li class="selected" rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                        </ul>
+                        <a href="javascript:;" class="prev" data-options="region:'carouselPrev'"></a>
+                        <a href="javascript:;" class="next" data-options="region:'carouselNext'"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main">
+                <div class="world-msg">
+                    <p>
+                        诺亚用一颗感恩的心，铭记着无私奉献的诺伊女神。诺亚人热爱着大自然的无穷神韵，他们善于建设城邦，致力于保护和传播属于自己的文化。
+                    </p>
+                    <p>相貌端庄的诺亚，具有与生俱来的高贵气质。诺亚男性坚毅的脸庞散发出强烈的阳刚气息，而身材 <a href="#">[查看详情]</a></p>
+                </div>
+            </div>
+        </div>
+        \
+        <div class="world-btns">
+            <a href="javascript:;" class="button">韩服官网申请</a><a href="javascript:;" class="button">VPN的介绍与使用</a><a href="javascript:;" class="button">客户端汉化</a><a href="javascript:;" class="button">服务器选择</a><a href="javascript:;" class="button">角色建立</a>
+        </div>
+
+        <script type="text/javascript">
+            (function($){
+                $('[data-loader="class-tabs"]').each(function(){
+                    new Class.tabs(this);
+                })
+            })(jQuery)
+        </script>
+    </div>
+
+</div>
+<div class="race slide " data-id="race">
+    <img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/p3.jpg" alt=""
+         class="bg-flexible">
+    <div class="content">
+        <div class="link link1">哈里兰<br/><a href="#" >查看资料</a></div>
+        <div class="link link2">灵兽<br/><a href="#" >查看资料</a></div>
+        <div class="link link3">精灵<br/><a href="#" >查看资料</a></div>
+        <div class="link link4">洛亚<br/><a href="#" >查看资料</a></div>
+    </div>
+</div>
+<div class="job slide " data-id="job">
+    <img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/p4.jpg" alt=""
+         class="bg-flexible">
+
+    <div class="content">
+        <div class="layout">
+            <div class="right">
+                <div class="box"><a href=""><img src="pics/pp1.jpg" alt=""></a></div>
+                <div class="hd">推荐相关专题<i></i></div>
+                <div class="mini-box"><a href=""><img src="pics/pp1.jpg" alt=""></a></div>
+                <div class="hd">职业视频<i></i></div>
+                <div class="box"><a href=""><img src="pics/pp1.jpg" alt=""></a></div>
+            </div>
+            <div class="main">
+                <div class="hd">选择我喜欢的天赋<i></i></div>
+                <div class="bd">
+                    <div class="skills" id="skills">
+                        <a href="javascript:;" name="1">格斗</a><a href="javascript:;" name="2">幻术</a><a href="javascript:;" name="3">铁壁</a><a href="javascript:;" name="4">意志</a><a href="javascript:;" name="5">死亡</a><a href="javascript:;"  name="6">野性</a><a href="javascript:;" name="7">元素</a><a href="javascript:;"  name="8">暗杀</a><a href="javascript:;"  name="9">吟游</a><a href="javascript:;"  name="10">生命</a>
+                    </div>
+                    <div class="info">
+                        <div class="info-default">请先选择属性</div>
+                        <div class="info-result" style="display: none;">
+                            <div>职业名称：<em id="profession">梦魔骑士</em></div>
+                            <div>需要登记：<em>20级</em></div>
+                        </div>
+                    </div>
+                    <div class="skills scroll" id="all-profession">
+                        <a href="javascript:;"  data-attr="1^2^3">格斗</a><a href="javascript:;" data-attr="3^5^7">格斗</a><a href="javascript:;" data-attr="1^7^9">格斗</a><a href="javascript:;" data-attr="1^2^8">格斗</a><a href="javascript:;" data-attr="3^5^10">格斗</a><a href="javascript:;" data-attr="1^5^7">格斗</a><a href="javascript:;" data-attr="2^5^7">格斗</a><a href="javascript:;" data-attr="3^5^10">格斗</a><a href="javascript:;" data-attr="3^4^7">格斗</a><a href="javascript:;" data-attr="1^9^10">格斗</a><a href="javascript:;" data-attr="3^6^10">格斗</a>
+                    </div>
+                    <div class="small-pics" data-loader="class-tabs">
+                        <div class="clip" data-options="region:'nav-clip'" >
+                            <ul class="small-list" data-options="region:'carousel',item:'li'" >
+                                <li class="selected" rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                                <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                                <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                                <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                                <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                                <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                                <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                                <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                                <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            </ul>
+                            <a href="javascript:;" class="prev" data-options="region:'carouselPrev'"></a>
+                            <a href="javascript:;" class="next" data-options="region:'carouselNext'"></a>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        (function($){
+                            $('[data-loader="class-tabs"]').each(function(){
+                                new Class.tabs(this);
+                            });
+                        })(jQuery);
+                    </script>
+                </div>
+
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            (function($){
+                var arr	=	[];
+                var strs = new Array();
+                //var choose_opt	=	getCookie('choose_opt');
+                $("#skills a").click(function(){
+                    var ckid = $(this).attr('name');
+                    arr.push(ckid);
+                    if(arr.length >= 3){
+                        $("#skills a").attr("class","");
+
+                        show_result(arr);
+                        arrjoin = arr.join(",");
+                        strs = arrjoin.split(",");
+                        for (i=0;i<strs.length ;i++ )
+                        {
+                            $("#skills a").eq(strs[i] - 1).attr("class","selected");
+                        }
+                        /* 最后处理 */
+                        arr.splice(0,1);
+                       // reset_cookies(arr);
+                    }else{
+                        $("#skills a").eq(ckid - 1).attr("class","selected");
+                       // reset_cookies(arr);
+                        if(arr.length == 3){
+                            alert(1);
+                        }
+                    }
+                });
+
+                $("#all-profession a").click(function(){
+                    $('#all-profession a').removeClass('selected');
+                    $(this).addClass('selected');
+                    arr = $(this).attr('data-attr').split('^');
+                    var items = $("#skills a").removeClass('selected');
+                    items .filter('[name="'+ arr[0]+'"]').addClass('selected');
+                    items .filter('[name="'+ arr[1]+'"]').addClass('selected');
+                    items .filter('[name="'+ arr[2]+'"]').addClass('selected');
+                    show_result(arr);
+                    arr.splice(0,1);
+                })
+                function show_result(arrs){
+                    var opt1	=	parseInt(arrs[0]);
+                    var opt2	=	parseInt(arrs[1]);
+                    var opt3	=	parseInt(arrs[2]);
+                    var arr = [
+                        opt1,opt2,opt3
+                    ].sort().join('^');
+                    $.ajax({
+                        url         :   'http://hd.766.com/market/sgsjhc',
+                        dataType   :   'json',
+                        data        :   'opt1='+opt1+'&opt2='+opt2+'&opt3='+opt3+'&callback=?',
+                        type        :   'get',
+                        success:function(data){
+                            $('.info-default').hide();
+                            $('.info-result').show();
+                            $('#profession').text(data.zyname).show();
+                            $('#all-profession a').removeClass('selected').filter('[data-attr="'+ arr +'"]').addClass('selected');
+                        }
+                    });
+                }
+                function reset_cookies(v){
+                    delCookie('choose_opt');
+                    addCookie('choose_opt',v);
+                }
+            })(jQuery);
+        </script>
+    </div>
+</div>
+<div class="place slide " data-id="place">
+    <img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/p5.jpg" alt=""
+         class="bg-flexible">
+
+    <div class="content">
+        <a href="" class="button btn-0">公用交通工具</a>
+        <a href="" class="button btn-1">种族坐骑</a>
+        <a href="" class="button btn-2">滑翔翼</a>
+        <a href="" class="button btn-3">海上战舰</a>
+    </div>
+</div>
+<div class="ship slide " data-id="ship">
+    <img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/p7.jpg" alt=""
+         class="bg-flexible">
+    <div class="content">
+       <div class="black-box box-1">
+            <div class="hd">交互系统<i></i></div>
+           <div class="bd">
+               <img src="pics/pp1.jpg" alt="">
+               <p>
+                   1月8日-1月14日活动期间，前1-100位分享，每逢第10位送1本图书；前100-1000位分享， 每逢第50位送1本图书；前1000-3000位分享，每逢第200位送一本图书；前3000-9000位 分享，每逢第500位送一本图书；
+               </p>
+           </div>
+       </div>
+
+        <div class="black-box box-2">
+            <div class="hd">家族系统<i></i></div>
+            <div class="bd">
+                <img src="pics/pp1.jpg" alt="">
+                <p>
+                    1月8日-1月14日活动期间，前1-100位分享，每逢第10位送1本图书；前100-1000位分享， 每逢第50位送1本图书；前1000-3000位分享，每逢第200位送一本图书；前3000-9000位 分享，每逢第500位送一本图书；
+                </p>
+            </div>
+        </div>
+
+        <div class="black-box box-3">
+            <div class="hd">任务超额完成系统<i></i></div>
+            <div class="bd">
+                <img src="pics/pp1.jpg" alt="">
+                <p>
+                    1月8日-1月14日活动期间，前1-100位分享，每逢第10位送1本图书；前100-1000位分享， 每逢第50位送1本图书；前1000-3000位分享，每逢第200位送一本图书；前3000-9000位 分享，每逢第500位送一本图书；
+                </p>
+            </div>
+        </div>
+
+        <div class="black-box box-4">
+            <div class="hd">远征队图片<i></i></div>
+            <div class="bd">
+                <img src="pics/pp1.jpg" alt="">
+                <p>
+                    1月8日-1月14日活动期间，前1-100位分享，每逢第10位送1本图书；前100-1000位分享， 每逢第50位送1本图书；前1000-3000位分享，每逢第200位送一本图书；前3000-9000位 分享，每逢第500位送一本图书；
+                </p>
+            </div>
+        </div>
+
+        <div class="black-box box-5">
+            <div class="hd">劳动力<i></i></div>
+            <div class="bd">
+                <img src="pics/pp1.jpg" alt="">
+                <p>
+                    1月8日-1月14日活动期间，前1-100位分享，每逢第10位送1本图书；前100-1000位分享， 每逢第50位送1本图书；前1000-3000位分享，每逢第200位送一本图书；前3000-9000位 分享，每逢第500位送一本图书；
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="trade slide " data-id="trade">
+    <img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/p6.jpg" alt=""
+         class="bg-flexible">
+    <div class="content">
+        <div class="pvp-box layout">
+            <div class="left box-1">
+                <img alt="" src="pics/pp1.jpg">
+                <p>《上古世纪》中国运营团队开创积分用户服务的宗旨就是利用上古世纪积分这一形式，向游戏的核心玩家提供独特的服务，无论是在游戏内还是在游戏外，都能享受到专属特权。玩家成为积分用户后可以参加各类活动免费获得上古世纪积分，以消耗
+                    积分的方式不仅可以兑换游戏测试激活码。</p>
+                <a class="button btn-0" href="">单人PvP、决斗</a>
+            </div>
+            <div class="left box-2">
+                <img alt="" src="pics/pp1.jpg">
+                <p>《上古世纪》中国运营团队开创积分用户服务的宗旨就是利用上古世纪积分这一形式，向游戏的核心玩家提供独特的服务，无论是在游戏内还是在游戏外，都能享受到专属特权。玩家成为积分用户后可以参加各类活动免费获得上古世纪积分，以消耗
+                    积分的方式不仅可以兑换游戏测试激活码。</p>
+                <a class="button btn-0" href="">多人国战详情</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="fly slide " data-id="fly">
+    <img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/p8.jpg" alt=""
+         class="bg-flexible">
+    <div class="content">
+        <div class="main-view layout" >
+            <div class="left" data-loader="class-tabs">
+                <div class="hd">审判庭系统<i></i></div>
+                <div class="view-box" data-options="region:'view'">
+                    <img src="pics/pp1.jpg" alt="">
+                </div>
+                <p>2013年1月14日，《上古世纪》官方网站大型积分互动活动“积分盛宴”正式开幕，所有《上古世纪》积分用户都可以参与其中，仅需消耗少量积分即可抽取包括苹果笔记本电脑、微单相机、iPhone5、iPad mini、上古主题衬衣、QQ蛇年公仔等众多奖品在内的积分用户特权礼物。而还没有成为上古积分用户的玩家，也可以通过这次活动迅速成为一名真正的古灰玩家，体验面向上古核心玩家的古灰专享服务</p>
+                <div class="small-pics" >
+                    <div class="clip" data-options="region:'nav-clip'" >
+                        <ul class="small-list" data-options="region:'carousel',item:'li'" >
+                            <li class="selected" rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                        </ul>
+                        <a href="javascript:;" class="prev" data-options="region:'carouselPrev'"></a>
+                        <a href="javascript:;" class="next" data-options="region:'carouselNext'"></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="left" data-loader="class-tabs">
+                <div class="hd">监狱狱统<i></i></div>
+                <div class="view-box" data-options="region:'view'">
+                    <img src="pics/pp1.jpg" alt="">
+                </div>
+                <p>2013年1月14日，《上古世纪》官方网站大型积分互动活动“积分盛宴”正式开幕，所有《上古世纪》积分用户都可以参与其中，仅需消耗少量积分即可抽取包括苹果笔记本电脑、微单相机、iPhone5、iPad mini、上古主题衬衣、QQ蛇年公仔等众多奖品在内的积分用户特权礼物。而还没有成为上古积分用户的玩家，也可以通过这次活动迅速成为一名真正的古灰玩家，体验面向上古核心玩家的古灰专享服务</p>
+                <div class="small-pics" >
+                    <div class="clip" data-options="region:'nav-clip'" >
+                        <ul class="small-list" data-options="region:'carousel',item:'li'" >
+                            <li class="selected" rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                            <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                        </ul>
+                        <a href="javascript:;" class="prev" data-options="region:'carouselPrev'"></a>
+                        <a href="javascript:;" class="next" data-options="region:'carouselNext'"></a>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                (function($){
+                    $('[data-loader="class-tabs"]').each(function(){
+                        new Class.tabs(this);
+                    })
+                })(jQuery)
+            </script>
+        </div>
+
+    </div>
+</div>
+<div class="justice slide " data-id="justice">
+    <img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/p9.jpg" alt=""
+         class="bg-flexible">
+    <div class="content" data-loader="class-tabs">
+        <div class="view-box" data-options="region:'view'">
+            <img src="pics/pp1.jpg" alt="">
+        </div>
+        <div class="small-pics" >
+            <div class="clip" data-options="region:'nav-clip'" >
+                <ul class="small-list" data-options="region:'carousel',item:'li'" >
+                    <li class="selected" rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                    <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                    <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                    <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                    <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                    <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                    <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                    <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                    <li  rel="pics/pp1.jpg"><img src="pics/pp1.jpg" alt=""><div class="name">name</div></li>
+                </ul>
+                <a href="javascript:;" class="prev" data-options="region:'carouselPrev'"></a>
+                <a href="javascript:;" class="next" data-options="region:'carouselNext'"></a>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        (function($){
+            $('[data-loader="class-tabs"]').each(function(){
+                new Class.tabs(this);
+            })
+        })(jQuery)
+    </script>
+</div>
+
+<div class="pvp slide main" data-id="pvp">
+    <img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg_009.jpg" alt=""
+         class="bg-flexible">
+</div>
+<div class="pvp-main slide sub" data-id="pvp-main">
+    <div class="copy">
+        <div class="inner"></div>
+    </div>
+    <div class="man-left"></div>
+    <div class="man-right"></div>
+</div>
+<div class="pvp-duel slide sub" data-id="pvp-duel">
+    <div class="content">
+        <img src="images/duel.jpg" class="poster" alt="">
+    </div>
+    <a href="javascript:;" class="btn-movieplay"></a>
+</div>
+<div class="pvp-warfare slide sub" data-id="pvp-warfare">
+    <div class="content">
+        <img src="images/warfare_002.jpg" class="poster" alt="">
+    </div>
+    <a href="javascript:;" class="btn-movieplay"></a>
+</div>
+<div class="life slide main" data-id="life">
+    <img style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg_005.jpg" alt=""
+         class="bg-flexible">
+</div>
+<div class="life-main slide sub" data-id="life-main">
+    <div class="copy"></div>
+</div>
+<div class="life-house slide sub" data-id="life-house">
+    <div class="content">
+        <div class="h-panel">
+            <div class="pics">
+                <ul class="list">
+                    <li><img src="images/1.jpg" alt=""></li>
+                    <li><img src="images/2_003.jpg" alt=""></li>
+                    <li><img src="images/3.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="btns">
+                <a href="javascript:;" class="b1 active">빛나는 제작대</a>
+                <a href="javascript:;" class="b2">벽난로</a>
+                <a href="javascript:;" class="b3">장인의 대형 보관함</a>
+            </div>
+        </div>
+        <div class="side-copy"></div>
+    </div>
+</div>
+<div class="siege slide main" data-id="siege">
+    <div class="bg-rumble" style="width:100%;height:100%"><img
+            style="width: 1920px; height: 940px; margin-left: -960px; margin-top: -470px;" src="images/bg_007.jpg"
+            alt="" class="bg-flexible"></div>
+</div>
+<div class="siege-main slide sub" data-id="siege-main">
+    <div class="copy"></div>
+</div>
+<div class="siege-movie slide sub" data-id="siege-movie">
+    <div class="content">
+        <img src="images/movie_002.jpg" class="poster" alt="">
+    </div>
+    <a href="javascript:;" class="btn-movieplay"></a>
+</div>
+</div>
+
+<form id="previewEvent" style="border:0;margin:0;padding:0;"
+      action="/preview;jsessionid=84F6714FABABDB87416BF1DA18018D2F" method="post">
+    <input id="showEvent1" name="showEvent1" value="false" type="hidden">
+    <input id="showEvent2" name="showEvent2" value="false" type="hidden">
+    <input id="showEvent3" name="showEvent3" value="false" type="hidden">
+    <input id="showEvent4" name="showEvent4" value="false" type="hidden">
+    <input id="showEvent5" name="showEvent5" value="false" type="hidden">
+    <input id="showEvent6" name="showEvent6" value="false" type="hidden">
+</form>
+
+<div id="musicPlayer">
+    <audio src="images/03.ogg" id="audioPlayer" preload="preload">
+        <!--<source type="audio/ogg" src="images/01.ogg">
+        <source type="audio/mpeg" src="images/01.mp3">-->
+    </audio>
+</div>
+<script type="text/x-handlebars-template" id="audio_tmpl">
+    <audio id="audioPlayer" preload="preload">
+        <!-- <source type="audio/ogg" src="http://mp4vod-archeage.x-cdn.com/preview/res_1/bgm/01.ogg">
+      <source type="audio/mpeg" src="http://mp4vod-archeage.x-cdn.com/preview/res_1/bgm/01.mp3">-->
+    </audio>
+</script>
+<script type="text/x-handlebars-template" id="flash_tmpl">
+    <object id="flashPlayer" width="1" height="1" type="application/x-shockwave-flash"
+            data="/resources-201301100832/js/preview/bgm/player_mp3_js.swf">
+        <param name="FlashVars"
+               value="mp3=http://mp4vod-archeage.x-cdn.com/preview/res_1/bgm/01.mp3&amp;listener=preview.bgm._parent&amp;interval=500"></param>
+        <param name="movie" value="/resources-201301100832/js/preview/bgm/player_mp3_js.swf"></param>
+        <param name="AllowScriptAccess" value="always"></param>
+    </object>
+</script>
+
+<script id="tempNav" type="text/x-handlebars-template">
+    <div class="nav">
+        <div class="nav-content">
+            <ul>
+                <li class="selected">
+                    <a class="" href="#world" data-slide="0">初识上古世纪</a>
+                </li>
+
+                <li>
+                    <a class="" href="#race" data-slide="1">种族介绍</a>
+                </li>
+
+                <li>
+                    <a class="" href="#job" data-slide="2">天赋职业</a>
+                </li>
+
+                <li>
+                    <a class="" href="#place" data-slide="3">交通工具</a>
+                </li>
+
+                <li>
+                    <a class="" href="#ship" data-slide="4">游戏特色</a>
+                </li>
+
+                <li>
+                    <a class="" href="#trade" data-slide="5">PvP设定</a>
+                </li>
+
+                <li>
+                    <a class="" href="#fly" data-slide="6">审判庭系</a>
+                </li>
+
+                <li>
+                    <a class="" href="#justice" data-slide="7">改变世界</a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</script>
+
+<script id="tempSubnav" type="text/x-handlebars-template">
+    <div class="subnav" >
+		<span class="wrap">
+			<i class="subnav-left"></i>
+			<i class="subnav-right"></i>
+			<span class="links">
+				{{#links}}
+				<a href="{{link}}" data-slide="{{slideNum}}">{{title}}</a>
+				{{/links}}
+			</span>
+		</span>
+
+        <div class="tooltip" style="display: none">
+			<span class="tt-wrap">
+				<i class="tt-left"></i>
+				<i class="tt-right"></i>
+				<i class="tt-tail"></i>
+				<span class="txt"></span>
+			</span>
+        </div>
+    </div>
+</script>
+<script id="tempMenu" type="text/x-handlebars-template">
+    <div class="" data-id="{{id}}">
+
+    </div>
+</script>
+<!--[if IE]>
+<script type="text/javascript" event="FSCommand(command,args)" for="flashPlayer">
+    eval(args);
+</script>
+<![endif]-->
+
+
+
+</body>
+</html>

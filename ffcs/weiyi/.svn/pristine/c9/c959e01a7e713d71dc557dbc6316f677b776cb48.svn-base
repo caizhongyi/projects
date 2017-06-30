@@ -1,0 +1,73 @@
+{if $do == 'account'}
+
+<div class="main">
+    <div class="search">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8">
+                        <div class="input-group">
+                            <input type="text"  id="wKeyword"  value="{$_GPC['keyword']}" placeholder="公众号名称" class="form-control search-query">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-purple btn-sm" onclick="aW.query();" type="button">
+                                        搜索
+                                        <i class="icon-search icon-on-right bigger-110"></i>
+                                    </button>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="account">
+        <table class="table table-bordered tb">
+            <thead>
+                <tr>
+                    <th>公众号码</th>
+                    <th>当前所属用户</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {loop $wechats $row}
+                <tr>
+                    <td>{$row['name']}</td>
+                    <td>{if $row['owner']}<span class="label label-success">当前用户</span>{else}{$row['member']['username']}{/if}</td>
+                    <td>{if $row['owner']}<a href="javascript:;" onclick="aW.revo('{$row['weid']}');">收回管理权限</a>{else}<a href="javascript:;" onclick="aW.auth('{$row['weid']}');">授权此用户管理</a>{/if}</td>
+                </tr>
+                {/loop}
+            </tbody>
+        </table>
+        {$pager}
+    </div>
+</div>
+{/if}
+{if $do == 'module'}
+
+
+
+        <table class="table table-bordered tb">
+            <thead>
+                <tr>
+                    <th>模块名称</th>
+                    <th>模块标识</th>
+                    <th>功能简述</th>
+                    <th>可访问否</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {loop $modules $row}
+                <tr>
+                    <td>{$row['title']}</td>
+                    <td>{$row['name']}</td>
+                    <td>{$row['ability']}</td>
+                    <td>{if $row['owner']}<span class="label label-success">可访问</span>{/if}{if $row['issystem']}<span class="label label-success">系统模块</span>{/if}</td>
+                    <td>{if !$row['issystem']}{if $row['owner']}<a href="javascript:;" onclick="aM.revo('{$row['mid']}');">收回访问权限</a>{else}<a href="javascript:;" onclick="aM.auth('{$row['mid']}');">授权此用户访问</a>{/if}{/if}</td>
+                </tr>
+                {/loop}
+            </tbody>
+        </table>
+        {$pager}
+
+
+
+{/if}

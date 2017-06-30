@@ -1,0 +1,217 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微活动 '),array('title'=>'考试','url'=> create_url('rule/display', array('do' => 'customlist', 'name' => 'exam', 'activity'=>1, 'module' => 'exam'))),array('title'=>'试题管理'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-pencil"></i> 添加选项 <small><i class="icon-double-angle-right"></i>  </small>
+    </h1>
+</div>
+<ul class="nav nav-tabs">
+    <li {if empty($_GPC['type']) || $_GPC['type'] == 1}class="active"{/if}><a href="{php echo create_url('site/module', array('do' => 'option', 'name' => 'exam', 'id' => $rid, 'type' => 1))}">单选</a></li>
+    <li {if $_GPC['type'] == 2}class="active"{/if}><a href="{php echo create_url('site/module', array('do' => 'option', 'name' => 'exam', 'id' => $rid, 'type' => 2))}">多选</a></li>
+</ul>
+
+<div class="main">
+    <div class="tabbable account">
+        <p>
+            <a href="{php echo create_url('site/module', array('do' => 'inputdata', 'name'=>'exam', 'id' => $rid));}" class="btn btn-sm btn-primary"><i class="icon-pencil"></i> 批量导入</a>
+        </p>
+    </div>
+
+	<form class="form-horizontal form" action="" method="post" enctype="multipart/form-data" onsubmit="return formcheck(this)">
+                    <input type="hidden" name="id" value="{$rid}">
+                    <table class="tb">
+                        <tr>
+                            <th><label for="">选项</label></th>
+                            <td id="module-form">
+                                <div id="news-list">
+                                    {if !empty($reply)}
+                                    {loop $reply $key $news}
+                                    <div id="news-wrap-item-{$key}" class="alert alert-block alert-new wrap-item">
+                                        <a data-dismiss="alert" class="close">×</a><h4 class="alert-heading">添加试卷考题</h4>
+                                        <div id="news-children-list">
+                                            {php include $this->template('item')}
+                                        </div>
+                                    </div>
+                                    {/loop}
+                                    {/if}
+                                </div>
+                                          
+<a href="javascript:;" onclick="newsHandler.buildItem()" class="add-reply-button"><i class="icon-plus"></i> 添加选项内容</a>
+<!--span class="help-block">根据此处设置对应的回复内容，可设置多个。</span-->
+<script type="text/html" id="news-form-html">
+			<div id="show" class="alert alert-info reply-news-list  hide">
+	<div class="reply-news-list-cover"><img src="http://bcs.duapp.com/weixin003/" alt=""></div>
+	<div class="reply-news-list-detail">
+		<div class="title"></div>
+		<div class="content"></div>
+		<span class="pull-right"><a onclick="doDeleteItem('(itemid)')" href="javascript:;" style="margin-right:5px;">删除</a><a onclick="newsHandler.doEditItem('(itemid)', '(wrapitemid)')" href="javascript:;">编辑</a></span>
+	</div>
+</div>
+<table id="form" class="tb reply-news-edit ">
+
+	<tr>
+		<th>题干</th>
+		<td>
+			<textarea style="height:80px;" class="span7" cols="70" name="news-title-new[(wrapitemid)][]"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<th>备选项</th>
+		<td>
+			<textarea style="height:200px; width:535px;" class="span7 richtext-clone" name="news-content-new[(wrapitemid)][]" cols="70" id="reply-add-text"></textarea>
+		</td>
+	</tr>
+
+    <tr>
+        <th>答案</th>
+        <td>
+            <input type="text" id="interval" class="span7" placeholder="" name="news-answer-new[(wrapitemid)][]" value="">
+        </td>
+    </tr>
+    <tr>
+        <th>分值</th>
+        <td>
+            <input type="text" id="intervals" class="span7" placeholder="" name="news-score-new[(wrapitemid)][]" value="">
+        </td>
+    </tr>
+</table>
+</script>
+
+<script type="text/javascript">
+<!--
+	var newsHandler = {
+		'buildItem' : function() {
+			var item = $('<div class="alert alert-block alert-new wrap-item"></div>');
+			var size = $('#news-list').find('.wrap-item').size();
+			var itemid = 'news-wrap-item-' + size;
+			while ($('#news-list').find('#' + itemid).size() >= 1) {
+				var itemid = 'news-wrap-item-' + (++size);
+			}
+			html = '<a class="close" data-dismiss="alert">×</a><h4 class="alert-heading">添加试卷题目</h4><div id="news-children-list"></div>';
+			item.attr('id', itemid);
+			item.html(html);
+			$('#news-list').append(item);
+			this.buildForm(size);
+		},
+		'buildForm' : function(itemid) {
+			if ($('#news-children-list .item', $('#' + itemid)).size() >= 8) {
+				message('单条图文信息最多添加八条内容！', '', 'error');
+				return false;
+			}
+			this.updateList();
+			var itemojb = $('#news-wrap-item-' + itemid);
+			var obj = buildAddForm('news-form-html', $('#news-children-list', itemojb));
+			obj.html(obj.html().replace(/\(wrapitemid\)/gm, itemojb.attr('id')));
+
+			kindeditor($('#news-children-list', itemojb).find('.richtext-clone'));
+			$('.reply-edit-cover-upload', obj).each(function(){
+				if ($(this).css('display') != 'none') {
+					kindeditorUploadBtn($(this));
+				}
+			});
+		},
+		'doEditItem' : function(itemid, wrapitemid) {
+			this.updateList();
+			var parent = $('#' + itemid, $('#' + wrapitemid));
+			$('#form', parent).css('display', 'block').removeClass('hide');
+			$('#show', parent).css('display', 'none');
+		},
+		'updateList' : function(itemid) {
+			$('#news-list .item').each(function(){
+				$(this).find('#show').css('display', 'block').removeClass('hide').siblings().css('display', 'none');
+				if ($(this).index() == 0) {
+					$(this).find('#show').addClass('reply-news-list-first');
+				}
+				var thumb = $(this).find('#upload-file-view img').attr('src');
+				if (typeof thumb != 'undefined') {
+					$(this).find('#show img').attr('src', thumb);
+				}
+				$(this).find('#show .title').html($(this).find("#form input[name^='news-title']").val());
+				$(this).find('#show .content').html($(this).find("#form textarea[name^='news-content']").val());
+			});
+		}
+	};
+		kindeditor($('.richtext-clone'));
+	$('.reply-edit-cover-upload').each(function(){
+		kindeditorUploadBtn($(this));
+	});
+	//-->
+</script>									</td>
+			</tr>
+			<tr>
+				<th></th>
+				<td>
+					<button type="submit" class="btn btn-primary" name="submit" value="提交">提交</button>
+					<input type="hidden" name="token" value="83fbb403" />
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<script type="text/javascript">
+<!--
+	var category = "";
+	var keywordHandler = {
+		'buildForm' : function() {
+			var obj = buildAddForm('keyword-item-html', $('#keyword-list'));
+			obj.find('.btn-group .btn').on('click', function(){
+				$(this).parent().next().html($(this).attr('description'));
+				obj.find('#keyword-type-new').val($(this).attr('value'));
+			});
+			obj.find('#form').show();
+			obj.find('#show').hide();
+		},
+		'doAdd' : function(itemid) {
+			var parent = $('#' + itemid);
+			if ($('.keyword-name-new', parent).val() == '') {
+				message('请输入关键字！', '', 'error');
+				return false;
+			}
+			var typetips = $('.active', parent).html();
+			$('#show #type', parent).html(typetips);
+			$('#show #content', parent).html($('.keyword-name-new', parent).val());
+			$('#show', parent).css('display', 'block').removeClass('hide');
+			$('#form', parent).css('display', 'none');
+					}, 
+		'doEditItem' : function(itemid) {
+			$('#keyword-list .item').each(function(){
+				$('#form', $(this)).css('display', 'none');
+				$('#show', $(this)).css('display', 'block').removeClass('hide');		
+			});
+			doEditItem(itemid);
+		}
+	};
+
+	function buildModuleForm(module) {
+		try {
+			$.ajax({
+			  url: "setting.php?act=module&do=form&id=36",
+			  type: "GET",
+			  data: {'name' : module},
+			  dataType: "html"
+			}).done(function(s) {
+				if (s && s.indexOf('"type":"error"') >= 0) {
+					message('请重新选择公众号！', 'rule.php?act=post&', 'error');
+					return false;
+				}
+				formCheckers = [];
+				$('#module-form').html(s);
+			});
+		}
+		catch (e) {
+		}
+	}
+
+	function formcheck(form) {
+		
+	}
+
+		$('.btn-group .btn').on('click', function(){
+		$(this).parent().next().html($(this).attr('description'));
+		$(this).parent().parent().find('#keyword-type-new').val($(this).attr('value'));
+	});
+	//-->
+</script>
+{template 'common/footer'}
+  
+	

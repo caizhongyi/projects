@@ -1,0 +1,42 @@
+<?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: hongmingjie
+ * Date: 14-1-8
+ * Time: 下午4:30
+ *拜年赢好礼活动
+ */
+global $_W;
+$root = str_replace('api.php','',"http://".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
+if(strtolower(trim($this->message['content']))=="d"){
+    $logs =  pdo_fetch("SELECT * FROM ".tablename('bainian_logs')." WHERE openid = '".$this->message['from']."' and weid=".$_W['weid']." limit 1" );
+    if(empty($logs)){
+        return $this->respText('您还未报名参加本次活动，请点击活动链接报名参加。');
+    }else{
+        $results =  pdo_fetch("SELECT * FROM ".tablename('bainian_results')." WHERE phone = '".$logs['phone']."' order by id desc limit 1 ");
+        if(!empty($results)){
+            return $this->respText('您当前积分为'.$results['credits'].'分，排名为'.$results['rank'].'名，请继续努力。');
+        }else{
+            $msg = '尚无您的排名信息，报名后5个工作日才可以查询个人积分以及排名!';
+            return $this->respText($msg);
+        }
+    }
+}else{
+    $row = array();
+    $response['FromUserName'] = $this->message['to'];
+    $response['ToUserName'] = $this->message['from'];
+    $response['MsgType'] = 'news';
+    $response['ArticleCount'] = 1;
+    $response['Articles'] = array();
+    $response['Articles'][] = array(
+        'Title' =>  '拜年赢好礼，用易信新春祝福免费送！',
+        'Description' => '用易信，短信免费发，更有电话留言、国际漫游等免费功能等你体验！新注册天翼用户送300M流量，次月再送60M流量。全网用户关注“移动互联网应用”易信公众号赢取高端智能机等好礼！',
+        'PicUrl' =>$root . 'source/modules/userapi/template/img/banner.png',
+        'Url' =>  $root.$this->createMobileUrl('bainian',array('do' => 'bainian', 'name' => 'userapi','weid'=>$_W['weid'],'from_user' => base64_encode(authcode($this->message['from'], 'ENCODE')))),
+        'TagName' => 'item',
+    );
+    return $response;
+}
+
+
+

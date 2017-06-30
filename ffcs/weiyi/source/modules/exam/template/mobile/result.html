@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="mqq-bottom-ad" content="no"/>
+    <title>{$reply_info['title']}</title>
+    <link href="./source/modules/exam/template/css/answer.css" type="text/css" rel="stylesheet">
+    <link href="./source/modules/exam/template/css/style_s.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<div id="content" class="main fontSize2">
+    <p class="title" align="left">{$reply_info['exam_title']}</p>
+    <div id="answerHint">本次答题共<span>{php echo count($answer);}</span>道，
+        总分为<span>{php $_score = 0; foreach ($score_val as $_score_val) $_score += $_score_val; echo $_score; }</span>分，
+        本次答题的得分为：<span>{php echo $exam_val[0]['score'];}</span> 分。
+    </div>
+    <br>
+
+    <div class="moreOperator">
+        <div class="share" id="share">
+        </div>
+    </div>
+</div>
+
+<div id="VoteContainer" class="voteContainer">
+    <div class="voteBox voteBefore">
+        {if !empty($radio_option)}
+        <form class="form-horizontal form" action="{php echo $this->createMobileUrl('list', array( 'name' => 'exam', 'id' => $rid,'from_user' => $_GPC['from_user'], 'action' => 'exam'))}" method="post" enctype="multipart/form-data" >
+            <input type="hidden" value="{$rid}" name="id">
+            <div class="voteIcon"> 一、单选题</div>
+            {php $i=1;}
+            {php $result = array();}
+            {loop $radio_option $radion}
+            <div class="voteList" max="0" need="1" projectid="5872528">
+                <div class="voteTitle"><strong>{$i}.</strong>{$radion['title']}</div>
+                <ul class="listBtn">
+                    {php $result=explode("<p>", htmlspecialchars_decode($radion['content']));}
+                    <?php
+                for ($j=0; $j<count($result); $j++)
+                {
+                    $_str_val = str_replace("</p>",'',$result[$j]);
+                        $str_val = trim($_str_val);
+                        if (empty($str_val)){
+                        continue;
+                        }
+                         $str = chr(ord('A')+$j);
+              ?>
+                    <li class=""><h5></h5>
+                        <p>{$result[$j]}</p>
+                    </li>
+                    <?php
+                }
+              ?>
+                </ul>
+                <p>答案: <span>{$answer[$radion['id']]}</span>&nbsp;
+                    您的答案: <span>{$option_val[$radion['id']]}</span>&nbsp;
+                    得分: <span>{php echo empty($option_score[$radion['id']])?0:$option_score[$radion['id']]}</span>
+                </p>
+            </div>
+            {php $i++;}
+            {/loop}
+            {/if}
+
+            {if !empty($radio_check)}
+            <div class="voteIcon"> 二、多选题</div>
+            {php $i=1;}
+            {php $result = array();}
+            {loop $radio_check $radion}
+            <div class="voteList" max="0" need="1" projectid="5872528">
+                <div class="voteTitle"><strong>{$i}.</strong>{$radion['title']}</div>
+                <ul class="listBtn">
+                    {php $result=explode("<p>", htmlspecialchars_decode($radion['content']));}
+                    <?php
+                for ($j=0; $j<count($result); $j++)
+                {
+                     $_str_val = str_replace("</p>",'',$result[$j]);
+                        $str_val = trim($_str_val);
+                        if (empty($str_val)){
+                        continue;
+                        }
+                         $str = chr(ord('A')+$j);
+                     ?>
+                    <li class=""><h5></h5>
+                        <p>{$result[$j]}</p>
+                    </li>
+                    <?php
+                }
+              ?>
+                </ul>
+                <p>答案: <span>{$answer[$radion['id']]}</span>&nbsp;
+                    您的答案: <span>{$option_val[$radion['id']]}</span>&nbsp;
+                    得分: <span>{php echo empty($option_score[$radion['id']])?0:$option_score[$radion['id']]}</span>
+                </p>
+            </div>
+            {php $i++;}
+            {/loop}
+            <div class="submitBtnDiv">
+                <button type="submit" class="btn-block submitBtn" name="sd_submit" value="谢谢参与" disabled>谢谢参与</button>
+                <input type="hidden" name="token" value="{$_W['token']}" />
+            </div>
+        </form>
+        {/if}
+    </div>
+</div>
+
+</body>
+</html>
+

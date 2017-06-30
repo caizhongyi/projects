@@ -1,0 +1,67 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微站功能 '),array('title'=>'风格设置 '))}
+{template 'common/header'}
+
+{template 'site/nav_style'}
+<div class="main">
+    {if !empty($uninstallTemplates)}
+    <div class="alert alert-info" style="margin-top:30px; font-size: 12px; height: 40px; padding: 10px; ">已安装的风格</div>
+    {/if}
+	<ul class="unstyled template-style" style="list-style-type:none">
+	{loop $templates $item}
+	<li>
+		<div class="template-style-pic {if $_W['account']['styleid'] == $item['id']}on{/if}"> <!--设为默认风格时class中加on-->
+            <div class="title"><a href="{php echo create_url('site/style/uninstall', array('templateid' => $item['name']))}" class="icon-remove" title="移除"></a><span class="pull-left">{$item['title']} ({$item['name']})</span></div>
+            <img style="max-width: 100%; height: auto;" src="./themes/mobile/{$item['name']}/preview.png" />
+			{if $_W['account']['styleid'] == $item['id']}<span class="icon-ok"></span>{/if}
+		</div>
+		<div class="template-style-button"><a href="{php echo create_url('site/style/default', array('templateid' => $item['id']))}">设为默认</a> <a href="{php echo create_url('site/style/designer', array('templateid' => $item['id']))}">设计风格</a>
+            <a href="javascript:;" onclick="ajaxpreview('{php echo $item['id']}');return false;">预览</a></div>
+	</li>
+	{/loop}
+	</ul>
+    {if !empty($uninstallTemplates)}
+    <div class="alert alert-info" style="clear: both; margin-top:30px; font-size: 12px; height: 40px; padding: 10px; ">未安装的风格</div>
+    {/if}
+    <ul class="unstyled template-style clearfix" style="list-style-type:none">
+        {loop $uninstallTemplates $item}
+        <li>
+            <div class="template-style-pic">
+                <div class="title"><span class="pull-left">{$item['title']} ({$item['name']})</span></div>
+                <img src="./themes/mobile/{$item['name']}/preview.png" />
+                <span class="icon-ok"></span>
+                <a href="{php echo create_url('site/style/install', array('templateid' => $item['name']))}" class="btn btn-danger pull-right" style="position:absolute; bottom:5px; right:5px;">安装</a>
+            </div>
+        </li>
+        {/loop}
+    </ul>
+</div>
+<script type="text/javascript">
+<!--
+    function ajaxpreview(templetid) {
+        var modalobj = $('#modal-preview');
+
+        if(modalobj.length == 0) {
+            $(document.body).append('<div id="modal-preview" class="modal  fade" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" >\
+                                                <div class="modal-dialog" style="width:380px;">\
+                                                <div class="modal-content" >\
+                                                    <div class="modal-header">\
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+                                                        <h4 class="modal-title" id="myModalLabel">预览</h4>\
+                                                    </div>\
+                                                    <div class="modal-body"></div>\
+                                                    <div class="modal-footer"><a href="{$_W['siteroot']}{php echo create_url('mobile/channel', array('name' => 'index', 'weid' => $_W['weid']))}&templetid='+templetid+'" target="preview" class="btn btn-sm btn-primary">首页</a><a href="{$_W['siteroot']}{php echo create_url('mobile/channel', array('name' => 'home', 'weid' => $_W['weid']))}&templetid='+templetid+'" target="preview" class="btn btn-sm btn-primary">个人中心</a><a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a></div>' +
+                        '</div>' +
+                        '</div>' +
+                '</div>');
+            var modalobj = $('#modal-preview');
+        }
+        html = '<iframe width="100%" scrolling="yes" height="100%" frameborder="0" src="{$_W['siteroot']}{php echo create_url('mobile/channel', array('name' => 'index', 'weid' => $_W['weid']))}&templetid='+templetid+'" id="preview" name="preview" style="width: 320px; overflow: visible; height: 480px;"></iframe>';
+        modalobj.find('.modal-body').html(html);
+        foot = '<a href="{$_W['siteroot']}{php echo create_url('mobile/channel', array('name' => 'index', 'weid' => $_W['weid']))}&templetid='+templetid+'" target="preview" class="btn">首页</a><a href="{$_W['siteroot']}{php echo create_url('mobile/channel', array('name' => 'home', 'weid' => $_W['weid']))}&templetid='+templetid+'" target="preview" class="btn">个人中心</a><a href="#" class="btn" data-dismiss="modal" aria-hidden="true">关闭</a>';
+        modalobj.find('.modal-footer').html(foot);
+        modalobj.on('hidden', function(){modalobj.remove();});
+        return modalobj.modal({'show' : true});
+    }
+//-->
+</script>
+{template 'common/footer'}

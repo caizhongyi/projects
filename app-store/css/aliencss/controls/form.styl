@@ -1,0 +1,30 @@
+@require "../mixins/index"
+
+.form
+  form-size = xs sm md lg xlg
+  form-label-width = 60px
+  &-horizontal
+    clearfix();
+    .form-group
+      float: left;
+  for i in form-size
+    form-label-width +=  20;
+    &-{i}
+      .form-group
+        padding-left: form-label-width;
+      .form-label
+        margin-left - form-label-width;
+
+
+  &-group
+    margin:10px 0;
+    & + &
+      margin-top 0;
+  &-group
+    margin:10px 0;
+    & + &
+      margin-top 0;
+
+  &-center
+    width 243px
+    margin 0 auto;

@@ -1,0 +1,62 @@
+{include head/}
+<body>
+{include nav/}
+  <!--main-->
+  <div class="main">
+    <div class="main_l">
+      <div class="main_l_1">        
+        <h2 class="main_l_1_title">{print weblangs('index_company')/}</h2>
+		{print get_block_content('about_us')/}
+      </div>
+      <div class="main_l_2">
+      
+      </div>
+    </div>
+    <div class="main_m">
+      <div class="main_m_con">
+	  		 <h2 class="main_m_con_title">{print weblangs('our_service')/}</h2>
+		 			{print get_block_content('our_service')/}
+        <dl class="main_m_dl">		
+		 	<dt><em></em><a href="http://www.fairreach.of/product/show_product/47.html" target="_blank">{print weblangs('jc_service')/}</a></dt>
+			<dd>{print get_block_content('jc_service',true)/}</dd>
+			
+			<dt><em></em><a href="http://www.fairreach.of/product/show_product/53.html" target="_blank">{print weblangs('js_service')/}</a></dt>
+			<dd>{print get_block_content('js_service',true)/}</dd>
+			
+			<dt><em></em><a href="http://www.fairreach.of/product/show_product/54.html" target="_blank">{print weblangs('px_service')/}</a></dt>
+			<dd>{print get_block_content('px_service',true)/}</dd>
+			
+			<dt><em></em><a href="http://www.fairreach.of/product/show_product/55.html" target="_blank">{print weblangs('gcjc')/}</a></dt>
+			<dd>{print get_block_content('gcjc',true)/}</dd>
+        </dl>
+      </div>
+
+    </div>
+    <div class="main_r">
+      <div class="main_r_1">
+        <h2 class="main_r_1_title">{print weblangs('contact')/}</h2>
+        <div class="main_r_1_con">{print get_block_content('contact_us',true)/}
+          <ul>
+		  	{include kefu/}
+          </ul>
+        </div>
+      </div>
+      <div class="main_r_2">
+	  {assign source=get_tpl_cate_content($tpl_id='17',$limit='0,1',$order_type='updatetime',$filter='',$pic='no',$order='',$lang='') name=index_arc/}
+		{if $index_arc}
+        <h2 class="main_r_2_title">{print $index_arc['cate']['cate_name']/}</h2>
+        <ul>
+			{loop source=$index_arc['contents']}
+				 <li><em></em><a title="{print $v['title']/}" href="{print $v['url']/}" {print $v['target']/} {if $v['style']}style="{print $v['style']/}"{/if}>{print $v['title']/}</a></li>
+			{/loop}
+		</ul>  
+        <p><a href="{print $index_arc['cate']['cate_url']/}">更多>></a></p>
+      </div>
+	  {/if}
+    </div>
+  </div>
+  <!--main end-->
+  <div class="line"></div>
+  {include foot/}
+</body>
+</html>

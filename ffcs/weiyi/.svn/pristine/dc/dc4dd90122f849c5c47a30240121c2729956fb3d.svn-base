@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>{$reply_info['title']}</title>
+    <link rel="stylesheet"  href="./resource/style/jquery.mobile-1.3.1.css">
+    <link rel="stylesheet"  href="./source/modules/vote/template/css/style.css"/>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="./resource/script/jquery-1.7.2.min.js"></script>
+    <style type="text/css">
+        .windowcenter{ font-size: 14px;}
+        .text-success{ color: green;}
+        .text-error{ color: red;}
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+        <div class="vote">
+            <h1>{$reply_info['vote_title']}</h1>
+            <div class="summary"><span class="date">投票时间：{php echo date('Y-m-d H:i:s',$reply_info['start_time'])}至{php echo date('Y-m-d H:i:s',$reply_info['end_time'])}</span></div>
+            <div class="content">
+                <img src="{$_W['attachurl']}{$reply_info['thumb']}" alt="{$reply_info['vote_title']}" class="img"/>
+                <p>
+                    {$reply_info['description']}
+                </p>
+                <div class="titlebar">{if $select_type=='radio'}单选{else}多选{/if}投票，<em>共有 <span class="text-error">{$vote_counts}</span> 人次参与选票</em></div>
+                <ul class="vote-list unstyled">
+                    {php $i=1;}
+                    {loop $vote_option_infos $item}
+                    <li>
+                        <div class="title">
+                            <label class="radio">
+                                <input name="option"  type="{$select_type}" value="{$item['id']}">
+                                <span class="lbl"></span>
+                                {$i}、{$item['title']}
+                            </label>
+                        </div>
+                        <div class="progressbar  progress-danger  progress-striped clearfix">
+                            <div class="progress">
+                                <div class="bar" style="width: {php echo intval(($item['vote_num']/$vote_counts*100));}%"></div>
+                            </div>
+                            <span class="percent">{php echo intval($item['vote_num']/$vote_counts*100);}%<em>({$item['vote_num']})</em></span>
+                        </div>
+                    </li>
+                    {php $i++;}
+                    {/loop}
+                </ul>
+                <!--<div class="text-center">
+                    <span class="text-error">{if $is_expired} 投票活动已下线！ {elseif !$can_vote} {if $reply_info['interval']>0} 您已经投过票了{$reply_info['interval']}天内可投1票 {else} 您已经投过票了！{/if}{/if}</span>
+                    <span class="window" id="windowcenter" style="position: relative; display: inline-block;">
+                        <div class="content">
+                            <div id="txt"></div>
+                        </div>
+                    </span>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="plugback">
+        <a href="javascript:history.back(-1)">
+            <div class="plugbg themeStyle">
+                <span class="plugback"></span>
+            </div>
+        </a>
+    </div>
+
+    <div class="fixedbar-bottom">
+        <button class="btn btn-danger btn-large" id="vote" {if $is_expired}disabled title="投票活动已下线！" {elseif !$can_vote}disabled {if $reply_info['interval']>0}title="您已经投过票了{$reply_info['interval']}天内可投1票"{else}title="您已经投过票了！"{/if}{/if} >
+        提交
+        </button>
+    </div>
+
+    <script type="text/javascript" language="javascript">
+        $("#vote").click(function () {
+            var s = [];
+            $('input[name=option]').each(function(){
+                $(this)[0].checked &&  s.push( $(this).val());
+            })
+            var maxitem = parseInt({$reply_info['maxitem']});
+            if("checkbox"=="{$select_type}" && maxitem>0){
+                if(parseInt(s.length)>maxitem){
+                    alert("最多只允许投"+maxitem+"票","text-error");
+                    return false;
+                }
+            }
+            var option = s.join(',');
+            if(!option){
+                alert('请选择投票选项！');
+                return false;
+            }
+            $.post('{$vote_url}',{option:option},
+                    function (data) {
+                        if (data.errno == 200) {
+                           alert('投票成功！');
+                           setTimeout(function(){window.location.reload();},2000) ;
+                        } else {
+                            alert(data.error);
+                        }
+                    },'json');
+
+        });
+
+    </script>
+</body>
+</html>

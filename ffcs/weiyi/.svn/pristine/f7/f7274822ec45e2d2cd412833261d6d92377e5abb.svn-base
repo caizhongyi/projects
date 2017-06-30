@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <link rel="dns-prefetch" href="//mat1.gtimg.com">
+    <link rel="dns-prefetch" href="//qzs.qq.com">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <script type="text/javascript" src="../../../resource/script/zepto.min.js"></script>
+    <meta name="mqq-bottom-ad" content="no"/>
+    <title>腾讯新闻</title>
+    <style type="text/css">
+        * {
+            tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        body {
+            font-family: Helvetica;
+            background-color: #f6f6f6;
+        }
+
+        .main {
+            min-width: 280px;
+            margin-left: 8px;
+            margin-right: 8px;
+            font-family: "黑体";
+        }
+
+        .text {
+            TEXT-INDENT: 2em;
+            line-height: 25px;
+            text-align: justify;
+            word-wrap: break-word;
+        }
+
+        .title {
+            font-weight: bold;
+            /*     <!-- {if $mobileType == 'iphone'}-->
+                 margin-top: 10px;
+                 <!-- {else}-->
+                 margin-top: 30px;
+                 <!-- {/if}-->*/
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+
+        .src {
+            font-weight: bold;
+            color: #aaaaaa;
+        }
+
+        .fontSize1 .title {
+            font-size: 20px;
+        }
+
+        .fontSize1 .text {
+            font-size: 15px;
+        }
+
+        .fontSize1 .src {
+            font-size: 11px;
+        }
+
+        .fontSize2 .title {
+            font-size: 22px;
+        }
+
+        .fontSize2 .text {
+            font-size: 17px;
+        }
+
+        .fontSize2 .src {
+            font-size: 13px;
+        }
+
+        .fontSize3 .title {
+            font-size: 24px;
+        }
+
+        .fontSize3 .text {
+            font-size: 19px;
+        }
+
+        .fontSize3 .src {
+            font-size: 15px;
+        }
+
+        .fontSize4 .title {
+            font-size: 26px;
+        }
+
+        .fontSize4 .text {
+            font-size: 21px;
+        }
+
+        .fontSize4 .src {
+            font-size: 16px;
+        }
+
+        .moreOperator a {
+            text-decoration: none;
+            color: #385487;
+        }
+
+        .moreOperator .share {
+            border-top: 1px solid #ddd;
+            display: none
+        }
+
+        .moreOperator .share a {
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 20px 0;
+            border-bottom-style: solid;
+            background: #f8f7f1;
+            color: #000;
+        }
+
+        .moreOperator .share a span {
+            display: block;
+            padding: 10px 10px;
+            border-radius: 4px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eae9e3;
+            font-weight: bold;
+        }
+
+        .moreOperator .share a:hover, .moreOperator .share a:active {
+            background: #efedea;
+        }
+
+        .client_new_tips span {
+            display: block;
+            margin-top: 12px;
+            padding: 0;
+        }
+
+        .client_open_tips span {
+            display: block;
+            margin-top: 12px;
+            padding: 0;
+        }
+
+        .other_new_tips {
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            background-size: 320px auto;
+            height: 94px;
+            padding-top: 9px;
+            color: #000;
+            width: 280px;
+            margin: 0 auto;
+            visibility: visible
+        }
+
+        .other_new_tips span {
+            display: block;
+            margin-top: 12px;
+            padding: 0;
+        }
+
+            /*正文视频段落*/
+        .mod_player {
+            position: relative;
+            display: block;
+        }
+
+        .mod_player img {
+            display: block
+        }
+
+        .mod_player .livebackground {
+            width: 100%;
+        }
+
+            /*直接倒计时*/
+        #countdown {
+            position: absolute;
+            top: 70%;
+            width: 100%;
+            text-align: center;
+            color: #6e6e6e;
+            display: none;
+        }
+
+        .videoText #countdown, .videoText span {
+            display: none;
+        }
+
+            /*rss相关下载*/
+        .rss-button {
+            display: block;
+            width: 290px;
+            margin: 10px auto 30px;
+            text-decoration: none;
+        }
+
+        .rss-container {
+            display: block;
+            margin: 10px 0;
+            border: 1px solid #babbbb;
+            background: #fff;
+            padding: 10px 10px;
+            position: relative;
+            border-radius: 5px 5px 5px 5px;
+        }
+
+        .rss-content {
+            margin: 0 0 0 45px;
+            line-height: 150%;
+        }
+
+        .rss-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: #000;
+            height: 20px;
+            margin-top: -2px;
+        }
+
+        .rss-icon {
+            position: absolute;
+            left: 8px;
+            top: 10px;
+            width: 40px;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .rss-icon img {
+            width: 100%
+        }
+
+        .rss-desc {
+            color: #045772;
+            font-size: 15px;
+            text-overflow: ellipsis;
+            height: 20px;
+            overflow: hidden;
+            margin-top: 2px;
+        }
+
+        .rss-status {
+            width: 290px;
+            height: 37px;
+            background-size: 290px 37px;
+            -webkit-background-size: 290px 37px;
+        }
+
+        .arrow-before, .arrow-after {
+            position: absolute;
+            content: "";
+            height: 0;
+            width: 0;
+            pointer-events: none;
+            border: solid transparent;
+        }
+
+        .arrow-after {
+            border-color: rgba(255, 255, 255, 0);
+            border-top-color: #fff;
+            border-width: 6px;
+            left: 50%;
+            margin-left: -6px;
+            bottom: -12px;
+        }
+
+        .arrow-before {
+            border-color: rgba(194, 225, 245, 0);
+            border-top-color: #babbbb;
+            border-width: 7px;
+            left: 50%;
+            margin-left: -7px;
+            bottom: -14px;
+        }
+    </style>
+    <link href="css/answer.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div id="content" class="main fontSize2">
+    <p class="title" align="left">爱答题：政府工作报告知多少</p>
+    <span class="src">2014-03-05 腾讯新闻</span>
+
+    <div id="answerHint">本次答题共<span>3</span>道，请在<span>120</span>秒内完成答题，否则系统将会自动提交。</div>
+    <br>
+
+    <div class="moreOperator">
+        <div class="share" id="share">
+        </div>
+    </div>
+</div>
+
+<div id="VoteContainer" class="voteContainer">
+    <div class="voteBox voteBefore">
+        <div class="voteIcon"> 爱答题</div>
+        <div class="voteList" max="0" need="1" projectid="5872528">
+            <div class="voteTitle"><strong>1.</strong>巴西球星内马尔是什么星座？</div>
+            <ul class="listBtn">
+                <li optionid="5999116_435190" optionmark="NEW20140305019213_null_435190" class=""><h5></h5>
+
+                    <p class="radio"><strong>01</strong> 天蝎座</p></li>
+                <li optionid="5999116_435191" optionmark="NEW20140305019213_null_435191" class="heightLight"><h5></h5>
+
+                    <p class="radio"><strong>02</strong> 处女座</p></li>
+                <li optionid="5999116_435192" optionmark="NEW20140305019213_null_435192" class=""><h5></h5>
+
+                    <p class="radio"><strong>03</strong> 水瓶座</p></li>
+            </ul>
+        </div>
+        <div class="voteList" max="0" need="1" projectid="5872528">
+            <div class="voteTitle"><strong>2.</strong>哪一对昔日情侣同时出现在巴黎时装周？</div>
+            <ul class="listBtn">
+                <li optionid="5999117_435193" optionmark="NEW20140305019213_null_435193" class=""><h5></h5>
+
+                    <p class="radio"><strong>01</strong> 谢霆锋和王菲</p></li>
+                <li optionid="5999117_435194" optionmark="NEW20140305019213_null_435194" class=""><h5></h5>
+
+                    <p class="radio"><strong>02</strong> 张柏芝和谢霆锋</p></li>
+                <li optionid="5999117_435195" optionmark="NEW20140305019213_null_435195" class=""><h5></h5>
+
+                    <p class="radio"><strong>03</strong> 莫文蔚和冯德伦</p></li>
+            </ul>
+        </div>
+        <div class="voteList lastList" max="0" need="1" projectid="5872528">
+            <div class="voteTitle"><strong>3.</strong>2014年政府工作报告里没有哪句话？</div>
+            <ul class="listBtn">
+                <li class="successChecked" optionid="5999118_435196" optionmark="NEW20140305019213_null_435196"><h5></h5>
+
+                    <p class=""><strong>01</strong> 背水一战</p></li>
+                <li class="wrongChecked" optionid="5999118_435197" optionmark="NEW20140305019213_null_435197"><h5></h5>
+
+                    <p class=""><strong>02</strong> 打掉老虎才有信心</p></li>
+                <li class="dontChecked" optionid="5999118_435198" optionmark="NEW20140305019213_null_435198"><h5></h5>
+
+                    <p class=""><strong>03</strong> 坚决向污染宣战</p></li>
+                <li class="rightChecked" optionid="5999118_435198" optionmark="NEW20140305019213_null_435198"><h5></h5>
+
+                    <p class=""><strong>03</strong> 坚决向污染宣战</p></li>
+                <li class="voted" optionid="5999118_435198" optionmark="NEW20140305019213_null_435198"><h5></h5>
+
+                    <p class=""><strong>03</strong> 坚决向污染宣战</p></li>
+            </ul>
+        </div>
+
+        <div class="submitBtnDiv">
+            <button class="btn-block submitBtn" type="submit">提交</button>
+        </div>
+    </div>
+</div>
+
+<div id="countdownDiv"><span id="countdownSpan">12</span></div>
+</body>
+<script type="text/javascript" src="js/Date.min.js"></script>
+<script type="text/javascript">
+    $('#VoteContainer').on('click','.radio',function(){
+        $(this).addClass('radioChecked').parent().siblings().find('.radio').removeClass('radioChecked')
+    })
+
+    $.coundown = {
+        timer : null,
+        start : function(){
+            var now = new Date().getTime() + 120000;
+            var self =  this;
+            this.timer = setInterval(function(){
+                var date = new Date(now), sec =  new Date().diffSec(date);
+                $('#countdownSpan').html(sec);
+                if(sec <= 0 ) self.stop();
+            }, 1000 )
+        },
+        stop : function(){
+            clearInterval(this.timer);
+        }
+    }
+    $.coundown.start();
+
+
+</script>
+<!--
+<script language="javascript" src="js/answer.js" id="VoteJs" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+    /**
+     * 配置项
+     * container 要在页面显示的容器ID
+     * voteUrl jsonp数据格式URL
+     * submitUrl  提交投票数据的url, post方式提交
+     * subStr  前端截取选项的字符数，0 为不截取
+     */
+    var voteConfig = {
+        container: "VoteContainer",
+        voteUrl: "http://view.inews.qq.com/getQQVoteInfo?otype=jsonpval&id=5872528",
+        submitUrl: "http://input.vote.qq.com/survey.php",
+        answerUrl: "http://view.inews.qq.com/pubAidatiAnswer",
+        loading: true,
+        errorTip: true,
+        subStr: 22,
+        newsId: "NEW2014030501921301",
+        timeLimit: 120
+    };
+    webkitVote.init();
+</script>
+
+<script language="javascript">
+
+    var contentModel = {
+        "img_url": "http://pnewsapp.tc.qq.com/newsapp_ls/0/14398411_150110/0",
+        "img_width": "",
+        "img_height": "",
+        "link": "http://view.inews.qq.com/a/NEW2014030501921301",
+        "desc": "爱答题",
+        "title": "爱答题：政府工作报告知多少",
+        "src": "腾讯新闻"
+    };
+
+
+    var openText = "参与话题讨论";  // "打开腾讯新闻客户端";
+    //打开客户端链接
+    var openUrl;
+    var mobileType = "Unknown";
+    var newsId = "NEW2014030501921301"; // For BOSS stats and other
+    if(!newsId){
+        newsId=document.location.pathname.split("/")[2]; //parse pathname like /a/xxx or /a/xxx/yyy  to get xxx out
+    }
+
+    //下载链接地址
+    var downloadUrl;
+    function changefont(fontsize){
+        if(fontsize < 1 || fontsize > 4)return;
+        var contentDiv = document.getElementById('content');
+        contentDiv.className = 'main fontSize' + fontsize;
+    }
+</script>
+<script language="javascript" src="http://mat1.gtimg.com/www/js/newsapp/newsshare/webnews20131022_min.js" type="text/javascript" charset="utf-8"></script>
+-->
+
+</html>
+

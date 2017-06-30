@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1;">
+    <title>知识库</title>
+    <!--<link rel="stylesheet"  href="../../resource/style/bootstrap-responsive.min.css">-->
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link href="./source/modules/exam/template/css/answer.css" type="text/css" rel="stylesheet">
+    <link href="./source/modules/exam/template/css/style_s.css" type="text/css" rel="stylesheet">
+    <script src="./resource/script/jquery-1.7.2.min.js"></script>
+    <style type="text/css">
+        body{ padding: 0; margin: 0;}
+        ul,li{ margin: 0; padding: 0; list-style: none;}
+        [class*="icon-"],.icon{ display: inline-block ; vertical-align: middle;text-decoration:inherit; speak:none; text-align: center; margin-right: 10px;}
+        [class*="icon-"].hide{display:none;}
+        [class*="icon-"].pull-left{margin-right:.3em;}
+        [class*="icon-"].pull-right{margin-left:.3em;}
+
+        [class*="icon-caret"],
+        .icon-caret,
+        .icon-caret-up,
+        .icon-caret-left,
+        .icon-caret-right,
+        .icon-caret-down{
+            border-style: solid;
+            border-width: 6px;
+            border-color: #666 transparent transparent  transparent;
+            height: 0;
+            font-size: 0;
+            width: 0;
+        }
+        .icon-caret,.icon-caret-up{ margin-bottom: -6px;}
+        .icon-caret-down{border-color: transparent transparent  #666 transparent ; margin-top: -6px;}
+        .icon-caret-right{ border-color: transparent transparent  transparent #666; margin-right: 6px; margin-bottom: 0; }
+        .icon-caret-left{ border-color: transparent #666 transparent  transparent ; margin-left: -6px; }
+
+        .tree li li,
+        .tree  .node { border-bottom: 1px solid #ddd;  padding: 10px; display: block; color: #333; text-decoration: none;}
+        .link {color: #333; text-decoration: none;}
+    </style>
+</head>
+<body>
+  <ul class="tree">
+      <li>
+          <a href="###" class="node"><i class="icon-caret"></i>默认分类</a>
+          {if is_array($default_cat)}
+              {loop $default_cat $_key $_val}
+                 <ul style="display: none">
+                     <li><a href="{php echo $this->createMobileUrl('show', array( 'name' => 'exam', 'id' => $_val['id']))}"  class="link">{$_val['knowledge_name']}</a></li>
+                 </ul>
+              {/loop}
+          {else}
+            <li>暂无知识点</li>
+          {/if}
+      </li>
+
+      {loop $category_val $key $val}
+      <li>
+          <a href="###" class="node"><i class="icon-caret"></i>{$val}</a>
+          <ul style="display: none">
+
+              {if is_array($knowledge)}
+                  {loop $knowledge $know_key $know_val}
+                      {if $key==$know_val['cat_id']}
+                        <li><a href="{php echo $this->createMobileUrl('show', array( 'name' => 'exam', 'id' => $know_val['id']))}"  class="link">{$know_val['knowledge_name']}</a></li>
+                      {/if}
+                  {/loop}
+              {else}
+              <li>暂无知识点</li>
+              {/if}
+          </ul>
+      </li>
+      {/loop}
+  </ul>
+  <script type="text/javascript">
+      $('.tree').on('click','li',function(){
+          if(!$(this).is(':animated')){
+              var $ul =  $(this).find('ul');
+              if( $ul.is(':visible')){
+                  $ul.slideUp()
+                  $(this).find('.icon-caret').removeClass('icon-caret-right');
+              }
+              else{
+                  $ul.slideDown().parent().siblings().find('ul').slideUp();
+                  $(this).find('.icon-caret').addClass('icon-caret-right').parent().siblings().find('.icon-caret').removeClass('icon-caret-right')
+              }
+          }
+      }).on('click','li ul',function(e){e.stopPropagation();})
+  </script>
+</body>
+</html>

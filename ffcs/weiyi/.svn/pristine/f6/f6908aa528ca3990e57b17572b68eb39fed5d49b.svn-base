@@ -1,0 +1,25 @@
+<?php
+/**
+ * 支付管理 1111
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+define('IN_SYS', true);
+require './source/bootstrap.inc.php';
+
+$actions = array();
+$action = $_GET['act'];
+
+if($_W['uid']) {
+	$actions = array('payment','pay','respond');
+
+	if (!in_array($action, $actions)) {
+		header('Location: ./index.php');
+	}
+} else {
+	$actions = array('login','register','check');
+	$action = in_array($action, $actions) ? $action : 'login';
+}
+
+$controller = 'pay';
+require router($controller, $action);
+

@@ -1,0 +1,149 @@
+<?php
+/**
+ * 预约与调查模块微站定义
+ *
+ * @author WeEngine Team
+ * @url http://bbs.we7.cc
+ */
+defined('IN_IA') or exit('Access Denied');
+
+class ResearchModuleSite extends WeModuleSite {
+
+	public function getHomeTiles() {
+		global $_W;
+		$sql = 'SELECT * FROM ' . tablename('research') . ' WHERE `weid`=:weid AND `inhome` = 1';
+		$ds = pdo_fetchall($sql, array(':weid' => $_W['weid']));
+		$set = array();
+		foreach($ds as $row) {
+			$set[] = array('title' => $row['title'], 'url' => $this->createMobileUrl('research', array('id' => $row['reid'])));
+		}
+		return $set;
+	}
+
+	public function doMobileResearch() {
+		global $_W, $_GPC;
+		$reid = intval($_GPC['id']);
+		$sql = 'SELECT * FROM ' . tablename('research') . ' WHERE `weid`=:weid AND `reid`=:reid';
+		$params = array();
+		$params[':weid'] = $_W['weid'];
+		$params[':reid'] = $reid;
+		$activity = pdo_fetch($sql, $params);
+		if($activity['status'] != '1') {
+			message('当前预约活动已经失效.');
+		}
+
+		if(!$activity) {
+			message('非法访问.');
+		}
+		$sql = 'SELECT * FROM ' . tablename('research_fields') . ' WHERE `reid`=:reid ORDER BY `refid`';
+		$params = array();
+		$params[':reid'] = $reid;
+		$ds = pdo_fetchall($sql, $params);
+		if(!$ds) {
+			message('非法访问.');
+		}
+		if(checksubmit()) {
+			$row = array();
+			$row['reid'] = $reid;
+			$row['openid'] = $_W['fans']['from_user'];
+			$row['createtime'] = TIMESTAMP;
+			$datas = array();
+			$fields = array();
+			foreach($ds as $r) {
+				$fields[$r['refid']] = $r;
+			}
+			foreach($_GPC as $key => $value) {
+				if(strexists($key, 'field_')) {
+					$refid = intval(str_replace('field_', '', $key));
+					$field = $fields[$refid];
+					if($refid && $field) {
+						$entry = array();
+						$entry['reid'] = $reid;
+						$entry['rerid'] = 0;
+						$entry['refid'] = $refid;
+						if(in_array($field['type'], array('number', 'text', 'calendar', 'email', 'textarea', 'radio', 'range', 'select'))) {
+							$entry['data'] = strval($value);
+						}
+						if(in_array($field['type'], array('checkbox'))) {
+							if(!is_array($value))
+								continue;
+							$entry['data'] = implode(';', $value);
+						}
+						$datas[] = $entry;
+					}
+				}
+			}
+			if($_FILES) {
+				foreach($_FILES as $key => $file) {
+					if(strexists($key, 'field_')) {
+						$refid = intval(str_replace('field_', '', $key));
+						$field = $fields[$refid];
+						if($refid && $field && $file['name'] && $field['type'] == 'image') {
+							$entry = array();
+							$entry['reid'] = $reid;
+							$entry['rerid'] = 0;
+							$entry['refid'] = $refid;
+							$ret = file_upload($file);
+							if(!$ret['success']) {
+								message('上传图片失败, 请稍后重试.');
+							}
+							$entry['data'] = trim($ret['path']);
+							$datas[] = $entry;
+						}
+					}
+				}
+			}
+			if(empty($datas)) {
+				message('非法访问.', '', 'error');
+			}
+			if(pdo_insert('research_rows', $row) != 1) {
+				message('保存失败.');
+			}
+			$rerid = pdo_insertid();
+			if(empty($rerid)) {
+				message('保存失败.');
+			}
+			foreach($datas as &$r) {
+				$r['rerid'] = $rerid;
+				pdo_insert('research_data', $r);
+			}
+			if(empty($activity['starttime'])) {
+				$record = array();
+				$record['starttime'] = TIMESTAMP;
+				pdo_update('research', $record, array('reid' => $reid));
+			}
+			message($activity['information'], 'refresh');
+		}
+		$initRange = false;
+		$initCalendar = false;
+		$binds = array();
+		foreach($ds as &$r) {
+			if($r['type'] == 'range') {
+				$initRange = true;
+			}
+			if($r['type'] == 'calendar') {
+				$initCalendar = true;
+			}
+			if($r['value']) {
+				$r['options'] = explode(',', $r['value']);
+			}
+			if($r['bind']) {
+				$binds[] = $r['bind'];
+			}
+		}
+		if($binds) {
+			$profile = fans_search($_W['fans']['from_user'], $binds);
+			if($profile['gender']) {
+				if($profile['gender'] == '0') $profile['gender'] = '保密';
+				if($profile['gender'] == '1') $profile['gender'] = '男';
+				if($profile['gender'] == '2') $profile['gender'] = '女';
+			}
+			foreach($ds as &$r) {
+				if($profile[$r['bind']]) {
+					$r['default'] = $profile[$r['bind']];
+				}
+			}
+		}
+		include $this->template('submit');
+	}
+}

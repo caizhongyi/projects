@@ -1,0 +1,28 @@
+{templateWithTemplet 'mobile/header','templet2'}
+<link href="./themes/mobile/css/car_rest.css" rel="stylesheet" type="text/css" media="all">
+<div class="weimob-content">
+    <div class="weimob-list">
+        {loop $newsInfo $row}
+        <a class="weimob-list-item" href="{php echo create_url('mobile/channel', array('name' => 'detail', 'id' => $row['id'], 'templetid'=>$_GPC['templetid'],'weid' => $_W['weid']))}">
+            <div class="weimob-list-item-line">
+                <div class="weimob-list-item-title">{$row['title']}</div>
+                <div class="weimob-list-item-fulltitle">{php echo date('Y-m-d H:i:s', $row['createtime'])}</div>
+                <div class="weimob-list-item-img"><img src="{$_W['attachurl']}{$row['thumb']}"></div>
+            </div>
+        </a>
+        {/loop}
+    </div>
+</div>
+<ol class="list_ul_news_nav box">
+    {if !empty($prepageur) }
+    <li>
+        <a href="{$prepageur}">上一页</a>
+    </li>
+    {/if}
+    {if !empty($nextpageurl) }
+    <li>
+        <a href="{$nextpageurl}">下一页</a>
+    </li>
+    {/if}
+</ol>
+{templateWithTemplet 'mobile/footer','templet2'}

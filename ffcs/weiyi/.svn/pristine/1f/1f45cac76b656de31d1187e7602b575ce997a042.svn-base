@@ -1,0 +1,200 @@
+{template 'common/header'}
+{if  $operation == 'post'||$operation == 'detail'}
+<div class="page-header">
+    <h1>
+        <i class="icon-book"></i> 约合信息修改
+    </h1>
+</div>
+<script>
+var trid=-1;
+function deleteLine(id){
+    var tb=document.getElementById('contractdet');
+    var tr=document.getElementById(id);
+    tb.deleteRow(tr.rowIndex);
+}
+function addLine(id){
+    if(trid==-1) trid=id;
+    else trid++;
+    var tb=document.getElementById('contractdet');
+    var tr0=document.getElementById(parseInt(id)-1);
+    var trsub = document.getElementById('trsubmit');
+    var newTr = tb.insertRow(trsub.rowIndex);
+    newTr.id=trid;
+    var newTd0 = newTr.insertCell();
+    var newTd1 = newTr.insertCell();
+    var newTd2 = newTr.insertCell();
+    newTd0.innerHTML= "<th><input type=\"text\" name=\"bill_gift_name"+trid+"\" class=\"span2\"/></th>";
+    newTd1.innerHTML= "<td><input type=\"text\" name=\"bill_gift"+trid+"\" class=\"span3\" /></td>";
+    newTd2.innerHTML= "<td><input type=\"text\"  name=\"bill_gift_unit"+trid+"\" class=\"span1\" /><a  style=\"margin-left: 50px;\" onclick=\"javascript:deleteLine("+trid+");\" >删除</a></td>";
+    var trcount =document.getElementById('trcount');
+    trcount.value=trid;
+}
+
+</script>
+<div class="main">
+    <form action="site.php?act=module&do=contract&name=businesshall&op=post" method="post" class="form-horizontal form" enctype="multipart/form-data">
+        <input type="hidden" name="contract_id" value="{$contract['contract_id']}" />
+        <table class="tb" id="contractdet">
+            <!--<tr>
+                <th><label for="">合约关联手机</label></th>
+                <td>
+                    <input type="" name="displayorder" class="span6" value="{$item['displayorder']}" />
+                </td>
+            </tr>-->
+            <tr>
+                <th><label for="">套餐名称</label></th>
+                <td style="width:230px;">
+                    <input type="text" name="contract_name" class="span3" value="{$contract['contract_name']}" />
+                </td>
+                <td ></td>
+            </tr>
+            <tr>
+                <th><label for="">套餐生失效情况</label></th>
+                <td>
+                    <label for="contract_type1" class="radio inline">
+                        <input type="radio" name="contract_type" value="1" id="contract_type1" {if empty($contract) || $contract['contract_type'] == 1} checked="true" {/if} /> 是</label>
+                    &nbsp;&nbsp;&nbsp;
+                    <label for="contract_type2" class="radio inline">
+                        <input type="radio" name="contract_type" value="0" id="contract_type2" {if  !empty($contract) && $contract['contract_type'] == 0} checked="true" {/if} /> 否</label>
+                    <span class="help-block"></span>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="">合约期</label></th>
+                <td>
+                    <input type="text" name="contract_period" class="span3" value="{$contract['contract_period']}" />
+                </td>
+                <td>月</td>
+            </tr>
+            <tr>
+                <th><label for="">每月月租费</label></th>
+                <td>
+                    <input type="text" name="contract_price" class="span3" value="{$contract['contract_price']}" />
+                </td>
+                <td>元</td>
+            </tr>
+            <tr>
+                <th><label for="">国内通话时长</label></th>
+                <td>
+                    <input type="text" name="call_time" class="span3" value="{$contract['call_time']}" />
+                </td>
+                <td>分钟</td>
+            </tr>
+            <tr>
+                <th><label for="">国内上网流量</label></th>
+                <td>
+                    <input type="text" name="mobile_inter_traffic" class="span3" value="{$contract['mobile_inter_traffic']}" />
+                </td>
+                <td>M</td>
+            </tr>
+            <tr>
+                <th><label for="">国内短信数</label></th>
+                <td>
+                    <input type="text" name="mobile_text" class="span3" value="{$contract['mobile_text']}" />
+                </td>
+                <td>条</td>
+            </tr>
+            <tr>
+                <th><label for="">国内WIFI上网时长</label></th>
+                <td>
+                    <input type="text" name="wifi" class="span3" value="{$contract['wifi']}" />
+                </td>
+                <td>分钟</td>
+            </tr>
+            <tr>
+                <th><label for="">超出套餐之外的国内通话收费标准</label></th>
+                <td>
+                    <input type="text" name="call_bill_overflow" class="span3" value="{$contract['call_bill_overflow']}" />
+                </td>
+                <td>元/分钟</td>
+            </tr>
+            <tr>
+                <th><label for="">超出流量后的流量收费标准</label></th>
+                <td>
+                    <input type="text" name="inter_bill_overflow" class="span3" value="{$contract['inter_bill_overflow']}" />
+                </td>
+                <td>元/M</td>
+            </tr>
+            <tr>
+                <th><label for="">超出套餐之外的短信收费标准</label></th>
+                <td>
+                    <input type="text" name="text_bill_overflow" class="span3" value="{$contract['text_bill_overflow']}" />
+                </td>
+                <td>元/条</td>
+            </tr>
+
+            {loop $pricegifts   $pricegift}
+            <tr  id={php $pgid=($pgid!=null)?($pgid+1):1 ; echo $pgid;} >
+                <th><input type="hidden"  name="gift_id{$pgid}" value="{$pricegift['contract_gift_id']}" />
+                    <input type="text" name="bill_gift_name{$pgid}" class="span2" value="{$pricegift['gift_name']}" />
+                </th>
+                <td>
+                    <input type="text" name="bill_gift{$pgid}" class="span3" value="{$pricegift['gift_value']}" />
+                </td>
+                <td><input type="text"  name="bill_gift_unit{$pgid}" class="span1" value="{$pricegift['gift_unit']}" />
+                    <a  style="margin-left: 50px;" onclick="javascript:deleteLine('{$pgid}');" >删除</a></td>
+            </tr>
+            {/loop}
+            <tr  id="trsubmit">
+                <th></th>
+                <td><input name="submit" type="submit" value="提交" class="btn btn-sm btn-primary">
+                    <input type="hidden" name="token" value="{$_W['token']}" /></td>
+                <td>
+                    {php $pgid++;}<input type="hidden"  name="trcount" id="trcount"  value="{$pgid}" />
+                    <input class="btn btn-sm btn-primary" style="width: 100px;"   onclick="javascript:addLine('{$pgid}');" value="新增规则" ></input>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{elseif  $operation == 'display'||$operation == 'delete'}
+<div class="page-header">
+    <h1>
+        <i class="icon-cogs"></i> 合约管理
+    </h1>
+</div>
+<div class="main">
+    <p>
+        <a href="{php echo $this->createWebUrl('contract', array('name' => 'businesshall', 'op' => 'post'))}" class="btn btn-sm btn-primary">
+            <i class="icon-pencil"></i>添加合约</a>
+    </p>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="navbar-inner">
+        <tr>
+            <th style="width:30px;">ID</th>
+            <th>合约名</th>
+            <th style="width:250px;">合约期</th>
+            <th style="width:250px;">合约费用</th>
+            <th style="width:250px;">生失效情况</th>
+            <th style="width:120px; text-align:right;">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {loop $list $item}
+        <tr>
+            <td>{$item['contract_id']}</td>
+            <td>{$item['contract_name']}</td>
+            <td>{$item['contract_period']}</td>
+            <td>{$item['contract_price']}</td>
+            <td>{php if($item['contract_type']==1) echo "生效";else echo "失效";}</td>
+            <td style="text-align:right;">
+                <a style="margin-right: 20px;" href="{php echo $this->createWebUrl('contract', array('op' => 'delete', 'contract_id' => $item['contract_id']))}">
+                    {php if($item['contract_type']==0) echo "生效";else echo "失效";}
+                </a>
+                <a href="{php echo $this->createWebUrl('contract', array('op' => 'detail', 'contract_id' => $item['contract_id']))}">查看合约</a>
+            </td>
+        </tr>
+        {/loop}
+        </tbody>
+        <!--tr>
+            <td></td>
+            <td colspan="10">
+                <input name="token" type="hidden" value="{$_W['token']}" />
+                <input type="submit" class="btn btn-primary" name="submit" value="提交" />
+            </td>
+        </tr-->
+    </table>
+    {$pager}
+</div>
+{/if}
+{template 'common/footer'}

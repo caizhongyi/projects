@@ -1,0 +1,191 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/card.css" media="all" />
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <title>个人资料</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+</head>
+
+<body id="carduser" ondragstart="return false;" onselectstart="return false;">
+<section class="body">
+    <div class="qiandaobanner">
+        <img src="images/user.jpg">
+    </div>
+    <div class="cardexplain">
+        <!--个人头像，昵称等-->
+        <!--  <ul class="round" style="display: none">
+              <li class="dandanb"><a href="hotelsorder.htm"><span class="none">
+                  <img src="index/images/logo100x100.jpg">
+                  <h2></h2>
+                  <p></p>
+              </span></a></li>
+          </ul>-->
+        <ul class="round">
+            <form action="javascript:;" method="post" >
+                <li class="title mb"><span class="none">会员资料</span></li>
+                <li class="nob">
+                    <input type="hidden" name="formhash" id="formhash" value="bc1ddbf9" />
+                    <input type="hidden" name="key" id="key" value="4969" />
+                    <input type="hidden" name="id" id="id" value="1368" />
+                    <input type="hidden" name="wechatid" id="wechatid" value="o7E9cuLEy1K0TtD5_YmtQ6GXjwBw" />
+                    <input type="hidden" name="pid" id="pid" value="7829" />
+                    <input type="hidden" name="bid" id="bid" value="15385" />
+                    <!-- <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                        <tr>
+                            <th>微信名称</th>
+                            <td>
+                                <input name="wxname" type="text" class="px" id="wxname"  value="" placeholder="请输入微信名称"></td>
+                        </tr>
+                    </table>
+                     -->
+                </li>
+                <li class="nob">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                        <tr>
+                            <th>真实姓名</th>
+                            <td>
+                                <input name="truename" type="text" class="px" id="truename" value="洪明洁"  placeholder="请输入您的姓名"></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="nob">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                        <tr>
+                            <th>联系电话</th>
+                            <td>
+                                <input name="tel" type="tel" class="px" value="15059484010" id="tel"  placeholder="请输入您的电话"></td>
+                        </tr>
+                    </table>
+                </li>
+
+                <li class="nob">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                        <tr>
+                            <th>性别</th>
+                            <td>
+                                <select name="sex" class="dropdown-select" id="sex">
+                                    <option class="dropdown-option">请选择你的性别</option>
+                                    <option value="1">男</option>
+                                    <option value="2">女</option>
+                                    <option selected value="0">其他</option>
+                                </select></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="nob">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                        <tr>
+                            <th>年龄</th>
+                            <td>
+                                <input name="age" type="tel" min="1" max="120" class="px" id="age" value="0" placeholder="请输入您的年龄"></td>
+                        </tr>
+                    </table>
+                </li>
+
+                <li class="nob">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                        <tr>
+                            <th valign="top" class="thtop">地址</th>
+                            <td>
+                                <textarea name="address" type="text" class="pxtextarea" style="height: 57px; overflow-y: visible" id="address" placeholder="请输入您的地址"></textarea></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="nob">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="kuang">
+                        <tr>
+                            <th valign="top" class="thtop">备注</th>
+                            <td>
+                                <textarea name="info" class="pxtextarea" style="height: 99px; overflow-y: visible" id="info" placeholder="请输入备注信息"></textarea></td>
+                        </tr>
+                    </table>
+                </li>
+            </form>
+        </ul>
+        <div class="footReturn">
+            <a id="showcard" class="submit" href="javascript:void(0)">保 存</a>
+            <div class="window" id="windowcenter">
+                <div id="title" class="wtitle">保存成功<span class="close" id="alertclose"></span></div>
+                <div class="content">
+                    <div id="txt"></div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sex').val(0);
+
+                $("#showcard").click(function () {
+
+                    var submitData = {
+                        key: $("#key").val(),
+                        id: $("#id").val(),
+                        wechatid: $("#wechatid").val(),
+                        bid: $("#bid").val(),
+                        pid: $("#pid").val(),
+                        truename: $("#truename").val(),
+                        sex: $("#sex").val(),
+                        tel: $("#tel").val(),
+                        formhash: $("#formhash").val(),
+                        address: $("#address").val(),
+                        info: $("#info").val(),
+                        age: $("#age").val(),
+                        txt1: $("#txt1").val(),
+                        txt2: $("#txt2").val(),
+                        txt3: $("#txt3").val(),
+                        txt4: $("#txt4").val(),
+                        txt5: $("#txt5").val(),
+                        value1: $("#value1").val(),
+                        value2: $("#value2").val(),
+                        value3: $("#value3").val(),
+                        value4: $("#value4").val(),
+                        value5: $("#value5").val(),
+                        select1: $("#select1").val(),
+                        select2: $("#select2").val(),
+                        select3: $("#select3").val(),
+                        select4: $("#select4").val(),
+                        select5: $("#select5").val(),
+                        svalue1: $("#svalue1").val(),
+                        svalue2: $("#svalue2").val(),
+                        svalue3: $("#svalue3").val(),
+                        svalue4: $("#svalue4").val(),
+                        svalue5: $("#svalue5").val(),
+                        action: "setTel"
+                    };
+                    $.post('/userinfo/DoAddinfo', submitData,
+                            function (data) {
+                                if (data.errno == 200) {
+                                    alert(data.error);
+                                    location.href=data.url;
+                                } else {
+                                    alert(data.error);
+                                }
+                            },
+                            "json")
+                });
+            });
+
+            $("#windowclosebutton").click(function () {
+                $("#windowcenter").slideUp(500);
+
+            });
+            $("#alertclose").click(function () {
+                $("#windowcenter").slideUp(500);
+
+            });
+
+            function alert(title) {
+                $("#windowcenter").slideToggle("slow");
+                $("#txt").html(title);
+                setTimeout('$("#windowcenter").slideUp(500)', 4000);
+            }
+
+        </script>
+    </div>
+</section>
+</body>
+</html>

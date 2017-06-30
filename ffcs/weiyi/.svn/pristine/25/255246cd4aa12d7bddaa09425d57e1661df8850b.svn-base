@@ -1,0 +1,90 @@
+{if $isSingle}
+<table class="tb table table-bordered">
+	<tbody>
+		<tr class="control-group">
+			<td class="rule-content">
+				<legend>
+				{$rule['rule']['name']} &nbsp; <span class="label label-success">当前设定的回复规则</span>
+				</legend>
+			</td>
+		</tr>
+		<tr class="control-group">
+			<td class="rule-kw">
+				<div>
+					{loop $rule['keyword'] $kw}
+					<span> {$kw['content']}</span>
+					{/loop}
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{php exit();}
+{/if}
+<div id="rule-single">
+	{if $rule}
+	<table class="tb table table-bordered">
+		<tbody>
+			<tr class="control-group">
+				<td class="rule-content">
+					<legend>
+					{$rule['rule']['name']} &nbsp; <span class="label label-success">当前设定的回复规则</span>
+					</legend>
+				</td>
+			</tr>
+			<tr class="control-group">
+				<td class="rule-kw">
+					<div>
+						{loop $rule['keyword'] $kw}
+						<span> {$kw['content']}</span>
+						{/loop}
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	{/if}
+</div>
+<div id="rules-container">
+	<div class="well">
+		<input class="span6" id="kw" type="text" value="{$_GPC['keyword']}" />
+		<button class="btn pull-right span2" onclick="loadRules();"><i class="icon-search icon-large"></i> 搜索</button>
+		<span class="help-block">请输入规则名称关键字来查找选定规则, 设定好以后将直接回复指定规则的回复内容</span>
+		<span class="help-block alert alert-info">开发者注意: 菜单执行时将会将菜单的标题作为消息内容发送给模块, 处理程序中应使用 $this->message['content'] 来获取菜单标题.</span>
+	</div>
+	{loop $list $row}
+	<table class="tb table table-bordered" style="margin-bottom:8px;">
+		<tbody>
+			<tr class="control-group">
+				<td class="rule-content">
+					<legend>
+						{$row['name']} &nbsp;&nbsp; <small style="font-size:12px;">（{$_W['modules'][$row['module']]['title']}）</small>
+						<a href="javascript:;" onclick="selectRule('{$row['module']}', '{$row['id']}');" class="pull-right"><i class="icon-star"></i> 设定为当前菜单消息</a>
+					</legend>
+				</td>
+			</tr>
+			<tr class="control-group">
+				<td class="rule-kw">
+					<div>
+						{loop $row['keywords'] $kw}
+						<span> {$kw['content']}</span>
+						{/loop}
+					</div>
+				</td>
+			</tr>
+			{if $row['iswelcome'] || $row['isdefault'] || $rid == $row['id']}
+			<tr class="control-group">
+				<td class="rule-manage">
+					<div>
+						{if $row['iswelcome']}<span class="label label-success">此规则定义为欢迎信息</span>{/if}
+						{if $row['isdefault']}<span class="label label-success">此规则定义为默认信息</span>{/if}
+						{if $rid == $row['id']}<span class="label label-success">此规则定义为当前菜单消息</span>{/if}
+					</div>
+				</td>
+			</tr>
+			{/if}
+		</tbody>
+	</table>
+	{/loop}
+	{$pager}
+</div>

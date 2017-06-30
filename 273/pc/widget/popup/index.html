@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>投诉与建议成功弹窗</title>
+    <link href="css/popup.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div style="text-align: center"><a id="show" href="#">弹出</a></div>
+<div style="text-align: center"><a id="hide" href="#">关闭</a></div>
+<div style="display: none;" class="box">
+    <div class="box_title">投诉与建议<a class="box_title_icon" data-close href="#"></a></div>
+    <div class="box_content">
+        <div class="box_content_icon"></div>
+        <p>
+            <strong>感谢您的反馈！我们将根据您的反馈继续改进!</strong>
+            本窗口将在 <span><em>4</em>秒</span> 后自动关闭
+        </p>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/mod.js"></script>
+<script type="text/javascript">
+
+    var Popup = require('js/popup');
+    window.$ = require('jquery');
+    require('class');
+
+    console.log($.fn.uploadify);
+
+    $("#show").click(function(){
+        new Popup(".box").on('shown',function(){
+            console.log('shown!!!')
+        }).show()
+    })
+    $("#hide").click(function(){
+        new Popup(".box").on('hidden',function(){
+            console.log('hidden!!!')
+        }).hide()
+    })
+</script>
+</body>
+</html>

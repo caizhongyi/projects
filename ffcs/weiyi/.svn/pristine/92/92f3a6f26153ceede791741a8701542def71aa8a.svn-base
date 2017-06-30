@@ -1,0 +1,175 @@
+{php $_W['breadcrumb'] = array(array('title'=>'微活动 '),array('title'=>'考试','url'=> create_url('rule/display', array('do' => 'customlist', 'name' => 'exam', 'activity'=>1, 'module' => 'exam'))),array('title'=>'试题管理'))}
+{template 'common/header'}
+<div class="page-header" xmlns="http://www.w3.org/1999/html">
+    <h1>
+        <i class="icon-pencil"></i> 添加试卷考题 <small><i class="icon-double-angle-right"></i>  </small>
+    </h1>
+</div>
+{if $foo == 'display'}
+<ul class="nav nav-tabs">
+    <li {if empty($_GPC['type']) || $_GPC['type'] == 1}class="active"{/if}><a href="{php echo create_url('site/module', array('do' => 'option', 'name' => 'exam', 'id' => $rid, 'type' => 1))}">单选</a></li>
+    <li {if $_GPC['type'] == 2}class="active"{/if}><a href="{php echo create_url('site/module', array('do' => 'option', 'name' => 'exam', 'id' => $rid, 'type' => 2))}">多选</a></li>
+</ul>
+<div class="main">
+    <div class="tabbable account">
+        <p>
+            <a href="{php echo create_url('site/module', array('do' => 'option', 'name'=>'exam', 'id' => $rid, 'foo'=>'post', 'type'=>$type));}" class="btn btn-sm btn-primary"><i class="icon-pencil"></i> 手动添加</a>
+            <a href="{php echo create_url('site/module', array('do' => 'option', 'name'=>'exam', 'id' => $rid, 'foo'=>'input_data'));}" class="btn btn-sm btn-primary"><i class="icon-pencil"></i> 批量导入</a>
+        </p>
+    </div>
+    <form action="" method="post">
+    <div>
+        <input type="hidden" name="act" value="module" />
+        <input type="hidden" name="do" value="option" />
+        <input type="hidden" name="name" value="exam" />
+
+        <table class="table table-striped table-bordered table-hover">
+            <tbody>
+            <tr>
+                <th>关键字</th>
+                <td>
+                    <input class="span6" name="keyword" id="" type="text" value="{$_GPC['keyword']}">
+                </td>
+            </tr>
+
+            <tr class="search-submit">
+                <td colspan="2">
+                    <button  class="btn pull-right btn-sm btn-primary"><i class="icon-search icon-large"></i> 搜索</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="rule">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="navbar-inner">
+            <tr>
+                <th>题干信息</th>
+                <th style="width:20%">分数</th>
+                <th style="width:10%">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {loop $list $item}
+            <tr>
+                <td>
+                    <a href="{php echo create_url('site/module', array('do'=>'option', 'name'=>'exam', 'foo'=>'post', 'op_id'=>$item['id'], 'type'=>$type))}" style="color:#333;">{$item['title']}</a>
+                </td>
+                <td>
+                   <span class="text-error">{$item['score']}</span>
+                </td>
+                <td  class="action-buttons">
+                    <a href="{php echo create_url('site/module', array('do'=>'option', 'name'=>'exam', 'foo'=>'post', 'op_id'=>$item['id'], 'type'=>$type))}" title="编辑" class="btn btn-xs btn-info"><i class="icon-edit"></i></a>
+                    <a onclick="return confirm('此操作不可恢复，确认吗？'); return false;" href="{php echo create_url('site/module', array('do' => 'option', 'name'=>'exam', 'foo'=>'delete', 'op_id' => $item['id']))}" title="删除" class="btn btn-xs btn-danger"><i class="icon-remove"></i></a>
+                </td>
+            </tr>
+            {/loop}
+            </tbody>
+
+        </table>
+        {$pager}
+    </div>
+    </form>
+</div>
+ {elseif $foo == 'post'}
+<div class="main">
+    <form class="form-horizontal form" action="" method="post" enctype="multipart/form-data" onsubmit="return formcheck(this)">
+        <input type="hidden" name="op_id" value="{$item[id]}">
+        <table class="tb">
+            <tr>
+            <th><label for="">选项</label></th>
+            <td id="module-form">
+				<div id="news-wrap-item" class="alert alert-block alert-new wrap-item">
+					<div id="news-children-list">
+						<table id="form" class="tb reply-news-edit">
+							<tr>
+								<th>题干</th>
+								<td>
+									<textarea style="height:80px;" class="span7" cols="70" name="title">{$item['title']}</textarea>
+								</td>
+							</tr>
+
+							<tr>
+								<th>内容</th>
+								<td>
+									<textarea style="height:200px; width:535px;" class="span7 richtext-clone" name="content" cols="70" id="reply-add-text">{$item['content']}</textarea>
+								</td>
+							</tr>
+
+							<tr>
+								<th>答案</th>
+								<td>
+									<input type="text" id="interval" class="span7" placeholder="" name="answer" value="{$item['answer']}">
+								</td>
+							</tr>
+
+							<tr>
+								<th>分值</th>
+								<td>
+									<input type="text" id="intervals" class="span7" placeholder="" name="score" value="{$item['score']}">
+								</td>
+							</tr>
+						</table>
+					</div>
+
+				</div>
+			</td>
+            </tr>
+				<tr>
+					<th></th>
+					<td>
+						<button type="submit" class="btn btn-primary span3" name="sd_submit" value="提交">提交</button>
+						<input type="hidden" name="token" value="{$_W['token']}" />
+					</td>
+				</tr>
+        </table>
+    </form>
+</div>
+        <script type="text/javascript">
+            kindeditor($('.richtext-clone'));
+            function formcheck(form)
+            {
+
+            }
+        </script>
+{elseif $foo=='input_data'}
+<div class="main">
+
+    <table class="tb">
+        <tr>
+            <th style="width:80px;">数据导入</th>
+            <td>
+                <div>
+                    <form id="reply_form" style=" position: relative;" target="aa" action="{php echo create_url('site/module', array('do' => 'option', 'name'=>'exam', 'id' => $rid))}" method="post" enctype="multipart/form-data" onsubmit="return confirm_check()">
+                        <input type="file" name="file" id="file" style="position: absolute; top: 0; left: 0;z-index:11;opacity:0;width: 56px;height: 34px;">
+                        <input type="hidden" name="import_data" value="1" >
+                        <input type="button"  name="" id ="upload_btn" value="上传" class="btn btn-sm btn-primary">
+                        <span id="file_show"></span>
+                        <button type="submit" class="btn btn-sm btn-primary" name="import_datas" value="导入">导入</button>
+                        <span style="color: red;">注：请导入不大于2M,xls,xlsx文件！ </span>
+                        点击下载模版：<a href="../../resource/attachment/example/知识库.xls">模版</a>
+                    </form>
+
+                    <script type="text/javascript">
+                        function confirm_check(){
+                            if($("#file").val().length ==0){
+                                alert("您还未上传文件！");
+                            }
+                            return confirm('确认导入');
+                        }
+                        $("#file").change(function(){
+                            $("#file_show").text($(this).val());
+                        })
+                    </script>
+                </div>
+
+            </td>
+
+        </tr>
+    </table>
+</div>
+{/if}
+{template 'common/footer'}
+  
+	

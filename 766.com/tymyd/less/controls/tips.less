@@ -1,0 +1,71 @@
+@import "../mixins/mixins.less";
+
+/* tips */
+.tips {
+	position: relative;
+	display: inline-block;
+	.inner {
+		position: absolute;
+		left: 0;
+		top: -50px;
+		width: 200px;
+		.arrow {
+			position: absolute;
+			bottom: -20px;
+			width: 20px;
+			height: 20px;
+			left: 20%;
+		}
+		.content {
+			position: relative;
+			padding: 10px;
+			z-index: 1;
+		}
+		.bg {
+			height: 100%;
+			.opacity(0.5);
+			width: 100%;
+			position: absolute;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+		}
+		.content, .bg {
+			background: #ddd;
+			_background: #ddd;
+		}
+	}
+}
+
+.bottom-tips:extend(.tips) {
+	.inner {
+		top: auto;
+		bottom: -50px;
+		.arrow {
+			top: -20px;
+		}
+	}
+}
+
+.left-tips :extend(.tips){
+	.inner {
+		top: 0;
+		left: -220px;
+		.arrow {
+			right: -20px;
+			left: "auto";
+			top: 20%;
+		}
+	}
+}
+
+.right-tips:extend(.tips) {
+	.inner {
+		top: 0;
+		right: -20px;
+		left: "auto";
+		.arrow {
+			left: -20px;
+			top: 20%;
+		}
+	}
+}

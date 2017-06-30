@@ -1,0 +1,355 @@
+<?php
+/**
+ * 微擎管理后台初始化文件
+ * [WeEngine System] Copyright (c) 2013 WE7.CC
+ */
+
+$session = json_decode(base64_decode($_GPC['__session']), true);
+if (is_array($session)) {
+    $member = member_single(array(
+        'uid' => $session['uid']
+    ));
+    if (is_array($member) && $session['hash'] == md5($member['password'] . $member['salt'])) {
+        $_W['uid'] = $member['uid'];
+        $_W['username'] = $member['username'];
+        $member['currentvisit'] = $member['lastvisit'];
+        $member['currentip'] = $member['lastip'];
+        $member['lastvisit'] = $session['lastvisit'];
+        $member['lastip'] = $session['lastip'];
+        $_W['member'] = $member;
+        $founder = explode(',', $_W['config']['setting']['founder']);
+        $_W['isfounder'] = in_array($_W['uid'], $founder) ? true : false;
+    } else {
+        isetcookie('__session', false, - 100);
+    }
+    unset($member);
+}
+unset($session);
+
+//cache_load('setting'); #暂时没有全局设置项
+cache_load('modules');
+
+if (! empty($_GPC['__weid'])) {
+    $_W['weid'] = intval($_GPC['__weid']);
+} else {
+    cache_load('weid:' . $_W['uid']);
+    $_W['weid'] = intval($_W['cache']['weid'][$_W['uid']]);
+}
+
+if (! empty($_W['uid'])) {
+    //获取当前用户可操作的公众号
+    $_W['wechats'] = account_search();
+} else {
+    $_W['wechats'][$_W['weid']] = pdo_fetch("SELECT * FROM " . tablename('wechats') . " WHERE weid = :weid", array(
+        ':weid' => $_W['weid']
+    ));
+}
+foreach ( $_W['wechats'] as &$w ) {
+    $w['default_message'] = iunserializer($w['default_message']);
+    $w['access_token'] = iunserializer($w['access_token']);
+}
+if (! empty($_W['weid'])) {
+    $_W['account'] = $_W['wechats'][$_W['weid']];
+    $_W['account']['template'] = pdo_fetchcolumn("SELECT name FROM " . tablename('site_templates') . " WHERE id = '{$_W['account']['styleid']}'");
+    $default = iunserializer($_W['account']['default']);
+    $welcome = iunserializer($_W['account']['welcome']);
+    $_W['account']['default'] = empty($default) ? $_W['account']['default'] : $default;
+    $_W['account']['welcome'] = empty($welcome) ? $_W['account']['welcome'] : $welcome;
+    $_W['account']['modules'] = account_module();
+}
+$action = $_GPC['act'];
+$do = $_GPC['do'];
+
+$menus[] = array(
+	'title' => '自动回复', 
+	'items' => array(
+		array(
+			'关键字自动回复', 
+			create_url('rule/display')
+		), 
+		array(
+			'欢迎与默认回复设置', 
+			create_url('rule/system')
+		), 
+		array(
+			'常用服务接入', 
+			create_url('index/module/switch', array(
+				'name' => 'userapi'
+			))
+		)
+	)
+);
+
+$menus[] = array(
+    'title' => '统计分析',
+    'items' => array(
+        array(
+            '访问量统计',
+            create_url('index/module/pu', array(
+                'name' => 'stat'
+            ))
+        ),
+        array(
+            '粉丝统计',
+            create_url('index/module/display', array(
+                'name' => 'fans'
+            ))
+        ),
+        array(
+            '聊天记录',
+            create_url('index/module/history', array(
+                'name' => 'stat'
+            ))
+        ),
+        array(
+            '规则使用率',
+            create_url('index/module/rule', array(
+                'name' => 'stat'
+            ))
+        ),
+        array(
+            '关键字使用率',
+            create_url('index/module/keyword', array(
+                'name' => 'stat'
+            ))
+        )
+    )
+);
+
+$menus[] = array(
+    'title' => '公众号管理',
+    'items' => array(
+        array(
+            '公众号列表',
+            create_url('account/display', array(
+                'type' => '1'
+            ))
+        ),
+        array(
+            '模块设置',
+            create_url('member/module')
+        ),
+        array(
+            '自定义菜单设置',
+            create_url('menu')
+        ),
+        /*array(
+            '特殊消息类型处理',
+            create_url('rule/system/message')
+        )*/
+    )
+);
+
+$pMenus = array(
+    'title' => '扩展功能',
+    'items' => array()
+);
+if (is_array($extend_menus['platform']) && ! empty($extend_menus)) {
+    foreach ( $extend_menus['platform'] as $row ) {
+        $pMenus['items'][] = array(
+            $row['title'],
+            create_url("index/module/{$row['do']}", array(
+                'name' => $row['name']
+            ))
+        );
+    }
+}
+
+$sMenus = array(
+    'title' => '微官网',
+    'items' => array(
+        array(
+            '风格设置',
+            create_url('site/style')
+        ),
+        array(
+            '导航管理',
+            create_url('site/nav')
+        ),
+        array(
+            '分类管理',
+            create_url('setting/category')
+        ),
+        array(
+            '文章管理',
+            create_url('site/article')
+        ),
+        array(
+            '相册管理',
+            create_url('site/album')
+        ),
+        array(
+            '设置微官网入口',
+            create_url('site/rule')
+        )
+    )
+);
+if (is_array($extend_menus['site']) && ! empty($extend_menus)) {
+    foreach ( $extend_menus['site'] as $row ) {
+        $sMenus['items'][] = array(
+            $row['title'],
+            create_url("site/module/{$row['do']}", array(
+                'name' => $row['name']
+            ))
+        );
+    }
+}
+$menus[] = $sMenus;
+$menus[] = array(
+    'title' => '微会员',
+    'items' => array(
+        array(
+            '商家设置',
+            create_url('micromember/setbusiness')
+        ),
+        array(
+            '分店设置',
+            create_url('micromember/setsubbusiness')
+        ),
+        array(
+            '特权管理',
+            create_url('micromember/cardright')
+        ),
+        array(
+            '会员卡设置',
+            create_url('micromember/setcard')
+        ),
+        array(
+            '会员管理',
+            create_url('micromember/member')
+        ),
+        array(
+            '积分策略',
+            create_url('micromember/pointset')
+        ),
+        array(
+            '会员通知',
+            create_url('micromember/notify')
+        ),
+        /* array(
+            '会员验证设置',
+            create_url('micromember/setconfig')
+        ), */
+        array(
+            '优惠券管理',
+            create_url('micromember/coupon')
+        ),
+        array(
+            '礼品券管理',
+            create_url('micromember/giftvoucher')
+        )
+    )
+);
+$menus[] = array(
+	'title' => '微活动', 
+	'items' => array(
+		array(
+			'砸蛋抽奖', 
+			create_url('index/module', array(
+				'name' => 'egg',
+                'do'=>'customlist'
+			))
+		), 
+		array(
+			'大转盘', 
+			create_url('index/module', array(
+				'name' => 'lotery',
+                'do'=>'customlist'
+			))
+		),
+        array(
+            '刮刮卡',
+            create_url('index/module', array(
+                'name' => 'scratch',
+                'do'=>'customlist'
+            ))
+        ),
+        array(
+			'投票',
+			create_url('index/module', array(
+				'name' => 'vote',
+                'do'=>'customlist'
+			))
+		),
+        array(
+			'微信墙',
+			create_url('index/module', array(
+				'name' => 'wxwall',
+                'do'=>'customlist'
+			))
+		),
+       /* array(
+            '自定义表单',
+            create_url('index/module', array(
+                'module' => 'research',
+                'activity'=>1
+            ))
+        ),*/
+
+	)
+);
+
+if (! empty($_W['isfounder'])) {
+
+    $user = array(
+        'title' => '系统用户管理'
+    );
+
+    $user['items'][] = array(
+        '用户管理',
+        create_url('member/display'),
+        'childItems' => array(
+            '添加',
+            create_url('member/create')
+        )
+    );
+    $user['items'][] = array(
+        '用户组管理',
+        create_url('member/group'),
+        'childItems' => array(
+            '添加',
+            create_url('member/group/post')
+        )
+    );
+
+    $user['items'][] = array(
+        '注册设置',
+        create_url('setting/register')
+    );
+
+    $menus[] = $user;
+}
+$system = array(
+    'title' => '系统管理'
+);
+
+if (! empty($_W['isfounder'])) {
+    $system['items'][] = array(
+        '模块管理',
+        create_url('setting/module')
+    );
+    $system['items'][] = array(
+        '常用服务管理',
+        create_url('index/module/manage', array(
+            'name' => 'userapi'
+        ))
+    );
+    $system['items'][] = array(
+        '其它设置',
+        create_url('setting/common')
+    );
+
+}
+if ($member['from'] != 1) {
+    $system['items'][] = array(
+        '个人资料',
+        create_url('setting/profile')
+    );
+}
+$system['items'][] = array(
+    '更新缓存',
+    create_url('setting/updatecache')
+);
+$menus[] = $system;
+
+$_W['menus'] = $menus;

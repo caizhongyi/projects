@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>微易—微信，易信公众服务平台</title>
+<meta name="keywords" content="微易,易信,微信公众服务平台" />
+<meta name="description" content="易信，微信公众服务平台管理系统。" />
+<link type="text/css" rel="stylesheet" href="./resource/style/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="./resource/style/font-awesome.css" />
+<link type="text/css" rel="stylesheet" href="./resource/style/common.css?v={TIMESTAMP}" />
+{loop $load_css $css}
+<link type="text/css" rel="stylesheet" href="./resource/style/{$css}.css"  />
+{/loop}
+<script type="text/javascript" src="./resource/script/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./resource/script/bootstrap.js"></script>
+<script type="text/javascript" src="./resource/script/common.js?v={TIMESTAMP}"></script>
+<script type="text/javascript" src="./resource/script/emotions.js"></script>
+{loop $load_js $js}
+<script type="text/javascript" src="./resource/script/{$js}.js" ></script>
+{/loop}
+<script type="text/javascript">
+</script>
+<!--[if IE 7]>
+<link rel="stylesheet" href="./resource/style/font-awesome-ie7.min.css">
+<![endif]-->
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="./resource/style/bootstrap-ie6.min.css">
+<link rel="stylesheet" type="text/css" href="./resource/style/ie.css">
+<![endif]-->
+</head>
+<body {if $action == 'frame'}style="height:100%; overflow:hidden;" scroll="no"{/if}>

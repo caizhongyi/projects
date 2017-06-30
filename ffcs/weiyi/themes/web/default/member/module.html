@@ -1,0 +1,104 @@
+{template 'common/header'}
+<div class="main">
+		<div class="module">
+			<div class="row-fluid">
+				<ul class="thumbnails">
+				{loop $modulelist $row}
+				<li class="span4">
+					<div class="thumbnail">
+						<div class="module-pic">
+							<img src="./source/modules/{php echo strtolower($row['name']);}/preview.jpg" onerror="this.src='./resource/image/module-nopic-big.jpg'" {if !$row['enabled']}class="gray"{/if}>
+							<div class="module-detail">
+								<h5 class="module-title">{$row['title']}<small>（标识：{$row['name']}）</small></h5>
+								<p class="module-brief">{$row['ability']}</p>
+								<p class="module-description">{$row['description']} {if $row['isrulefields']}<a href="{php echo create_url('rule/post', array('module' => $row['name']))}" class="text-info">添加规则</a>{/if}</p>
+							</div>
+						</div>
+						<div class="module-button">
+							{if $row['displayorder'] > '-1'}
+								{if $row['enabled']}
+									{if $row['displayorder'] == '-1'}
+										<a href="#" class="pull-right"><span>系统模块</span></a>
+									{elseif $row['displayorder'] == 127}
+										<a class="pull-right module-priority">优先级：<span>默认级别</span></a>
+									{else}
+										<a class="pull-right module-priority">优先级：<span>{$row['displayorder']}</span></a>
+									{/if}
+									<a id="enabled_{$row['mid']}_0" href="{php echo create_url('member/module/enable', array('mid' => $row['mid'], 'enabled' => 0))}" onclick="return ajaxopen(this.href)" class="btn btn-primary module-button-switch">禁用</a>
+								{else}
+									<a id="enabled_{$row['mid']}_1" href="{php echo create_url('member/module/enable', array('mid' => $row['mid'], 'enabled' => 1))}" onclick="return ajaxopen(this.href);" class="btn btn-danger module-button-switch">启用</a>
+								{/if}
+							{else}
+							<span class="pull-right module-priority text-error">系统模块始终优先</span>
+							{/if}
+							{if $row['settings'] && $row['enabled']}<a href="{php echo create_url('member/module/setting', array('mid' => $row['mid']))}" class="btn module-button-switch">设置</a>{/if}
+							<div class="popover top navbar-inverse">
+								<div class="arrow"></div>
+								<h3 class="popover-title">选择优先级</h3>
+								<div class="popover-content">
+									{if $row['enabled']}
+									{if !$row['issystem']}
+										<select onchange="ajaxopen('{php echo create_url('member/module/displayorder', array('mid' => $row['mid']))}&displayorder=' + this.options[this.selectedIndex].value)">
+											<option {if $row['displayorder'] == 0} selected="selected"{/if} value="0">默认级别</option>
+											<option {if $row['displayorder'] == 1} selected="selected"{/if}value="1">1</option>
+											<option {if $row['displayorder'] == 2} selected="selected"{/if}value="2">2</option>
+											<option {if $row['displayorder'] == 3} selected="selected"{/if}value="3">3</option>
+											<option {if $row['displayorder'] == 4} selected="selected"{/if}value="4">4</option>
+											<option {if $row['displayorder'] == 5} selected="selected"{/if}value="5">5</option>
+										</select>
+									{else}
+									系统模块始终优先
+									{/if}
+									{/if}
+									<p>优先级数字越大，模块执行越优先，反之则反。</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				{/loop}
+			</div>
+			<div>
+				{$pager}
+			</div>
+		</div>
+		<!-- The End -->
+	</div>
+</div>
+	<script type="text/javascript">
+		function toggle_description(id) {
+			var container = $('#'+id).parent().parent().parent();
+			var status = $('#'+id).attr("status");
+			if(status == 1) {
+				$('#'+id).attr("status", "0")
+				container.find(".module_description").show();
+			} else {
+				$('#'+id).attr("status", "1")
+				container.find(".module_description").hide();
+			}
+		}
+		$(function() {
+			$('.module .thumbnails').delegate('li .module-button-switch', 'click', function(){ //控制模块开关
+				if($(this).hasClass('btn-primary')) { //禁用模块
+					$(this).removeClass('btn-primary').addClass('btn-danger').html('开启');
+				} else if($(this).hasClass('btn-danger')) { //开启模块
+					$(this).removeClass('btn-danger').addClass('btn-primary').html('禁用');
+				}
+				$(this).parent().parent().find('.module-pic img').toggleClass('gray');
+			});
+			$('.module .thumbnails').delegate('li', 'hover', function(){ //控制模块详细信息
+				$(this).find('.module-title,.module-brief').toggle();
+				$(this).find('.module-description').toggle('fast');
+			});
+			$('.module .thumbnails').delegate('li a.module-priority', 'click', function(){ //控制优先级对话框
+				$(this).parent().find('.popover').toggle();
+			});
+			$('.module .thumbnails').delegate('li .popover select', 'change', function(){ //设置优先级之后
+				$(this).parent().parent().hide().parent().find('.module-priority span').html($(this).val());
+			});
+			$('.module .thumbnails li').each(function(i) {
+				if(i%3==0) $(this).css('margin-left', '0');
+			});
+		});
+	</script>
+{template 'common/footer'}

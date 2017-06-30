@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="0.5,0.51,0.52">
+    <application setting="false">
+        <name><![CDATA[考试]]></name>
+        <identifie><![CDATA[exam]]></identifie>
+        <version><![CDATA[1.0]]></version>
+        <type><![CDATA[]]></type>
+        <ability><![CDATA[考试模块]]></ability>
+        <description><![CDATA[考试系统]]></description>
+        <author><![CDATA[ffcsteam]]></author>
+        <url><![CDATA[]]></url>
+    </application>
+    <platform>
+        <subscribes>
+        </subscribes>
+        <handles>
+            <message type="text" />
+        </handles>
+        <rule embed="true" />
+    </platform>
+    <bindings>
+        <rule>
+            <entry title="编辑考题" do="option" state="" direct="false" />
+            <entry title="查看考试结果" do="result" state="" direct="false" />
+        </rule>
+    </bindings>
+    <install><![CDATA[
+CREATE TABLE IF NOT EXISTS `ims_exam_knowledge` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `knowledge_name` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `describe` varchar(255) DEFAULT NULL,
+  `createtime` int(10) NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ims_exam_logs` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) NOT NULL,
+  `from_user` varchar(50) NOT NULL,
+  `exam_time` int(10) NOT NULL COMMENT '考试的时间',
+  `option` text NOT NULL COMMENT '选择的答案',
+  `score` varchar(100) NOT NULL COMMENT '考试的成绩',
+  `end_exam_time` int(10) DEFAULT '0',
+  `comment_id` int(10) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=168 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE IF NOT EXISTS `ims_exam_option` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) unsigned NOT NULL,
+  `title` text NOT NULL,
+  `content` text NOT NULL,
+  `answer` varchar(20) NOT NULL,
+  `type` int(10) NOT NULL DEFAULT '1',
+  `score` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=145 DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `ims_exam_reply` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rid` int(10) unsigned NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `thumb` varchar(60) NOT NULL,
+  `exam_title` varchar(50) NOT NULL,
+  `start_time` int(10) NOT NULL COMMENT '起始时间',
+  `end_time` int(10) NOT NULL COMMENT '结束时间',
+  `exam_time` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+]]></install>
+    <uninstall><![CDATA[]]></uninstall>
+    <upgrade><![CDATA[]]></upgrade>
+</manifest>

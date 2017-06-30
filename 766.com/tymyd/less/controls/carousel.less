@@ -1,0 +1,61 @@
+@import "../mixins/mixins.less";
+
+
+.carousel {
+	.clearfix();
+	.clip {
+		overflow: hidden;
+		width: 490px;
+		display: block;
+	}
+	.list {
+		.clearfix();
+		li {
+			float: left;
+			margin: 0 10px;
+		}
+		img {
+			width: 100px;
+			height: 100px;
+		}
+		.prev, .next {
+			width: 20px;
+			height: 70px;
+		}
+		.clip,
+		.prev,
+		.next {
+			vertical-align: middle;
+			float: left;
+		}
+	}
+}
+
+.y-carousel:extend(.carousel) {
+	.list {
+		li {
+			float: none;
+			margin: 10px 0;
+			width: 100%;
+		}
+		.clip {
+			overflow: hidden;
+			height: 243px;
+		}
+		.clip, .prev, .next {
+			vertical-align: middle;
+			float: none;
+			width: 100px;
+			display: block;
+			margin: 0 auto;
+		}
+		.prev, .next {
+			text-align: center;
+			height: auto;
+		}
+	}
+}
+
+.default-carousel{
+
+}

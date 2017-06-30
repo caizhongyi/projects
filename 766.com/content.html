@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>[$Title]_766游戏网_独乐乐不如齐乐乐</title>
+<meta name="description" content="[$Title],766游戏网_独乐乐不如齐乐乐" />
+<meta name="keywords" content="[$K]<if test="!Empty($Keywords)">[$Keywords],</if>[$Title],766游戏网_独乐乐不如齐乐乐" />
+<meta content="all" name="robots" />
+<link rel="Shortcut Icon" type="image/ico" href="http://www.766.com/favicon.ico" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script language="javascript">var IndexID='[$IndexID]';</script>
+<script type="text/javascript" src="http://js.ue.766.com/common/content.js"></script>
+</head>
+
+<body>
+<script src="http://static.766.com/navigate/766v2.js"></script>
+<div class="h1">
+	<h1><a href="[$URL]">[$Title]</a></h1>
+<!--位置导航调用：编辑可通过修改array里的节点来定义导航开始的位置(列出的节点为不显示的，制作默认要写上规范中的这些节点之一或者全部写上：1 766游戏网 | 5006 iNews专区 | 351 测试分类 | 10110 二类专区 | 97 游戏官网 | 83 游戏专区 | 194 整站其他 | 799 综合频道-->
+    <div>
+        <strong>您现在的位置：</strong><CMS action="NODE" return="NodeVar" NodeID="self" /><loop name="NodeVar.Navigation" key="key" var="var" ><if test="!in_array($var.NodeID,array('1','5006','351','10110','97','83','194','799'))"><a href="[$var.URL]">[$var.Name]</a> &raquo;&raquo; </if></loop>正文
+    </div>
+</div>
+
+<!--时间、来源、作者-->
+[@date('Y年m月d日 H:i', $PublishDate)]　来源: <if test="empty($FromSite)"><a href="http://www.766.com">齐乐乐游戏网</a><else>[$FromSite]</if><if test="!empty($Author)">　作者：[$Author]</if>　<a href="#addFavorite" onclick="return news.addFavorite();">收藏本文</a>
+ 
+ 
+<!-- 副标题：本方法以逗号为分隔符，列表形式逐个调出 -->  
+<CMS action="SEARCH" return="List" NodeID="{$NodeID}" Field="Keywords" Keywords="{$Keywords}" Num="20" Separator="," IgnoreContentID="{$ContentID}" />
+<if test="!empty($List)">
+<ul>
+    <loop name="List" var="var" key="key">
+    <if test="$var.SubTitle!=''">
+    <li><a href="[$var.URL]" title="[$var.Title]">[$var.SubTitle]</a></li>
+    </if>
+    </loop>
+</ul>
+</if>
+
+<!--下拉框页面跳转-->
+<if test="!empty($PageNav)">
+	<select name="sNavigate" style="font-size:9pt;" onchange=javascript:window.location=(this.options[this.selectedIndex].value)>
+    <loop name="PageNav" key="key" var="var">
+    <op exp="$PageKey = $key+1 " />
+    <if test="$var.Title=='CONTENT_HEADER'">
+    <op exp="$showTitle = ' 首页' " />
+    <else>
+    <op exp="$showTitle = $var.Title " />
+	</if>
+	<if test="$PageTitle == $var.Title">
+	<option value="[$var.URL]" selected>第[$PageKey]页：[$showTitle]</option>
+    <else>
+    <option value="[$var.URL]" >第[$PageKey]页：[$showTitle]</option>
+    </if>
+    </loop>
+	</select>
+</if>
+
+<!--核心提示/简介、内容-->
+<if test="!empty($Intro)">
+<strong>核心提示：</strong>[$Intro]
+</if>
+[$Content]
+
+<!--责任编辑，制作默认使用，调用数据库中记录的名-->
+<if test="!empty($CreationUserID)">
+	<op exp="$uName = '';" />
+	<CMS action="SQL" return="List" query="select uInfo from #TABLE_HEADER#user where uId = 0{$CreationUserID}" Num="" Tpl="" Cache="" returnKey="" />
+	<loop name="List" key="key" var="var">
+	<op exp="$uName = $var.uInfo;" />
+	</loop>
+	<if test="$uName!=''"><div>[责任编辑：[$uName]]</div></if>
+</if>
+<!--调用后台编辑器中添加的责任编辑-->
+[$Editor]
+            
+<!--页码-->
+<if test="!empty($PageList)"><div class="ym" id="multipage1"><ul>[$PageList]</ul></div></if>
+
+<!--点击复制本文地址：通过ID使用-->
+<input type="button" value="点击复制地址与朋友分享" id="share" />
+<!--<a id="share" />点击复制地址与朋友分享</a> 需定义cursor:pointer-->
+
+<!--收藏本文-->
+<a href="#addFavorite" onclick="return news.addFavorite();">收藏本文</a>
+
+<!--上下篇，可多处使用：通过ID使用-->
+<ul class="np" id="np"></ul>
+<ul class="np" id="np1"></ul>
+
+<!--emotion：通过ID使用-->
+<div class="emotion" id="emotion"><p style="padding:30px;">加载中，请稍后...</p></div>
+
+<!--评论-->
+<a href="http://comment.766.com/index.php?iid=[$IndexID]&cid=[$ContentID]&nid=[$NodeID]" target="_blank" style="text-decoration:underline;">查看所有评论</a>
+<div id="comment"><p style="padding:30px;">加载中，请稍后...</p></div>
+			
+
+<!--查看次数、评论条数-->
+<script type="text/javascript">news.counter()</script>
+<p>总点击数：<script type="text/javascript">document.write(Counter.Hits_Total);</script> 次</p>
+<p>日点击数：<script type="text/javascript">document.write(Counter.Hits_Today);</script> 次</p>
+<p>周点击数：<script type="text/javascript">document.write(Counter.Hits_Week);</script> 次</p>
+<p>月点击数：<script type="text/javascript">document.write(Counter.Hits_Month);</script> 次</p>
+<p>评论条数：<script type="text/javascript">document.write(Counter.CommentNum);</script> 条</p>
+
+
+
+<!--加在内页内容层后，根据需求加上对应的方法调用，功能如下  np:上下篇; ablank:ID为content的内容块链接打开方式为_blank; share:复制本文; emotion:心情; comment:评论; Comment.loadForm：评论表单的样式-->			
+
+
+<div style="display:none;" id="abc">
+<script type="text/javascript" src="http://static.766.com/source/js/stat.js"></script>
+</div>
+
+<script type="text/javascript">
+	news.np('np');
+	news.ablank('content');
+	news.share('share');
+	news.emotion('emotion','自定义emotion样式地址');
+	news.comment('comment'); 
+	Comment.loadForm('default','自定义评论表单样式地址');
+</script>
+</body>
+</html>

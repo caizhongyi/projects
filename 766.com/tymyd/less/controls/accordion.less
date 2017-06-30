@@ -1,0 +1,32 @@
+@import "../mixins/mixins.less";
+
+.accordion {
+	.hd {
+		padding: 5px 10px;
+	}
+	.panel {
+		padding: 10px;
+		display: none;
+	}
+	.clip {
+		overflow: hidden;
+	}
+}
+
+.x-accordion:extend(.accordion) {
+	li {
+		.clearfix();
+		float: left;
+	}
+	.hd {
+		float: left;
+		padding: 10px 5px;
+	}
+	.panel {
+		float: left;
+	}
+}
+
+.default-accordion{
+
+}

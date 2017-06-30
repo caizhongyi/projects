@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>{$reply_info['title']}</title>
+    <link rel="stylesheet"  href="./resource/style/jquery.mobile-1.3.1.css">
+    <link rel="stylesheet"  href="./source/modules/vote/template/css/style.css"/>
+    <link rel="stylesheet"  href="./source/modules/vote/template/js/jquery.dialog/jquery.mobile.dialog.css"/>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script src="./resource/script/jquery-1.7.2.min.js"></script>
+    <style type="text/css">
+        .windowcenter{ font-size: 14px;}
+        .text-success{ color: green;}
+        .text-error{ color: red;}
+        .results_infos{display: none;}
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+        <div class="vote">
+            <h1>{$reply_info['vote_title']}</h1>
+            {if $rid == 314}
+            <div class="summary"><span class="date">活动时间：2014年1月26日14：00至21：00</span></div>
+            {else}
+            <div class="summary"><span class="date">投票时间：{php echo date('Y-m-d',$reply_info['start_time'])}至{php echo date('Y-m-d',$reply_info['end_time'])}</span></div>
+            {/if}
+            {if $rid == 314}
+            <div style="margin:10px 0;"><button class="btn btn-info" onclick="javascript:window.location.href='https://plus.yixin.im/wap/material/viewImageText?id=850688'"><label>视频</label><label>直播</label></button><button class="btn btn-info" onclick="javascript:window.location.href='http://www.153.cn/2014happynewyear/jiemudan.html'"><label>节目</label><label>预览</label></button><button class="btn btn-info" onclick="javascript:window.location.href='https://plus.yixin.im/wap/material/viewImageText?id=845208'"><label>投票</label><label>说明 </label></button><hr style="color:#DDDDDD">
+            <p>
+            “中国梦电信梦福建电信新春歌咏会有奖投票”活动已经开奖。中奖情况已经通过易信公众号和短信进行通知，并将翼充卡号卡密通过公众号发送给中奖员工，请注意查收并尽快充值。
+            </p>
+            </div>
+            {else if $rid == 514}
+            <div style="margin:10px 0;"><button class="btn btn-info" style="width:40%" onclick="javascript:window.location.href='https://plus.yixin.im/wap/material/viewImageText?id=926300'"><label>投票</label><label>规则</label></button><button class="btn btn-info" style="width:40%" onclick="javascript:window.location.href='https://plus.yixin.im/wap/material/viewImageText?id=926301'"><label>奖品</label><label>设置</label></button><hr style="color:#DDDDDD">
+            {/if}
+            <div class="content">
+                <img src="{$_W['attachurl']}{$reply_info['thumb']}" alt="{$reply_info['vote_title']}" class="img"/>
+                <p>
+                    {$reply_info['description']}{if $select_type=='checkbox' && $reply_info['maxitem']>0}（每人可{$reply_info['maxitem']}投票）
+                    {/if}
+                    <button class="btn btn-primary" id="result-option">投票结果</button>
+                </p>
+                <div class="titlebar">{if $select_type=='radio'}单选{else}多选{/if}投票，<em>共有 <span class="text-error">{$vote_counts}</span> 人次参与选票</em></div>
+                <ul class="vote-list unstyled">
+                    {php $i=1;$option_index = array();}
+                    {loop $vote_option_infos $item}
+                    {php $option_index[$item['id']]=$i;}
+                    <li class="option_infos">
+                        <div class="title">
+                            <label class="{$select_type}">
+                                <input name="option"  type="{$select_type}" value="{$item['id']}">
+                                <span class="lbl"></span>
+                                {$i}、{$item['title']}
+                            </label>
+                        </div>
+                        <div class="progressbar  progress-danger  progress-striped clearfix">
+                            <div class="progress">
+                                <div class="bar" style="width: {php echo intval(($item['vote_num']/$vote_counts*100));}%"></div>
+                            </div>
+                            <span class="percent">{php echo intval($item['vote_num']/$vote_counts*100);}%<em>({$item['vote_num']})</em></span>
+                        </div>
+                    </li>
+                    {php $i++;}
+                    {/loop}
+
+                    {loop $vote_option_result_infos $item}
+                    <li class="results_infos">
+                        <div class="title">
+                            <label class="{$select_type}">
+                                <input name="option"  type="{$select_type}" value="{$item['id']}">
+                                <span class="lbl"></span>
+                                {$option_index[$item['id']]}、{$item['title']}
+                            </label>
+                        </div>
+                        <div class="progressbar  progress-danger  progress-striped clearfix">
+                            <div class="progress">
+                                <div class="bar" style="width: {php echo intval(($item['vote_num']/$vote_counts*100));}%"></div>
+                            </div>
+                            <span class="percent">{php echo intval($item['vote_num']/$vote_counts*100);}%<em>({$item['vote_num']})</em></span>
+                        </div>
+                    </li>
+                    {/loop}
+
+                </ul>
+                <!--<div class="text-center">
+                    <span class="text-error">{if $is_expired} 投票活动已下线！ {elseif !$can_vote} {if $reply_info['interval']>0} 您已经投过票了{$reply_info['interval']}天内可投1票 {else} 您已经投过票了！{/if}{/if}</span>
+                    <span class="window" id="windowcenter" style="position: relative; display: inline-block;">
+                        <div class="content">
+                            <div id="txt"></div>
+                        </div>
+                    </span>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="plugback">
+        <a href="javascript:history.back(-1)">
+            <div class="plugbg themeStyle">
+                <span class="plugback"></span>
+            </div>
+        </a>
+    </div>
+    <div class="fixedbar-bottom">
+        <button class="btn btn-danger btn-large" id="vote"
+        {if $is_expired}
+            {if $is_not_indate} disabled title="活动还未开始！"{else} disabled title="活动已结束！"{/if}
+        {elseif !$can_vote}disabled
+            {if $reply_info['interval']>0}title="您已经投过票了{$reply_info['interval']}天内可投1票"
+            {else}title="您已经投过票了！"
+            {/if}
+        {/if} >
+        {if $is_expired}
+            {if $is_not_indate}活动还未开始！{else}活动已结束！{/if}
+        {elseif !$can_vote}
+            {if $reply_info['interval']>0}您已经投过票了！
+            {else}您已经投过票了！
+            {/if}
+        {else}
+            投票
+        {/if}
+        </button>
+    </div>
+    <script type="text/javascript" language="javascript">
+        var option ='';
+        $("#result-option").click(function(){
+            $(".option_infos").hide();
+            $(".results_infos").show();
+        });
+        $("#vote1").click(function () {
+            check_submit();
+        });
+        function check_submit(){
+            var s = [];
+            $('input[name=option]').each(function(){
+                $(this)[0].checked &&  s.push( $(this).val());
+            })
+            var maxitem = parseInt({$reply_info['maxitem']});
+            if("checkbox"=="{$select_type}" && maxitem>0){
+                if(parseInt(s.length)>maxitem){
+                    alert("最多只允许投"+maxitem+"票","text-error");
+                    return false;
+                }
+            }
+            option = s.join(',');
+            if(!option){
+                alert('请选择投票选项！');
+                return false;
+            }
+            return option;
+        }
+
+        function alert(title , className ){
+            $("#vote").html(title);
+            if(className !="success"){
+                setTimeout(function(){
+                    $("#vote").html('投票');
+                },1000);
+            }
+        }
+    </script>
+    <script type="text/javascript" src="./source/modules/vote/template/js/jquery.dialog/jquery.mobile.dialog.min.js"></script>
+    <div id="dialog" class="dialog">
+        <div class="dialog-header">
+            <h3 class="pull-left">为了方便抽奖活动，请登记您的手机号码</h3>
+            <div class="pull-right"><a href="javascript:;" class="dialog-hide" data-close="">×</a></div>
+        </div>
+        <div class="dialog-body message">
+            <div class="form" style="">
+                <div class="form-group"><span class="form-label"  style="width:40%">手机号码：</span><input style="width:60%;font-size: 16px;" name="mobile" type="text"/></div>
+            </div>
+        </div>
+        <div class="dialog-footer pull-right">
+            <a href="javascript:;" class="btn btn-primary " id="determine" data-close="">确定</a><a href="javascript:;" class="btn btn-default " data-close="">取消</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $('#vote').click(function(){
+            if(!check_submit()){
+                return false;
+            }else{
+                $.post('{$vote_url}',{option:option},
+                        function (data) {
+                            if (data.errno == 200) {
+                                alert('投票成功！','success');
+                                setTimeout(function(){window.location.reload();},1000) ;
+                            } else {
+                                alert(data.error);
+                            }
+                        },'json');
+            }
+        })
+       /*$('#determine').on('click',function(){
+           if(!check_submit()){
+               return false;
+           }else{
+               $('.dialog-hide').click();
+               var mobile = $("input[name='mobile']").val();
+               reg = /^0{0,1}(13[0-9]|145|15[0-9]|153|156|18[0-9])[0-9]{8}$/i;
+               if (!reg.test(mobile)) {
+                   alert("手机号码格式有误！");
+                   return false;
+               }
+
+           }
+        })*/
+    </script>
+</body>
+</html>

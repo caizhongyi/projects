@@ -1,0 +1,881 @@
+@charset "utf-8";
+/************************************************************
+ *
+ * honey-less
+ *
+ * @description CSS3 mixins for projects using LESS
+ * @see http: //lesscss.org/
+ * @version 2.10
+ *
+ * @author Matthew Wagerfield
+ * @see http: //matthew.wagerfield.com
+ * @see http: //twitter.com/mwagerfield
+ *
+ * @author XiaoQiang
+ * @see http: //xiaoqiang.org
+ *
+ * ---------- INDEX ----------
+ *
+ * Display:
+ * @mixin display-box
+ * @mixin box-orient
+ * @mixin box-pack
+ * @mixin box-align
+ * @mixin box-flex
+ * @mixin box-sizing
+ * @mixin background-size
+ * @mixin user-select
+ * @mixin appearance
+ * 
+ * Decoration:
+ * @mixin border-radius
+ * @mixin box-shadow
+ * @mixin text-shadow
+ * @mixin linear-gradient
+ * @mixin radial-gradient
+ *
+ * Transformation:
+ * @mixin transform
+ * @mixin transform-origin
+ * @mixin transform-style
+ * @mixin perspective
+ * @mixin perspective-origin
+ * @mixin backface-visibility
+ * @mixin matrix
+ * @mixin translate
+ * @mixin scale
+ * @mixin rotate
+ * @mixin skew
+ *
+ * Transition:
+ * @mixin transition
+ * @mixin transition-property
+ * @mixin transition-duration
+ * @mixin transition-timing-function
+ * @mixin transition-delay
+ * 
+ * Animation
+ * @mixin animation
+ * @mixin animation-name
+ * @mixin animation-duration 
+ * @mixin animation-timing-function
+ * @mixin animation-delay
+ * @mixin animation-iteration-count 
+ * @mixin animation-direction
+ * @mixin animation-play-state
+ * @mixin keyframes interface 
+ * @mixin keyframes
+************************************************************/
+/************************************************************
+ *
+ * display-box
+ *
+ * @see http: //www.w3.org/TR/css3-flexbox/
+ * @see http: //www.html5rocks.com/en/tutorials/flexbox/quick/
+ *
+************************************************************/
+/************************************************************
+ *
+ * box-orient
+ *
+ * @param value               :  horizontal |
+ *                               vertical   |
+ *                               inherit
+ *
+ * @see http: //www.w3.org/TR/css3-flexbox/
+ * @see http: //www.html5rocks.com/en/tutorials/flexbox/quick/
+ *
+************************************************************/
+/************************************************************
+ *
+ * box-pack
+ *
+ * @param value               :  start   |
+ *                               end     |
+ *                               center  |
+ *                               justify
+ *
+ * @see http: //www.w3.org/TR/css3-flexbox/
+ * @see http: //www.html5rocks.com/en/tutorials/flexbox/quick/
+ *
+************************************************************/
+/************************************************************
+ *
+ * box-align
+ *
+ * @param value               :  start    |
+ *                               end      |
+ *                               center   |
+ *                               baseline |
+ *                               stretch
+ *
+ * @see http: //www.w3.org/TR/css3-flexbox/
+ * @see http: //www.html5rocks.com/en/tutorials/flexbox/quick/
+ *
+************************************************************/
+/************************************************************
+ *
+ * box-flex
+ *
+ * @param value               :  0 | Integer
+ *
+ * @see http: //www.w3.org/TR/css3-flexbox/
+ * @see http: //www.html5rocks.com/en/tutorials/flexbox/quick/
+ *
+************************************************************/
+/************************************************************
+ *
+ * box-sizing
+ *
+ * @param value               :  content-box |
+ *                               padding-box |
+ *                               border-box  |
+ *                               inherit
+ *
+ * @see http://www.w3.org/TR/css3-ui/#box-sizing0
+ *
+************************************************************/
+/************************************************************
+ *
+ * background-size
+ *
+ * @param value               :  px       |
+ *                               %        |
+ *                               auto     |
+ *                               cover    |
+ *                               contain  | 
+ *
+ * @see http://www.w3.org/TR/2002/WD-css3-background-20020802/#background-size
+ *
+************************************************************/
+/************************************************************
+ *
+ * user-select
+ *
+ * @param value               :  none     |
+ *                               text     |
+ *                               toggle   |
+ *                               element  |
+ *                               elements |
+ *                               all      |
+ *                               inherit
+ *
+ * @see http: //www.w3.org/TR/2000/WD-css3-userint-20000216#user-select
+ *
+************************************************************/
+/************************************************************
+ *
+ * appearance
+ *
+ * @param value               :  button         |
+ *                               push-button    |
+ *                               hyperlink      |
+ *                               radio-button   |
+ *                               checkbox       |
+ *                               pop-up-menu    |
+ *                               list-menu      |
+ *                               radio-group    |
+ *                               checkbox-group |
+ *                               field          |
+ *                               password       |
+ *                               normal         |
+ *                               inherit        |
+ *                               none
+ *
+ * @see http: //www.w3.org/TR/css3-ui/#appearance
+ * @see http: //www.cssportal.com/css-properties/appearance.htm
+ * @see https: *developer.mozilla.org/en/CSS/-moz-appearance
+ *
+************************************************************/
+/************************************************************
+ *
+ * font-face
+ *
+ * @param url                  :  local or net
+ * @param font-name            :  font-name
+ *
+ * @example .font-face('xiaoqiang.org/', 'myfont');
+ * 
+ * @see http://www.w3.org/TR/css3-fonts/
+ *
+************************************************************/
+/************************************************************
+ *
+ * border-radius
+ *
+ * @param top-left-radius     :  px, em, %
+ * @param top-right-radius    :  px, em, %
+ * @param bottom-right-radius :  px, em, %
+ * @param bottom-left-radius  :  px, em, %
+ *
+ * @see http: //www.w3.org/TR/css3-background/#border-radius
+ *
+************************************************************/
+/************************************************************
+ *
+ * box-shadow
+ *
+ * @param colour              :  #000, rgba, hsla
+ * @param horizontal-offset   :  px, em
+ * @param vertical-offset     :  px, em
+ * @param blur-radius         :  px, em
+ * @param spread-distance     :  px, em
+ * @param inset               :  inset
+ *
+ * @see http: //www.w3.org/TR/css3-background/#box-shadow
+ *
+************************************************************/
+/************************************************************
+ *
+ * text-shadow
+ *
+ * @param colour              :  #000, rgba, hsla
+ * @param horizontal-offset   :  px, em
+ * @param vertical-offset     :  px, em
+ * @param blur-radius         :  px, em
+ *
+ * @see http: //www.w3.org/TR/css3-text/#text-shadow
+ *
+************************************************************/
+/************************************************************
+ *
+ * linear-gradient
+ *
+ * @param angle               :  top, left, 90deg
+ * @param colourA             :  #000 0%, red 0%
+ * @param colourB             :  #000 50%, red 50%
+ * @param colourC             :  #000 100%, red 100%
+ *
+ * @example .linear-gradient(top, crimson 0%, black 100%);
+ *
+ * @see http: //dev.w3.org/csswg/css3-images/#linear-gradients
+ *
+************************************************************/
+/************************************************************
+ *
+ * radial-gradient
+ *
+ * @param location            :  left top, 50% 50%
+ * @param shape               :  circle, ellipse, 100% 75%
+ * @param colourA             :  #000 0%, red 0%
+ * @param colourB             :  #000 50%, red 50%
+ * @param colourC             :  #000 100%, red 100%
+ *
+ * @example .radial-gradient(50% 50%,circle,crimson 0%,black 100%);
+ *
+ * @see http: //dev.w3.org/csswg/css3-images/#radial-gradients
+ *
+************************************************************/
+/************************************************************
+ *
+ * transform
+ *
+ * @param functions           :  matrix()
+ *                            :  translate()
+ *                            :  scale()
+ *                            :  rotate()
+ *                            :  skew()
+ *
+ * @see http: //www.w3.org/TR/css3-2d-transforms/
+ *
+************************************************************/
+/************************************************************
+ *
+ * transform-origin
+ *
+ * @param value               :  left   |
+ *                               center |
+ *                               right  |
+ *                               px     |
+ *                               em     |
+ *                               %;
+ *
+ * @see http: //www.w3.org/TR/css3-3d-transforms/#transform-origin-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * transform-style
+ *
+ * @param value               :  preserve-3d | flat
+ *
+ * @see http: //www.w3.org/TR/css3-3d-transforms/#transform-style-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * perspective
+ *
+ * @param value               :  none | 0, 1, 100, 1000, etc
+ *
+ * @see http: //www.w3.org/TR/css3-3d-transforms/#perspective-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * perspective-origin
+ *
+ * @param value               :  left   |
+ *                               center |
+ *                               right  |
+ *                               px     |
+ *                               em     |
+ *                               %
+ *
+ * @see http: //www.w3.org/TR/css3-3d-transforms/#perspective-origin-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * backface-visibility
+ *
+ * @param value               :  visible | hidden
+ *
+ * @see http: //www.w3.org/TR/css3-3d-transforms/#backface-visibility-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * matrix
+ *
+ * @param a                   :  Number
+ * @param b                   :  Number
+ * @param c                   :  Number
+ * @param d                   :  Number
+ * @param e                   :  Number
+ * @param f                   :  Number
+ *
+ * http: //www.w3.org/TR/css3-3d-transforms/#transform-functions
+ *
+************************************************************/
+/************************************************************
+ *
+ * translate
+ *
+ * @param translate-x         :  px
+ * @param translate-y         :  px
+ *
+ * http: //www.w3.org/TR/css3-3d-transforms/#transform-functions
+ *
+************************************************************/
+/************************************************************
+ *
+ * scale
+ *
+ * @param scale-x             :  0.5, 2, etc
+ * @param scale-y             :  0.5, 2, etc
+ *
+ * http: //www.w3.org/TR/css3-3d-transforms/#transform-functions
+ *
+************************************************************/
+/************************************************************
+ *
+ * rotate
+ *
+ * @param angle               :  0deg
+ *
+ * http: //www.w3.org/TR/css3-3d-transforms/#transform-functions
+ *
+************************************************************/
+/************************************************************
+ *
+ * skew
+ *
+ * @param axis-x              :  0deg
+ * @param axis-y              :  0deg
+ *
+ * http: //www.w3.org/TR/css3-3d-transforms/#transform-functions
+ *
+************************************************************/
+/************************************************************
+ *
+ * transition
+ *
+ * @param properties          :  all, left, opacity, etc
+ * @param duration            :  1s, 1000ms
+ * @param easing              :  linear, ease-in-out, etc
+ * @param delay               :  1s, 1000ms 
+ *
+ * @see http: //www.w3.org/TR/css3-transitions/
+ *
+************************************************************/
+/************************************************************
+ *
+ * transition-property
+ *
+ * @param properties          :  all, left, opacity, etc
+ *
+ * @see http://www.w3.org/TR/css3-transitions/#transition-property-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * transition-duration
+ *
+ * @param duration            :  1s, 1000ms
+ *
+ * @see http://www.w3.org/TR/css3-transitions/#transition-duration-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * transition-timing-function
+ *
+ * @param easing              :  linear, ease-in-out, etc
+ *
+ * @see http://www.w3.org/TR/css3-transitions/#transition-timing-function-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * transition-delay
+ *
+ * @param delay            :  1s, 1000ms
+ *
+ * @see http://www.w3.org/TR/css3-transitions/#transition-duration-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * animation
+ *
+ * @param animation-name            :  none | <identifier>                                     
+ * @param animation-duration        :  1s, 1000ms
+ * @param animation-timing-function :  linear                     |
+ *                                     ease                       |
+ *                                     ease-in                    |
+ *                                     ease-out                   |
+ *                                     ease-in-out                |
+ *                                     cubic-bezier(0, 0, 10, 10)
+ * @param animation-delay           :  1s, 1000ms
+ * @param animation-iteration-count :  infinite | <number>
+ * @param animation-direction       :  normal | alternate
+ * @param animation-play-state      :  running | paused
+ * @param animation-fill-mode       :  none                       | 
+ *                                     forwards                   |
+ *                                     backwards                  | 
+ *                                     both [ , none | forwards | backwards | both ]*
+ *
+ * @see http://www.w3.org/TR/css3-animations/
+ *
+************************************************************/
+/************************************************************
+ *
+ * animation-name
+ *
+ * @param animation-name            :  none | <identifier> 
+ *
+ * @see http://www.w3.org/TR/css3-animations/#animation-name-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * animation-duration 
+ *                                
+ * @param animation-duration        :  1s, 1000ms 
+ *
+ * @see http://www.w3.org/TR/css3-animations/#animation-duration-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * animation-timing-function
+ *
+ * @param animation-timing-function :  linear                     |
+ *                                     ease                       |
+ *                                     ease-in                    |
+ *                                     ease-out                   |
+ *                                     ease-in-out                |
+ *                                     cubic-bezier(0, 0, 10, 10) 
+ *
+ * @see http://www.w3.org/TR/css3-animations/#animation-timing-function-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * animation-delay 
+ *
+ * @param animation-delay           :  1s, 1000ms 
+ *
+ * @see http://www.w3.org/TR/css3-animations/#animation-delay-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * animation-iteration-count
+ *
+ * @param animation-iteration-count :  infinite | <number>
+ *
+ * @see http://www.w3.org/TR/css3-animations/#animation-iteration-count-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * animation-direction
+ *
+ * @param animation-direction       :  normal | alternate 
+ *
+ * @see http://www.w3.org/TR/css3-animations/#animation-direction-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * animation-play-state
+ * 
+ * @param animation-play-state      :  running | paused
+ * 
+ * @see http://www.w3.org/TR/css3-animations/#animation-play-state-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * animation-fill-mode
+ *
+ * @param animation-fill-mode       :  none                       | 
+ *                                     forwards                   |
+ *                                     backwards                  | 
+ *                                     both [ , none | forwards | backwards | both ]*
+ *
+ * @see http://www.w3.org/TR/css3-animations/#animation-fill-mode-property
+ *
+************************************************************/
+/************************************************************
+ *
+ * keyframes interface
+ *
+************************************************************/
+/************************************************************
+ *
+ * animation-func
+ *
+ * @param selector               : ~'#id'    |  ~'.class'
+ * @param animation-name         : <animationname>
+ * @param animation-other        : ~' .1s .1s ease-in ...'
+ * 
+ * @example .animation-func(~'#test', testanimation, ~' .5s ease-in .5s');
+ *
+ * @see http://www.w3.org/TR/css3-animations/#animation-fill-mode-property
+ *
+************************************************************/
+/*
+@newline: `"\n"`;
+.animation-func (@selector, @animation-name, @animation-other,...) {
+    .Keyframe(@pre, @post, @vendor) {
+        (~"@{pre}@@{vendor}keyframes @{animation-name} {@{newline}0%") {
+            .keyframes-0();
+        }
+        10%  {
+            .keyframes-10();
+        }
+        20%  {
+            .keyframes-20();
+        }
+        30%  {
+            .keyframes-30();
+        }
+        40%  {
+            .keyframes-40();
+        }
+        50%  {
+            .keyframes-50();
+        }
+        60%  {
+            .keyframes-60();
+        }
+        70%  {
+            .keyframes-70();
+        }
+        80%  {
+            .keyframes-80();
+        }
+        90%  {
+            .keyframes-90();
+        }
+        100%  {
+            .keyframes-100();
+        }
+        .Local(){}
+        .Local() when (@post=1) {
+            (~"}@{newline}@{selector}") {
+                -webkit-animation : @animation-name @animation-other;
+                   -moz-animation : @animation-name @animation-other;
+                    -ms-animation : @animation-name @animation-other;
+                     -o-animation : @animation-name @animation-other;
+                        animation : @animation-name @animation-other;
+            }
+        }
+        .Local;
+    }
+    .Keyframe(""            , 0,    "-moz-");
+    .Keyframe(~"}@{newline}", 0, "-webkit-");
+    .Keyframe(~"}@{newline}", 0,      "-o-");
+    .Keyframe(~"}@{newline}", 0,     "-ms-");
+    .Keyframe(~"}@{newline}", 1,         "");
+}
+
+*/
+/*.display-toggle (@selector) {
+	position: relative;
+~"@{selector}" {
+display: none;
+    position: absolute;
+};
+    &:hover {
+~"@{selector}" {
+display: block;
+}
+}
+}*/
+/*.grid (@width:100px,@height:100px,@spacing:5px){
+	.clearfix();
+	.size(100px,100px);
+	li{
+		float: left;
+		margin:spacing ;
+	}
+}*/
+body {
+  color: #666666;
+  font-size: 12px;
+  line-height: 1.5;
+  font-family: '宋体', arial, tahoma;
+  background: #ffffff;
+}
+em {
+  color: #ff0000;
+}
+a {
+  color: #666666;
+}
+li,
+ul,
+ol {
+  list-style: inherit;
+}
+h1 {
+  font-size: 16px;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 14px;
+}
+p {
+  font-size: 12px;
+}
+.bold {
+  font-weight: bold;
+}
+.error {
+  color: red;
+}
+.success {
+  color: green;
+}
+.section {
+  margin: 10px 0;
+}
+.hover {
+  position: relative;
+}
+.hover .hover-panel {
+  display: none;
+  position: absolute;
+}
+.hover:hover .hover-panel {
+  display: block;
+}
+.text-overflow {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.no-decoration:hover {
+  text-decoration: none;
+}
+.inline-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+.ie7-inline-block {
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+.block-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.left {
+  float: left;
+  _margin-right: -3px;
+}
+.right {
+  float: right;
+  _margin-left: -3px;
+}
+.fluid {
+  float: none;
+  width: auto;
+  _overflow: visible;
+  zoom: 1;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.no-indent {
+  text-indent: 0;
+}
+.empty {
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
+  font-size: 0;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.grayscale {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+  -webkit-filter: grayscale(1);
+  filter: gray;
+}
+.horizontal-group li,
+.horizontal-group .group-item {
+  margin-bottom: 10px;
+}
+.vertical-group li,
+.vertical-group .group-item {
+  margin-right: 10px;
+}
+table {
+  width: 100%;
+}
+table th,
+table td {
+  padding: 5px;
+}
+.border-table th,
+.border-table td {
+  border: 1px solid #ddd;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-justify {
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+.carousel,
+.vertical-carousel {
+  *zoom: 1;
+}
+.carousel:before,
+.carousel:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.carousel:after {
+  clear: both;
+}
+.carousel .carousel-clip {
+  overflow: hidden;
+  width: 490px;
+  display: block;
+}
+.carousel .carousel-list {
+  *zoom: 1;
+}
+.carousel .carousel-list:before,
+.carousel .carousel-list:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.carousel .carousel-list:after {
+  clear: both;
+}
+.carousel .carousel-list li {
+  float: left;
+  margin: 0 10px;
+}
+.carousel .carousel-list img {
+  width: 100px;
+  height: 100px;
+}
+.carousel .carousel-list .carousel-prev,
+.carousel .carousel-list .carousel-next {
+  width: 20px;
+  height: 70px;
+}
+.carousel .carousel-list .carousel-clip,
+.carousel .carousel-list .carousel-prev,
+.carousel .carousel-list .carousel-next {
+  vertical-align: middle;
+  float: left;
+}
+.vertical-carousel .carousel-list li {
+  float: none;
+  margin: 10px 0;
+  width: 100%;
+}
+.vertical-carousel .carousel-list .carousel-clip {
+  overflow: hidden;
+  height: 243px;
+}
+.vertical-carousel .carousel-list .carousel-clip,
+.vertical-carousel .carousel-list .carousel-prev,
+.vertical-carousel .carousel-list .carousel-next {
+  vertical-align: middle;
+  float: none;
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+.vertical-carousel .carousel-list .carousel-prev,
+.vertical-carousel .carousel-list .carousel-next {
+  text-align: center;
+  height: auto;
+}

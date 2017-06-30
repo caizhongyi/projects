@@ -1,0 +1,105 @@
+
+{template 'common/header'}
+<div id="main">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-title">
+                        <div class="span8" style="float: left">
+                            <h3><i class="icon-table"></i>优惠券管理 </h3>
+                        </div>
+                        <div class="span4" style="margin-top:10px;float: right">
+                            <form action="/micromember.php" method="get">
+                                <input type="hidden" name="act" value="coupon"/>
+                                <input type="hidden" name="actType" value="list"/>
+                                <input type="hidden" name="pMin" value="{$pMin}"/>
+                                <input type="hidden" name="pMax" value="{$pMax}"/>
+                                <input type="hidden" name="query_type" value="{$type}"/>
+
+                                <input type="text" name="keyword-input" value="{$keyWord}"
+                                       class="input-small-z" style="width:90px;" placeholder="请输入关键词"
+                                       data-rule-required="true"/>
+                                <select name="query_type" class="input-small" style="width:110px; ">
+                                    <option selected="selected" value="0">请选择类型</option>
+                                    <option value="1" {if 1==$typetemp} selected="selected" {/if}>打折优惠券</option>
+                                    <option value="2" {if 2==$typetemp} selected="selected" {/if}>现金抵用券</option>
+                                </select>
+
+                                <button class="btn" style="margin-top: -10px;" type="submit">查询</button>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="box-content">
+
+                        <div class="row-fluid">
+                            <div class="span12 control-group">
+                                <div class="span4">
+                                    <a class="btn" href="/micromember.php?act=coupon&actType=add"><i
+                                            class="icon-plus"></i>发布优惠券</a>
+                                    <a class="btn" href="javascript:location.reload()"><i
+                                            class="icon-refresh"></i>刷新</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid dataTables_wrapper">
+                            <form action="/plus/formajax.php" method="post" class="form-horizontal">
+                                <table id="listTable" class="table table-bordered table-hover  dataTable">
+                                    <thead>
+                                    <tr>
+                                        <th class='with-checkbox'>
+                                            <input type="checkbox" class="check_all"/></th>
+                                        <th>标题</th>
+                                        <th>分类</th>
+                                        <th>适用人群</th>
+                                        <th>生效时间</th>
+                                        <th>过期时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {loop $couponList $row}
+                                    <tr>
+                                        <td class="with-checkbox">
+                                            <input type="checkbox" name="check"/></td>
+                                        <td>
+                                            <div class="answer_text">{$row['title']}</div>
+                                        </td>
+                                        <td>
+                                            {$row['name']}
+                                        </td>
+                                        <td>
+                                            所有用户
+                                        </td>
+                                        <td>{$row['begin_date']}</td>
+                                        <td>{$row['end_date']}</td>
+                                        <td>
+                                            <a class="btn"
+                                               href="/micromember.php?act=coupon&actType=detail&couponId={$row['id']}"
+                                               title="使用统计"><i class="icon-bar-chart"></i></a>
+                                            <a class="btn" href=""
+                                               title="编辑"><i class="icon-edit"></i></a>
+                                            <a class="btn"
+                                               href="/micromember.php?act=coupon&actType=delete&couponId={$row['id']}"
+                                               title="删除"><i class="icon-remove"></i></a>
+                                        </td>
+                                    </tr>
+
+                                    {/loop}
+
+                                    </tbody>
+                                </table>
+                                <div class="dataTables_paginate paging_full_numbers"><span>       </span></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{template 'common/footer'}

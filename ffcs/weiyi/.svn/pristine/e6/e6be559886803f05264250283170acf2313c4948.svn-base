@@ -1,0 +1,96 @@
+{template 'header'}
+<link type="text/css" href="./themes/mobile/default/css/detail.css" rel="stylesheet">
+<link type="text/css" href="./themes/mobile/css/common.css" rel="stylesheet">
+<div class="detail-body" style="padding-bottom:60px;">
+    <div style="height:35px!important;"></div>
+    <!--
+    分享前控制
+    -->
+    <script>
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            window.shareData = {
+                "imgUrl": "{$_W['attachurl']}{$newsInfo['thumb']}",
+                "timeLineLink": "{php echo create_url('mobile/channel', array('name' => 'detail', 'id' => $row['id'], 'templetid'=>$_GPC['templetid'],'weid' => $_W['weid']))}",
+                "sendFriendLink": "{php echo create_url('mobile/channel', array('name' => 'detail', 'id' => $row['id'], 'templetid'=>$_GPC['templetid'],'weid' => $_W['weid']))}",
+                "weiboLink": "{php echo create_url('mobile/channel', array('name' => 'detail', 'id' => $row['id'], 'templetid'=>$_GPC['templetid'],'weid' => $_W['weid']))}",
+                "tTitle": "{$newsInfo['title']}",
+                "tContent": "{$newsInfo['content']}",
+                "fTitle": "{$newsInfo['title']}",
+                "fContent": "{$newsInfo['content']}",
+                "wContent": "{$newsInfo['content']}"
+            };
+
+            // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+                WeixinJSBridge.invoke('sendAppMessage', {
+                    "img_url": window.shareData.imgUrl,
+                    "img_width": "640",
+                    "img_height": "640",
+                    "link": window.shareData.sendFriendLink,
+                    "desc": window.shareData.fContent,
+                    "title": window.shareData.fTitle
+                }, function (res) {
+                    _report('send_msg', res.err_msg);
+                })
+            });
+
+            // 分享到朋友圈
+            WeixinJSBridge.on('menu:share:timeline', function (argv) {
+                WeixinJSBridge.invoke('shareTimeline', {
+                    "img_url": window.shareData.imgUrl,
+                    "img_width": "640",
+                    "img_height": "640",
+                    "link": window.shareData.timeLineLink,
+                    "desc": window.shareData.tContent,
+                    "title": window.shareData.tTitle
+                }, function (res) {
+                    _report('timeline', res.err_msg);
+                });
+            });
+
+            // 分享到微博
+            WeixinJSBridge.on('menu:share:weibo', function (argv) {
+                WeixinJSBridge.invoke('shareWeibo', {
+                    "content": window.shareData.wContent,
+                    "url": window.shareData.weiboLink,
+                }, function (res) {
+                    _report('weibo', res.err_msg);
+                });
+            });
+        }, false)
+    </script>
+    <section class="news_article">
+        <header>
+            <h3 style="font-size:14px;">{$newsInfo['title']}</h3>
+            <small class="gray">{php echo date('Y-m-d H:i:s', $newsInfo['createtime'])}</small>
+        </header>
+        <article>
+            <p>
+                {if !empty($newsInfo['thumb'])}<img src="{$_W['attachurl']}{$newsInfo['thumb']}" style="width:100%;">{/if}
+                {$newsInfo['content']}</p>
+        </article>
+    </section>
+    <section style="width:95%; margin:0px auto;">
+        <div id="mcover" onclick="document.getElementById('mcover').style.display='';" style="display:none;">
+            <img src="./themes/mobile/images/guide.png">
+        </div>
+        <div class="text" id="content">
+            <div id="mess_share">
+                <div id="share_1">
+                    <button class="button2" style="font-size: 14px;text-align: center" onclick="document.getElementById('mcover').style.display='block';">
+                        <img style="vertical-align: middle" src="./themes/mobile/images/icon_msg.png">&nbsp;发送给朋友
+                    </button>
+                </div>
+                <div id="share_2">
+                    <button class="button2" style="font-size: 14px;text-align: center" onclick="document.getElementById('mcover').style.display='block';">
+                        <img style="vertical-align: middle" src="./themes/mobile/images/icon_timeline.png">&nbsp;分享到朋友圈
+                    </button>
+                </div>
+                <div class="clr"></div>
+            </div>
+        </div>
+    </section>
+    <div style="padding-bottom:0!important;">
+        <a href="javascript:window.scrollTo(0,0);" style="font-size:12px;margin:5px auto;display:block;color:#fff;text-align:center;line-height:35px;background:#333;margin-bottom:-10px;">返回顶部</a>
+    </div></div>
+{template 'footer'}

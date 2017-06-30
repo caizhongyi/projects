@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>7.IE6 png bug</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<style>
+/*slide*/
+.backToTop { display:none; width:18px; line-height:1.2; padding:5px 0; background-color:#000; color:#fff; font-size:12px; text-align:center; position:fixed; _position:absolute; left:50%; margin-left:500px; bottom:100px; _bottom:"auto"; cursor:pointer; opacity:.6; filter:Alpha(opacity=60); }
+</style>
+<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+<script src="js/back_top.js"></script>
+<script type="text/javascript" src="js/dd_pngfix.js"></script>
+</head>
+<body>
+<!-- wrapper -->
+<div class="main">
+<!--目录-->
+<h2>766通用JS效果 目录：（以下效果，经测试，兼容FF10.0/IE6,7,8,9/360 4.1.1.6/遨游 3.1.5/世界之窗3.2）</h2>
+<p class="descirpt" style="background:#f1f1f1; border:1px solid #369;">
+	<a href="0.index.html">0.首页-JQuery基础使用教程</a><br />
+	<a href="1.fade.html">1.幻灯片效果-淡入淡出 + 返回顶部</a><br />
+	<a href="2.stepScroll.html">2.幻灯片效果-单块内容滚动</a><br />
+	<a href="3.scroll.html">3.滚动效果</a><br />
+	<a href="4.textScroll.html">4.文本滚动效果</a><br />
+	<a href="5.tab.html">5.选项卡/标签切换效果+图片切换后载效果</a><br />
+	<a href="6.menu.html">6.下拉菜单/级联菜单效果</a><br />
+	<span>7.IE6 png bug</span><br />
+	<a href="8.ie6fixed.html">8.IE6 fixed bug</a><br />
+</p>
+<!--目录 end-->
+<!--滚动特效***************************************************-->
+<h2>滚动效果</h2>
+<p class="descirpt">描述：用于修正IE6下显示PNG图片有底色的BUG。</p>
+<h3 class="h3">范例：</h3>
+<textarea style="height:400px; width:978px;" readonly="readonly">
+<html>
+	<head>
+		<style type="text/css">
+		/* CSS Reset */
+		body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,a,big, em,font,img,strong,tt, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td{ padding: 0; margin: 0; }
+		table { border-collapse: collapse; border-spacing: 0; }
+		fieldset, img { border: 0; }
+		input,select,textarea{ font-size:12px}
+		ol, ul { list-style: none; }
+		h1, h2, h3, h4, h5, h6 {font-size: 100%; }
+		/* base */
+		body{font-size:12px;line-height:18px; font-family:"Microsoft YaHei", Verdana; color:#333;background:#ebedef;}
+		/* 以下样式用于范例使用 */
+		#css1{ background:url(images/3.png); width:200px; height:200px; }
+		.css2 p{ background:url(images/60s.png); width:200px; height:200px; }
+		.css3 div p{ background:url(images/60s.png); width:200px; height:200px;  }
+		</style>		
+		<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="js/bigMenu.js"></script>
+		<script language="javascript">
+			//判断是否IE6，只有IE6才载入该js
+			//注意下面的dd_pngfix.js的地址要修改成线上的地址
+			//（主要是）背景图使用到 png 格式图片的类名或者样式名下载下面这个括号里，多个样式名用“,”隔开,如下：
+			//.css2 p也用到了png背景图，不加到下列括号中，则不会有修正作用
+			var b_v = navigator.appVersion;
+			var IE6 = b_v.search(/MSIE 6/i) != -1;
+			if (IE6)document.writeln('<script language="javascript" src="js/dd_pngfix.js">'+'</scr' + 'ipt>');
+			if (IE6)DD_belatedPNG.fix('#css1, .css3 div p');
+		</script>
+	</head>
+	<body>
+		<div id="css1">第一张图</div>
+		<div class="css2"><p>没有PNG修正的第二张图，修正效果需要在IE6下才能看到</p></div>
+		<div class="css3"><div><p>有PNG修正的第三张图</p></div></div>
+	</body>
+</html>
+
+</textarea>
+<br />
+<style>
+/* 该特效不需要样式 */
+/* 以下样式用于范例使用 */
+#css1{ background:url(images/3.png); width:200px; height:200px; }
+.css2 p{ background:url(images/60s.png); width:200px; height:200px; }
+.css3 div p{ background:url(images/60s.png); width:200px; height:200px;  }
+</style>
+<script language="javascript">
+	//判断是否IE6，只有IE6才载入该js
+	var b_v = navigator.appVersion;
+	var IE6 = b_v.search(/MSIE 6/i) != -1;
+	//注意下面的dd_pngfix.js的地址要修改成线上的地址
+	if (IE6)document.writeln('<script language="javascript" src="js/dd_pngfix.js">'+'</scr' + 'ipt>');
+	//（主要是）背景图使用到 png 格式图片的类名或者样式名下载下面这个括号里，多个样式名用“,”隔开,如下：
+	//.css2 p也用到了png背景图，不加到下列括号中，则不会有修正作用
+	if (IE6)DD_belatedPNG.fix('#css1,.css3 div p');
+</script>
+HTML代码：
+<div id="css1">第一张图</div>
+<div class="css2"><p>没有PNG修正的第二张图，修正效果需要在IE6下才能看到</p></div>
+<div class="css3"><div><p>有PNG修正的第三张图</p></div></div><br />
+<br />
+<br />
+<!--滚动特效 end***************************************************-->
+</div>
+<!-- wrapper end -->
+
+</body>
+</html>

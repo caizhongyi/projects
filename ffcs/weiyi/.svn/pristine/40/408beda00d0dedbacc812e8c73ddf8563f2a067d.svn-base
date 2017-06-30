@@ -1,0 +1,199 @@
+{php $_W['breadcrumb'] = array(array('title'=>'统计分析 '),array('title'=>'用户访问量'))}
+{template 'common/header'}
+<div class="page-header">
+    <h1>
+        <i class="icon-book"></i> 用户访问量
+    </h1>
+</div>
+
+	<div class="main">
+		<div class="stat">
+			<div class="stat-div">
+				{template 'pu_search'}
+				<div class="sub-item" id="table-list">
+				<!-- pv / uv 报表  start -->
+	            <form action="" method="get">
+				<div class="stat-div">
+					<div class="navbar navbar-static-top">
+						<div class="navbar-inner">
+							<span class="brand">关键指标详解</span>
+						</div>
+					</div>
+					<div class="sub-item">
+						<h4 class="sub-title">用户消息趋势图</h4>
+						<div class="sub-content" id="pv-trend"></div>
+					</div>
+					<div class="sub-item">
+						<h4 class="sub-title">活跃用户趋势图</h4>
+						<div class="sub-content" id="uv-trend"></div>
+					</div>
+				</div>
+	            </form>
+				   
+				<script type="text/javascript">
+					var day = ['{php echo implode('\',\'', $day)}'];
+					function initchart(id, options) {
+						var defaults = {
+							chart: {
+								renderTo:id,
+								zoomType:'xy',
+								type:'areaspline',
+								backgroundColor:'#F3F3F3'
+							},
+							title: {
+								text: ""
+							},
+							credits:{
+								enabled:false
+							},
+							yAxis: [{ // Secondary yAxis
+								title: {
+									text: ""
+								},
+								labels: {
+									formatter: function() {
+										return this.value + '个';
+									},
+									style: {
+										color: '#666',
+										fontFamily:'Microsoft yahei'
+									}
+								},
+								gridLineColor:"#D2D1D1",
+								allowDecimals:false
+							}],
+							xAxis: [{
+								labels:{
+									formatter: function() {
+										return this.value;
+									},
+									style: {
+										color: '#000'
+									}
+								},
+								title: {
+									text: '',
+									style: {
+										color: '#7eafdd'
+									}
+								},
+								lineColor: "#8E8E8F",
+								lineWidth: 2
+							}],
+							legend: {
+								enabled:false
+							},
+							labels: {
+								style: {
+									color: '#CCC'
+								}
+							},
+							tooltip:{
+								backgroundColor:'#525253',
+								borderColor:"#000",
+								style:{
+									color: "#fff"
+								},
+								headerFormat:'',
+								pointFormat: '<b style="font-family:Microsoft yahei">{point.y}个</b>'
+							},
+							plotOptions: {
+								areaspline: {
+									fillColor: "rgba(190,216,240,0.7)"
+								}
+							},
+							exporting: {
+								enabled: false
+							},
+							series: [{
+								name: '触发次数'
+							}]
+						};
+						var config = $.extend({}, defaults, options);
+						return new Highcharts.Chart(config);
+					}
+					$(function(){
+						new initchart('pv-trend', {
+							series: [{
+								data: [{php echo implode(',', $hit)}]
+							}],
+							xAxis: [{
+								categories: day
+							}]
+						});
+						new initchart('uv-trend', {
+							series: [{
+								data: [{php echo implode(',', $users)}]
+							}],
+							xAxis: [{
+								categories: day
+							}]
+						});
+						
+					});
+				</script>
+				<script type="text/javascript" src="./resource/script/highcharts.js"></script>
+				<!-- pv / uv 报表  end -->
+				<!-- 详细数据 start --><br/>
+				<h4 class="sub-title">详细数据</h4>
+				<div class="sub-content">
+					<table class="table table-striped table-bordered table-hover">
+						<thead class="navbar-inner">
+							<tr style="text-align:center;">
+								<th style="width:40%;text-align:center;" class="row-hover">用户消息数<i></i></th>
+								<th style="text-align:center;">活跃用户数<i></i></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{$pv}</td>
+								<td>{$uv}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- 详细数据 end -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script>
+$(function() {
+	//详细数据相关操作
+	var tdIndex;
+	$("#table-list thead").delegate("th", "mouseover", function(){
+		if($(this).find("i").hasClass("")) {
+			$("#table-list thead th").each(function() {
+				if($(this).find("i").hasClass("icon-sort")) $(this).find("i").attr("class", "");
+			});
+			$("#table-list thead th").eq($(this).index()).find("i").addClass("icon-sort");
+		}
+	});
+	$("#table-list thead th").click(function() {
+		if($(this).find("i").length>0) {
+			var a = $(this).find("i");
+			if(a.hasClass("icon-sort") || a.hasClass("icon-caret-up")) { //递减排序
+				/*
+					数据处理代码位置
+				*/
+				$("#table-list thead th i").attr("class", "");
+				a.addClass("icon-caret-down");
+			} else if(a.hasClass("icon-caret-down")) { //递增排序
+				/*
+					数据处理代码位置
+				*/
+				$("#table-list thead th i").attr("class", "");
+				a.addClass("icon-caret-up");
+			}
+			$("#table-list thead th,#table-list tbody:eq(0) td").removeClass("row-hover");
+			$(this).addClass("row-hover");
+			tdIndex = $(this).index();
+			$("#table-list tbody:eq(0) tr").each(function() {
+				$(this).find("td").eq(tdIndex).addClass("row-hover");
+			});
+		}
+	});
+});
+</script>
+{template 'common/footer'}

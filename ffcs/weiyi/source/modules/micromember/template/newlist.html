@@ -1,0 +1,46 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="./source/modules/micromember/template/css/fans.css" media="all"/>
+    <script type="text/javascript" src="http://stc.weimob.com/src/web_bb/accordian_pack.js?2013-10-21-2"></script>
+    <title>会员通知</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+</head>
+
+<body id="cardnews" ondragstart="return false;" onselectstart="return false;">
+<section class="body">
+    <div class="pagehead">会员通知</div>
+    <!--------------列表-------------->
+
+    <div id="basic-accordian">
+
+        {loop $newslist $row}
+        <a href="{php echo create_url('index/module',array('do' => 'newsdetail','from_user'=>$_GPC['from_user'], 'name' => 'micromember','id'=>$row['id']))}">
+            <div id="test{$row[id]}-header"  class="accordion_headings">
+                <div class="tab">
+                    <span class="title">{$row['title']}</span>
+                </div>
+
+            </div>
+        </a>
+        {/loop}
+    </div>
+
+    <!--------------返回按钮-------------->
+    <div class="plugback">
+        <a href="javascript:history.back(-1)">
+            <div class="plugbg themeStyle">
+                <span class="plugback"></span>
+            </div>
+        </a>
+    </div>
+    <script>
+        window.onload = function(){
+            new Accordian('basic-accordian',9,'header_highlight');
+        }
+    </script>
+</section>
+</body>
+</html>

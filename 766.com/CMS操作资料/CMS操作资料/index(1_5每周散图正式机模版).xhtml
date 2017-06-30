@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><!--infoTitle-->_<!--#include virtual="/include/title.shtml" --></title>
+<meta name="keywords" content="<!--infoKeyWord--><!--#include virtual="/include/keywords.shtml" -->" />
+<meta name="description" content="<!--infoGuide-->"/>
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<link rel="shortcut icon" href="http://image.81813.com/www/favicon.ico" />
+<link href="http://www.81813.com/css/20101225nav.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="http://n1.81813.com/script/public.js"></script>
+<script type="text/javascript" src="http://n1.81813.com/script/y_fun.js"></script>
+<script type="text/javascript" src="http://image.81813.com/global/js/lib/jquery-1.4.js"></script>
+<link href="/css/110429zt1.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="/script/image2.js"></script>
+</head>
+<body>
+<!--#include virtual="/include/top_v2.shtml" -->
+<div class="breadcrumb_v2 wrapper"><a href="http://www.81813.com">81813首页</a> > <a href="http://pp.81813.com/"> 潮图志</a> > 图片集</div>
+
+<div class="full_bg">
+	<div class="main" id="showMode">
+	<div class="wrapper main_bg">
+		<div class="wrapper main_title">
+			<h1 id="infoTitle"></h1>
+			<div class="tit">
+				<div class="date"><span><!--infoTime--></span></div><div class="click">潮流指数：<span id="click_num"></span></div><div class="ts"><a target="_blank" href="http://ts.81813.com/">投诉</a></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div style="height:1px;width:1px;overflow:hidden;">
+			<div id="keyTip" > <span>支持->,<-翻阅图片</span> </div>
+		</div>
+		<div class="wrapper main_con">
+			<div class="mc_right">
+			<div class="toolbar_big" id="toolbar_b">			
+				<a href="javascript:;" onclick="preImgFunc();" title="看上一组" class="imageGroup_preImgGrpUrl">上一组图↑</a> <a href="javascript:void(0);" onclick="smallImage.upMove();return false;" title="上边点" class="smallImage_leftMove"></a>
+				
+				<div style="display:none">
+				<span>
+				<select id="playTime">
+					<option value="1">1秒</option>
+					<option value="2">2秒</option>
+					<option value="3">3秒</option>
+					<option value="4">4秒</option>
+					<option value="5">5秒</option>
+					<option value="6">6秒</option>
+					<option value="7">7秒</option>
+					<option value="8">8秒</option>
+					<option value="9">9秒</option>
+					<option value="10">10秒</option>
+				</select>
+				<a href="javascript:void(0)" onclick="player.setTime($('playTime').value);player.play(bigImage);return false;">播放</a> </span> <span><a href="javascript:void(0)" onclick="player.stop();return false;">暂停</a></span> <span><a href="javascript:void(0)" onclick="player.setTime($('playTime').value);player.replay(bigImage);return false;">重新播放</a></span> <span><a href="javascript:void(0)" onclick="mode.listMode();return false;">列表模式</a></span></div>
+				
+				
+				<div class="toolbar_big_center">
+					<div id="outerSmallImage">
+						<div class="pos">
+							<div id="innerSmallImage"> </div>
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<a href="javascript:void(0);" onclick="smallImage.downMove();return false;" title="下边点" class="smallImage_rightMove"></a> <a href="javascript:;" onclick="nextImgFunc();" title="看下一组" class="imageGroup_nextImgGrpUrl">下一组图↓</a>			</div>
+			</div>
+			
+			<div class="mc_t"></div>
+			<div class="mc_m">			
+				<div class="main_img">
+					<div class="pos">
+						<div class="preimg" id="preimg" onclick="bigImage.pre();return false;" title="上一张"></div>
+						<div class="nextimg" id="nextimg" onclick="bigImage.next();return false;" title="下一张"></div>
+						<img id="image" /><a title="查看原图" target="_blank" class="view_img" id="view_img">查看原图</a></div>
+				</div>
+				<h2 id="infoSecondTitle"></h2>
+				<h3 id="infoLabel"></h3>
+			</div>
+			<div class="mc_b"></div>			
+		</div>
+		
+		
+		<div class="main_msg">
+			<div style="display:none" id="msg_con"><script src="http://kan.81813.com/inc/20101101181323.js" type="text/javascript"></script></div>
+			<div class="msg" id="dialog">
+				<h2>本图集已到最后一张，你可以：<span><a href="javascript:void(0)" onclick="dialog.hide();return false;" title="关闭"></a></span>
+				</h2> 
+				<div class="msg_con1"> 
+					<span><a href="javascript:void(0)" onclick="player.replay(bigImage);return false;" >重新浏览</a></span> 
+					<span class="s1"><a href="javascript:;" onclick="nextImgFunc();">下一组图↓</a></span> 		
+				</div> 
+				<div class="clear"></div>
+				<div class="msg_con2">热门图集推荐：</div> 
+				<div class="msg_bt">
+					<a href="javascript:;" onmousedown="ISL_GoDown()" onmouseup="ISL_StopDown()" onmouseout="ISL_StopDown()"  onfocus="this.blur()" class="msg_left"></a>
+					<a href="javascript:;" onmousedown="ISL_GoUp()" onmouseup="ISL_StopUp()" onmouseout="ISL_StopUp()" onfocus="this.blur()" class="msg_right"></a>	</div>		
+				<div id="ISL_Cont">
+					<div class="pos">
+					<ul id="msg_li"></ul><ul id="msg_li2"></ul></div>
+				</div> 
+			</div>
+		</div>
+
+ <!--#include virtual="/include/1001/sub_self/toolbar.shtml" -->
+
+		</div>
+	</div>
+	<div id="listMode" style="width:1px;height:1px;overflow:hidden;"><a href="javascript:void(0)" onclick="mode.showMode();return false;">幻灯模式</a></div>
+
+
+	<div class="wrapper commmain">
+		
+			<!--评论-->
+			<div class="sub_comment">
+				<h2>我要吼一下<span></span></h2>
+			
+<div class="comment_con2">
+	<script type="text/javascript">
+Ue_Comment("<!--infoCommentHref-->","http://pp.81813.com/templates/ocommentsend.htm",6,"<!--infoTitle-->","潮人",<!--#include virtual="/inc/1057520100611231452513.inc" -->,"http://p.81813.com");
+</script>
+</div>
+			</div>
+			<!--/评论-->
+
+			<div class="comm_r">
+<!--#include virtual="/zt/include/zt_right_v2.shtml" -->
+			</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+	function msg_scroll(){
+		if(typeof(public_sid) == 'undefined') public_load_db(p_src, "msg_scroll()");
+		else msg_scroll();
+	}
+	//弹出层滚动图	
+	function dialog_scroll(){
+		if($E("msg_li").innerHTML == ""){	
+		var msg_con = $E("msg_con").getElementsByTagName("li");
+		var msg_rd = Math.floor(Math.random()*(msg_con.length-9));
+		msg_rd = (msg_rd >= 9) ? msg_rd - 9 : msg_rd;
+		$E("msg_li").innerHTML = "";
+		for(var i = 0; i < 9; i++){setNewsImg(msg_con[msg_rd]); $E("msg_li").appendChild(msg_con[msg_rd]);}
+	}
+		msg_scroll();
+	}
+	dialog_scroll();
+				</script>
+</div>
+<!--底部-->
+<div class="footer wrapper">
+	<script type="text/javascript">footer();</script>
+</div>
+<!-- /底部-->
+<script src="http://click.81813.com/static.php?channel=<!--infoChannel-->&web_id=<!--infoId-->&kind=3"></script>
+<div id="click_num_a"><script src="http://click.81813.com/showHits/getTotalHits.php?channel=<!--infoChannel-->&web_id=<!--infoId-->&kind=3"></script></div>
+<script type="text/javascript">set_click_num();</script>
+<!--#include virtual="/include/tongji.shtml" -->
+</body>
+</html>

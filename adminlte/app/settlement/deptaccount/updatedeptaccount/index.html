@@ -1,0 +1,233 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active">  {{ $state.current.page.title }} </li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content slide" >
+    <div class="box">
+        <form name="form" ng-submit="submit(form.$valid)"  role="form" novalidate>
+            <table class="table modv2-table table-hover">
+                <tr>
+                    <th width="12%">门店：</th>
+                    <td>
+                        <span class="form-inline" ng-if="!$stateParams.id" select-store="">
+                            <div class="form-group">
+                                <select id="province" class="form-control modv2-inputg province" name="province" ng-model="item.province"  ng-options="item.id as item.name  for item in province "  >
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select id="city" class="form-control modv2-inputg city" name="city" ng-model="item.city"  ng-options="item.id as  item.name for item in city "  >
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select id="shop" class="form-control modv2-inputg shop" name="shop" ng-model="item.dept_id"  ng-options="item.id as  item.name for item in shop" >
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </span>
+                     <span ng-if="$stateParams.id">
+                            {{ item.dept_name }}
+                        </span>
+                        <a href=""></a>
+                    </td>
+                    <th width="12%">
+                        预存款余额：
+                    </th>
+                    <td>
+                     
+                        {{ item.balance || 0 }} 元 <a href="">账单</a>
+                    </td>
+                </tr>
+               </table>
+
+            <table class="table modv2-table table-hover">
+                <tr>
+                    <th rowspan="4" width="12%"><h4 class="box-title">绑定银行卡信息</h4></th>
+                    <th width="12%">
+                        <label ><span class="text-danger">*</span> 联系人：</label>
+                    </th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg" ng-model="item.linkman" name="linkman" required/>
+                        <div class="has-feedback text-danger" ng-messages="form.linkman.$error" ng-show="interacted(form.linkman)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入联系人！</div>
+                        </div>
+                    </td>
+               
+                    <th width="12%">
+                        <label ><span class="text-danger">*</span> 手机号码：</label>
+                    </th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg" ng-model="item.linkman_phone" name="linkman_phone" required phone-validator=""/>
+                        <div class="has-feedback text-danger" ng-messages="form.linkman_phone.$error" ng-show="interacted(form.linkman_phone)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入联系人手机号码！</div>
+                            <div ng-message="phoneValidator"><i class="fa fa-info-circle"></i>输入的手机号码格式不正确！</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label ><span class="text-danger">*</span> 账户收款人：</label>
+                    </th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg" ng-model="item.payee_realname" name="payee_realname" required/>
+                        <div class="has-feedback text-danger" ng-messages="form.payee_realname.$error" ng-show="interacted(form.payee_realname)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入银行账户收款人！</div>
+                        </div>
+                    </td>
+                    <th>
+                        <label ><span class="text-danger">*</span> 身份证号码：</label>
+                    </th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg" ng-model="item.payee_idcard" name="payee_idcard" required/>
+                        <div class="has-feedback text-danger" ng-messages="form.payee_idcard.$error" ng-show="interacted(form.payee_idcard)" id-card-validator="">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入收款人身份证号码！</div>
+                            <div ng-message="idCardValidator"><i class="fa fa-info-circle"></i>请输入收款人身份证号码！</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label ><span class="text-danger">*</span> 开户银行：</label>
+                    </th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg" ng-model="item.payee_bank"  name="payee_bank" required auto-complete/>
+                        <div class="has-feedback text-danger" ng-messages="form.payee_bank.$error" ng-show="interacted(form.payee_bank)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入开户银行！</div>
+                        </div>
+                    </td>
+                    <th>
+                        <label><span class="text-danger">*</span> 开户银行支行：</label>
+                    </th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg"  ng-model="item.payee_bank_branch"  name="payee_bank_branch" required auto-complete="/Settlement/CfbLianhang/getLianhangListByName"/>
+                        <div class="has-feedback text-danger" ng-messages="form.payee_bank_branch.$error" ng-show="interacted(form.payee_bank_branch)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入开户银行支行！</div>
+                        </div>
+                    </td>
+                </tr>
+				<tr>
+                    <th>
+                        <label><span class="text-danger">*</span> 开户银行账号：</label>
+                    </th>
+                    <td colspan="3">
+                        <input type="text" class="form-control modv2-inputg"  ng-model="item.payee_bank_card_number" name="payee_bank_card_number" required />
+                        <div class="has-feedback text-danger" ng-messages="form.payee_bank_card_number.$error" ng-show="interacted(form.payee_bank_card_number)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入银行账号！</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table modv2-table table-hover">
+                <tr>
+                
+                    <th rowspan="4" width="12%"><h4 class="box-title">门店所属公司信息 </h4></th>
+                    <td colspan="4"><label class="pickbox"><input type="checkbox" ng-model="sync"/> 与门店银行卡一致</label></td>
+                </tr>
+                <tr>
+                    <th width="12%"><label ><span class="text-danger">*</span> 公司名称：</label></th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg" ng-model="item.company_name" name="company_name"  required/>
+                        <div class="has-feedback text-danger" ng-messages="form.company_name.$error" ng-show="interacted(form.company_name)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入公司名称！</div>
+                        </div>
+                    </td>
+                    <th width="12%"><label ><span class="text-danger">*</span>账户收款人：</label></th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg" ng-model="item.c_payee_realname" name="c_payee_realname" required ng-disabled="syncDisabled"/>
+                        <div class="has-feedback text-danger" ng-messages="form.c_payee_realname.$error" ng-show="interacted(form.c_payee_realname)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入银行账户收款人！</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th> <label ><span class="text-danger">*</span> 身份证号码：</label></th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg" ng-model="item.c_payee_idcard" name="c_payee_idcard" required ng-disabled="syncDisabled"/>
+                        <div class="has-feedback text-danger" ng-messages="form.c_payee_idcard.$error" ng-show="interacted(form.c_payee_idcard)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入收款人身份证号码！</div>
+                        </div>
+                    </td>
+
+                    <th>
+                        <label ><span class="text-danger">*</span> 开户银行：</label>
+                    </th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg"  ng-model="item.c_payee_bank" name="c_payee_bank" required  auto-complete ng-disabled="syncDisabled"/>
+                        <div class="has-feedback text-danger" ng-messages="form.c_payee_bank.$error" ng-show="interacted(form.c_payee_bank)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入开户银行！</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>  <label ><span class="text-danger">*</span> 开户银行支行：</label></th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg"  ng-model="item.c_payee_bank_branch" name="c_payee_bank_branch" required auto-complete="/Settlement/CfbLianhang/getLianhangListByName" ng-disabled="syncDisabled"/>
+                        <div class="has-feedback text-danger" ng-messages="form.c_payee_bank_branch.$error" ng-show="interacted(form.c_payee_bank_branch)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入开户银行支行！</div>
+                        </div>
+                    </td>
+
+                    <th><label ><span class="text-danger">*</span> 银行账号：</label></th>
+                    <td>
+                        <input type="text" class="form-control modv2-inputg"  ng-model="item.c_payee_card_number" name="c_payee_card_number" required ng-disabled="syncDisabled"/>
+                        <div class="has-feedback text-danger" ng-messages="form.c_payee_card_number.$error" ng-show="interacted(form.c_payee_card_number)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入银行账号！</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table modv2-table table-hover">
+                <tr>
+                
+                    <th rowspan="2" width="12%"><h4 class="box-title">门店POS信息</h4></th>
+                    <th width="12%"><label ><span class="text-danger">*</span> 收单行：</label></th>
+                    <td>
+                        <select select-bank="" id="bank" class="form-control modv2-inputg"  ng-model="item.pos_receiving_bank" name="pos_receiving_bank" required >
+                            <option value="">请选择</option>
+                        </select>
+                        <div class="has-feedback text-danger" ng-messages="form.pos_receiving_bank.$error" ng-show="interacted(form.pos_receiving_bank)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请选择收款行！</div>
+                        </div>
+                    </td>
+                    <th> <label ><span class="text-danger">*</span> 收款公司：</label></th>
+                    <td>
+                        <select class="form-control modv2-inputg" name="pos_receiving_company" ng-model="item.pos_receiving_company"  select-company="" required >
+                            <option value="">请选择</option>
+                        </select>
+                        <div class="has-feedback text-danger" ng-messages="form.pos_receiving_company.$error" ng-show="interacted(form.pos_receiving_company)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请选择收款公司！</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th> <label ><span class="text-danger">*</span> 绑定店长手机号：</label></th>
+                    <td colspan="3">
+                        <input type="text" class="form-control modv2-inputg"  ng-model="item.pos_bind_phone" name="pos_bind_phone" required phone-validator=""/>
+                        <div class="has-feedback text-danger" ng-messages="form.pos_bind_phone.$error" ng-show="interacted(form.pos_bind_phone)">
+                            <div ng-message="required"><i class="fa fa-info-circle"></i>请输入绑定店长手机号码！</div>
+                            <div ng-message="phoneValidator"><i class="fa fa-info-circle"></i>输入的手机号码格式不正确！</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+                <button class="btn btn-primary modv2-btn"  >保存</button>
+                <button class="btn btn-default modv2-btn" type="button"  ng-click="back()" >返回</button>
+        </form>
+    </div>
+
+</section>
+<!-- /.content -->
+
+

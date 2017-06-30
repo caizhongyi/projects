@@ -1,0 +1,116 @@
+<section class="content-header" >
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active"> 添加类型 </li>
+    </ol>
+</section>
+<section class="content slide" >
+    <div class="box ">
+        <h3 class="box-title" style="margin-left: 20%">新增类型</h3>
+        <form role="addtypeForm" name="addtypeForm" class="form-horizontal" ng-submit="ok(addtypeForm.$valid)" novalidate>
+            <div class="modal-body">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="add-app" class="col-sm-2 control-label">应用名称:</label>
+                        <div class="col-sm-4">
+                            <input type="text" placeholder="应用名称" id="add-app" class="form-control" name="app" ng-model="item.app" value="{{ item.app }}"  >
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="add-app_code" class="col-sm-2 control-label">应用码:</label>
+                        <div class="col-sm-4">
+                            <input type="text" placeholder="问题码" id="add-app_code" class="form-control" name="app_code" ng-model="item.app_code" value="{{ item.app_code}}"  >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-status" class="col-sm-2 control-label">状态:</label>
+                        <div class="col-sm-4">
+                            <select name="status" id="add-status" class="form-control"   ng-model="item.status" ng-options="item.type as item.name for item in typestatusList">
+                                <option value="">已上线</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-charger" class="col-sm-2 control-label">负责人:</label>
+                        <div class="col-sm-4">
+                            <select name="status" id="add-charger" class="form-control"   ng-model="item.charger" ng-options="item.name as item.name for item in chargerList">
+                                <option value="">管理员</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">动态配置表:</label>
+                        <div class="col-sm-4" style="border:1px solid #D6D6D6;height: 180px;" >
+                            <div style="padding-top: 8px;">
+                                <label  class=" control-label">sp通道:</label>&nbsp;&nbsp;
+                                <select name="channel" id="channel" style="width:248px;height: 35px;"   ng-model="item.channel" ng-options="item.type as item.name for item in channelList">
+                                    <option value="">请选择</option>
+                                </select>
+                                </br>
+                                </br>
+                                <label  class=" control-label">签名:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input  placeholder="签名"  style="width:248px;height: 35px;" id="signup" name="signup" ng-model="item.signup" value=""  >
+                                </br>
+                                </br>
+                                <label  class=" control-label">扩展号:</label>&nbsp;&nbsp;&nbsp;
+                                <input  placeholder="扩展号"  style="width:248px;height: 35px;" id="append_id" name="append_id" ng-model="item.append_id" value=""  >
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div><!-- /.box-body -->
+            </div><!--ng-disabled="itemForm.$invalid"-->
+            <div class="modal-footer">
+                <button  type="submit" class="btn btn-primary " style="margin-right: 62%" >提交</button>
+            </div>
+        </form>
+    </div>
+</section>
+<script type="text/ng-template" id="tpl-add.html">
+    <div class="modal-header">
+        <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+        <h3 class="modal-title">短信配置信息</h3>
+    </div>
+    <form role="form" name="smsForm" class="form-horizontal" ng-submit="addok(smsForm.$valid)" novalidate>
+        <div class="modal-body">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="add-channel" class="col-sm-2 control-label">sp通道:</label>
+                    <div class="col-sm-10">
+                        <select name="channel" id="add-channel" class="form-control"   ng-model="item.channel" ng-options="item.type as item.name for item in channelList">
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="add-signup" class="col-sm-2 control-label">签名:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="签名" id="add-signup" class="form-control" name="signup" ng-model="item.signup" value="{{ item.signup}}"  >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="add-append_id" class="col-sm-2 control-label">扩展号:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="扩展号" id="add-append_id" class="form-control" name="append_id" ng-model="item.append_id" value="{{ item.append_id}}"  >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="add-sms_type" class="col-sm-2 control-label">短信类型:</label>
+                    <div class="col-sm-10">
+                        <input type="text" placeholder="短信类型" id="add-sms_type" class="form-control" name="sms_type" ng-model="item.sms_type" value="{{ item.sms_type}}"  >
+                    </div>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!--ng-disabled="itemForm.$invalid"-->
+        <div class="modal-footer">
+            <button  type="submit" class="btn btn-primary"  >确定</button>
+            <a class="btn btn-warning" ng-click="cancel()">取消</a>
+        </div>
+    </form>
+</script>

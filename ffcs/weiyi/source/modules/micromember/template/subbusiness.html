@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="./source/modules/micromember/template/css/fans.css" media="all"/>
+    <script type="text/javascript" src="http://stc.weimob.com/src/web_bb/accordian_pack.js?2013-10-21-2"></script>
+    <title>门店信息</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+</head>
+
+<body id="cardnews" ondragstart="return false;" onselectstart="return false;">
+<section class="body">
+    <div class="pagehead">门店信息</div>
+    <!--------------列表-------------->
+
+    <div id="basic-accordian">
+
+        {loop $subbusiness $row}
+        <div id="test{$row[id]}-header"  class="accordion_headings">
+            <div class="tab">
+                <span class="title">{$row['name']}</span>
+            </div>
+            <div id="test{$row[id]}-content"   style="display: none; overflow: hidden;">
+                <div  class="accordion_child">
+                    {$row['description']}
+                </div>
+                <div  class="accordion_child_info">地址：<a href="http://api.map.baidu.com/marker?location={$row['lat']},{$row['lng']}&title={$row['place']}&name={$row['place']}&content={$row['place']}&output=html&src=weiba|weiweb">{$row['address']}</a></div>
+                <div  class="accordion_child_info">电话：{$row['phonenum']}</div>
+            </div>
+        </div>
+        {/loop}
+    </div>
+
+    <!--------------返回按钮-------------->
+    <div class="plugback">
+        <a href="javascript:history.back(-1)">
+            <div class="plugbg themeStyle">
+                <span class="plugback"></span>
+            </div>
+        </a>
+    </div>
+    <script>
+        window.onload = function(){
+            new Accordian('basic-accordian',9,'header_highlight');
+        }
+    </script>
+</section>
+</body>
+</html>

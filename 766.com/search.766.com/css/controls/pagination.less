@@ -1,0 +1,58 @@
+@import "../mixins/index";
+@import "core";
+
+.pagination-bar{
+	font-size:14px;
+	em{
+		color: #1992b1;
+	}
+	.page{
+		width: 70%;
+	}
+}
+
+.default-pagination{}
+
+.border-pagination{
+	a{
+		display: inline-block;
+		border: 1px solid #c2d5e3;
+		padding: 5px;
+		margin-right: 5px;
+		color: #666;
+		.no-decoration();
+	}
+	a:hover{
+		background:#e5ecf2 ;
+	}
+	.prev,.next{
+		i{
+			.arrow();
+		}
+	}
+	.prev{
+		i{
+         //   .arrow > .left();
+			margin-right: 5px;
+		}
+	}
+	.next{
+		i{
+         //   .arrow > .right();
+			margin-left: 5px;
+		}
+	}
+	.selected{
+		background: #e5ecf2;
+		font-weight: bold;
+	}
+	.prev-disabled{
+		color: #c6aaaa;
+       // .arrow > .left(#c6aaaa);
+	}
+	.next-disabled{
+		color: #c6aaaa;
+      //  .arrow > .right(#c6aaaa);
+	}
+	text-align: center;
+}

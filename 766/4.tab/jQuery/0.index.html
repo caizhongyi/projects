@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>0.JQ效果使用手册</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<style>
+/*slide*/
+.backToTop { display:none; width:18px; line-height:1.2; padding:5px 0; background-color:#000; color:#fff; font-size:12px; text-align:center; position:fixed; _position:absolute; left:50%; margin-left:500px; bottom:100px; _bottom:"auto"; cursor:pointer; opacity:.6; filter:Alpha(opacity=60); }
+</style>
+<script type="text/javascript" src="../jslib/jquery-1.4.4.min.js"></script>
+<script src="js/back_top.js"></script>
+</head>
+<body>
+<!-- wrapper -->
+<div class="main">
+<!--目录-->
+<h2>766通用JS效果 目录：（以下效果，经测试，兼容FF10.0/IE6,7,8,9/360 4.1.1.6/遨游 3.1.5/世界之窗3.2）</h2>
+<p class="descirpt" style="background:#f1f1f1; border:1px solid #369;">
+	<span>0.首页-JQuery基础使用教程</span><br />
+	<a href="1.fade.html">1.幻灯片效果-淡入淡出 + 返回顶部</a><br />
+	<a href="2.stepScroll.html">2.幻灯片效果-单块内容滚动</a><br />
+	<a href="3.scroll.html">3.滚动效果</a><br />
+	<a href="4.textScroll.html">4.文本滚动效果</a><br />
+	<a href="5.tab.html">5.选项卡/标签切换效果+图片切换后载效果</a><br />
+	<a href="6.menu.html">6.下拉菜单/级联菜单效果</a><br />
+	<a href="7.ie6png.html">7.IE6 png bug</a><br />
+	<a href="8.ie6fixed.html">8.IE6 fixed bug</a><br />
+</p>
+<!--目录 end-->
+<h2>jQuery特效/插件代码使用教程</h2>
+<textarea style="height:650px;" readonly="readonly">
+使用jQuery库开发的js特效插件使用须知：
+1.基本格式：
+<html>
+	<!--HTML头部其他标签-->
+	<head>
+		<!--引入jq库文件-->
+		<script src="js/jquery-1.4.4.min.js"></script>
+		<script>
+		$(function(){ 
+			//特效具体代码从这边开始加入
+			
+		});
+		</script>
+	</head>
+	<body>
+		<!--其他HTML代码-->
+	</body>
+</html>
+
+2.详细解释：
+<script>
+$(function(){
+	//JQ用的加载函数，特效方法写在这个函数里面。
+	//特效代码基本格式为$(目标).方法名(参数);
+	/*
+		$("#tab").tab("mouseover");
+		比如这个语句，解释：
+		对id="tab"的包含的代码使用tab()标签切换特效，"mouseover"表示，鼠标悬停时触发
+		$(目标)中目标的写法参考css样式写法，#表示id，'.'表示class
+		例子：
+		<div class="html">
+			html 代码
+		</div>
+		对以上代码使用标签切换特效，写法为：
+		$(".html").tab();
+	*/
+	//不熟悉js代码的，请对照范例修改
+	//多个JQ调用可以都可以写到这里,也推荐写到一起，可以减少代码量
+	//比如
+	/*
+	$(function(){
+		$("#html").method1();
+	});
+	$(function(){
+		$(".pop").method2();
+	});
+	可以写成
+	$(function(){
+		$("#html").method1();
+		$(".pop").method2();
+	});
+	*/
+});
+</script>
+</textarea>
+
+</div>
+<!-- wrapper end -->
+</body>
+</html>

@@ -1,0 +1,213 @@
+{template 'common/header'}
+<div class="main">
+	<div class="stat">
+		<div>
+			<div style="margin:3px 3px;float:right;">
+				<a href="#myModal" name="address-add" id="address-add" role="button" data-toggle="modal" class="btn btn-warning">添 加</a>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		<div class="stat-div">
+		<table class="table table-striped table-bordered table-hover" id="address-book">
+			<tr>
+				<td><input type="checkbox" class="select-all" /></td>
+				<td>用户ID</td>
+				<td>名称</td>
+				<td>电话</td>
+				<td>操作</td>
+			</tr>
+			<tbody class="tablebody">
+			{loop $result $address}
+			<tr id="tr_{$address['id']}">
+				<td><input type="checkbox" name="data[]" value="{$address['id']}"/></td>
+				<td>{$address['id']}</td>
+				<td class="record-name">{$address['name']}</td>
+				<td class="record-phone">{$address['phone']}</td>
+				<td class="kd01">
+					<a href="#myModal2" role="button" data-toggle="modal" class="update-record">修改</a> | <a href="javascript:void(0);" class="delete-record">删除</a>
+				</td>
+			</tr>
+			{/loop}
+			</tbody>
+		</table>
+		
+		</div>
+		<div style="padding-left:10px;">
+		<input type="checkbox" class="select-all" value="0" style="vertical-align:text-top;"/> 
+		<a href="javascript:void(0);" class="select-all" style="vertical-align:text-top;">全选</a> | 
+		<a href="javascript:void(0);" class="delete-all" style="vertical-align:text-top;">删除</a>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h5 id="myModalLabel">添加通讯录记录</h5>
+    </div>
+    <div class="modal-body">
+    	<div style="text-align:center;">
+    	用户名称：<input type="text" name="username" id="username" style="vertical-align:text-top;"/> <br/>
+    	用户电话：<input type="text" name="userphone" id="userphone" style="vertical-align:text-top;"/>
+    	</div>
+   	</div>
+   	<div class="modal-footer">
+    	<button class="btn btn-sm btn-primary" id="add-confirm" >添 加</button>
+        <button class="btn tan-qux " data-dismiss="modal" aria-hidden="true" id="cancel1">取 消</button>
+    </div>
+</div>
+<div id="myModal2" class="modal hide fade" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h5 id="myModalLabel">修改通讯录记录</h5>
+    </div>
+    <div class="modal-body">
+    	<div style="text-align:center;">
+    	用户名称：<input type="text" name="username2" id="username2" style="vertical-align:text-top;"/> <br/>
+    	用户电话：<input type="text" name="userphone2" id="userphone2" style="vertical-align:text-top;"/>
+    	<input type="hidden" name="recordid" id="recordid" value=""/>
+    	</div>
+   	</div>
+   	<div class="modal-footer">
+    	<button class="btn btn-sm btn-primary" id="update-confirm" >确 定</button>
+        <button class="btn tan-qux " data-dismiss="modal" aria-hidden="true">取 消</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+	$(".select-all").click( function(){
+        $('input[name="data[]"]').each(function(){
+        	if($( this).attr('checked')== 'checked'){
+            	$( this).removeAttr('checked');
+            }else{
+                 $( this).attr('checked', 'checked');
+            }
+        });
+	});
+
+	$('#address-book').on('click', '.update-record', function(){
+		var $data = $(this).closest('.kd01');
+		var $id = $data.prev().prev().prev().prev().find('input[name="data[]"]').val();
+		var $username = $data.prev().prev().html();
+		var $phone = $data.prev().html();
+		$('#username2').val($username);
+		$('#userphone2').val($phone);
+		$('#recordid').val($id);
+	}).on('click', '.delete-record', function(){
+		var $data = $(this).closest('.kd01');
+		var $id = $data.prev().prev().prev().prev().find('input[name="data[]"]').val();
+		if(confirm('确定要删除该条通讯记录吗?')){
+			$.ajax({
+	            url:"index.php?act=module&name=userapi&do=address_delete_by_id",
+	            type:'post',
+	            data:"id="+$id+"&date="+new Date().getTime(),
+	            async:false,
+	            dataType:'text',
+		   		success:function(data){
+		   			data = $.trim(data);
+		   			if(data == 1){
+		   				$('#tr_'+$id).fadeOut();
+			            alert('删除成功！');
+		   			}else{
+		   				alert('删除失败！');
+		   			}
+		   			
+		   		}
+	         });
+		}
+		return false;
+	});
+	
+	$('#add-confirm').click(function(){
+		var $username = $.trim($('#username').val());
+		var $phone = $.trim($('#userphone').val());
+		if(username == '' || $phone == ''){
+			return false;
+		}
+		$.ajax({
+            url:"index.php?act=module&name=userapi&do=address_add",
+            type:'post',
+            data:"username="+encodeURIComponent($username)+"&userphone="+$phone+"&date="+new Date().getTime(),
+            async:false,
+            dataType:'text',
+	   		success:function(data){
+	   			var id = $.trim(data);
+	   			if(id > 0){
+	   				var html = '<tr id="tr_'+id+'"><tr id="tr_'+id+'">';
+	   				html += '<td><input type="checkbox" name="data[]" value="'+id+'"/></td>';
+	   				html += '<td>'+id+'</td><td class="record-name">'+$username+'</td><td class="record-phone">'+$phone+'</td>';
+	   				html += '<td class="kd01"><a href="#myModal2" role="button" data-toggle="modal" class="update-record">修改</a> | <a href="javascript:void(0);" class="delete-record">删除</a>';
+	   				html += '</td></tr>';
+		   			$('.tablebody').prepend(html);
+		   			$('.close').click();
+		            alert('添加成功');
+	   			}else{
+	   				alert('添加失败');
+	   			}
+	   		}
+        });
+	});
+	$('.delete-all').click(function(){
+		var ids = '', idsarr = new Array();
+		$('input[name="data[]"]:checked').each(function(){
+			ids += $(this).val() + ',';
+			idsarr.push($(this).val());
+		});
+		if(ids != ''){
+			if(confirm('确定要删除选中的通讯记录吗?')){
+				$.ajax({
+		            url:"index.php?act=module&name=userapi&do=address_delete_selected",
+		            type:'post',
+		            data:"ids="+ids+"&date="+new Date().getTime(),
+		            async:false,
+		            dataType:'text',
+			   		success:function(data){
+			   			data = $.trim(data);
+			   			if(data == 1){
+			   				for(var i=0; i<idsarr.length; i++){
+			   					$('#tr_' + idsarr[i]).fadeOut();
+			   				}
+				            alert('删除成功！');
+			   			}else{
+			   				alert('删除失败！');
+			   			}
+			   			
+			   		}
+		         });
+			}
+			return false;
+		}else{
+			alert('请选择要删除的记录！');
+		}
+	});
+	$('#update-confirm').click(function(){
+		var $id = $('#recordid').val();
+		var $username = $.trim($('#username2').val());
+		var $phone = $.trim($('#userphone2').val());
+		if(username == '' || $phone == ''){
+			return false;
+		}
+		$.ajax({
+            url:"index.php?act=module&name=userapi&do=address_update_by_id",
+            type:'post',
+            data:"id="+$id+"&username="+encodeURIComponent($username)+"&userphone="+$phone+"&date="+new Date().getTime(),
+            dataType:'text',
+	   		success:function(data){
+	   			var data = $.trim(data);
+	   			if(data > 0){
+	   				$('#tr_'+$id).find('.record-name').html($username);
+	   				$('#tr_'+$id).find('.record-phone').html($phone);
+		   			$('.close').click();
+		            alert('修改成功');
+	   			}else{
+	   				alert('修改失败');
+	   			}
+	   		}
+        });
+	});
+	
+});
+</script>
+{template 'common/footer'}
