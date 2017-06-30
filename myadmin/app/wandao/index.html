@@ -1,0 +1,89 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        {{ $state.current.page.title }}
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li ui-sref-active="active"><a href="#" ui-sref="mbs-index-home"><i class="fa fa-dashboard"></i>首页</a>
+        </li>
+        <li class="active">  {{ $state.current.page.title }} </li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content slide" >
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title"></h3>
+            <div class="box-tools">
+                <div class="input-group">
+                    <input type="text" placeholder="搜索 '角色名'" ng-change="searchChange()" ng-model="searchData.name" class="form-control input-sm pull-right" name="table_search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-sm btn-default" ng-click="searchInfo()"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body ">
+
+            <table id="table" class="table table-hover text-center">
+                <thead>
+                    <tr>
+                        <th width="10%">Subject</th>
+                        <th >Address</th>
+                        <th width="30%">Username</th>
+                        <th width="30%">Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in list" on-finish-render-filters="">
+                    <td>{{item.subject}}</td>
+                    <td><a href="{{item.address}}" target="_blank">{{item.address}}</a></td>
+                    <td>{{item.username}}</td>
+                    <td>{{item.password}} </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div><!-- /.box-body -->
+
+    </div>
+
+</section>
+<!-- /.content -->
+
+
+<script type="text/ng-template" id="acl-access-add.html">
+    <div class="modal-header">
+        <button aria-label="Close" data-dismiss="modal" class="close" type="button" ng-click="cancel()"><span aria-hidden="true">×</span></button>
+        <h3 class="modal-title">添加一个用户</h3>
+    </div>
+    <div class="modal-body">
+        <form role="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="role">角色名</label>
+                    <input type="text" placeholder="角色名" id="role" class="form-control" name="role_name" ng-model="item.role_name" value="{{ item.role_name }}">
+                </div>
+              <!--  <div class="form-group">
+                    <label for="right">权限</label>
+                    <select name="right" id="right" class="form-control" ng-model="role.right">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                    </select>
+                </div>-->
+                <div class="form-group">
+                    <label for="desc">描述</label>
+                    <textarea id="desc" placeholder="描述..." class="form-control" name="role_note" ng-model="item.role_note" value="{{ item.role_note }}"></textarea>
+                </div>
+
+            </div><!-- /.box-body -->
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">确定</button>
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+    </div>
+</script>
+

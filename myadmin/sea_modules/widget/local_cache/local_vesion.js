@@ -1,0 +1,1 @@
+define({"vehicle": "1.0"})

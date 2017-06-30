@@ -1,0 +1,91 @@
+
+<div class="box" ng-controller="controller.acl.access.index">
+    <div class="box-header">
+        <h3 class="box-title">权限管理</h3>
+        <div class="box-tools">
+            <div class="input-group">
+                <input type="text" placeholder="搜索 '角色名'"  class="form-control input-sm pull-right" name="table_search">
+                <div class="input-group-btn">
+                    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.box-header -->
+    <div class="box-body  no-padding">
+        <table class="table table-hover text-center">
+            <tbody>
+            <tr>
+                <th width="5%">ID</th>
+                <th width="10%">角色名</th>
+                <th >描述</th>
+                <th width="10%">权限/用户</th>
+                <th width="20%">操作</th>
+            </tr>
+            <tr ng-repeat="a in acl">
+                <td>{{a.id}}</td>
+                <td>{{a.role}}</td>
+                <td>{{a.desc}}</td>
+                <td>权限：{{a.right}} / 用户：{{a.user}}</td>
+                <td>
+                    <div class="btn-group">
+                        <div class="btn-group" dropdown is-open="status.isopen">
+                            <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                                操作 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#" class="btn btn-primary"><i class="fa fa-edit"></i> 修改</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><i class="fa fa-cog"></i>配置权限</a></li>
+                                <li><a href="#"><i class="fa fa-group"></i>配置用户</a></li>
+                                <li class="divider"></li>
+                                <li> <a href="#" class="btn btn-danger"><i class="fa fa-trash-o"></i> 删除</a></li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div><!-- /.box-body -->
+    <div class="box-footer clearfix ">
+        <div class="pull-left"><button class="btn btn-primary" type="button" ng-click="open()">添加一个角色</button></div>
+        <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination pull-right no-margin" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    </div>
+</div>
+
+<script type="text/ng-template" id="acl-access-add.html">
+    <div class="modal-header">
+        <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+        <h3 class="modal-title">添加一个用户</h3>
+    </div>
+    <div class="modal-body">
+        <form role="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="role">角色名</label>
+                    <input type="email" placeholder="角色名" id="role" class="form-control" ng-model="user.role">
+                </div>
+                <div class="form-group">
+                    <label for="right">权限</label>
+                    <select name="right" id="right" class="form-control" ng-model="user.right">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="desc">描述</label>
+                    <textarea name="desc" id="desc" placeholder="描述..." class="form-control" ng-model="user.desc"></textarea>
+                </div>
+
+            </div><!-- /.box-body -->
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">确定</button>
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+    </div>
+</script>
+
