@@ -1,0 +1,102 @@
+﻿@charset "utf-8";
+/*
+* @name		:Objcet
+* @author	:czy
+* @version	:1.0.0.0
+* @type		:����
+* @explain	:
+* @relating	:
+* @dependent:
+* @date     : 2011-05-16
+* @qq       : 274142680@qq.com
+*/
+/*  navgation  */
+.navgation{zoom:1;margin:10px auto;}
+.navgation li,
+.navgation a
+{
+	display:inline-block;
+	*display:inline; 
+	zoom:1;
+}
+.navgation a:hover{ text-decoration:underline;}
+
+/*  分页  */
+.pager{ margin:10px auto;  font-size:14px; zoom:1; }
+.pager a
+{
+    display:inline-block;
+	*display:inline; 
+	zoom:1;
+    text-align:center;
+    height:20px;
+    line-height:20px; 
+	margin-right:5px;
+	text-decoration:none;
+}
+.pager a:last-child{ margin-right:0;}
+.pager span{ display:block; float:left; line-height:26px; padding:0 10px; }
+.pager a.normal,
+.pager a.current{width:20px;}
+.pager a.normal{ /* background:#fff; */}
+.pager a.current{ /*  background:#7F93C5; color:#fff; border:1px solid #636E80; */ } 
+.pager a.prev, 
+.pager a.next,
+.pager a.first,
+.pager a.last
+{
+    width:50px;
+}
+.pager a:hover{/* border:1px solid #999;background:#7E93C2; color:#fff; */text-decoration:none;  }
+.pager a.disable,
+.pager a.disable:hover{color:#C8C8C8; border-color:#C8C8C8; background:none;}
+
+/* tab */
+.tab{ }
+.tab .tab-tag {
+	line-height:26px;
+	/*
+	opacity:0.7;
+	filter:alpha(opacity=70);
+	*/
+}
+.tab .tab-tag li {
+	text-align:center;
+	display:inline-block;
+	*display:inline;
+	zoom:1;
+	cursor:pointer;
+	/*border:1px solid #7F93C5;
+	-moz-border-radius:5px 5px 0 0;
+	-khtml-border-radius:5px 5px 0 0;
+	-webkit-border-radius:5px 5px 0 0;
+	border-radius:5px 5px 0 0;
+	*/ 
+}
+.tab .tab-tag li:hover {}
+.tab .tab-tag li.current {/* color:#fff;background:#7F93C5; */}
+.tab .tab-tag li.normal {/* color:#333;background:#fff;filter:alpha(opacity=70);opacity:0.7; */}
+.tab .tab-inner li{ display:none;}
+
+/*   dialog  */	
+.dialog {
+	width:400px;
+	display:none;
+	background:#fff;
+	border:1px solid #333;
+	-moz-border-radius:5px;
+	-khtml-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	overflow:hidden;
+	-webkit-box-shadow:2px 2px 10px #333;
+	-moz-box-shadow:2px 2px 10px #333;
+	box-shadow:3px 3px 10px #333;
+	behavior: url(../PIE.htc);
+}
+.dialog .dialog-header {height:30px;line-height:30px;/* background:#666;*/}
+.dialog .dialog-header a {display:block;float:right;margin-right:10px; _display:inline;}
+.dialog .dialog-inner { padding:10px;}
+.dialog .dialog-footer {text-align:right;}
+
+
