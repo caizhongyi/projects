@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <link rel="stylesheet" href="js/swiper/dist/idangerous.swiper.css"/>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide blue-slide">
+            <div class="slide-header">
+                <div class="title text-danger"><img src="images/car.png" class="img-car" alt=""/>车人脉</div>
+                <div class="smart">全国最大的二手车集散中心</div>
+            </div>
+
+            <div class="img-info">
+                <img src="images/img1.png" alt=""/>
+                <img src="images/clound.png" alt="" class="clound transition transition-img"/>
+                <img src="images/clound-sm.png" alt="" class="clound-sm transition transition-img"/>
+            </div>
+
+        </div>
+        <div class="swiper-slide red-slide">
+            <div class="slide-header">
+                <div class="title text-success">  海量车源</div>
+                <div class="smart">同行资源共享  车源快速流通</div>
+                </div>
+            <div class="img-info">
+                <img src="images/img2.png" alt=""/>
+                <img src="images/img2-icon.png" alt="" class="pao img2-icon transition "/>
+            </div>
+        </div>
+        <div class="swiper-slide orange-slide">
+            <div class="slide-header">
+            <div class="title text-danger">  好友圈</div>
+            <div class="smart">和大咖做朋友  卖车抱大腿咯</div>
+            </div>
+            <div class="img-info">
+                <img src="images/img3.png" alt=""/>
+                <img src="images/img3-icon.png" alt="" class="img3-icon transition transition-img"/>
+                <img src="images/img3-icon2.png" alt="" class="img3-icon2 transition transition-img"/>
+                <img src="images/img3-icon3.png" alt="" class="img3-icon3 transition transition-img"/>
+            </div>
+        </div>
+        <div class="swiper-slide orange-slide">
+            <div class="slide-header">
+            <div class="title text-info">  即时聊天</div>
+            <div class="smart">同行都在这里聊车、聊生意</div>
+            </div>
+            <div class="img-info">
+                <img src="images/img4.png" alt=""/>
+                <img src="images/img4-icon.png" alt="" class="img4-icon transition transition-img-lg"/>
+            </div>
+        </div>
+        <div class="swiper-slide orange-slide">
+            <div class="slide-header">
+            <div class="title text-warning"> 全网发车</div>
+            <div class="smart">免费推广到各大二手车平台</div>
+            </div>
+            <div class="img-info">
+                <img src="images/img5.png" alt=""/>
+                <img src="images/img5-icon.png" alt="" class="img5-icon transition transition-img"/>
+                <img src="images/img5-icon2.png" alt="" class="img5-icon2 transition transition-img"/>
+                <img src="images/img5-icon3.png" alt="" class="img5-icon3 transition transition-img"/>
+                <img src="images/img5-icon4.png" alt="" class="img5-icon4 transition transition-img"/>
+           </div>
+        </div>
+        <div class="swiper-slide orange-slide">
+            <div class="slide-header">
+            <div class="title text-warning-deep"> 个人名片</div>
+            <div class="smart">网站一键分享  便捷推广车源</div>
+            </div>
+            <div class="img-info">
+                <img src="images/img6.png" alt=""/>
+                <img src="images/img6-icon.png" alt="" class="img4-icon img6-icon transition transition-img-lg"/>
+            </div>
+
+        </div>
+    </div>
+    <div class="pagination"></div>
+    <div class="fixed-bottom ">
+            <div class="text-center arrow">
+                <img src="images/arrow.png" alt=""/>
+                <p>向上滑动 查看下一页</p>
+            </div>
+            <a href="" class="btn btn-block btn-success">立即下载</a>
+    </div>
+</div>
+
+<script src="js/zepto_min.js"></script>
+<script src="js/swiper/dist/idangerous.swiper.js"></script>
+<script src="js/viewport/dist/index.js"></script>
+
+<script>
+   // $.viewport(320);
+   var mySwiper ;
+   if(window.orientation==90) {
+       $('body').addClass('orientation');
+   }
+
+    window.onorientationchange = function(){
+        if(window.orientation == 90 ) {
+            $('body').addClass('orientation');
+        }
+        else{
+            $('body').removeClass('orientation')
+        }
+        resize();
+    }
+
+   $(window).resize(function(){
+       $('.swiper-container').height($(window).height())
+   })
+
+    function resize(){
+        $('.swiper-container').height($(window).height())
+        if(mySwiper){
+            mySwiper.destroy();
+            mySwiper = null;
+        }
+        mySwiper = new Swiper('.swiper-container',{
+            pagination: '.pagination',
+            paginationClickable: true,
+            mode: 'vertical',
+            onTouchEnd: function(){
+                if(mySwiper.activeIndex == mySwiper.slides.length - 1){
+                    $('.arrow').hide();
+                }
+                else{
+                    $('.arrow').show();
+                }
+            }
+        })
+        $(window).resize();
+    }
+    resize();
+</script>
+</body>
+</html>
