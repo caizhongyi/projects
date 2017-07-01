@@ -1,0 +1,63 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ball</title>
+</head>
+
+<body>
+
+<canvas id="testCanvas" width="500" height="300" style="border:1px solid #ddd;"></canvas>
+
+<div id="fts"></div>
+<script type="text/javascript" src="canvas.js"></script>
+<script type="text/javascript">
+    var  showFps = function(val){
+        document.getElementById('fts').innerText = val;
+    }
+
+    var c = new jCanvas.canvas('testCanvas');
+    var o = new jCanvas.sprite('o' ,{
+        x : 100,
+        y : 100
+    });
+
+    var o1 = new jCanvas.sprite('o1');
+    c.begin();
+    c.append(o);
+    c.append(o1);
+    //  o.opacity = 0 ;
+    // o.animate({ x: 100 , y : 20 , opacity : 1},5000 ,'easeInOutQuad');
+    // o1.animate({ x: 40 , y : 40 },50);
+    //  o1.remove();
+    //c.animate({  scale : 1.01 });
+    var s = jCanvas.create({
+        draw : function(canvas){
+            canvas.ctx.save();
+            canvas.ctx.beginPath();
+            canvas.ctx.lineWidth = "1";
+            canvas.ctx.strokeStyle ='#000';
+            canvas.ctx.fillStyle ="rgba("
+                    + Math.floor(0) + ","
+                    + Math.floor(0) + ","
+                    + Math.floor(0) + ","
+                    + this.opacity + ")";
+            canvas.ctx.arc(this.x, this.y,5,0,Math.PI*2,true)
+            canvas.ctx.closePath();
+            canvas.ctx.stroke();
+            //canvas.ctx.rotate(45 * Math.PI/180);
+            //canvas.ctx.scale(this.scale,this.scale);
+            canvas.ctx.fill();
+        }
+    },jCanvas.sprite);
+
+  //  new jCanvas.sprite('1dfdf').appendTo(c).animate({ frames : ['images/1_s.jpg','images/2_s.jpg','images/3_s.jpg','images/4_s.jpg']});
+    /*new s('dd' , { opacity : 0 }).appendTo(c).animate({ x : 10 , y : 150 },function(){
+     console.log('complete')
+     }).animate({ x: 150 , y : 150 , opacity : 1 }, 1000 , 'linear',function(){})*/
+    //.animate({ x: 300 , y : 10 });
+    /*  for(var i = 0 ; i < 100 ; i ++ ){
+     new jCanvas.sprite('o'+ Math.random()).appendTo(c).animate({ x: Math.random() * 300 , y : Math.random() * 300 }, 1000 , 'linear',function(){})
+     }*/
+</script>
+</body>
+</html>
