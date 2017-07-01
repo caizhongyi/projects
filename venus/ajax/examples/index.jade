@@ -1,0 +1,17 @@
+doctype
+html(lang="zh-cn")
+    head
+        title
+        meta(charset="utf-8")
+
+        //script( src = '../../jquery/dist/jquery.js')
+        //script( src = '../../deferred/src/index.js')
+        script( src = '../src/index.js')
+        block css
+    body
+        block js
+        script.
+            Ajax.get('1.js',function( data ){
+                console.log(data)
+            });
+

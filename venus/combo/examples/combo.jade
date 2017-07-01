@@ -1,0 +1,33 @@
+html
+    head
+        title
+        meta(charset="utf-8")
+        script( src = '../../jquery-1.11.2/dist/jquery.js')
+        script( src = '../src/index.js')
+        script( src = '../../jquery-transitionEnd/src/index.js')
+        link( rel="stylesheet" ,type="text/css", media="all" , href = '../src/index.css')
+        link( rel="stylesheet" ,type="text/css", media="all" , href = '../../../../css/animate/animate.css')
+        block css
+    body
+        span#combo.combo(name="combo")
+            .combo-val 请选择
+            a.combo-icon
+            .combo-panel
+                ul
+                    li(value=1): a 在标签上附上id即为该实列化后的对象
+                    li(value=2): a 在标签上附上id即为该实列化后的对象
+                    li(value=3): a 在标签上附上id即为该实列化后的对象
+                    li(value=4): a 在标签上附上id即为该实列化后的对象
+        select#select
+            option(value=1) item1
+            option(selected,value=2) item2
+            option(value=3) item3
+        script.
+            $(function () {
+                $('#combo').combo().on('change',function(e){
+                    console.log(e)
+                });
+                $('#select').combo().on('change',function(e){
+                    console.log(e)
+                });
+            })

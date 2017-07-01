@@ -1,0 +1,68 @@
+
+html
+    head
+        title
+        meta(charset="utf-8")
+
+        script( src = '../../jquery/dist/jquery.js')
+        script( src = '../src/index.js')
+        block css
+        style.
+            .swipe{
+                margin: 10px;;
+                padding: 50px 50px;
+                background: red;
+                text-align: center;;
+                color: #fff;
+            }
+    body
+        #tap.swipe tap
+        #swipe-left.swipe swipe-left
+        #swipe-right.swipe swipe-right
+        #swipe-down.swipe swipe-down
+        #swipe-up.swipe swipe-up
+        #swipe-upright.swipe swipe-upright
+        #swipe-upleft.swipe swipe-upleft
+        #swipe-downright.swipe swipe-downright
+        #swipe-downleft.swipe swipe-downleft
+        block js
+        script.
+            $(function () {
+                $('#tap').tap(function (e) {
+                    console.log('#tap');
+                });
+
+                $('#swipe-left').swipeLeft(function(e){
+                    console.log('#swipe-left');
+                });
+
+                $('#swipe-right').swipeRight(function (e) {
+                    console.log('#swipe-right');
+                });
+
+                $('#swipe-down').swipeDown(function (e) {
+                    console.log('#swipe-down');
+                });
+
+                $('#swipe-up').swipeUp(function (e) {
+                    console.log('#swipe-up');
+                });
+
+                $('#swipe-upright').swipeUpRight(function (e) {
+                    console.log('#swipe-upright');
+                });
+
+                $('#swipe-upleft').swipeUpLeft(function (e) {
+                    console.log('#swipe-upleft');
+                });
+
+                $('#swipe-downright').swipeDownRight(function (e) {
+                    console.log('#swipe-downright');
+                });
+
+                $('#swipe-downleft').swipeDownLeft(function (e) {
+                    console.log('#swipe-downleft');
+                });
+            })
+
+

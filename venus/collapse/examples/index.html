@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <script src="../../jquery/dist/jquery.js"></script>
+    <script src="../src/index.js"></script>
+    <!--script( src = '../../jquery-transitionEnd/src/index.js')-->
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../css/aliencss/index.css">
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../css/font-awesome/font-awesome.css">
+  </head>
+  <body>
+    <div class="panel active collapse">
+      <div id="mypanel" class="panel-body">
+        <div class="contain">...</div>
+      </div>
+      <button type="button" href="###" data-collapse="#mypanel" class="btn btn-primary">toggle</button>
+    </div>
+    <div data-prop="opacity,width" data-group="true" class="panel-group horizontal">
+      <div class="panel active">
+        <div data-collapse="#panel1" class="panel-heading">
+          <div class="contain clearfix"><i class="icon icon-chevron-down pull-right">heading</i></div>
+        </div>
+        <div id="panel1" class="panel-body">
+          <div class="contain">...</div>
+        </div>
+      </div>
+      <div class="panel">
+        <div data-collapse="#panel2" class="panel-heading">
+          <div class="contain"><i class="icon icon-minus-sign">heading</i></div>
+        </div>
+        <div id="panel2" class="panel-body">
+          <div class="contain">...</div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-group">
+      <div class="panel active">
+        <div data-collapse="#panel11" class="panel-heading">
+          <div class="contain clearfix"><i class="icon icon-chevron-down pull-right">heading</i></div>
+        </div>
+        <div id="panel11" class="panel-body">
+          <div class="contain">...</div>
+        </div>
+      </div>
+      <div class="panel">
+        <div data-collapse="#panel22" class="panel-heading">
+          <div class="contain"><i class="icon icon-minus-sign">heading</i></div>
+        </div>
+        <div id="panel22" class="panel-body">
+          <div class="contain">...</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(function () {
+      
+          $(function(){
+              $('.panel-group').collapse();
+          })
+      
+          $(function () {
+              $('.collapse').collapse();
+          })
+          $('.panel').on('shown', function (e) {
+              console.log(e)
+          })
+          .on('hidden', function (e) {
+              console.log(e)
+          })
+      })
+    </script>
+  </body>
+</html>

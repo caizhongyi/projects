@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <script src="../../jquery/dist/jquery.js"></script>
+    <script src="../src/index.js"></script>
+    <script src="../../alienjs-date/src/index.js"></script>
+    <script src="../../alienjs-string/src/index.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../css/font-awesome/font-awesome.css">
+  </head>
+  <body>
+    <div class="countdown"></div>
+    <button type="button" >点击</button>
+    <input type="button" value="点击">
+    <script>
+      $(function () {
+          $('.countdown').countdown({
+             auto : true
+           //   lastDate: new Date(2015, 2, 23,9,49)
+          }).on('end',function(e){ console.log(e)})
+
+          $(':button').countdown({
+            //   lastDate: new Date(2015, 2, 23,9,49)
+          }).on('end',function(e){ console.log(e)})
+      })
+    </script>
+  </body>
+</html>

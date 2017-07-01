@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'F:\\nodejs\\node\\\\node.exe',
+1 verbose cli   'F:\\nodejs\\node\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'login' ]
+2 info using npm@1.4.23
+3 info using node@v0.10.31
+4 verbose node symlink F:\nodejs\node\\node.exe
+5 verbose adduser before first PUT { name: 'caizhongyi',
+5 verbose adduser   password: 'XXXXX',
+5 verbose adduser   email: '274142680@qq.com',
+5 verbose adduser   _id: 'org.couchdb.user:caizhongyi',
+5 verbose adduser   type: 'user',
+5 verbose adduser   roles: [],
+5 verbose adduser   date: '2014-12-29T03:09:06.297Z' }
+6 verbose request where is /-/user/org.couchdb.user:caizhongyi
+7 verbose request registry https://registry.npmjs.org/
+8 verbose request id f47613143c126996
+9 verbose url raw /-/user/org.couchdb.user:caizhongyi
+10 verbose url resolving [ 'https://registry.npmjs.org/',
+10 verbose url resolving   './-/user/org.couchdb.user:caizhongyi' ]
+11 verbose url resolved https://registry.npmjs.org/-/user/org.couchdb.user:caizhongyi
+12 verbose request where is https://registry.npmjs.org/-/user/org.couchdb.user:caizhongyi
+13 info trying registry request attempt 1 at 11:09:06
+14 http PUT https://registry.npmjs.org/-/user/org.couchdb.user:caizhongyi
+15 info retry will retry, error on last attempt: Error: connect ETIMEDOUT
+16 info trying registry request attempt 2 at 11:09:37
+17 http PUT https://registry.npmjs.org/-/user/org.couchdb.user:caizhongyi
+18 info retry will retry, error on last attempt: Error: connect ECONNREFUSED
+19 info trying registry request attempt 3 at 11:10:58
+20 http PUT https://registry.npmjs.org/-/user/org.couchdb.user:caizhongyi
+21 verbose adduser back [ { [Error: connect ETIMEDOUT] code: 'ETIMEDOUT', errno: 'ETIMEDOUT', syscall: 'connect' },
+21 verbose adduser   undefined,
+21 verbose adduser   undefined ]
+22 error network connect ETIMEDOUT
+22 error network This is most likely not a problem with npm itself
+22 error network and is related to network connectivity.
+22 error network In most cases you are behind a proxy or have bad network settings.
+22 error network
+22 error network If you are behind a proxy, please make sure that the
+22 error network 'proxy' config is set properly.  See: 'npm help config'
+23 error System Windows_NT 6.2.9200
+24 error command "F:\\nodejs\\node\\\\node.exe" "F:\\nodejs\\node\\node_modules\\npm\\bin\\npm-cli.js" "login"
+25 error cwd F:\web前端\project\alienjs\public\js\node_modules\jquery-swipe
+26 error node -v v0.10.31
+27 error npm -v 1.4.23
+28 error syscall connect
+29 error code ETIMEDOUT
+30 error errno ETIMEDOUT
+31 verbose exit [ 1, true ]

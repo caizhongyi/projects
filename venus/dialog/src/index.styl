@@ -1,0 +1,130 @@
+@require "mixins/index";
+
+/*
+*   @depends : animate.css
+*   @support : ie 7
+*/
+
+.dialog
+    &-mobileinput
+        position: absolute;
+
+    transition: opacity .3s ease-in-out;
+    background: rgba(255,255,255,0);
+    //opacity 0.95;
+    position: fixed;
+    if ie-support
+        _position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    display: none;
+    &.in
+        display: block;
+        background: rgba(0,0,0,0.3);
+   
+    .btn 
+        margin-left: 10px;
+   
+    &-header,
+    &-body,
+    &-footer
+        padding: 15px 20px;
+        clearfix();
+   
+
+    &-title
+        float: left;
+        margin: 0;
+        font-size: 18px;
+        line-height: normal;
+   
+    
+    &-header
+        position: relative;
+        border-bottom: 1px solid #eee;
+        .operate
+            position: relative;
+            float: right;
+
+    &-footer
+        text-align: right;
+
+    &-hide
+        font-family: "microsoft yahei";
+        font-size: 18px;
+        color: #fff;
+        font-weight: bold;
+        width 22px;
+        height: 22px;
+        line-height 18px;
+        text-align center;
+        background #c1c1c1;
+        display inline-block
+        &:active
+            background @background - 20% ;
+        &,&:hover
+            text-decoration none;
+
+    &-container
+        width: 600px;
+        position: relative;
+        top: 30%;
+        box-shadow: 0px 0px 10px #666;
+        margin: 0 auto;
+        height: auto;
+        border-radius:3px;
+        border: 1px solid #ddd;
+        background: #fff;
+
+    &-mask
+        transition: opacity .3s ease-in-out;
+        z-index: 98;
+        left: 0;
+        top: 0;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        visibility: hidden;
+        background: #fff;
+        opacity 0.7;
+        &.in
+            opacity: 0.7 !important;
+            visibility: inherit;
+    &-body
+        max-height 250px;
+        overflow-y auto;
+
+.dialog-conform
+    .dialog-footer 
+        text-align: center;
+ 
+
+.dialog-conform .dialog-container ,
+.dialog-alert .dialog-container
+    width: 350px;
+
+
+.dialog-conform .dialog-message 
+    text-align: center;
+
+
+.dialog-alert
+    &,.dialog-footer
+        text-align: center;
+    .dialog-footer .btn-default
+        display: none;
+
+
+// 水平状态的手机及以下
+@media (max-width: 650px) 
+    .dialog .dialog-container 
+        width: 90%;
+
+   
+
+

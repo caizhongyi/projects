@@ -1,0 +1,44 @@
+
+html
+    head
+        title
+        meta(charset="utf-8")
+
+        script( src = '../../jquery/dist/jquery.js')
+        link(rel="stylesheet" type="text/css" , href="../../../../css/index.css")
+        script( src = '../src/jquery.valid.js')
+        script( src = '../src/index.js')
+        block css
+
+    body
+        form.form(action="http://www.qq.com",method="post")
+            .form-group
+                label
+                    span.form-label user:
+                    input.input(type="text",required ,data-tip="#user-tip" , id="user" , name="user" data-role="user" )
+                span#user-tip.form-help
+            .form-group
+                label
+                    span.form-label password:
+                    input.input(type="password",required ,data-tip="#password-tip" , id="password" , name="password"  data-role="password" )
+                span#password-tip.form-help
+            .form-group
+                label
+                    span.form-label conform:
+                    input.input(type="password",required ,data-tip="#conform-tip" , id="conform" , name="conform" data-role="conform" compared="#password" data-compare="#password")
+                span#conform-tip.form-help
+            .form-group
+                label
+                    span.form-label class:
+                    input.input(type="text",data-tip="#class-tip" , id="class" , name="class" required="" pattern="/s" data-message="默认提示" data-success="验证通过提示" data-error="验证错误提示")
+                span#class-tip.form-help
+            .form-group
+                button.btn.btn-primary 提交
+
+        block js
+        script.
+            $(function () {
+                $('form').validator();
+            })
+
+

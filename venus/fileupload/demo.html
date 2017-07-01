@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>fileupload</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../jquery-1.11.2/dist/jquery.js"></script>
+    <script src="fileupload.js"></script>
+    <link rel="stylesheet" href="fileupload.css"/>
+
+</head>
+<style type="text/css">
+    body {
+        margin: 0px;
+        padding: 10px;
+    }
+    input[type=text]{
+        padding: 5px;
+        border: 1px solid #ddd;
+    }
+</style>
+<body>
+<h3>上传文件</h3>
+<div  id="fileupload" class="fileupload">
+    <a href="javascript:;" class="fileupload-btn">
+        上传文件
+            <input type="file" name="file[]" multiple accept="image/gif, image/jpeg, image/png"/>
+    </a>
+    <ul class="fileupload-preview"  ></ul>
+</div>
+<br/>
+
+<h3>手机上传文件</h3>
+<div class="fileupload fileupload-mobile"   data-url="upload.php">
+    <ul class="fileupload-preview" ></ul>
+    <a href="javascript:;" class="fileupload-btn">
+        上传文件
+        <input type="file" name="file[]" multiple accept="image/gif, image/jpeg, image/png"/>
+    </a>
+</div>
+<br/>
+
+<h3>单文件上传文件</h3>
+<div class="fileupload"  data-url="upload.php">
+    <a href="javascript:;" class="fileupload-btn">
+        单文件上传文件
+        <input type="file" name="file" accept="image/gif, image/jpeg, image/png"/>
+    </a>
+    <ul class="fileupload-preview" ></ul>
+ </div>
+<br/>
+
+<h3>选择文件,点击上传按钮后上传</h3>
+<div class="fileupload"  data-url="upload.php" data-type="">
+    <a href="javascript:;" class="fileupload-btn btn">
+        选择文件
+        <input type="file" name="file" multiple accept="image/gif, image/jpeg, image/png" />
+    </a>
+    <button class="fileupload-submit btn" type="button">开始上传</button><div class="message"></div>
+    <ul class="fileupload-preview" ></ul>
+</div>
+
+<script type="text/javascript">
+    $('.fileupload').each(function(){
+        var type = $(this).data('type');
+        $(this).fileUpload({
+            url: 'http://upload.273.com.cn/',  // 上传地址
+            //url: 'upload.json',
+            preview: '.fileupload-preview',  // 预览容器
+            postParams : {
+                category : 'change',
+                thumbHeight : 100,
+                thumbWidth : 100
+            },
+            message : function(msg){
+                var $elem  = this.$elem.find('.message').html(msg);
+                setTimeout(function(){ $elem.html(''); },1000)
+            },
+            //初始数据
+            source : [{
+                text : '12097358_980x1200_0',
+                url : 'pic/12097358_980x1200_0.jpg',
+                id  : 1
+            }],
+            virtualDelete : true ,
+            maxCount :  5,
+            //maxSize :  1024,  上传最大文件大小
+            /* message : function(msg){
+             window.alert(msg)
+             },*/
+            onComplete : function( data ){
+                console.log('上传完成~！')
+                console.log(data)
+            },
+            onError : function( data ){
+                console.log('上传失败~！')
+                console.log(data)
+            },
+            onSuccess : function( data ){
+                var $input = data.file.$elem.find(':hidden') ;
+                $.post('',function(){
+                    data.id = 2 ;
+                    $input.val( JSON.stringify(data) );
+                })
+                console.log('上传成功~！')
+                console.log(data)
+            },
+            onDeleteSuccess : function( data ){
+
+                console.log('删除成功~！')
+                console.log(data)
+            },
+            onDeleteComplete : function( data){
+                console.log('删除完成~！')
+                console.log(data)
+            },
+            onDeleteError : function( data){
+                console.log('删除错误~！')
+                console.log(data)
+            }
+        })
+    })
+
+</script>
+</body>
+</html>

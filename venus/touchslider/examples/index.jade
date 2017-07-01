@@ -1,0 +1,31 @@
+html
+    head
+        title
+        meta(charset="utf-8")
+
+        script( src = '../../jquery-1.11.2/dist/jquery.js')
+        script( src = '../src/index.js')
+        link( rel="stylesheet" ,type="text/css", media="all" , href = '../src/index.css')
+        block css
+    body
+        #touch1.touchslider
+            ul.touchslider-list(data-list)
+                li.touchslider-item: img(src="1_b.jpg")
+                li.touchslider-item: img(src="1_b.jpg")
+                li.touchslider-item: img(src="1_b.jpg")
+                li.touchslider-item: img(src="1_b.jpg")
+
+        #touch2.touchslider.touchslider-vertical
+            ul.touchslider-list(data-list)
+                li.touchslider-item: img(src="1_b.jpg")
+                li.touchslider-item: img(src="1_b.jpg")
+                li.touchslider-item: img(src="1_b.jpg")
+                li.touchslider-item: img(src="1_b.jpg")
+        block js
+        script.
+            $(function () {
+                $('#touch1').touchslider({ index : 0 , axis : 'x' , resize : true})
+                $('#touch2').touchslider({ index : 0 , axis : 'y' , resize : true})
+            })
+
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <script src="../../jquery/dist/jquery.js"></script>
+    <script src="../../alienjs-date/src/index.js"></script>
+    <script src="../src/index.js"></script>
+  </head>
+  <body>
+    <div class="calendar">
+      <table>
+        <caption class="calendar-title"></caption>
+        <tbody>
+          <tr>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+          </tr>
+          <tr>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+          </tr>
+          <tr>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+          </tr>
+          <tr>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+          </tr>
+          <tr>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+            <td class="calendar-day"></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn month-prev">prev</button>
+      <button class="btn month-next">next</button>
+    </div>
+    <script>
+      $(function () {
+          $('.calendar').on('render',function( e ){
+              console.log(e.relatedTarget)
+          }).calendar()
+      })
+    </script>
+  </body>
+</html>

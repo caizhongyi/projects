@@ -1,0 +1,27 @@
+doctype
+html(lang="zh-cn")
+    head
+        title
+        meta(charset="utf-8")
+
+        script( src = '../../jquery/dist/jquery.js')
+        //script( src = '../../deferred/src/index.js')
+        link( rel="stylesheet" ,type="text/css", media="all" , href = '../src/index.css')
+        script( src = '../src/index.js')
+        block css
+    body(data-loadinginfo="Loading...", data-loadingclass="loading-blue")
+        button#b1.btn 提交
+        button#b2.btn 提交
+        block js
+        script.
+            var panel = $('body').ajaxPanel().data('ajaxPanel');
+            $('#b1').click(function(){
+                panel.get('1.json',{ a : 1}, function( data ){
+                    console.log( data )
+                    console.log( this )
+                });
+            })
+            $('#b2').click(function () {
+                panel.loading()
+            })
+

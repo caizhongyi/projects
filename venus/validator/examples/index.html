@@ -1,0 +1,43 @@
+
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <script src="../../jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../../css/index.css"/>
+    <script src="../src/jquery.valid.js"></script>
+    <script src="../src/index.js"></script>
+  </head>
+  <body>
+    <form action="http://www.qq.com" method="post" class="form">
+      <div class="form-group">
+        <label><span class="form-label">user:</span>
+          <input type="text" required="required" data-tip="#user-tip" id="user" name="user" data-role="user" class="input"/>
+        </label><span id="user-tip" class="form-help"></span>
+      </div>
+      <div class="form-group">
+        <label><span class="form-label">password:</span>
+          <input type="password" required="required" data-tip="#password-tip" id="password" name="password" data-role="password" class="input"/>
+        </label><span id="password-tip" class="form-help"></span>
+      </div>
+      <div class="form-group">
+        <label><span class="form-label">conform:</span>
+          <input type="password" required="required" data-tip="#conform-tip" id="conform" name="conform" data-role="conform" compared="#password" data-compare="#password" class="input"/>
+        </label><span id="conform-tip" class="form-help"></span>
+      </div>
+      <div class="form-group">
+        <label><span class="form-label">class:</span>
+          <input type="text" data-tip="#class-tip" id="class" name="class" required="" pattern="/s" data-message="默认提示" data-success="验证通过提示" data-error="验证错误提示" class="input"/>
+        </label><span id="class-tip" class="form-help"></span>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary">提交</button>
+      </div>
+    </form>
+    <script>
+      $(function () {
+          $('form').validator();
+      })
+    </script>
+  </body>
+</html>

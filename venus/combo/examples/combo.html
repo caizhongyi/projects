@@ -1,0 +1,38 @@
+
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <script src="../../jquery-1.11.2/dist/jquery.js"></script>
+    <script src="../src/index.js"></script>
+    <script src="../../jquery-transitionEnd/src/index.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="../src/index.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../css/animate/animate.css"/>
+  </head>
+  <body><span id="combo" name="combo" class="combo">
+      <div class="combo-val">请选择</div><a class="combo-icon"></a>
+      <div class="combo-panel">
+        <ul>
+          <li value="1"><a>在标签上附上id即为该实列化后的对象</a></li>
+          <li value="2"><a>在标签上附上id即为该实列化后的对象</a></li>
+          <li value="3"><a>在标签上附上id即为该实列化后的对象</a></li>
+          <li value="4"><a>在标签上附上id即为该实列化后的对象</a></li>
+        </ul>
+      </div></span>
+    <select id="select">
+      <option value="1">item1</option>
+      <option selected="selected" value="2">item2</option>
+      <option value="3">item3</option>
+    </select>
+    <script>
+      $(function () {
+          $('#combo').combo().on('change',function(e){
+              console.log(e)
+          });
+          $('#select').combo().on('change',function(e){
+              console.log(e)
+          });
+      })
+    </script>
+  </body>
+</html>

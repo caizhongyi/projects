@@ -1,0 +1,26 @@
+@require "lib/index";
+
+scroll( pos , max = 200px)
+  position: relative;
+  if pos == 'y'
+    max-height: max;
+    if ie-support
+      *height:max;
+    overflow-{pos}: auto;
+  else if pos == 'x'
+    max-width: max;
+    if ie-support
+      *width:max;
+    overflow-{pos}: auto;
+  else
+    max-width: max;
+    max-height: max;
+    if ie-support
+        *width:max;
+        *height:max;
+    overflow: auto;
+
+gradients();
+
+
+

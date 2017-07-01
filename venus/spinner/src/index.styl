@@ -1,0 +1,68 @@
+.input-spinner
+  display inline-block;
+  .input
+    padding:7.4px;
+  .input, .add-on
+    margin-left -1px;
+    border: 1px solid #ddd;
+    vertical-align middle;
+  .add-on
+    text-decoration none;
+    font-size 21px;
+    font-family Arial, Simsun, "Arial Unicode MS", Mingliu, Helvetica
+    width 30px;
+    height: 31px;
+    line-height 30px;
+    text-align center;
+    color #666;
+    display: inline-block;
+    background #f8f8f8;
+    &:active
+      background: @background - 10%
+
+
+.input-spinner [type=text], .input-spinner .input {
+  width: 30px;
+}
+
+.spinner-sm [type=text], .spinner-sm .input {
+  width: 20px;
+}
+
+.spinner-xm [type=text], .spinner-xm .input {
+  width: 10px;
+}
+
+.spinner-lg [type=text], .spinner-lg .input {
+  width: 50px;
+}
+
+.spinner-xlg [type=text], .spinner-xlg .input {
+  width: 100px;
+}
+
+.spinner-xxlg [type=text], .spinner-xxlg .input {
+  width: 200px;
+}
+
+.spinner-xxxlg [type=text], .spinner-xxxlg .input {
+  width: 400px;
+}
+
+.input-spinner .input-group-btn {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: -1px;
+}
+
+.input-spinner-vertical .add-on {
+  display: block;
+  width: 13px;
+  height: 15px;
+  line-height: 14px;
+}
+
+.input-spinner-vertical .add-on + .add-on {
+  margin-top: -1px;
+  height: 14px;
+}

@@ -1,0 +1,65 @@
+doctype
+html(lang="zh-cn")
+    head
+        title
+        meta(charset="utf-8")
+
+        script( src = '../../jquery/dist/jquery.js')
+        script( src = '../src/index.js')
+        //script( src = '../../jquery-transitionEnd/src/index.js')
+        link( rel="stylesheet" ,type="text/css", media="all" , href = '../../../../css/aliencss/index.css')
+        link( rel="stylesheet" ,type="text/css", media="all" , href = '../../../../css/font-awesome/font-awesome.css')
+        block css
+    body
+        .panel.active.collapse
+            #mypanel.panel-body
+                .contain ...
+            button.btn.btn-primary(type="button",href="###",data-collapse='#mypanel') toggle
+
+        .panel-group.horizontal(data-prop="opacity,width", data-group="true")
+            .panel.active
+                .panel-heading(data-collapse="#panel1")
+                    .contain.clearfix
+                        i.icon.icon-chevron-down.pull-right heading
+                #panel1.panel-body
+                    .contain ...
+            .panel
+                .panel-heading(data-collapse="#panel2")
+                    .contain
+                        i.icon.icon-minus-sign heading
+                #panel2.panel-body
+                    .contain ...
+
+        .panel-group
+            .panel.active
+                .panel-heading(data-collapse="#panel11")
+                    .contain.clearfix
+                        i.icon.icon-chevron-down.pull-right heading
+                #panel11.panel-body
+                    .contain ...
+            .panel
+                .panel-heading(data-collapse="#panel22")
+                    .contain
+                        i.icon.icon-minus-sign heading
+                #panel22.panel-body
+                    .contain ...
+        block js
+        script.
+            $(function () {
+
+                $(function(){
+                    $('.panel-group').collapse();
+                })
+
+                $(function () {
+                    $('.collapse').collapse();
+                })
+                $('.panel').on('shown', function (e) {
+                    console.log(e)
+                })
+                .on('hidden', function (e) {
+                    console.log(e)
+                })
+            })
+
+

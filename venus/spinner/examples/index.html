@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <script src="../../jquery/dist/jquery.js"></script>
+    <script src="../src/index.js"></script>
+    <!--script( src = '../../jquery-transitionEnd/src/index.js')-->
+    <link rel="stylesheet" type="text/css" media="all" href="../src/index.css">
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../css/font-awesome/font-awesome.css">
+</head>
+<body>
+    <span class="input-group input-spinner spinner-mini">
+        <a href="javascript:;" class="add-on spinner-up">+</a>
+          <input type="text" max='10' min='0' class="input">
+            <a href="javascript:;" class="add-on spinner-down">-</a>
+    </span>
+    <br><br>
+    <span class="input-group input-spinner spinner-mini">
+      <input type="text" max='10' min='0' step="1" class="input">
+      <span class="input-group-btn">
+          <a href="javascript:;" class="add-on spinner-up">+</a>
+          <a href="javascript:;"  class="add-on spinner-down">-</a>
+      </span>
+    </span>
+    <br/><br/>
+    <input id="spinner" type="number" max='10' min='0' step="1" class="input">
+<script>
+    $(function () {
+        $('.input-spinner').spinner().on('change', function (e) {
+            console.log(e);
+        });
+
+        $('#spinner').spinner().on('change', function (e) {
+            console.log(e);
+        });
+    })
+</script>
+</body>
+</html>

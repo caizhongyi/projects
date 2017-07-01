@@ -1,0 +1,51 @@
+/*
+ * Custom animation timing functions
+ * http://www.ui-transitions.com/
+ */
+.touchslider {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+.touchslider .touchslider-list {
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  width: 200%;
+  position: relative;
+  *zoom: 1;
+}
+.touchslider .touchslider-list:before,
+.touchslider .touchslider-list:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.touchslider .touchslider-list:after {
+  clear: both;
+}
+.touchslider .touchslider-list,
+.touchslider .touchslider-list > li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.touchslider .touchslider-item {
+  width: 50%;
+  float: left;
+  overflow: hidden;
+}
+.touchslider .untransition {
+  transition: none;
+}
+.touchslider img {
+  width: 100%;
+}
+.touchslider-vertical .touchslider-list,
+.touchslider-vertical .touchslider-item {
+  width: auto;
+  float: none;
+}
+.touchslider-full,
+.touchslider-full .touchslider-item > img {
+  width: 100%;
+  height: 100%;
+}

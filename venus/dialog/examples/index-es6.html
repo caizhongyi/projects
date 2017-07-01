@@ -1,0 +1,90 @@
+
+<!--
+Created by zhongyi on 2014/10/24.
+
+-->
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8"/>
+      <script src="../../traceur/bin/traceur.js"></script>
+      <script src="../../es6-module-loader/dist/es6-module-loader.js"></script>
+    <script src="../../jquery-1.11.2/dist/jquery.js"></script>
+
+    <script src="../../jquery-transitionEnd/src/index.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="../src/index.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../../../../css/animate/animate.css"/>
+    
+  </head>
+  <body><a data-popup="" href=".dialog">show dialog</a>
+    <div id="dialog" data-backdrop="false" class="dialog ">
+      <div class="dialog-container">
+        <div class="dialog-header">
+          <h3 class="dialog-title">提示</h3>
+          <div class="operate"><a href="javascript:;" data-hide="data-hide" class="dialog-hide">×</a></div>
+        </div>
+        <div class="dialog-body">
+          <p>...</p>
+        </div>
+        <div class="dialog-footer">
+          <button onclick="alert(1)" class="btn btn-primary">确定</button>
+          <button data-hide="data-hide" class="btn btn-default">取消</button>
+        </div>
+      </div>
+    </div>
+    <button id="isie-6" type="button">is ie 6</button>
+    <button id="ismobile-ori" type="button">is mobile ori</button><a id="alert" href="###" class="btn btn-primary">alert</a>
+    <div id="dialog-obj" data-backdrop="false" class="dialog">
+      <div class="dialog-container">
+        <div class="dialog-header">
+          <h3 class="dialog-title">提示</h3>
+          <div class="operate"><a href="javascript:;" data-hide="data-hide" class="dialog-hide">×</a></div>
+        </div>
+        <div class="dialog-body">
+          <p>...</p>
+        </div>
+        <div class="dialog-footer">
+          <button onclick="alert(1)" class="btn btn-primary">确定</button>
+          <button data-hide="data-hide" class="btn btn-default">取消</button>
+        </div>
+      </div>
+    </div>
+  <script type="module">
+      import {a} from "../src/test";
+
+      var d  = new Dialog('#dialog-obj');
+
+      d.on('shown',function(){
+          console.log('shown~!')
+      }).show()
+  </script>
+    <script >
+      $(function () {
+          // TODO 获取一个弹出窗口对象
+          var dialog = $('#dialog').on('shown',function( e, args ){
+              console.log(e);
+              console.log(args);
+          }).on('hidden',function( e, args ){
+              console.log(e);
+              console.log(args);
+          }).dialog('show',{} , 1).data('dialog')//.backdrop();
+
+          //console.log(dialog)
+          //dialog.show();
+
+          // 直接绑定
+          $('#alert').alert('alert','content',function(e){
+
+          })
+
+          $('#isie-6').click(function(){
+              $.dialog.browserLowVersion();
+          })
+
+          $('#ismobile-ori').click(function(){
+              $.dialog.mobileIsOri();
+          })
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><title></title>
+    <meta charset="utf-8">
+    <script src="../../jquery-1.11.2/dist/jquery.js"></script>
+    <!--script( src = '../../deferred/src/index.js')-->
+    <script src="../src/index.js"></script>
+</head>
+<body>
+<div class="content"></div>
+<script>
+   $(function(){
+       console.log($.browser)
+       var html = "msie:" +  $.browser.msie + '; version:' + $.browser.version + '<br/>';
+        html += "mozilla:" + $.browser.mozilla + '<br/>' ;
+        html += "webkit:" + $.webkit + '<br/>' ;
+
+       $('.content').html(html);
+   })
+</script>
+</body>
+</html>
