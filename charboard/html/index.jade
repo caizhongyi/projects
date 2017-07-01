@@ -1,0 +1,15 @@
+extends layout
+
+block container
+    ul.list-unstyled.list-message
+        - for(var i = 0 ; i < 10 ; i ++)
+            li
+                .content message
+
+    .fixed.container.toolbar
+        .input-group
+            input(type="text",placeholder="请输入内容").form-control
+            span.input-group-btn
+                button.btn.btn-primary 发送
+
+
