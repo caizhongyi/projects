@@ -1,0 +1,47 @@
+//
+   Created by caizhongyi on 2014/9/5.
+include mixins/index
+extends layout
+
+block append head
+    title List
+
+block append content
+   .code-example( title = 'ol')
+       ol.row
+           +list( 4 )
+               a item
+
+   .code-example( title = 'list')
+       ul.row
+           +list( 4 )
+                span.pull-right.time 2012-12-21
+                a item
+
+   .code-example( title = 'thumbnail')
+       ul.row.horizontal.hover
+           +list( 4 )
+               .thumbnail.contain
+                   a(href='#')
+                       img( src="../images/1.jpg")
+                       .caption caption
+                       .desc description
+           +list( 4 )
+               .thumbnail.contain
+                   a
+                       img( src="../images/1.jpg")
+                       .caption caption
+                       .desc description
+
+   .code-example( title = 'media')
+       ul.row.line
+           +list( 4 )
+               .meida.contain
+                  .media-object: img
+                  .media-body
+                      h3.media-heading heading
+                      p ...
+                  .operate operate
+                  .operate.bottom operate
+
+

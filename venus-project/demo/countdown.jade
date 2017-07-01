@@ -1,0 +1,30 @@
+
+include mixins/index
+extends layout
+
+block append head
+    title 倒计时
+    +css('../css/layout.css')
+
+block append content
+
+    .code-example
+        .countdown
+        .countdown1
+        .countdown2
+        .countdown3
+        script.
+            $(function(){
+                $('.countdown').countdown({lastDate  : new Date(2014, 8, 26)});
+                $('.countdown1').countdown({lastDate  : new Date(2014, 8, 26) , format: 'mm : ss '});
+                $('.countdown2').countdown({lastDate  : new Date(2014, 8, 26), format: 'hh : mm : ss '});
+                $('.countdown3').countdown({lastDate  : new Date(2014, 8, 26), format: function( d, h , m ,s ){
+                    return $('<i>').html( d + ' : ' + h + ' : ' + m + ' : ' + s);
+                }});
+             })
+    +script('../js/plugins/alienjs.countdown.js')
+
+
+
+
+

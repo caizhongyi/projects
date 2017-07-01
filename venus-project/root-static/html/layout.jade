@@ -1,0 +1,44 @@
+doctype
+html(lang="zh-cn")
+    include mixins/index
+    head
+        block head
+            meta(charset="utf-8")
+            meta(name="viewport", content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width")
+            //title title
+            meta(name="keywords", content="keywords")
+            meta(name="description", content="description")
+            +pageFadeIn()
+            +pageFadeOut()
+            +pageSafe()
+            //+author()
+            link(rel="stylesheet",type="text/css",media="all",href="../public/css/index.css")
+            link(rel="stylesheet",type="text/css",media="all",href="../public/css/font-awesome/font-awesome.css")
+
+
+            //-link(rel="stylesheet",type="text/css",media="all",href="../public/css/controls/alienjs.animate.css")
+        block css
+    body
+        block header
+
+        block container
+
+        block footer
+
+        block js
+
+        script(src="../public/js/spm_modules/jquery/1.10.1/index.js")
+        script(src="../public/js/spm_modules/seajs/2.2.1/dist/sea.js")
+        script(src="../public/js/spm_modules/seajs-wrap/dist/seajs-wrap.js")
+        script(src="../public/js/config.js")
+        script.
+            var modules = [
+                'json' ,
+                "./global" ,
+                "./index"
+            ];
+            seajs.use(modules);
+
+
+
+

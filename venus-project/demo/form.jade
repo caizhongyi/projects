@@ -1,0 +1,47 @@
+//
+   Created by caizhongyi on 2014/9/5.
+include mixins/index
+extends layout.jade
+
+block append head
+    title Form | Form
+
+block append header
+    .page-header
+        h3 表单
+
+
+block append content
+
+    .code-example(title = '表单')
+        form.form
+            .form-group
+                label
+                    span.label 用户名：
+                    input(type='text').input
+                    span.help.text-danger 用户名不正确！
+            .form-group
+                label
+                    span.label 密码：
+                    input(type='password').input
+                    span.help.text-warning 用户名不正确！
+            .form-group
+                button.btn.btn-primary 提交
+    .code-example(title = '表单')
+        form.form.block
+            .form-group
+                label
+                    span.label 用户名：
+                    input(type='text').input
+            .form-group
+                label
+                    span.label 密码：
+                    input(type='password').input
+            .form-group
+                button.btn.btn-primary 提交
+
+
+block append footer
+
+
+

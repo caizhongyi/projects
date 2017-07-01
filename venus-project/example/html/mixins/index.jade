@@ -1,0 +1,66 @@
+//
+   Created by zhongyi on 2014/11/25.
+
+mixin viewport()
+    meta(name="viewport",content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width")
+
+mixin webapp()
+    // 离线应用的另一个技巧
+    meta(name="apple-mobile-web-app-capable" content="yes")
+    // 隐藏状态栏
+    meta(name="apple-mobile-web-app-status-bar-style" content="black")
+
+mixin meta( key , val )
+    meta(http-equiv= key || "Expires", content= val || -1)
+//-缓存过期时间 TUE,11.NOV 1998 00:00 GMT
+mixin expires( val )
+    +meta( "Expires" , val )
+//-禁止浏览器从本地机的缓存中调阅页面内容
+mixin pragma( val )
+    - val = val || "no-cache"
+    +meta( "Pragma" , val)
+mixin nocache()
+    +meta( "Pragma" , "no-cache")
+//-http://www.rsac.org/
+mixin pics( val )
+    - val = val || ""
+    +meta( "PICS－Label" , val)
+//-浏览器访问某个页面时会将它存在缓存中，下次再次访问时就可从缓存中读取，以提高速度cookievalue=xxx; expires=Wednesday,21-Oct-98 16:14:21 GMT; path=
+mixin cookie( val )
+    - val = val || ""
+    +meta( "Set-Cookie" , val)
+mixin window( val )
+    - val = val || "_top"
+    +meta( "Widow-target" , val)
+//-强制页面在当前窗口以独立页面显示。Content选项：_blank、_top、_self、_parent。
+mixin pageSafe()
+    +meta( "Widow-target" , "_top")
+mixin enter( val )
+    - val = val || "revealTrans(duration= 0.5 , transition= 23 )"
+    +meta( "Page-Enter" , val)
+mixin pageFadeIn( duration )
+    - duration = duration || 0.5
+    +enter( "blendTrans(Duration="+ duration +")")
+mixin exit( val )
+    - val = val || "revealTrans(duration= 0.5 , transition= 23 )"
+    +meta( "Page-Exit" , val)
+mixin pageFadeOut( duration )
+    - duration = duration || 0.5
+    +exit( "blendTrans(Duration="+ duration +")")
+mixin author ( name )
+    meta(name="Author ", content= name || 'Cai Zhongyi,274142680@qq.com>')
+
+mixin nodetection( item )
+    item = ',' + item;
+    meta(name="format-detection", content="telephone=no,email=no" + item)
+    //- 要启用电话功能，请使用<a href="tel:13888888888">Call Me : 13888888888</a>来代替，邮件则为<a href="mailto:someone@microsoft.com?subject=Hello%20again">发送邮件</a>
+
+mixin app-native()
+    link(rel="apple-touch-startup-image",sizes="2048x1496",href="icon-2048x1496.png" ,media="screen and (min-device-width: 1025px) and (max-device-width: 2048px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)")
+    link(rel="apple-touch-startup-image",sizes="1536x2008" href="icon-1536x2008.png",media="screen and (min-device-width: 1025px) and (max-device-width: 2048px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)")
+    link(rel="apple-touch-startup-image",sizes="1024x748" ,href="icon-1024x748.png" ,media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)")
+    link(rel="apple-touch-startup-image", sizes="768x1004" ,href="icon-768x1004.png" ,media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)")
+    link(rel="apple-touch-startup-image" ,sizes="640x920" ,href="icon-640x920.png", media="screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)")
+    link(rel="apple-touch-startup-image" ,sizes="320x460" ,href="icon-320x460.png",media="screen and (max-device-width: 320)")
+
+include modal

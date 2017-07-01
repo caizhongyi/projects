@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Tabs</title>
+
+    <meta name="keywords" content="Tabs,轮播样式,图片切换样式"/>
+    <meta name="description" content="轮播样式"/>
+
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+    <script src="../lib/jquery/zepto.js"></script>
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+    <!--   <script type="text/javascript" src="../lib/jquery.advance.min.js"></script>-->
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+</head>
+
+<body>
+<style type="text/css">
+    .test {
+        position: relative;;
+        margin: 10px;
+        height: 150px;
+    }
+
+    .test img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .test > div {
+        position: absolute;
+
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+
+        /*  -webkit-backface-visibility : hidden;
+          -moz-backface-visibility : hidden;
+          -o-backface-visibility : hidden;
+          -ms-backface-visibility : hidden;
+          backface-visibility : hidden;*/
+        width: 150px;
+        height: 150px;
+        transition: all 1s ease-in-out 0s;
+    }
+
+    .test-b1 {
+        -webkit-transform: rotateY(0deg) translateZ(0px);
+        transform: rotateY(0deg) translateZ(0px);
+    }
+
+    .test:hover .test-b1 {
+        -webkit-transform: rotateY(90deg) translateZ(80px);
+        transform: rotateY(90deg) translateZ(80px);
+    }
+
+    .test-b2 {
+        -webkit-transform: rotateY(90deg) translateZ(-80px);
+        transform: rotateY(90deg) translateZ(-80px);
+    }
+
+    .test:hover .test-b2 {
+        -webkit-transform: rotateY(0deg) translateZ(0px);
+        transform: rotateY(0deg) translateZ(0px);
+    }
+</style>
+<div class="test">
+    <div class="test-b1"><img alt="" src="../pic/1_s.jpg"/></div>
+    <div class="test-b2"><img alt="" src="../pic/2_s.jpg"/></div>
+</div>
+
+
+//prev or next 加入 data-disabled 轮播将不会回滚 并且自动会加入 disabled 样式
+<ol>
+    <li>支持触屏效果</li>
+    <li>通过样式类名切换不同动画</li>
+    <li>样式无法实现在则通样脚本实现</li>
+</ol>
+
+<div class="code-example" title="tab click">
+    <div class="tabs" data-event="click">
+        <ul class="nav-tabs" >
+            <li class="active"><a href="#" data-target >tab1</a></li>
+            <li><a href="#" data-target >tab2</a></li>
+            <li><a href="#" data-target >tab3</a></li>
+            <li><a href="#" data-target>tab4</a></li>
+        </ul>
+        <ul class="tabs-list" data-list >
+            <li class="in">环保部负责人日前表示，在开展空气质量新标准监测的161个城市中，有50个城市发生了重度及以上污染，其中11个城市为严重污染。北京、河北、山西、山东、河南、辽宁等地雾霾污染情况进一步恶化。
+
+                　　值得注意的是，前后将近一周时间，环保部督察组启动了12个地方城市的大气污染防治专项督查，结果却令人忧虑，大量工业企业违规排放、本应该淘汰的落后产能仍然在堂而皇之地进行生产……
+            </li>
+            <li><a href="../pic/2_b.jpg"><img alt="" src="../pic/2_s.jpg"/></a></li>
+            <li>环保部负责人日前表示，在开展空气质量新标准监测的161个城市中，有50个城市发生了重度及以上污染，其中11个城市为严重污染。北京、河北、山西、山东、河南、辽宁等地雾霾污染情况进一步恶化。</li>
+            <li >环保部负责人日前表示，在开展空气质量新标准监测的161个城市中，有50个城市发生了重度及以上污染，其中11个城市为严重污染。北京、河北、山西、山东、河南、辽宁等地雾霾污染情况进一步恶化。
+
+                　　值得注意的是，前后将近一周时间，环保部督察组启动了12个地方城市的大气污染防治专项督查，结果却令人忧虑，大量工业企业违规排放、本应该淘汰的落后产能仍然在堂而皇之地进行生产……
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="code-example" title="tab click">
+    <div class="tabs" data-event="click">
+        <ul class="nav-tabs" >
+            <li class="active"><a href="#" data-target="#tab1" >tab1</a></li>
+            <li><a href="#" data-target="#tab2">tab2</a></li>
+            <li><a href="#" data-target="#tab3" >tab3</a></li>
+            <li><a href="#" data-target="#tab4" >tab4</a></li>
+        </ul>
+        <ul class="tabs-list" data-list>
+            <li id="tab1" class="in">环保部负责人日前表示，在开展空气质量新标准监测的161个城市中，有50个城市发生了重度及以上污染，其中11个城市为严重污染。北京、河北、山西、山东、河南、辽宁等地雾霾污染情况进一步恶化。
+
+                　　值得注意的是，前后将近一周时间，环保部督察组启动了12个地方城市的大气污染防治专项督查，结果却令人忧虑，大量工业企业违规排放、本应该淘汰的落后产能仍然在堂而皇之地进行生产……
+            </li>
+            <li id="tab2"><a href="../pic/2_b.jpg"><img alt="" src="../pic/2_s.jpg"/></a></li>
+            <li id="tab3">环保部负责人日前表示，在开展空气质量新标准监测的161个城市中，有50个城市发生了重度及以上污染，其中11个城市为严重污染。北京、河北、山西、山东、河南、辽宁等地雾霾污染情况进一步恶化。</li>
+            <li id="tab4">环保部负责人日前表示，在开展空气质量新标准监测的161个城市中，有50个城市发生了重度及以上污染，其中11个城市为严重污染。北京、河北、山西、山东、河南、辽宁等地雾霾污染情况进一步恶化。
+
+                　　值得注意的是，前后将近一周时间，环保部督察组启动了12个地方城市的大气污染防治专项督查，结果却令人忧虑，大量工业企业违规排放、本应该淘汰的落后产能仍然在堂而皇之地进行生产……
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="code-example" title="slider unloop">
+    <div class="slider " data-loop="false">
+        <div class="slider-clip">
+            <ul class="slider-list list-fade">
+                <li class="in"><img alt="" src="../pic/1_b.jpg"/></li>
+                <li><img alt="" src="../pic/2_b.jpg"/></li>
+                <li><img alt="" src="../pic/3_b.jpg"/></li>
+                <li><img alt="" src="../pic/4_b.jpg"/></li>
+            </ul>
+        </div>
+        <ul class="slider-nav nav-round">
+            <li class="active"><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+        <a href="javascript:;" class="prev"><span>&lsaquo;</span></a>
+        <a href="javascript:;" class="next"><span>&rsaquo;</span></a><br/>
+    </div>
+</div>
+
+<div class="code-example" title="slider roate">
+    <div class="slider slider-roate">
+        <div class="slider-clip">
+            <ul class="slider-list list-flip">
+                <li class="in"><img alt="" src="../pic/1_b.jpg"/></li>
+                <li><img alt="" src="../pic/2_b.jpg"/></li>
+                <li><img alt="" src="../pic/3_b.jpg"/></li>
+                <li><img alt="" src="../pic/4_b.jpg"/></li>
+            </ul>
+        </div>
+        <ul class="slider-nav nav-round">
+            <li class="active"><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+        <a href="javascript:;" class="prev"><span>&lsaquo;</span></a>
+        <a href="javascript:;" class="next"><span>&rsaquo;</span></a><br/>
+    </div>
+</div>
+
+<div class="code-example" title="slider auto">
+    <div class="slider">
+        <div class="slider-wrap">
+
+            <div class="slider-clip">
+                <ul class="slider-list list-flip-right">
+                    <li class="in"><img alt="" src="../pic/1_b.jpg"/></li>
+                    <li><img alt="" src="../pic/2_b.jpg"/></li>
+                    <li><img alt="" src="../pic/3_b.jpg"/></li>
+                    <li><img alt="" src="../pic/4_b.jpg"/></li>
+                </ul>
+            </div>
+            <ul class="slider-nav">
+                <li class="active"><a href="../pic/1_b.jpg"><img alt="" src="../pic/1_s.jpg"/></a></li>
+                <li><a href="../pic/2_b.jpg"><img alt="" src="../pic/2_s.jpg"/></a></li>
+                <li><a href="../pic/3_b.jpg"><img alt="" src="../pic/3_s.jpg"/></a></li>
+                <li><a href="../pic/4_b.jpg"><img alt="" src="../pic/4_s.jpg"/></a></li>
+            </ul>
+
+            <a href="javascript:;" class="prev"><span>&lsaquo;</span></a>
+            <a href="javascript:;" class="next"><span>&rsaquo;</span></a><br/>
+        </div>
+
+        <!-- <div class="slider-clip">
+            <ul class="slider" >
+                <li><a href="../pic/1_b.jpg"><img alt="" src="../pic/1_s.jpg"/></a></li>
+                <li><a href="../pic/2_b.jpg"><img alt="" src="../pic/2_s.jpg"/></a></li>
+                <li><a href="../pic/3_b.jpg"><img alt="" src="../pic/3_s.jpg"/></a></li>
+                <li><a href="../pic/4_b.jpg"><img alt="" src="../pic/4_s.jpg"/></a></li>
+            </ul>
+        </div>-->
+        <div class="slider-view">
+            <div class="loading"></div>
+        </div>
+
+    </div>
+</div>
+
+<div class="code-example" title="slider horizontal">
+    <div id="imgTab" class="slider slider-horizontal">
+        <div class="slider-clip">
+            <ul class="slider-list">
+                <li class="in"><a href=""><img alt="" src="../pic/1_b.jpg"/><span class="mask"></span><span class="title text-ellipsis">title</span></a></li>
+                <li><a href=""><img alt="" src="../pic/2_b.jpg"/><span class="mask"></span><span class="title text-ellipsis">title</span></a></li>
+                <li><a href=""><img alt="" src="../pic/3_b.jpg"/><span class="mask"></span><span class="title text-ellipsis">title</span></a></li>
+                <li><a href=""><img alt="" src="../pic/4_b.jpg"/><span class="mask"></span><span class="title text-ellipsis">title</span></a></li>
+            </ul>
+        </div>
+        <ul class="slider-nav nav-round">
+            <li class="active"><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+        </ul>
+        <a href="javascript:;" class="prev"><span>&lsaquo;</span></a>
+        <a href="javascript:;" class="next"><span>&rsaquo;</span></a><br/>
+    </div>
+</div>
+
+<button id="addImg" class="btn btn-default">addImg</button>
+<br><br>
+<script type="text/javascript">
+    $('#addImg').click(function () {
+        $('#imgTab .slider-nav').append('<a href="../pic/1_b.jpg"><img alt="" src="../pic/1_s.jpg"/></a>');
+        $('#imgTab .slider-list').append('<li><img alt="" src="../pic/1_b.jpg"/></li>');
+    })
+</script>
+
+<div class="code-example" title="slider ">
+    <div class="slider ">
+        <div class="slider-clip">
+            <ul class="slider-list list-flip-bottom">
+                <li class="in"><img alt="" src="../pic/1_b.jpg"/></li>
+                <li><img alt="" src="../pic/2_b.jpg"/></li>
+                <li><img alt="" src="../pic/3_b.jpg"/></li>
+                <li><img alt="" src="../pic/4_b.jpg"/></li>
+            </ul>
+        </div>
+        <ul class="slider-nav">
+            <li class="active"><a href="../pic/1_b.jpg"><img alt="" src="../pic/1_s.jpg"/></a></li>
+            <li><a href="../pic/2_b.jpg"><img alt="" src="../pic/2_s.jpg"/></a></li>
+            <li><a href="../pic/3_b.jpg"><img alt="" src="../pic/3_s.jpg"/></a></li>
+            <li><a href="../pic/4_b.jpg"><img alt="" src="../pic/4_s.jpg"/></a></li>
+        </ul>
+        <a href="javascript:;" class="prev"><span>&lsaquo;</span></a>
+        <a href="javascript:;" class="next"><span>&rsaquo;</span></a><br/>
+    </div>
+</div>
+
+
+<div class="code-example" title="slider ">
+    <div class="slider " id="slider">
+        <div class="slider-wrap">
+            <div class="slider-clip">
+                <ul class="slider-list list-scale">
+                    <li class="in"><img alt="" src="../pic/1_b.jpg"/></li>
+                    <li><img alt="" src="../pic/2_b.jpg"/></li>
+                    <li><img alt="" src="../pic/3_b.jpg"/></li>
+                    <li><img alt="" src="../pic/4_b.jpg"/></li>
+                </ul>
+            </div>
+            <ul class="slider-nav">
+                <li class="active"><a href="../pic/1_b.jpg"><img alt="" src="../pic/1_s.jpg"/></a></li>
+                <li><a href="../pic/2_b.jpg"><img alt="" src="../pic/2_s.jpg"/></a></li>
+                <li><a href="../pic/3_b.jpg"><img alt="" src="../pic/3_s.jpg"/></a></li>
+                <li><a href="../pic/4_b.jpg"><img alt="" src="../pic/4_s.jpg"/></a></li>
+            </ul>
+            <a href="javascript:;" class="prev"><span>&lsaquo;</span></a>
+            <a href="javascript:;" class="next"><span>&rsaquo;</span></a><br/>
+        </div>
+        <div class="carousel">
+            <ul class="carousel-list">
+                <li><a href="../pic/1_b.jpg"><img alt="" src="../pic/1_s.jpg"/></a></li>
+                <li><a href="../pic/2_b.jpg"><img alt="" src="../pic/2_s.jpg"/></a></li>
+                <li><a href="../pic/3_b.jpg"><img alt="" src="../pic/3_s.jpg"/></a></li>
+                <li><a href="../pic/4_b.jpg"><img alt="" src="../pic/4_s.jpg"/></a></li>
+            </ul>
+            <a href="javascript:;" class="carousel-prev"><span>&lsaquo;</span></a>
+            <a href="javascript:;" class="carousel-next"><span>&rsaquo;</span></a><br/>
+        </div>
+    </div>
+</div>
+
+<div class="code-example" title="slider ">
+    <script>
+        $(function(){
+            $('.tabs').tabs();
+        })
+    </script>
+</div>
+
+<!--<script type="text/javascript" src="js/zero.core.js"></script>
+<script type="text/javascript" src="js/zero.tab.js"></script>-->
+<script type="text/javascript" src="../js/plugins/extra/jquery.tabs.js"></script>
+<script type="text/javascript" src="../js/plugins/extra/jquery.loader.js"></script>
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+</body>
+</html>

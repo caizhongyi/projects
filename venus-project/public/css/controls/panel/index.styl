@@ -1,0 +1,75 @@
+@require "../../mixins/index"
+
+.panel
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  .panel-header , .panel-body, .panel-footer
+    padding 5px 10px;
+  .panel-header
+    background: #F9F9F9;
+    border-bottom 1px solid #ddd;
+  .contain
+    display: block;
+  .panel-body
+    display: none;
+    border-top: 1px solid #ddd;
+  &.active .panel-body
+    display: block ;
+  .icon.pull-right
+      margin-top: 5px;
+  .icon-chevron-up:before ,.icon-chevron-down:before
+    content: "\f078";
+  .icon-minus-sign:before ,.icon-plus-sign:before
+    content: "\f055";
+  &.active
+    .icon-chevron-up:before ,.icon-chevron-down:before
+      content: "\f077";
+    .icon-minus-sign:before ,.icon-plus-sign:before
+      content: "\f056";
+  &-shadow
+    box-shadow:  0 0 5px #ddd + 50%;
+
+
+types ?= {
+    default:#fff,
+    link: transparent,
+    primary:#428BCA,
+    info:#5BC0DE,
+    muted:#999,
+    success:#5CB85C,
+    warning:#F0AD4E,
+    danger:#D9534F,
+    light:#c4caa5
+}
+
+for item in types
+  .panel-{item}
+    input-color = types[item];
+    border-color: input-color
+    box-shadow: 0 0 5px input-color + 50%;;
+    .panel-header
+      background: input-color + 90%;
+      color: input-color
+      border-color: input-color
+    &.panel-shadow
+      box-shadow:  0 0 5px input-color + 50%;
+
+.panel-group
+  .panel
+    margin-bottom: 0;
+  .panel + .panel
+    margin-top: -1px;
+
+.panel-horizontal
+  clearfix()
+  .panel,.panel-header,.panel-body
+    float: left;
+    height: 300px;
+  .panel-header
+    width: 60px;
+  .panel + .panel
+    margin:0 0 0 -1px;
+  .panel-body
+    border-top: none;
+    border-left:1px solid #ddd;
+

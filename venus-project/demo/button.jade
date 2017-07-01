@@ -1,0 +1,75 @@
+//
+   Created by caizhongyi on 2014/9/5.
+include mixins/index
+extends layout
+
+block append head
+    title button
+
+block append container
+     .code-example(title='button').
+        <button>button</button>
+        <button class="btn-primary">button</button>
+        <button class="btn-info">button</button>
+        <button class="btn-success">button</button>
+        <button class="btn-danger">button</button>
+        <button class="btn-warning">button</button>
+        <button disabled>button</button>
+        <a class="btn btn-link" href="">button</a>
+        <a class="btn disabled" href="#">button</a>
+        <a class="btn btn-default" href="#">default</a>
+        <hr/>
+        <input type="button" value="button" class="btn"/>
+        <input type="button" class="btn btn-default" value="default">
+        <span class="btn btn-default">default</span>
+        <button class="btn btn-default">default</button>
+        <button class="btn btn-info">info</button>
+        <button class="btn btn-success">success</button>
+        <button class="btn btn-danger">danger</button>
+        <button class="btn btn-warning">warning</button>
+        <button class="btn btn-link">link</button>
+        <button class="btn btn-primary">primary</button>
+        <button class="btn btn-primary disabled">disabled</button>
+        <button class="btn btn-primary " disabled>disabled</button>
+        <input type="text" class="input"/>
+
+     .code-example(title='button fresh').
+        <input type="button" class="btn btn-default btn-metro" value="default">
+        <a href="#" class="btn btn-default btn-metro">default</a>
+        <span class="btn btn-default btn-metro">default</span>
+        <button class="btn btn-metro">default</button>
+        <button class="btn btn-info btn-metro">info</button>
+        <button class="btn btn-success btn-metro">success</button>
+        <button class="btn btn-danger btn-metro">danger</button>
+        <button class="btn btn-warning btn-metro">warning</button>
+        <button class="btn btn-link btn-metro">link</button>
+        <button class="btn btn-primary btn-metro">primary</button>
+        <button class="btn btn-primary btn-metro disabled">disabled</button>
+        <button class="btn btn-primary btn-metro " disabled>disabled</button>
+
+     .code-example(title='buttons').
+        <button class="btn btn-primary btn-xs">mini</button>
+        <button class="btn btn-primary btn-sm">small</button>
+        <button class="btn btn-primary">button</button>
+        <button class="btn btn-primary btn-lg">large</button>
+        <button class="btn btn-default btn-xlg">xlarge</button>
+        <button class="btn btn-default btn-xxlg">xxlarge</button>
+
+     .code-example(title='upload').
+        <a class="btn btn-primary btn-file" href="###">上传<input type="file" multiple accept="image/*"  data-preview=".preview"/></a>
+        <a class="btn btn-primary btn-file" href="###">上传<input type="file" accept="image/*"  data-preview=".preview"/></a>
+        <a class="btn btn-primary btn-file" href="###">上传<input type="file" accept="image/*"/></a>
+        <div class="preview"></div>
+        <script>
+            $(function () {
+                $(':file').fileUpload();
+            })
+        </script>
+
+     .code-example(title='group').
+        <div class="btn-group">
+            <button class="active">button</button>
+            <button >button</button>
+            <button >button</button>
+        </div>
+

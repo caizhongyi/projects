@@ -1,0 +1,41 @@
+@require "../../mixins/index"
+
+.nav
+    if combine == true
+        @extend .clearfix
+        &,& li
+            @extend .unstyled
+    else
+        clearfix();
+        &,& li
+            unstyled();
+    &
+        margin-bottom 20px;
+    a
+        display: block;
+        position: relative;
+        padding 10px 15px;
+        &:hover
+            background #eee
+            text-decoration none;
+    .active a
+        background #337ab7
+        color #fff
+    .active .badge
+        background #fff
+        color #337ab7
+    .badge
+        vertical-align middle;
+    &-pills,&-tabs
+        li
+            float: left;
+    &-tabs
+        border-bottom 1px solid #eeeeee
+        li
+            margin-bottom -1px;
+
+.nav + .nav-content
+    margin-top -20px;
+
+.nav-content
+    padding 20px;

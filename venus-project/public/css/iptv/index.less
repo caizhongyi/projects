@@ -1,0 +1,98 @@
+body{
+    font-size: 24px;
+    font-family: '黑体';
+    background: #fafafa;
+    line-height: 1.5;
+    margin: 0 auto;
+    &,a{ color: #000;}
+}
+
+a{ text-decoration: none;}
+a:focus{ color: #e28f1b;}
+
+img{ max-width: 100%;}
+
+span , a , label , img{
+   vertical-align: middle;
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+    word-wrap: normal;
+    vertical-align: middle;
+}
+
+//.nav a{ display: inline-block; width: 25%; }
+
+
+
+.container{
+    padding: 10px;
+}
+
+.box{
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.small{ font-size: 16px; vertical-align:default;}
+
+.form{
+    @label-width : 130px;
+    &-item{ margin-bottom: 10px;}
+    &-label{ display: inline-block; }
+}
+
+.input{
+    border: 1px solid #ddd;
+    width: 160px;
+    padding: 6px 10px;
+    vertical-align: middle;
+    &-xs{ width: 50px;}
+}
+
+.text-right{ text-align: right;}
+.text-center{ text-align: center;}
+
+.article{
+    h1,h2,h3,h5,h6{
+        margin: 15px 0;
+    }
+    .details{ border: 1px solid #ddd; padding: 10px; font-size: 0.8em; background: #fff;}
+    p{ margin: 0 0 10px 0;}
+}
+
+
+
+.price,.text-danger{
+    color: #a94442;
+    font-weight: normal;
+}
+.text-success{
+    color: #5cb85c;
+}
+
+.optionsbar{
+    background: #eb6619;
+    color: #fff;
+    .price{ color: #fff6ea;}
+}
+
+.pickbox{
+    white-space: nowrap;
+    margin-right: 10px;
+    input{ margin-right: 5px; }
+}
+
+input:focus:extend(.thumbnail:focus){}
+
+@import "alert";
+@import "btn";
+@import "pagination";
+@import "thumbanil";
+
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Pagination</title>
+
+    <meta name="keywords" content="Pagination,分页样式"/>
+    <meta name="description" content="分页样式"/>
+
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../lib/jquery.advance.min.js"></script>
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+</head>
+
+<body>
+
+<div class="code-example" title="pagination for script">
+    <div class="list">
+        <ul>
+            <li>sssss</li>
+            <li>sssss</li>
+            <li>sssss</li>
+            <li>sssss</li>
+            <li>sssss</li>
+        </ul>
+    </div>
+
+    <form class="form" action="">
+        <div class="form-group">
+            <label><span class="form-label">size</span><input type="text" id="size" class="text" value="10"/></label>
+        </div>
+        <div class="form-group">
+            <label><span class="form-label">count</span><input type="text" id="count" class="text"
+                                                               value="1000"/></label>
+        </div>
+        <div class="form-group">
+            <label><span class="form-label">viewCount</span><input type="text" id="viewCount" class="text"
+                                                                   value="5"/></label>
+        </div>
+        <div class="form-group">
+            <label><span class="form-label">&nbsp;</span></label><input type="button" class="btn btn-primary"
+                                                                        value="create pagination"/>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        $('.btn').click(function () {
+            $$.pagination('#pagination', {
+                viewCount: $('#viewCount').val(),
+                size: $('#size').val(),
+                count: $('#count').val()
+            });
+        })
+    </script>
+</div>
+
+
+<div class="code-example" title="pagination">
+    <div id="pagination" class="pagination">
+        <a href="javascript:;" class="first">首页</a>
+        <a href="javascript:;" class="prev">上一页</a>
+        <span class="numbers">
+            <a href="">1</a>
+            <a href="" class="current">2</a>
+            <a href="">3</a>
+            <a href="">4</a>
+        </span>
+        <a href="javascript:;" class="next">下一页</a>
+        <a href="javascript:;" class="last">尾页</a>
+    </div>
+</div>
+
+<div class="code-example" title="pagination">
+    <div class="pagination">
+        <a href="javascript:;" class="first">首页</a>
+        <a href="javascript:;" class="prev">上一页</a>
+        12/20
+        <a href="javascript:;" class="next">下一页</a>
+        <a href="javascript:;" class="last">尾页</a>
+        <span class="input-search">
+            <input type="text" class="input"/><button class="btn btn-primary">Go</button>
+        </span>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/zero.core.js"></script>
+<script type="text/javascript" src="../js/zero.pagination.js"></script>
+
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+</body>
+</html>

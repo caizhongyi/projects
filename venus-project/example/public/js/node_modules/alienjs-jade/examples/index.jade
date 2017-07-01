@@ -1,0 +1,19 @@
+html
+    head
+        title
+        meta(charset="utf-8")
+
+        script( src = '../../jquery/dist/jquery.js')
+        script( src = '../src/index.js')
+        script( src = '../src/jade.js')
+        block css
+    body
+        .code-example(attr='jade')
+            #name
+            script(type='tpl/jade')#name-jade
+                | p my name is  \#{name}
+
+        script.
+            $('#name').jade({ name : 'cai' } ,'#name-jade',function(){});
+
+

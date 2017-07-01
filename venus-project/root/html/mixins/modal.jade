@@ -1,0 +1,26 @@
+mixin modal( title )
+    .modal.fade
+        .modal-dialog
+            .modal-content
+                if title
+                    .modal-header
+                        button.close(data-dismiss="modal")
+                            span(aria-hidden="true") ×
+                            span.sr-only Close
+                        h4.modal-title= title
+                block
+
+mixin modal-alert( title )
+    +modal( title )
+        .modal-body
+            block
+        .modal-footer.text-center
+            button(type="button").btn.btn-primary 确定
+
+mixin modal-confirm( title )
+    +modal( title )
+        .modal-body
+            block
+        .modal-footer.text-center
+            button(type="button").btn.btn-primary 确定
+            button(type="button",data-dismiss="modal").btn.btn-default 取消

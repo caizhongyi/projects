@@ -1,0 +1,285 @@
+/* placeholder color */
+input:-moz-placeholder {
+  color: #999;
+}
+input:-ms-input-placeholder {
+  color: #999;
+}
+input::-webkit-input-placeholder {
+  color: #999;
+}
+[type=text],
+[type=password],
+.input,
+.combo {
+  width: 200px;
+}
+select {
+  width: 214px;
+}
+textarea,
+.textarea-animated {
+  vertical-align: top !important;
+  height: 70px;
+  transition: height 0.2s ease-in-out;
+}
+.textarea-animated {
+  height: 20px;
+  *height: 70px;
+}
+.textarea-animated:focus {
+  height: 70px;
+}
+/* input style */
+select,
+textarea,
+[type=text],
+[type=password],
+.input,
+.combo {
+  vertical-align: middle;
+  display: inline-block;
+  line-height: normal;
+  padding: 8px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset;
+  transition: all 0.2s ease-in-out 0s;
+  color: #666;
+  font-size: 14px;
+}
+select:focus,
+textarea:focus,
+[type=text]:focus,
+[type=password]:focus,
+.input:focus,
+.combo:focus,
+select:hover,
+textarea:hover,
+[type=text]:hover,
+[type=password]:hover,
+.input:hover,
+.combo:hover {
+  border-color: rgba(82,168,236,0.8);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset, 0 0 8px rgba(82,168,236,0.6);
+  outline: 0 none;
+}
+.input-group,
+.input-search {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0;
+}
+.input-group [type=text],
+.input-search [type=text],
+.input-group [type=password],
+.input-search [type=password],
+.input-group .input,
+.input-search .input {
+  border-radius: 0;
+}
+.input-group [class*="btn"]:first-child,
+.input-search [class*="btn"]:first-child,
+.input-group .first,
+.input-search .first {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.input-group .add-on + input,
+.input-search .add-on + input,
+.input-group input + .add-on,
+.input-search input + .add-on {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  margin-left: -1px;
+}
+.input-group .add-on,
+.input-search .add-on {
+  padding: 5px 12px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  font-family: "microsoft yahei";
+}
+.input-group .add-on:hover,
+.input-search .add-on:hover {
+  text-decoration: none;
+}
+.input-search [type=text],
+.input-search .input {
+  width: 0;
+  transition: all 0.2s ease;
+  visibility: hidden;
+}
+.input-search:hover [type=text],
+.input-search:hover .input {
+  width: 180px;
+  visibility: inherit;
+}
+.input-igroup {
+  display: inline-block;
+  position: relative;
+}
+.input-igroup [type=text],
+.input-igroup [type=password],
+.input-igroup .input {
+  padding-left: 32px;
+}
+.input-igroup .btn {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  font-style: normal;
+  text-align: right;
+}
+.input-igroup-right [type=text],
+.input-igroup-right [type=password],
+.input-igroup-right .input {
+  padding-right: 32px;
+}
+.input-igroup-right .btn {
+  text-align: left;
+  right: 0;
+  left: auto;
+}
+.input-label [type=text],
+.input-label [type=password],
+.input-label .input {
+  padding-left: 70px;
+}
+.input-label [class^=icon-],
+.input-label [class*=" icon-"],
+.input-label .icon {
+  width: 70px;
+  display: inline-block;
+}
+.input-default:hover,
+.input-default:focus,
+.input-default {
+  border-color: #fff;
+  box-shadow: 0 1px 1px #fff inset, 0 0 8px #fff;
+}
+.input-primary:hover,
+.input-primary:focus,
+.input-primary {
+  border-color: #7baeda;
+  box-shadow: 0 1px 1px #a1c5e4 inset, 0 0 8px #a1c5e4;
+}
+.input-info:hover,
+.input-info:focus,
+.input-info {
+  border-color: #8cd3e8;
+  box-shadow: 0 1px 1px #ade0ef inset, 0 0 8px #ade0ef;
+}
+.input-muted:hover,
+.input-muted:focus,
+.input-muted {
+  border-color: #b8b8b8;
+  box-shadow: 0 1px 1px #ccc inset, 0 0 8px #ccc;
+}
+.input-success:hover,
+.input-success:focus,
+.input-success {
+  border-color: #8dcd8d;
+  box-shadow: 0 1px 1px #aedcae inset, 0 0 8px #aedcae;
+}
+.input-warning:hover,
+.input-warning:focus,
+.input-warning {
+  border-color: #f4c683;
+  box-shadow: 0 1px 1px #f8d6a7 inset, 0 0 8px #f8d6a7;
+}
+.input-danger:hover,
+.input-danger:focus,
+.input-danger {
+  border-color: #e48784;
+  box-shadow: 0 1px 1px #eca9a7 inset, 0 0 8px #eca9a7;
+}
+.input-light:hover,
+.input-light:focus,
+.input-light {
+  border-color: #d6dac0;
+  box-shadow: 0 1px 1px #e2e4d2 inset, 0 0 8px #e2e4d2;
+}
+.readonly,
+[readonly],
+.disabled,
+[disabled] {
+  border-color: #ddd !important;
+}
+.readonly:focus,
+[readonly]:focus,
+.disabled:focus,
+[disabled]:focus,
+.readonly:hover,
+[readonly]:hover,
+.disabled:hover,
+[disabled]:hover,
+.readonly,
+[readonly],
+.disabled,
+[disabled] {
+  background: #f5f5f5 !important;
+  box-shadow: none !important;
+  border-color: #ccc !important;
+}
+/* text size */
+.input-xs {
+  font-size: 12px;
+  padding: 3px;
+}
+.input-sm {
+  font-size: 13px;
+  padding: 5.2px;
+}
+.input-md {
+  font-size: 14px;
+  padding: 7.4px;
+}
+.input-lg {
+  font-size: 15px;
+  padding: 9.600000000000001px;
+}
+.input-xlg {
+  font-size: 16px;
+  padding: 11.8px;
+}
+.input-xxlg {
+  font-size: 17px;
+  padding: 14px;
+}
+.input-xxxlg {
+  font-size: 18px;
+  padding: 16.2px;
+}
+.input-1x {
+  width: 66.66666666666667px;
+}
+.input-2x {
+  width: 133.33333333333334px;
+}
+.input-3x {
+  width: 200px;
+}
+.input-4x {
+  width: 266.6666666666667px;
+}
+.input-5x {
+  width: 333.33333333333337px;
+}
+.input-6x {
+  width: 400px;
+}
+.input-7x {
+  width: 466.6666666666667px;
+}
+.input-block {
+  padding-left: 18.4px;
+  padding-right: 18.4px;
+}
+.input-block .input {
+  width: 100%;
+  margin: 0 -18.4px;
+}

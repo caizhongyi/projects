@@ -1,0 +1,124 @@
+//
+   Created by caizhongyi on 2014/9/5.
+include mixins/index
+extends layout.jade
+
+block append head
+    title Dialog | 弹窗
+
+block append header
+    .page-header
+        h3 弹出窗
+
+    .alert.alert-warning
+       | 引入文件 :
+       p
+        +cssPre('anlienjs.animate.css')
+       p
+        +cssPre("anlienjs.dialog.css")
+       p
+        +scriptPre("anlienjs.dialog.js")
+       p 支持 ie7+
+       p 移动设置和PC端均支持
+
+
+block append content
+    style.
+        .demo{ position: static !important;}
+
+    .code-example(title = '弹出窗口').
+        <div class="dialog in demo" id="scale" title="scale dialog">
+            <div class="dialog-container">
+                <div class="dialog-header clearfix">
+                    <h3 class="dialog-title">scale dialog</h3>
+                    <div class="operate"><a data-hide="data-hide" href="javascript:;">×</a></div>
+                </div>
+                <div class="dialog-body clearfix">
+                    <p>...</p>
+                </div>
+                <div class="dialog-footer clearfix">
+                    <a class="btn btn-primary" href="javascript:;" data-hide="data-hide">确定</a>
+                    <a class="btn" href="javascript:;" data-hide="data-hide">取消</a>
+                </div>
+            </div>
+        </div>
+
+    .code-example(title = '无须html代码直接弹出conform对话窗口')
+        | <a href="###" id="dialog-conform" class="btn btn-primary">conform</a>
+        | <br>
+        script.
+            $(function(){
+                $('#dialog-conform').click(function () {
+                  $.dialog.conform('title','content' , {
+                      ok : function(e){
+                           alert('ok');
+                           $(e.relatedTarget).attr('data-hide','')     //加入data-hide属性。使得按钮可以关闭窗口
+                      },
+                      cancel : function(e){
+                          alert('cancel');
+                          $(e.relatedTarget).removeAttr('data-hide','') //当不需要关闭时，移除data-hide属性。使得按钮无法关闭窗口
+                       }
+                  });
+                })
+            })
+    .code-example(title = '无须html代码直接弹出alert提示窗口')
+        | <a href="###" id="dialog-alert" class="btn btn-primary">alert</a>
+        script.
+         $(function(){
+
+              $('#dialog-alert').click(function () {
+                 $.dialog.alert('title','content' , function(){});
+              })
+         })
+
+    .code-example( title="dialog slide" )
+       +dialog('slide', 'slide dialog' )
+       | <a href="###" class="btn btn-primary" id="show-slide-dialog">show</a>
+       script.
+         $(function(){
+              // lockvisible 锁定窗口无法关闭
+              // unlockvisible 解除锁定窗口无法关闭
+              $('#show-slide-dialog').click(function () {
+                $('#slide').dialog('show').dialog('lockvisible').dialog('unlockvisible');
+              })
+         })
+
+    //.code-example( title="dialog bounce" )
+        +dialog('bounce','bounce dialog' , 'bounceIn')
+        | <a href="#bounce"  class="btn btn-primary">show dialog</a>
+        script.
+            $(function(){
+                 $('[href="#bounce"]').click(function () {
+                   $('#bounce').dialog('show');
+                 })
+            })
+
+    .code-example( title="dialog flip" )
+        +dialog('flip','flip dialog','flipInY')
+        | <a href="#flip" data-popup="" class="btn btn-primary">show dialog</a>
+        script.
+            $(function(){
+                 $('[href="#flip"]').click(function () {
+                   $('#flip').dialog();
+                 })
+            })
+
+    +code( 'dialog bouncsIn' )
+        +dialog('bouncsIn','scale dialog','bounceIn')
+        | <a href="#bouncsIn" data-popup="" class="btn btn-primary">show dialog</a>
+        script.
+            $(function(){
+                 $('[href="#bouncsIn"]').click(function () {
+                   $('#bouncsIn').dialog();
+                 })
+
+                 $('#bouncsIn').on('shown',function(){ console.log('show'); })  //弹出事件
+                 .on('hidden',function(){ console.log('hide'); })            //关闭事件
+            })
+
+block append footer
+    +css("../js/plugins/dialog/alienjs.dialog.css")
+    +script('../js/plugins/dialog/alienjs.dialog.js')
+
+
+

@@ -1,0 +1,146 @@
+.wizard {
+  font-size: 14px;
+  text-align: center;
+  padding: 20px 30px;
+  overflow: hidden;
+}
+.wizard hr {
+  border: none;
+}
+.wizard .step {
+  font: 300%/1.3 'Aparajita';
+  z-index: 1;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 100px;
+  border: 3px solid #55a6e4;
+  position: relative;
+}
+.wizard .title {
+  position: relative;
+  margin: 0;
+  font-size: 150%;
+}
+.wizard .title,
+.wizard .desc {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.wizard .progressbar {
+  height: 0;
+  font-size: 0;
+  border-top: 4px solid #dee0e4;
+  top: 25px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+.wizard .progressbar,
+.wizard .step {
+  border-color: #dee0e4;
+  background: #dee0e4;
+  color: #fff;
+}
+.wizard .desc {
+  color: #999;
+}
+.wizard .active .title,
+.wizard .active .progressbar,
+.wizard .active .desc {
+  color: #0079d7;
+}
+.wizard .active .step,
+.wizard .active .progressbar {
+  background: #0079d7;
+  border-color: #0079d7;
+}
+.wizard .progressbar {
+  margin-left: 50%;
+}
+.wizard .wizard-item:last-child .progressbar,
+.wizard .wizard-inner > li:last-child .progressbar,
+.wizard .wizard-inner > .last .progressbar {
+  display: none;
+}
+.wizard-item,
+.wizard-inner > li {
+  width: 25%;
+  position: relative;
+  float: left;
+}
+.wizard-inner {
+  margin: 0 -12.5%;
+  *zoom: 1;
+}
+.wizard-inner:before,
+.wizard-inner:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.wizard-inner:after {
+  clear: both;
+}
+.wizard-separate .first,
+.wizard-separate .wizard-item:first-child,
+.wizard-separate .wizard-inner > li:first-child {
+  z-index: 1;
+}
+.wizard-separate .first .progressbar,
+.wizard-separate .wizard-item:first-child .progressbar,
+.wizard-separate .wizard-inner > li:first-child .progressbar {
+  margin-left: 50%;
+  width: 50%;
+}
+.wizard-separate .last,
+.wizard-separate .wizard-item:last-child,
+.wizard-separate .wizard-inner > li:last-child {
+  z-index: 2;
+}
+.wizard-separate .last .progressbar,
+.wizard-separate .wizard-item:last-child .progressbar,
+.wizard-separate .wizard-inner > li:last-child .progressbar {
+  margin-right: 50%;
+  width: 50%;
+  display: block;
+}
+.wizard-separate .progressbar {
+  margin: 0;
+}
+.wizard-sm {
+  font-size: 14px;
+  padding: 20px;
+}
+.wizard-sm .step {
+  width: 30px;
+  height: 30px;
+  font-size: 22px;
+}
+.wizard-sm .progressbar {
+  top: 17px;
+  border-width: 3px;
+}
+.wizard-count-2 .wizard-item {
+  width: 50%;
+}
+.wizard-count-3 .wizard-item {
+  width: 33.33333%;
+}
+.wizard-count-4 .wizard-item {
+  width: 25%;
+}
+.wizard-count-5 .wizard-item {
+  width: 20%;
+}
+.wizard-count-6 .wizard-item {
+  width: 16.66666%;
+}
+/*
+.wizard-info{
+   position: relative;
+  .wizard-box{ position: absolute; left: 0; top: 0;  background: #fff;}
+  .wizard-box-default { position: static;}
+}*/

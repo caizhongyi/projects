@@ -1,0 +1,150 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Loading</title>
+
+    <meta name="keywords" content="Loading,载入样式"/>
+    <meta name="description" content="载入样式"/>
+
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../lib/jquery.advance.min.js"></script>
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+    <style type="text/css">
+        .navbar li {
+            border-bottom: 1px solid #ddd;
+            display: block;
+            height: 50px;
+            width: 200px;
+            background: red;
+            margin: 10px;
+        }
+
+        .page-inline li {
+            float: left;
+        }
+
+        .panel {
+            height: 300px;
+            background: #eee;
+            border: 1px solid #ddd;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .pageimage img {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+        }
+    </style>
+    <script type="text/javascript" src="../js/plugins/extra/jquery.loading.js"></script>
+</head>
+
+<body>
+<script>$.pageLoad();</script>
+<div class="code-example" title="panel load">
+    <div  class="panel panel-ajax">
+        <div class="loading in">
+            <div class="loading-mask"></div>
+            <i class="loading-icon"></i>
+        </div>
+        载入容器
+    </div>
+</div>
+<div class="code-example" title="panel load">
+    <div  class="panel panel-ajax">
+        <div class="loading in">
+            <div class="loading-mask"></div>
+            <div class="loading-info">
+                <i class="loading-icon"></i>提示信息
+            </div>
+        </div>
+        载入容器
+    </div>
+</div>
+
+<div class="code-example" title="panel load">
+    <!--   <div id="panel" class="panel" data-loading-info="载入中...">
+            载入容器
+       </div>-->
+    <div id="panel" class="panel">
+        载入容器
+    </div>
+    <button onclick="$('#panel').loading().trigger('loading')" class="btn btn-primary">loading</button>
+    <button onclick="$('#panel').loading().trigger('unloading')" class="btn btn-default">unloading</button>
+</div>
+
+<div class="page-loading"></div>
+<table class="table table-bordered">
+    <tbody>
+    <tr>
+        <td>loadingTarget</td>
+        <td>string</td>
+        <td>.page-loading</td>
+        <td>载入图标</td>
+    </tr>
+    <tr>
+        <td>blockTarget</td>
+        <td>string</td>
+        <td>.page-block,.page-inline</td>
+        <td>载入时的动画</td>
+    </tr>
+    <tr>
+        <td>init</td>
+        <td>function</td>
+        <td>window['loadInit']</td>
+        <td>初始化后的回调</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a href="loading.html" target="_blank" class="btn btn-primary">lazyload image test</a>
+
+<div class="code-example" title="panel load">
+    <div class="pageimage">
+        <img src="../../pic/1.jpg" alt="" class="pageimage-item img-bordered"/>
+        <img src="../../pic/2_b.jpg" alt="" class="pageimage-item img-bordered"/>
+        <img src="../../pic/3_b.jpg" alt="" class="pageimage-item img-bordered"/>
+        <img src="../../pic/4_b.jpg" alt="" class="pageimage-item img-bordered"/>
+        <img src="../../pic/5_b.jpg" alt="" class="pageimage-item img-bordered"/>
+        <img src="../../pic/6_b.jpg" alt="" class="pageimage-item img-bordered"/>
+        <img src="../../pic/7_b.jpg" alt="" class="pageimage-item img-bordered"/>
+        <img src="../../pic/8_b.jpg" alt="" class="pageimage-item img-bordered"/>
+        <img src="../../pic/9_b.jpg" alt="" class="pageimage-item img-bordered"/>
+        <img src="../../pic/10_b.jpg" alt="" class="pageimage-item img-bordered"/>
+    </div>
+</div>
+
+<div class="code-example" title="panel load">
+    <div id="mypanel"></div>
+    <script type="text/javascript">
+        $(function () {
+            // console.log($('#mypanel').ajaxPanel().trigger('loading'))
+            // $('#mypanel').ajaxPanel().trigger('load' , 'input.html')
+        })
+    </script>
+</div>
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+
+</body>
+</html>

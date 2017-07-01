@@ -1,0 +1,67 @@
+@require "lib/index";
+
+scroll( pos , max = 200px)
+  position: relative;
+  if pos == 'y'
+    max-height: max;
+    if ie-support
+      *height:max;
+    overflow-{pos}: auto;
+  else if pos == 'x'
+    max-width: max;
+    if ie-support
+      *width:max;
+    overflow-{pos}: auto;
+  else
+    max-width: max;
+    max-height: max;
+    if ie-support
+        *width:max;
+        *height:max;
+    overflow: auto;
+
+gradients();
+
+unstyled()
+  &,li
+    list-style:none;
+    margin: 0;
+    padding: 0;
+
+placeholder( color )
+  ::-webkit-input-placeholder
+      color: color
+  :-moz-placeholder
+    color:  color
+  ::-moz-placeholder
+    color:  color
+  :-ms-input-placeholder
+    color: color
+
+input-icon( icon , icon-size , position = 'left')
+  background #fff url( img-path icon ) ( position == 'left' ? left : right) center;
+  background-size  icon-size
+  if typeof icon-size != 'object'
+    icon-size = icon-size icon-size ;
+  if position == 'right'
+    padding-right icon-size[0] + 5px
+  else
+    padding-left  icon-size[0] + 5px
+
+//input-icon('icon.png', 10px 10px )
+center-box()
+    text-align: center;
+    display: box;
+    box-orient: horizontal;
+    box-pack: center;
+    box-align: center;
+
+
+
+
+
+
+
+
+
+

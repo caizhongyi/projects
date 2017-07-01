@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <!--title title-->
+    <meta name="keywords" content="keywords">
+    <meta name="description" content="description">
+    <link rel="stylesheet" type="text/css" media="all" href="../public/css/aliencss/index.css">
+    <link rel="stylesheet" type="text/css" media="all" href="../public/css/font-awesome/font-awesome.css">
+    <!--link(rel="stylesheet",type="text/css",media="all",href="../css/controls/alienjs.animate.css")-->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" media="all" href="../public/css/alienjs/1.1.0/index-ie7.css"><![endif]-->
+    <script src="../public/js/node_modules/jquery/dist/jquery.js"></script>
+    <title>title</title>
+    <link href="../public/js/spm_modules/alienjs-combo/ori/index.css" rel="stylesheet"/>
+</head>
+<body>
+<footer class="footer"><a>http://segmentfault.com/a/1190000000357534</a>
+
+    <p>if, else if, else, until, while, unless</p></footer>
+<script>
+    var wait = function () {
+        var dtd = $.Deferred(); // 新建一个Deferred对象
+        var tasks = function () {
+
+            alert("执行完毕！");
+            dtd.resolve()
+            //dtd.reject(); // 改变Deferred对象的执行状态
+
+        };
+        setTimeout(tasks, 5000);
+        //return dtd;
+        return dtd.promise();
+
+    };
+
+    $.when(wait())
+            .done(function () {
+                alert("哈哈，成功了！");
+            })
+            .fail(function () {
+                alert("出错啦！");
+            });
+    //.then(successFunc, failureFunc ); //有时为了省事，可以把done()和fail()合在一起写，这就是then()方法。
+    //.always( function() { alert("已执行！");} );; //这个方法也是用来指定回调函数的，它的作用是，不管调用的是deferred.resolve()还是deferred.reject()，最后总是执行。
+</script>
+</body>
+</html>

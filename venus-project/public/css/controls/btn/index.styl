@@ -1,0 +1,109 @@
+font-size ?= 14px;
+
+.btn
+  position: relative;
+  font-size: font-size;
+  padding: 7px 12px;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.4s ease-in-out;
+  background: none;
+  line-height: 1.4 !important;
+  text-decoration: none;
+  white-space: nowrap;
+  text-align: center;
+  border: 1px solid transparent;
+  /*box-shadow: 0 0 5px #ddd;*/
+  text-shadow: 0 0 1px #b1b1b1;
+  cursor: pointer;
+  &:hover
+    text-decoration none;
+  types ?= {
+      default:#fff,
+      link: transparent,
+      primary:#428BCA,
+      info:#5BC0DE,
+      muted:#999,
+      success:#5CB85C,
+      warning:#F0AD4E,
+      danger:#D9534F,
+      dark:#000,
+      light:#d7d2d2
+  }
+
+  for item in types
+    &-{item}
+        background: types[item];
+        &,&:active
+          if item == 'default' || item == 'light'
+            color: #333;
+            border:1px solid #ddd;
+          else if item == 'link'
+            color: #428BCA;
+          else
+            color #fff;
+        &:active
+            background: @background == 'transparent' || @background == 'none' ? @background  : @background - 20%
+
+  size = 1px 8px
+  -font-size = 12px
+  sizes ?= xs sm md lg xlg xxlg xxxlg
+
+  for i in sizes
+    &-{i}
+      padding : size[0] size[1]
+      font-size : -font-size;
+    -font-size = -font-size + 1;
+    size[0] = size[0] + 2
+    size[1] = size[1] + 2
+
+  &-file
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    [type='file'], input
+      font-size: 100px;
+      margin: 0;
+      padding: 0;
+      opacity 0
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+
+  &[disabled],&.disabled
+    color: #999 !important;
+    background: #eee !important;
+    border-color: #eee !important;
+    cursor: default;
+    &:active
+      left: 0;
+      top: 0;
+
+    &:hover
+      @extend .btn[disabled]
+
+  &[disabled].metro,
+  &.metro.disabled,
+  &.metro.disabled:hover
+    border-color: #eee;
+
+  &.block
+    display: block;
+  input&.block
+    width: 100%;
+    @extend .btn.block
+
+.btn-wide
+    padding-left 50px;
+    padding-right 50px;
+
+.btn + .btn
+  margin-left 10px;
+
+
+
+
+

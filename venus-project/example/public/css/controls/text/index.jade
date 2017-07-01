@@ -1,0 +1,35 @@
+doctype
+html(lang="zh-cn")
+    head
+        block head
+            meta(charset="utf-8")
+            meta(name="viewport", content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width")
+            //title title
+            meta(name="keywords", content="keywords")
+            meta(name="description", content="description")
+            link(rel="stylesheet",type="text/css",media="all",href="index.css")
+            link(rel="stylesheet",type="text/css",media="all",href="../../font-awesome/font-awesome.css")
+
+        block css
+    body
+        - var types = [  'bold', 'muted', 'info', 'success', 'warning', 'danger'] ;
+        .code-example(title='text')
+            each item in types
+                span(class='text-'+item)
+                    | color
+
+        - var types = [  'xs', 'sm', 'md', 'lg', 'xlg', 'xxlg', 'xxxlg'] ;
+        .code-example(title='text')
+            each item in types
+                span(class='text-' + item)
+                    | size
+        - var types = [  'center', 'left', 'right', 'ellipsis', 'hide', 'justify', 'indent'] ;
+        .code-example(title='text')
+            each item in types
+                div(class='text-' + item)
+                    | type
+        footer.footer
+            a http://segmentfault.com/a/1190000000357534
+            a(href="http://www.alienjs.net") http://www.alienjs.net
+            p if, else if, else, until, while, unless
+

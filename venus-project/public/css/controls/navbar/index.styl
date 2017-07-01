@@ -1,0 +1,102 @@
+.navbar
+  font-size: 14px;
+  .navbar-inner
+    &.collapse
+      transform:translateX(-100%);
+    background: #fff;
+    border: 1px solid #ddd;
+    clearfix()
+    &, ul, li, ol
+      unstyled()
+    li, a, ul
+      transition: all 0.2s ease;
+    li
+      float: left;
+      position: relative;
+      width: 120px;
+      cursor: pointer;
+      text-align: center;
+      a
+        color: #666;
+        text-decoration: none;
+        display: block;
+        border-bottom: 1px solid transparent;
+        padding: 10px;
+        font-size: 14px;
+        font-family: "microsoft yahei";
+    li
+      ul
+         background: #fff;
+         width: 100%;
+         left: 0;
+         top: 46px;
+         position: absolute;
+         visibility: hidden;
+         opacity: 0;
+          ul
+            left: 120px;
+            top: -1px;
+      &:hover , li.active
+        > ul
+          visibility: inherit;
+          opacity: 1;
+  .navbar-toggle
+    display: none;
+    padding: 5px 10px;
+    [class*=icon]
+      margin: 0;
+
+  @media (max-width: 500px)
+    .navbar-toggle
+        display: inline-block;
+    .navbar-inner
+      position: fixed;
+      left: 0;
+      top:0;
+      width: 250px;
+      height: 100%;
+      transform:translateX(0);
+      z-index: 90;
+      li
+        float: none; width: 100%; text-align: left;
+    li ul
+      position: static;
+
+.navbar-toggle
+  background: #eee;
+
+.side
+  .navbar
+    li
+      float: none;
+
+
+.navbar-fixed,.navbar-abs
+  padding-top: 30px;
+  .navbar
+    top: 0 ;
+    left: 0;
+    width: 100%;
+  &.bottom
+    padding-top: 0;
+    padding-bottom: 30px;
+    .navbar
+      top:auto;
+      bottom: 0;
+
+.navbar-fixed
+  .navbar
+    position: fixed;
+
+.navbar-abs
+  .navbar
+    position: absolute;
+//.nav-pills
+
+
+
+
+
+
+
+

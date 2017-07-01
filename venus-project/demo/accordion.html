@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Accordion</title>
+
+    <meta name="keywords" content="Accordion,手风琴效果"/>
+    <meta name="description" content="手风琴效果"/>
+    <link rel="stylesheet" href="../css/font-awesome/font-awesome.css"/>
+
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+</head>
+
+<body>
+<div class="code-example" title="horizontal panel click ">
+    <div class="panel active collapse" >
+        <div class="panel-body" id="panel">
+            <div class="contain ">...</div>
+        </div>
+        <button class="btn btn-primary" type="button" href="#panel" data-collapse>toggle</button>
+    </div>
+</div>
+<div class="code-example" title="horizontal panel click ">
+    <div class="panel-group">
+        <div class="panel active" data-group="panel">
+            <div class="panel-heading" data-collapse="#panel1">
+                <div class="contain "><i class="icon icon-chevron-down pull-right"></i>heading</div>
+            </div>
+            <div class="panel-body" id="panel1">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+        <div class="panel" data-group="panel">
+            <div class="panel-heading" data-collapse="#panel2">
+                <div class="contain "><i class="icon icon-minus-sign"></i>heading</div>
+            </div>
+            <div class="panel-body" id="panel2">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+        <div class="panel" data-group="panel">
+            <div class="panel-heading" data-collapse="#panel3">
+                <div class="contain ">heading</div>
+            </div>
+            <div class="panel-body" id="panel3">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="code-example" title="horizontal panel click ">
+    <div class="panel-group horizontal" >
+        <div class="panel active" data-group="panel1" data-prop="opacity,width">
+            <div class="panel-heading"  data-collapse>
+                <div class="contain ">heading</div>
+            </div>
+            <div class="panel-body" id="panel11">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+        <div class="panel " data-group="panel1" data-prop="opacity,width">
+            <div class="panel-heading" data-collapse>
+                <div class="contain ">heading</div>
+            </div>
+            <div class="panel-body" id="panel22">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+        <div class="panel " data-group="panel1" data-prop="opacity,width">
+            <a href="#panel33" class="panel-heading" data-collapse>
+                <span class="contain ">heading</span>
+            </a>
+            <div class="panel-body" id="panel33">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="code-example" title="panel">
+    <script>
+        $(function(){
+            $('[data-group]').collapse('show',2);
+        })
+    </script>
+
+    <script>
+        $(function(){
+            $('.collapse').collapse();
+        })
+        $('.panel').on('shown',function(e){ console.log(e) })
+        .on('hidden',function(e){ console.log(e) })
+    </script>
+</div>
+<script type="text/javascript" src="../lib/jquery.once.min.js"></script>
+<!--<script type="text/javascript" src="../lib/jquery.jquery-easing.min.js"></script>-->
+<script type="text/javascript" src="../js/plugins/jquery.collapse.js"></script>
+<!--
+<script type="text/javascript" src="../js/plugins/zero/jquery.loader.js"></script>
+-->
+
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+
+</body>
+</html>

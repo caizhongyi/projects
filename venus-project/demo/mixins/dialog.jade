@@ -1,0 +1,23 @@
+mixin dialog( id , title , animate )
+   .dialog( title = title , id = id , data-animate = animate)
+        .dialog-container
+            .dialog-header.clearfix
+                h3.dialog-title= title || '提示'
+                .operate
+                    a(href="javascript:;", 'data-hide') ×
+            .dialog-body.clearfix
+                if( block )
+                    block
+                else
+                    p ...
+            .dialog-footer.clearfix
+                a.btn.btn-primary('data-hide', href='javascript:;') 确定
+                a.btn('data-hide', href='javascript:;') 取消
+
+//-.mixin dialog-blank( id ,  classes )
+    .dialog( id = id )
+        .dialog-container( class = classes )
+            if( block )
+                block
+
+

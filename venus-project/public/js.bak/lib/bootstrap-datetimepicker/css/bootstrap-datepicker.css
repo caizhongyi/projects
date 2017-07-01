@@ -1,0 +1,61 @@
+
+.datetimepicker {
+    width: 300px;
+    position: absolute;
+    background: #fff;
+    box-shadow: 1px 1px 5px #ddd;
+    border: 1px solid #ddd;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    list-style: none outside none;
+    background-clip: padding-box;
+    display: none;
+}
+
+.datetimepicker td, .datetimepicker th {
+    padding: 5px 7px;
+}
+
+.datetimepicker .dow {
+    border: none;
+}
+
+.datetimepicker .icon-arrow-left,
+.datetimepicker .icon-arrow-right {
+    border-style: solid;
+    border-width: 6px;
+    border-color: #0099cc transparent transparent transparent;
+    height: 0;
+    font-size: 0;
+    width: 0;
+}
+
+.datetimepicker .icon-arrow-left {
+    border-color: transparent #0099cc transparent transparent;
+    margin-left: -6px;
+}
+
+.datetimepicker .icon-arrow-right {
+    border-color: transparent transparent transparent #0099cc;
+    margin-right: 0px;
+}
+
+.datetimepicker table tr td.active, .datetimepicker table tr td.day:hover,
+.datetimepicker table tr td span.active, .datetimepicker table tr td span:hover {
+    border-radius: 0;
+    background: #0052ff;
+    color: #fff;
+}
+
+.datetimepicker table tr td.disabled, .datetimepicker table tr td.disabled:hover,
+.datetimepicker table tr td span.disabled, .datetimepicker table tr td span.disabled:hover {
+    background: #eee;
+    border-radius: 0;
+    color: inherit;
+}
+
+.datetimepicker table tr td span {
+    margin: 0;
+    width: 25%;
+}

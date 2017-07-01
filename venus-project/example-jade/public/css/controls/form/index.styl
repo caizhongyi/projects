@@ -1,0 +1,58 @@
+@require "../../mixins/index"
+
+@keyframes help
+    0%
+        left 90px;
+        opacity 0;
+    100%
+        left: 0;
+        opacity 1;
+
+
+.form
+    form-size ?= xs sm md lg xlg
+    form-label-width = 60px
+    &-horizontal
+        clearfix();
+        .form-group
+            float: left;
+    &-group
+        margin: 10px 0;
+        & + &
+            margin-top 0;
+
+    &-label
+        display inline-block
+
+    &-center
+        width 243px
+        margin 0 auto;
+
+    &-help
+        margin-left 10px;
+        position relative
+        //transition all .9s ease-in-out-back
+        display inline-block
+        &.text-danger,&.text-success
+            animation help .9s ease-in-out-back both
+    &-block
+        .form-label
+            display block
+            margin-bottom: 5px;
+
+    for i in form-size
+        form-label-width += 20
+        &-{i}
+            .form-group
+                padding-left: form-label-width;
+
+            .form-label
+                margin-left - form-label-width;
+                width form-label-width
+
+.pickbox
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 20px;;
+    > label
+        margin-left -@padding-left;

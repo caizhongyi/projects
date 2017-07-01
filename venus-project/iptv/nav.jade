@@ -1,0 +1,29 @@
+extends layout
+
+block container
+    table.nav
+        tr.optionsbar
+            td 请选择分类
+            td.text-right
+                a(href="order.html").btn.btn-primary 购物车
+        tr
+            td(colspan="100%")
+                table.table-list
+                    tr
+                        -for(var i = 0 ; i <= 3; i ++)
+                            td
+                                .thumbnail
+                                    a(href="products.html")
+                                        img(src="../public/img/1.jpg" , width="200", height="150")
+                                    .thumbnail-info
+                                        span .title 分类#{i}
+                    tr
+                        -for(var i = 0 ; i <= 3; i ++)
+                            td
+                                .thumbnail
+                                    a(href="products.html")
+                                        img(src="../public/img/1.jpg" , width="200", height="150")
+                                    .thumbnail-info
+                                        span .title 分类#{i}
+
+

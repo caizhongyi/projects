@@ -1,0 +1,45 @@
+extends layout
+
+block container
+    table.nav
+        tr.optionsbar
+            td(colspan=3)
+                | 结算 (共价
+                span.price ￥200
+                | 元)
+                span.small &nbsp;【提示：删除请选种按 xx 键】
+                label
+                    span &nbsp;手机号码：
+                    input.input(type=text,placeholder="请输入手机号")
+            td.text-right
+                a.btn.btn-primary(href="success.html") 支付
+        tr
+            td(colspan="100%")
+                table.table-list
+                    tr
+                    -for(var i = 0 ; i <= 3; i ++)
+                        td
+                            div.thumbnail(href="javascript:;")
+                                img(src="../public/img/1.jpg", width="200", height="150")
+                                div.thumbnail-info
+                                    div.title
+                                        span 商品#{i}
+                                        span.count
+                                            | x
+                                            input(type=text,value="2").input-xs.input
+                                .small.price ￥100.00
+                    tr
+                        -for(var i = 0 ; i <= 3; i ++)
+                            td
+                                .thumbnail(href="javascript:;")
+                                    img(src="../public/img/1.jpg", width="200", height="150")
+                                    .thumbnail-info
+                                        div.title
+                                            span 商品#{i}
+                                            span.count
+                                                | x
+                                                input(type=text,value="2").input-xs.input
+
+                                    .small.price ￥100.00
+
+

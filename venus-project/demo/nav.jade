@@ -1,0 +1,30 @@
+//
+   Created by caizhongyi on 2014/9/5.
+include mixins/index
+extends layout
+
+block append head
+    title List
+
+block append content
+   .code-example( title = 'navbar')
+       .navbar
+           a.navbar-toggle(href="###")
+               i.icon-list
+           ul.navbar-inner.collapse
+               +list( 4 )
+                  a item
+                    //ul
+                        +list( 4 )
+                           a item
+            script.
+                $('.navbar-toggle').click(function(e){
+                    e.stopPropagation();
+                    $(this).next('.navbar-inner').toggleClass('collapse');
+                })
+                $('.navbar-inner').click(function(e){e.stopPropagation();})
+                $(document).click(function(){$('.navbar-inner').addClass('collapse');})
+
+
+
+

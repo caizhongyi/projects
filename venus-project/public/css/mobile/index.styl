@@ -1,0 +1,22 @@
+@require '../mixins/index'
+// TODO mobile header
+.header
+    if combine == true
+        @extend .clearfix
+    else
+        clearfix();
+    -width = 70px;
+    background:#4eaeeb;
+    color: #fff;
+    font-size 16px;
+    text-align center;
+    padding 10px  -width;
+    min-height 40px;
+    .btn-left,
+    .btn-right
+        width  -width;
+        position absolute;
+    .btn-left
+        left: 0;
+    .btn-right
+        right: 0;

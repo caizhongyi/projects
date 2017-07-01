@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>datetime</title>
+
+    <meta name="keywords" content="datetime"/>
+    <meta name="description" content="datetime"/>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/controls/cube.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+
+    <link rel="stylesheet" href="lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"/>
+    <link rel="stylesheet" href="lib/bootstrap-datetimepicker/css/bootstrap-datepicker.css"/>
+    <link href="lib/mobiscroll-2.6.1/css/mobiscroll.custom-2.6.1.min.css" rel="stylesheet" type="text/css"/>
+    <script src="../lib/mobiscroll-2.6.1/js/mobiscroll.custom-2.6.1.min.js" type="text/javascript"></script>
+    <script src="../lib/mobiscroll-2.6.1/js/mobiscroll.lanuage-zh.js" type="text/javascript"></script>
+
+</head>
+<body>
+<a href="http://www.bootcss.com/p/bootstrap-datetimepicker/demo.htm">http://www.bootcss.com/p/bootstrap-datetimepicker/demo.htm</a>
+
+
+<div class="code-example" title="daterangepicker">
+    <input size="16" type="text" value="" readonly class="date">
+    <script type="text/javascript">
+        $(function () {
+            $(".date").datetimepicker({
+                format: "yyyy-mm-dd hh:ii",
+                autoclose: true,
+                todayBtn: true,
+                startDate: "2013-02-14 10:00",
+                //endDate: "2013-02-14 10:00",
+                // linkFormat: "yyyy-mm-dd hh:ii"
+                minuteStep: 10
+            });
+        })
+    </script>
+</div>
+<div class="code-example" title="daterangepicker">
+    <input size="16" type="text" value="" readonly class="startdate">
+    <input size="16" type="text" value="" readonly class="enddate">
+    <script type="text/javascript">
+        $(function () {
+
+            $(".startdate ,.enddate").datetimerangepicker({
+                format: "yyyy-mm-dd hh:ii",
+                autoclose: true,
+                todayBtn: false,
+                // startDate:  $(".startdate").val(),
+                //  endDate: $(".enddate").val(),
+                // linkFormat: "yyyy-mm-dd hh:ii"
+                minuteStep: 10,
+                language: 'zh-CN'
+            })
+        })
+    </script>
+</div>
+
+<div class="code-example" title="date mobile">
+    <input id="birthday" size="16" type="text" value="" readonly>
+    <script>
+        var opt = {};
+        opt.date = {preset: 'date'};
+        opt.datetime = { preset: 'datetime', minDate: new Date(2012, 3, 10, 9, 22), maxDate: new Date(2014, 7, 30, 15, 44), stepMinute: 5  };
+        opt.time = {preset: 'time'};
+        opt.tree_list = {preset: 'list', labels: ['Region', 'Country', 'City']};
+        opt.image_text = {preset: 'list', labels: ['Cars']};
+        opt.select = {preset: 'select'};
+        <!--Script-->
+        $('#birthday').scroller('destroy').scroller($.extend(opt['date'], { theme: 'android-ics', mode: 'scroller', display: 'modal', lang: 'zh' }));
+
+    </script>
+</div>
+
+
+<script src="../lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../lib/bootstrap-datetimepicker/js/bootstrap-datetimerangepicker.js"></script>
+<script src="../lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+</body>
+</html>

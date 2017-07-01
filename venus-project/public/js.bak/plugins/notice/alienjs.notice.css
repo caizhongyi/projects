@@ -1,0 +1,10 @@
+.notice{  overflow: hidden; position: relative; height: 150px;}
+.notice li ,.notice ,.notice-list{ list-style: none; margin: 0; padding: 0; }
+.notice li{ position: absolute; left: 0; top: 0; width: 100% ; height: 100%; background: #fff; }
+.notice .ready{ z-index: 1; }
+.notice .in{ z-index: 2; }
+.notice .prev{ left: 5px; }
+.notice .next{ right: 5px; }
+.notice .prev ,.notice .next{ position: absolute; z-index: 10; top: 40%; font-size: 18px; visibility: hidden;opacity: 0; transition:all .2s ease-in-out; color: #000;}
+.notice:hover  .prev,.notice:hover  .next{ visibility: inherit; opacity: 1;}
+.notice [class*=icon]{ margin: 0;}

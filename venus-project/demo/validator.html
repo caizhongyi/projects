@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Validator</title>
+
+    <meta name="keywords" content="Validator，验证样式"/>
+    <meta name="description" content="验证样式"/>
+
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+</head>
+<body>
+
+<div class="code-example" title="form validate">
+    <form class="form form-en" data-control="validator" action="http://www.qq.com" method="post"
+          onsubmit="return false;">
+        <div class="form-group">
+            <label class="form-label">user:</label><input type="text" class="form-control input" required
+                                                          data-tip="#user-tip" id="user"/><span id="user-tip"
+                                                                                                class="form-help "></span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">nickname:</label><input type="text" class="form-control input" required disabled/><span
+                class="form-help "></span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">password:</label><input id="password" type="password" class="form-control input"
+                                                              data-tip="#password-tip" required/><span id="password-tip"
+                                                                                                       class="form-help"></span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">conform:</label><input type="password" class="form-control input"
+                                                             data-compare="#password" id="conform" required/><span
+                id="conform-tip" class="form-tip form-help"></span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">class:</label><input type="text" class="input"/>
+            <ul class="form-panel unstyled">
+                <li><input type="text" class="input"/></li>
+                <li><input type="text" class="input"/></li>
+            </ul>
+
+        </div>
+        <div class="form-group">
+            <div class="form-panel unstyled">
+                <input type="submit" class="btn btn-primary" value="submit"/><input type="button"
+                                                                                    class="btn  btn-default"
+                                                                                    value="cancle"/>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<pre class="prettyprint linenums">
+    标签定义扩展
+    required  : 是否为空 ;
+    data-tip : 提示标签 ;
+    data-role: 为扩展对像的名称 ;
+    data-equal : 为对比的标签;
+    验证扩展
+    zero.validator.rules.user = {
+        fn      :   function (val) { return /^[a-z\d_\u4e00-\u9fa5]{6,20}/i.test(val);},
+       // ajax    :   function( callback ){ $.get('',{} , function(data){ callback && callback.call(this , true) }); }  //当需要服务器验证时候加入
+        message :   '6~20位字符，由字母与数字组成，只能以字母开头',
+        error   :   '输入用户名格式不正确!',
+        success :   '正确!',
+        required :   '请输入用户名!'
+    }
+</pre>
+
+<div id="setting"></div>
+<div id="elem"></div>
+<div id="event"></div>
+<div id="fun"></div>
+<script type="text/javascript">
+    $(function () {
+
+        $('#setting').reponseTable([
+            [ 'data-tip' , 'string' , '提示信息框[选择器]，如果为空默认为下一元素', ''],
+            [ 'tipTarget' , 'string' , '提示标签', ''],
+            [ 'init' , 'function' , 'window.dialogInit' , '初始化后的回调']
+        ], 'setting');
+
+
+        $('#elem').reponseTable([
+            [ 'data-tip' , '' , '提示信息框[选择器]，如果为空默认为下一元素'],
+            [ 'required' , 'false' , '是否可为空'],
+            [ 'data-compare' , '' , '值对比']
+        ], 'attr');
+
+        $('#event').reponseTable([
+            [ '用户名' , 'user', '用户名验证 6~20位字符，由字母与数字组成，只能以字母开头'],
+            [ '手机' , 'tel', '手机验证'],
+            [ '邮件' , 'email', '邮件验证'],
+            [ '身份证' , 'cardId', '身份证验证'],
+            [ 'RMB' , 'money', 'RMB验证'],
+            [ 'http地址' , 'url', 'http地址验证'],
+            [ 'ip' , 'ip', 'ip地址验证'],
+            [ '时间' , 'date', '时间验证'],
+            [ '手机' , 'mobile', '手机验证'],
+            [ '密码' , 'password', '密码验证6~16位字符，字母区分大小写'],
+            [ '图片验证' , 'image', '图片验证支持.bmp,.gif,.png,.jpeg!'],
+            [ '电话验证' , 'phone', '电话验证，手机和固话']
+        ], '<caption>验证类型</caption><tr>名称<th></th><th>说明</th></tr>');
+
+        /* $('#fun').reponseTable( [
+         [ 'show()' , '' , '' , '显示弹出窗口'],
+         [ 'hide()' , '' , '' , '关闭弹出窗口'],
+         ] , 'fun' );*/
+    })
+</script>
+
+<script src="../lib/jquery.validateReg.min.js"></script>
+<script src="../js/plugins/jquery.validator.js"></script>
+<script>
+    $('.form').validator();
+</script>
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+</body>
+</html>

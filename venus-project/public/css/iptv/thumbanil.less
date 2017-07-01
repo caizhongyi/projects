@@ -1,0 +1,38 @@
+.thumbnail{
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 5px #ddd;
+    position: relative;
+    display: block;
+    height: 100%;
+    text-align: center;
+    .thumbnail-info{
+        width: 100%;
+        padding: 10px 0;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: #000;
+        opacity: 0.7;
+        filter: "alpha(opacity=70)";
+        color: #fff;
+    }
+    .title:extend(.text-ellipsis){ }
+    .count{
+        display: inline-block;
+        margin-left: 10px;
+        input{  margin-left: 5px;}
+    }
+    &:focus{
+        background:#e28f1b;
+        color: #fff;
+    }
+    .price{
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        background: #fff;
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+    }
+}
