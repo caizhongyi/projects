@@ -1,0 +1,84 @@
+/**
+ * GLOBAL MIXINS
+ */
+
+/*
+ * Global font-face mixin
+ * Make sure that the font name matches the name of the font files
+ * e.g. font-face(DIN, '/fonts')
+ */
+font-face(name, folder, weight = normal, style = normal)
+  @font-face
+    font-family: name
+    src: url(folder unquote('/') name unquote('.eot') '?#iefix') format('embedded-opentype'), url(folder unquote('/') name unquote('.woff')) format('woff'), url(folder unquote('/') name unquote('.ttf')) format('truetype'), url(folder unquote('/') name unquote('.svg') '#' name) format('svg');
+    font-weight: weight
+    font-style: style
+
+/*
+ * Text selection mixin
+ * e.g. text-selection(#F80, #EEE)
+ */
+text-selection(highlight, textColor = null)
+  textColor = white unless textColor
+
+  ::-moz-selection
+    background: highlight
+    color: textColor
+  ::selection
+    background: highlight
+    color: textColor
+
+/*
+ * Global border-box mixin best-practice
+ * http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+ * e.g. border-box()
+ */
+border-box()
+  html
+    box-sizing border-box
+  *, *:before, *:after
+    box-sizing inherit
+
+/*
+ * Base classes
+ * e.g. base-classes()
+ */
+base-classes()
+  .clear
+    clear: both
+
+  .pull-left
+    float: left
+
+  .pull-right
+    float: right
+
+  .text-center
+    center()
+
+  .bold
+    bold()
+
+  .italic
+    italic()
+
+  .bullet
+    list-style: circle
+
+  .show
+    block()
+
+  .hide
+    hide()
+
+  .clearfix
+    clearfix()
+
+  .rounded
+    round()
+
+  .visible
+    visibility: visible
+
+  .hidden
+    visibility: hidden

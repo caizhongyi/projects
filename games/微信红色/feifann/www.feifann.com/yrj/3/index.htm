@@ -1,0 +1,249 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gb2312">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<title>微信红包</title>
+<link rel="stylesheet" href="css/fake.css" tppabs="http://www.feifann.com/yrj/3/css/fake.css">
+<script type="text/javascript" src="js/jquery-1.7.2.min.js" tppabs="http://www.feifann.com/yrj/3/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jweixin-1.0.0.js" tppabs="http://www.feifann.com/yrj/3/js/jweixin-1.0.0.js"></script>
+</head>
+<style type="text/css">
+	.body{min-height:100%;}
+	.body::after{background:#000 url("images/foolredpacket/bg.jpg") no-repeat center center;background-size:100% auto;}
+</style>
+<body>
+	
+	<div class="body">
+		<div class="crush"></div>
+		<dl class="main">
+			<dd><img src="images/packet.png" tppabs="http://www.feifann.com/yrj/3/images/packet.png" /></dd>
+		</dl>
+	</div>
+</body>
+<audio class="audio" src="images/foolredpacket/crush0.mp3" tppabs="http://www.feifann.com/yrj/3/images/foolredpacket/crush0.mp3" preload="auto"></audio>
+<audio class="audio" src="images/foolredpacket/crush1.mp3" tppabs="http://www.feifann.com/yrj/3/images/foolredpacket/crush1.mp3" preload="auto"></audio>
+<audio class="audio" src="images/foolredpacket/crush2.mp3" tppabs="http://www.feifann.com/yrj/3/images/foolredpacket/crush2.mp3" preload="auto"></audio>
+
+
+	<input type="hidden" id="urltype" value="1"/>
+	<input type="hidden" id="followurl" value=""/>
+
+</html>
+<script type="text/javascript">
+	var count = 0;
+	$('.crush').click(function(e){
+		$('.audio')[count%3].play();
+		$(this).attr("style","background:rgba(0,0,0,.5);");
+		$(this).append('<img style="left:'+e.pageX+'px;top:'+e.pageY+'px" src="images/foolredpacket/crush'+(count%3)+'.png" />');
+		count ++;
+		if(count == 3){
+			setTimeout("prompt()",1000); 
+		}
+	});
+
+	function share(){
+		if($('#urltype').val() == '0'){
+			window.location.href = $('#followurl').val();
+			return;
+		}
+		$('body').append('<div class="share" onclick="remove(this)">\
+			<img src="images/foolredpacket/share.png"/*tpa=http://www.feifann.com/yrj/3/images/foolredpacket/share.png*/ />\
+			<div class="clear"></div>\
+			<p class="tr">点击右上角</p>\
+			<p class="tr">让你的朋友们拆红包吧~</p>\
+			<div class="copyright"><a href="http://www.gsgqc.com/weixin/sw">关注我</a> </div>\
+		</div>');
+	}
+
+	function prompt(){
+		$('body').append('<div class="prompt">\
+			<div class="cont">\
+				<div class="space_30"></div>\
+				<p>只是个玩笑，愚人节快乐!</p>\
+				<div class="space_30"></div>\
+				<a class="btn" onclick="share()">我也要愚人</a>\
+			</div>\
+			<div class="bg"></div>\
+		</div>');
+	}
+
+	
+</script> <script src="../../fx/jq.js" tppabs="http://www.feifann.com/fx/jq.js"></script>
+  <script src="../../../res.wx.qq.com/open/js/jweixin-1.0.0.js" tppabs="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+ 
+<script type="text/javascript">
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+  
+ getConfig();
+	  
+	/**获取配置*/
+	function getConfig(){
+		$.post("http://www.feifann.com/fx/jssdk.php",
+			{appid: "wxf9133b1754e3aa14", url: window.location.href.split('#')[0], method: "ticket"},
+			function(data){
+				
+         config = eval('('+data+')');
+		
+     
+			
+			
+			
+			
+			
+			 wx.config({
+   debug: false,
+      appId: config.appId,
+		  timestamp: config.timestamp,
+		  nonceStr: config.nonceStr,
+		  signature: config.signature,
+
+       
+    jsApiList: [
+     'checkJsApi',
+			'onMenuShareTimeline',
+			'onMenuShareAppMessage',
+			'onMenuShareQQ',
+			'onMenuShareWeibo',
+			'hideMenuItems',
+			'showMenuItems',
+			'hideAllNonBaseMenuItem',
+			'showAllNonBaseMenuItem',
+			'translateVoice',
+			'startRecord',
+			'stopRecord',
+			'onRecordEnd',
+			'playVoice',
+			'pauseVoice',
+			'stopVoice',
+			'uploadVoice',
+			'downloadVoice',
+			'chooseImage',
+			'previewImage',
+			'uploadImage',
+			'downloadImage',
+			'getNetworkType',
+			'openLocation',
+			'getLocation',
+			'hideOptionMenu',
+			'showOptionMenu',
+			'closeWindow',
+			'scanQRCode',
+			'chooseWXPay',
+			'openProductSpecificView',
+			'addCard',
+			'chooseCard',
+			'openCard'
+      // 所有要调用的 API 都要加到这个列表中
+    ]
+	
+	
+  });
+  
+		 
+ var c = Math.floor(Math.random()*3+1); 
+ var d;
+ if(c==1)
+ {
+	 d="http://mp.weixin.qq.com/s?__biz=MzA3MzI4MTk2Ng==&mid=232428698&idx=1&sn=2b098b900f97b8ca9e4c72fd73175f5f#rd";
+ }
+ else if(c==2)
+ {
+	 d="http://mp.weixin.qq.com/s?__biz=MzA3MzI4MTk2Ng==&mid=232428823&idx=1&sn=ef654b39d6e30aa03d2a7dd43d12cd47#rd";
+ }
+
+ else if(c==3)
+ {
+	 d="http://mp.weixin.qq.com/s?__biz=MzA3MzI4MTk2Ng==&mid=232428833&idx=1&sn=478e78296e3658e28990812f18ea8308#rd";
+ }
+
+
+  
+		
+  var wxData = {
+    "appId": "",
+    "imgUrl" : 'images/logo.png'/*tpa=http://www.feifann.com/yrj/3/images/logo.png*/,
+    "link" : 'index.htm'/*tpa=http://www.feifann.com/yrj/3/*/,
+    "desc" : '查看红包',
+	"title" : "恭喜发财，大吉大利！"
+  };
+  var str_mp = "http://www.gsgqc.com/weixin/sw";//关注的链接
+wx.ready(function () {
+  // 2. 分享接口
+  // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+    wx.onMenuShareAppMessage({
+      title: wxData.title,
+      desc: wxData.desc,
+      link: wxData.link,
+      imgUrl: wxData.imgUrl,
+      trigger: function (res) {
+		  
+      },
+      success: function (res) {
+		location.href = str_mp;//关注的链接
+      },
+      cancel: function (res) {
+		 alert("这么大的红包，真的不分享给朋友吗？");
+      },
+      fail: function (res) {
+        alert(JSON.stringify(res));
+      }
+    });
+
+    wx.onMenuShareTimeline({
+      title: wxData.title,
+      desc: wxData.desc,
+      link: d,
+      imgUrl: wxData.imgUrl,
+      trigger: function (res) {
+      },
+      success: function (res) {
+		location.href = str_mp;//关注的链接
+      },
+      cancel: function (res) {
+		 
+              alert("这么大的红包，真的不分享给朋友吗？");
+
+      },
+      fail: function (res) {
+        alert(JSON.stringify(res));
+      }
+    });
+});
+
+wx.error(function (res) {
+  alert(res.errMsg);
+});
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			}
+		);
+	}
+  
+	  
+
+	
+ 
+</script>

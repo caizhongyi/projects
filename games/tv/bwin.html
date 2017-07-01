@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <title>{$title}</title>
+
+</head>
+<body class="page">
+    <div class="page-info">
+        <div class="win">
+            <img src="img/logo-default.png" alt=""/>
+        </div>
+        <input type="hidden" id="playtimes" value="{$total}" />
+        <input type="hidden" id="isshared" value="{$user['isshared']}" />
+        <input type="hidden" id="moretimes" value="{$itv['more_play_time']}" />
+        <div class="form form-tel">
+            <div class="alert text-center">
+                您今天捡到了{$score}大洋！ <br/>
+                高清智能ITV敬你是条汉子， <br/>
+                <span class="text-waring money">{$data['award']}</span>请笑纳！
+                <br/><br/>
+                <button class="btn btn-primary"  onclick="checkshared()">再玩一次</button>
+            </div>
+        </div>
+    </div>
+    <div class="alert-bottom"><img src=“files/s20M.png" alt=""/></div>
+    <div class="dialog" style="display: none" id="ale">
+        <div class="dialog-header"></div>
+        <div class="dialog-body">
+            {if $texttype == 1}每天您只能捡一次话费，千元话费还没到手怎么破？悄悄告诉你，每成功邀请1位好友打开活动链接，即可多获得3次刮奖机会哦！快分享吧！
+            {else}你今天所有的游戏机会均已用尽，明天再来试试运气吧！
+            {/if}
+        </div>
+        <div class="text-center dialog-footer">
+            {if $texttype == 1}<a href ="###" onclick="share()"><button class="btn">分享好友</button></a>{else}<a href ="###" onclick="document.getElementById('ale').style.display = 'none';"><button class="btn">返回</button></a>{/if}
+        </div>
+    </div>
+    <div id="share-wx">
+        <p style="text-align: right; padding-left: 10px;">
+            <img id="share-wx-img" style="padding-right: 25px; max-width: 280px;"  src=“files/2000.png">
+        </p>
+    </div>
+    {template 'share'}
+    <script type="text/javascript">
+        function checkshared(){
+            var id = {php echo $id} ;
+            var fu = '{php echo $fromuser}' ;
+            var membertype = {php echo $membertype} ;
+            var type = {php echo $texttype};
+            if(type ==1 || type == 2){
+                document.getElementById("ale").style.display = "block";
+            }else{
+                location.href = "{php echo $this->createMobileUrl('home');}&id=" + id + "&from_user=" + fu + "&membertype=" + membertype;
+            }
+            return true;
+        }
+
+        function share() {
+            document.getElementById('share-wx').style.display = 'block';
+            document.getElementById('share-wx').onclick = function () {
+                this.style.display = 'none';
+            };
+            var id = {php echo $id} ;
+            var fu = '{php echo $fromuser}' ;
+            var membertype = {php echo $membertype} ;
+            var loc = "{php echo $this->createMobileUrl('share');}&id=" + id + "&from_user=" + fu + "&membertype=" + membertype;
+            $.get(loc);
+        }
+
+    </script>
+</body>
+
+</html>

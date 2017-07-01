@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, target-densitydpi=10dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<title>HTML5-2048</title>
+</head>
+<body style="text-align:center;margin:20px 0 10px 0;padding:0;">
+<canvas id="canvas" width="510" height='700' style="background: #996;border-radius:10px;"></canvas>
+<script type="text/javascript">
+    var game = {
+        canvas : document.getElementById('canvas'),
+        ctx : this.canvas.getContext('2d'),
+        cellCount : 4,
+        cellWidth : 125,
+        values : [2,4,2,2],
+        style : {
+            2:{size:70,color:'#885',background:'#eee',left:50,top:280},
+            4:{size:70,color:'#885',background:'#eee',left:50,top:280},
+            8:{size:70,color:'#885',background:'#eee',left:48,top:280},
+            16:{size:60,color:'#eee',background:'#f59563',left:32,top:278},
+            32:{size:60,color:'#eee',background:'#f59563',left:34,top:278},
+            64:{size:60,color:'#eee',background:'#f59563',left:35,top:278},
+            128:{size:50,color:'#f65e3b',background:'#f59563',left:25,top:275},
+            256:{size:50,color:'#f65e3b',background:'#f59563',left:25,top:275},
+            512:{size:50,color:'#f65e3b',background:'#f59563',left:25,top:275},
+            1024:{size:40,color:'#666',background:'#f59563',left:23,top:272},
+            2048:{size:40,color:'#666',background:'#f59563',left:23,top:272},
+            4096:{size:40,color:'#666',background:'#555',left:17,top:274},
+            8192:{size:40,color:'#eee',background:'#555',left:17,top:274},
+            16384:{size:35,color:'#eee',background:'#555',left:17,top:274}
+        },
+        getRandom : function (max) {
+            return parseInt(Math.random() * 1000000 % (max));
+        },
+        roundRect : function(x, y, w, h, r, color){
+            this.ctx.moveTo(x+r, y);
+            this.ctx.arcTo(x+w, y, x+w, y+h, r);
+            this.ctx.arcTo(x+w, y+h, x, y+h, r);
+            this.ctx.arcTo(x, y+h, x, y, r);
+            this.ctx.arcTo(x, y, x+w, y, r);
+            this.ctx.fillStyle = color;
+        },
+        actions : {},
+        play : function (name, action, interval) {
+            var me = this;
+            this.actions[name] = setInterval(function () {
+                action();
+            }, interval || 50);
+        },
+        stop : function (name) {
+            clearInterval(this.actions[name]);
+        },
+        start : function(){
+            this.map.init();
+            this.ready.init();
+            this.score.init();
+            this.draw();
+            document.onkeyup = this.onkeyup;
+            this.canvas.onclick = this.onclick;
+        },
+        draw : function(){
+            game.map.draw();
+            game.map.drawForStart();
+            game.score.draw();
+        },
+        isMoving: function () {
+            return this.ready.isMoving || this.map.isMoving;
+        },
+        onkeyup : function (event) {
+            
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if(e && e.keyCode==37 || e && e.keyCode==100){     //left
+                game.move(1);
+            }
+            if(e && e.keyCode==38 || e && e.keyCode==104){     //up
+                game.move(3);
+            }
+            if(e && e.keyCode==39 || e && e.keyCode==102){     //right
+                game.move(2);
+            }
+            if(e && e.keyCode==40 || e && e.keyCode==98){     //down
+                game.move(4);
+            }
+        },
+        onclick : function (e){
+            var px = e.offsetX || (e.clientX - game.canvas.offsetLeft);
+            var py = e.offsetY || (e.clientY - game.canvas.offsetTop);
+            
+            if (px < 0 || py < 0 || px > 510 || py > 700) {
+                return;
+            }
+            if(px > 320 && px < 500 && py >130 && py < 180){
+                game.store.cleanStore();
+                game.start();
+            }
+            if(game.gameOver.isOver()){
+                if(px > 180 && px < 330 && py >480 && py < 530){
+                    game.store.cleanStore();
+                    game.start();
+                }
+            }
+        }
+    };
+    game.gameOver = {
+        over : function(){
+            var ctx = game.ctx;
+            ctx.save();
+            ctx.beginPath();
+            game.roundRect(10, 200, 490, 490, 10, '#000');
+            ctx.globalAlpha=0.8;
+            ctx.fill();
+            ctx.closePath();
+            ctx.beginPath();
+            game.roundRect(180, 480, 150, 50, 10, '#fff');
+            ctx.fill();
+
+            ctx.font = '70px Arial';
+            ctx.fillStyle = '#fff';
+            ctx.fillText('Game Over' , 70,390);
+            ctx.font = '30px Arial';
+            ctx.fillStyle = '#330';
+            ctx.fillText('Try Again' , 190,515);
+
+            ctx.closePath();
+            ctx.restore();
+        },
+        isOver : function(){
+            var isOver = true;
+            if(!game.map.getEmptyCells()){
+                game.map.cells.forEach(function(cellX){
+                    var cel=[];
+                    for(var i = 0; i < cellX.length; i++){
+                        if(cellX[i].value == cel[i-1]){
+                            isOver = false;
+                        }
+                        cel[i] = cellX[i].value;
+                    }
+                });
+                game.map.cellsY().forEach(function(cellY){
+                    var cel=[];
+                    for(var i = 0; i < cellY.length; i++){
+                        if(cellY[i].value == cel[i-1]){
+                            isOver = false;
+                        }
+                        cel[i] = cellY[i].value;
+                    }
+                });
+                return isOver;
+            }
+            return false;
+        }
+    };
+    game.ready = {
+        isMoving: false,
+        init : function(){
+            this.start();
+        },
+        start : function(){
+            var store = game.store.getStore();
+            if(store.length > 1){
+                store.forEach(function(cell){
+                    game.map.addCell(cell);
+                });
+                return;
+            }
+            for(var i=0; i<2;i++){
+                var value = game.values[game.getRandom(game.values.length)];
+                var emptes = game.map.getEmptyCells();
+                emptes.value = value;
+                game.map.addCell(emptes);
+            }
+        },
+        general : function(){
+            var emptes = game.map.getEmptyCells();
+            if(emptes){
+                emptes.value = game.values[game.getRandom(game.values.length)];
+                game.map.addCell(emptes).draw(1);
+                game.store.addStore(emptes);
+            }
+        },
+        isMove:function(newCell, reCell){
+            this.isMoving = false;
+            for(var i = 0; i < newCell.length; i++){
+                if(newCell[i].value != reCell[i].value || newCell[i].x != reCell[i].x || newCell[i].y != reCell[i].y){
+                    this.isMoving = true;
+                }
+            }
+            return this.isMoving;
+        }
+        
+    };
+    game.map = {
+        isMoving: false,
+        cells : [],
+        cells_X : function(){
+            var cells = [];
+            this.cells.forEach(function(cell){
+                var ce = [];
+                for(var i = cell.length; i>0 ; i--){
+                    ce . push (cell[i-1]);
+                }
+                cells .push (ce);
+            });
+            return cells;
+        },
+        cellsY : function(){
+            var cells = [];
+            for(var i = 0; i < this.cells.length; i++ ){
+                var ce = [];
+                this.cells.forEach(function(cell){
+                    ce.push(cell[i]);
+                })
+                cells.push(ce);
+            }
+            return cells;
+        },
+        cells_Y : function(){
+            var cells = [];
+            for(var j = 0; j < this.cells.length; j ++){
+                var ce = [];
+                for(var i = this.cells.length; i > 0 ; i-- ){
+                    ce.push(this.cells[i-1][j]);
+                }
+                cells.push(ce);
+            }
+            return cells;
+        },
+        init: function () {
+            this.cells = [];
+            for (var i = 0; i < game.cellCount; i++) {
+                var row = [];
+                for (var j = 0; j < game.cellCount; j++) {
+                    row.push(new cell(j, i, null));
+                }
+                this.cells.push(row);
+            }
+        },
+        getEmptyCells: function () {
+            var empties = [];
+            this.cells.forEach(function (row) {
+                row.forEach(function (son) {
+                    if (!son.value) {
+                        empties.push(new cell(son.x, son.y));
+                    }
+                });
+            });
+            if (empties.length < 1) {
+                return '';
+            }
+            var ra = game.getRandom(empties.length);
+            return empties[ra];
+        },
+        // 画 格子
+        draw: function(){
+            var ctx = game.ctx;
+            ctx.save();
+            ctx.translate(0, 190); 
+            ctx.clearRect(0, 0, 510, 510);
+            ctx.beginPath();
+            for( var i = 0; i < game.cellCount; i++){
+                for( var j = 0; j < game.cellCount; j++){
+                    var x = i * game.cellWidth,  y =  j * game.cellWidth;
+                    game.roundRect(x + 10, y + 10, 115, 115, 10, '#aaa');
+                }
+            }
+            ctx.fill();
+            ctx.closePath();
+            ctx.restore();
+        },
+        drawForStart : function(){
+            var valueCells = [];
+            game.map.cells.forEach(function(son){
+                son.forEach(function(cell){
+                    if(cell.value){
+                        valueCells.push(cell);
+                        cell.draw(1);
+                    }
+                })
+            });
+            game.store.setStore(valueCells);
+        },
+        addCell: function (cell) {
+            var thisCell = this.getCell(cell.x, cell.y);
+            thisCell.value = cell.value;
+            return this.getCell(cell.x,cell.y);
+        },
+        reCell: function (cell) {
+            var thisCell = this.getCell(cell.x, cell.y);
+            thisCell.px = cell.x * game.cellWidth;
+            thisCell.py = cell.y * game.cellWidth;
+            thisCell.value = null;
+        },
+        setCell: function (x, y, value) {
+            this.getCell(x, y).value = value;
+        },
+        getCell: function (x, y) {
+            if (x < 0 || y < 0 || x > game.cellCount || y > game.cellCount) return null;
+            return this.cells[y][x];
+        },
+        isEmpty: function (x, y) {
+            var cell = this.getCell(x, y);
+            return !cell.value;
+        }
+    };
+    game.move = function(){
+        var forward = arguments[0] ? arguments[0] : 1, steps = arguments[1] ? arguments[1] : 9, speed = [];
+        
+        switch(forward){
+            case 2 : var cells = game.map.cells_X(), forW = -1, isX = 1, isY= 0; break;
+            case 3 : var cells = game.map.cellsY(),  forW = 1,  isX = 0, isY= 1; break;
+            case 4 : var cells = game.map.cells_Y(), forW = -1, isX = 0, isY= 1; break;
+            default: var cells = game.map.cells,     forW = 1,  isX = 1, isY= 0; break;
+        }
+        for(var i=0; i< game.cellCount; i++){
+            speed[i] = forW * game.cellWidth * i / steps;
+        }
+        var newCells = [], reCells = [], i = 0, dat = new Date();
+        var nameMove = dat.getMilliseconds()+ '_'+dat.getSeconds();
+        game.play(nameMove,function(){
+            game.map.draw();
+            
+            game.ready.isMoving = false;
+            
+            cells.forEach(function(cellsX){
+                var speedNum = 0, speedPlus = 0,
+                    rowValue = [], value = null,
+                    j=0;
+                cellsX.forEach(function(cell){
+                    if(!cell.value){
+                        speedNum ++;
+                    }else{
+                        rowValue[j] = cell.value;
+                        if(i!=0 && rowValue[j] == rowValue[j-1]){
+                            speedPlus += 1;
+                            rowValue[j] = 0;
+                            value = cell.value *2;
+                        }
+                        j++;
+                        cell.px = cell.px - speed[speedNum + speedPlus] * isX;
+                        cell.py = cell.py - speed[speedNum + speedPlus] * isY;
+                        cell.draw();
+                        if(i==1){
+                            var newCell = {};
+                            newCell.x = cell.x - forW * speedNum * isX - forW * speedPlus *isX;
+                            newCell.y = cell.y - forW * speedNum * isY - forW * speedPlus *isY;
+                            value ? game.score.addScore(value): '';
+                            newCell.value = value? value : cell.value;
+                            value = null;
+                            newCells . push (newCell);
+                            reCells. push (cell);
+                        }
+                    }
+                });
+            });
+            if(i > steps-3){
+                game.stop(nameMove);
+                game.map.draw();
+                
+                var ismove = game.ready.isMove(newCells,reCells);
+                
+                reCells. forEach(function(cell){
+                    game.map.reCell(cell);
+                });
+                
+                newCells. forEach(function(cell){
+                    game.map.addCell(cell).draw();
+                });
+                game.store.setStore(newCells);
+                if(ismove){
+                    game.ready.general();
+                }else{
+                    if(game.gameOver.isOver()){
+                        game.gameOver.over();
+                    };
+                }
+            }
+            i ++;
+        },10);
+    };
+    game.score = {
+        score : 0,
+        heightest : 77832,
+        init : function(){
+            this. score = 0;
+            this.heightest = game.store.getHeightest();
+        },
+        draw : function(){
+            var ctx = game.ctx;
+            ctx.save();
+            ctx.clearRect(0, 0, 510, 190);
+            ctx.font = '80px 微软雅黑';
+            ctx.fillStyle = '#fff';
+            ctx.fillText('2048', 30, 100);
+            
+            ctx.font = '20px 微软雅黑';
+            ctx.fillText('最高分数：'+this.heightest, 265, 55);
+            ctx.font = '25px 微软雅黑';
+            ctx.fillStyle = '#f65e3b';
+            ctx.fillText('我的分数：'+this.score,265, 90);
+            
+            ctx.beginPath();
+            game.roundRect(320, 130, 180, 50, 5, '');
+            ctx.strokeStyle = '#eee';
+            ctx.fillStyle = '#f65e3b';
+            ctx.fillText('点击开始',360, 165);
+            ctx.stroke();
+            ctx.closePath();
+            
+            ctx.restore();
+        },
+        addScore : function(getScore){
+            this.score += getScore;
+            this.setHeightestScore();
+            this.draw();
+        },
+        setHeightestScore : function(){
+            if(this.score > this.heightest){
+                this.heightest = this.score;
+                game.store.setHeightest(this.score);
+            }
+        }
+    };
+    game.store = {
+        storage : window.localStorage,
+        setStore : function(cells){
+            if(cells.length < 1) return;
+            var Stor = '';
+            cells . forEach (function(cell){
+                if(cell.value > 0){
+                    Stor ? Stor += '|' :'';
+                    Stor += cell.x + '-' + cell.y + '-' + cell.value;
+                }
+            });
+            this.storage.setItem( 'history' ,Stor);
+        },
+        addStore : function(cell){
+            if(cell.value < 1) return false;
+            
+            var stor = this.storage.getItem('history');
+            if(stor){
+                stor += '|' + cell.x + '-' + cell.y + '-' + cell.value;
+                this.storage.setItem( 'history' ,stor);
+                return true;
+            }
+            return false;
+        },
+        getStore : function(){
+            var store = this.storage.getItem('history') || '';
+            var cells = [];
+            if(store){
+                var store2 = store.split('|');
+                if(store2.length > 1){
+                    store2.forEach(function(cell){
+                        var ce = cell.split('-');
+                        if(ce[2] > 0){
+                            var ce2 = {
+                                x:ce[0],
+                                y:ce[1],
+                                value:ce[2]
+                            };
+                            cells.push(ce2);
+                        }
+                    });
+                }
+            }
+            return cells;
+        },
+        setHeightest : function(score){
+            if(score < 0) score = 0;
+            this.storage.setItem( 'heightest' ,score);
+        },
+        getHeightest : function(){
+            return this.storage.getItem( 'heightest') || 0;
+        },
+        cleanStore : function(){
+            this.storage.setItem('history','');
+        }
+    };
+    var cell = function(x, y , value){
+        this.x = x;
+        this.y = y;
+        this.px = x * game.cellWidth;
+        this.py = y * game.cellWidth;
+        this.value = value;
+    };
+    cell.prototype.draw = function(){
+        if(!this.value) return;
+        var change = arguments[0] ? arguments[0] : ''; 
+        var ctx = game.ctx, me = this;
+        ctx.save();
+        if(change){
+            var dat = new Date();
+            var name = "change_" + this.x + '_'+ this.y + '_' + dat.getMilliseconds(), i = 2;
+            game.play(name,function(){
+                if(i< 1)
+                    game.stop(name);
+                ctx.beginPath();
+                game.roundRect(me.px + 10, me.py + 200, 115, 115, 10, '#eee');
+                ctx.fill();
+                var fontSize = 70 - i*15;
+                ctx.font = fontSize + 'px Arial';
+                ctx.fillStyle = '#885';
+                ctx.fillText(me.value , me.px + 50, me.py + 280);
+                ctx.closePath();
+                i--;
+            },20);
+        }else{
+            ctx.beginPath();
+            var val = me.value;
+            if(val < 16384){
+                var background = game.style[val]['background'],
+                color = game.style[val]['color'],
+                size = game.style[val]['size'],
+                left = game.style[val]['left'],
+                top = game.style[val]['top'];
+            }else{
+                var background = game.style[16384]['background'],
+                color = game.style[16384]['color'],
+                size = game.style[16384]['size'],
+                left = game.style[16384]['left'],
+                top = game.style[16384]['top'];
+            }
+            game.roundRect(me.px + 10, me.py + 200, 115, 115, 10, background);
+            ctx.fill();
+            ctx.font = size + 'px Arial';
+            ctx.fillStyle = color;
+            ctx.fillText(me.value , me.px + left, me.py + top);
+            ctx.closePath();
+        }
+        ctx.restore();
+    };
+    game.start();
+    function print_r(){
+        var obj = arguments[0] ? arguments[0] : ''; 
+        var split = arguments[1] ? arguments[1] : ''; 
+        
+        var con= '',sp = split + ' -';
+        for( var i in obj){
+            if(typeof(obj[i]) == 'object'){
+                con += split + i +':' + print_r(obj[i], sp);
+            }else if(typeof(obj[i]) == 'function'){
+                con += split + i + ':Fun';
+            }else{
+                con += split + i +':' + obj[i];
+            }
+            con += '\n';
+        }
+        return con;
+    }
+</script>
+</body>
+</html>

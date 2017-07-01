@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <title>{$title}</title>
+ 
+</head>
+<body class="page">
+    <div class="page-info">
+        <div class="lose">
+            <img src="img/logo-default.png" alt=""/>
+        </div>
+        <form class="form form-tel" action="{php echo $this->createMobileUrl('register', array('id' => $id,'from_user'=>$_GPC['from_user'], 'membertype' => $membertype, 'score' => $score))}" method="post" data-ajax="false" onsubmit="return check(this)">
+            <div class="alert">
+                想知道你刚才赚了多少话费吗？ <br/>
+                输入湖北省天翼手机号码或固定电话：
+            </div>
+            <div class="form-group">
+                <input type="text" class="input" id="mobile" name="mobile"/>
+                <input type="submit" name="submit" data-theme="a" data-icon="check" class="btn btn-primary" value="确定" />
+            </div>
+            <div class="help">请输入湖北省天翼号码或固话作为领奖凭证，输入错误或其他号码将无法获得话费</div>
+        </form>
+    </div>
+    <div class="footer">
+        话费将在活动结束后7个工作日内到账
+    </div>
+</body>
+<script type="text/javascript">
+    function check(form) {
+        if (!form['mobile'].value) {
+            alert('请输入您的手机号码！');
+            return false;
+        }
+        if (!/^((059[1-9]-\d{7,8})|(1[3584]\d{9}))$/.test(form['mobile'].value)) {
+            alert('请输入湖北省天翼手机号码或湖北省固定电话号码！');
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>

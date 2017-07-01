@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/style.css?v=1.0.1"/>
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+
+    <title>{$title}</title>
+
+</head>
+
+<body class="page" >
+<div class="page-inner">
+    <div id="rule" class="dialog" style="display: none">
+        <div class="dialog-header">活动规则</div>
+        <div class="dialog-body">
+            1、活动至2014年12月14日结束；</br>
+            2、活动仅限福建省内用户参与，关注“福建ITV宽带电视”微信服务号后才可参与活动，每成功邀请1位好友打开活动链接，即可多获得3次刮奖机会（每天最多四次游戏机会）；</br>
+            3、高清智能ITV用户扫描电视端二维码获得大奖几率更大； </br>
+            4、请输入福建省电信天翼手机或固定电话，输入错误或输入其他号码将无法领取话费；</br>
+            5、话费将在活动结束后7个工作日内充入您输入的号码中；</br>
+            6、奖品：1000元、100元、50元、10元、5元、2元电信话费。</br>
+        </div>
+        <div class="text-center dialog-footer">
+            <a href ="###" onclick="$('#rule').hide()"><button class="btn">关闭</button></a>
+        </div>
+    </div>
+    <div id="prize" class="dialog" style="display: none">
+        <div class="dialog-header">我的奖品</div>
+        <div class="dialog-body">
+            很可惜，您到目前为止还未获得奖品，请继续加油！        </div>
+        <div class="text-center dialog-footer">
+            <a href ="###" onclick="$('#prize').hide()"><button class="btn">关闭</button></a>
+        </div>
+    </div>
+    <div class="lastcount-center">
+        <div class="lastcount ">
+            <span>剩余 <em>1</em> 次</span>
+        </div>
+    </div>
+
+    <div class="page-info">
+        <header class="header text-center">
+            <img src="img/logo-default.png" alt="" width="100"/>
+        </header>
+
+        <div class="master-title">
+            活动名称
+        </div>
+
+    </div>
+    <br/>
+
+    <div class="hit-bottom">
+        <div class="form-group text-center">
+            <a href="###" class="btn btn-start" id="gamestart">滑动开始减话费</a>
+            <div class="mouseslide">
+                <span class=""></span><span class=""></span><span class=""></span>
+            </div>
+            <div class="options">
+                <a href="javascript:;" class="btn btn-danger btn-xs" onclick="$('#prize').fadeIn();$('#rule').fadeOut();$('#ale').fadeOut();">我的奖品</a>
+                <a href="javascript:;" class="btn btn-danger btn-xs" onclick="$('#rule').fadeIn();$('#prize').fadeOut();$('#ale').fadeOut();">活动规则</a>
+            </div>
+        </div>
+        <img src="img/hello.png" alt="" style="margin-bottom: -10px;"/>
+    </div>
+    <div class="dialog" style="display: none" id="ale">
+        <div class="dialog-header"></div>
+        <div class="dialog-body">
+        </div>
+        <div class="text-center dialog-footer">
+        </div>
+    </div>
+    <div id="share-wx">
+        <p style="text-align: right; padding-left: 10px;">
+            <img id="share-wx-img" style="padding-right: 25px; max-width: 280px;"  src="img/2000.png">
+        </p>
+    </div>
+    <div id="sub-wx">
+        <p style="text-align: right; padding-left: 10px;">
+            <img id="sub-wx-img" style="padding-right: 25px; max-width: 280px;"  src="img/2001.png">
+        </p>
+    </div>
+</div>
+<script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script>
+    var id = 2356 ;
+    var fu = 'fromUser' ;
+    window.shareData = {
+        "imgUrl": "http://www.vieasy.cn/source/modules/tv/template/mobile/files/share.jpg",
+        "timeLineLink": "http://www.vieasy.cn/" + "mobile.php?act=module&name=tv&do=home&weid=1&id=20110&membertype=1&shareid=" + fu,
+        "tTitle": "一大波电信话费向你靠近，小伙伴们快来捡话费！",
+        "tContent": "快来一起捡电信话费！"
+    };
+    var mebtnopenurl = "http://www.vieasy.cn/" + "mobile.php?act=module&name=tv&do=home&weid=1&id=20110&membertype=1&shareid=" + fu;
+</script>
+<script src="js/share.js"></script><script type="text/javascript">
+    document.getElementById("gamestart").addEventListener('click',function(){
+        var type = 0;
+        if(type ==1 || type == 2 || type == 3){
+            document.getElementById("ale").style.display = "block";
+            $('#prize').fadeOut();
+            $('#rule').fadeOut();
+        }else{
+            window.location.href = "mobile.php?act=module&id=2356&membertype=1&name=tv&do=game&weid=1";
+        }
+    })
+
+    document.getElementById("share-wx").addEventListener('click',function(){
+        document.getElementById("ale").style.display = 'none';
+    })
+
+    document.getElementById("sub-wx").addEventListener('click',function(){
+        document.getElementById("ale").style.display = 'none';
+    })
+
+    function share() {
+        document.getElementById('share-wx').style.display = 'block';
+        document.getElementById('share-wx').onclick = function () {
+            this.style.display = 'none';
+        };
+        var id = 2356 ;
+        var fu = 'fromUser' ;
+        var membertype = 1 ;
+        var loc = "mobile.php?act=module&name=tv&do=share&weid=1&id=" + id + "&from_user=" + fu + "&membertype=" + membertype;
+        $.get(loc);
+    }
+
+    function sub() {
+        document.getElementById('sub-wx').style.display = 'block';
+        document.getElementById('sub-wx').onclick = function () {
+            this.style.display = 'none';
+        };
+    }
+</script>
+</body>
+</html>

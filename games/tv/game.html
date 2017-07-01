@@ -1,0 +1,337 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>好机友捡话费</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
+
+    <script src="js/createjs.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="css/style.css?v=1.0.2"/>
+
+    <meta name="GENERATOR" content="MSHTML 10.00.9200.16750">
+</head>
+<body >
+<script type="text/javascript">
+
+var body, blockSize, GameLayer = [], GameLayerBG, touchArea = [], GameTimeLayer, isinited = false;
+var transform, transitionDuration;
+
+function init(argument) {
+    body = document.getElementById('gameBody') || document.body;
+    body.style.height = window.innerHeight + 'px';
+    transform = typeof(body.style.webkitTransform) != 'undefined' ? 'webkitTransform' : (typeof(body.style.msTransform) != 'undefined' ? 'msTransform' : 'transform');
+    transitionDuration = transform.replace(/ransform/g, 'ransitionDuration');
+
+    GameTimeLayer = document.getElementById('GameTimeLayer');
+    GameLayer.push(document.getElementById('GameLayer1'));
+    GameLayer[0].children = GameLayer[0].querySelectorAll('div');
+    GameLayer.push(document.getElementById('GameLayer2'));
+    GameLayer[1].children = GameLayer[1].querySelectorAll('div');
+    GameLayerBG = document.getElementById('GameLayerBG');
+
+    if (GameLayerBG.ontouchstart === null) {
+        GameLayerBG.ontouchstart = gametapEvent;
+    } else {
+        GameLayerBG.onmousedown = gametapEvent;
+        document.getElementById('landscape-text').innerHTML = '点我开始玩耍';
+        document.getElementById('landscape').onclick = winOpen;
+    }
+    gameInit();
+    window.addEventListener('resize', refreshSize, false);
+
+}
+function winOpen() {
+    window.open(location.href + '?r=' + Math.random(), 'nWin', 'height=500,width=320,toolbar=no,menubar=no,scrollbars=no');
+    var opened = window.open('about:blank', '_self');
+    opened.opener = null;
+    opened.close();
+}
+var refreshSizeTime;
+function refreshSize() {
+    clearTimeout(refreshSizeTime);
+    refreshSizeTime = setTimeout(_refreshSize, 200);
+}
+
+function _refreshSize() {
+    countBlockSize();
+    for (var i = 0; i < GameLayer.length; i++) {
+        var box = GameLayer[i];
+        for (var j = 0; j < box.children.length; j++) {
+            var r = box.children[j],
+                    rstyle = r.style;
+            rstyle.left = (j % 4) * blockSize + 'px';
+            rstyle.bottom = Math.floor(j / 4) * blockSize + 'px';
+            rstyle.width = blockSize + 'px';
+            rstyle.height = blockSize + 'px';
+        }
+    }
+    var f, a;
+    if (GameLayer[0].y > GameLayer[1].y) {
+        f = GameLayer[0];
+        a = GameLayer[1];
+    } else {
+        f = GameLayer[1];
+        a = GameLayer[0];
+    }
+    var y = ((_gameBBListIndex) % 10) * blockSize;
+    f.y = y;
+    f.style[transform] = 'translate3D(0,' + f.y + 'px,0)';
+
+    a.y = -blockSize * Math.floor(f.children.length / 4) + y;
+    a.style[transform] = 'translate3D(0,' + a.y + 'px,0)';
+
+}
+function countBlockSize() {
+
+    var width =  window.innerWidth  , height =  window.innerHeight;
+    //blockSize = body.offsetWidth / 4;
+    blockSize = width / 4;
+
+    body.style.height = height + 'px';
+    GameLayerBG.style.height = height + 'px';
+    touchArea[0] = height - blockSize * 0;
+    touchArea[1] = height - blockSize * 3;
+}
+var _gameBBList = [], _gameBBListIndex = 0, _gameOver = false, _gameStart = false, _gameTime, _gameTimeNum, _gameScore, startTips = true ;
+function gameInit() {
+    createjs.Sound.registerSound({src:"files/err.mp3", id: "err"});
+    createjs.Sound.registerSound({src:"files/end.mp3", id: "end"});
+    createjs.Sound.registerSound({src:"files/tap.mp3", id: "tap"});
+    gameRestart();
+}
+function gameRestart() {
+    console.log('gameRestart');
+    _gameBBList = [];
+    _gameBBListIndex = 0;
+    _gameScore = 0;
+    _gameOver = false;
+    _gameStart = false;
+    _gameTimeNum = 2000;
+    GameTimeLayer.innerHTML = creatTimeText(_gameTimeNum);
+    countBlockSize();
+    refreshGameLayer(GameLayer[0]);
+    refreshGameLayer(GameLayer[1], 1);
+    document.getElementById('GameLayer1').children[0].className += ' tt5';
+}
+function gameStart() {
+    _gameStart = true;
+    _gameTime = setInterval(gameTime, 10);
+}
+function gameOver(score) {
+    _gameOver = true;
+    clearInterval(_gameTime);
+    setTimeout(function () {
+        var id = "1" ;
+        var fu = '' ;
+        var membertype = "1" ;
+        var mb = 2000 ;
+        GameLayerBG.className = '';
+        //showGameScoreLayer();
+        if(mb == 1){
+            location.href = "{php echo $this->createMobileUrl('telreg');}&id=" + id + "&from_user=" + fu + "&membertype=" + membertype + "&score=" + score;
+        }else{
+            location.href = "{php echo $this->createMobileUrl('getaward');}&id=" + id + "&from_user=" + fu + "&membertype=" + membertype + "&score=" + score;
+        }
+    }, 1500);
+}
+function gameTime() {
+    _gameTimeNum--;
+    if (_gameTimeNum <= 0) {
+        GameTimeLayer.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;时间到！';
+        gameOver(_gameScore);
+        GameLayerBG.className += ' flash';
+        createjs.Sound.play("end");
+    } else {
+        GameTimeLayer.innerHTML = creatTimeText(_gameTimeNum);
+    }
+}
+function creatTimeText(n) {
+    var text = (100000 + n + '').substr(-4, 4);
+    text = '&nbsp;&nbsp;' + text.substr(0, 2) + "'" + text.substr(2) + "''"
+    return text;
+}
+var _ttreg = / t{1,2}(\d+)/, _clearttClsReg = / t{1,2}\d+| bad/;
+function refreshGameLayer(box, loop, offset) {
+    var i = Math.floor(Math.random() * 1000) % 4 + (loop ? 0 : 4);
+    for (var j = 0; j < box.children.length; j++) {
+        var r = box.children[j],
+                rstyle = r.style;
+        rstyle.left = (j % 4) * blockSize + 'px';
+        rstyle.bottom = Math.floor(j / 4) * blockSize + 'px';
+        rstyle.width = blockSize + 'px';
+        rstyle.height = blockSize + 'px';
+        r.className = r.className.replace(_clearttClsReg, '');
+        if (i == j) {
+            _gameBBList.push({cell: i % 4, id: r.id});
+            var type = (Math.floor(Math.random() * 1000) % 5 + 1);
+            switch(type){
+                case  1: case  2 :r.setAttribute('score','20'); break;
+                case  3: case  4 :r.setAttribute('score','100'); break;
+                default  : r.setAttribute('score','100'); break;
+            }
+            r.className += ' t' + type;
+
+            if( startTips ){
+                r.className += ' begin';
+                startTips = false ;
+            }
+            r.notEmpty = true;
+            i = ( Math.floor(j / 4) + 1) * 4 + Math.floor(Math.random() * 1000) % 4;
+        } else {
+            r.notEmpty = false;
+        }
+    }
+    if (loop) {
+        box.style.webkitTransitionDuration = '0ms';
+        box.style.display = 'none';
+        box.y = -blockSize * (Math.floor(box.children.length / 4) + (offset || 0)) * loop;
+        setTimeout(function () {
+            box.style[transform] = 'translate3D(0,' + box.y + 'px,0)';
+            setTimeout(function () {
+                box.style.display = 'block';
+            }, 100);
+        }, 200);
+    } else {
+        box.y = 0;
+        box.style[transform] = 'translate3D(0,' + box.y + 'px,0)';
+    }
+    box.style[transitionDuration] = '150ms';
+}
+function gameLayerMoveNextRow() {
+    for (var i = 0; i < GameLayer.length; i++) {
+        var g = GameLayer[i];
+        g.y += blockSize;
+        if (g.y > blockSize * (Math.floor(g.children.length / 4))) {
+            refreshGameLayer(g, 1, -1);
+        } else {
+            g.style[transform] = 'translate3D(0,' + g.y + 'px,0)';
+        }
+    }
+}
+function gametapEvent(e) {
+    if (_gameOver) {
+        return false;
+    }
+    var tar = e.target;
+    var y = e.clientY || e.targetTouches[0].clientY,
+            x = (e.clientX || e.targetTouches[0].clientX) - body.offsetLeft,
+            p = _gameBBList[_gameBBListIndex];
+    if (y > touchArea[0] || y < touchArea[1]) {
+        return false;
+    }
+    if ((p.id == tar.id && tar.notEmpty) || (p.cell == 0 && x < blockSize) || (p.cell == 1 && x > blockSize && x < 2 * blockSize) || (p.cell == 2 && x > 2 * blockSize && x < 3 * blockSize) || (p.cell == 3 && x > 3 * blockSize)) {
+        if (!_gameStart) {
+            gameStart();
+        }
+        createjs.Sound.play("tap");
+        tar = document.getElementById(p.id);
+        tar.className = tar.className.replace(_ttreg, ' tt$1');
+        tar.className = tar.className.replace('begin', '');
+        _gameBBListIndex++;
+        _gameScore+= parseInt(tar.getAttribute('score'));
+        gameLayerMoveNextRow();
+    } else if (_gameStart && !tar.notEmpty) {
+        createjs.Sound.play("err");
+        gameOver(_gameScore);
+        tar.className += ' bad';
+    }
+    return false;
+}
+function createGameLayer() {
+    var html = '<div id="GameLayerBG">';
+    for (var i = 1; i <= 2; i++) {
+        var id = 'GameLayer' + i;
+        html += '<div id="' + id + '" class="GameLayer">';
+        for (var j = 0; j < 10; j++) {
+            for (var k = 0; k < 4; k++) {
+                html += '<div id="' + id + '-' + (k + j * 4) + '" num="' + (k + j * 4) + '" class="block' + (k ? ' bl' : '') + '"></div>';
+            }
+        }
+        html += '</div>';
+    }
+    html += '</div>';
+
+    html += '<div id="GameTimeLayer"></div>';
+
+    return html;
+}
+function closeWelcomeLayer() {
+    var l = document.getElementById('welcome');
+    l.style.display = 'none';
+}
+function showWelcomeLayer() {
+    var l = document.getElementById('welcome');
+    l.style.display = 'block';
+}
+function showGameScoreLayer() {
+    var l = document.getElementById('GameScoreLayer');
+    var c = document.getElementById(_gameBBList[_gameBBListIndex - 1].id).className.match(_ttreg)[1];
+    l.className = l.className.replace(/bgc\d/, 'bgc' + c);
+    document.getElementById('GameScoreLayer-text').innerHTML = shareText(_gameScore);
+    document.getElementById('GameScoreLayer-score').innerHTML = '得分&nbsp;&nbsp;' + _gameScore;
+    var bast = cookie('bast-score');
+    if (!bast || _gameScore > bast) {
+        bast = _gameScore;
+        cookie('bast-score', bast, 100);
+    }
+    document.getElementById('GameScoreLayer-bast').innerHTML = '最佳&nbsp;&nbsp;' + bast;
+    l.style.display = 'block';
+    var num = (_gameScore - 30) * 85 + 2408;
+    window.shareData.tTitle = '我去！我刚捡到了' + _gameScore * 100 + '块大洋，财运强过' + num + '人！'
+}
+function hideGameScoreLayer() {
+    var l = document.getElementById('GameScoreLayer');
+    l.style.display = 'none';
+}
+function replayBtn() {
+    gameRestart();
+    hideGameScoreLayer();
+}
+function backBtn() {
+    gameRestart();
+    hideGameScoreLayer();
+    showWelcomeLayer();
+}
+
+
+
+function shareText(score) {
+    /*if (score <= 50)
+     return '财运不错，捡到了' + score * 100 + '大洋！<br/><img src=“files/rmb2.png" /><br/>离土豪又近了一步！';
+     if (score <= 120)
+     return '财神到，捡到了' + score * 100 + '大洋！<br/><img src=“files/rmb2.png" /><br/>离土豪又近了一步！';
+     if (score <= 150)
+     return '帅呆了！捡到' + score * 100 + '大洋！<br/><img src=“files/rmb2.png" /><br/>离土豪又近了一步！';
+     if (score <= 199)
+     return '太牛了！捡到' + score + '大洋！<br/><img src=“files/rmb2.png" /><br/>离土豪又近了一步！';
+
+     return '哈哈哈哈哈，捡到' + score + '大洋！<br/><img src=“files/rmb2.png" /><br/>土豪的世界你们不懂！！';*/
+
+}
+;
+
+</script>
+
+<div class="SHADE BOX-M" id="landscape" style="background: rgba(0, 0, 0, 0.9);">
+    <div class="welcome-bg FILL"></div>
+    <div id="landscape-text"
+         style="color: rgb(255, 255, 255); font-size: 3em;">请竖屏玩耍
+    </div>
+</div>
+<div id="share-wx">
+    <P style="text-align: right; padding-left: 10px;">
+        <IMG id="share-wx-img" style="padding-right: 25px; max-width: 280px;"  src=“files/2000.png">
+    </P>
+</div>
+{template 'share'}
+<script>
+    document.write(createGameLayer());
+    window.onload = function(){
+        init();
+        refreshSize();
+    }
+</script>
+</body>
+</html>
