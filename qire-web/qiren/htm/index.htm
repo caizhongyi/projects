@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+<title>{dede:global.cfg_webname/}</title>
+<meta name="description" content="{dede:global.cfg_description/}" />
+<meta name="keywords" content="{dede:global.cfg_keywords/}" />
+<link href="/css/mian.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.plus.min.js"></script>
+</head>
+<body>
+{dede:include filename="head.htm"/}
+<div class="content space"></div>
+<div class="content height600 content-bg main-content"></div>
+<div class="index">
+    <div class="index_up">
+        <div class="index_img" style="float:left;" data-loader="Class-ui-tabs" data-options="auto:true">
+           <ul class="panlelist" data-region="panel">
+		   {dede:arclistsg typeid="17" channelid="-20" addfields="runpic"}
+               <li><img src="[field:runpic/]" alt=""/></li>{/dede:arclistsg}
+            </ul>
+            <div class="nav" data-region="nav">
+			{dede:arclistsg typeid="17" channelid="-20" addfields="runpic"}
+               <a href="javascript:;" ></a>{/dede:arclistsg}
+            </div>
+        </div>
+         <div class="index_up_r">
+            <div class="index_up_tt"></div>
+            <div class="index_up_rimg">
+                <ul class="index_up_img">
+					{dede:arclist typeid="12" limit="0,1" channelid="21" addfields="xiaopic" orderby='id'}
+                    <li class="index_up_img1"><a href="[field:arcurl/]"><img src="[field:xiaopic/]" alt="[field:title/]"></a></li>{/dede:arclist}
+                    {dede:arclist typeid="12" limit="2,1" channelid="21" addfields="xiaopic" orderby='id'}
+                    <li class="index_up_img2"><a href="[field:arcurl/]"><img src="[field:xiaopic/]" alt="[field:title/]"></a></li>{/dede:arclist}
+                </ul>
+                <ul class="index_up_img">
+					{dede:arclist typeid="12" limit="1,1" channelid="21" addfields="xiaopic" orderby='id'}
+                    <li class="index_up_img3"><a href="[field:arcurl/]"><img src="[field:xiaopic/]" alt="[field:title/]"></a></li>{/dede:arclist}
+					{dede:arclist typeid="12" limit="3,1" channelid="21" addfields="xiaopic" orderby='id'}
+                    <li class="index_up_img4"><a href="[field:arcurl/]"><img src="[field:xiaopic/]" alt="[field:title/]"></a></li>{/dede:arclist}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="index_down">
+        {dede:type typeid="6"}<a href="[field:typelink/]"><div class="index_down_img1"></div></a>{/dede:type}
+        {dede:type typeid="1"}<a href="[field:typelink/]"><div class="index_down_img2"></div></a>{/dede:type}
+    </div>
+</div>
+<div class="mid_box">
+	<div class="mid">{dede:type typeid="6"}<a href="[field:typelink/]">{/dede:type}
+    	<img src="/images/zbdh.jpg" /></a>
+    </div>
+</div>
+<div class="content">
+	<div class="down_con bg_cH">
+    	<ul class="down">
+		{dede:arclist typeid="11" limit="0,4" channelid="19" addfields="smallpic,fwnr" orderby='id'}
+        	<li><img src="[field:smallpic/]" alt="[field:title/]" width="300px" height="300px"/><div class="img-mask1"></div><span class="img-info"><h3>[field:title/]</h3>[field:fwnr/]</span></li>{/dede:arclist}
+        </ul>
+        <ul class="down">
+        	{dede:arclist typeid="11" limit="4,4" channelid="19" addfields="smallpic,fwnr" orderby='id'}
+        	<li><img src="[field:smallpic/]" alt="[field:title/]" width="300px" height="300px"/><div class="img-mask1"></div><span class="img-info"><h3>[field:title/]</h3>[field:fwnr/]</span></li>{/dede:arclist}
+        </ul>
+        <ul class="down">
+        	{dede:arclist typeid="11" limit="8,4" channelid="19" addfields="smallpic,fwnr" orderby='id'}
+        	<li><img src="[field:smallpic/]" alt="[field:title/]" width="300px" height="300px"/><div class="img-mask1"></div><span class="img-info"><h3>[field:title/]</h3>[field:fwnr/]</span></li>{/dede:arclist}
+        </ul>
+        <div class="down_more"><a href="/Case/">查看更多案例</a></div>
+
+    </div>
+    <script type="text/javascript">
+        $('.down li').hover(function(){
+            $(this).find('.img-mask1,.img-info').show();
+        },function(){
+            $(this).find('.img-mask1,.img-info').hide();
+        })
+    </script>
+</div>
+<div class="content space1"></div>
+{dede:include filename="footer.htm"/}
+<script type="text/javascript" src="/js/class.ui.tabs.js"></script>
+</body>
+</html>
+<script type="text/javascript" src="/js/toprun.js"></script>

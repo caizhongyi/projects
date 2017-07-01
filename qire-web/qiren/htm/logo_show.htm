@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<link href="/css/mian.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.plus.min.js"></script>
+</head>
+
+<body>
+{dede:include filename="head.htm"/}
+<div class="content space"></div>
+<div class="content height600 content-mini-yel main-content"></div>
+<div class="container clearfix">
+    <div class="main_left bg_color_y">
+        <div class="main_left1">
+            <ul class="main_left3">
+                <li class="main_left_title2">项目列表</li>
+                <li class="main_left_line2">&nbsp;</li>
+                <li class="main_color1"><a href="/logoshow/">服务客户（LOGO汇总）</a></li>
+                <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script> 
+				<script> 
+				function multi(pagenum,tagid) 
+				{ 
+                    var taget_obj = document.getElementById(tagid);
+                    var taget_obj_page = document.getElementById("page_"+tagid);
+                    myajax = new DedeAjax(taget_obj,false,false,'','','');
+                    myajax.SendGet2("/plus/arcmulti.php?mtype=0&pnum="+pagenum+'&tagid='+tagid);
+                    myajax = new DedeAjax(taget_obj_page,false,false,'','','');
+                    myajax.SendGet2("/plus/arcmulti.php?mtype=1&pnum="+pagenum+'&tagid='+tagid);
+                    DedeXHTTP = null;
+				} 
+				</script>
+				<li>
+                    {dede:arclist tagid='logoshow' pagesize='16' row="16" typeid="11" channelid="19" orderby='id'}
+                       <a href="[field:arcurl/]">[field:title/]</a><br>
+                    {/dede:arclist}
+				</li>
+				<li>&nbsp;</li>
+				{dede:arcpagelist tagid='logoshow'/}
+            </ul>
+        </div>
+
+    </div>
+    <div class="new_mid1 overhidden">
+        <div class="down_con1">
+            <ul class="down1">
+			{dede:arclist typeid="11" channelid="19" addfields="logo" limit="0,4" orderby='id'}
+                <li class="hz_img1"><a href="[field:arcurl/]"><img src="[field:logo/]" style="width:225px; height:200px;"/></a></li>{/dede:arclist}
+            </ul>
+            <ul class="down1">{dede:arclist typeid="11" channelid="19" addfields="logo" limit="4,4" orderby='id'}
+                <li class="hz_img1"><a href="[field:arcurl/]"><img src="[field:logo/]" style="width:225px; height:200px;"/></a></li>{/dede:arclist}
+            </ul>
+            <ul class="down1">
+                {dede:arclist typeid="11" channelid="19" addfields="logo" limit="8,4" orderby='id'}
+                <li class="hz_img1"><a href="[field:arcurl/]"><img src="[field:logo/]" style="width:225px; height:200px;"/></a></li>{/dede:arclist}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container container-mini">
+    <div class="content container-moreupdate">
+        <div class="new_mid3">
+            <div class="down_con1  ">
+                <ul class="down1">
+                    {dede:arclist typeid="11" channelid="19" addfields="logo" limit="12,4"}
+                <li class="hz_img1"><a href="[field:arcurl/]"><img src="[field:logo/]" style="width:225px; height:200px;"/></a></li>{/dede:arclist}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="content space1"></div>
+{dede:include filename="footer.htm"/}
+
+</body>
+</html>
+<script type="text/javascript" src="/js/toprun.js"></script>

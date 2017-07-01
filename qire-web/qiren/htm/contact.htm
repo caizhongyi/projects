@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<link href="/css/mian.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.plus.min.js"></script>
+</head>
+<body>
+{dede:include filename="head.htm"/}
+<div class="content space"></div>
+<div class="content height600 content-mini main-content"></div>
+<div class="container1 clearfix">
+    <div class="about  ">
+        <div class="main_left top_scolor"></div>
+        <div class="contact_img">
+            {dede:sql sql='Select content from dedeqr_arctype where id=13'}[field:content/]{/dede:sql}
+        </div>
+    </div>
+</div>
+<div class="content space2"></div>{dede:include filename="footer.htm"/}
+</body>
+</html>
+<script type="text/javascript" src="/js/toprun.js"></script>

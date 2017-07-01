@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{dede:field.title/}_{dede:field name='typename'/}-厦门其人品牌整合设计机构</title>
+<meta name="keywords" content="{dede:field.keywords/}" />
+<meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
+<link href="/css/mian.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.plus.min.js"></script>
+</head>
+<body>
+{dede:include filename="head.htm"/}
+<div class="content space"></div>
+<div class="content height600 content-mini-blue main-content"></div>
+<div class="container clearfix">
+    <div class="main_left bg_color_b">
+        <div class="main_left1">
+            <ul class="main_left2">
+                <li class="main_left_title">最新动态</li>
+                <li class="main_left_line">&nbsp;</li>
+				<script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script> 
+				<script> 
+				function multi(pagenum,tagid) 
+				{ 
+				var taget_obj = document.getElementById(tagid); 
+				var taget_obj_page = document.getElementById("page_"+tagid); 
+				myajax = new DedeAjax(taget_obj,false,false,'','',''); 
+				myajax.SendGet2("/plus/arcmulti.php?mtype=0&pnum="+pagenum+'&tagid='+tagid); 
+				myajax = new DedeAjax(taget_obj_page,false,false,'','',''); 
+				myajax.SendGet2("/plus/arcmulti.php?mtype=1&pnum="+pagenum+'&tagid='+tagid); 
+				DedeXHTTP = null; 
+				} 
+				</script>
+                <li>
+                    {dede:arclist tagid='new' pagesize='16' row="16" typeid="12" channelid="21" orderby='id'}
+                    <span [field:global.autoindex runphp='yes']if((@me)%15<>1) @me=""; else @me=" class=\"main_color\"";[/field:global.autoindex]><img src="/images/li.gif" /><a href="[field:arcurl/]">[field:title/]</a></span><br>
+                    {/dede:arclist}
+                </li>
+
+				<li>&nbsp;</li>
+				{dede:arcpagelist tagid='new'/}
+            </ul>
+        </div>
+
+    </div>
+    <div class="new_mid overhidden">
+        <div class="new_con1">
+            <div style="background: url({dede:field.dapic/}) no-repeat;width: 480px;height: 300px;"></div>
+            <div class="new_conT">{dede:field.title/}</div>
+            <ul class="new_conT1">
+                <li>{dede:field name='neirong'/}</li>
+                <li>&nbsp;</li><li>&nbsp;</li>
+                <!--<a href="#"><li class="next"></li></a> -->
+				{dede:prenext get='next'/}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="content space1"></div>{dede:include filename="footer.htm"/}
+</body>
+</html>
+<script type="text/javascript" src="/js/toprun.js"></script>
