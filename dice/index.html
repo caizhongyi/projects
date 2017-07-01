@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="MobileOptimized" content="320">
+    <title></title>
+    <script type="text/javascript" src="files/jquery-2.0.3.min.js"></script>
+    <link href="files/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="files/bplayer.css" rel="stylesheet" type="text/css">
+
+    <script>
+        $(function () {
+            $('#share').click(function () {
+                $("#share").hide();
+            });
+
+            $('.login-share').click(function () {
+                $("#share").show();
+            });
+
+        });
+    </script>
+
+    <script>
+        var imgUrl = "http://bobing.xmfish.com/pages/images/bobingh5/sharelogo.jpg";
+        var lineLink = 'http://bobing.xmfish.com/bobingh5/table.html?tablekey=fc8abfa2552e4edfe30ec3e80aecbee4';
+        var descContent = "厦门首届手机博饼消费节，小鱼网、淘点点、灵玲马戏城联合出品。";
+        shareTitle = '看这里！我在小鱼网发现一个博饼桌，他们居然送房子和车子啊！';
+        var appid = '';
+
+        function shareFriend() {
+            WeixinJSBridge.invoke('sendAppMessage', {
+                "appid": appid,
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function (res) {
+                _report('send_msg', res.err_msg);
+            })
+        }
+        function shareTimeline() {
+            WeixinJSBridge.invoke('shareTimeline', {
+                "img_url": imgUrl,
+                "img_width": "200",
+                "img_height": "200",
+                "link": lineLink,
+                "desc": descContent,
+                "title": shareTitle
+            }, function (res) {
+                _report('timeline', res.err_msg);
+
+            });
+        }
+        function shareWeibo() {
+            WeixinJSBridge.invoke('shareWeibo', {
+                "content": descContent,
+                "url": lineLink
+            }, function (res) {
+                _report('weibo', res.err_msg);
+            });
+        }
+        // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            // 发送给好友
+            WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+                shareFriend();
+            });
+            // 分享到朋友圈
+            WeixinJSBridge.on('menu:share:timeline', function (argv) {
+                shareTimeline();
+            });
+            // 分享到微博
+            WeixinJSBridge.on('menu:share:weibo', function (argv) {
+                shareWeibo();
+            });
+        }, false);
+    </script>
+</head>
+<body class="navbar-fixed bottom">
+
+<div id="p1" class="w-wrap" >
+    <div class="show-bg"></div>
+    <div class="prize">
+        <div class="hd">
+            <!--<img id="p1img" src="">-->
+            <p>恭喜您博到：<em id="p1name"></em><br>
+                奖品为：<em id="paward"></em><br>
+            </p>
+            <span>注：亲爱的 <b>张三</b> 恭喜您博得大奖，还有更多奖品等你来博，请再接再厉！</span>
+        </div>
+        <script>
+            //UA
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            if (bIsAndroid) {
+                $('#download-cs').attr('href', 'http://app.qq.com/#id=detail&appid=100873910');
+            } else if (bIsIphoneOs) {
+                $('#download-cs').attr('href', 'http://mp.weixin.qq.com/mp/redirect?url=http%3A%2F%2Fitunes.apple.com%2Fcn%2Fapp%2Fxiao-yu-wang%2Fid540996315');
+            }
+        </script>
+        <div class="bd">
+            <a class="login-go " href="javascript:void(0)">继续博饼</a>
+            <!--<a class="login-share " href="javascript:void(0)">我要分享</a>-->
+        </div>
+    </div>
+</div>
+<div id="p2" class="w-wrap" >
+    <div class="show-bg"></div>
+    <div class="prize">
+        <div class="hd">
+            <!--<img id="p2img" src="">-->
+            <p><em id="p2name"></em><br>登记领奖后即可查看奖品详情！</p>
+            <span id="p2tip">注：放弃奖品后将会回去继续博饼，且奖品不再属于你了，请三思哟~</span>
+        </div>
+        <div class="bd">
+            <a class="nologin-go " href="javascript:void(0)" style="background-color: #666666">放弃奖品</a>
+            <a id="login" class="" href="###" onclick="$('#regist').show()">登记领奖</a>
+        </div>
+    </div>
+</div>
+<div id="p3" class="w-wrap" >
+    <div class="show-bg"></div>
+    <div class="prize">
+        <div class="hd">
+            <!--<img id="p2img" src="">-->
+            <p><em id="p3name"></em></p>
+            <span id="p3tip">注：还有更多奖品等你来博，请再接再厉！</span>
+        </div>
+        <div class="bd">
+            <a class="login-go btn-shadow" href="javascript:void(0)">确定</a>
+        </div>
+    </div>
+</div>
+<div id="regist" class="w-wrap" >
+    <div class="show-bg"></div>
+    <form action="" method="post" data-ajax="false" onsubmit="return check(this)">
+        <div class="prize">
+            <div class="bd">
+                <div class="help">
+                    请留下您真实的联系方式，以便我们及时与您取得
+                    联系。把礼品送达到您手中。
+                </div>
+                <div class="form">
+                    <div class="form-group"><label>姓名: <input type="text" id='realname' name='realname'
+                                                              value="张三"/></label></div>
+                    <div class="form-group"><label>电话: <input type="text" id='mobile' name='mobile'
+                                                              value="13569909090"/></label></div>
+                    <!--<div class="form-group"><label>地址: <input type="text" value="张三"/></label></div>-->
+                </div>
+                <div class="ft text-center">
+                    <input type="submit" name="submit" class="login-go btn-primary " style="display:  none;"
+                           data-theme="a" data-icon="check" value="确认"/>
+                    <a class="login-go btn-primary" onclick="$(this).prev().click();" href="javascript:void(0)">确认</a>
+                    <a class="login-go btn-primary" id='reg' href="javascript:void(0)">关闭</a>
+                    <input type="hidden" name="token" value="e28f3984"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--<div id="share" class="w-wrap" style="display:none;">
+    <div class="show-bg" style="z-index: 1001;"></div>
+    <div class="show-img"><img src="/pages/images/bobingh5/wap-weixin.png"></div>
+</div>-->
+<div class="titlebar ">
+    <a href="###" class="btn-primary pull-right" onclick="$('#regist').show()">个人资料</a>
+    <h3 >您好！<i class="icon icon-user"></i>张三 <br/><small>剩余博饼次数：203</small></h3>
+</div>
+<div class="bobing-panel panel">
+    <div class="bowl-wrap">
+        <div class="w-wrap">
+            <div class="result ulib-r30 clear">
+                <!--<div class="icon"><img width="100%" alt="" src="files/load.gif"></div>-->
+                <div class="icon"><i class="icon-exclamation-sign"></i></div>
+                <div class="result-tx"></div>
+            </div>
+        </div>
+        <audio id="yao" class="hide" src="http://localhost/weiyi-hb/source/modules/dice/template/images/yao.mp3"
+               preload="auto"></audio>
+        <h2 class="text-warning h2 text-center"><i class="icon icon-gift icon-4x"></i> 摇动手机开始博饼</h2>
+
+        <div class="bowl">
+            <img src="files/bowl.png" alt="">
+            <em class="dice dice1" ><img src="files/dice1.png"
+                                                                  alt=""></em>
+            <em class="dice dice2" ><img src="files/dice2.png"
+                                                                  alt=""></em>
+            <em class="dice dice3"><img src="files/dice3.png"
+                                                                  alt=""></em>
+            <em class="dice dice4" ><img src="files/dice4.png"
+                                                                  alt=""></em>
+            <em class="dice dice5"><img src="files/dice5.png"
+                                                                  alt=""></em>
+            <em class="dice dice6" ><img src="files/dice6.png"
+                                                                  alt=""></em>
+        </div>
+        <div class="text-center">
+            <a href="###" class="btn-primary" id="begin">开始博饼</a>
+        </div>
+    </div>
+</div>
+
+<!--<button class="" id="test">Test</button>-->
+<script>
+    var flag = 1;//标志位
+    $(document).ready(function () {
+        $('.login-go').click(function () {
+            $('#p1').hide();
+            $('#p3').hide();
+            $('#pp').hide();
+            $('#regist').hide();
+            flag = 1;
+        });
+
+        $('.nologin-go').click(function () {
+            $('#p2').hide();
+            flag = 1;
+        });
+
+
+        //关闭弹出窗加载音频
+        $('#pop_close,.closex').click(function () {
+            document.getElementById('yao').play();
+            document.getElementById('yao').pause();
+            $(this).parents('.cover').css('display', 'none');
+            flag = 1;
+        });
+
+
+        var SHAKE_THRESHOLD = 1000;
+        var last_update = 0;
+        var x = y = z = last_x = last_y = last_z = 0;
+        if (window.DeviceMotionEvent) {
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
+        } else {
+            alert('您的设备不支持摇一摇');
+        }
+
+        var bobing = {
+            start: function () {
+                $('#bobing').hide();
+                $('.result').hide();
+                $('.dice').removeClass('active').addClass('active');
+                $('#yao').trigger('touchend');
+                document.getElementById('yao').play();
+            },
+            end: function (data) {
+                if (data.status == true) {
+                    for (var i = 1; i <= 6; i++) {
+                        $('.dice' + [i]).children('img').attr('src', 'files/dice' + data.level[i] + '.png');
+                    }
+                    setTimeout(function () {
+                        $('#count').html(data.count);
+                        $('#times').html(data.u_count);
+                        $('#credits').html(data.u_credits);
+                        flag = 0;
+                        if (data.result['award']) {
+                            var prize = data.result['award'];
+                            if (data.login == 1) {
+                                $('#prize').append(prize + " × 1 <br>");
+                                $("#p1").show();
+                                $("#p1name").html(data.result['rank']);
+                                $("#paward").html(prize);
+                            } else {
+                                $("#p2").show();
+                                $("#p2name").html('恭喜您博得：' + data.result['rank']);
+                            }
+                        } else {
+                            var timer;
+                            timer && clearTimeout(timer);
+                            $('.result').show();
+                            $('.result-tx').html(data.result['rank'] + " <br/>（继续努力，大奖等着你喔~）");
+                            timer = setTimeout(function () {
+                                $('.result').hide();
+                            }, 5000);
+                        }
+
+                    }, 1000);
+                } else {
+                    flag = 0;
+                    if (data.result['status'] < 0) {
+                        $("#p3").show();
+                        $("#p3name").html(data.result['message']);
+                    }
+                    /*window.location.reload(true);*/
+                    return false;
+                }
+            },
+            shake: function () {
+                var order = $("#log tr").length + 1;
+                var count = parseInt($('#times').text());
+                if (flag == 1) {
+                    flag = 0;
+                    bobing.start();
+                    $.ajax({
+                        url: "mobile.php?act=module&id=5&name=dice&do=getaward&weid=10007",
+                        type: "post",
+                        dataType: "json",
+                        beforeSend: function () {
+                        },
+                        success: function (data) {
+                            if (data.status == true) {
+                                bobing.start();
+                            }
+                            bobing.end(data);
+                            var account = data.result['account'] || 1;
+                            $("#count").html('剩余博饼次数：' + (account - 1));
+                        },
+                        complete: function () {
+                            setTimeout(function () {
+                                $('#bobing').show();
+                                $('.dice').removeClass('active');
+                                if ($("#p1").css("display") === 'none' && $("#p2").css("display") === 'none') {
+                                    flag = 1;
+                                }
+                            }, 1200);
+                        }
+                    });
+                }
+            }
+        }
+
+        function deviceMotionHandler(eventData) {
+            /*$.ajax({
+             url:"mobile.php?act=module&id=5&name=dice&do=getaward&weid=10007",
+             type:"post",
+             dataType:"json",
+             beforeSend:function(){
+             bobing.start();
+             },
+             success:function(data){
+             bobing.end( data );
+             },
+             complete :function()
+             {
+             setTimeout(function(){
+             $('#bobing').show();
+             $('.dice').removeClass('active');
+             if($("#p1").css("display")  === 'none'  && $("#p2").css("display")  === 'none')
+             {
+             flag=1;
+             }
+             },1200);
+             }
+             });*/
+            eventData = eventData || {};
+            var acceleration = eventData.accelerationIncludingGravity || { x: 0, y: 0, z: 0};
+            var curTime = new Date().getTime();
+            if ((curTime - last_update) > 100) {
+                var diffTime = curTime - last_update;
+                last_update = curTime;
+                x = acceleration.x;
+                y = acceleration.y;
+                z = acceleration.z;
+                var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+                if (speed > SHAKE_THRESHOLD) {
+                    bobing.shake.call(this);
+                }
+                ;
+                last_x = x;
+                last_y = y;
+                last_z = z;
+            }
+            ;
+        };//摇一摇触发
+
+
+        $('#begin').click(function () {
+            bobing.shake();
+        })
+    });
+</script>
+<script type="text/javascript">
+    function check(form) {
+        if (!form['realname'].value) {
+            alert('请输入您的真实姓名！');
+            return false;
+        }
+        if (!form['mobile'].value) {
+            alert('请输入您的手机号码！');
+            return false;
+        }
+        if (!/^1[358]{1}[0-9]{9}/.test(form['mobile'].value)) {
+            alert('请输入正确的手机号码！');
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<ul class="navbar">
+    <li class="active"><a href=""><i class="icon icon-home"></i>活动首页</a></li>
+    <li><a href=""><i class="icon icon-gift"></i>我的奖品</a></li>
+    <li><a href=""><i class="icon icon-book"></i>活动规则</a></li>
+</ul>
+
+
+</body>
+</html>
