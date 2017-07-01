@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang=”zh-CN”>
+<head>
+    <meta charset="utf-8">
+
+    <title>我的标题</title>
+    <meta name="keywords" content="keywords"/>
+    <meta name="description" content="description"/>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+    <!-- 如果内容设置为YES，Web应用程序运行在全屏模式;否则，它不会。默认行为是使用Safari浏览器显示网页内容-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon-precomposed" href="http://pic2.58.com/m58/img/icon58b.png" />
+    <link rel="apple-touch-startup-image" href="http://pic2.58.com/m58/img/icon58b.png" />
+    <!-- 缩略图 -->
+    <link rel="apple-touch-icon" sizes="114x114" href="touch-icon-iphone4.png" />
+
+    <link rel="stylesheet" href="css/font-awesome/font-awesome.min.css"/>
+    <!-- base style  -->
+    <link rel="stylesheet" type="text/css" media="all" href="css/zero-mobile.css" />
+    <link rel="stylesheet" href="js/swipe/swipe.css"/>
+
+    <!-- web style  -->
+    <link rel="stylesheet" href="js/swipe/swipe.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/index.css"/>
+
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/swipe/swipe.js"></script>
+</head>
+<body class="navbar-bottom-fixed">
+<!-- header -->
+<header class="header">
+    <div class="pull-left"><a href=""><i class="icon-img-chevron-left"></i></a></div>
+    <div class="pull-right"><a href=""><i class="icon-img-share"></i></a> <a href=""><i class="icon-img-star"></i></a></div>
+    <div class="main text-ellipsis">
+        菜品详情
+    </div>
+</header>
+
+<div class="container">
+    <div class=" box">
+        <div id="banner_box" class="box_swipe">
+            <ul>
+                <li><img src="pic/2.jpg" alt=""/><span class="title">活动名称活动名称</span><div class="mask"></div></li>
+                <li><img src="pic/2.jpg" alt=""/><span class="title">活动名称活动名称</span><div class="mask"></div></li>
+            </ul>
+            <ol>
+                <li class="on"></li>
+                <li></li>
+            </ol>
+        </div>
+        <script>
+            $(function () {
+                new Swipe($('#banner_box')[0], {
+                    speed: 500,
+                    auto: 3000,
+                    callback: function () {
+                        var lis = $(this.element).next("ol").children();
+                        lis.removeClass("on").eq(this.index).addClass("on");
+                    }
+                });
+            });
+        </script>
+
+            <div class="row">
+                    <div class="form">
+                        <div class="">
+                            <div class="pull-right"><span class="price">￥58</span>&nbsp;<span class="price-original">￥58</span></div>
+                            <h3>青椒炒肉</h3>
+                        </div>
+                        <div class="">
+                            <label>标签: <a href="">炒肉</a></label><label>分类: <a href="">肉类</a></label>
+                        </div>
+                        <div class="">
+                            <label>收藏: <span class="text-important">20</span></label><label>分享: <span class="text-important">20</span></label><label>销量: <span class="text-important">20</span></label>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="text-center">
+                        <button class="btn btn-danger btn-lg">立即购买</button>
+                        <button class="btn btn-warning btn-lg">加入购物车</button>
+                    </div>
+            </div>
+            <div class="row">
+                  <h4><i class="icon-img-file"></i>本单详情</h4>
+            </div>
+            <div class="row">
+                现场演唱 RTA哥哥们助阵5月24日RTA少年组新专辑《少年进化论》在悠唐广场3层aaaaaaaaa举行新.现场演唱 RTA哥哥们助阵5月24日RTA少年组新专辑《少年进化论》在悠唐广场3层aaaaaaaaa举行新.现场演唱。新专辑《少年进化论》在悠唐广场3层aaaaaaaaa举行新.
+            </div>
+    </div>
+
+    <div class="box">
+        <div class="comment">
+            <div class="comment-header">
+                <i class="icon-img-comment"></i>评论(30)
+            </div>
+            <ul class="list-media">
+                <li>
+                    <div class="media-object"><img src="pic/avatar.jpg" class="default" alt="" ></div>
+                    <div class="media-body">
+                        <h3 class="media-heading">小白 <span class="icon-round"><i class="icon-img-boy"></i></span></h3>
+                        <p>打雷要下雨~打雷要下雨~打雷要下雨~打雷要下雨~打雷。</p>
+                    </div>
+                    <div class="operate in">2014-01-01</div>
+                </li>
+                <li>
+                    <div class="media-object"><img src="pic/avatar.jpg" class="default" alt="" ></div>
+                    <div class="media-body">
+                        <h3 class="media-heading">小白</h3>
+                        <p>打雷要下雨~打雷要下雨~打雷要下雨~打雷要下雨~打雷。</p>
+                    </div>
+                    <div class="operate in">2014-01-01</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="navbar navbar-bottom">
+    <ul>
+        <li><a href=""><i class="icon-img-home"></i><div>首页</div></a></li>
+        <li class="new"><a href=""><i class="icon-img-msg"></i><div class="text-ellipsis">活动资讯</div></a></li>
+        <li><a href=""><i class="icon-img-menu"></i><br/><div>菜单</div></a></li>
+        <li class="active"><a href=""><i class="icon-img-shop"></i><br/><div>购物车</div></a></li>
+        <li><a href=""><i class="icon-img-user"></i><br/><div class="text-ellipsis">会员</div></a></li>
+    </ul>
+</div>
+
+<script src="js/swipe/swipe.js"></script>
+<script src="js/global.js"></script>
+
+</body>
+</html>

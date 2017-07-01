@@ -1,0 +1,94 @@
+@import "../../../css/mixins/index";
+body{ background: #22262d; color: #fff; }
+a{ color: #fff;}
+.header{ background: #101318;}
+
+.box_swipe ol li{ background: #8d8d8d;}
+.box_swipe ol li.on{ background: #e72b86;}
+
+.navbar a,.navbar{ color: #fff;}
+
+.text-warning{ color: #fffe00;}
+
+.navbar-bottom{ .linear-gradient(top , #2e3339 , #0a0b0d);}
+.navbar-bottom li:hover a, .navbar-bottom li.active a,.menubar .active a{ background: #e72b86;}
+.navbar-bottom li:hover li a, .navbar-bottom li.active li  a,.menubar .active li a{ background: transparent;}
+.navbar-bottom .new:before{ background: #fefe00;width: 7px; height: 7px;}
+.navbar-bottom .icon-img-home{ background-position:  -(24px *2) -24px * 3;}
+.navbar-bottom .icon-img-msg{ background-position:  -(24px *3) -24px * 3;}
+.navbar-bottom .icon-img-menu{ background-position:  -(24px *4) -24px * 3;}
+.navbar-bottom .icon-img-shop{ background-position:  -(24px *5) -24px * 3;}
+.navbar-bottom .icon-img-user{ background-position:  -(24px *6) -24px * 3;}
+
+nav.navbar li{ position: relative;}
+nav.navbar li .navbar-item{ background: #b7babc; padding: 3px;}
+nav.navbar li .navbar-item-inner{ .linear-gradient(top , #cc8685 , #c23f3c);  }
+nav.navbar li:nth-child(2)  .navbar-item-inner{.linear-gradient(top , #89bfd2 , #2195b4); }
+nav.navbar li:nth-child(3)  .navbar-item-inner{.linear-gradient(top , #66ba71 , #009d10); }
+nav.navbar li:nth-child(4)  .navbar-item-inner{.linear-gradient(top , #ebcd79 , #f1c222); }
+nav.navbar .new:before{ width: 7px; height: 7px; background: #ed008e; border-radius: 100%; position: absolute; left: 20%; top: 30%; content:''; }
+
+nav.navbar .icon-img-time{  background-position:  -(24px *8) -24px * 2}
+nav.navbar .icon-img-pic{ background-position:  -(24px *9) -24px * 2;}
+nav.navbar .icon-img-star{ background-position:  -(24px) -24px * 3; }
+nav.navbar .icon-img-ticket{ background-position:  -(24px *1) -24px * 3;}
+
+.menubar,.box,.menubar li ul{ border:1px solid #9d57b7 ;background: #101318;}
+.menubar li li{ border-color:#9d57b7; }
+.menubar li ul .active a,.menubar li ul li:hover a{ background: #e72b86;}
+.menubar li > a{ color: #fff;}
+
+.list-exhibit p{ color: #ffff00; }
+.list-exhibit{ margin: -1%;}
+.list-exhibit img{ width: 100%;}
+.list-exhibit li{ float: left; width: 47%; border: 1px solid #5b376d !important;}
+.list-exhibit li:hover{  background: transparent !important;}
+.list-exhibit .btn-submit{  background: #01a0e2;}
+.list-exhibit .box{  margin: 1% !important; padding: 0;}
+.list-exhibit .box .box-inner{  padding: 5px;}
+.list-exhibit .operate{ position: static; margin: 5px 0 0 0;}
+.list-exhibit .operate a{ font-size: 12px; color: #00ffff; text-align: center; width: 50%; border-top: 1px solid #5b376d; display: inline-block; padding: 5px 10px; margin: 0;}
+.list-exhibit .operate a + a{ border-left: none; border-left:1px solid #5b376d;}
+.list-exhibit .type{ top:0; position: absolute; background: #e72b86;  color: #fff; background: url(../img/type.png) no-repeat; width: 40px; height: 25px; text-align: center; line-height: 20px;}
+.list-exhibit .media-heading{ text-align: center; font-size: 24px;}
+
+.thumbnail img{border: 1px solid #9d57b7; }
+
+.list-thumbnail li{ width: 33.3333%;}
+
+.list-category{
+    img{ width: 100%;}
+    li{ border: 1px solid #9853ae; padding: 0; margin-bottom: 10px;}
+    p{ color: #8d8d8d;}
+    h3{ color: #fff; margin: 0; font-size: 15px;}
+}
+
+.text-important{ color: #e72b86;}
+
+.timeline{
+    height: 100%;
+    margin-right: 60px;
+    &,li{ list-style: none; }
+    padding-left: 0;
+    margin-left: 0;
+    padding-right: 20px;
+    font-size: 12px;
+    color: #8d8d8d;
+    margin-top: 90px;
+    margin-bottom: -90px;
+    .time{ color: #fff;}
+    border-right: 2px solid #dd2b81;
+    li{ position: relative; margin-bottom: 20px; }
+    .list li{ position: relative; top: -90px;}
+    .day{ font-size: 15px; }
+    .node-info{position: absolute; right: -90px;}
+    .node{ background: #dd2b81; width: 15px; height: 15px; border-radius: 100%; position: absolute; right: -28px; ;}
+    li:first-child .node{ border: 2px solid #fff; width: 25px; height: 25px; right: -32px; top:0;}
+    li:first-child .node-info{ top:0;}
+}
+
+.icon-crown{ background: url(../../../img/icons.png) no-repeat  -(24px * 7) -24px * 3; width: 24px; height: 24px;}
+.icon-crown.active{ background-position:  -(24px * 8) -24px * 3;}
+
+.darkbar{ position: relative;}
+.darkbar .menutip{ position: absolute; top: 10px; right: 10px; color: #fff; z-index: 11;}
