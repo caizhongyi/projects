@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML XMLNS:ELEMENT>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>用户维护</title>
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+
+<SCRIPT language="JavaScript">
+// 页面初始化操作
+Efs.onReady(
+  function(){
+    Efs.getDom("mgList").txtXML = Efs.Common.getQryXml();
+    Efs.getExt("mggrid").store.load();
+  }
+);
+
+// 进入查询
+function doQry()
+{
+  var strXml = Efs.Common.getQryXml(Efs.getExt("frmQry"));
+  Efs.getDom("mgList").txtXML = strXml;
+  Efs.getExt("mggrid").store.load();
+}
+
+var sUserID = "";
+var opType = "";
+function doGridClick(data)
+{
+  sUserID = data["USERID"];
+  Efs.getExt("cmdEdit").enable();
+  Efs.getExt("cmdDel").enable();
+}
+
+function onEditEx()
+{
+  if(sUserID == "")
+  {
+    alert("没有选择用户");
+    return false;
+  }
+  Efs.getExt("frmData").reset();
+
+  Efs.Common.ajax("/efs/ajax?method=getUserDetail&txtUserID=" + sUserID,"",function(succ,response,options){
+     if(succ){ // 是否成功
+       var xmlReturnDoc = response.responseXML;
+       Efs.Common.setEditValue(xmlReturnDoc.xml,Efs.getExt("frmData"), "QUERYINFO");
+     }
+     else{
+       alert("加载用户信息失败!");
+     }
+  });  
+  Efs.getDom("UserID").operation = "1";
+  Efs.getDom("UserID").state = "5";
+  
+  with(Efs.getExt("UserMWin"))
+  {
+    setTitle("修改用户");
+    show();
+  }
+}
+
+function onAddEx()
+{
+  Efs.getDom("UserID").operation = "0";
+  Efs.getDom("UserID").state = "0";
+
+  Efs.getExt("frmData").reset();
+  with(Efs.getExt("UserMWin"))
+  {
+    setTitle("添加用户");
+    show();
+  }
+}
+
+function onDelEx()
+{
+  if(!confirm("确定要删除吗？"))
+    return false;
+
+  with(document.frmPost)
+  {
+    url = "/efs/identify.do?method=userDrop";
+    var sTmpXml = "<DATAINFO><USERLIST writeevent='0' operation='2'><USERID datatype='0' state='5'>" + sUserID + "</USERID></USERLIST></DATAINFO>";
+    txtOpXml.value = sTmpXml;
+  }
+  Efs.getExt("frmPost").submit();
+}
+
+
+function doDealUser()
+{ 
+  with(Efs.getDom("frmData"))
+  {
+    if(Efs.getDom("UserID").operation == "0")
+      url = "/efs/ajax?method=userAdd";
+    else if(Efs.getDom("UserID").operation == "1")
+      url = "/efs/ajax?method=userEdit";
+  }
+
+  Efs.getExt("frmData").submit();
+}
+
+// 获取异步提交的返回监听函数
+function frmPostSubBack(bln,from,action)
+{
+  if(bln)
+  {
+    Efs.getExt("UserMWin").hide();
+    doQry();
+  }
+  else
+  {
+    var xml_http = action.response;
+    if(xml_http != null)
+    {
+      var strRet = xml_http.reponseText;
+      var objXML = Efs.Common.createDocument(strRet);
+      
+      alert("加载失败：" + objXML.selectSingleNode("//FUNCERROR").text);
+      objXML = null;
+    }
+    xml_http = null;
+  }
+}
+
+
+function redSex(sV)
+{
+  if(sV == "男")
+    return "<img src='../images/default/dd/user_green.jpg'>";
+  else
+    return "<img src='../images/default/dd/user_yellow.jpg'>";
+}
+
+function rendDetail(sV,sT,recordD)
+{
+  return "<a target='_blank' style='color:red;' href='psnDetailjsp?txtPersonID=" + sV + "&txtPersonName=" + recordD.data["USERNAME"] + "'>详细信息</a>";
+}
+</SCRIPT>
+<style>
+.Edit {
+  width:100px;
+}
+</style>
+</HEAD>
+<BODY>
+<div iconCls="icon-user" region="north" height="60" title="用户查询" border="false">
+ <form id="frmQry"  method="post">
+  <TABLE class="formAreaTop" width="100%" height="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>&nbsp;</td>
+        <td width="60">用户姓名</td>
+        <td width="100"><input type="text" class="Edit" kind="text" fieldname="USERNAME" operation="like" maxlength="30" hint="模糊查询"></td>
+        <td width="40">性别</td>
+        <td width="100"><input type="text" class="Edit" kind="dic" src="DIC_GENDER" fieldname="SEX"></td>
+        <td><input iconCls="icon-qry" type="button" value="查 询" onEfsClick="doQry()"></td>
+        <td>&nbsp;</td>
+      </tr>
+    </TABLE>
+  </form>
+</div>
+
+<div id="mggrid" region="center" xtype="grid" border="false" pagingBar="true" pageSize="25" onEfsRowClick="doGridClick()" buttonAlign="center">
+  <div xtype="tbar">
+    <span style="font-size:9pt;font-weight:bold;color:#15428B;">用户列表</span>
+    <div text="->"></div>
+    <div iconCls="icon-add" text="增加用户#A" onEfsClick="onAddEx()"></div>
+    <div text="-"></div>
+    <div iconCls="icon-edit" id="cmdEdit" text="编辑用户#E" onEfsClick="onEditEx()" disabled></div>
+    <div text="-"></div>
+    <div iconCls="icon-del" id="cmdDel" text="删除用户#D" onEfsClick="onDelEx()" disabled></div>
+  </div>
+  <div id="mgList" xtype="store" url="http://localhost:8080/efs/ajax?method=getRsQryUserList" txtXML='' autoLoad="false">
+    <div xtype="xmlreader" fieldid="USERID" record="ROW" totalRecords="QUERYINFO@records">
+      <div name="USERID" mapping="USERID"></div>
+      <div name="USERTITLE" mapping="USERTITLE"></div>
+      <div name="USERNAME"></div>
+      <div name="UNITNAME"></div>
+      <div name="SEX"></div>
+      <div name="DISABLED"></div>
+      <div name="CANEDITPASSWORD"></div>
+      <div name="USERTYPE"></div>
+    </div>
+  </div>
+
+  <div xtype="colmodel">
+    <div header="用户编号" width="80" sortable="true" dataIndex="USERID" align="center"></div>
+    <div header="用户名称" width="100" sortable="true" dataIndex="USERTITLE" align="center"></div>
+    <div header="用户姓名" width="80" sortable="true" dataIndex="USERNAME" align="center"></div>
+    <div header="单位名称" width="120" sortable="true" dataIndex="UNITNAME"></div>
+    <div header="性别" width="40" sortable="true" dataIndex="SEX" align="center" renderer="redSex"></div>
+    <div header="是否禁用用户" width="100" sortable="true" dataIndex="DISABLED" align="center"></div>
+    <div header="能否修改口令" width="100" sortable="true" dataIndex="CANEDITPASSWORD" align="center"></div>
+    <div header="用户类型" width="80" sortable="true" dataIndex="USERTYPE" align="center"></div>
+    <div header="详细信息" width="80" sortable="true" dataIndex="USERID" align="center" renderer="rendDetail"></div>
+  </div>
+
+</div>
+
+    <!-- window开始 -->
+    <div iconCls="icon-panel" id="UserMWin" xtype="window" width="560" height="420" title="添加用户" resizable="true" modal="true">
+      <div region="center" xtype="panel" title="" border="false" autoScroll="true">
+        <div xtype="tbar">
+          <div text="->"></div>
+          <div iconCls="icon-add" id="cmdUser" text="确  定" onEfsClick="doDealUser()"></div>
+        </div>
+        <form id="frmData" class="efs-box" method="post" url="" onEfsSuccess="frmPostSubBack(true)" onEfsFailure="frmPostSubBack(false)">
+          <TABLE class="formArea">
+          <tr style="display:none">
+            <td>用户编号</td>
+            <td colspan="4"><input type="hidden" kind="text" fieldname="USERLIST/USERID" name="UserID" id="UserID" operation="0" writeevent="0" state="0" datatype="0"></td>
+          </tr>
+          <tr>
+            <td width="80">用户名称</td>
+            <td width="160"><input type="text" kind="text" fieldname="USERLIST/USERTITLE" state="0" datatype="0" maxlength="30" value="" must="true"></td>
+            <td width="20">&nbsp;</td>
+            <td width="80">用户姓名</td>
+            <td width="160"><input type="text" kind="zhunicode" fieldname="USERLIST/USERNAME" state="0" datatype="0"  maxlength="30" must="true"></td>
+          </tr>
+          <tr>
+            <td>用户单位</td>
+            <td><input type="text" kind="dic" src="MANAGEUNIT" state="0" datatype="0" fieldname="USERLIST/UNITID" must="true"></td>
+            <td width="20">&nbsp;</td>
+            <td>职务</td>
+            <td><input type="text" kind="dic" src="DIC_DUTY" state="0" datatype="0" fieldname="USERLIST/DUTY"></td>
+          </tr>
+          <tr>
+            <td>公民身份号码</td>
+            <td><input type="text" kind="idcard" fieldname="USERLIST/IDCARD" state="0" datatype="0" sex="sex" hint="请输入18位的公民身份号码" birthday="birthday"></td>
+            <td width="20">&nbsp;</td>
+            <td>性别</td>
+            <td><input type="text" kind="dic" id="sex" src="DIC_GENDER" must="true" fieldname="USERLIST/SEX" state="0" datatype="1"></td>
+          </tr>
+          <tr>
+            <td>出生日期</td>
+            <td><input type="text" kind="date" id="birthday" fieldname="USERLIST/BIRTHDAY" state="0" datatype="3"></td>
+            <td width="20">&nbsp;</td>
+            <td>民族</td>
+            <td><input type="text" kind="dic" src="DIC_NATIVE" fieldname="USERLIST/NATION" state="0" datatype="0"></td>
+          </tr>
+          <tr>
+            <td>籍贯</td>
+            <td><input type="text" kind="dic" src="DIC_CODE" fieldname="USERLIST/NATIVEPLACE" state="0" datatype="0"></td>
+            <td width="20">&nbsp;</td>
+            <td>文化程度</td>
+            <td><input type="text" kind="dic" src="DIC_EDUCATION" fieldname="USERLIST/EDUCATION" state="0" datatype="0"></td>
+          </tr>
+          <tr>
+            <td>家庭住址</td>
+            <td colspan="4"><input type="text" style="width:420px" kind="text" fieldname="USERLIST/ADDRESS" state="0" datatype="0" maxlength="100"></td>
+          </tr>
+          <tr>
+            <td>暂住地址</td>
+            <td colspan="4"><input type="text" style="width:420px" kind="text" fieldname="USERLIST/TEMPADDRESS" state="0" datatype="0" maxlength="100"></td>
+          </tr>
+          <tr>
+            <td>联系方式</td>
+            <td colspan="4"><input type="text" style="width:420px" kind="text" fieldname="USERLIST/CONTACT" maxlength="50" state="0" datatype="0"></td>
+          </tr>
+          <tr>
+            <td>手机号码</td>
+            <td><input type="text" kind="text" fieldname="USERLIST/SMSTEL" maxlength="15" state="0" datatype="0"></td>
+            <td width="20">&nbsp;</td>
+            <td>是否禁用</td>
+            <td><input type="text" kind="dic" src="DIC_TRUEFALSE" code="0" value="否" fieldname="USERLIST/DISABLED" state="0" datatype="1"></td>
+          </tr>
+          <tr>
+            <td>能否修改口令</td>
+            <td><input type="text" kind="dic" src="DIC_ABLE" code="1" value="能" fieldname="USERLIST/CANEDITPASSWORD" state="0" datatype="1"></td>
+            <td width="20">&nbsp;</td>
+            <td>用户类型</td>
+            <td><input type="text" kind="dic" src="DIC_USERTYPE" code="3" value="普通管理员" fieldname="USERLIST/USERTYPE" state="0" datatype="1"></td>
+          </tr>
+          <tr>
+            <td>用户描述</td>
+            <td colspan="4"><TEXTAREA kind="text" style="height:60px;width:420px" fieldname="USERLIST/USERDES" state="0" datatype="0"></TEXTAREA>
+            </td>
+          </tr>
+          <tr style="display:none">
+            <td>用户口令<br></td>
+            <td colspan="4">|<input type="hidden" kind="text" fieldname="USERLIST/USERPASSWORD" state="0" datatype="0" value="a"><br></td>
+          </tr>
+        </TABLE>
+        </form>
+      </div>
+    </div>
+    <!-- window结束 -->
+
+
+  <FORM id="frmPost" name="frmPost" url="" method="post" style="display:none;" onEfsSuccess="frmPostSubBack(true)" onEfsFailure="frmPostSubBack(false)">
+    <INPUT type="hidden" name="txtOpXml">
+  </FORM>
+
+</BODY>
+</HTML>
+

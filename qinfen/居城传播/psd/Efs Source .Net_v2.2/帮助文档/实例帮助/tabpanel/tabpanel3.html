@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> tab面板事件 </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+function setT(index)
+{
+  Efs.getExt("tabP").setActiveTab(index);
+}
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<div id="tabP" xtype="tabpanel" width="500" height="300" title="father" buttonAlign="center">
+  <div xtype="bbar">
+    <div text="->"></div>
+    <div iconCls="icon-edit" text="跳第一个页签#F" onEfsClick="setT(0)"></div>
+    <div text="-"></div>
+    <div text="跳第二个页签#S" onEfsClick="setT(1)"></div>
+  </div>
+    <div id="tab1" title="tab1">
+    
+      第一个页签<BR><BR>
+      简单的div标签，即可快速构造该页面布局，不再需要繁杂的js代码
+    
+    </div>
+    
+    <div id="tab2" title="tab2" xtype="grid">
+      <div xtype="groupstore"  url="getDataPageUrl">
+        <div xtype="xmlreader" recordid="SSCID" record="ROW">
+          <div name="SSCID" mapping="SSCID"></div>
+          <div name="SSCNAME" mapping="SSCNAME"></div>
+          <div name="REGADDRCODEDES" mapping="REGADDRCODEDES"></div>
+          <div name="REGADDRESS" mapping="REGADDRESS"></div>
+          <div name="OPTIME" mapping="OPTIME"></div>
+        </div>
+      </div>
+      <div xtype="colmodel">
+        <div header="公司编号" width="150" sortable="true" dataIndex="SSCID"></div>
+        <div header="公司名称" width="150" sortable="true" dataIndex="SSCNAME"></div>
+        <div header="行政区划" width="200" sortable="true" dataIndex="REGADDRCODEDES"></div>
+        <div header="注册地详址" width="200" sortable="true" dataIndex="REGADDRESS"></div>
+        <div header="操作时间" dataIndex="OPTIME" width="150"></div>
+      </div>
+    </div>
+
+  <div xtype="buttons">
+    <div iconCls="icon-ok" text="提交#T"></div>
+    <div iconCls="icon-back" text="重置#R"></div>
+  </div>
+</div>
+</BODY>
+</HTML>

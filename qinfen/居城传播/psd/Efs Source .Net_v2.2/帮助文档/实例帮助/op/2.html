@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>EfsFrame框架用户体验</title>
+<LINK type="text/css" rel="stylesheet" href="../css/docPage.css">
+<style>
+</style>
+
+</head>
+<body>
+<div class="divDoc" id="pageBg">
+  <div style="width:100%">
+    <div style="float:right;font-size:9pt;margin-top:10px;margin-bottom:10px;font-family:Arial;color:#C2BDBD">EfsFrame框架应用模型介绍</div>
+  </div>
+
+  <div style="text-align:left;font-size:14pt;margin-top:10px;margin-bottom:20px;font-family:黑体;color:red">查询列表功能操作流程分析
+  </div>
+
+  <div style="border:1px solid #BEBAC5;width:100%;margin-top:15px;">
+    <DIV>&nbsp;&nbsp;&nbsp; 构造添加的实例代码：</DIV>
+    <img src="images/4.png"><BR>
+    <DIV>特别说明：</DIV>
+<DIV><FONT color=#ff0000>1、grid中的pagingBar表示是否显示分页栏，pageSize表示每页显示多少条数据；</FONT></DIV>
+<DIV><FONT color=#ff0000>2、store中的url 指向异步获取列表数据的后台指向地址；</FONT></DIV>
+<DIV><FONT color=#ff0000>3、store中的autoLoad 表示是否自动加载数据；</FONT></DIV>
+<DIV><FONT color=#ff0000>4、xmlreader中的record表示读取返回XML数据中列的根节点；</FONT></DIV>
+<DIV><FONT color=#ff0000>5、xmlreader下每一个div代表一列，根据其mapping来获取xml节点的值，如果mapping为空，则自动根据name来获取节点值；</FONT></DIV>
+<DIV><FONT color=#ff0000>6、colmodel下的每一个div表示对应的列的表现模式，header表示列头名称，dataIndex与xmlreader中的name对应；</FONT></DIV>
+<DIV><FONT color=#ff0000>7、colmodel下的第一个div，如果其type为checkbox表示为可多选的行，表头会出现全线框，如果为radio则表示单选行，默认为单选行模式；</FONT></DIV>
+<DIV><FONT color=#ff0000>8、colmodel下的div如果将其kind属性这是为dic，并同时给出src的字典名称，说明改列需要做相应的字典翻译，Efs会自动在客户端列表中完成字典翻译处理，省去了服务端字典翻译的功能；</FONT></DIV>
+<DIV><FONT color=#ff0000>9、grid中的onEfsRowClick， onEfsRowDblClick分别表示单击事件和双击事件，具体的事件返回参数类型，请参考：</FONT></DIV>
+<DIV><FONT color=#1a1ae6>行单击事件：</FONT></DIV>
+<DIV><FONT color=#1a1ae6>onEfsRowClick:</FONT><FONT color=#ff0000>(Object data,Grid this, Number rowIndex, Ext.EventObject e )</FONT></DIV>
+<DIV align=left><U>参数说明：Object data: 通过data[xmlreader的name]获取数据,如：data["PERSONID"] 获取人员编号，以下相同；</U></DIV>
+<DIV align=left><FONT color=#0000ff>行双击事件：</FONT></DIV>
+<DIV><FONT color=#0938f7>onEfsRowDblClick:</FONT> <FONT color=#ff0000>(Object data,Grid this, Number rowIndex, Ext.EventObject e )</FONT></DIV>
+<DIV><FONT color=#113dee>单元格单击事件：</FONT></DIV>
+<DIV><FONT color=#2222dd>onEfsCellClick :</FONT> <FONT color=#ff0000>( Object data,Grid this, Number rowIndex, Number columnIndex,Ext.EventObject e )</FONT></DIV>
+<DIV><FONT color=#1111ee>单元格双击事件：</FONT></DIV>
+<DIV><FONT color=#1a1ae6>onEfsCellDblClick :</FONT> <FONT color=#ff0000>(Object data,Grid this, Number rowIndex, Number columnIndex,Ext.EventObject e )</FONT></DIV>
+<DIV><BR>&nbsp;</DIV>构造查询条件进行有条件查询
+<img src="images/5.png"><BR>
+
+<DIV>备注说明：</DIV>
+<DIV><FONT color=#ee1111>1、Efs.Common.getQryXml(Efs.getExt("frmQry"))方法是将指定的frmQry表单中所有不为空的表单域根据fieldname构造出标准的查询型xml（查询型xml请参考《EfsFrame框架标准数据交换XML结构说明》）；</FONT></DIV>
+<DIV><FONT color=#ee1111>2、根据id，获得grid的div对象的txtXML属性设置为标准的查询型XML，如：Efs.getDom("psnList").txtXML = strXml；</FONT></DIV>
+<DIV><FONT color=#ee1111>3、重新加载grid的数据，即可完成，如Efs.getExt("psnGrid").store.load()；</FONT></DIV><FONT color=#ee1111>当空条件查询的时候，可以设置Efs.getDom("psnList").txtXML = Efs.Common.getQryXml()即可，Efs.Common.getQryXml()获得的是一个空条件的查询型XML；</FONT>
+
+    <BR><BR>
+
+</div>
+</body>
+</html>

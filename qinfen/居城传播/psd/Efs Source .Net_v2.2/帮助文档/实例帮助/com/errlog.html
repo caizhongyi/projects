@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>错误日志</title>
+<LINK type="text/css" rel="stylesheet" href="../css/docPage.css">
+<style>
+</style>
+
+</head>
+<body>
+<div class="divDoc" id="pageBg">
+  <div style="width:100%">
+    <div style="float:right;font-size:9pt;margin-top:10px;margin-bottom:10px;font-family:Arial;color:#C2BDBD">EfsFrame框架应用模型介绍</div>
+  </div>
+
+  <div style="text-align:left;font-size:14pt;margin-top:10px;margin-bottom:20px;font-family:黑体;color:red">错误日志
+  </div>
+
+  <div style="border:1px solid #BEBAC5;width:100%;margin-top:15px;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;只要调用了标准的业务存储层类对象，所有的错误执行的SQL语句都将记录下来，便于开发人员排错处理，其中注意：对象标识相同的SQL语句错误日志为同一个事务处理对象封装的SQL，一起执行的，其中至少有一条语句错误，所以导致事务提交失败而回滚。<BR>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图例展示：<BR>
+  <img src="images/errlog.png">
+  </div>
+
+</div>
+</body>
+</html>

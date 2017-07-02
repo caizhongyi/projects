@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<TITLE> toolbar </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+function doAdd(bln)
+{
+  if(bln)
+    Efs.getExt("cmdAdd").enable();
+  else
+    Efs.getExt("cmdAdd").disable();
+}
+</SCRIPT>
+</HEAD>
+<BODY><BR>
+
+<div xtype="toolbar">
+  <div id="cmdAdd" text="添加#A" iconCls="icon-add" onEfsClick="alert('添加')"></div> <!--单个按钮-->
+  <div text="-"></div><!--分隔符-->
+  <div id="cmdEdit" text="鼠标经过事件" iconCls="icon-lock" onEfsMouseOver="alert('经过')"></div>
+  <div text="-"></div><!--分隔符-->
+  <div id="cmdEdit" text="鼠标离开事件" iconCls="icon-unlock" onEfsMouseout="alert('离开')"></div>
+</div>
+
+<div xtype="button" text="禁用添加" onEfsClick="doAdd(false)"></div>
+<div xtype="button" text="激活添加" onEfsClick="doAdd(true)"></div>
+
+</BODY>
+</HTML>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> Form表单 </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+<script type="text/javascript">
+function doValid()
+{
+  alert(Efs.getExt("frmData").isValid());
+}
+
+function doSubmit(){
+  if(Efs.getExt("frmData").isValid())
+    seeXML(Efs.Common.getOpXml(Efs.getExt("frmData")));
+  else
+    Ext.Msg.alert('提示', '请检查输入值是否有效');
+
+  // 以下为提交
+  // Efs.getExt("frmData").submit();
+}
+
+function doRet()
+{
+  Efs.getExt("frmData").reset();
+}
+
+function seeXML(sXML)
+{
+  var w = window.open("");
+  w.document.write("<xmp>" + sXML + "</xmp>");
+}
+
+</script>
+</HEAD>
+
+<BODY>
+<div xtype="panel" title="添加学生基本信息" border="false" buttonAlign="center" autoScroll="true">
+  <div xtype="tbar">
+    <div iconCls="icon-hint" onEfsClick="window.open('../doc/1.2、Efs框架中INPUT扩展属性说明.pdf','_blank')" text="下载：Efs框架中INPUT扩展属性说明.pdf"></div>
+  </div>
+  <form id="frmData" class="efs-box" method="post" url="ajax?method=psnAdd" method="post" onEfsSuccess="frmPostSubBack(true)" onEfsFailure="frmPostSubBack(false)">
+      <TABLE class="formArea">
+        <TR>
+          <TD width="100" labelFor="name">姓  名</TD>
+          <TD><INPUT id="name" type="text" kind="zhunicode" must="true" maxlength="50" fieldname="PERSON/NAME"></TD>
+          <TD width="20"></TD>
+          <TD width="100">身份证号码</TD>
+          <TD><INPUT type="text" kind="idcard" fieldname="PERSON/IDCARD" sex="sex" birthday="birthday"></TD>
+        </TR>
+        <TR>
+          <TD width="100" labelFor="sex">性  别</TD>
+          <TD><INPUT type="text" kind="dic" src="DIC_SEX" id="sex" fieldname="PERSON/SEX" must="true"></TD>
+          <TD width="20"></TD>
+          <TD width="100" labelFor="birthday">出生日期</TD>
+          <TD><INPUT type="text" kind="date" id="birthday" fieldname="PERSON/BIRTHDAY" datatype="3"></TD>
+        </TR>
+        <TR>
+          <TD width="100">籍  贯</TD>
+          <TD><INPUT type="text" kind="dic" src="DIC_CODE" fieldname="PERSON/PLACECODE"></TD>
+          <TD width="20"></TD>
+          <TD width="100">年  龄</TD>
+          <TD><INPUT type="text" kind="int" range=[0,119] fieldname="PERSON/YEAROLD" datatype="1" ></TD>
+        </TR>
+        <TR>
+          <TD width="100">邮  箱</TD>
+          <TD><INPUT type="text" kind="email" fieldname="PERSON/EMAIL"></TD>
+          <TD width="20"></TD>
+          <TD width="100">电话号码</TD>
+          <TD><INPUT type="text" kind="mask" mask="###-########" fieldname="PERSON/TEL"></TD>
+        </TR>
+        <tr>
+          <td>备注</td>
+          <td colspan="4"><TEXTAREA class="Edit" kind="text" style="height:60px;width:480px" fieldname="PERSON/BAK"  datatype="0"></TEXTAREA>
+          </td>
+        </tr>
+        <INPUT type="hidden" kind="text" fieldname="PERSON/PERSONID" operation="0" writeevent="0" ><!--operation="0"  定义为添加接口-->
+      </TABLE>
+	</form>
+	 <div xtype="buttons">
+     	<div text="验证输入" onEfsClick="doValid()"></div>
+     	<div text="确  定" onEfsClick="doSubmit()"></div>
+     	<div text="清空#C" onEfsClick="doRet()"></div>
+   </div>
+</div>
+
+
+</BODY>
+</HTML>

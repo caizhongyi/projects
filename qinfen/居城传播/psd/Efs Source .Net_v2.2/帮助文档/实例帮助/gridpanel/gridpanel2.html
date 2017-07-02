@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> GridPanel </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+Efs.onReady(function(){
+  Efs.getDom("mgList").txtXML = Efs.Common.getQryXml();
+  Efs.getExt("mgGrid").store.load();
+});
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<div id="mgGrid" region="center" xtype="grid" title="分页查询列表" pagingBar="true" pageSize="10">
+  <div id="mgList" xtype="store" url="http://localhost:8080/efs/ajax?method=getRsQryEventTypeList" autoLoad="false">
+    <div xtype="xmlreader" fieldid="EVENTTYPEID" record="ROW" totalRecords="QUERYINFO@records">
+      <div name="EVENTTYPEID" mapping="EVENTTYPEID"></div>
+      <div name="EVENTTYPENAME" mapping="EVENTTYPENAME"></div>
+      <div name="AFFAIRTYPENAME"></div>
+      <div name="DISABLED"></div>
+      <div name="VISIBLE"></div>
+    </div>
+  </div>
+  <div xtype="colmodel">
+    <div header="事件类型编号" width="80" sortable="true" dataIndex="EVENTTYPEID" align="center"></div>
+    <div header="事件类型名称" width="120" sortable="true" dataIndex="EVENTTYPENAME" align="center"></div>
+    <div header="事务类型名称" width="120" sortable="true" dataIndex="AFFAIRTYPENAME" align="center"></div>
+    <div header="是否禁用" width="60" sortable="true" dataIndex="DISABLED" align="center"></div>
+    <div header="是否显示" width="60" sortable="true" dataIndex="VISIBLE" align="center"></div>
+  </div>
+
+   <div xtype="tbar">
+      <span>说明</span>
+      <div text="->"></div>
+      <div iconCls="icon-add" text="添加#A">
+          <div iconCls="icon-add2" text="添加事件类型"></div>
+          <div text="-"></div>
+          <div text="禁用事件类型"></div>
+      </div>
+      <div text="-"></div>
+      <div iconCls="icon-edit" text="修改#E" onEfsclick="alert('修改');"></div>
+      <div text=" "></div>
+      <div text=" "></div>
+      <div text=" "></div>
+      <div text=" "></div>
+      <div text=" "></div>
+      <div iconCls="icon-del" id="cmdDel" text="删除#D" disabled></div>
+   </div>
+</div>
+
+</BODY>
+</HTML>

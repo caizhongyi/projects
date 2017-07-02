@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> Tree Panel </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+<script type="text/javascript">
+Efs.onReady(function(){
+
+});
+
+function beforeTreeLoad(treeLoader, node) {
+    alert(treeLoader.url);
+}
+</script>
+</HEAD>
+
+<BODY>
+<div xtype="treepanel" name="name" width="500" height="500" title="treepanel面板" buttons="[{text:'but1'},{text:'but2'}]">
+  <div xtype="loader" onEfsBeforeload="beforeTreeLoad()" url="getTreeXml.aspx" onEfsClick="doTreeClick()"></div>
+  <!--
+  <div id="root" text="rootNode" xtype="root" expanded="true">
+    <div text="node1" expanded="true">
+        <div text="node11"><div text="node111"></div></div>
+        <div text="node12"></div>
+    </div>
+    <div text="node2"></div>
+  </div>
+  -->
+</div>
+</BODY>
+</HTML>

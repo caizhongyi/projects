@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> GridPanel </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+
+<script type="text/javascript">
+Efs.onReady(function(){
+  Efs.getDom("mgList").txtXML = Efs.Common.getQryXml();
+  Efs.getExt("mgGrid").store.load();
+});
+
+function rowClick(data)
+{
+  Efs.MessageBox.alert("信息提示","事件编号：" + data["EVENTTYPEID"] + "，事件名称：" + data.EVENTTYPENAME);
+}
+
+function rowDblClick(data)
+{
+  alert("双击事件");
+}
+</script>
+</HEAD>
+
+<BODY>
+<div id="mgGrid" region="center" xtype="grid" title="简单查询列表" onEfsRowClick="rowClick()" onEfsRowDblClick="rowDblClick()">
+  <div id="mgList" xtype="store" url="http://localhost:8080/efs/ajax?method=getRsQryEventTypeList" autoLoad="false">
+    <div xtype="xmlreader" fieldid="EVENTTYPEID" record="ROW" totalRecords="QUERYINFO@records">
+      <div name="EVENTTYPEID" mapping="EVENTTYPEID"></div>
+      <div name="EVENTTYPENAME" mapping="EVENTTYPENAME"></div>
+      <div name="AFFAIRTYPENAME"></div>
+      <div name="DISABLED"></div>
+      <div name="VISIBLE"></div>
+    </div>
+  </div>
+  <div xtype="colmodel">
+    <div header="事件类型编号" width="80" sortable="true" dataIndex="EVENTTYPEID" align="center"></div>
+    <div header="事件类型名称" width="120" sortable="true" dataIndex="EVENTTYPENAME" align="center"></div>
+    <div header="事务类型名称" width="120" sortable="true" dataIndex="AFFAIRTYPENAME" align="center"></div>
+    <div header="是否禁用" width="60" sortable="true" dataIndex="DISABLED" align="center"></div>
+    <div header="是否显示" width="60" sortable="true" dataIndex="VISIBLE" align="center"></div>
+  </div>
+</div>
+
+</BODY>
+</HTML>

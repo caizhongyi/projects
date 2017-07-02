@@ -1,0 +1,499 @@
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<title>第一章页面布局</title>
+
+</head>
+<body bgcolor="#FFFFFF" style='text-justify-trim:punctuation'>
+<div>
+  <h1><span>页面布局</span></h1>
+  <p style='line-height:150%'><span style='font-size:12.0pt;line-height:150%;'>由于<span>ext</span>的布局方式很多，真正常用的不多，所以作者挑选了<span>ext</span>的<span>border</span>布局进行封装。如果您还有其他布局要求可以通过<span>new Ext</span>的控件方式渲染到页面，或者联系请联系我们<span>,</span>我们将根据您的需求进行定制。</span></p>
+  <h3><span>简单布局</span></h3>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;'>border</span><span
+style='font-size:12.0pt;line-height:150%;'>布局运用<span>east</span>（右）、<span>west</span>（左）、<span>north</span>（上）、<span>south</span>（下）、<span>center</span>（其余部分）最多<span>5</span>个方位来满足布局需要，其中<span>north</span>和<span>south</span>的优先级最高，然后是<span>east</span>和<span>west</span>，最低的是<span>center</span>：</span></p>
+  <p style='line-height:150%'><span style='font-size:12.0pt;line-height:
+150%;'><img width=552 height=235 src="image001.gif"></span></p>
+  <p style='line-height:150%'><span style='font-size:12.0pt;
+line-height:150%;'>通过上图可以理解这里优先级的意思：<span>north</span>和<span>south</span>占用整个页面的宽，高度由我们定义；<span>west</span>和<span>east</span>占用<span>north</span>和<span>south</span>高度以外剩下的全部高度，最后剩余的部分为<span>center</span>，下面是定义<span>5</span>个<span>div</span>标签来完成布局的实例：</span></p>
+  <table border=0 cellpadding=1 cellspacing=1 bgcolor="#000000">
+    <tr> 
+      <td width=568 valign=top bgcolor="#FFFFFF"> <p align=left style='text-align:left;text-autospace:none'><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>HEAD</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>TITLE</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;</span><span style='font-size:
+  9.0pt;;color:black;background:white'> layout </span><span
+  style='font-size:9.0pt;;color:black;background:white'>布局</span><span
+  style='font-size:9.0pt;;color:black;background:white'> </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>TITLE</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span style='font-size:9.0pt;;color:maroon;background:white'>META</span><span
+  style='font-size:9.0pt;;color:red;background:white'> http-equiv</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>Content-Type</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> content</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>text/html; charset=utf-8</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>link</span><span style='font-size:9.0pt;;
+  color:red;background:white'> rel</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>stylesheet</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> type</span><span style='font-size:9.0pt;;color:blue;
+  background:white'>=&quot;</span><span style='font-size:9.0pt;
+  ;color:black;background:white'>text/css</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> href</span><span style='font-size:9.0pt;;color:blue;
+  background:white'>=&quot;</span><span style='font-size:9.0pt;
+  ;color:black;background:white'>../css/ext-all.css</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> </span><span style='font-size:9.0pt;;color:blue;
+  background:white'>/&gt;</span><span
+  style='font-size:9.0pt;;color:blue;background:white'><br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>script</span><span style='font-size:9.0pt;;
+  color:red;background:white'> type</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>text/javascript</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> src</span><span style='font-size:9.0pt;;color:blue;
+  background:white'>=&quot;</span><span style='font-size:9.0pt;
+  ;color:black;background:white'>../js/loadmask.js</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>script</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>script</span><span style='font-size:9.0pt;;
+  color:red;background:white'> type</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>text/javascript</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> src</span><span style='font-size:9.0pt;;color:blue;
+  background:white'>=&quot;</span><span style='font-size:9.0pt;
+  ;color:black;background:white'>../js/efs-all.js</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>script</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'></span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>HEAD</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>BODY</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:red;background:white'> region</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>north</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> height</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>100</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> title</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>north</span><span
+  style='font-size:9.0pt;;color:black;background:white'>部分</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>North</span><span
+  style='font-size:9.0pt;;color:black;background:white'>部分</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;</span><span style='font-size:
+  9.0pt;;color:black;background:white'> <br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:red;background:white'> region</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>south</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> height</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>100</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> title</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>South</span><span
+  style='font-size:9.0pt;;color:black;background:white'>部分</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>South</span><span
+  style='font-size:9.0pt;;color:black;background:white'>部分</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:red;background:white'> region</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>west</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> width</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>150</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> title</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>West</span><span
+  style='font-size:9.0pt;;color:black;background:white'>部分</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>West</span><span
+  style='font-size:9.0pt;;color:black;background:white'>部分</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:red;background:white'> region</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>east</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> width</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>150</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> title</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>East</span><span
+  style='font-size:9.0pt;;color:black;background:white'>部分</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>East</span><span
+  style='font-size:9.0pt;;color:black;background:white'>部分</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:white'>div</span><span
+  style='font-size:9.0pt;;color:red;background:white'> region</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>center</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>中间部分</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:white'>div</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:white'>BODY</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&gt;<br></span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:white'>HTML</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&gt;</span></p>
+        </td>
+    </tr>
+  </table>
+  <p align=left><img width=553 height=356 src="image002.jpg"></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:Wingdings;color:black'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:12.0pt;line-height:150%;;
+color:black'>整体布局（后面会将谈到再次布局）时这些<span>div</span>节点一定要都是<span>body</span>标签的直接子节点，而且<span>body</span>标签再不应该含有其它需要显示出来的直接子节点，否则将不作为布局方式，直接以<span>html</span>内容引入。</span></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:Wingdings;color:black'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:12.0pt;line-height:150%;
+;color:black'>5</span><span style='font-size:12.0pt;line-height:
+150%;;color:black'>个<span>div</span>并不是都需要的，其中</span><span style='font-size:12.0pt;line-height:150%;;color:#3366FF'>center</span><span
+style='font-size:12.0pt;line-height:150%;;color:#3366FF'>对应的<span>div</span>节点是不可或缺的</span><span style='font-size:12.0pt;line-height:
+150%;;color:black'>，其它<span>div</span>根据对页面布局的需要来定义，而且每个<span>div</span>一定要定义<span>id</span>属性。</span></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:Wingdings;color:black'>&Oslash;<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:12.0pt;line-height:150%;;
+color:black'>定义布局的<span>div</span>标签定义了一些扩展标签：</span></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:Wingdings;color:black'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:12.0pt;line-height:150%;
+;color:black'>region</span><span style='font-size:12.0pt;
+line-height:150%;;color:black'>属性：每个定义布局的<span>div</span>一定需要定义<span>region</span>属性，而且该属性的值只可以是<span>'east'</span>、<span>'south'</span>、<span>'west'</span>、<span>'north'</span>、<span>'center'</span>其中之一，并不能重复，这就定义了该<span>div</span>在页面上所在的布局位置。</span></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:Wingdings;color:black'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:12.0pt;line-height:150%;
+;color:black'>height/width</span><span style='font-size:12.0pt;
+line-height:150%;;color:black'>属性：<span>region</span>为<span>north</span>或<span>south</span>的<span>div</span>需要定义<span>height</span>属性，指定占用页面上下的高度是多少，这里定义<span>width</span>属性没有作用，宽度始终是<span>100</span>％；<span>region</span>为<span>east</span>或<span>west</span>的<span>div</span>需要定义<span>width</span>属性，指定占用页面左右的宽度是多少，这里定义<span>height</span>属性没有作用，高度始终是除去<span>north</span>和<span>south</span>高以后的<span>100</span>％；<span>region</span>为<span>center</span>的<span>div</span>不需要定义<span>height</span>和<span>width</span>，它的部分始终是其它部分占用后剩余的部分。</span></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:Wingdings;color:black'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:12.0pt;line-height:150%;
+;color:black'>border</span><span style='font-size:12.0pt;
+line-height:150%;;color:black'>属性：<span>5</span>个布局<span>div</span>都可以设置整个属性，默认是为<span>true</span>，如果不想布局区域有边框就设为<span>false</span>。</span></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:Wingdings;color:black'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:12.0pt;line-height:150%;
+;color:black'>title</span><span style='font-size:12.0pt;
+line-height:150%;;color:black'>属性：在布局<span>div</span>中定义<span>title</span>可以在整个区域上添加一个标题头，该属性指定标题头的内容。</span></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:Wingdings;color:black'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:12.0pt;line-height:150%;
+;color:black'>split</span><span style='font-size:12.0pt;
+line-height:150%;;color:black'>属性：该属性默认为<span>'false'</span>，布局<span>div</span>中定义<span>split</span>为<span>'true'</span>表示该区域可以通过拖拉边框来实现伸缩，<span>region</span>为<span>north</span>和<span>south</span>的区域高度可以伸缩；<span>region</span>为<span>east</span>和<span>west</span>的区域宽度可以伸缩，该属性对<span>center</span>区域无效。</span></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:Wingdings;color:black'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:12.0pt;line-height:150%;
+;color:black'>minSize/</span><span style='font-size:
+12.0pt;line-height:150%;'> <span style='color:black'>maxSize</span></span><span
+style='font-size:12.0pt;line-height:150%;;color:black'>属性：该属性指定了区域拖动范围的最小<span>/</span>大值，这两个属性只有在<span>split</span>属性为<span>'true'</span>时，设置这两个属性才有效。</span></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:Wingdings;color:black'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:12.0pt;line-height:150%;
+;color:black'>collapsible</span><span style='font-size:12.0pt;
+line-height:150%;;color:black'>属性：该属性默认为<span>'false'</span>，布局<span>div</span>中定义<span>collapsible</span>为<span>'true'</span>表示该区域缩回，这里注意，在页面上对区域的缩回是需要通过点击区域的标题头实现的，所以如果没有设置<span>title</span>属性，就无法通过鼠标来完成区域的缩回。该属性对<span>center</span>区域无效。</span></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:Wingdings'>u<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    </span></span><span style='font-size:12.0pt;line-height:150%;
+;color:black'>collapseMode</span><span style='font-size:12.0pt;
+line-height:150%;;color:black'>属性：只有在<span>collapsible</span>属性为<span>'true'</span>时才有意义，它指定了区域缩回的方式，这里要么不设置，要设置就只能为<span>'mini'</span>。</span></p>
+  <h3><span>再布局</span></h3>
+  <p style='line-height:150%'><span style='font-size:
+12.0pt;line-height:150%;'>通过第一节现在就可以对整个页面进行一次布局，但是有些时候需要的布局仅仅依靠<span>5</span>个区域是无法实现的或是<span>5</span>个区域的分布不是我们所希望的，例如：</span></p>
+  <p style='line-height:150%'><span style='font-size:12.0pt;line-height:
+150%;;color:black'><img width=552 height=131
+src="image003.gif"></span></p>
+  <p style='line-height:150%'><span style='font-size:12.0pt;line-height:
+150%;'>这里图片显示的布局都无法运用前面提到的简单布局方式实现，那么就需要对页面进行再次布局，在介绍布局方式以前，先来看看实现布局的思路。</span></p>
+  <p style='line-height:150%'><span style='font-size:
+12.0pt;line-height:150%;'>从第一个图来看，<span>A</span>区域可以对应到<span>south</span>部分，<span>B</span>区域可以对应到<span>east</span>部分（注意前面已经提到，不是<span>5</span>个部分都必不可少），如果这个时候把<span>C</span>设为<span>north</span>部分，那么布局就会形成如下样式：</span></p>
+  <p style='line-height:150%'><span style='font-size:12.0pt;line-height:
+150%;'><img src="image004.gif"></span></p>
+  <p style='line-height:150%'><span style='font-size:12.0pt;line-height:
+150%;'>这个就是因为布局区域优先级的问题，所以现在要改变布局方式，还是将<span>A</span>区域可以对应到<span>south</span>部分，<span>B</span>区域可以对应到<span>east</span>部分，而<span>C</span>、<span>D</span>两个区域先不管，合并起来对应到<span>center</span>部分，形如：</span></p>
+  <p style='line-height:150%'><span style='font-size:12.0pt;line-height:
+150%;'><img width=552 height=146 src="image005.gif"></span></p>
+  <p style='line-height:150%'><span style='font-size:12.0pt;line-height:
+150%;'>然后我们将<span>center</span>对应的<span>X</span>区域再进行一次布局，将<span>C</span>区域对应到<span>X</span>区域的<span>north</span>部分，<span>D</span>区域对应到<span>X</span>区域的<span>center</span>部分。</span></p>
+  <p style='line-height:150%'><span style='font-size:12.0pt;
+line-height:150%;'>&nbsp;&nbsp; </span><span style='font-size:
+12.0pt;line-height:150%;'>思路已经很清晰了，再来看如何实现。第一步将<span>A</span>区域可以对应到<span>south</span>部分，<span>B</span>区域可以对应到<span>east</span>部分的方式和前面一样，关键来看第二步，如何将<span>C</span>区域对应到<span>X</span>区域的<span>north</span>部分，<span>D</span>区域对应到<span>X</span>区域的<span>center</span>部分：</span></p>
+  <table border=0 cellpadding=1 cellspacing=1 bgcolor="#000000">
+    <tr> 
+      <td width=568 valign=top bgcolor="#FFFFFF"> <p align=left style='text-align:left;text-autospace:none'><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:red;background:white'> region</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>south</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> height</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>100</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>南</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:red;background:white'> region</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>east</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> width</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>100</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>东</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:red;background:white'> region</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>center</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:black;background:white'>&nbsp; </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:red;background:white'> region</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>north</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> height</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>100</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>中</span><span
+  style='font-size:9.0pt;;color:black;background:white'>_</span><span
+  style='font-size:9.0pt;;color:black;background:white'>北</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:black;background:white'>&nbsp; </span><span
+  style='font-size:9.0pt;;color:blue;background:white'></span><span style='font-size:9.0pt;;color:blue;
+  background:white'>&lt;</span><span style='font-size:9.0pt;
+  ;color:maroon;background:white'>div</span><span
+  style='font-size:9.0pt;;color:red;background:white'> region</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>center</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>中</span><span
+  style='font-size:9.0pt;;color:black;background:white'>_</span><span
+  style='font-size:9.0pt;;color:black;background:white'>中</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span style='font-size:9.0pt;
+  line-height:150%;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;line-height:150%;;color:maroon;
+  background:white'>div</span><span style='font-size:9.0pt;line-height:150%;
+  ;color:blue;background:white'>&gt;</span></p>
+        </td>
+    </tr>
+  </table>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;;color:red'><img
+width=540 height=291 src="image006.jpg"></span></p>
+  <p style='line-height:150%'><span style='font-size:
+12.0pt;line-height:150%;'>在布局默认情况是<span>xtype=&quot;panel&quot;(xtype</span>请查看<span>Efs.xtype)</span>，您还可以指定<span>xtype</span>类型。如：</span></p>
+  <p style='line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;'>tabpanel</span><span
+style='font-size:12.0pt;line-height:150%;'>在布局：</span></p>
+  <table border=0 cellpadding=1 cellspacing=1 bgcolor="#000000">
+    <tr> 
+      <td width=568 valign=top bgcolor="#FFFFFF"> <p align=left style='text-align:left;text-autospace:none'><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:red;background:white'> region</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>south</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> height</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>100</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>南</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:red;background:white'> region</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>east</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> width</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>100</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>东</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:red;background:white'> region</span><span style='font-size:
+  9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>center</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;</span><span
+  style='font-size:9.0pt;;color:red;background:white'> xtype</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>=&quot;</span><span style='font-size:
+  9.0pt;;color:black;background:white'>tabpanel</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:black;background:white'>&nbsp; </span><span
+  style='font-size:9.0pt;;color:blue;background:white'></span><span style='font-size:9.0pt;;color:blue;
+  background:white'>&lt;</span><span style='font-size:9.0pt;
+  ;color:maroon;background:white'>div</span><span
+  style='font-size:9.0pt;;color:red;background:white'> title</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>tab1</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>页签</span><span
+  style='font-size:9.0pt;;color:black;background:white'>1</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:black;background:white'>&nbsp; </span><span
+  style='font-size:9.0pt;;color:blue;background:white'></span><span style='font-size:9.0pt;;color:blue;
+  background:white'>&lt;</span><span style='font-size:9.0pt;
+  ;color:maroon;background:white'>div</span><span
+  style='font-size:9.0pt;;color:red;background:white'> title</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>=&quot;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>tab2</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&quot;&gt;</span><span
+  style='font-size:9.0pt;;color:black;background:white'>页签</span><span
+  style='font-size:9.0pt;;color:black;background:white'>2</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:
+  white'>div</span><span style='font-size:9.0pt;;
+  color:blue;background:white'>&gt;<br>
+          </span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&lt;/</span><span
+  style='font-size:9.0pt;;color:maroon;background:white'>div</span><span
+  style='font-size:9.0pt;;color:blue;background:white'>&gt;</span></p>
+        </td>
+    </tr>
+  </table>
+  <p align=left>
+  <img width=465 height=223 src="image007.jpg">
+  </p>
+  <p style='line-height:150%'><span style='font-size:12.0pt;line-height:150%;'>类似的还可以是<span>xtype=&quot;grid&quot; 
+    xtype=&quot;treepanel&quot;</span>等，<span>xtype</span>的直接子节点的配置请参照对应的章节。</span></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> 简单的tab面板 </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+</HEAD>
+
+<BODY>
+<div xtype="tabpanel" width="500" height="300" title="father" buttons="[{text:'but1'},{text:'but2'}]" >
+  <div xtype="bbar">
+    <div text="->"></div>
+    <div text="btn1"></div>
+    <div text=" "></div>
+    <div text="btn1" onEfsClick="alert(2);"></div>
+  </div>
+    <div id="tab1" title="tab1">第一个页签</div>
+      <div id="tab2" title="tab2" xtype="grid">
+        <div xtype="groupstore"  url="your_url">
+        <div xtype="xmlreader" recordid="SSCID" record="ROW">
+        <div name="SSCID" mapping="SSCID"></div>
+        <div name="SSCNAME" mapping="SSCNAME"></div>
+        <div name="REGADDRCODEDES" mapping="REGADDRCODEDES"></div>
+        <div name="REGADDRESS" mapping="REGADDRESS"></div>
+        <div name="OPTIME" mapping="OPTIME"></div>
+      </div>
+     </div>
+      <div xtype="colmodel">
+        <div header="公司编号" width="150" sortable="true" dataIndex="SSCID"></div>
+        <div header="公司名称" width="150" sortable="true" dataIndex="SSCNAME"></div>
+        <div header="行政区划" width="200" sortable="true" dataIndex="REGADDRCODEDES"></div>
+        <div header="注册地详址" width="200" sortable="true" dataIndex="REGADDRESS"></div>
+        <div header="操作时间" dataIndex="OPTIME" width="150"></div>
+      </div>
+  </div>
+</div>
+</BODY>
+</HTML>

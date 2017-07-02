@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="XmlDataDeal.aspx.cs" Inherits="sysadmin_XmlDataDeal" %>

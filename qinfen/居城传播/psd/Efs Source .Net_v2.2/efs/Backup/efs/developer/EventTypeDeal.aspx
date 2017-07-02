@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EventTypeDeal.aspx.cs" Inherits="developer_EventTypeDeal" %>

@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>html model</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   
+    <meta name="keywords" content="keywords" />
+    <meta name="description" content="description" />
+   
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/template.css"/>
+	<script type="text/javascript" src="js/html5.js"></script>
+
+</head>
+<body>
+    <div class="bg">
+    <div class="wrap">
+        <div class="toplinks clearfix">
+           <a href="#" title="往期精彩回顾"></a>
+           <a href="#" title="返回理财频道"></a>
+        </div>
+        <div class="cleafix bookpage">
+            
+            <div class="page">
+              <a href="#" class="prev"></a>
+              <a href="#" class="next"></a>
+              <div class="currentpage"><span class="num">1</span>页</div>
+            </div>
+            <ul class="content">
+            <li>
+            上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈
+            </li>
+             <li style="display:none;">
+            王亚品王亚品王亚品王亚品王亚品王亚品王亚品王亚品王亚品王亚品王亚品王亚品王亚品王亚品王亚品王亚品王亚品王亚品
+            </li>
+             <li style="display:none;">
+            上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈
+            </li>
+             <li style="display:none;">
+            上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈
+            </li>
+             <li style="display:none;">
+            上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈上行社会的职场瓶颈
+            </li>
+            </ul>
+        </div>
+        <div class="clearfix">
+          <div class="title">
+            <span class="number">第一期</span>
+            <h3>穷忙族--上行社会的职场瓶颈</h3>
+          </div>
+          <div class="author">
+            周刊策划：王亚品<br/>
+			页面设计：誌玲
+          </div>
+        </div>
+    </div>
+    </div>
+    <!-- end footer -->
+    <script type="text/javascript" src="js/jquery-1.4.3.min.js" ></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js" ></script>
+  
+    <script type="text/javascript">
+	$(document).ready(function() {
+	    new bookpage('.bookpage');
+	});
+	
+	var bookpage = function(selector , options)
+	{
+		this.$ = $(selector);
+		this.init.apply(this, arguments); 
+	}
+	bookpage.prototype = {
+	   init : function()
+	   {
+		    var _this = this;
+		    this.$contentList = this.$.find('.content').css('position','relative').children().css('position','absolute');
+			this.count = this.$contentList.length;
+			this.currentPageIndex = 0 ;
+			this.backPageIndex = 0;
+		    this.$prev = this.$.find('.prev');
+			this.$next = this.$.find('.next');
+			this.$num = this.$.find('.num');
+			this.$prev.click(function(){
+			  _this.prev();
+			  _this.$num.text(_this.currentPageIndex + 1);
+			})
+			this.$next.click(function(){
+			  _this.next();
+			  _this.$num.text( _this.currentPageIndex + 1);
+			})
+			
+	   },
+	   prev : function()
+	   {
+		   if(this.currentPageIndex > 0)
+		   {
+			   this.currentPageIndex --;
+			   this.$contentList.eq(this.currentPageIndex).stop(true,true).fadeIn();
+			   this.$contentList.eq(this.backPageIndex).stop(true,true).fadeOut();
+			   this.backPageIndex = this.currentPageIndex;
+		   }
+	   },
+	   next : function()
+	   {
+		   if(this.currentPageIndex < this.count - 1)
+		   {
+			   this.currentPageIndex ++;
+			   this.$contentList.eq(this.currentPageIndex).stop(true,true).fadeIn();
+			   this.$contentList.eq(this.backPageIndex).stop(true,true).fadeOut();
+			   this.backPageIndex = this.currentPageIndex;
+		   }
+	   }
+	}
+	
+	
+	</script>
+
+  
+</body>
+</html>

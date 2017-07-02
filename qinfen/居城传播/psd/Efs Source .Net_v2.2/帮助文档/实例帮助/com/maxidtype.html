@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>编码规则管理</title>
+<LINK type="text/css" rel="stylesheet" href="../css/docPage.css">
+<style>
+</style>
+
+</head>
+<body>
+<div class="divDoc" id="pageBg">
+  <div style="width:100%">
+    <div style="float:right;font-size:9pt;margin-top:10px;margin-bottom:10px;font-family:Arial;color:#C2BDBD">EfsFrame框架应用模型介绍</div>
+  </div>
+
+  <div style="text-align:left;font-size:14pt;margin-top:10px;margin-bottom:20px;font-family:黑体;color:red">编码规则管理
+  </div>
+
+  <div style="border:1px solid #BEBAC5;width:100%;margin-top:15px;">
+<DIV>&nbsp;&nbsp;&nbsp; <FONT color=#ee113d>编码规则管理：</FONT>在业务开发过程中，我们往往要给业务表的主键来快速生成唯一的编码，以避免主键唯一冲突，显然自动增长列是不太灵活的，很多时间无法满足我们的需求，我们所设计的编码规则管理就是为了解决此问题。</DIV>
+<DIV>&nbsp;</DIV>
+<TABLE cellSpacing=0 cellPadding=0 border=1>
+<TBODY>
+<TR>
+<TD vAlign=top width=91>
+<DIV align=center>属性</DIV></TD>
+<TD vAlign=top width=477>
+<DIV align=center>说明</DIV></TD></TR>
+<TR>
+<TD vAlign=top width=91>
+<DIV>编码编号</DIV></TD>
+<TD vAlign=top width=477>
+<DIV>一个应用系统中，可能有很多个唯一编码，所以我们给每个编码规则分配一个编号</DIV></TD></TR>
+<TR>
+<TD vAlign=top width=91>
+<DIV>编码名称</DIV></TD>
+<TD vAlign=top width=477>
+<DIV>给不同的编码规则取名</DIV></TD></TR>
+<TR>
+<TD vAlign=top width=91>
+<DIV>编码长度</DIV></TD>
+<TD vAlign=top width=477>
+<DIV>每次根据该规则生成的编码要多长</DIV></TD></TR>
+<TR>
+<TD vAlign=top width=91>
+<DIV>编码规则</DIV></TD>
+<TD vAlign=top width=477>
+<DIV>是否将编码的种子加在新编码的前面</DIV></TD></TR>
+<TR>
+<TD vAlign=top width=91>
+<DIV>是否循环</DIV></TD>
+<TD vAlign=top width=477>
+<DIV>当一个种子编码达到了最大编码后，之后重新从最小编码开始编号</DIV></TD></TR>
+<TR>
+<TD vAlign=top width=91>
+<DIV>最小值</DIV></TD>
+<TD vAlign=top width=477>
+<DIV>编码的最小起始值</DIV></TD></TR>
+<TR>
+<TD vAlign=top width=91>
+<DIV>最大值</DIV></TD>
+<TD vAlign=top width=477>
+<DIV>编码能达到的最大值</DIV></TD></TR></TBODY></TABLE>
+<DIV><FONT color=#3ab11b>备注：</FONT></DIV>
+<DIV><FONT color=#3ab11b>所有的编码生成，都调用统一的数据库存储过程来完成编码分配，在存储过程中设计了行级锁（同时只能有一个操作在该行），所以能绝对保证编码的唯一性，同时对该编码生成的存储过程也写在相应的类NumAssign中，每次只需要调用该类对象，传入编码编号，种子，即可按配置要求获得最新的唯一编码。</FONT></DIV>
+<DIV>&nbsp;</DIV>
+<DIV>实例说明：</DIV>
+<TABLE cellSpacing=0 cellPadding=0 width=596 border=1>
+<TBODY>
+<TR>
+<TD width=90>
+<DIV align=center>编码编号</DIV></TD>
+<TD width=86>
+<DIV align=center>编码名称</DIV></TD>
+<TD width=90>
+<DIV align=center>编码长度</DIV></TD>
+<TD width=97>
+<DIV align=center>编码规则</DIV></TD>
+<TD width=77>
+<DIV align=center>是否循环</DIV></TD>
+<TD width=64>
+<DIV align=center>最小值</DIV></TD>
+<TD width=92>
+<DIV align=center>最大值</DIV></TD></TR>
+<TR>
+<TD width=90>
+<DIV align=center>100001</DIV></TD>
+<TD width=86>
+<DIV align=center>学生编号</DIV></TD>
+<TD width=90>
+<DIV align=center>6</DIV></TD>
+<TD width=97>
+<DIV align=center>叠加种子</DIV></TD>
+<TD width=77>
+<DIV align=center>否</DIV></TD>
+<TD width=64>
+<DIV align=center>1</DIV></TD>
+<TD width=92>
+<DIV align=center>999999</DIV></TD></TR></TBODY></TABLE>
+<DIV>1、传入种子“0910”两位年+两位月，生成的编码为：0910000001&nbsp; —— 0910999999</DIV>
+<DIV>2、传入种子“0911”两位年+两位月，生成的编码为：0911000001&nbsp; —— 0911999999</DIV>
+<DIV>&nbsp;&nbsp;&nbsp; <FONT color=#ee0000>每次传入不同的种子，则重新开始一个新的编码，当我们不需要叠加种子的时候，只生成如0000001这样的编码时，则只需要在编码规则上修改为不叠加种子即可。</FONT></DIV>图例展示：<BR>
+
+  <img src="images/maxid1.png"><BR>
+  <img src="images/maxid2.png"><BR>
+  </div>
+
+</div>
+</body>
+</html>

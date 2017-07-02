@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> 动态显示模态窗体 </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+<script type="text/javascript">
+
+Efs.onReady(function(){
+
+ });
+function doShow()
+{
+  Efs.getExt("ww").show();
+  Efs.getExt("ww").setTitle("模态窗体modal=true");
+}
+function doOk()
+{
+  alert("doOk");
+}
+
+</script>
+</HEAD>
+
+<BODY style="margin-left:30px;margin-top:30px;">
+<div xtype="button" iconCls="icon-doc" text="显示Window" onEfsClick="doShow()"></div>
+  <div id="ww" xtype="window" width="500" height="400" title="window" modal="true">
+    <div xtype="tbar">
+      <div text="->"></div>
+      <div iconCls="icon-ok2" id="cmdUser" text="确  定" onEfsClick="doOk()"></div>
+    </div>
+    窗体
+</div>
+</BODY>
+</HTML>

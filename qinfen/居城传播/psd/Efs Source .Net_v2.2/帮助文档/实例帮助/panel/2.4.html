@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> panel插件 </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<script type="text/javascript" src="../js/efs-all.js"></script>
+</HEAD>
+
+<BODY>
+    <div id="container" xtype="panel" name="name" width="500" height="500" title="父窗体">
+         <div xtype="tbar">
+            <span>说明</span>
+            <div text="->"></div>
+            <div text="按钮1">
+                <div text="menu1">
+                    <div text="menus"></div>
+                </div>
+                <div text="-"></div>
+                <div text="menu2"></div>
+            </div>
+            <div text="-"></div>
+            <div text="按钮2" onEfsclick="alert(1);"  onEfsMouseover="alert(2);"></div>
+            <div text=" "></div>
+            <div text=" "></div>
+            <div text=" "></div>
+            <div text=" "></div>
+            <div text=" "></div>
+            <div text="按钮3" onEfsClick="alert(1);"></div>
+         </div>
+         <div xtype="bbar">
+            <div text="->"></div>
+            <div text="底部按钮" onEfsClick="alert(2);">
+              <div text="子菜单1"></div>
+            </div>
+            <div text=" "></div>
+            <div text="btn1" onEfsClick="alert(2);"></div>
+         </div>
+
+         <div xtype="buttons">
+            <div text="提交"></div>
+            <div text="取消" onEfsClick="alert(3);"></div>
+         </div>
+
+         简单的div标签，即可快速构造该页面布局，不再需要繁杂的js代码
+    </div>
+</BODY>
+</HTML>

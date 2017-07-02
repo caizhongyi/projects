@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<TITLE> 复杂的Panel容器 </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+</HEAD>
+<BODY style="margin:40px;">
+&nbsp;&nbsp;&nbsp;&nbsp;Efs的核心就是panel面板容器，很多面板都是继承它。Panel容器有的插件，其他继承类容器也拥有。
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;若要border布局外,单独创建一个panel容器，只需要在节点上加上xtype="panel"即可，Efs框架将会帮您创建Ext.Panel并渲染到xtype节点<BR>
+
+
+<div id="mypanel" xtype="panel" width="300" height="300" title="复杂的panel">
+	<div xtype="bbar">
+	    <div text="->"></div>
+	    <div text="添加#A"></div>
+	    <div text=" "></div>
+	    <div text="修改#E" onEfsClick="alert('修改');"></div>
+	</div>
+	<div xtype="buttons">
+	    <div text="提交"></div>
+	    <div text="取消" onEfsClick="alert(3);"></div>
+	</div>
+	
+</div>
+
+</BODY>
+</HTML>

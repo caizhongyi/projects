@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<title>清风网络</title>
+<link href="./templets/login/login.css" rel="stylesheet" type="text/css" />
+<script src="../include/js/jquery/jquery.js" language="javascript" type="text/javascript"></script>
+<script type="text/javascript">
+$ = jQuery;
+function changeAuthCode() {
+	var num = 	new Date().getTime();
+	var rand = Math.round(Math.random() * 10000);
+	num = num + rand;
+	$('#ver_code').css('visibility','visible');
+	if ($("#vdimgck")[0]) {
+		$("#vdimgck")[0].src = "../include/vdimgck.php?tag=" + num;
+	}
+	return false;	
+}
+</script>
+</head>
+<body>
+
+<div class="main">
+
+<div class="loginbox">
+<form name="form1" method="post" action="login.php">
+<input type="hidden" name="gotopage" value="<?php if(!empty($gotopage)) echo $gotopage;?>" />
+<input type="hidden" name="dopost" value="login" />
+<input name='adminstyle' type='hidden' value='newdedecms' />
+<li class="userid"><input name="userid" type="text" class="ipt1" /></li>
+<li class="pwd"><input name="pwd" type="password" class="ipt1"  /></li>
+<li class="vdcode">
+<input id="vdcode" class="ipt2" type="text" name="validate" style="text-transform:uppercase;"/>
+
+<img id="vdimgck" align="absmiddle" onClick="this.src=this.src+'?'" style="cursor: pointer;" alt="看不清？点击更换" src="../include/vdimgck.php"/>
+           <a href="#" onClick="changeAuthCode();">看不清？ </a>
+</li>
+<li class="lgbt">
+<input name="lgbt" class="lg" type="submit" value="&nbsp;" />
+</li>
+</form>
+</div>
+
+
+</div>
+
+</body>
+</html>

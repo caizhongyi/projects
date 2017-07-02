@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML XMLNS:ELEMENT>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<title>EfsFrame框架相关实例及帮助文档</title>
+<link rel="stylesheet" type="text/css" href="css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="css/efs-all.css" />
+<script type="text/javascript" src="js/loadmask.js"></script>
+<script type="text/javascript" src="js/efs-all.js"></script>
+<script type="text/javascript" src="js/examples.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+Efs.onReady(
+  function(){
+    // Efs.getExt("treepanel").expandAll();
+    // Efs.getExt("treepanel").expandPath("/ynode-16/efs-rootW");
+    window.open("intro.htm","allhelp");
+});
+
+
+function doTreeClick(node){
+    if(typeof mainpanel == "undefined"){
+      mainpanel = Efs.getExt("main");
+    }
+
+    var url = node.attributes.opurl;
+    var sc = node.parentNode.attributes.sc;
+    if(typeof url == "undefined"){
+      return false;
+    }
+    
+    if(typeof sc != "undefined"){
+      Efs.getDom("sHint").innerText = "请右键查看下面页面源代码，了解Efs是如何通过Div及属性配置来实现各种页面炫烂效果";
+    }
+    else
+      Efs.getDom("sHint").innerText = "";
+
+    if(url){
+      window.open(url,"allhelp")
+    }
+    
+}
+
+</SCRIPT>
+<BODY>
+
+<div region="north" height="55">
+  <table background="images/hd-bg.gif" width="100%" cellpadding="0" cellspacing="0" height="55">
+    <tr>
+      <td style="font:18pt 黑体;color:#ffffff;" width="*">&nbsp;EfsFrame框架相关实例及帮助文档</td>
+      <td style="font:10pt;color:#FF9900;padding-bottom:4px;padding-right:5px;" align="right" valign="bottom" id="sHint">&nbsp;</td>
+    </tr>
+  </table>
+  
+</div>
+<div iconCls="icon-dic" region="west" width="230" title="目录导航" collapsible="true" border="true" split="true">
+  <div region="center" id="treepanel" bodyStyle="background-color:#ffffff;padding-bottom:20px;" xtype="treepanel" height="450" autoScroll="true" onEfsClick="doTreeClick()" border="false">
+    <div text="根节点" xtype="root">
+      <div text="EfsFrame框架整体介绍" expanded="true" opurl="intro.htm">
+          <div text="1、Efs总体设计思想" opurl="intro/1.htm"></div>
+          <div text="2、EfsFrame总体架构图" opurl="intro/2.htm"></div>
+          <div text="3、EfsFrame框架的适用开发平台" opurl="intro/3.htm"></div>
+          <div text="4、学习EfsFrame框架的前提" opurl="intro/4.htm"></div>
+      </div>
+      <div id="rootW" text="Web表现层实例" expanded="true">
+        <div text="1、表现层概述" opurl="main.htm"></div>
+        <div text="2、框架文件引入" opurl="wjyr.htm"></div>
+        <div text="3、页面布局" opurl="layout/intr.htm" sc="true">
+          <div text="1、左右布局" opurl="layout/1.1.html"></div>
+          <div text="2、上下布局" opurl="layout/1.2.html"></div>
+          <div text="3、上下左右中布局" opurl="layout/1.3.html"></div>
+          <div text="4、再布局" opurl="layout/1.4.html"></div>
+          <div text="5、布局中包含Tabs" opurl="layout/1.5.html"></div>
+        </div>
+        <div text="4、Panel容器" sc="true">
+          <div text="1、最简单的Panel" opurl="panel/2.1.html"></div>
+          <div text="2、有TBar的Panel" opurl="panel/2.2.html"></div>
+          <div text="3、有BBar的Panel" opurl="panel/2.3.html"></div>
+          <div text="4、Panel插件复杂布局" opurl="panel/2.4.html"></div>
+        </div>
+        <div text="5、TabPanel页签容器" sc="true">
+          <div text="1、简单tabpanel" opurl="tabpanel/tabpanel1.html"></div>
+          <div text="2、稍微复杂的tabPanel" opurl="tabpanel/tabpanel2.html"></div>
+          <div text="3、tabPanel事件" opurl="tabpanel/tabpanel3.html"></div>
+        </div>
+        <div text="6、Window窗口面板" sc="true">
+          <div text="1、简单Window" opurl="window/window1.html"></div>
+          <div text="2、模态Window" opurl="window/window-modal.html"></div>
+          <div text="3、稍微复杂的Window" opurl="window/window2.html"></div>
+          <div text="4、动态滚动Window" opurl="window/window3.html"></div>
+        </div>
+        <div text="7、Toolbar工具条" sc="true">
+          <div text="1、简单Toolbar" opurl="toolbar/Toolbar1.html"></div>
+          <div text="2、多层级菜单" opurl="toolbar/Toolbar2.html"></div>
+          <div text="3、支持各种事件" opurl="toolbar/Toolbar3.html"></div>
+        </div>
+        <div text="8、Button" sc="true">
+          <div text="1、Input Button" opurl="button/button.html"></div>
+          <div text="2、Div Button" opurl="button/button-xtype.html"></div>
+          <div text="3、Button Menu" opurl="button/button-menu.html"></div>
+        </div>
+        <div text="9、TreePanel" sc="true">
+          <div text="1、静态树" opurl="treepanel/treepanel-node.html"></div>
+          <div text="2、动态树" opurl="treepanel/treepanel-loader.html"></div>
+        </div>
+        <div text="10、Form表单" sc="true">
+          <div text="1、业务操作型Form" opurl="form/formOp.html"></div>
+          <div text="2、查询型Form" opurl="form/formQry.html"></div>
+        </div>
+        <div text="11、GridPanel列表" sc="true">
+          <div text="1、简单GridPanel" opurl="gridpanel/gridpanel.html"></div>
+          <div text="2、分页GridPanel" opurl="gridpanel/gridpanel2.html"></div>
+          <div text="3、复杂GridPanel" opurl="gridpanel/gridpanel3.html"></div>
+        </div>
+      </div>
+
+      <div text="框架应用模型介绍" expanded="true">
+        <div text="1、单位、用户管理" opurl="com/mguser.html"></div>
+        <div text="2、事务、事件管理" opurl="com/affevent.html"></div>
+        <div text="3、用户角色权限分配" opurl="com/role.html"></div>
+        <div text="4、字典管理" opurl="com/dic.html"></div>
+        <div text="5、编码规则管理" opurl="com/maxidtype.html"></div>
+        <div text="6、系统日志管理" opurl="com/syslog.html"></div>
+        <div text="7、错误日志管理" opurl="com/errlog.html"></div>
+        <div text="8、汉字管理" opurl="com/spell.html"></div>
+      </div>
+
+      <div text="EfsFrame框架用户体验篇" expanded="false">
+        <div text="1、总体标准页面布局" opurl="taste/1.html"></div>
+        <div text="2、统一的表单域样式" opurl="taste/7.html"></div>
+        <div text="3、全键盘事件" opurl="taste/8.html"></div>
+        <div text="4、字典快速索引选择" opurl="taste/9.html"></div>
+        <div text="5、表单域输入的及时验证及输入提醒" opurl="taste/10.html"></div>
+        <div text="6、Ajax技术实现的各种异步提交" opurl="taste/11.html"></div>
+        <div text="7、标准样式按钮（支持快捷键、小图标）" opurl="taste/2.html"></div>
+        <div text="8、多样式的Menu菜单（支持快捷键、小图标）" opurl="taste/3.html"></div>
+        <div text="9、Window窗体" opurl="taste/4.html"></div>
+        <div text="10、分页查询列表" opurl="taste/5.html"></div>
+        <div text="11、多页签布局" opurl="taste/6.html"></div>
+      </div>
+
+      <div text="EfsFrame框架业务操作流程分析" expanded="false">
+        <div text="1、添加、修改、删除操作流程分析" opurl="op/1.html"></div>
+        <div text="2、查询列表功能操作流程分析" opurl="op/2.html"></div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<div region="center">
+  <div id="main" region="center" border="false">
+    <iframe id="allhelp" name="allhelp" region="center" frameborder="no" height="100%" width="100%" src="#"></iframe>
+  </div>
+</div>
+</BODY>
+</HTML>

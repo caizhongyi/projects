@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>treepanel node方式</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+<script type="text/javascript">
+Efs.onReady(function(){
+});
+
+function doClick(node){
+  alert(node.attributes.opurl);
+}
+
+function eAll() {
+  Efs.getExt("treep").expandAll();
+}
+
+function cAll() {
+  Efs.getExt("treep").collapseAll();
+}
+</script>
+</HEAD>
+
+<BODY>
+<div xtype="treepanel" id="treep" name="name" width="300" height="400" title="功能树" onEfsClick="doClick()">
+  <div id="root" text="rootNode" xtype="root" expanded="true" opurl="1.html">
+    <div text="node1" opurl="2.html">
+      <div text="node11"><div text="node111" opurl="3.html"></div></div>
+      <div text="node12" opurl="4.html"></div>
+    </div>
+    <div text="node2"></div>
+    <div text="node3">
+      <div text="node31" opurl="4.html">
+        <div text="node311" opurl="4.html"></div>
+        <div text="node312" opurl="4.html"></div>
+      </div>
+      <div text="node32" opurl="4.html"></div>
+    </div>
+  </div>
+  <div xtype="buttons">
+    <div text="展开所有" onEfsClick="eAll()"></div>
+    <div text="收起所有" onEfsClick="cAll()"></div>
+  </div>
+</div>
+</BODY>
+</HTML>

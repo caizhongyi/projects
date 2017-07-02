@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>字典管理</title>
+<LINK type="text/css" rel="stylesheet" href="../css/docPage.css">
+<style>
+</style>
+
+</head>
+<body>
+<div class="divDoc" id="pageBg">
+  <div style="width:100%">
+    <div style="float:right;font-size:9pt;margin-top:10px;margin-bottom:10px;font-family:Arial;color:#C2BDBD">EfsFrame框架应用模型介绍</div>
+  </div>
+
+  <div style="text-align:left;font-size:14pt;margin-top:10px;margin-bottom:20px;font-family:黑体;color:red">字典管理
+  </div>
+
+  <div style="border:1px solid #BEBAC5;width:100%;margin-top:15px;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">字典管理：</font>字典管理作为EfsFrame框架的亮点，开始不容易为人所理解，但是掌握后又能让人耳目一新。<BR>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里说的字典是指我们在项目中经常用到的一些可枚举项的集合，表现的常规的Web上就是<font color="red"><U>下拉框</U></font>，比如说：性别字典、学历字典、籍贯字典、是否字典、婚姻状态字典等，这些属性的内容都是可以枚举的项，所以我们统称他们为字典。<BR>
+	<DIV>&nbsp;&nbsp;&nbsp; 往往在不同的行业，不同的应用系统中，会有很多字典需要管理与维护，为了便于统一管理，我们将该管理放在了EfsFrame框架中，以后大家在业务开发过程中，可以轻松的将所有的字典项纳入到系统管理平台中，添加新的字典后，只要生成字典文件即可在页面调用。</DIV>
+  <DIV>&nbsp;&nbsp;&nbsp; 在字典管理中的注意事项：</DIV>
+  <DIV>&nbsp;&nbsp;&nbsp; 1、字典名称，我们一般以大写的<FONT color=#e61a42>DIC_</FONT> 开头，这是一种编码规范；</DIV>
+  <DIV>&nbsp;&nbsp;&nbsp; 2、字典条目中的字典编码，一律要以数字表示，如：001、002等，便于页面的通过编码快速检索；</DIV>
+  <DIV>&nbsp;&nbsp;&nbsp; 3、添加完成的字典，生成字典文件，会统一以UTF-8编码模式的XML文件存放在应用系统项目的dic目录下，以便页面调用；</DIV>
+  <DIV>&nbsp;&nbsp;&nbsp; 4、生成的字典XML文件会自动完成字典条目描述的全拼、简拼的构造，方便页面在快速字典选择过程中，通过编码、简拼、全拼的方式来检索字典数据；</DIV>
+  <DIV>&nbsp;&nbsp;&nbsp; 5、所有的字典信息，我们将在系统启动时，将其缓存到应用服务器内存中，在做各种字典翻译的时候，特别是在详细信息查询时，就不需要做关联查询，自动从内存中获得字典翻译内容，从而大大提升系统的运行效率；</DIV>&nbsp;&nbsp;&nbsp; 图例展示：<BR>
+
+  <img src="images/dic1.png"><br>
+  <img src="images/dic2.png"><br>
+  <img src="images/dic3.png"><br>
+  <img src="images/dic4.png"><br>
+  </div>
+
+</div>
+</body>
+</html>

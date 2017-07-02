@@ -1,0 +1,234 @@
+/* controls */
+	
+//图标基础样式
+.icon{
+	.inline-block;
+}
+
+/* 不可响应样式 */
+.disabled(@color:#999){
+	text-decoration:none; 
+	cursor:default;
+	color:@color;
+	&:hover{
+		text-decoration:none; 
+	}
+}
+.disabled{ 
+	.disabled(#999);
+	&:hover{.disabled(#999);}
+}
+
+//按扭基础样式
+.button{
+	.inline-block;
+	cursor:pointer;
+	border-radius:5px;
+	padding:2px 5px;
+	text-align:center;
+	box-shadow:2px 2px 2px #ddd;
+	&:hover{text-decoration:none;}
+	&:active{}
+}
+//导航基础样式
+.nav{
+	.clearfix;
+	a{.inline-block; padding:2px 5px; text-align:center; margin:0 5px; }
+	li{float:left;}
+	.current,a:hover{color:red;}
+}
+
+//分页 
+.pagination{
+	.nav;
+	span,a{.inline-block; height:20px;line-height:20px;width:40px; text-align:center;}
+	a{ 
+		border:1px solid  #ddd;
+		&.disabled:hover{.disabled(#999);}
+	}
+	
+	span{color:red;}
+	text-align:center;
+	.prev{}
+	.next{}
+}
+
+//站点地图
+.sitemap{
+	text-align:center;
+	margin:10px 0;
+	a{margin:0 10px;}
+}
+
+
+.image-text,
+.text,
+.textarea{ border:1px solid  #ddd; padding:4px; box-shadow:inset 1px 1px 1px #ddd; width:150px; vertical-align:top;border-radius:3px;}
+
+/* 带有图片的文本框 */
+.image-text{
+	.image-text(150px);
+}
+.image-text(@width){
+	@imageWidth : 20px;
+	.inline-block;
+	.text-image{.inline-block;width:@imageWidth; height:100%; }
+	.text{border:none;box-shadow:none;width:@width - @imageWidth - 8px; padding:0;}
+	.dropdown{
+		height:0;
+		position:relative;
+		left:-5px;
+		top:4px;
+		display:none;
+		ul{position:absoult; left:0px;top:0px; width:@width + 8px; background:#fff; border:1px solid #ddd;}
+		li {padding:10px 5px;}
+	}
+}
+//表单样式
+.form{
+	margin:10px 0;
+	li{margin-bottom:10px;}
+	.label{.inline-block; width:80px;margin-right:10px; text-align:right;}
+	.label,
+	.image-text,
+	.text{vertical-align:middle;}
+	.textarea{vertical-align:top;}
+	.submit{
+		text-align:right;
+		.button{margin-right:10px;}
+	}
+}
+//弹出窗口
+.dialog{
+	border:1px solid  #ddd;
+	border-radius:5px;
+	box-shadow:1px 1px 3px #ddd;
+	.dialog-header,.dialog-container,.dialog-footer{padding:10px;}
+	.dialog-header{
+		.clearfix;
+		.title{.float-left;}
+		.close{.float-right;}
+		border-bottom:1px solid #ddd;
+	}
+	.dialog-container{
+		
+	}
+	.dialog-footer{
+		text-align:right;
+		.button{margin-left:10px;}
+	}
+}
+//图片滚动切换
+.slider(@width,@height){
+	position:relative;
+	width:@width; 
+	.slider-nav{
+		margin-bottom:10px;
+		a{.inline-block; margin-right:10px; border:1px solid #ddd; padding:5px; cursor:pointer; .opacity(0.8)}
+		a:hover{.opacity(1)}
+		li{ .float-left;}
+		li.selected{ border:1px solid red;}
+	}
+	.slider-view,
+	.slider-clip{
+		width:@width; 
+		height:@height; 
+		position:relative; 
+		overflow:hidden;
+		.slider-panel {
+			li{width:@width; height:@height;}
+			position:absolute;
+			left:0;top:0;
+			z-index:1;
+		}
+		.slider-prev,.slider-next{
+			position:absolute;
+			z-index:2; 
+			height:@height;
+			line-height:@height;
+			top:0;
+			display:none;
+			_display:block;
+			
+		}
+		.slider-prev{ left:0}
+		.slider-next{ right:0}
+		&:hover{
+			.slider-prev,.slider-next{display:block;}
+		}
+	}
+	
+}
+
+.slider{
+	.slider(500px,327px);
+}
+
+.slider-carousel(@width,@height){
+	margin-bottom:10px;
+	position:relative;
+	width:@width; 
+	height:@height;
+	
+	.carousel-prev,.carousel-next{position:absolute;z-index:2;height:@height;top:0;line-height:@height;}
+	.carousel-prev{left:0;}
+	.carousel-next{right:0;}
+	
+	.carousel-clip{
+		&:hover{
+			.carousel-prev,.carousel-next{ display:block;}
+		}
+		overflow:hidden;
+		width:@width; 
+		height:@height;
+		position:relative;
+		.carousel-list{
+			left:0;top:0;
+			z-index:1;
+			position:absolute;
+			a{ .inline-block; margin-right:10px; border:1px solid #ddd; padding:5px; cursor:pointer; .opacity(0.8)}
+			a:hover{.opacity(1)}
+			li{ .float-left;}
+			li.selected{ border:1px solid red;}	
+		}
+		.carousel-prev,.carousel-next{
+			display:none;
+			_display:block;
+			
+		} 
+	}
+}
+.slider-carousel{
+	.slider-carousel(500px,90px);
+}
+
+//加载loading
+.loading{
+	.min-height(500px);
+	position:relative;
+	.loading-layer{
+		background-color:fade(#fff,50%);
+		height:100%;
+		width:100%;
+		display:block;
+		left:0;
+		top:0;
+		position:absolute;
+		text-align:center;
+		z-index:2;
+	}
+}
+
+//模块
+.mod{
+	.hd,.bd,.ft{padding:10px;}
+	.hd{
+		.clearfix;
+		.title{ .float-left;}
+		.info{.float-right;}
+	}
+	.bd{}
+	.ft{
+		.button{ margin:0 5px;}
+	}
+}

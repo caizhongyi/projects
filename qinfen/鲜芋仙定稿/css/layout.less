@@ -1,0 +1,24 @@
+/* CSS Document */
+
+.side(@side : left ,@width : 200px) when( @side = left){
+	width : @width;
+	.float-left;
+	padding:10px;
+}
+
+.side(@side : left ,@width : 200px) when( @side = right){
+	width : @width;
+	.float-right;
+	padding:10px;
+}
+.header-wrap,.container-wrap,.footer-wrap{}
+.header,.container,.footer{ .container-fixed(); }
+
+.side{
+	.side(left);
+}
+
+.subside{
+	.side(right);
+}
+.main{ overflow:hidden;padding:10px; }

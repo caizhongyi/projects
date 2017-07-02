@@ -1,0 +1,675 @@
+/* Reset.less
+ * Props to Eric Meyer (meyerweb.com) for his CSS reset file. We're using an adapted version here that cuts out some of the reset HTML elements we will never need here (i.e., dfn, samp, etc).
+ * ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+/*https://github.com/fankay/bootstrap/blob/master/lib/reset.less
+http://www.lesscss.net/
+ERIC MEYER RESET
+--------------------------------------------------*/
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dd,
+dl,
+dt,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+legend,
+button,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 100%;
+  line-height: 1;
+  font-family: inherit;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+html {
+  overflow-y: scroll;
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:hover,
+a:active {
+  outline: none 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]) {
+  display: none;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+button,
+input {
+  line-height: normal;
+  *overflow: visible;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+body {
+  font-size: 12px;
+  color: #666;
+  font-family: "微软雅黑";
+}
+a {
+  color: #666;
+  text-decoration: none;
+}
+.text,
+textarea,
+select {
+  border: 1px solid #FFFFFF;
+  color: #6B6938;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  width: 140px;
+  border-radius: 2px;
+}
+.company-text {
+  width: 292px;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix {
+  *zoom: 1;
+}
+.container,
+.footer-inner {
+  width: 980px;
+  margin: 0 auto;
+}
+.container {
+  margin-bottom: 10px;
+}
+.footer-inner {
+  position: relative;
+}
+.footer-exp {
+  margin: 20px 0 10px 20px;
+}
+.footer-exp a,
+.footer-exp span {
+  vertical-align: middle;
+  color: #fff;
+  margin-right: 10px;
+  display: inline-block;
+}
+.footer-exp a img,
+.footer-exp span img {
+  vertical-align: middle;
+}
+.footer {
+  padding: 50px 0 20px 0;
+  background: url("../images/footerinternalbg.png") no-repeat center top;
+  line-height: 25px;
+}
+.footer,
+.footer a {
+  color: #919191;
+}
+.footer .copyright {
+  text-align: center;
+}
+.footer .footer-block {
+  float: left;
+  margin: 0 20px;
+}
+.footer .footer-block .block-title,
+.footer .footer-block .block-title a {
+  color: #fff;
+}
+.footer .footer-nav,
+.footer .footer-nav a {
+  color: #fff;
+}
+.footer .search {
+  position: absolute;
+  right: 20px;
+  top: -20px;
+}
+.footer .search h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+.footer .search .text {
+  margin-right: 10px;
+  height: 25px;
+  line-height: 25px;
+  border: 1px solid #c7c000;
+  box-shadow: 1px solid #ddd;
+  padding: 2px;
+}
+.footer .search a {
+  color: #464646;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+p {
+  line-height: 25px;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.nav li {
+  float: left;
+  font-weight: bold;
+  margin-right: 20px;
+}
+.nav,
+.nav a {
+  color: #fff;
+  font-size: 14px;
+}
+.header {
+  margin-top: -397px;
+  background: url(../images/homebgextended.jpg) no-repeat top;
+}
+.header-inner {
+  width: 980px;
+  margin: 0 auto;
+}
+.quote-content {
+  padding-top: 20px;
+  margin-bottom: 20px;
+  height: 367px;
+}
+.quote-content .quote-left {
+  width: 230px;
+  float: left;
+  margin-right: 10px;
+}
+.quote-content .quote-left h3 {
+  font-size: 38px;
+  line-height: 39px;
+  margin-bottom: 10px;
+  padding: 0;
+  text-transform: uppercase;
+}
+.quote-content .quote-main {
+  position: relative;
+  float: left;
+}
+.quote-content .quote-main .side {
+  float: left;
+  width: 360px;
+}
+.quote-content .quote-main .close {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 67px;
+  height: 25px;
+  background: url(../images/close.png) no-repeat;
+}
+.quote-content .quote-main h3 {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-family: arial;
+}
+.header-main {
+  overflow: hidden;
+  height: 80px;
+}
+.header-main .logo {
+  float: left;
+}
+.header-main .menu {
+  float: left;
+  margin-left: 40px;
+}
+.header-main .nav {
+  float: left;
+  margin: 20px 10px 10px 60px;
+}
+.header-main .quote-btn {
+  margin-top: 10px;
+}
+.enquiry span {
+  display: inline-block;
+  width: 120px;
+  margin-bottom: 10px;
+}
+.enquiry span input {
+  margin-right: 5px;
+}
+.quote-form {
+  color: #fff;
+}
+.quote-form li {
+  margin-bottom: 10px;
+}
+.quote-form li span {
+  display: inline-block;
+  margin-right: 10px;
+}
+.quote-form li input,
+.quote-form li select,
+.quote-form li textarea {
+  margin-top: 5px;
+}
+.quote-form textarea {
+  width: 292px;
+}
+.quote-form .btns {
+  text-align: right;
+}
+.quote-form .btns .submit {
+  background: url(../images/btnSubmit.png) no-repeat;
+  width: 127px;
+  height: 42px;
+  border: none;
+}
+.share {
+  text-align: right;
+  width: 450px;
+  font-size: 15px;
+}
+.share,
+.share a {
+  color: #000;
+}
+.share span,
+.share a {
+  vertical-align: middle;
+  margin: 0 5px;
+}
+.share .tip {
+  border: 1px solid #ddd;
+  color: #666;
+  padding: 5px;
+  font-size: 11px;
+  background: #fff;
+  border-radius: 3px;
+  position: relative;
+}
+.share .tip i {
+  display: block;
+  position: absolute;
+  background: url("../images/sprite4-a67f741843ffc4220554c34bd01bb0bb.png") no-repeat;
+  left: -6px;
+  top: 2px;
+  background-position: 0 -191px;
+  height: 20px;
+  width: 6px;
+}
+.join {
+  font-size: 14px;
+  color: #333;
+}
+.quote-btn {
+  background-image: url("../images/getaquote.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: block;
+  height: 29px;
+  text-decoration: none;
+  width: 111px;
+  float: right;
+}
+.aboutinfo {
+  padding: 40px 0 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+.aboutinfo h3 {
+  font-size: 16px;
+  font-family: '微软雅黑';
+  margin-bottom: 10px;
+}
+.banner {
+  margin-left: -70px;
+  position: relative;
+  height: 357px;
+}
+.banner .banner-clip {
+  overflow: hidden;
+  height: 360px;
+}
+.banner .banner-nav,
+.banner .banner-clip {
+  width: 1120px;
+}
+.banner .banner-nav {
+  background: url(../images/homeBannerBottombar.png) no-repeat;
+  text-align: right;
+  margin-top: -53px;
+  height: 51px;
+}
+.banner .banner-nav a {
+  display: inline-block;
+  padding: 0 5px;
+  color: #00b9b3;
+  font-weight: bold;
+  margin-top: 30px;
+}
+.banner .banner-nav .last {
+  margin-right: 90px;
+}
+.banner .banner-nav .selected {
+  color: #333;
+}
+.easy-mod {
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+}
+.easy-mod h3 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.easy-mod h3 span {
+  font-size: 12px;
+  display: block;
+  margin-top: 10px;
+  color: #999;
+}
+.normal-mod,
+.normal-mod a {
+  color: #000;
+}
+.normal-mod .mod-side {
+  width: 315px;
+  font-size: 14px;
+  margin-right: 10px;
+  float: left;
+}
+.normal-mod .mod-side ul {
+  margin-top: 30px;
+}
+.normal-mod .mod-side li {
+  margin-bottom: 10px;
+}
+.normal-mod .mod-side li a {
+  display: inline-block;
+  padding-bottom: 2px;
+  background: url("../images/linkborder.jpg") repeat-x bottom;
+}
+.normal-mod .mod-side li a:hover {
+  color: #009b79;
+  background-image: url(../images/linkborder_r.jpg);
+}
+.normal-mod h3 {
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 10px;
+  font-family: '微软雅黑';
+  padding: 10px 0 ;
+}
+.image-list li {
+  float: left;
+  margin-right: 25px;
+}
+.image-list li .summary,
+.image-list li .write-summary {
+  font-weight: bold;
+  background-color: #f9f700;
+  display: block;
+  overflow: hidden;
+  padding: 5px 5px 5px 10px;
+  width: 205px;
+  line-height: 22px;
+  color: #000;
+  font-size: 14px;
+}
+.image-list li .summary span,
+.image-list li .write-summary span {
+  font-size: 11px;
+  font-weight: normal;
+}
+.image-list li .write-summary {
+  background: #fff;
+}
+.image-list li img,
+.image-list li li {
+  width: 220px;
+}
+.underline {
+  border-bottom: 1px solid #ddd;
+}
+.exp-list img,
+.exp-list li {
+  width: 136px;
+  height: 110px;
+}
+.site-nav {
+  margin: 10px 0;
+}
+.site-nav a,
+.site-nav span {
+  margin: 0 10px;
+}
+.title,
+.gray-title {
+  font-size: 30px;
+}
+.title {
+  color: #84c6ca;
+}
+.gray-title {
+  color: #999;
+}
+.wrap {
+  width: 980px;
+  margin: 0 auto;
+  background: #fff;
+  margin-top: -350px;
+}
+.about .about-side,
+.about .about-main {
+  margin-top: 20px;
+}
+.about .about-side {
+  width: 250px;
+  height: 320px;
+  padding-top: 60px;
+  margin-top: 40px;
+  color: #84c6ca;
+  font-size: 14px;
+  float: right;
+  border-left: 1px solid #ddd;
+  padding-left: 20px;
+}
+.about .about-side h3 {
+  color: #999;
+  font-size: 40px;
+  font-weight: bold;
+}
+.about .about-side li {
+  margin-bottom: 50px;
+}
+.about .about-main {
+  overflow: hidden;
+  padding: 0 10px;
+}
+.opinion {
+  margin: 20px 0;
+}
+.opinion .gray-title {
+  margin: 10px 0 ;
+}
+.opinion li {
+  float: left;
+  width: 190px;
+  background: #fbfaf8;
+  height: 180px;
+  margin-right: 10px;
+  padding: 10px;
+}
+.opinion p {
+  line-height: 30px;
+}
+.Bg,
+.Qo {
+  background: url("../images/sprite4-a67f741843ffc4220554c34bd01bb0bb.png") no-repeat scroll 0 -720px transparent;
+}
+.Qo {
+  height: 20px;
+  width: 32px;
+  display: inline-block;
+}
+.readmore {
+  color: #000;
+  font-weight: bold;
+  margin: 10px 0;
+}
+.new-tip {
+  width: 280px;
+  position: relative;
+  background: #FFF000;
+  padding: 10px;
+  color: #000;
+}
+.new-tip i {
+  background: url(../images/news-balloon.jpg) no-repeat;
+  height: 17px;
+  display: block;
+  position: absolute;
+  bottom: -17px;
+  width: 100%;
+}
+.footer-share {
+  margin: 10px 0;
+}
+.footer-share h3 {
+  color: #686735;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.footer-share a {
+  margin-right: 10px;
+}

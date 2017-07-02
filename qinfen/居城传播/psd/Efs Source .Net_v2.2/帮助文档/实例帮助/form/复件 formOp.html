@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> Form表单 </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="../css/efs-all.css" />
+<script type="text/javascript" src="../js/loadmask.js"></script>
+<script type="text/javascript" src="../js/efs-all.js"></script>
+<script type="text/javascript">
+function doValid()
+{
+  alert(Efs.getExt("frmData").isValid());
+}
+
+function doSubmit(){
+  if(Efs.getExt("frmData").isValid())
+    seeXML(Efs.Common.getOpXml(Efs.getExt("frmData")));
+  else
+    Ext.Msg.alert('提示', '请检查输入值是否有效');
+
+  // 以下为提交
+  // Efs.getExt("frmData").submit();
+}
+
+function doRet()
+{
+  Efs.getExt("frmData").reset();
+}
+
+function seeXML(sXML)
+{
+  var w = window.open("");
+  w.document.write("<xmp>" + sXML + "</xmp>");
+}
+
+Efs.onReady(function(){
+  Efs.getDom("name").setAttribute("must",true);
+  alert(Efs.getDom("name").getAttribute("must"));
+});
+</script>
+</HEAD>
+
+<BODY>
+<div xtype="panel" title="添加学生基本信息" border="false" buttonAlign="center" autoScroll="true">
+  <form id="frmData" class="efs-box" method="post" url="ajax?method=psnAdd" method="post" onEfsSuccess="frmPostSubBack(true)" onEfsFailure="frmPostSubBack(false)">
+      <TABLE class="formArea">
+        <TR>
+          <TD width="100" labelFor="name">姓  名</TD>
+          <TD><INPUT id="name" type="text" kind="zhunicode" maxlength="50" fieldname="PERSON/NAME"></TD>
+          <TD width="20"></TD>
+          <TD width="100">身份证号码</TD>
+          <TD><INPUT type="text" kind="idcard" fieldname="PERSON/IDCARD" sex="sex" birthday="birthday"></TD>
+        </TR>
+      </TABLE>
+	</form>
+	 <div xtype="buttons">
+     	<div text="验证输入" onEfsClick="doValid()"></div>
+     	<div text="确  定" onEfsClick="doSubmit()"></div>
+     	<div text="清空#C" onEfsClick="doRet()"></div>
+   </div>
+</div>
+
+
+</BODY>
+</HTML>

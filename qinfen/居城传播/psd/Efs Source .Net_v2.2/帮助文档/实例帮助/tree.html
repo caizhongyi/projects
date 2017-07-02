@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> treepanel静态树</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="css/ext-all.css" />
+<link rel="stylesheet" type="text/css" href="css/efs-all.css" />
+<script type="text/javascript" src="js/loadmask.js"></script>
+<script type="text/javascript" src="js/efs-all.js"></script>
+<script type="text/javascript" src="js/efs-all.js"></script>
+<script type="text/javascript">
+
+function doClick1()
+{
+
+  with(Efs.getExt("jtTree"))
+  {
+    setTitle("静态树");
+    show();
+  }
+}
+
+function doClick2()
+{
+
+  with(Efs.getExt("dtTree"))
+  {
+    setTitle("动态树");
+    show();
+  }
+}
+
+function doClick(node){
+  alert(node.attributes.opurl);
+}
+
+function eAll() {
+  Efs.getExt("treep").expandAll();
+}
+
+function cAll() {
+  Efs.getExt("treep").collapseAll();
+}
+function doTreeClick(node){
+    if(typeof mainpanel == "undefined"){
+        mainpanel = Efs.getExt("main");
+    }
+    
+    var url = node.attributes.opurl;
+    var eventtypeid = node.attributes.eventtypeid;
+    if(typeof url == "undefined"){
+      return false;
+    }
+  	var datNow = new Date();
+  	var sRandom = datNow.getUTCFullYear() + datNow.getUTCMonth() +
+              		datNow.getUTCDate() + datNow.getUTCHours() + datNow.getUTCMinutes() +
+              		datNow.getMinutes() + datNow.getUTCSeconds() + datNow.getUTCMilliseconds();
+    
+    if(url.indexOf("?") == -1)
+      url += "?txtEventTypeID=" + eventtypeid + "&random=" + sRandom;
+    else
+      url += "&txtEventTypeID=" + eventtypeid + "&random=" + sRandom;
+    
+    if(url){
+      window.open(url,"famRMain")
+    }
+}
+</script>
+</HEAD>
+
+<BODY style="margin:30px;">
+<TABLE>
+<TR>
+	<TD height="50px;">
+  静态树button
+  <div xtype="button" text="点击" onEfsClick="doClick1()"></div></TD>
+</TR>
+<TR>
+	<TD>
+  动态树button
+  <div xtype="button" text="点击" onEfsClick="doClick2()"></div></TD>
+</TR>
+</TABLE>
+
+   <!-- window开始(静态树) -->
+<div iconCls="icon-panel" id="jtTree" xtype="window" width="560" height="520"  resizable="true" modal="false">
+<div iconCls="icon-tree" region="west" xtype="treepanel" id="treep" name="name" width="200" height="400" title="功能树" onEfsClick="doClick()">
+  <div id="root" text="rootNode" xtype="root" expanded="true" opurl="1.html">
+    <div text="1" opurl="2.html">
+      <div text="11"><div text="111" opurl="3.html"></div></div>
+      <div text="12" opurl="4.html"></div>
+    </div>
+    <div text="2">
+    	<div></div>
+    </div>
+    	
+    <div text="3">
+      <div text="31" opurl="4.html">
+        <div text="311" opurl="4.html"></div>
+        <div text="312" opurl="4.html"></div>
+      </div>
+      <div text="32" opurl="4.html"></div>
+    </div>
+  </div>
+  <div xtype="buttons">
+    <div text="展开所有" onEfsClick="eAll()"></div>
+    <div text="收起所有" onEfsClick="cAll()"></div>
+  </div>
+</div>
+    </div>
+    <!-- window结束 -->
+    
+<!-- window开始 （动态树）-->
+<div iconCls="icon-panel" id="dtTree" xtype="window" width="560" height="520"  resizable="true" modal="false">
+  <div iconCls="icon-tree" region="west" width="150" title="功能树" collapsible="true" border="false">
+    <div region="center" id="treepanel" xtype="treepanel" height="450" autoScroll="true" onEfsClick="doTreeClick(node)" border="false">
+      <div xtype="xmlloader" url="ajax?method=getUserRight" parentPath="QUERYINFO"></div>
+    </div>
+  </div>
+  <div id="main" region="center"></div>
+</div>
+<!-- window结束 -->
+</BODY>
+</HTML>
