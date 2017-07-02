@@ -1,0 +1,38 @@
+{php $cur_menu = 'baby';}
+{php $load_css = array('photo');}
+{template "public","header"}
+
+<!--页头-->
+<div id="main">
+    <div id="productCats" class="flexslider">
+        <h2><span>新闻资讯</span></h2>
+        <div class="subpages-holder semitransp">
+            {pc:content  action="position" posid="10" catid="$catid" thumb="1" order="listorder DESC" num="2"}
+                 <ul class="submenu">
+                {loop $data $v}
+                 <!--class="subpage-switch active"-->
+                 <li><a data-id="162" href="{$v[url]}"{title_style($v[style])}>{$v[title]}</a></li>
+                {/loop}
+                 </ul>
+            {/pc}
+            <div id="content">
+                {pc:content  action="lists" catid="$catid" order="id DESC" num="3"}
+                <ul class="news">
+                    {loop $data $k $v}
+                    <li>·<a href="{$v[url]}" title="{$v[title]}" target="_blank"{title_style($v[style])}>{str_cut($v[title], 30)}</a></li>
+                    {/loop}
+                </ul>
+                {/pc}
+                <!--中间图-->
+                <div id="page" class="">{$pages}</div>
+                {/pc}
+                <!--页码-->
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+{template "public","footer"}

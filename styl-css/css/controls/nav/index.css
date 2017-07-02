@@ -1,0 +1,58 @@
+.nav {
+  display: block;
+  zoom: 1;
+}
+.nav:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+}
+.nav,
+.nav li,
+.nav li li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav {
+  margin-bottom: 20px;
+}
+.nav a {
+  display: block;
+  position: relative;
+  padding: 10px 15px;
+}
+.nav a:hover {
+  background: #eee;
+  text-decoration: none;
+}
+.nav .active a {
+  background: #337ab7;
+  color: #fff;
+}
+.nav .active .badge {
+  background: #fff;
+  color: #337ab7;
+}
+.nav .badge {
+  vertical-align: middle;
+}
+.nav-pills li,
+.nav-tabs li {
+  float: left;
+}
+.nav-tabs {
+  border-bottom: 1px solid #eee;
+}
+.nav-tabs li {
+  margin-bottom: -1px;
+}
+.nav + .nav-content {
+  margin-top: -20px;
+}
+.nav-content {
+  padding: 20px;
+}

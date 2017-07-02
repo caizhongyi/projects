@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Scrollfixed</title>
+
+
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../lib/jquery.advance.min.js"></script>
+</head>
+
+<body>
+
+<style type="text/css">
+    .block {
+        width: 100px;
+        height: 100px;
+        background: #ddd;;
+    }
+
+</style>
+<div class="code-example" title="scrollFixed">
+    <div class="block"></div>
+</div>
+<div style="height: 1000px;"></div>
+
+<!--<script type="text/javascript" src="js/zero.core.js"></script>
+<script type="text/javascript" src="js/zero.scrollspy.js"></script>-->
+<script type="text/javascript" src="../js/plugins/extra/jquery.scrollFixed.js"></script>
+<script>
+    $('.block').scrollFixed();
+</script>
+</body>
+</html>

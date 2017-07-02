@@ -1,0 +1,114 @@
+.navbar {
+  font-size: 14px;
+}
+.navbar .navbar-inner {
+  background: #fff;
+  border: 1px solid #ddd;
+}
+.navbar .navbar-inner.collapse {
+  transform: translateX(-100%);
+}
+.navbar .navbar-inner li,
+.navbar .navbar-inner a,
+.navbar .navbar-inner ul {
+  transition: all 0.2s ease;
+}
+.navbar .navbar-inner li {
+  float: left;
+  position: relative;
+  width: 120px;
+  cursor: pointer;
+  text-align: center;
+}
+.navbar .navbar-inner li a {
+  color: #666;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid transparent;
+  padding: 10px;
+  font-size: 14px;
+  font-family: "microsoft yahei";
+}
+.navbar .navbar-inner li ul {
+  background: #fff;
+  width: 100%;
+  left: 0;
+  top: 46px;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+}
+.navbar .navbar-inner li ul ul {
+  left: 120px;
+  top: -1px;
+}
+.navbar .navbar-inner:hover > ul,
+.navbar .navbar-inner li.active > ul {
+  visibility: inherit;
+  opacity: 1;
+}
+.navbar-toggle {
+  display: none;
+  padding: 5px 10px;
+}
+.navbar-toggle [class*=icon] {
+  margin: 0;
+}
+@media (max-width: 500px) {
+  .navbar-toggle {
+    display: inline-block;
+  }
+  .navbar-inner {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    transform: translateX(0);
+    z-index: 90;
+  }
+  .navbar-inner li {
+    float: none;
+    width: 100%;
+    text-align: left;
+  }
+  li ul {
+    position: static;
+  }
+}
+.navbar-toggle {
+  background: #eee;
+}
+.side .navbar li {
+  float: none;
+}
+.navbar-fixed,
+.navbar-abs {
+  padding-top: 30px;
+}
+.navbar-fixed .navbar,
+.navbar-abs .navbar {
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.navbar-fixed.bottom,
+.navbar-abs.bottom {
+  padding-top: 0;
+  padding-bottom: 30px;
+}
+.navbar-fixed.bottom .navbar,
+.navbar-abs.bottom .navbar {
+  top: auto;
+  bottom: 0;
+}
+.navbar-fixed .navbar {
+  position: fixed;
+}
+.navbar-abs .navbar {
+  position: absolute;
+}
+.navbar-side {
+  float: left;
+  width: 20%;
+}

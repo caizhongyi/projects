@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>CSS3 3D场景展示</title>
+    <style type="text/css">
+        body {
+            background-color: #D42FA0;
+            font-size: 12px;
+        }
+
+        #content {
+            width: 100%;
+            height: 700px;
+            -webkit-transform-style: preserve-3d;
+            -webkit-perspective-origin: 50% 40px 0;
+            -webkit-perspective: 800;
+        }
+
+        #scene {
+            margin: 120px auto;
+            width: 260px;
+            height: 260px;
+            -webkit-transform-style: preserve-3d;
+            -webkit-perspective-origin: 50% 130px 0
+        }
+
+        .box {
+            position: absolute;
+            height: 260px;
+            width: 260px;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transition: all 2s linear;
+        }
+
+        .box > div {
+            position: absolute;
+            height: 260px;
+            width: 260px;
+            color: #000;
+            opacity: 0.5;
+            border: 1px solid #FFF;
+            /*-webkit-backface-visibility: hidden;*/
+        }
+
+        .box > .side_1 {
+            background-color: #3CC42E;
+            -webkit-transform: rotateY(90deg) translateZ(130px);
+            -moz-transform: rotateY(90deg) translateZ(130px);
+        }
+
+        .box > .side_2 {
+            background-color: #57BC30;
+            -webkit-transform: rotateY(180deg) translateZ(130px);
+        }
+
+        .box > .side_3 {
+            background-color: #1F3889;
+            -webkit-transform: rotateY(270deg) translateZ(130px);
+        }
+
+        .box > .side_4 {
+            background-color: #E4C207;
+            -webkit-transform: rotateY(0deg) translateZ(130px);
+        }
+
+        .box > .side_5 {
+            background-color: #FFFFFF;
+            -webkit-transform: rotateX(90deg) translateZ(130px);
+        }
+
+        .box > .side_6 {
+            background-color: #000000;
+            -webkit-transform: rotateX(-90deg) translateZ(130px);
+        }
+    </style>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12059180-5']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+</head>
+<body>
+<div id="content">
+    <div id="scene">
+        <div id="box_A1" class="box">
+            <div class="side_1">A1</div>
+            <div class="side_2">A2</div>
+            <div class="side_3">A3</div>
+            <div class="side_4">A4</div>
+            <div class="side_5">A5</div>
+            <div class="side_6">A6</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html> 

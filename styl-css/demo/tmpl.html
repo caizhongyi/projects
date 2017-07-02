@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tmpl</title>
+
+    <meta name="keywords" content="模版引擎"/>
+    <meta name="description" content="模版引擎"/>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+
+</head>
+<body>
+<div class="code-example" title="tmpl">
+    <script>
+        var movies = [
+            { Name: "The Red Violin", ReleaseYear: "1998" },
+            { Name: "Eyes Wide Shut", ReleaseYear: "1999", Items: [ '0' , { value: 'item'}]},
+            { Name: "The Inheritance", ReleaseYear: "1976", Subtitles: [ '0' , { value: 'subtitle'}] }
+        ];
+    </script>
+    <script id="movieTemplate" type="text/x-jquery-tmpl">
+    <li>
+        {{if $data.expanded }} - {{else}} + {{/if}}
+       <!-- ${ $data.expanded ? "open" : "close" } -->
+
+        {{each Items}}
+            ${ $value[0] }
+        {{/each}}
+
+
+        {{each( i, lang ) Subtitles}}
+           ${ lang.value }
+        {{/each}}
+
+
+        <b>${Name}</b> (${ReleaseYear})
+    </li>
+
+    </script>
+
+    <ul id="movieList"></ul>
+    <script>
+        $(function () {
+            $("#movieTemplate").tmpl(movies)
+                    .appendTo("#movieList");
+            $('#movieList').on('click', 'li', function () {
+                /* Toggle expanded property on data, then update rendering */
+                var tmplItem = $.tmplItem(this);
+                tmplItem.data.expanded = !tmplItem.data.expanded;
+                tmplItem.update();
+            })
+        })
+    </script>
+</div>
+
+
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../lib/jquery.tmpl.min.js"></script>
+</body>
+</html>

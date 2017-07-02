@@ -1,0 +1,40 @@
+.row
+  clearfix()
+
+.col
+  float: left;
+    &-inner
+      padding 20px;
+
+//.cleafix{}
+// ?= is ||
+
+for i in 1...10
+  .col-{i}
+    @extend .col
+    width: (100 / i)%;
+
+.main
+  overflow hidden
+
+.cell
+  padding: space
+  & + &
+    padding-top 0;
+
+.block-out
+    margin space 0;
+    & + &
+      margin-top 0
+
+.page-header
+  border-bottom 1px solid #ddd;
+
+.container
+  width: page-width;
+  margin 0 auto;
+
+if responsive
+  @media (max-width : page-width)
+    .container
+      width: auto

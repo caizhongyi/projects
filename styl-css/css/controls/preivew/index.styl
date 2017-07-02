@@ -1,0 +1,19 @@
+.image-preivew
+    /*非IE的主流浏览器识别的垂直居中的方法*/
+    display: table
+    width 100%
+    .image-container
+        display: table-cell;
+        vertical-align:middle;
+        /*设置水平居中*/
+        text-align:center;
+        img
+            vertical-align:middle
+            max-width:100%
+            max-height:100%
+            if ie-support
+                *position: absolute
+                *top: 50%
+                *left: 50%
+                *margin-top: expression( - (this.height ) / 2)
+                *margin-left: expression( - (this.width ) / 2)

@@ -1,0 +1,65 @@
+/*
+文章
+need summary style
+need title style
+*/
+.article
+    text-align: justify;
+    padding: 10px;
+    font-size: 13px;
+    h1, .title {
+        margin: 10px 0;
+        text-align: center;
+        font-size: 26px;
+        font-weight: normal;
+        font-family: "microsoft yahei";
+    }
+    h2
+        @extend .article h1
+        font-size: 24px;
+
+    h3
+        @extend .article h1
+        font-size: 20px;
+
+    .container
+        border-top: 1px solid #ddd;
+        width: auto;
+        text-align: left;
+    p
+        line-height: 2;
+        margin: 10px 0;
+    .noindent
+        text-indent: 0;
+    img
+        width: 100%;
+    .summary
+        margin: 10px 0;
+        color: #999;
+        text-align: center;
+        a, span
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 5px;
+    ul
+        margin: 10px auto;
+    ul, ol
+        padding-left: 30px;
+    li ul li
+        list-style-type: circle;
+    ul li
+        list-style-type: disc;
+    ol li
+        list-style-type: decimal;
+    ol.decimal li
+        list-style-type: decimal-leading-zero;
+    ol.roman li
+        list-style-type: upper-roman;
+    ol.roman li ol li
+        list-style-type: lower-roman;
+    ol.lower-alpha li
+        list-style-type: lower-alpha;
+    ol.upper-alpha li
+        list-style-type: upper-alpha;
+    ol.upper-alpha li ol li
+        list-style-type: lower-alpha;

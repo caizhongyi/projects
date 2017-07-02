@@ -1,0 +1,166 @@
+//
+   Created by caizhongyi on 2014/9/5.
+extends layout
+
+block append head
+  title title
+
+block append container
+    .code-example(title='input block')
+      .input-block
+        input.input(type='text', placeholder='input-block')
+    .code-example(title='input readonly or disabled')
+      input.input(type='text', placeholder='disabled', disabled='')
+      |     
+      input.input(type='text', placeholder='disabled', readonly='')
+    .code-example(title='input size')
+      input.input-1x.input(type='text', placeholder='input-1x')
+      |     
+      input.input-2x.input(type='text', placeholder='input-2x')
+      |     
+      input.input(type='text', placeholder='input-3x')
+      |     
+      input.input.input-4x(type='text', placeholder='input-4x')
+      |     
+      input.input.input-5x(type='text', placeholder='input-5x')
+      |     
+      input.input-6x.input(type='text', placeholder='input-6x')
+      |     
+      input.input-7x.input(type='text', placeholder='input-7x')
+      |     
+      input.input-8x.input(type='text', placeholder='input-8x')
+    .code-example(title='input static')
+      input.input-danger.input(type='text', placeholder='input-danger')
+      |     
+      input.input-success.input(type='text', placeholder='input-success')
+      |     
+      input.input-info.input(type='text', placeholder='input-info')
+      |     
+      input.input-warning.input(type='text', placeholder='input-warning')
+      |     
+      input.input-muted.input(type='text', placeholder='input-muted')
+    .code-example(title='input group')
+      span.input-group.input-spinner.spinner-mini
+        a.add-on(href='javascript:;') +
+        |         
+        input.input(type='text')
+        |         
+        a.add-on(href='javascript:;') -
+      |     
+      span.input-group.input-spinner.spinner-small
+        a.add-on(href='javascript:;') +
+        |         
+        input.input(type='text')
+        |         
+        a.add-on(href='javascript:;') -
+      |     
+      span.input-group.input-spinner
+        a.add-on(href='javascript:;') +
+        |         
+        input.input(type='text')
+        |         
+        a.add-on(href='javascript:;') -
+      |      
+      span.input-group.input-spinner.spinner-lg
+        a.add-on(href='javascript:;') +
+        |          
+        input.input(type='text')
+        |          
+        a.add-on(href='javascript:;') -
+      |     
+      span.input-group.input-spinner.spinner-xlg
+        a.add-on.spinner-up(href='javascript:;') +
+        |         
+        input.input(type='text')
+        |         
+        a.add-on.spinner-down(href='javascript:;') -
+      |     
+      span.input-group.input-spinner.input-spinner-vertical
+        input.input(type='text', data-max='10', data-min='0', data-increase='5')
+        |         
+        span.input-group-btn
+          a.add-on.spinner-up(href='javascript:;') +
+          |             
+          a.add-on.spinner-down(href='javascript:;') -
+      |     
+      span.input-group
+        span.add-on user :
+        input.input(type='text')
+      |     
+      span.input-group
+        button.btn.btn-primary Button
+        |         
+        input.input(type='text')
+        |         
+        button.btn.btn-primary.btn-metro Button
+      |     
+      span.input-icon
+        input.input(type='text')
+        i.icon-leaf icon
+    .code-example(title='input for ie 6')
+      input.input(type='text')
+      |     
+      span.input-search
+        input.input.input-group-item(type='text')
+        |         
+        button.btn.input-group-item search
+      |     
+      span.input-group
+        button.btn.btn-primary Button
+        |         
+        input.input.input-group-item(type='text')
+        |         
+        button.btn.btn-primary.input-group-item Button
+      |      
+      span.input-icon
+        input.input(type='text')
+        i.icon.icon-leaf icon
+    .code-example(title='inputs')
+      textarea.textarea.textarea-animated
+      |     
+      select.input(name='', id='')
+      |     
+      input.input(type='text', placeholder='input-default')
+      |     
+      label
+        | &#x7528;&#x6237;&#x540D;&#xFF1A;
+        span.combo
+          .combo-inner
+            span.combo-result val
+            a.combo-icon(href='javascript:;')
+          |          
+          .combo-list
+            ul
+              li
+                a(href='javascript:;') item
+              |                  
+              li
+                a(href='javascript:;') item
+              |                  
+              li
+                a(href='javascript:;') item
+    .code-example(title='inputs')
+      .input-block
+        input.input(type='text')
+      input.input.input-block(type='text')
+      input.input.input-xs(type='text')
+      input.input.input-sm(type='text')
+      input.input.input-md(type='text')
+      input.input.input-lg(type='text')
+      input.input.input-xlg(type='text')
+      input.input.input-xxlg(type='text')
+      input.input.input-xxxlg(type='text')
+      button.btn.btn-primary Button
+      .input-group
+        input.input(type='text')
+        button.btn.btn-primary Button
+    script(type='text/javascript', src='../js/plugins/extra/jquery.spinner.js')
+    script(type='text/javascript', src='../js/plugins/extra/jquery.loader.js')
+    script(type='text/javascript', src='../lib/prettyprint/prettify.js')
+    script(type='text/javascript', src='../js/global.js')
+    script.
+      $(function () {
+      $('.input-spinner').on('change', function (e, args) {
+      window.console && console.log(args)
+      })
+      })

@@ -1,0 +1,38 @@
+//
+   Created by caizhongyi on 2014/9/5.
+include mixins/index
+extends layout.jade
+
+block append head
+    title Form | Form
+
+block append header
+    .page-header
+        h3 表单
+
+
+block append content
+    style.
+        .block {
+            background: #ddd;
+            height: 100px;
+            width: 100px;;
+        }
+        .cont{
+            background: darkblue;
+        }
+    .code-example(title = 'grid')
+        .cont
+            ul.row
+                li.block
+                li.block
+                li.block
+            ul.row
+                li.block
+                li.block
+                li.block
+
+block append footer
+
+
+

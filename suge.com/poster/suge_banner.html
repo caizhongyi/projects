@@ -1,0 +1,27 @@
+<div class="main_img" data-loader="Class-tabs" data-options="auto:true">
+    <div class="tab-clip" data-role="clip">
+        <ul class="tab-panel" data-role="panel">
+            {pc:poster action="get_poster_data" spaceid="11"  limit="4" return="result"}
+            {loop $result $rs}
+            {php $ad = string2array($rs['setting']);}
+            <li><a href="{$ad[1]['linkurl']}"  title="{$rs['name']}"><img src="{$ad[1]['imageurl']}" /></span></a></li>
+            {php $spicids[] = $rs['small_pic'];}
+            {/loop}
+            {/pc}
+        </ul>
+    </div>
+    <style type="text/css">
+        .main_img{ position: relative;}
+        .tab-nav { position: absolute;right: 35px; bottom:35px;z-index: 1;}
+        .tab-nav a{ display: inline-block; margin: 0 5px; width: 10px; height: 10px; line-height: 10px; border-radius: 5px; background: #ddd;}
+        .tab-nav .selected{ background: #DD3B3E;}
+    </style>
+    <div class="tab-nav" data-role="nav">
+
+    </div>
+    <script type="text/javascript">
+        for(var i = 0 ; i < $('.tab-panel').children().length ; i++){
+            $('.tab-nav').append('<a href="javascript;"></a>');
+        }
+    </script>
+</div>

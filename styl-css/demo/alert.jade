@@ -1,0 +1,19 @@
+//
+   Created by caizhongyi on 2014/9/5.
+extends layout
+
+block append head
+  title title
+
+block append container
+    - var types = [  'primary', 'muted', 'info', 'success', 'warning', 'danger', 'dark', 'light'] ;
+    .code-example(title='alerts')
+        each item in types
+            .alert(class='alert alert-'+item)
+                | alert demo~!
+
+    - var types = [  'xs', 'sm', 'md', 'lg', 'xlg', 'xxlg', 'xxxlg'] ;
+    .code-example(title='alerts')
+        each item in types
+            .alert(class='alert alert-' + item)
+                | alert demo~!

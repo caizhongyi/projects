@@ -1,0 +1,58 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Clipboard</title>
+
+    <meta name="keywords" content="Clipboard,切贴版,js复制,jQuery复制"/>
+    <meta name="description" content="切贴版功能"/>
+
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+</head>
+
+<body>
+
+<div class="code-example" title="ZeroClipboard">
+    <textarea></textarea> <br> <br>
+    <button class="btn btn-primary">Copy</button>
+    <script type="text/javascript">
+        $(function () {
+            var clipboard = $('.btn').clipboard({
+                moviePath: 'lib/ZeroClipboard/ZeroClipboard.swf',
+                text: function () {
+                    return $('textarea').val()
+                },
+                callback: function (clip) {
+                    window.console && console.log(clip)
+                    window.console && console.log(this)
+                }
+            });
+        })
+    </script>
+</div>
+
+<script type="text/javascript" src="../lib/ZeroClipboard/ZeroClipboard.js"></script>
+<script type="text/javascript" src="../lib/ZeroClipboard/jquery.clipboard.js"></script>
+
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+</body>
+</html>

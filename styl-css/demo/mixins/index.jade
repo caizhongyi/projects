@@ -1,0 +1,29 @@
+include ../variables
+
+mixin css( href )
+    link( href = href, rel = "stylesheet" )
+mixin cssPre( href )
+    - var html = '&ltlink type="stylesheet" href="'+ href +'"&gt'
+    | !{html}
+
+mixin script( src )
+    script( src = src )
+mixin scriptPre( src )
+    - var html = '&ltscript src="'+ src +'"&gt'
+    | !{html}
+
+
+mixin code( title )
+    .code-example( title = title )
+        block
+
+mixin list( count )
+    - for(var i = 0 ; i < count ; i ++ )
+        li
+            block
+
+
+include dialog
+include carousel
+
+

@@ -1,0 +1,18 @@
+<!--foot-->
+<script type="text/javascript" src="{APP_PATH}statics/suge/js/jquery.plus.min.js"></script>
+<script type="text/javascript" src="{APP_PATH}statics/suge/js/class.tab.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('body').loader();
+    })
+</script>
+{loop $footer_js  $fjs}
+<script src="{APP_PATH}statics/suge/js/{$fjs}.js?v=suge" ></script>
+{/loop}
+{if $cur_menu == 'team'||$cur_menu == 'question'||$cur_menu == 'about'}
+<script type="text/javascript">
+    $('#subpage-162').jScrollPane({showArrows: true})
+</script>
+{/if}
+</body>
+</html>

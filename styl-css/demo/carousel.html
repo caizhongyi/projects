@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Tabs</title>
+
+    <meta name="keywords" content="Tabs,轮播样式,图片切换样式"/>
+    <meta name="description" content="轮播样式"/>
+    <link rel="stylesheet" href="../css/font-awesome/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+    <script src="js/core/zepto.js"></script>
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+    <!--   <script type="text/javascript" src="../lib/jquery.advance.min.js"></script>-->
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+</head>
+
+<body>
+<div class="code-example" title="carousel sample">
+    <div class="slider">
+        <a class="prev" href="#" data-prev><i class="icon icon-chevron-left"></i></a>
+        <a class="next" href="#" data-next><i class="icon icon-chevron-right"></i></a>
+        <div class="clip">
+            <img src="" alt=""/>
+        </div>
+    </div>
+    <ul class="carousel"  data-prop="left" data-view=".slider">
+        <li class="active"><a href=""><img src="../pic/11_s.jpg" alt=""/></a></li>
+        <li><a href="../pic/11_b.jpg"><img src="../pic/11_s.jpg" alt=""/></a></li>
+        <li><a href="../pic/2_b.jpg"><img src="../pic/2_s.jpg" alt=""/></a></li>
+        <li><a href="../pic/3_b.jpg"><img src="../pic/3_s.jpg" alt=""/></a></li>
+        <li><a href="../pic/4_b.jpg"><img src="../pic/4_s.jpg" alt=""/></a></li>
+        <li><a href="../pic/5_b.jpg"><img src="../pic/5_s.jpg" alt=""/></a></li>
+        <li><a href="../pic/6_b.jpg"><img src="../pic/6_s.jpg" alt=""/></a></li>
+        <li><a href="../pic/7_b.jpg"><img src="../pic/7_s.jpg" alt=""/></a></li>
+        <li><a href="../pic/8_b.jpg"><img src="../pic/8_s.jpg" alt=""/></a></li>
+        <li><a href="../pic/9_b.jpg"><img src="../pic/9_s.jpg" alt=""/></a></li>
+        <li><a href="../pic/10_b.jpg"><img src="../pic/10_s.jpg" alt=""/></a></li>
+    </ul>
+</div>
+
+<div class="code-example" title="carousel">
+    <div class="carousel" data-prop="left">
+        <a class="prev" href="#" data-prev><i class="icon icon-chevron-left"></i></a>
+        <a class="next" href="#" data-next><i class="icon icon-chevron-right"></i></a>
+        <div class="clip">
+            <ul class="list" data-list>
+                <li class="active"><a href=""><img src="../pic/2_s.jpg" alt=""/></a></li>
+                <li><a href=""><img src="../pic/3_s.jpg" alt=""/></a></li>
+                <li><a href=""><img src="../pic/4_s.jpg" alt=""/></a></li>
+                <li><a href=""><img src="../pic/5_s.jpg" alt=""/></a></li>
+                <li><a href=""><img src="../pic/6_s.jpg" alt=""/></a></li>
+                <li><a href=""><img src="../pic/7_s.jpg" alt=""/></a></li>
+                <li><a href=""><img src="../pic/8_s.jpg" alt=""/></a></li>
+                <li><a href=""><img src="../pic/9_s.jpg" alt=""/></a></li>
+                <li><a href=""><img src="../pic/11_s.jpg" alt=""/></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<button id="addImg" class="btn btn-default">add image</button>
+
+<div class="code-example" title="carousel">
+    <script>
+        $(function(){
+            $('.carousel').carousel();
+        })
+    </script>
+</div>
+
+<link rel="stylesheet" href="../js/plugins/slider/slider.css"/>
+<script type="text/javascript" src="../js/plugins/slider/jquery.carousel.js"></script>
+
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+</body>
+</html>

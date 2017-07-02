@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="@my_programmer">
+    <title>webkitAnimationEnd</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <script type="text/javascript">window.jQuery || document.write('<script src="../lib/jquery/jquery-1.10.2.min.js">" + "<" + "/script>');</script>
+
+</head>
+<body>
+
+<img src="http://su.bdimg.com/static/superpage/img/logo_white_2a2fcb5a.png" alt="120*120" width="120" height="120"/>
+<img src="" alt="100*100" width="100" height="100" class="default"/>
+<img src="" alt="64*64" width="64" height="64" class="default"/>
+<img src="" alt="32*32" width="32" height="32" class="default"/>
+<img src="" alt="200*200" width="200" height="200"/>
+<img src="" alt="300*300" width="300" height="300"/>
+<img src="" alt="400*400" width="400" height="400"/>
+
+<div id="div"></div>
+
+<script type="text/javascript">
+    var tt = document.querySelector('#div');
+    tt.addEventListener("click", function () {
+        this.className = 'change';
+    }, false);
+
+    tt.addEventListener("webkitAnimationEnd", function () { //动画结束时事件
+        this.className = this.className.replace('change', ' ');
+        console.log(2);
+    }, false);
+</script>
+</body>
+</html>

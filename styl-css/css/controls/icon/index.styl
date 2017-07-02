@@ -1,0 +1,37 @@
+.icon
+  display: inline-block
+  vertical-align: middle
+  margin-right: 5px;
+  line-height: normal;
+  font-style normal
+  &:hover
+    text-decoration none;
+
+.icon-font-delete
+  font-family "Helvetica Neue",Helvetica,Arial,sans-serif
+  font-weight: bold;
+  //×
+
+[class*=icon-block]
+  padding 1px 5px;
+
+types ?= {
+      default:#fff,
+      link: transparent,
+      primary:#428BCA,
+      info:#5BC0DE,
+      muted:#999,
+      success:#5CB85C,
+      warning:#F0AD4E,
+      danger:#D9534F,
+      light:#c4caa5
+  }
+
+for item in types
+  .icon-block-{item}
+    background: types[item];
+    //border:1px solid types[item] + 50%;
+    if item == 'default' || item == 'light'
+      color: #333;
+    else
+      color: #fff;

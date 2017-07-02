@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>cube</title>
+
+    <meta name="keywords" content="Table,表格样式"/>
+    <meta name="description" content="表格样式"/>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../js/plugins/cube/cube.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+    <style>
+        .cube img {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="code-example" title="cube">
+    <div class="cube-preserve">
+        <div class="cube show" style="transform:rotateX(45deg)">
+            <div class="cube-face cube-front"><img src="../images/1.jpg" alt=""/></div>
+            <div class="cube-face cube-back"><img src="../images/1.jpg" alt=""/></div>
+            <div class="cube-face cube-left"><img src="../images/1.jpg" alt=""/></div>
+            <div class="cube-face cube-right"><img src="../images/1.jpg" alt=""/></div>
+            <div class="cube-face cube-top"><img src="../images/1.jpg" alt=""/></div>
+            <div class="cube-face cube-bottom"><img src="../images/1.jpg" alt=""/></div>
+        </div>
+    </div>
+</div>
+
+<div class="code-example" title="cube vertical">
+    <div class="cube-preserve">
+        <div class="cube cube-vertical show">
+            <div class="cube-face cube-front"></div>
+            <div class="cube-face cube-back"></div>
+            <div class="cube-face cube-left"></div>
+            <div class="cube-face cube-right"></div>
+            <div class="cube-face cube-top"></div>
+            <div class="cube-face cube-bottom"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var target;
+    $('.cube').click(function (e) {
+        e.stopPropagation();
+        target = $(this).data('offset', { x: e.pageX, y: e.pageY });
+
+    })
+
+    $(document).mousemove(function (e) {
+        //var x = $( this).data('offset').x - e.pageX, y = $( this).data('offset').y - e.pageY;
+        //target &&  target.css('translate:rotateX()');
+    })
+</script>
+
+
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+<script type="text/javascript" src="../js/plugins/cube/jquery.cubeoption.js"></script>
+<script>
+    $('.cube').cubeOption();
+</script>
+</body>
+</html>

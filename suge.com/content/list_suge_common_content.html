@@ -1,0 +1,43 @@
+{php $load_css = array('photo','bigphoto');}
+{template "public","header"}
+
+<!--页头-->
+<div id="main">
+    <div id="productCats" class="flexslider">
+
+        {pc:content action="lists" catid="$catid" num="6" order="listorder ASC,id DESC" page="$page"}
+        <h2><span>{$catname}</span></h2>
+        <div class="semitransp">
+		{if $cur_menu == 'baby'}
+		<a id="back-portfolio" href="{buildurl('lists','index','content',array('catid'=>13))}">返回上一页</a>
+		{/if}
+            <div id="galthumbs">
+                {loop $data $r}
+                {if $n%2==0 && $n!=0}
+                <a class="galthumb  left"  href="{buildurl('show','index','content',array('catid'=>$catid,'id'=>$r['id'],'page'=>$page))}">
+                    <div class="figure"><img width="257" height="172" alt="ja1"
+                                             class="attachment-gallery-feat wp-post-image"
+                                             src="{$r['thumb']}"></div>
+                    <h3>{$r['title']}</h3></a>
+                <div class="cf"></div>
+                {else}
+                <a class="galthumb  left"   href="{buildurl('show','index','content',array('catid'=>$catid,'id'=>$r['id'],'page'=>$page))}">
+                    <div class="figure"><img width="257" height="172" alt="ja1"
+                                             class="attachment-gallery-feat wp-post-image"
+                                             src="{$r['thumb']}"></div>
+                    <h3>{$r['title']}</h3></a>
+                {/if}
+                {/loop}
+            </div>
+        </div>
+    </div>
+    <!--中间图-->
+    <div id="page" class="">{$pages}</div>
+    {/pc}
+    <!--页码-->
+</div>
+<!--中部-->
+
+
+
+{template "public","footer"}

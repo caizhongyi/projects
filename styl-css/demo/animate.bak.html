@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animate</title>
+
+    <meta name="keywords" content="Animate,动画,重力"/>
+    <meta name="description" content="重力效果动画"/>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+
+
+    <style type="text/css">
+        .code-example img {
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="code-example" title="flip box">
+    <span class="flip flip-hover" style="display: inline-block">
+        <img class="flip-front photo" src="http://tieba.baidu.com/tb/cms/0730fangyuan-08.jpg" alt=""/>
+        <img class="flip-back photo"
+             src="http://p.qpic.cn/areabbs/0/bbsfj_forum_201309_08_003751t4eovejrvrmze1nt.jpg/0" alt=""/>
+    </span>
+</div>
+
+<div class="code-example" title="animation rotate round">
+    <div class="preserve3d">
+        <img class="animation-rotate-round photo" src="http://tieba.baidu.com/tb/cms/0730fangyuan-08.jpg" alt=""/>
+        <img class="animation-round photo" src="http://tieba.baidu.com/tb/cms/0730fangyuan-08.jpg" alt=""/>
+    </div>
+</div>
+
+<img class="fade scale" src="http://tieba.baidu.com/tb/cms/0730fangyuan-08.jpg" alt=""/>
+<button class="btn btn-primary" type="button" onclick="$('.fade').addClass('in')">fade in</button>
+<button class="btn btn-primary" type="button" onclick="$('.fade').removeClass('in')">fade out</button>
+
+<img class="enlarge enlarge-hover photo" src="http://tieba.baidu.com/tb/cms/0730fangyuan-08.jpg" alt=""/>
+
+<div class="code-example" title="vector">
+
+    <div class="form">
+        <div class="form-group">
+            <span class="form-label">初始位置;</span><input id="x" type="text" value="100"/><input id="y" type="text"
+                                                                                               value="100"/>
+        </div>
+        <div class="form-group">
+            <span class="form-label">初始速度;</span><input id="Vx" type="text" value="20"/><input id="Vy" type="text"
+                                                                                               value="-20"/>
+        </div>
+        <div class="form-group">
+            <div class="form-panel">
+                <button class="btn btn-primary"
+                        onclick="vector && vector.stop();window.canvas && canvas.getContext('2d').clearRect(0,0 ,500,500);vector.start()">
+                    Run
+                </button>
+                <button class="btn btn-primary" onclick="vector.stop();">Stop</button>
+            </div>
+        </div>
+    </div>
+    <!--初始加速度;<input id="Ax" type="text" value="0"/><input id="Ay" type="text" value="0"/>-->
+    <div id="block" style="width: 100px;height: 100px; background: red; position: absolute; left: 1000px;"></div>
+    <!--<button onclick="el.stop();">stop el</button>
+    <button onclick="el.start( { x : -20 , y :0});">start el</button>-->
+
+    <canvas id="kinematicsCancas" width="400" height="300" style="border: 1px solid #ddd;"></canvas>
+
+    <!--<canvas id="kinematicsCancas1" width="400" height="300" style="border: 1px solid #ddd;"></canvas><br>
+    <button onclick="window.v1 && window.v1.stop();window.canvas1 && canvas1.getContext('2d').clearRect(0,0 ,500,500);start1()">Run</button>
+    <button onclick="v1.stop();">Stop</button>-->
+
+    <script type="text/javascript">
+        var vector;
+        $(function () {
+            var canvas = document.getElementById('kinematicsCancas');
+            vector = new zero.vector({
+                fn: function (elems) {
+                    var ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, 500, 500);
+                    for (var i = 0; i < elems.length; i++) {
+                        var pos = elems[i].position();
+                        ctx.strokeStyle = "#000000";
+                        ctx.fillStyle = "#FFFFFF";
+                        ctx.beginPath();
+                        ctx.arc(pos.x, pos.y, 5, 0, Math.PI * 2, true);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+                }
+            })//.start();
+
+            for (var i = 0; i < 100; i++) {
+                vector.add(new zero.vector.elem({
+                    v: {
+                        x: (Math.random() - 0.5 > 0 ? 1 : -1) * parseInt(Math.random() * 10),
+                        y: (Math.random() - 0.5 > 0 ? 1 : -1) * parseInt(Math.random() * 10)
+                    },
+                    pos: { x: 100, y: 100  }
+                }));
+            }
+        })
+
+    </script>
+</div>
+<!--<script type="text/javascript" src="../lib/a"></script>
+<script type="text/javascript" src="js/zero.animation.js"></script>-->
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+</body>
+</html>

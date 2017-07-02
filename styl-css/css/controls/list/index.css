@@ -1,0 +1,28 @@
+/*
+ need caption style
+ need description style
+*/
+.list li {
+  display: block;
+  zoom: 1;
+  padding: 10px 15px;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -o-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+.list li:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+}
+.list li:hover {
+  background: #f7f5fd;
+}
+.list li[class*=col-] {
+  padding: 0;
+}

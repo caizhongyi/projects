@@ -1,0 +1,90 @@
+
+<div class="code-example" title="horizontal panel click ">
+    <div class="panel active collapse" >
+        <div class="panel-body" id="panel">
+            <div class="contain ">...</div>
+        </div>
+        <button class="btn btn-primary" type="button" href="#panel" data-collapse>toggle</button>
+    </div>
+</div>
+<div class="code-example" title="horizontal panel click ">
+    <div class="panel-group" >
+        <div class="panel active" data-group="panel">
+            <div class="panel-header" data-collapse="#panel1">
+                <div class="contain "><i class="icon icon-chevron-down pull-right"></i>heading</div>
+            </div>
+            <div class="panel-body" id="panel1">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+        <div class="panel" data-group="panel">
+            <div class="panel-header" data-collapse="#panel2">
+                <div class="contain "><i class="icon icon-minus-sign"></i>heading</div>
+            </div>
+            <div class="panel-body" id="panel2">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+        <div class="panel" data-group="panel">
+            <div class="panel-header" data-collapse="#panel3">
+                <div class="contain ">heading</div>
+            </div>
+            <div class="panel-body" id="panel3">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" data-anijs="if: click, on: .panel-header, do: $removeClass active, to: .active;
+if: click, on: .panel-header, do: $removeClass animated fadeIn , to: $next target | .panel-body;
+if: click, on: .panel-header, do: $toggleClass animated fadeIn , to: $next target | .panel-body;
+if: click, on: .panel-header, do: $toggleClass active, to: $parent target;">
+
+<div class="code-example" title="horizontal panel click ">
+    <div class="panel-group horizontal" >
+        <div class="panel active" data-group="panel1" data-prop="opacity,width">
+            <div class="panel-header"  data-collapse>
+                <div class="contain ">heading</div>
+            </div>
+            <div class="panel-body" id="panel11">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+        <div class="panel " data-group="panel1" data-prop="opacity,width">
+            <div class="panel-header" data-collapse>
+                <div class="contain ">heading</div>
+            </div>
+            <div class="panel-body" id="panel22">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+        <div class="panel " data-group="panel1" data-prop="opacity,width">
+            <a href="#panel33" class="panel-header" data-collapse>
+                <span class="contain ">heading</span>
+            </a>
+            <div class="panel-body" id="panel33">
+                <div class="contain ">...</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    AniJS.run();
+    var MyApp = {};
+
+    //Obtaining the Notifier
+    MyApp.SecurityNotifier = AniJS.getNotifier('Security');
+
+    MyApp.processError = function(message){
+
+        //Right now the events triggered by SecurityNotifier can be listened by AniJS
+        $(MyApp.SecurityNotifier).trigger('answerError');
+        document.getElementById('loadajax').innerHTML = message;
+    }
+</script>
+
+
+

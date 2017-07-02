@@ -1,0 +1,33 @@
+<button class="shown">show</button>
+<a href="javascript:;"  onclick="MyApp.DialogNotifier.dispatchEvent('show');">trigger</a>
+
+<div class="dialog">
+    <div class="dialog-content" >
+        <div class="dialog-modal" style="height: 100px"></div>
+    </div>
+</div>
+<input type="checkbox" id="checkbox" checked>
+<input type="hidden" data-anijs="
+if: click, on: .shown, do: $addClass animated  in, to: .dialog , before :validate ;
+if: click, on: .shown, do: $addClass animated bounceIn, to: .dialog-content, before: validate ;
+if: click, on: .dialog, do: $addClass bounceOut, to: .dialog-content ;
+if: animationend, on: .dialog-content.bounceOut, do: $removeClass animated in, to: .dialog ;
+if: show, on: $Dialog, do: $addClass animated  in, to: .dialog;
+if: show, on: $Dialog, do: $addClass animated bounceIn, to: .dialog-content;
+">
+
+<script>
+    AniJS.run();
+    var MyApp = {};
+
+    //Obtaining the Notifier
+    MyApp.DialogNotifier = AniJS.getNotifier('Dialog');
+    var animationHelper = AniJS.getHelper();
+
+    animationHelper.validate = function (e, animationContext) {
+        if($('#checkbox').prop('checked')){
+            animationContext.run();
+        }
+    }
+
+</script>

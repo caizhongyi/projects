@@ -1,0 +1,154 @@
+.wizard {
+    font-size: 14px;
+    text-align: center;
+    padding: 20px 30px;
+    overflow: hidden;
+    hr {
+        border: none;
+    }
+    .step {
+        font: 300%/1.3 'Aparajita';
+        z-index: 1;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border-radius: 100px;
+        border: 3px solid #55a6e4;
+        position: relative;
+    }
+    .title {
+        position: relative;
+        margin: 0;
+        font-size: 150%;
+    }
+    .title, .desc {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .progressbar {
+        height: 0;
+        font-size: 0;
+        border-top: 4px solid #dee0e4;
+        top: 25px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+    .progressbar, .step {
+        border-color: #dee0e4;
+        background: #dee0e4;
+        color: #fff;
+    }
+    .desc {
+        color: #999;
+    }
+    .active .title, .active .progressbar, .active .desc {
+        color: #0079d7;
+    }
+    .active .step, .active .progressbar {
+        background: #0079d7;
+        border-color: #0079d7;
+    }
+    .progressbar {
+        margin-left: 50%;
+    }
+    .wizard-item:last-child .progressbar,
+    .wizard-inner > li:last-child .progressbar,
+    .wizard-inner > .last .progressbar {
+        display: none;
+    }
+}
+
+.wizard-item, .wizard-inner > li {
+    width: 25%;
+    position: relative;
+    float: left;
+}
+
+.wizard-inner {
+    margin: 0 -12.5%;
+    *zoom: 1;
+    &:before,
+    &:after {
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.wizard-separate {
+    .first, .wizard-item:first-child, .wizard-inner > li:first-child {
+        z-index: 1;
+        .progressbar {
+            margin-left: 50%;
+            width: 50%;
+        }
+    }
+    .last, .wizard-item:last-child, .wizard-inner > li:last-child {
+        z-index: 2;
+        .progressbar {
+            margin-right: 50%;
+            width: 50%;
+            display: block;
+        }
+    }
+    .progressbar {
+        margin: 0;
+    }
+}
+
+.wizard-sm {
+    font-size: 14px;
+    padding: 20px;
+    .step {
+        width: 30px;
+        height: 30px;
+        font-size: 22px;
+    }
+    .progressbar {
+        top: 17px;
+        border-width: 3px;
+    }
+}
+
+.wizard-count-2 {
+    .wizard-item {
+        width: 50%;
+    }
+}
+
+.wizard-count-3 {
+    .wizard-item {
+        width: 33.33333%;
+    }
+}
+
+.wizard-count-4 {
+    .wizard-item {
+        width: 25%;
+    }
+}
+
+.wizard-count-5 {
+    .wizard-item {
+        width: 20%;
+    }
+}
+
+.wizard-count-6 {
+    .wizard-item {
+        width: 16.66666%;
+    }
+}
+
+/*
+.wizard-info{
+   position: relative;
+  .wizard-box{ position: absolute; left: 0; top: 0;  background: #fff;}
+  .wizard-box-default { position: static;}
+}*/

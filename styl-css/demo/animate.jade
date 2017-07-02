@@ -1,0 +1,39 @@
+//
+   Created by caizhongyi on 2014/9/5.
+include mixins/index
+extends layout
+
+block append head
+    title title
+
+block append content
+    style.
+        .demo{display: inline-block; *display: inline; zoom: 1;text-align: center; }
+        .block{ width: 100px; height: 100px; background: red; margin: 10px }
+        .hidden{ display: none;}
+
+    - var arr = ['flash','bounce','rotateOutDownLeft','wobble','swing','rubberBand','tada','hinge','rollIn','lightSpeedIn','pulse','bounceIn','flip','flipInY','shake','fadeOutDownBig','bounceInDown','bounceInUp','bounceOut','bounceOutDown','zoomIn','slideInDown'];
+    .code-example.clearfix
+        each item,i in arr
+            span.demo
+                .animated.block
+                button.btn.btn-primary( 'data-sty' = item )= item
+
+    //$('#yourElement').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', doSomething);
+    script.
+       $('button').click(function(){
+         var $btn = $(this);
+          var className = $(this).data('sty') + ' animated' ;
+          var $this = $(this).prev().removeClass(className);
+          setTimeout(function(){
+            $this.addClass(className);
+          },50)
+
+          //$(this).removeClass('rubberBand animated')
+
+          //  $btn.addClass('rubberBand animated');
+
+       })
+
+block append footer
+

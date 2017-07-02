@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Popover</title>
+
+    <meta name="keywords" content="Popover,提示样式,CSS提示"/>
+    <meta name="description" content="提示样式"/>
+
+    <link rel="stylesheet" type="text/css" href="../lib/prettyprint/prettify.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/zero.css"/>
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../lib/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <![endif]-->
+
+    <!-- support html 5  -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../lib/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="../lib/String.min.js"></script>
+
+    <style type="text/css">
+        body {
+            padding: 10px;
+        }
+
+        .popover-list li {
+            width: 100px;
+            height: 100px;
+            background: #ddd;
+            border: 1px solid #999;
+            margin: 10px;
+            float: left;
+            list-style: none;
+        }
+
+        .popover-list li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<div class="code-example" title="popover click">
+    <ul id="test2" class="popover-list clearfix" data-control='popover'>
+        <li><a href="###" data-popover="#popover1"></a></li>
+        <li><a href="###" data-popover="#popover2"></a></li>
+        <li><a href="###" data-popover="#popover3"></a></li>
+        <li><a href="###" data-popover="#popover4"></a></li>
+        <li><a href="###" data-popover="#popover5"></a></li>
+        <li><a href="###" data-popover="#popover6"></a></li>
+        <li><a href="###" data-popover="#popover1"></a></li>
+        <li><a href="###" data-popover="#popover1"></a></li>
+    </ul>
+</div>
+
+<div class="code-example" title="popover hover">
+    <ul id="test3" class="popover-list clearfix">
+        <li><a href="###" data-popover="#popover3"></a></li>
+        <li><a href="###" data-popover="#popover3"></a></li>
+        <li><a href="###" data-popover="#popover3"></a></li>
+        <li><a href="###" data-popover="#popover3"></a></li>
+        <li><a href="###" data-popover="#popover3"></a></li>
+        <li><a href="###" data-popover="#popover3"></a></li>
+        <li><a href="###" data-popover="#popover3"></a></li>
+        <li><a href="###" data-popover="#popover3"></a></li>
+    </ul>
+    <a href="###" data-popover="" id="popover" data-control="popover">popover</a>
+
+
+</div>
+
+<div id="popover1" class="popover tooltip right fade">这里是#popover1 显示在底部</div>
+<div id="popover2" class="popover tooltip right scale">这里是#popover2 显示在底部</div>
+<div id="popover3" class="popover tooltip right slide">这里是#popover3 显示在底部</div>
+<div id="popover4" class="popover tooltip right flip">这里是#popover4 显示在底部</div>
+<div id="popover5" class="popover tooltip right ">这里是#popover5 显示在底部</div>
+<div id="popover6" class="popover tooltip right">这里是#popover6 显示在底部</div>
+
+<table class="table table-bordered">
+    <caption>参数列表</caption>
+    <tbody>
+    <tr>
+        <th>参数名</th>
+        <th>参数类型</th>
+        <th>默认值</th>
+        <th>说明</th>
+    </tr>
+    <tr>
+        <td>target</td>
+        <td>string</td>
+        <td>.popover-target</td>
+        <td>触发事件的标签</td>
+    </tr>
+    <tr>
+        <td>position</td>
+        <td>string</td>
+        <td>l（l | b | r | t）</td>
+        <td>默认显示在目标标签的位置</td>
+    </tr>
+    <tr>
+        <td>offset</td>
+        <td>object</td>
+        <td>{ left : 0, top : 0}</td>
+        <td>偏移的位置</td>
+    </tr>
+    <tr>
+        <td>duration</td>
+        <td>string|number</td>
+        <td>normal</td>
+        <td>切换间隔</td>
+    </tr>
+    <tr>
+        <td>easing</td>
+        <td>string</td>
+        <td>easeInOutExpo</td>
+        <td>赛尔曲线</td>
+    </tr>
+    <tr>
+        <td>event</td>
+        <td>string</td>
+        <td>click</td>
+        <td>响应事件</td>
+    </tr>
+    <tr>
+        <td>init</td>
+        <td>function</td>
+        <td>window['popoverInit']</td>
+        <td>初始化后的回调</td>
+    </tr>
+    </tbody>
+    <caption>事件列表</caption>
+    <tbody>
+    <tr>
+        <th>事件名</th>
+        <th>说明</th>
+    </tr>
+    <tr>
+        <td>shown</td>
+        <td>popover.on('shown' ,function( e, args){})</td>
+    </tr>
+    <tr>
+        <td>hidden</td>
+        <td>popover.on('hidden' ,function( e, args){})</td>
+    </tr>
+    </tbody>
+</table>
+<!--<script type="text/javascript" src="js/zero.core.js"></script>
+<script type="text/javascript" src="js/zero.popover.js"></script>-->
+<script src="../js/plugins/extra/jquery.popover.js"></script>
+<script>
+    $('.code-example [href]').popover();
+</script>
+<script type="text/javascript" src="../lib/prettyprint/prettify.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+</body>
+</html>
