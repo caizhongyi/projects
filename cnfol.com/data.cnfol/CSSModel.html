@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html class="no-js">
+<head>
+<title>Model</title>
+<meta charset="utf-8" />
+<!-- The site is designed by cnfol.com,Inc 05/2009 -->
+<meta name="keywords" content="keywords" />
+<meta name="description" content="description" />
+<meta name="cnfol" content="cnfol@cnfol.com" />
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="cnfol UDE TEAM" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<meta http-equiv="Window-target" content="_top"/>
+<link rel = "Shortcut Icon" href="favicon.ico"/>
+<script type="text/javascript" src="js/in-min.js" autoload="true" core="js/jquery-1.4.3.min.js"></script>
+<script type="text/javascript">
+		In.add('base-min',{path:'css/base-min.css',type:'css',charset:'utf-8'});
+		In.add('template',{path:'css/template.css',type:'css',charset:'utf-8',rely:['base-min']});
+		In.add('DD_belatedPNG',{path:'js/DD_belatedPNG_0.0.8a-min.js',type:'js',charset:'utf-8'});
+		In.add('PIE',{path:'js/PIE-1.0beta4/PIE.js',type:'js',charset:'utf-8'});
+		In.add('html5',{path:'js/html5.js',type:'js',charset:'utf-8'});
+		In.add('IE7',{path:'js/ie7/IE7.js',type:'js',charset:'utf-8'});
+		In.add('jquery-ui',{path:'js/jquery-ui.min.js',type:'js',charset:'utf-8'});
+		In.add('czy-ui',{path:'js/czy-ui-min.js',type:'js',charset:'utf-8',rely:['jquery-ui']});
+		In('template','DD_belatedPNG',function(){DD_belatedPNG.fix('a,img,div'); },'czy-ui',
+			function(){
+				$("img").lazyload({
+        				  	 placeholder:"http://www.shtion.com/wp-content/themes/Apple/images/load.gif",
+             			 	 effect:"fadeIn"
+				})
+		 });
+</script>
+<!--[if IE]>
+<script type="text/javascript">
+In('html5','PIE');
+</script>
+<![endif]-->
+
+<!--[if IE 6]>
+<script type="text/javascript">
+In('IE7');
+</script>
+<![endif]-->
+</head>
+<style>
+body {
+	margin:50px;
+}
+
+#myElement {
+	background: url(bg-image.png) no-repeat #CCC; /*non-CSS3 browsers will use this*/
+	background: url(bg-image.png) no-repeat, -moz-linear-gradient(#CCC, #EEE); /*gecko*/
+	background: url(bg-image.png) no-repeat, -webkit-gradient(linear, 0 0, 0 100%, from(#CCC) to(#EEE)); /*webkit*/
+	background: url(bg-image.png) no-repeat, linear-gradient(#CCC, #EEE); /*future CSS3 browsers*/
+	-pie-background: url(bg-image.png) no-repeat, linear-gradient(#CCC, #EEE); /*PIE*/
+	margin:10px;
+	behavior: url(PIE.htc);
+	
+}
+.background {
+	background: -webkit-gradient(linear, 0 0, 0 70%, from(#EEF), to(#FFF));
+	background: -moz-linear-gradient(#EEF, #FFF 70%);
+	background: linear-gradient(#EEF, #FFF 70%);
+	-pie-background: linear-gradient(#EEF, #FFF 70%);
+	width:100px;
+	height:100px;
+	display:block;
+	float:left;
+	margin:10px;
+	behavior: url(PIE.htc);
+}
+.border-image {
+}
+.multiple-background {
+}
+/* PIE http://css3pie.com/documentation/supported-css3-features/#border-radius */
+
+.parent > .child {
+	background:red;
+	width:10px;
+	height:10px;
+}
+/*  mod  */
+.mod {/* box css */
+}
+.mod > .hd {
+	height:20px;
+}
+.mod > .hd > .tl, .mod > .ft > .bl {
+	background:red;
+	width:30px;
+	height:20px;
+}
+.mod > .hd > .tr, .mod > .ft > .br {
+	background:blue;
+	width:30px;
+	height:20px;
+}
+.mod > .hd > .tc, .mod > .ft > .bc {
+	background:black;
+	height:20px;
+}
+.mod > .bd {/* box-bd */
+	background:yellow;
+	height:300px;
+}
+.mod > .ft {/* box-bd */
+	height:20px;
+}
+.size1of3 {
+	background:red;
+}
+.lastunit {
+	background:black;
+}
+</style>
+<body>
+<div style=" overflow:hidden;"> <a class="rad-5 background"></a> <a class="rad-5 background"></a> <a class="rad-5 background"></a> </div>
+<div class="clear"></div>
+<!-- nav -->
+<nav class="navgation">
+  <ul>
+    <li><a href="#">nav</a></li>
+    <li>|</li>
+    <li><a href="#">nav</a></li>
+    <li>|</a>
+    <li><a href="#">nav</a></li>
+    <li>|</li>
+    <li><a href="#">nav</a></li>
+    <li>|</li>
+    <li><a href="#">nav</a></li>
+  </ul>
+</nav>
+<!-- end nav -->
+<section  class="clearfix">
+  <h2>size1of3</h2>
+  <!-- form -->
+  <fieldset class="form">
+    <legend>注册</legend>
+    <figure class="item">
+      <label class="lab">用户名:</label>
+      <input  type="text"  class="mytextbox"/>
+    </figure>
+    <figure class="item">
+      <label class="lab">密&nbsp;码:</label>
+      <input  type="password"  class="mytextbox"/>
+    </figure>
+    <figure class="item">
+      <label class="lab">sex:</label>
+      <select class="mytextbox">
+        <option>男</option>
+      </select>
+    </figure>
+    <figure class="item">
+      <label class="lab">&nbsp;</label>
+      <input  type="submit" class="form-submit"  value="submit"/>
+      <input  type="button" class="form-cancle" value="cancle"/>
+    </figure>
+  </fieldset>
+  <!-- end form -->
+  <h2>size1of3</h2>
+  <!-- form -->
+  <menu class="form">
+  <li class="item">
+    <label class="lab">用户名:</label>
+    <input  type="text"  class="mytextbox"/>
+  </li>
+  <li class="item">
+    <label class="lab">密&nbsp;码:</label>
+    <input  type="password"  class="mytextbox"/>
+  </li>
+  <li class="item">
+    <label class="lab">&nbsp;</label>
+    <input  type="submit" class="form-submit"  value="submit"/>
+    <input  type="button" class="form-cancle" value="cancle"/>
+  </li>
+  </menu>
+  <!-- end form -->
+</section>
+<div style="background:red; " class="mh-50"></div>
+<!-- Box -->
+<h3>Box 样式:</h3>
+<div class="mod clearfix sha-1-10 rad-10">
+  <div class="hd">
+    <div class="tl"></div>
+    <div class="tr"></div>
+    <div class="tc">&nbsp;</div>
+  </div>
+  <div class="bd"> </div>
+  <div class="ft">
+    <div class="bl"></div>
+    <div class="br"></div>
+    <div class="bc">&nbsp;</div>
+  </div>
+</div>
+<!-- End Box -->
+<address>
+顺昌县城南中路
+</address>
+<input id="myCar" list="cars" />
+<datalist id="cars">
+  <option value="BMW">
+  <option value="Ford">
+  <option value="Volvo"> 
+</datalist>
+<h3>datapager 样式:</h3>
+<!-- pager -->
+<nav class="pager"><a href="#"  class="prev">上一页</a><a class="current">1</a><a class="normal">2</a><a class="normal">3</a><a class="normal">4</a><a class="normal">5</a><a href="#"  class="next">下一页</a></nav>
+<!-- end pager -->
+<div class="dline"></div>
+<div class="sline"></div>
+
+<h3>box-in-shadow 样式:</h3>
+<input  alt="" type="text"  class="sha-5-5 mytextbox"  />
+<input  alt="" type="text"  class="sha-1-5 mytextbox"  />
+<input  alt="" type="text"  class="insha-1-10 mytextbox"  />
+<h3>box-in-shadow 样式:</h3>
+<img alt="" src="images/pic2.gif" class="bimg"/> <br  clear="all"/>
+<h3>box-radius text 样式:</h3>
+<p class="wsha b f14">Word Shadow</p>
+<input  alt="" type="text"  class="rad-5 tbox" />
+<div style="width:200px; height:30px; background:red" class="rad-5"></div>
+<!-- word overflow -->
+<div class="ellipsis" style="font-size:18px"><a>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</a></div>
+<div class="clear"></div>
+<div class="clearfix">
+<ul>
+<li class="left">a</li>
+<li class="left">b</li>
+<li class="left">c</li>
+<li class="left">d</li>
+</ul>
+</div>
+<div>e</div>
+
+<script type="text/javascript" src="js/jquery-1.4.3.min.js" ></script>
+<script type="text/javascript" src="js/jquery-ui.min.js" ></script>
+</body>
+</html>

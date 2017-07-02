@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>空间首页</title>
+<!-- The site is designed by cnfol.com,Inc 05/2010 -->
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<meta name="keywords" content="keywords" />
+<meta name="description" content="description" />
+<meta name="cnfol" content="cnfol@cnfol.com" />
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="cnfol UDE TEAM" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<meta http-equiv="Window-target" content="_top"/>
+<link rel = "Shortcut Icon" href="favicon.ico"/>
+<link rel="stylesheet" type="text/css"  href="http://c0.cnfolimg.com/college/batev1.0/css/libraries.min.css"/>
+</head>
+<body >
+<!--购买-->
+<div id="buy-dialog"  class="dialog">
+<!--dialog-title-->
+<div class="dialog-title"  data-type="title/dialog">
+<a title="关闭" class="close" data-type="close/dialog"></a>
+</div>
+<!--dialog-content-->
+<div class="dialog-inner">
+<p>您正在购买<span>王鹏</span>讲师的<span>《机会主义——解密游资的股市生存法则》</span>课程</p>
+<ul>
+<li>课程价格:&nbsp;5000金币（人民币500元）</li>
+<li>您的账号:&nbsp;<span>xxxxx</span>&nbsp;&nbsp;金币:&nbsp;1000<a href="#"><span class="fw-nor">&nbsp;充值</span></a></li>
+<li>手机号码:&nbsp;<a href="#">13405989774</a>&nbsp;<a href="#"><span class="fw-nor">修改</span></a></li>
+</ul>
+</div>
+<!--dialog-button-->
+<div class="dialog-btns"><button class="btn-style" type="button" onclick=" $('#buy-dialog').dialog({command:'close'});" >确认购买</button></div>
+</div>
+
+<!--未登录用户[订阅]-->
+<div id="subscript-dialog"  class="dialog">
+<!--dialog-title-->
+<div class="dialog-title"  data-type="title/dialog">
+<a title="关闭" class="close" data-type="close/dialog"></a>
+</div>
+<!--dialog-content-->
+<div class="dialog-inner">	
+<ul class="subscript form-list">
+<li><input class="btn-style" id="dir-subscript" type="button" name="" value="直接订阅"  onclick="$('#subscript-dialog').dialog({command:'close'}); $('#tel-dialog').dialog({command:'open'}); " /></li>
+<li><input class="btn-style" id="log-subscript" type="button" name="" value="登陆订阅" onclick="$('#subscript-dialog').dialog({command:'close',overlayer:{animate:false}});$('#log-dialog').dialog({command:'open'}); "/></li>
+</ul>
+</div>
+</div>
+
+<!--输入手机号码-->
+<div id="tel-dialog"  class="dialog">
+<!--dialog-title-->
+<div class="dialog-title"  data-type="title/dialog">
+<a title="关闭" class="close" data-type="close/dialog"></a></div>
+<!--dialog-content-->
+<div class="dialog-inner">	
+<ul class="tel form-list">
+<li><label for="tel">手机号码:</label><input class="bor-gay" id="tel" type="text" name=""/></li>
+</ul>
+<p>您的手机号码用于确认购买流程序以及密码找回，且填写后不可更改，为了您的资金额和账户的安全，请务必如实填写。</p>
+</div>
+<div class="dialog-btns"><button class="btn-style" type="button" onclick=" $('#tel-dialog').dialog({command:'close',overlayer:{animate:false}});$('#reg-dialog').dialog({command:'open'}); " >确认</button>
+</div>
+
+</div>
+<!--登录-->
+<div id="log-dialog"  class="dialog">
+<!--dialog-title-->
+<div class="dialog-title"  data-type="title/dialog">
+<a title="关闭" class="close" data-type="close/dialog"></a>
+</div>
+<!--dialog-content-->
+<div class="dialog-inner">	
+<ul class="log form-list">
+<li><label for="log-account">账号/昵称:</label><input id="log-account" type="text" name="" class="bor-gay" /></li>
+<li><label for="log-password">密码:</label><input id="log-password" type="password" name="" class="bor-gay" /></li>
+<li><label for="log-validate">验证码:</label><input id="log-code" type="text" name="" class="validate" /><img alt="" src=""/>&nbsp;<a href="#">看不清楚?</a></li>
+<li><label>&nbsp;</label><div class="red left">xxxxxxxxxxxxxxxxxx</div></li>
+</ul>
+</div>
+<div class="dialog-btns"><button class="btn-style" type="button" onclick=" $('#log-dialog').dialog({command:'close',overlayer:{animate:false}});$('#buy-dialog').dialog({command:'open'}); ">下一部</button>
+</div>
+</div>
+
+
+<!--登录用户-->
+<div id="reg-dialog"  class="dialog">
+<!--dialog-title-->
+<div class="dialog-title"  data-type="title/dialog">
+<a title="关闭" class="close" data-type="close/dialog"></a>
+</div>
+<!--dialog-content-->
+<div class="dialog-inner">	
+<ul class="reg form-list">
+<li><label for="reg-account">账号:</label><input id="reg-account" type="text" name="" class="bor-gay"/></li>
+<li><label for="reg-nickName">昵称:</label><input id="reg-nickName" type="text" name="" class="bor-gay"/></li>
+<li><label for="reg-password">密码:</label><input id="reg-password" type="text" name="" class="bor-gay"/></li>
+<li><label for="reg-tel">手机:</label><input id="reg-tel" type="text" name="" class="bor-gay"/>&nbsp;<input type="button" class="btn-gay" value="重发"></li>
+</ul>
+<p>如果1分钟内您未收到验证码,请确认您填写的手机号是否正确,如有误请&nbsp;<input  type="button" name="" value="更改" class="btn-gay"/></p>
+</div>
+<div class="dialog-btns"><button class="btn-style" type="button" onclick=" $('#reg-dialog').dialog({command:'close',overlayer:{animate:false}});$('#log-dialog').dialog({command:'open'});" >下一部</button></div>
+</div>
+
+<!-- 预约报名 -->
+<div id="bespeak-dialog"  class="dialog">
+<!--dialog-title-->
+<div class="dialog-title"  data-type="title/dialog">
+<a title="关闭" class="close" data-type="close/dialog"></a>
+</div>
+<!--dialog-content-->
+<div class="dialog-inner">	
+<ul class="bespeak form-list">
+<li><label for="bespeak-name">账号:</label><input id="bespeak-name" type="text" name="" class="bor-gay"/></li>
+<li><label for="bespeak-tel">手机:</label><input id="bespeak-tel" type="text" name="" class="bor-gay"/></li>
+</ul>
+</div>
+<div class="dialog-btns"><button class="btn-style" type="button" onclick=" $('#bespeak-dialog').dialog({command:'close'});" >预约报名</button></div>
+</div>
+
+<!--顶部-->
+<div  class="toolbar-bg">
+  <div  class="toolbar">
+    <div  class="toolbar-l left"> <a href="#">中金在线</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">中金学院</a> </div>
+    <div  class="toolbar-r right"> 
+      <span ><img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/ico_user.png" />&nbsp;用户登录</span>
+       <span >
+      <label for="user">用户名:&nbsp;</label>
+      <input type="text" name="user" id="user"  class="text-gay text-size"/>
+      </span> 
+      <span >
+      <label for="password">密码:&nbsp;</label>
+      <input type="password" name="password" id="password" class="text-gay text-size"/>
+      </span>
+       <span >
+      <input type="button" name="" value="登录" class="btn-gay"/>
+      &nbsp;
+      <input type="button" name="" value="注册" class="btn-gay"/>
+      </span>
+      <a class="safe-node" href="#">帐户安全须知</a> 
+      </div>
+  </div>
+</div>
+<!--导航-->
+<div class="menu">
+  <div  class="menu-l left"> <img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/logo.png"/> </div>
+  <div  class="menu-r right font14">
+    <ul>
+      <li ><a href="#" class="ml">中金学院</a></li>
+      <li ><a href="#" class="mc">本期金品课程</a></li>
+      <li ><a href="#" class="mc">历史金品课程</a></li>
+      <li ><a href="#" class="mc">在线客服</a></li>
+      <li ><a  class="mr"></a></li>
+    </ul>
+  </div>
+</div>
+<div  class="clear"></div>
+<!--头部-->
+<div class="header box-sytle font14 ">
+  <div class="hl left mar wid216">
+    <div class="hl-t center bor-gay bg-gay"> <img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/picture.gif"/><a href="javascript:void(0)" onclick="subscript()"><img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/btn_myles.png" class="myles"/></a></div>
+    <div  class="bor-gay bg-gay  hl-b">
+      <div  class="hl-bt pad">
+        <div class="font14"><img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/clock.png"/>&nbsp;<strong>开课倒计时:</strong></div>
+        <div class="time"><span>2</span>天<span>14</span>小时<span>20</span>分<span>44</span>秒</div>
+      </div>
+      <div  class="hl-bb font14">
+        <div ><span >154987</span>人已购买</div>
+      </div>
+    </div>
+  </div>
+  <div  class="hr pad">
+    <div  class="hr-t"> <img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/font_les.gif"/>
+      <div class="hr-tt">
+        <div class="les-content bg-conent  ">
+          <div class="les-co-hei ">
+            <h4>王鹏，注册执业分析师</h4>
+            <p> 经历几轮完整的牛熊周期，从事证券业超过10年，一直活跃在一线看盘前沿，- 擅长超短线，对中期资金运作亦有独到的见解；<br/>
+              - 长期担任电台、报纸的特约证券嘉宾及撰稿人；<br/>
+              - 初学入门时阅书无数，并经过无数实践，终于形成了一套科学完善的分析及实战体系；<br/>
+              - 从业多年，与业界研发机构、私募基金、民间高手等保持着良好的业务合作关系。 <br/>
+              - 个人信条：历史实战成绩说明一切，杜绝马后炮 </p>
+          </div>
+		  <div class="clear"></div>
+		  <div class="hr-tb">
+            <a href="javascript:void(0)" onclick="bespeak()"><img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/btn_les.png"/></a>
+          </div>
+		  
+        </div>
+      </div>
+	 
+      <div class="les-content bg-conent pad hr-b ">
+        <div class="left"><strong>课程地址:</strong>&nbsp;<a href="#" ><img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/btn_searc.gif"/></a></div>
+        <div class="right" >您好！未登录，请<a class="red" href="#">登录</a>后查看（还没有账号？快速<a class="red" href="#">注册</a>） </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div  class="clear"></div>
+<div class="container">
+  <div class="section box-sytle les pad font14 color-normal">
+    <div  class="les-l box left">
+      <div  class="box-hd">
+        <div  class="box-title box-title-ab-wid145">课程介绍</div>
+      </div>
+      <div  class="box-bd pad">
+        <div class="h400 box-content line-height25">
+          <h2 class="center">机会主义者——解密游资的股市生存法则</h2>
+          <div class="txt-right"><b class="font12">授课讲师:王鹏</b></div>
+          <span>授课课时:</span>两课时<br/>
+          <span>授课时间:</span>授课时间：2011年4月1日 19：30-20：30<br/>
+          <span>课程内容:</span><br/>
+          <ul class="ml50" >
+            <li>第一课时:火眼金睛，教你如何寻找游资布局的机会个股；</li>
+            <li>第二课时：步步拆解，教你看清游资建仓、拉升、出货的每一环。 </li>
+            <li>注：每堂课将与实战演练相结合，现学现用。</li>
+          </ul>
+          <span>课程特点:</span><br/>
+          <ul class="ml50">
+            <li>课程系统性：从理论知识到实战体系，从游资拉升时间到个股类型，从游资建仓、拉升到出货细节，课程涉及的内容非常全面。 </li>
+            <li>课程实战性：大量图片案例，详细讲解抓游资个股的获利方式。 </li>
+            <li>课程通俗性：讲解形式通俗易懂、深入浅出，可以适合任何基础的学员。</li>
+            <li>课程互动性：通过问答的交流方式，对学员的技术问题做详细讲解，扫除知识盲点，提高学员对知识点的掌握能力。</li>
+          </ul>
+        </div>
+        <div class="tips bor-top-dot">
+          <dl class="float init">
+            <dt >标签:</dt>
+            <dd ><a href="#">初学者</a></dd>
+            <dd ><a href="#">基本面</a></dd>
+            <dd ><a href="#">基础门</a></dd>
+          </dl>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    <div  class="les-r right">
+      <div class="les-rt bor-gay pad"> <img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/xxx.gif"/> </div>
+      <div class="les-rm bor-gay ">
+        <dl class="dt-float-r">
+          <dt>
+            <input type="button"   class="btn-sinup"/>
+          </dt>
+          <dd class="font12">
+            <label for="userName">姓名:</label>
+            <input type="text" name="userName" id="userName" class="bor-gay bespeak-txt"/>
+          </dd>
+          <dd class="font12">
+            <label for="tel">手机:</label>
+            <input type="text" name="userName" id="tel" class="bor-gay bespeak-txt"/>
+          </dd>
+        </dl>
+      </div>
+      <div class="les-rb bor-gay pad bg-gay-shade">
+        <div  class="les-rb-t ">
+          <div  class="bg-title left"> 相关课程推荐 </div>
+          <div> 讲师其它课程 </div>
+        </div>
+        <div class="center"><img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/ho_line.gif" /></div>
+        <div class="clear"></div>
+        <div  class="les-rb-b font12" >
+          <ul class="les-dec" >
+            <li>第一课时:火眼金</li>
+            <li>第一课时:火眼金</li>
+            <li>第一课时:火眼金</li>
+            <li>第一课时:火眼金</li>
+			<li>第一课时:火眼金</li>
+          </ul>
+          <div class="more"><a href="">更多>></a></div>
+        </div>
+      </div>
+    </div>
+    <div  class="les-c vertical-line"> </div>
+  </div>
+  <div  class="clear"></div>
+  <div class="section box-sytle custom pad">
+    <div  class="les-l box left">
+      <div  class="box-hd">
+        <div  class="box-title box-title-ab-wid262">股市是可以预判的--王鹏</div>
+      </div>
+      <div  class="box-bd " > <img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/demo.gif"/> </div>
+    </div>
+    <div  class="les-r right bg-gay-shade bor-gay" >
+      <div class="les-rt iwan-les"> <a href="javascript:void(0)" onclick="subscript()"><img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/img_myles.png"/></a> </div>
+      <div class="center mar-b"> <a href="#" ><img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/ho_line.gif" /></a> </div>
+      <div class="center"> <a href="#" ><img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/btn_online_cus.gif"/></a> </div>
+      <div  class="bg-custom"> </div>
+    </div>
+    <div  class="les-c vertical-line1"> </div>
+  </div>
+  <!--搜索-->
+  <div class="section  box-sytle bg-sec-shade pad">
+    <dl class="sec-list">
+      <dt class="size1of10 left "><span class="font-space">股 市</span>:</dt>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any"/>
+        <label for="any">不限</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any1"/>
+        <label for="any1">1年以内</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any2"/>
+        <label for="any2">1-2年</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any3"/>
+        <label for="any3">3-5年</label>
+      </dd>
+      <dd class="lastUnit">
+        <input type="checkbox" id="any4"/>
+        <label for="any4">5年以上</label>
+      </dd>
+    </dl>
+    <dl class="sec-list">
+      <dt class="size1of10 left">课程类型:</dt>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any5"/>
+        <label for="any5">不限</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any6"/>
+        <label for="any6">基本面</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any7"/>
+        <label for="any7">政策面</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any8"/>
+        <label for="any8">技术面</label>
+      </dd>
+      <dd class="lastUnit">
+        <input type="checkbox" id="any9"/>
+        <label for="any9">指标</label>
+      </dd>
+    </dl>
+    <dl class="sec-list">
+      <dt class="size1of10 left">学习拆求:</dt>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any10"/>
+        <label for="any10">不限</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any11"/>
+        <label for="any11">基础入门</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any12"/>
+        <label for="any12">股票入门</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any13"/>
+        <label for="any13">基金入门</label>
+      </dd>
+      <dd class="lastUnit">
+        <input type="checkbox" id="any14"/>
+        <label for="any14">提高技术</label>
+      </dd>
+    </dl>
+    <dl class="sec-list">
+      <dt class="size1of10 left">热门讲师:</dt>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any15"/>
+        <label for="any15">不限</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any16"/>
+        <label for="any16">老夫子</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any17"/>
+        <label for="any17">投机少爷</label>
+      </dd>
+      <dd class="size1of6 left">
+        <input type="checkbox" id="any18"/>
+        <label for="any18">慧耕思</label>
+      </dd>
+      <dd class="lastUnit">
+        <input type="checkbox" id="any19"/>
+        <label for="any19">首山</label>
+      </dd>
+    </dl>
+    <dl class="sec-list">
+      <dt class="size1of10 left">热门事件:</dt>
+      <dd class="size1of6 left"><a href="#" class="normal">日本金融海啸</a></dd>
+      <dd class="lastUnit"><a href="#" class="normal">日本金融海啸</a></dd>
+    </dl>
+    <dl class="sec-list">
+      <dt class="size1of10 left"><span class="font-space line-height27">其 它</span>:</dt>
+      <dd class="size4of6 left">
+        <input id="search" type="text" value="请输入您要搜索的关键字"  class="bor-gay txt-search"/>
+      </dd>
+      <dd class="lastUnit">
+       <a href="#"><img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/btn_search_les.gif" class="btn_search_les"/></a>      </dd>
+    </dl>
+  </div>
+</div>
+<!--底部-->
+<div class="footer line-height20 center">
+<img alt="" src="http://c0.cnfolimg.com/college/batev1.0/images/line_fot.png"/>
+<div class="footer-map"> <a href="http://www.cnfol.com/info/job.shtml" target="_blank">诚聘英才</a> | <a href="http://www.cnfol.com/info/contact.shtml" target="_blank">联系我们</a> | <a href="http://www.cnfol.com/info/adservice/" target="_blank">广告服务</a> | <a href="http://www.cnfol.com/info/partner.shtml" target="_blank">合作伙伴</a> | <a href="http://www.cnfol.com/info/law.shtml" target="_blank">法律声明</a> | <a href="http://www.cnfol.com/info/zg.shtml" target="_blank">征稿启事</a> | <a href="http://www.cnfol.com/info/sitemap.shtml" target="_blank">网站地图</a> </div>
+<div>---------------------------------------------------------------------------------------------</div>
+<div>
+  <p>本站所有文章、数据仅供参考，使用前务请仔细阅读<a href="http://www.cnfol.com/info/law.shtml" target="_blank">法律声明</a>，风险自负<br/>
+    《中华人民共和国增值电信业务经营许可证》编号：闽 B2-20050010 号<br/>
+    《电子公告服务许可证》&nbsp;编号：闽通信互联网 [2008]1 号<br/>
+    <a href="http://news.cnfol.com/100511/101,1587,7680282,00.shtml" target="_blank">网络视听许可证1310422号</a><br />
+    <a href="http://news.cnfol.com/100517/101,1587,7710153,00.shtml" target="_blank">广播电视节目制作经营许可证 编号：(闽)字第091号</a><br/>
+    证券资讯提供：福建天信投资咨询顾问有限公司 [证书：ZX0151]<br/>
+    Copyright &copy; 2003-2011  福建中金在线网络股份有限公司. All Right Reserved.<br/>
+  </p>
+</div>
+</div>
+<script src="http://c0.cnfolimg.com/college/batev1.0/js/jquery-1.4.3.js" type="text/javascript" ></script>
+<script src="http://c0.cnfolimg.com/college/batev1.0/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="http://c0.cnfolimg.com/college/batev1.0/js/jquery-me.js" type="text/javascript"></script>
+<script type="text/javascript">
+        $(document).ready(
+        function () {
+            $("#buy-dialog").dialog();
+			$("#log-dialog").dialog();
+		    $("#reg-dialog").dialog();
+			$("#tel-dialog").dialog();
+			$("#subscript-dialog").dialog();
+			$("#bespeak-dialog").dialog();
+		    $("#search").textbox();
+		}
+     );
+	 function buy()
+	 {
+		$('#buy-dialog').dialog({command:'open'});
+	 }
+	 function subscript()
+	 {
+		$('#subscript-dialog').dialog({command:'open'});
+	 }
+	 function bespeak()
+	 {
+		$('#bespeak-dialog').dialog({command:'open'});
+	 }
+     </script>
+	 <!--[if IE 6]>
+     <script src="http://c0.cnfolimg.com/college/batev1.0/js/DD_belatedPNG_0.0.8a-min.js" language="javascript" type="text/javascript"></script>
+	 <script type="text/javascript">DD_belatedPNG.fix('div,img');</script>
+     <![endif]-->
+ 
+</body>
+</html>
+

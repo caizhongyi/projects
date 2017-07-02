@@ -1,0 +1,634 @@
+﻿@charset "utf-8";
+/*
+* @name		:Template
+* @author	:czy
+* @version	:1.0.0.0
+* @type		:公共
+* @explain	:
+* @relating	:
+* @dependent:
+* @date     : 2011-05-16
+* @qq       : 274142680@qq.com
+*/
+/* ************ template ************* */
+
+/* template */
+html{}
+body {font: 12px/1.5 "宋体";color:#333;text-align:left;}
+img{ _position:relative;}
+div{ overflow:visible;}
+
+.ht-auto{ height:auto;}
+.EDArt{ overflow:hidden;}
+
+.nav,
+.topmenu,
+.head,
+.footer,
+.container
+{width:960px; }
+
+.topmenu,
+.head,
+.footer
+{margin:10px auto; }
+.nav{margin:0 auto;}
+
+
+
+.container{margin:0 auto;width:960px; margin-top:10px; overflow:hidden;zoom:1;}
+.container:after
+{content:"";display:block;height:0;line-height:0;font-size:0;visibility:hidden;clear:both;}
+
+.main {_overflow:visible;_zoom:1; float:none;width: auto; }
+.side {float:left;width:250px;_margin-right:-3px;}
+
+.red{ color:red;}
+.greed{color:greed;}
+/*.footer{background:url(http://hs.cnfol.com/ub/Images/bg18.gif) repeat-x;padding:0; text-align:center; line-height:22px;}
+.footer a:hover{ text-decoration:none; color:#990000;}*/ 
+
+.bor-right{ border-right:1px solid #ccc;}
+/* struct */
+
+.s-left{ float:left;}
+.s-right{ float:right;}
+.s-4-auto-3 .s-left{ width:290px;}
+.s-4-auto-3 .s-right{ width:250px;}
+.s-4-auto-3 .s-auto{ margin:0 260px 0 300px; overflow:hidden; }
+
+.s-3-auto-3 .s-left,
+.s-3-auto-3 .s-right{ width:314px;}
+.s-3-auto-3 .s-auto{ margin:0 324px; overflow:hidden; zoom:1;}
+
+.s-4-4-auto .s-left{ width:350px; margin:0 10px 0 0;}
+.s-4-4-auto .s-auto{overflow:hidden; zoom:1; }
+
+.s-4-auto .s-left{width:430px;}
+.s-4-auto .s-auto{ margin:0 0 0 440px; zoom:1;overflow:hidden;}
+
+.s-5-auto .s-left{width:476px;}
+.s-5-auto .s-auto{ margin:0 0 0 486px; zoom:1; overflow:hidden;}
+
+.s-auto-1 .s-right{width:241px; margin-left:10px;}
+.s-auto-1 .s-auto{ overflow: hidden; zoom:1;}
+
+.s-7-auto .s-left{width:700px; margin-right:10px;}
+.s-7-auto .s-auto{ overflow: hidden; zoom:1;}
+
+.s-auto-5 .s-right{width:309px;}
+.s-auto-5 .s-auto{ margin:0 309px 0 0 ;overflow: hidden; zoom:1;}
+
+.s-8-auto .s-left{width:230px;}
+.s-8-auto .s-auto{ margin:0 0 0 240px; zoom:1; overflow:hidden;}
+
+.s-5p-auto .s-left{width:50%;}
+.s-5p-auto .s-auto{ margin:0 0 0 50%; zoom:1; overflow:hidden;}
+
+
+.g-l-370{ width:370px; float:left;}
+.g-l-70{ width:70px; float:left;}
+.m-l-380{ margin-left:380px;}
+.m-l-70{ margin-left:70px;}
+
+.icos{ background:url(http://hs.cnfol.com/ub/Images/icos.png) no-repeat;}
+.datas{ background:url(http://hs.cnfol.com/ub/Images/data.png) no-repeat;}
+.btns{ background:url(http://hs.cnfol.com/ub/Images/buttons.png) no-repeat;}
+.rep-x{ background:url(http://hs.cnfol.com/ub/Images/rep-x.png) repeat-x;}
+/* header */
+.header .navtaion{border-left:1px solid #E3E3E3; border-right:1px solid #E3E3E3;/* background:url(http://hs.cnfol.com/ub/Images/bgTopnav.gif) */repeat-x; height:34px; line-height:27px; text-align:center; }
+.header .navtaion a:hover{ text-decoration:none; color:#496DA8;}
+.header .logo{ float:left; width:160px;}
+.header .tglist{ float:right; width:67px;/* background:url(http://hs.cnfol.com/ub/Images/border-head.gif)  no-repeat right top;*/ line-height:21px;}
+/* 导航 */
+.nav{ background:url(http://hs.cnfol.com/ub/Images/bgNav.gif) no-repeat;  }
+.nav a{ padding:0 7px; }
+.nav a:hover{ text-decoration:none;}
+.nav a.first{ color:#fff; font-weight:bold; margin:0 15px 0 0;}
+.nav a.first:hover{ color:#CC0000;}
+.nav .item{ margin:0 9px;line-height:31px; }
+
+/* search */
+.search{padding:5px 0;  background:url(http://hs.cnfol.com/ub/Images/bg005.gif) repeat-x; overflow:hidden; zoom:1; margin-top:-1px; *margin-top:0; border:1px solid #ccc;}
+.searchInput{ border:1px solid #C4C5A6; color:#999999; height:19px; line-height:19px;  width:250px; margin-left:10px;}
+.searchButton{ margin: 0 30px 0 -6px;}
+
+.sublinks a{ background:url(http://hs.cnfol.com/ub/Images/bgButton.gif); width:60px; height:19px; line-height:19px; display:block; float:left; margin:0 5px ; text-align:center;color:#776E5C; border:1px  solid #C4C5A6; padding:0px;}
+.sublinks a:hover,
+.sublinks .hot
+{ color:#ff0000; }
+.sublinks .hot:hover{border:1px solid #ff0000;}
+
+/* chanels */
+.chanels{ margin:10px 0;}
+.chanels .select,
+.chanels .text,
+.chanels .button
+{ display:block; float:left;}
+.chanels .select{width:80px;height:20px; }
+.chanels .text{width:80px;height:17px; line-height:17px; margin: 0 10px;}
+.chanels .button{ background-position:-77px -53px;; border:none; width:63px; height:21px;}
+
+/* */
+.imp{ color:#500605; font-weight:bold; }
+/* ico */
+.title-ico{font-weight:bold; background-position:0px -21px; padding-left:17px;  }
+.title-ico .link{ color:#FF0000; font-size:12px; font-weight:normal;}
+.title-ico .link:hover{ color:#990000; text-decoration:none;}
+/* line */
+.dashed{border-bottom:1px dashed #ccc; height:1px; line-height:1px; }
+/* block */
+
+.basebox{ border:1px solid #ccc; padding:1px; margin-bottom:10px; color:#333;  }
+.basebox a:hover{ color:#cc0000; text-decoration:none;}
+.basebox h2{ font-size:18px; font-weight:bold; color:#E51919;}
+.basebox .title{ text-align:center; margin:10px;}
+.basebox .hot{border-bottom:2px solid #776E5C; height:26px; line-height:26px;}	
+.basebox .hot .titleico{  font-size:14px; border-bottom:2px solid #E51919; width:80px; *margin:0 0 -2px 0 ; position:relative;}
+.basebox .hot-list{ line-height:22px; *line-height:25px;}
+.basebox .hot,
+.basebox .hot-list,
+.basebox .dashed
+{ margin:10px 20px; font-size:14px; }
+.basebox .hot-list .dot{ font-size:7px;}
+.basebox .sub-list{ font-size:12px; margin:0px;}
+.basebox .desc{ color:#514632;}
+.basebox .count{color:#D03000;  font-weight:bold; text-align:right; margin-bottom:5px; }
+.basebox .cost-list li{ line-height:22px;*line-height:24px;}
+.basebox .bd table
+{ margin-top:1px;}
+
+.box{}
+.box .hd{  height:25px; line-height:25px; background:url(http://hs.cnfol.com/ub/Images/bgTabTitle.gif) repeat-x;}
+.box .hd .tag{ float:left;}
+.box .hd .m{position:relative; overflow:visible; }
+.box .hd .m a{ float:right;color:#776E5C;margin:-26px 5px 0 0;  }
+.box .hd .m span{ float:right;margin:-25px 5px 0 0;}
+.box .hd .more{  border:none; background:none; font-weight:normal;position:relative; overflow:visible; float:right;color:#776E5C;margin:-26px 5px 0 0; }
+.box .hd .m:hover,
+.box .hd .more:hover
+{ float:right;color:#cc0000;}
+.box .bd { padding:10px;}
+
+.box1{background:url(http://hs.cnfol.com/ub/Images/img003.gif) repeat-x;}
+.box1 .hot-list{*line-height:23px;}
+
+/*.mutibox{background:url(http://hs.cnfol.com/ub/Images/nuggets-bg01.gif) repeat-x;}*/
+.mutibox .hd{ background:none; height:auto;}
+
+.newsbox a{ margin:0 5px; line-height:25px;}
+.newsbox .hd,
+.sidebox .hd
+{ border-bottom:1px solid #776E5C; padding:0 0 0 15px; }
+.sidebox a{ margin:0 5px; line-height:22.5px;}
+
+.boxbar{ height:26px; line-height:26px; border:1px solid #ccc; padding:0 1px;}
+.boxbar .bd{ background:url(http://hs.cnfol.com/ub/Images/bgBigTitle.gif) repeat-x;padding: 0 15px; }
+.boxbar .titleico{ background-position:3px}
+.boxbar .more{ color:#776E5C;}
+.boxbar .more:hover{ text-decoration:none}
+/* tab */
+.box-tab{ overflow:hidden;}
+.box-tab dd{ display:none;}
+.box-tab .tab-inner{}
+.box-tab .tab-tag{ border-bottom:1px solid #776E5C; padding:2px 0 0 10px; zoom:1;position:relative;}
+.box-tab .tab-tag a { 
+position:relative; 
+float:left;
+color:#000000;
+height:22px;
+line-height:22px;
+padding:0 9px; 
+display:block; 
+font-weight:bold;
+margin-bottom:-1px;
+border:1px solid #776E5C;
+background:#F5F6F0;
+margin:2px 4px -2px; 0; 
+}
+.box-tab .tab-tag .CM,
+.box-tab .tab-tag a.selected{ 
+background:#fff url(http://hs.cnfol.com/ub/Images/tabSelected.gif) repeat-x; 
+border-bottom:1px solid #fff; 
+zoom:1;
+}
+.box-tab .tab-tag a:hover{ text-decoration:none;}
+
+.imgtab{ overflow:hidden; padding:0px;background:#fff;}
+.imgtab .tab-tag{background:#F1F1FB;}
+.imgtab .tab-tag a{font-weight:bold; display:block; float:left; width:40px; *width:39.9px;line-height:20px; height:20px; text-align:center; border-right:1px solid #ccc; border-bottom:1px solid #ccc; background:#F1F1FB;}
+.imgtab .tab-tag .CM{ border-bottom:1px solid #fff; background:#fff;}
+.imgtab .tab-tag li:last-child{ float:none; overflow:hidden;background:#F1F1FB;width:auto}
+.imgtab .tab-inner{ height:170px;}
+.imgtab dd{ display:none;}
+
+
+
+/* Table */
+table{ width:100%; margin-top:1px;}
+table td,
+table th{text-align:center; height:20px; line-height:20px;  vertical-align:middle;}
+table th{ background:url(http://hs.cnfol.com/ub/Images/tableHead.gif);border:1px solid #fff;background-position:bottom; background-repeat:repeat-x;}
+table td{ border-top:1px solid #E6E6E6;border-right: 1px solid #F5F5F5;}
+
+.extable td
+{ height:27px; line-height:28.5px;}
+.extable a{ color:#0066FF; text-decoration:underline;}
+.extable a:hover{text-decoration:none;color:#0066FF;}
+
+
+.data-table{ background:#ccc;}
+.data-table th,
+.data-table td{border:1px solid #ccc;background:#ffffff; height:22px; line-height:22px;}
+.data-table th{background:#F5F2ED;  font-weight:bold;}
+
+
+.simble-table td,
+.simble-table th{ border:none; line-height:27.5px; }
+.simble-table th{ background:none;}
+.simble-table a{ color:#1F3E81;}
+
+
+.order-table td,
+.order-table th{height:23px; line-height:23px;*height:24px; *line-height:24px;}
+.order-table a{ text-decoration:underline; color:#0066FF;}
+.order-table a:hover{ text-decoration:none;}
+
+.pro-table{ border-collapse:separate; margin-top:1px;}
+.pro-table td{ border:1px solid #CFDBE9; border-left:1px solid #fff; border-top:1px solid #fff; line-height:22px;*line-height:20px; }
+
+.newstock-table{margin-top:9px;}
+.newstock-table th{ height: 14px;line-height: 14px; }
+.newstock-table a{ text-decoration:underline; color:#0066FF;}
+.newstock-table a:hover{ text-decoration:none;}
+
+
+.ah-table th{ background:#E4ECF5;  font-weight:bold; }
+.ah-table td{ line-height:19px ;height:19px;}
+.ah-table a{ text-decoration:underline; color:#0066FF;}
+.ah-table a:hover{ text-decoration:none;}
+
+.mac-lh td{ line-height:22px;}
+.mac-scroll{margin-top:1px; overflow:auto;height:320px; }
+.mac-table{ margin-top:1px;}
+.mac-table strong{ font-weight:bold;}
+
+
+.bank-table td{ line-height:25px;}
+.bank-lh td{ line-height:24px;}
+/* ads */
+.topads{width:720px; height:90px;}
+
+.mutibox,
+.stock,
+.hq .hd
+{background:url(http://hs.cnfol.com/ub/Images/bgSub.gif) repeat-x;}
+
+.stock .dashed{ margin:5px 0 0 0; font-size:12px;}
+.stock h3{ color:#514632; margin:5px 0;}
+.stock .hd{ padding:5px 0;}
+.stock .hd .bd{ margin:8px 15px;}
+.stock .hd h3{ font-weight:normal;}
+.stock .remark{color:#50493F; font-weight:bold;width:320px; font-size:14px; text-align:left;}
+.stock .text{ height: 34px; line-height:34px; width: 288px;  border:1px solid #ccc; font-size:16px; margin:0; *margin-left:-15px; }
+.stock .submit{ background-position:0 -131px; width:64px;height:36px;border:0px}
+
+.hq{ }
+.hq .hd{ height:32px; line-height:32px; border-top:1px solid #ccc; border-bottom:1px dashed #ccc; }
+.hq .hd a{ color:#FF0000; margin-right:15px; font-weight:bold;}
+.hq .hd a:hover{ color:#99000;}
+.hq .bd{ padding:8px 10px;}
+.hq .bd h3{ color:#504631; font-weight:bold;}
+.hq .bd p{ text-indent:2em;}
+
+.news{ line-height:27px;}
+
+/* top */
+.top{ height:28px; overflow:hidden;line-height:30px; border:solid 1px #dddddd; text-align:center;}
+
+/* header */
+.header{ height:102px; border:solid 1px #dddddd; border-top:none;}
+.logo{ width:158px; height:102px; background: url(http://hs.cnfol.com/ub/Images/logo.gif) no-repeat 15px 15px; position:relative;}
+.logo_cnfol{ display:block;position:absolute; left:15px; top:15px; width: 130px; height:81px; z-index:1;  }
+.ad_banner{ padding-top:6px;}
+.header_txt_ad{ width:64px;line-height: 22px;padding-top: 5px; padding-left:5px; overflow:hidden;}
+.tit_bg1{ background:url(http://hs.cnfol.com/ub/Images/bgTopTitle.png) repeat-x; overflow:hidden;}
+
+
+/* 内页 */
+.banner {}
+.banner-right{ float:right; font-size:12px;}
+.banner-right a{width:200px; overflow:hidden; display:block; line-height:23px;}
+
+
+.site-nav{line-height:33px; height:33px; background:#E9EEF4;  border:1px  solid #C6CAD5; }
+.site-nav .sn-nav{ margin:0 0 0 10px; }
+.site-nav .sn-nav a{color:#062F67;}
+.site-nav .sn-nav a:hover{ text-decoration:none;color:#8B2B0A;}
+.site-nav img{ vertical-align:top;}
+.sn-search{ float:right;}
+.sn-search div{ margin:0 5px;}
+.sn-text{ border:1px solid #7E9DB9; height:16px; width:134px;}
+.sn-search input{ margin:7px 0;}
+
+.d-main a:hover{ text-decoration:none;color:#8B2B0A;}
+.d-main{ border:1px solid #C6CAD5;  border-top:none;}
+.d-side{background:#F5F6F8; border-left:1px solid #C6CAD5;}
+.d-main .bar,
+.d-side .bar,
+.d-main .sign,
+.d-side .sign
+{background:url(http://hs.cnfol.com/ub/Images/bg-01.gif);}
+.d-main .bar,
+.d-side .bar
+{ background-position:0 -34px; background-repeat: repeat-x; height:26px;  line-height:26px; font-weight:bold;}
+.d-main .sign,
+.d-side .sign
+{ background-position:0 -60px; float: left;height: 26px;  width: 15px;margin:0 6px 0 15px;}
+.d-side .bar ul{ margin-left:15px;}
+.d-side .bar ul li{ float:left; margin-left:-1px; font-weight:normal; border:1px solid #DEDFE4; padding:0 7px; line-height:23px; background:#F0F1F6;}
+.d-side .bar ul li.cur{  background:#F3F7F6;}
+
+.d-msg{ margin:10px;}
+
+.p-table-scroll{ overflow:scroll; height:435px;}
+.p-table-scroll table{ margin-top:1px;}
+
+.ads{ margin:10px auto;}
+.ads .ads-item{ float:left;  text-align:center; width:140px}
+
+
+.h2pxline{ border-bottom:2px solid #9198A0; margin:3px 0; }
+.hline{ border-bottom:1px solid #ccc; }
+.pic{ padding:4px 4px 0 4px;  }
+
+.art{ }
+.art .title{ border-bottom:1px dashed #ccc; padding:12px 0 3px 0; margin:0 0 5px 0; text-align:center; font-size:20px; font-weight:bold;}
+.art .remark{ text-align:center; float:left; margin-left:80px; _display:inline; }
+.art .remark .tel{ color:#999999}
+.art .comment{ float:right; width:100px; }
+.art .comment img{ position:relative;}
+.art .statement{border-top:1px dashed #ccc; color:#999; margin:10px 0; padding:0 5px ;}
+.art .content{ padding:10px; }
+
+.share{ float:right; background:none;}
+.share span{ float:left;background:none; border:none; margin:0;}
+.share a{ background:url(http://hs.cnfol.com/ub/Images/share.jpg);width:37px; height:20px;  display:block; float:left;}
+.share .zjw{ background-position:0 0;}
+.share .xlw{ background-position:-37px 0;}
+.share .shw{ background-position:-76px 0;}
+.share .kxw{ background-position:-113px 0;}
+.share .rrw{ background-position:-150px 0;}
+.share .qqzone{ background-position:-187px 0;}
+.share .dbw{ background-position:-224px 0;}
+.share .qqkj{ background-position:-261px 0;}
+
+.widget{ float:right; margin:10px 0; width:400px;}
+.widget .fonts{ margin:0 10px; line-height:25px;  }
+.widget .fonts a{ font-weight:bold; color:#E33000;}
+.widget .buttons a{ margin:0 5px;}
+.widget span{background:none; border:none; display:inline;}
+.f16{ font-size:16px;}
+
+.summ{ background:url(http://hs.cnfol.com/ub/Images/mb_t_bg.gif) no-repeat; height:59px; font-size:14px; border:1px solid #ccc; margin:0 -1px; zoom:1; }
+.summ .s-l{ float:left; margin:10px 0 10px 40px; *margin:10px 0 10px 30px;}
+.summ .s-l ul{ float:left;}
+.summ .s-l ul li{width:180px;}
+.summ .s-r{ float:right;margin:10px 30px 10px 0;*margin:10px 20px 10px 0;}
+/* 推荐 */
+.comm { margin:auto; width:620px;}
+.comm .title{ background:url(http://hs.cnfol.com/ub/Images/wbtj_t_bg.gif) no-repeat; width:150px; height:25px; margin:10px; }
+.comm .content dl{ float:left; margin:10px 20px; text-align:center; _display:inline;}
+.comm .content dl img{ padding:3px; border:1px solid #ccc;}
+.comm .btns{width:260px; margin:10px auto;}
+.comm .btns .comm-btn,
+.comm .btns .reg-btn
+{ width:100px; height:28px; line-height:28px; font-weight:bold; display:block; float:left; text-align:center; margin:0 10px; }
+.comm .btns .comm-btn{background:url(http://hs.cnfol.com/ub/Images/wb_tj_btn1.jpg) no-repeat; }
+.comm .btns .reg-btn{background:url(http://hs.cnfol.com/ub/Images/wb_tj_btn2.jpg) no-repeat; }
+
+.comments{ padding:10px 25px; }
+.comments a{ color:#062F67;}
+.comments input{ margin:0 5px;}
+.comments textarea{width:591px; height:66px; border:1px solid #7E9DB9; margin:10px 0;}
+
+.special{width:580px; margin:auto;}
+.special .item{ float:left; margin:10px;_display:inline;}
+.special .bgsz01{ background:url(http://hs.cnfol.com/ub/Images/special-bg03.gif) no-repeat; padding:5px; }
+/* 宏观数据 */
+.mac a:hover{ color:#ff0000; text-decoration:none;}
+
+.mac-search{ background:url(http://hs.cnfol.com/ub/Images/searchbox-bg.gif) no-repeat; height:30px; line-height:30px;}
+.mac-search .ms-r{width:450px; float:right;}
+.mac-search a{ font-weight:bold;  color:#50482B;font-size:14px; width:120px; float:right; display:block; background:url(http://hs.cnfol.com/ub/Images/searchbox-01.gif) no-repeat; text-align:center; margin-left:20px; }
+.mac-search a:hover{ font-weight:bold;  color:#990000; text-decoration:none; }
+.mac-search input,
+.mac-search select
+{
+	margin:5px;
+	display:block;
+	float:left;
+}
+
+.mac-nav{ margin:5px 0;}
+.mac-nav a{ color:#776E5C;}
+
+.mac-side tr td{ text-align:left;}
+.mac-side a{ color:#fff; font-size:12px; }
+.mac-side a:hover{ text-decoration:none; color:#333;}
+.mac-side dt{ padding:0 0 0 40px;}
+.mac-side dt.open{background:#A9A396 url(http://hs.cnfol.com/ub/Images/conLNav_icon04.gif) 25px 8px no-repeat;}
+.mac-side dd{background:#ECE8DF; margin:1px 0;padding:0 0 0 50px;}
+.mac-side dd a{ color:#574F3F;}
+.mac-side dt.closed{background:#A9A396 url(http://hs.cnfol.com/ub/Images/conLNav_icon03.gif) 25px 8px no-repeat;}
+.mac-side h2{ padding:0 0 0 25px;}
+.mac-side h2.open{
+    background:#776E5C url(http://hs.cnfol.com/ub/Images/conLNav_icon02.gif) 12px 8px no-repeat;
+    border-bottom:1px  solid #FFFFFF;
+}
+.mac-side h2.closed{ background:#776E5C url(http://hs.cnfol.com/ub/Images/conLNav_icon01.gif) 12px 8px no-repeat;}
+
+
+
+/* 个股估值 */
+.lookup{ background:url(http://hs.cnfol.com/ub/Images/bgLookup.gif) no-repeat; height:44px; }
+.lookup input{ margin:4px 0;}
+.lookup .text{ width:267px; height:28px; margin-left:126px;color:#AAAAAA; font-size:14px; line-height:28px;}
+.lookup .search{ width:49px; height:33px; background-position:0 -22px; }
+.lookup .help{width: 137px; height: 34px; background-position:0 -97px;  border:none; margin-left:45px;}
+.lookup .logo_yc{ background:url(http://hs.cnfol.com/ub/Images/logoYc.gif);width:265px; height:44px; border:none;  margin:0;}
+
+
+.company{   overflow:hidden; background:#F7FCFF;}
+.company-title{ background:#F3F4E8; border:1px solid #ccc;color:#333333;  padding:15px;}
+.company-title .name{ font-size:20px; font-weight:bold; float:left;}
+.company-title .datatime{ background:url(http://hs.cnfol.com/ub/Images/clock_sh.gif) no-repeat; width:233px; height:26px;line-height:26px; text-align:center;  float:right;}
+.company-quality { border-collapse:collapse; width:100%; border:none; margin:-1px 0 0 0; }
+.company-quality td{border:1px solid #ccc;height:26px; line-height:26px ; text-align:center;  }
+.company-quality .name{ font-weight:bold;}
+
+.five-value{ border:1px solid #ccc; overflow:hidden;}
+.five-value .title{ background:url(http://hs.cnfol.com/ub/Images/fiveTitle.gif) no-repeat; height:32px; color:#333; font-size:14px; font-weight:bold;}
+.five-value .title .stock-value,
+.five-value .title .current-price,
+.five-value .title .reason-value
+{
+	height:33px;
+	text-align:center;
+	line-height:33px;
+}
+.five-value .title .stock-value{ width:190px; float:left; }
+.five-value .title .current-price{width:140px; float:left;}
+
+.price-earning{ border-bottom:1px solid #ccc;}
+.price-earning .stock-value,
+.price-earning .current-price,
+.price-earning .reason-value
+{
+	text-align:center;
+	padding:10px 0;
+}
+.price-earning .stock-value{  
+	color: #DA0D0D;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    width: 195px;
+}
+.price-earning .current-price{ 
+	color: #DA0D0D;
+    float: left;
+    font-family: Arial;
+    font-size: 16px;
+	width: 140px;
+}
+
+.price-equity .stock-value,
+.price-equity .current-price,
+.price-equity .reason-value
+{
+	text-align:center;
+	padding:5px 0;
+}
+.price-equity .stock-value{  
+	color: #0B7818;
+    float: left;
+    font-size: 20px;
+    font-weight:bold;
+    width: 195px;
+	font-family: Arial;
+}
+.price-equity .current-price{ 
+	color: #0B7818;
+    float: left;
+    font-family: Arial;
+    font-size: 16px;
+	width: 140px;
+	font-weight: bold;
+}
+
+
+.p-table th{ background:#F5F2ED none; font-weight:bold;}
+
+.method-value{  background:#F3F4E8; overflow:hidden;}
+.method-value .item{
+  width:191px;
+  padding:10px 0;
+  float:left;
+  text-align:center;
+}
+.method-value .item .active{
+  color:#333333;
+  font-weight:bold;
+}
+.method-value .item .active ul{ display:none;  }
+.method-value .item .bigred{
+  color:#D24B15;
+  font-size:22px;
+  font-weight:bold;
+}
+.price-stock{ border:1px solid #ccc; margin:-1px; padding:4px 0;}
+
+.method-value .item1{ background:#F3F4E8;}
+.method-value .item2{ background:#EEF0DF}
+
+.stock-mod { border:1px solid #ccc; overflow:hidden;}
+.stock-mod .hd{ 
+background:url(http://hs.cnfol.com/ub/Images/bgTabTitle.gif) repeat-x;
+padding:5px 20px; 
+margin:1px;
+font-weight:bold;
+font-size:14px;
+border-bottom:1px solid #ccc;
+}
+.stock-mod  p{ text-align:center; margin:5px 0;}
+.stock-mod .bd table{ border:1px solid #fff; margin:5px; width:auto;}
+.stock-mod .bd table td{ border:1px dotted #ccc; text-align:right; width:121px; padding:0 2px 0 0;}
+.stock-mod .bd table .sigle{ width:61px; }
+.stock-mod .bd table .center{ text-align:left;}
+.stock-mod .bd table .cur{ background:#F5F2ED;}
+
+.mod-cur-price{ background:#8C9358; margin:5px 10px 10px 10px; overflow:hidden;}
+.mod-cur-price .hd{ color:#fff; border-bottom:none; background:none; padding:5px 10px;}
+.mod-cur-price .bd{ background:#fff; margin:2px; padding:3px; text-align:center;}
+.mod-cur-price .bd .price{ font-size:24px; font-family: Arial black;}
+.mod-cur-price .bd .rate-down{ font-size:14px; color:#0B7818;}
+
+.mod-market{ border:1px  solid  #ccc; background:#F5F2ED; width:160px; margin:5px 0 0 0px; overflow:hidden; }
+.mod-market .hd{ border-bottom:1px solid #ccc;background:none; font-size:12px; padding:3px 5px; }
+.mod-market .bd{ background:#fff;}
+.mod-market .bd,
+.mod-market .ft
+{ padding:3px;}
+.mod-market .b{  font-family: "Arial black";}
+
+.mod-comments{border:1px  solid  #ccc;}
+.mod-comments .hd{ height:30px; line-height:30px; background:#F5F5F5; padding:0 10px; border-bottom:1px solid #761A2C;}
+.mod-comments .hd .tl{ background:url(http://hs.cnfol.com/ub/Images/cmTitle.gif); width:185px;}
+.mod-comments .hd .tr{}
+.mod-comments .tc span{ color:#DF0024}
+.mod-comments .bd{ padding:10px;}
+.mod-comments .mc-item{ border-bottom:1px solid #ccc; padding:7px 0; font-size:14px;}
+.mod-comments .mc-item dt{ font-weight:bold;}
+.mod-comments .mc-item dt,
+.mod-comments .mc-item dd{ float:left;}
+.mod-comments .mc-item .item{ width:90px;}
+.mod-comments .mc-item .last{ font-size:12px; overflow:hidden;}
+.mod-comments .mc-item .scroll{overflow-y:scroll;width:420px; height:70px;}
+.mod-comments .mc-item span{ color:#FF0000;}
+
+.mod-rate{border:1px  solid  #ccc; background:#EFF1E4; height:300px;}
+.mod-rate .hd{ background:url(http://hs.cnfol.com/ub/Images/indexpic_title_bg.gif) repeat-x; height:32px; line-height:32px; font-weight:bold; font-size:14px; border-bottom:1px solid #ccc; }
+.mod-rate .hd div{ overflow:hidden; background:url(http://hs.cnfol.com/ub/Images/indexpic_title_pic.gif) no-repeat 10px 8px; padding-left:20px;}
+.mod-rate .hd .tl,
+.mod-rate .hd .tr
+{width:314px;}
+.mod-rate .bd{ zoom:1; height:264px; overflow:hidden;}
+.mod-rate .bd select{width:214px; height:20px;}
+.mod-rate .bd .items li{ margin:6px; line-height:25px; float:left; width:305px; background:#fff; height:246px;}
+.mod-rate .bd .items li.fluid{ }
+.mod-rate .bd .items .rate-search{ margin:5px;}
+
+/* 边栏切换 */
+.side-tab{height:auto; background:#F8FAFE}
+.side-tab-tag{ }
+.side-tab-tag a:hover{ text-decoration:none;  }
+.side-tab-tag li,
+.side-tab-tag a
+{ 
+	float:left; 
+	margin-left:-1px; 
+	font-weight:normal; 
+	border:1px solid #DEDFE4; 
+	padding:0 7px; 
+	line-height:23px;
+	background:#F0F1F6;
+}
+.side-tab-tag li.cur,
+.side-tab-tag .CM
+{ 
+	background:#F3F7F6;
+}
+.side-tab .side-tab-inner{display:none; }
+.side-tab .side-msg{padding:5px; display:none; }
+.side-tab .side-msg a{display:inline; background:none; padding:0;}

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="gbk" xml:lang="gbk">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<meta name="author" content="玉开" />
+<meta name="copyright" content="Copyright 2003-2008 http://www.cnblogs.com/yukaizhao/" /> 
+<link rel="stylesheet" type="text/css" href="css/bgs.css" media="screen" />
+<style type="text/css">
+BODY{font-size:12px;font-family:Arial "宋体"}
+.gray{color:gray;}
+A{text-decoration:none}
+</style>
+<script type="text/javascript">
+function viewStyle(css){
+    var otxt = document.getElementById('txt');
+    var odiv = otxt.parentNode;
+    odiv.style.display='block';
+    otxt.value = css;
+}
+</script>
+<title>Css合并背景图测试</title>
+</head>
+<body>
+<h1>小背景图合并样式测试</h1>
+<p class='gray'>Css背景图合并工具的用途是将css中定义的小背景图片合并为一张大的背景图，从而减少服务器的Http连接数，对提高网站的吞吐量有一定帮助。此工具的作者：<a style="color:blue;text-decoration:none" href='http://www.cnblogs.com/yukaizhao/' target='_blank'>玉开</a></p>
+<p class='gray'>你可以在生成的背景图基础上按自己的具体需求修改样式表文件，或将样式表中的样式合并到你已有的css文件中</p>
+
+
+	<div class="scroll_03">背景图scroll_03样式测试,<a href="javascript:viewStyle('.scroll_03{background:url(../imgs/allbgs.png) no-repeat 0px 0px;width:7px;padding-top:9px;}');" target="_self">查看样式</a></div>
+	<hr noshadow size="1" color="#f0f0f0"/>
+
+	<div class="scroll_10">背景图scroll_10样式测试,<a href="javascript:viewStyle('.scroll_10{background:url(../imgs/allbgs.png) no-repeat -10px 0px;width:7px;padding-top:10px;}');" target="_self">查看样式</a></div>
+	<hr noshadow size="1" color="#f0f0f0"/>
+
+	<div class="scroll_06">背景图scroll_06样式测试,<a href="javascript:viewStyle('.scroll_06{background:url(../imgs/allbgs.png) no-repeat -36px 0px;width:7px;padding-top:24px;}');" target="_self">查看样式</a></div>
+	<hr noshadow size="1" color="#f0f0f0"/>
+
+	<div class="scroll_08">背景图scroll_08样式测试,<a href="javascript:viewStyle('.scroll_08{background:url(../imgs/allbgs.png) no-repeat -23px 0px;width:7px;padding-top:63px;}');" target="_self">查看样式</a></div>
+	<hr noshadow size="1" color="#f0f0f0"/>
+
+<div><textarea style="width:100%;height:30px;" id="txt"></textarea></div><h3>以上样式中的小图片，其实都是一张图片。是根据css的background-position控制显示的，如下是合并后的图片</h3>
+<p><img src='imgs/allbgs.png' style="border:1px solid #ccc;" hspace="2" vspace="2"/></p>
+	<hr noshadow size="1" color="#f0f0f0"/>
+<div align="center">给<a href="http://www.cnblogs.com/yukaizhao/" target="_blank" style="color:blue;">作者</a>提交<a href="http://www.cnblogs.com/yukaizhao/Contact.aspx?id=1" style="color:red" target="_blank">bug或反馈</a></div>
+</body></html>

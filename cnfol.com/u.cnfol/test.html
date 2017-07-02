@@ -1,0 +1,961 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>理财频道_中金在线</title>
+<meta name="keywords" content="理财 财富 投资">
+<meta name="Description" content="中金在线理财频道提供:理财资讯、理财规划、理财产品、理财技巧、理财入门、理财工具,倡导科学、成熟的理财生活。引领财富之道,打开财富之门!">
+<script src="http://s.cnfolimg.com/v5.0/js/home04-min.js"></script>
+<link href="http://www.cnfol.com/inc/v5.0/css/money.css?sdfk" rel="stylesheet" type="text/css" />
+<link href="http://www.cnfol.com/inc/v5.0/css/pic.css" rel="stylesheet" type="text/css" />
+<!--#include virtual="/fol_inc/v5.0/ads/money/moneyads-00.shtml" -->
+
+<style type="text/css">
+.overflow{ overflow:hidden;}
+.lh-20{  line-height:20px;}
+</style>
+</head>
+
+<body>
+<center>
+<!-- 头部部分 -->
+<!--#include virtual="/fol_inc/v5.0/page/dh.shtml" -->
+<div class="top2">
+	<div class="top2-L"><a href="http://www.cnfol.com/" target="_blank"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/logo-01.gif" border="0" /></a></div>
+	<div id="ads1" class="top2-M"><img src="http://i0.cnfolimg.com/uploads/v5.0/home/load.gif"/></div>
+	<div class="top2-R lj2">{CMS:HandWork_827}</div>    
+</div>
+<!-- 导航部分 -->
+<div class="dh">
+	<div class="dhL lj3"><strong><a href="http://money.cnfol.com/" target="_blank">理财首页</a></strong></div>
+	<div class="dhR lj1">{CMS:HandWork_1353}</div>
+</div>
+<!-- 内容部分1 -->
+<div class="cen1">
+	<div class="cen1L">
+		<div class="cen1L-L">
+			<div class="cen1L-L1"><!-- 图片新闻 -->
+<script language="javascript">
+<!--
+function p$(string){
+	document.write(string);
+}
+//-->
+</script>
+<!--menu-->
+<div class="picto">
+  <div id="f_menu"> <span class="" id="f_now"></span> </div>
+  <div id="f_div">
+    <!--图片区域-->
+    <div id="f_imgDiv"></div>
+  </div>
+  <div id="f_infoDiv">
+    <!--数字按钮区域-->
+	<div id="f_text"></div>
+	<div class="f_text"></div>
+    <div id="f_buttonDiv"></div>
+  </div>
+  <!--焦点文字区域-->
+</div>
+<script language="javascript" type="text/javascript">
+<!--
+//可修改区域
+var imgWidth=280;
+var imgHeight=200;
+var _timeOut_=5000;
+var show_text = true; //是否显示焦点文字
+var timeOut=_timeOut_;
+var timeOut2=_timeOut_/2;//onmouseout img后需要切换的时间
+var now=0;              //第一张图
+var target="_blank";   //打开方式
+var button_on ='on'; //当前焦点对应按钮的样式名
+var button_off ='';//非当前焦点对应按钮的样式名
+
+//不可修改区域
+var imgUrl = new Array();
+var imgText = new Array();
+var imgLink = new Array();
+//var imgAlt= new Array();
+//var menuList = new Array();//菜单menu
+var ver=2; //兼容浏览器版本 默认2 为非ie
+var firstTime=true;
+var n =-1;		
+
+
+//菜单menu
+{CMS:HandWork_1643}
+
+
+
+
+
+//菜单menu
+{CMS:HandWork_1643}
+
+
+
+
+
+//菜单menu
+{CMS:HandWork_1643}
+
+
+
+
+
+//菜单menu
+{CMS:HandWork_1643}
+
+
+
+
+
+
+var count=0;
+for (var i=0;i<imgUrl.length;i++) {
+if( (imgUrl[i]!="")&& (imgLink[i]!="")) {
+	count++;
+} else {
+	break;
+}
+}
+//重写css
+var each_width=Math.ceil((imgWidth-(count-1))/count);
+var last_width=imgWidth-each_width*(count-1)-(count)+1;
+p$("<style>");
+p$("<!--");
+p$("#f_menu a");
+p$("#f_menu #f_menu"+(count-1)+"{width:"+last_width+"px; margin:0;}");
+p$("-->");
+p$("</style>");
+
+function change(){
+if (ver==1){
+	with($('f_img').filters[0]){
+		Transition=1;
+		apply();
+		play(); 
+	}
+}
+if (firstTime){ firstTime=false;timeOut=_timeOut_/1000;}
+else{	 
+	 $('f_img').src=imgUrl[now];
+	 //$('f_img').alt=imgAlt[now];
+	 $('f_imgLink').href=imgLink[now];
+	 if (show_text) $('f_text').innerHTML='<a href="'+imgLink[now]+'" target="_blank">'+imgText[now]+'</a>';		
+	 for (var i=0;i<count;i++) {
+		$('b'+i).className="button";
+		$('f_menu'+i).className="";
+	 }
+	 $('b'+now).className="on";	
+	 $('f_menu'+now).className="on";	 
+	 now=(now>=imgUrl.length-1)?0:now+1;
+	 timeOut=_timeOut_;		 
+}
+theTimer=setTimeout("change()", timeOut);
+}
+function b_change(num){
+window.clearInterval(theTimer); 
+now=num;
+firstTime=false;
+change();
+}
+//draw 渐变line (即css:f_line)
+function draw_line(){
+var div = document.createElement("div");	
+div.id = 'f_line';
+$('f_infoDiv').insertBefore(div,$('f_infoDiv').childNodes.item(0));			
+}
+
+
+
+
+
+
+
+
+//表现层 start	
+//menu
+for(var i=0;i<count;i++){
+	var menu = document.createElement("a");		
+
+	//menu.className="f_menu"+i;
+	menu.id="f_menu"+i;
+	menu.href='#';
+	menu.value=i;		
+	menu.onmouseover=function()
+	{
+	b_change(this.value);
+	};
+	//menu.title=imgAlt[i];
+	//menu.innerHTML=menuList[i];
+	$('f_menu').appendChild(menu);
+}
+//图片
+var a1 = document.createElement("a");		
+a1.id="f_imgLink";
+a1.target=target;
+a1.href=imgLink[now];	
+$('f_imgDiv').appendChild(a1);
+
+var img = document.createElement("img");	
+img.id="f_img";
+img.width=imgWidth;
+img.height=imgHeight;
+img.src=imgUrl[now];
+//img.alt=imgAlt[now];
+a1.appendChild(img);
+
+//数字按钮
+for (var i=count-1;i>=0;i--){
+	var div_bg = document.createElement("div");		
+	div_bg.id = 'div_bg'+i;
+	div_bg.className='bg';
+	$('f_buttonDiv').appendChild(div_bg);	
+	var a2 = document.createElement("a");		
+	a2.id = 'b'+i;
+	a2.className = (i==now+1)?"button_on":"button_off";		
+	//a.title=imgAlt[i];
+	a2.innerHTML=i+1;
+	a2.href='javascript:b_change('+i+')';		
+	$('div_bg'+i).appendChild(a2);	
+	var div= document.createElement("div");
+	$('f_buttonDiv').appendChild(div);			
+}	    
+if (show_text) $('f_text').innerHTML='<a href="'+imgLink[now]+'" target="_blank">'+imgText[now]+'</a>';
+//表现层 end
+$('f_img').onmouseover=function()
+{
+window.clearInterval(theTimer);
+}
+$('f_img').onmouseout=function(){theTimer=setTimeout("change()", timeOut2);}
+try{  //滤镜版本
+  new ActiveXObject("DXImageTransform.Microsoft.Fade");
+  $('f_img').filters[0].play();	  
+  ver=1;
+  draw_line(); 
+  }
+catch (e)
+{
+ver=2;
+}
+var theTimer = setTimeout("change()", _timeOut_/1000);
+//-->
+</script></div>
+			<div id="tab1">
+			  <div class="al_bg1 lj1">
+				  <ul>
+				  <li class="tab1_active" id="jj0" onmouseover="javascript:Show('0','2','jj','tab1_active','tab1_unactive')" style="cursor: pointer"><b><strong><a href="http://money.cnfol.com/1540/" target="_blank"><strong>理财日刊</strong></a></strong></b></li>
+                 <li class="tab1_unactive" id="jj1" onmouseover="javascript:Show('1','2','jj','tab1_active','tab1_unactive')" style="cursor: pointer"><b><strong><a href="http://lczk.money.cnfol.com/ " target="_blank"><strong>理财周刊</strong></a></strong></b></li>
+				</ul>
+			  </div>
+				<div id="tab1_c">
+				   <div id="jj0_nr">
+					<div class="cen1L-L2-1">{CMS:HandWork_1357}</div>	
+				    <div class="cen1L-L2-2"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-07.gif" /></div>
+					<div class="cen1L-L2-3">{CMS:Info_1540_2_0_20}</div>
+				  </div>
+					 <div id="jj1_nr" style="display:none;">
+					<div class="cen1L-L2-1">{CMS:HandWork_1358}</div>	
+				    <div class="cen1L-L2-2"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-07.gif" /></div>
+					<div class="cen1L-L2-3">{CMS:Info_1541_2_0_20}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	    <div class="cen1L-R overflow">
+	    	<div class="cen1L-R1 lj1"><a href="#" target="_blank"><strong>{CMS:HandWork_1355}</strong></a></div>
+      	    <div class="cen1L-R2">{CMS:HandWork_1356}</div>
+			<div class="cen1L-R1 lj1"><strong>{CMS:HandWork_1488_1}</strong></div>
+			<div class="cen1L-R3">　　{CMS:HandWork_1488_1}</div>
+			<div class="cen1L-R4"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-08.gif" /></div>
+			<div class="cen1L-R5">{CMS:Express_1540,1537,1538,1539,1553,1542,1549,1544,1554,1555,1556,1557,1552_8_23_0_0}</div>
+			<div class="lj8" style="padding-top:9px; text-align:left; padding-left:10px;">{CMS:HandWork_1785}</div>
+	    </div>
+	</div>
+	<div class="cen1R">
+		<div id="tab2">
+		<div class="al_bg2">
+<ul>
+				<li class="tab2_active" id="hq0" onmouseover="javascript:Show('0','6','hq','tab2_active','tab2_unactive')" style="cursor: pointer"><b><strong>上证</strong></b></li>
+			<li class="tab2_unactive" id="hq1" onmouseover="javascript:Show('1','6','hq','tab2_active','tab2_unactive')" style="cursor: pointer"><b><strong>深证</strong></b></li>	
+			<li class="tab2_unactive" id="hq2" onmouseover="javascript:Show('2','6','hq','tab2_active','tab2_unactive')" style="cursor: pointer"><b><strong>沪B</strong></b></li>
+			<li class="tab2_unactive" id="hq3" onmouseover="javascript:Show('3','6','hq','tab2_active','tab2_unactive')" style="cursor: pointer"><b><strong>深B</strong></b></li>
+			<li class="tab2_unactive" id="hq4" onmouseover="javascript:Show('4','6','hq','tab2_active','tab2_unactive')" style="cursor: pointer"><b><strong>300</strong></b></li>
+			<li class="tab2_unactive" id="hq5" onmouseover="javascript:Show('5','6','hq','tab2_active','tab2_unactive')" style="cursor: pointer"><b><strong>恒生</strong></b></li>
+		  </ul>
+</div>
+
+<div id="tab2_c">
+<div id="hq0_nr"><img src="http://quotes.cnfol.com/images/shzzs_ns.jpg" width="248" height="159" /></div>
+<div id="hq1_nr" style="display:none"><img src="http://quotes.cnfol.com/images/szcz_ns.jpg" width="248" height="159" /></div>
+<div id="hq2_nr" style="display:none"><img src="http://quotes.cnfol.com/images/shzbg_ns.jpg" width="248" height="159" /></div>
+<div id="hq3_nr" style="display:none"><img src="http://quotes.cnfol.com/images/szbg_ns.jpg" width="248" height="159" /></div>
+<div id="hq4_nr" style="display:none"><img src="http://quotes.cnfol.com/images/hs300_ns.jpg" width="248" height="159" /></div>
+<div id="hq5_nr" style="display:none"><img src="http://quotes.cnfol.com/images/hszs_ns.jpg" width="248" height="159" /></div>
+</div>
+</div>
+	    <div class="cen1R1">
+	<FORM METHOD=POST ACTION="http://home.cnfol.com/search.php" target="_blank" name="cnfol_searchform" id="cnfol_searchform">
+	    	<div class="cen1R1-1"><select name="searchselect" style="width:80px;">
+              <option selected value="hq">行情</option>
+			  <option value="moneyflow">主力买卖</option>
+              <option value="fund">基金</option>
+              <option value="bond">债券</option>
+              <option value="C30100">概览</option>
+              <option value="C30700">分析</option>
+              <option value="C30900">地位</option>
+
+              <option value="C30801">高管</option>
+              <option value="C30603">评论</option>
+              <option value="C30602">快讯</option>
+              <option value="C30601">公告</option>
+              <option value="C31100">分红</option>
+              <option value="C30402">负债</option>
+
+              <option value="C30404">利润</option>
+              <option value="C30100">财务</option>
+              <option value="C30300">股本</option>
+              <option value="C31001">股东</option>
+              <option value="C30500">配股</option>
+    </select></div>
+			<div class="cen1R1-2"><input type="text" name="keyword" style="width:80px " value=">>请输入股票代码"  onclick='this.value=""'/>
+			</div>
+			<div class="cen1R1-3"><input type="image" src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-11.gif" /></div>
+		  </FORM>
+	    </div>
+	    <div class="cen1R2">
+	    	<div class="cen1R2-1">
+	    		<div class="cen1R2-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-13.gif" /></div>
+				<div class="cen1R2-1b lj1"><strong><a href="http://special.cnfol.com/" target="_blank">理财专题</a></strong></div>
+	    	</div>
+			<div class="cen1L-L2-1">
+				{CMS:HandWork_1359}
+			</div>
+			<div class="cen1L-L2-2"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-07.gif" /></div>
+			<div class="cen1R2-3">{CMS:HandWork_1360}</div>
+	    </div>
+	</div>
+    <div class="both"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-960x1.gif" /></div>
+</div>
+<!-- 内容部分2 -->
+<div class="cen2">
+	<div class="cen2L"><img src="http://i1.cnfolimg.com/uploads/v5.0/money/cen2-01.gif" /></div>
+	<div class="cen2M"><strong>理财动态</strong></div>
+	<div class="cen2R"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen2-03.gif" /></div>
+</div>
+<!-- 内容部分3 -->
+<div class="cen1">
+	<div class="cen3L">
+		<div class="cen3L1">
+	  	  	<div class="cen3L1-1">
+		  		<div class="cen3L1-1a"><img src="http://i1.cnfolimg.com/uploads/v5.0/money/cen3-02.gif" /></div>
+			  	<div class="cen3L1-1b lj1"><strong><a href="http://money.cnfol.com/1537/" target="_blank">理财产品</a></strong></div>
+				<div class="cen3L1-1c lj6"><a href="http://money.cnfol.com/1537/" target="_blank">>> 更多</a></div>
+	  	  	</div>
+		  	<div class="cen3L1-2">
+		  		<div class="cen3L1-2a">{CMS:HandWork_1361}</div>
+				<div class="cen3L1-2b">{CMS:HandWork_1361}</div>
+		  	</div>
+			<div class="cen1L-L2-2"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-07.gif" /></div>
+			<div class="cen1R2-3">{CMS:Info_1537_4_0_20}</div>
+		</div>
+	    <div class="cen3L2">
+			<div class="cen3L1-1">
+		  		<div class="cen3L1-1a"><img src="http://i1.cnfolimg.com/uploads/v5.0/money/cen3-02.gif" /></div>
+			  	<div class="cen3L1-1b lj1"><strong><a href="http://money.cnfol.com/1553/" target="_blank">理财规划</a></strong></div>
+				<div class="cen3L1-1c lj6"><a href="http://money.cnfol.com/1553/" target="_blank">>> 更多</a></div>
+	  	  	</div>
+			<div class="cen1L-L2-1">{CMS:HandWork_1362}</div>	
+			<div class="cen1L-L2-2"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-07.gif" /></div>
+			<div class="cen1R2-3">{CMS:Info_1553_4_0_20}</div>
+		</div>
+	</div>
+	<div class="cen3M">
+		<div class="cen3M1 overflow">
+			<div class="cen3M1-1">
+				<div class="cen3M1-1a lj1"><strong><a href="http://money.cnfol.com/1538/" target="_blank">理财资讯</a></strong></div>
+				<div class="cen3L1-1c lj6"><a href="http://money.cnfol.com/1538/" target="_blank">>> 更多</a></div>
+			</div>
+			<div class="cen1L-R5">{CMS:Info_1538_8_5_19}</div>
+		</div>
+		<div class="cen3M1 overflow">
+			<div class="cen3M1-1">
+				<div class="cen3M1-1a lj1"><strong><a href="http://money.cnfol.com/1539/" target="_blank">理财攻略 </a></strong></div>
+				<div class="cen3L1-1c lj6"><a href="http://money.cnfol.com/1539/" target="_blank">>> 更多</a></div>
+			</div>
+			<div class="cen1L-R5">{CMS:Info_1539_8_5_19}</div>
+		</div>
+	</div>
+	<div class="cen3R">
+  	  <div class="cen3R1">
+			<div class="cen1R2-1">
+	    		<div class="cen1R2-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-13.gif" /></div>
+				<div class="cen1R2-1b"><strong>理财万花筒</strong></div>
+		</div>
+			<div class="cen3R1-1">
+	    	  <div class="cen3R1-1a">{CMS:HandWork_1363}</div>
+			 <div class="cen3R1-1b">{CMS:HandWork_1363}</div>
+	      </div>
+	  </div>
+	    <div class="cen3R2a">
+			<div class="cen1R2-1">
+	    		<div class="cen1R2-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-13.gif" /></div>
+				<div class="cen1R2-1b lj1"><strong><a href="http://money.cnfol.com/1542/" target="_blank">持家有道</a></strong></div>
+				<div class="cen3L1-1c lj6"><a href="http://money.cnfol.com/1542/" target="_blank">>> 更多</a></div>
+	    	</div>
+			<div class="cen1L-L2-1c">{CMS:HandWork_1364}	</div>
+			<div class="cen1R2-3">{CMS:Info_1542_2_0_17}</div>
+		</div>
+		 <div class="cen3R2b">
+			<div class="cen1R2-1">
+	    		<div class="cen1R2-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-13.gif" /></div>
+				<div class="cen1R2-1b lj1"><strong><a href="http://my.cnfol.com/app/czzx" target="_blank">在线记账系统</a></strong></div>
+				<div class="cen3L1-1c lj6"><a href="http://my.cnfol.com/oauth/loginin/aHR0cDovL215LmNuZm9sLmNvbS9hcHAvY3p6eA==" target="_blank">登录</a> <a href="http://passport.cnfol.com/newregister" target="_blank">注册</a></div>
+	    	</div>
+			<div class="cen1R2-3">{CMS:HandWork_1808}</div>
+		</div>
+	</div>
+	<div class="both"><img src="http://i1.cnfolimg.com/uploads/v5.0/money/cen3-960x1.gif" /></div>
+</div>
+<!-- 内容部分4 -->
+<div class="cen2">
+	<div class="cen2L"><img src="http://i1.cnfolimg.com/uploads/v5.0/money/cen2-01.gif" /></div>
+	<div class="cen2M"><strong>投资天地</strong></div>
+	<div class="cen2R"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen2-03.gif" /></div>
+</div>
+<!-- 内容部分5 -->
+<div class="cen1">
+	<div class="cen5L">
+		<div class="cen5L-1 overflow">
+			<div class="cen5L-1L">
+		  	  <div class="cen5L-1L-1 overflow">
+					<div class="cen3L1-1">
+		  				<div class="cen3L1-1a"><img src="http://i1.cnfolimg.com/uploads/v5.0/money/cen3-02.gif" /></div>
+			  			<div class="cen3L1-1b lj1"><strong><a href="http://money.cnfol.com/1549/" target="_blank">收藏精粹</a></strong></div>
+						<div class="cen3L1-1c lj6"><a href="http://money.cnfol.com/1549/" target="_blank">>> 更多</a></div>
+	  	  			</div>
+			      <div class="cen5L-1L-1a ">
+				    	<div class="cen3L1-2a">{CMS:HandWork_1365}</div>
+					  <div class="cen5L-1L-1a-1">{CMS:Info_1549_5_0_10}</div>
+			    </div>
+			  </div>
+				<div class="cen5L-1L-1 overflow">
+					<div class="cen3L1-1">
+		  				<div class="cen3L1-1a"><img src="http://i1.cnfolimg.com/uploads/v5.0/money/cen3-02.gif" /></div>
+			  			<div class="cen3L1-1b"><strong>投资百态</strong></div>
+				  </div>
+					<div class="cen3L1-2">
+		  				<div class="cen3L1-2a">{CMS:HandWork_1366}</div>
+						<div class="cen3L1-2b">{CMS:HandWork_1366}</div>
+		  			</div>
+				</div>
+			</div>
+			<div class="cen5L-1R">
+				<div class="cen3M1-1">
+					<div class="cen3M1-1a lj1"><strong><a href="http://money.cnfol.com/1544/" target="_blank">投资有道 </a></strong></div>
+					<div class="cen3L1-1c lj6"><a href="http://money.cnfol.com/1544/" target="_blank">>> 更多</a></div>
+				</div>
+				<div class="cen1L-R5">{CMS:Info_1544_11_5_19}</div>
+			</div>
+			<div class="both"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen5-700x1.gif" /></div>
+		</div>
+		<div id="tab3">
+			<div class="al_bg3">
+				<div class="cen5L-2-1a"><strong><a href="http://moneyflow.cnfol.com/" target="_blank">资金选股系统</a></strong></div>
+				<ul>
+<li class="tab3_active" id="g0" onmouseover="javascript:Show('0','5','g','tab3_active','tab3_unactive')" style="cursor: pointer"><b><strong><strong>资金流高级选股</strong></strong></b></li>
+<li class="tab3_unactive" id="g1" onmouseover="javascript:Show('1','5','g','tab3_active','tab3_unactive')" style="cursor: pointer"><b><strong><strong>主力累计介入</strong></strong></b></li>
+<li class="tab3_unactive" id="g2" onmouseover="javascript:Show('2','5','g','tab3_active','tab3_unactive')" style="cursor: pointer"><b><strong><strong>主力介入次数</strong></strong></b></li>
+<li class="tab3_unactive" id="g3" onmouseover="javascript:Show('3','5','g','tab3_active','tab3_unactive')" style="cursor: pointer"><b><strong><strong>当日主力动向</strong></strong></b></li>
+<li class="tab3_unactive" id="g4" onmouseover="javascript:Show('4','5','g','tab3_active','tab3_unactive')" style="cursor: pointer"><b><strong><strong>资金流向统计</strong></strong></b></li>
+				</ul>
+	    	</div>
+	  	  <div id="tab3_c">
+		  <div class="body55" id="g0_nr">
+<form id="form2" name="form2" method="post" action="http://moneyflow.cnfol.com/Find.asp" target="_blank">
+<div class="body56"><input name="mk" type="radio" value="SH" checked="checked" id="radio" /></div>
+<div class="body57">上证市场</div>
+<div class="body56"><input type="radio" name="mk" value="SZ" id="radio2" /></div>
+<div class="body57">深证市场</div>
+<div class="body58 f_b">个股：</div>
+<div class="body59">
+<select name="bl" id="select2">
+<option value="w50s">50万以上</option>
+<option value="w100s">100万以上</option>
+<option value="buy">净流入</option>
+</select>
+</div>
+<div class="body60">最近</div>
+<div class="body61">
+<select name="datenum" id="select3">
+<option value="3">3</option>
+<option value="5">5</option>
+<option value="10">10</option>
+<option value="15">15</option>
+</select></div>
+<div class="body62">天</div>
+<div class="body56"><input name="sel" type="radio" value="2" checked="checked" onClick="checktype2();" /></div>
+<div class="body63"><select name="t2" id="t2"><option value="1">连续流入</option></select></div>
+<div class="body56"><input type="radio" name="sel" value="1" onClick="checktype2();" /></div>
+<div class="body63">
+<select name="t1" id="select5" disabled="disabled">
+<option value="3"><1000万</option>
+<option value="4">>=1000万</option>
+<option value="5">>=3000万</option>
+<option value="6">>=8000万</option>
+</select></div>
+<div class="body64"><input type="image" src="http://images.cnfol.com/uploads/v5.0/home/tu07.gif"/></div>
+<input name="actionb" type="hidden" id="actionb" value="b" />
+<div class="clear"></div>
+</form>
+</div>
+
+
+
+<div class="body55" id="g1_nr" style="display:none;">
+<form name="form8" method="post" action="http://moneyflow.cnfol.com/Order_S.asp" target="_blank">
+<div class="body65">主力累计介入:主力最近</div>
+<div class="body56"><input name="orderby" type="radio" value="22" checked="checked" /></div>
+<div class="body66">两日</div>
+<div class="body56"><input name="orderby" type="radio" value="23" /></div>
+<div class="body66">三日</div>
+<div class="body56"><input name="orderby" type="radio" value="25" /></div>
+<div class="body66">五日</div>
+<div class="body56"><input name="orderby" type="radio" value="20" /></div>
+<div class="body66">十日</div>
+<div class="body67">累计介入排名</div>
+<div class="body64">
+ <input type="image" src="http://images.cnfol.com/uploads/v5.0/home/tu08.gif"/>
+</div>
+<input name="action" type="hidden" id="action" value="d" />
+<div class="clear"></div>
+</form>
+</div>
+
+
+<div class="body55" id="g2_nr" style="display:none;">
+<form method="post" action="http://moneyflow.cnfol.com/Order_S.asp" target="_blank">
+<div class="body58 f_b">主力：</div>
+<div class="body56"><input name="orderby" type="radio" value="10" checked="checked" /></div>
+<div class="body67">5日内介入次数</div>
+<div class="body56"><input name="orderby" type="radio" value="11" /></div>
+<div class="body67">10日内介入次数</div>
+<div class="body56"><input name="orderby" type="radio" value="12" /></div>
+<div class="body67">最近连续介入</div>
+<div class="body56"><input name="orderby" type="radio" value="13" /></div>
+<div class="body67">最近增量式介入</div>
+<div class="body64">
+ <input type="image" src="http://images.cnfol.com/uploads/v5.0/home/tu08.gif"/>
+</div>
+<input name="action" type="hidden" id="action" value="c" />
+<div class="clear"></div>
+</form>
+</div>
+
+
+<div class="body55" id="g3_nr" style="display:none;">
+<form method="post" action="http://moneyflow.cnfol.com/Order_S.asp" target="_blank">
+<div class="body67">请输入股票代码</div>
+<div class="body63"><input name="code" type="text" id="code" size="8" maxlength="6" style="height:13px;" /></div>
+<div class="body57">结果按</div>
+<div class="body69">
+  <select name="select" id="orderby">
+    <option value="1">主力动向</option>
+    <option value="2">大单买入</option>
+    <option value="3">大单卖出</option>
+    <option value="4">大单差</option>
+    <option value="5">涨幅</option>
+    <option value="6">换手率</option>
+    <option value="7">A股(流通盘)</option>
+  </select>
+</div>
+<div class="body68">排序 (<font color="#ff0000">留空则显示所有股票</font>)</div>
+<div class="body64">
+  <input name="image" type="image" src="http://images.cnfol.com/uploads/v5.0/home/tu08.gif"/>
+</div>
+<input name="action" type="hidden" id="action" value="a" />
+<div class="clear"></div>
+</form>
+</div>
+
+<div class="body55" id="g4_nr" style="display:none;">
+<form id="form3" name="form3" method="post" action="http://moneyflow.cnfol.com/Find.asp" target="_blank">
+<div class="body56"><input name="mk" type="radio" value="SH" checked="checked" id="mk11" /></div>
+<div class="body57">上证市场</div>
+<div class="body56"><input type="radio" name="mk" value="SZ" id="mk22" /></div>
+<div class="body57">深证市场</div>
+<div class="body58">最近：</div>
+<div class="body56"><input name="datenum" type="radio" value="3" checked="checked" /></div>
+<div class="body66">3天</div>
+<div class="body56"><input name="datenum" type="radio" value="5"/></div>
+<div class="body66">5天</div>
+<div class="body56"><input name="datenum" type="radio" value="10"/></div>
+<div class="body66">10天</div>
+<div class="body56"><input name="datenum" type="radio" value="20" /></div>
+<div class="body66">20天</div>
+<div class="body65">　累计资金净流入排名</div>
+<div class="body64"><input name="image" type="image" src="http://images.cnfol.com/uploads/v5.0/home/tu08.gif"/></div>
+
+<div class="clear"></div>
+</form>
+</div>
+		  </div>
+		</div>
+		<div id="tab4">
+			<div class="al_bg4">
+				<div class="cen5L-3-1a"><strong>理财产品库</strong></div>
+				<ul>
+				 <li class="tab4_active" id="jp0" onmouseover="javascript:Show('0','5','jp','tab4_active','tab4_unactive')" style="cursor: pointer"><b><strong><strong>全部在售理财产品</strong></strong></b></li>
+                 <li class="tab4_unactive" id="jp1" onmouseover="javascript:Show('1','5','jp','tab4_active','tab4_unactive')" style="cursor: pointer"><b><strong><strong>人民币理财产品</strong></strong></b></li>
+				  <li class="tab4_unactive" id="jp2" onmouseover="javascript:Show('2','5','jp','tab4_active','tab4_unactive')" style="cursor: pointer"><b><strong><strong>外币理财产品</strong></strong></b></li>
+				   <li class="tab4_unactive" id="jp3" onmouseover="javascript:Show('3','5','jp','tab4_active','tab4_unactive')" style="cursor: pointer"><b><strong><strong>QDII理财产品</strong></strong></b></li>
+				    <li class="tab4_unactive" id="jp4" onmouseover="javascript:Show('4','5','jp','tab4_active','tab4_unactive')" style="cursor: pointer"><b><strong><strong>到期理财产品收益</strong></strong></b></li>
+				</ul>
+	    	</div>
+	  	  	<div id="tab4_c">
+
+		  	  <div id="jp0_nr">
+		  	    <iframe src="http://data.bank.cnfol.com/index.php/bankdata/onsell" width="688" height="287" frameborder="0"scrolling="no"></iframe>
+		  	  </div>	
+		     <div id="jp1_nr" style="display:none;">
+			 <iframe src="http://data.bank.cnfol.com/index.php/bankdata/bbpro" width="688" height="287" frameborder="0"scrolling="no"></iframe>
+	         </div>
+			 <div id="jp2_nr" style="display:none;">
+			 <iframe src="http://data.bank.cnfol.com/index.php/bankdata/wbpro" width="688" height="287" frameborder="0"scrolling="no"></iframe>
+	         </div>
+			 <div id="jp3_nr" style="display:none;">
+			 <iframe src="http://data.bank.cnfol.com/index.php/bankdata/qfiipro" width="688" height="287" frameborder="0"scrolling="no"></iframe>
+	         </div>
+			 <div id="jp4_nr" style="display:none;">
+			 <iframe src="http://data.bank.cnfol.com/index.php/bankdata/oversell" width="688" height="287" frameborder="0"scrolling="no"></iframe>
+			 </div>
+		  	</div>
+		</div>
+	</div>
+    <div class="cen5R">
+  	  <div class="cen5R1">
+			<div class="cen1R2-1">
+	    		<div class="cen1R2-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-13.gif" /></div>
+				<div class="cen1R2-1b"><strong>最近访问股</strong></div>
+	    	</div>
+      	  <div class="cen5R1-1">
+	        <script type="text/javascript" src="http://quotes.cnfol.com/api/zjfwg/display/7.html/code,name,price,closed" charset="UTF-8"></script>
+      	</div>
+   	  </div>
+		<div class="cen5R1">
+			<div class="cen1R2-1">
+	    		<div class="cen1R2-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-13.gif" /></div>
+				<div class="cen1R2-1b"><strong>我的基金</strong></div>
+	    	</div>
+	      	<div class="cen5R2-1"><strong><a href="http://funds365.cnfol.com/my/?" target="_blank">自选基金</a>　<a href="http://funds365.cnfol.com/my/?" target="_blank">我的帐户</a>　<a href="http://funds365.cnfol.com/my/?" target="_blank">帐户明细</a></strong></div>
+			<div class="cen5R2-2">查看详细的数据信息请先登陆或免费注册</div>
+			<script type="text/javascript">
+function $(s)
+{
+return document.getElementById(s);
+}
+</script>
+<script type="text/javascript" src="http://s.cnfolimg.com/v5.0/js/site02-min.js"></script>
+<script type="text/javascript">
+var nickname = Get_Cookie('cookie[passport][username]');
+var url = document.location.href;
+
+   document.writeln('<div class="dl1">');
+if (!nickname) {
+   document.writeln('<form id="index_login" action="http://passport.cnfol.com/accounts/Login" method="post" name="loginform" target="_top">');
+   document.writeln('<div class="cen5R2-3">');
+   document.writeln('<div class="cen5R2-3a">用户名：</div>');
+   document.writeln('<div class="cen5R2-3b"><input type="text" class="bd3" name="username" id="username"/></div>');
+   document.writeln('</div>');
+   document.writeln('<div class="cen5R2-3">');
+   document.writeln('<div class="cen5R2-3a">密　码：</div>');
+   document.writeln('<div class="cen5R2-3b"><input class="bd3" name="password" type="password" id="password" /></div>');
+   document.writeln('</div>');
+    document.writeln('<div class="cen5R2-4"><input type="image" src="http://i1.cnfolimg.com/uploads/v5.0/fund/cen2-08.gif"/><a href="http://passport.cnfol.com/accounts/Register" target="_blank"><img src="http://i2.cnfolimg.com/uploads/v5.0/fund/cen2-09.gif" border="0" /></a></div>');
+   document.writeln('<input type="hidden" name="act" value="login" />');
+    document.writeln('<input type="hidden" name="usertype" value="0" />');
+	document.writeln('<input type="hidden" name="return" value="'+url+'?0=0" />');
+   document.writeln('</form>');
+   $('index_login').onsubmit = function () {
+        if (this.username.value=="") {
+            alert("请输入您的用户名！");
+            this.username.focus();
+            return false;
+        }
+        if (this.password.value=="") {
+            alert("请输入您的密码！");
+            this.password.focus();
+            return false;
+        }
+    }
+
+    var m = location.href.match(/error=([d])/i);
+
+    if (m) {
+        if (m[1]==4) alert('您输入的用户名不存在！');
+        if (m[1]==5) alert('您的密码不正确！');
+        if (m[1]==6) alert('您的密码不正确！');
+    }
+}
+else {
+    var url = 'http://passport.cnfol.com/accounts/Logout?return=http://' + location.host + location.pathname;
+    document.writeln('<div class="flt_l1">');
+	document.writeln('<div class="dl2">');
+	document.writeln('欢迎您！');
+	document.writeln('</div>');
+	document.writeln('<div class="dl2">');
+    document.writeln(unescape(Get_Cookie('cookie[passport][username]'))+' | ');
+    document.writeln('<a href="http://passport.cnfol.com/" target="_blank">我的帐户</a> | ');
+	document.writeln('</div>');
+	document.writeln('<div class="dl2">');
+    document.writeln('<a href="'+ url +'">退出</a>');
+	document.writeln('</div>');
+	document.writeln('</div>');
+}  
+   document.writeln('</div>');
+</script>
+	  </div>
+		<div class="cen5R3">
+			<div class="cen1R2-1">
+	    		<div class="cen1R2-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-13.gif" /></div>
+				<div class="cen1R2-1b"><strong>投资常用工具</strong></div>
+	    	</div>
+		    <div class="cen5R3-1">
+				<div class="cen5R3-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen5-11.gif" /></div>
+				<div class="cen5R3-1b"><strong>黄金计算器</strong></div>
+			</div>
+			<iframe frameborder="0" width="220" height="105" scrolling="no" src="http://www.zhihuangjin.com/gold/convert.htm"></iframe>
+      </div>
+		<div class="cen5R4">
+			<div class="cen3M1-1">
+				<div class="cen3M1-1a"><strong>货币兑换器 </strong></div>
+			</div>
+			<iframe src="http://forex.cnfol.com/hbdhc.shtml" frameborder=0 scrolling=no height=80 width=150 align=center></iframe>
+      </div>
+		<div class="cen5R5">
+			<div class="cen3M1-1">
+				<div class="cen3M1-1a"><strong>银行利率 </strong></div>
+			</div>
+		    <div class="cen5R5-1">
+		    	<div class="cen5R5-1a">
+					<div class="cen5R5-1a-1"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen5-14.gif" /></div>
+					<div class="cen5R5-1a-2"><a href="http://money.cnfol.com/091203/160,1538,6901974,00.shtml" target="_blank">人民币存款利率</a></div>
+				</div>
+				<div class="cen5R5-1b">
+					<div class="cen5R5-1a-1"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen5-14.gif" /></div>
+					<div class="cen5R5-1a-2"><a href="http://money.cnfol.com/091203/160,1538,6901964,00.shtml" target="_blank">外汇存款利率</a></div>
+				</div>
+		    </div>
+			<div class="cen5R5-1">
+		    	<div class="cen5R5-1a">
+					<div class="cen5R5-1a-1"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen5-14.gif" /></div>
+					<div class="cen5R5-1a-2"><a href="http://money.cnfol.com/091203/160,1538,6901970,00.shtml" target="_blank">人民币货款利率</a></div>
+				</div>
+				<div class="cen5R5-1b"></div>
+		    </div>
+        </div>
+    </div>
+	<div class="both"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen5-960x1.gif" /></div>
+</div>
+<!-- 内容部分6 -->
+<!-- banner1 -->
+<div class="banner">
+	<div id="ads2" class="bannerL"><img src="http://i0.cnfolimg.com/uploads/v5.0/home/load.gif"/></div>
+	<div id="ads3" class="bannerR"><img src="http://i0.cnfolimg.com/uploads/v5.0/home/load.gif"/></div>
+</div>
+<!-- 内容部分7 -->
+<div class="cen2">
+	<div class="cen2L"><img src="http://i1.cnfolimg.com/uploads/v5.0/money/cen2-01.gif" /></div>
+	<div class="cen2M"><strong>财富人生</strong></div>
+	<div class="cen2R"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen2-03.gif" /></div>
+</div>
+<!-- 内容部分8 -->
+<div class="cen1">
+	<div class="cen8L">
+	  <div class="both">
+		  <div class="cen8L-1L">
+	  	  	<div class="cen8L-1L-1 overflow">
+					<div class="cen3L1-1">
+		  				<div class="cen3L1-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen3-02.gif" /></div>
+			  			<div class="cen3L1-1b lj1"><strong><a href="http://lcgs.money.cnfol.com/" target="_blank">理财故事</a></strong></div>
+						<div class="cen3L1-1c lj6"><a href="http://lcgs.money.cnfol.com/" target="_blank">>> 更多</a></div>
+	  	  			</div>
+	      		<div class="cen1L-R5">{CMS:Info_1554_8_0_17}</div>
+			</div>
+				<div class="cen8L-1L-1 overflow">
+					<div class="cen3L1-1">
+		  				<div class="cen3L1-1a"><img src="http://i1.cnfolimg.com/uploads/v5.0/money/cen3-02.gif" width="17" height="27" /></div>
+			  			<div class="cen3L1-1b lj1"><strong><a href="http://gs.money.cnfol.com/" target="_blank">创业社区</a></strong></div>
+						<div class="cen3L1-1c lj6"><a href="http://gs.money.cnfol.com/" target="_blank">>> 更多</a></div>
+	  	  			</div>
+		      		<div class="cen1L-R5">{CMS:Info_1555,1556_8_0_17}</div>
+				</div>
+		  </div>
+			<div class="cen8L-1R">
+				<div class="cen8L-1L-1">
+					<div class="cen3M1-1">
+						<div class="cen3M1-1a lj1"><strong><a href="http://lcym.money.cnfol.com/" target="_blank">名人财智</a> </strong></div>
+						<div class="cen3L1-1c lj6"><a href="http://lcym.money.cnfol.com/" target="_blank">>> 更多</a></div>
+					</div>
+					<div class="cen1L-L2-1">{CMS:HandWork_1367}</div>	
+					<div class="cen1L-L2-2"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-07.gif" /></div>
+					<div class="cen8L-1R-1b lh-20 overflow">{CMS:Info_1552_4_5_19}</div>
+				</div>
+				<div class="cen8L-1L-1">
+					<div class="cen3M1-1">
+						<div class="cen3M1-1a lj1"><strong><a href="http://sj.money.cnfol.com/" target="_blank">职场财智</a> </strong></div>
+						<div class="cen3L1-1c lj6"><a href="http://sj.money.cnfol.com/" target="_blank">>> 更多</a></div>
+					</div>
+					<div class="cen1L-L2-1">{CMS:HandWork_1368}</div>	
+					<div class="cen1L-L2-2"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-07.gif" /></div>
+					<div class="cen8L-1R-1b  lh-20 overflow">{CMS:Info_1557_4_5_19}</div>
+				</div>
+		  </div>
+			<div class="both"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen5-700x1.gif" /></div>
+	  </div>
+		<div class="cen8L-1"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1x1.gif" /></div>
+		<div class="both">
+			<div class="cen8L-2L">
+				<div class="cen3L1-1">
+		  			<div class="cen3L1-1a"><img src="http://i1.cnfolimg.com/uploads/v5.0/money/cen3-02.gif" width="17" height="27" /></div>
+			  		<div class="cen3L1-1b"><strong>理财学苑</strong></div>
+	  	  		</div>
+			    <div class="cen8L-2L-1">
+			    	<div class="cen8L-2L-1L">
+			    		<div class="cen8L-2L-1L-1">
+			    			<div class="cen8L-2L-1L-1a"><a href="http://gmxy.stock.cnfol.com/" target="_blank"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen8-01.gif" border="0" /></a></div>
+							<div class="cen8L-2L-1L-1b"><a href="http://gmxy.stock.cnfol.com/" target="_blank">股民学院</a></div>
+			    		</div>
+						<div class="cen8L-2L-1L-1">
+			    			<div class="cen8L-2L-1L-1a"><a href="http://zqzs.bond.cnfol.com/" target="_blank"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen8-03.gif" border="0" /></a></div>
+							<div class="cen8L-2L-1L-1b"><a href="http://zqzs.bond.cnfol.com/" target="_blank">债券知识</a></div>
+			    		</div>
+						<div class="cen8L-2L-1L-1">
+			    			<div class="cen8L-2L-1L-1a"><a href="http://whrm.forex.cnfol.com/" target="_blank"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen8-05.gif" border="0" /></a></div>
+							<div class="cen8L-2L-1L-1b"><a href="http://whrm.forex.cnfol.com/" target="_blank">外汇知识</a></div>
+			    		</div>
+			    	</div>
+					<div class="cen8L-2L-1R">
+			    		<div class="cen8L-2L-1L-1">
+			    			<div class="cen8L-2L-1L-1a"><a href="http://bxbk.insurance.cnfol.com/" target="_blank"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen8-02.gif" border="0" /></a></div>
+							<div class="cen8L-2L-1L-1b"><a href="http://bxbk.insurance.cnfol.com/" target="_blank">保险百科</a></div>
+			    		</div>
+						<div class="cen8L-2L-1L-1">
+			    			<div class="cen8L-2L-1L-1a"><a href="http://tzzn.fund.cnfol.com/" target="_blank"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen8-04.gif" border="0" /></a></div>
+							<div class="cen8L-2L-1L-1b"><a href="http://tzzn.fund.cnfol.com/" target="_blank">基金指南</a></div>
+			    		</div>
+						<div class="cen8L-2L-1L-1">
+			    			<div class="cen8L-2L-1L-1a"><a href="http://qhxy.futures.cnfol.com/" target="_blank"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen8-06.gif" border="0" /></a></div>
+							<div class="cen8L-2L-1L-1b"><a href="http://qhxy.futures.cnfol.com/" target="_blank">期货学苑</a></div>
+			    		</div>
+			    	</div>
+			    </div>
+			</div>
+			<div class="cen8L-2R">
+				<div class="cen3L1-1">
+		  			<div class="cen3L1-1a"><img src="http://i1.cnfolimg.com/uploads/v5.0/money/cen3-02.gif" width="17" height="27" /></div>
+			  		<div class="cen3L1-1b"><strong>理财博客</strong></div>
+			  </div>
+				<div class="cen8L-2R-2 lj7">
+			    	<script language="javascript" src="http://blog.js.cnfol.com/ShowArticleListBlogName/gb2312/40/9/1/1447/%A1%A4"></script>
+			  	</div>
+			</div>
+			<div class="both"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen8-700x1.gif" /></div>
+		</div>
+		<div class="cen8L-1"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1x1.gif" /></div>
+	    <div class="cen8L-3" id="ads4">
+	    	
+  	  	</div>
+	</div>
+	<div class="cen8R">
+		<div id="tab7">
+			 <div class="al_bg7">
+			 	<div class="cen1R2-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-13.gif" /></div>
+				<div class="cen1R2-1b"><strong>理财热门文章</strong></div>
+			</div>
+			<div id="tab7_c">{CMS:Click_1540,1537,1538,1539,1553,1542,1549,1544,1554,1555,1556,1557,1552_10_0_1_17}</div>
+		</div>
+   	  <div class="cen8R1">
+			<div class="cen1R2-1">
+	    		<div class="cen1R2-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-13.gif" /></div>
+				<div class="cen1R2-1b"><strong>理财运程</strong></div>
+	    	</div>
+	      <div class="cen8R1-1">
+    	    <div class="cen8R1-1a">
+		    {CMS:HandWork_1771}		
+    	    </div>
+				<div class="cen8R1-1b">
+		    		 {CMS:HandWork_1772}	
+		    	</div>
+      	</div>
+      </div>
+      <div class="cen8R2">
+			<div class="cen1R2-1">
+	    		<div class="cen1R2-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-13.gif" /></div>
+				<div class="cen1R2-1b"><strong>理财工具箱</strong></div>
+	    	</div>
+	        <iframe src="http://www.cnfol.com/inc/money/menu.shtml" width="248" height="240" frameborder="0"></iframe>
+      </div>
+      <div class="cen8R3">
+			<div class="cen1R2-1">
+	    		<div class="cen1R2-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen1-13.gif" /></div>
+				<div class="cen1R2-1b"><strong>联系我们</strong></div>
+	    	</div>
+        <div class="cen8R3-1 lj7">电子邮件：<a href="mailto:money@cnfol.com" target="_blank">money@cnfol.com</a> <br />
+        </div>
+	  </div>
+	</div>
+	<div class="both"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen8-960x1.gif" /></div>
+</div>
+<!-- 内容部分9 -->
+<div class="cen9">
+	<div class="cen9-1">
+		<div class="cen9-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen9-02.gif" /></div>
+		<div class="cen9-1b"><strong>封面秀</strong></div>
+	</div>  
+	<div class="cen9-2"><iframe src="http://www.cnfol.com/inc/v5.0/money/fms.html" frameborder="0" width="100%" height="168" scrolling="no"></iframe></div>
+  </div>
+<!-- 内容部分10 -->
+<div class="cen10">
+	<div class="cen3L1-1">
+		<div class="cen3L1-1a"><img src="http://i0.cnfolimg.com/uploads/v5.0/money/cen3-02.gif" /></div>
+		<div class="cen3L1-1b"><strong>合作伙伴</strong></div>
+	</div>
+    <div class="cen10-1 lj7">{CMS:HandWork_1370}</div>
+</div>
+
+<!--底部部分 -->
+<!--#include virtual="/fol_inc/v5.0/home/footer.shtml" -->
+
+<!--#include virtual="/fol_inc/v5.0/ads/money/moneyads-01.shtml" -->
+
+<!--#include virtual="/fol_inc/v5.0/home/tj.shtml" -->
+<script type="text/javascript" src="http://img.cnfol.com/osapi/v2.0/share-js/quotepop.gbk.js" charset="GBK"></script>
+<script type="text/javascript">
+
+jQuery("#tab2_c img").css("cursor","pointer");
+jQuery("#hq5_nr").find("img").eq(0).css("cursor","default");
+
+jQuery("#hq0_nr").find("img").eq(0).click(function() {
+	quotePop('http://quotes.cnfol.com/exponent/000001K.html','http://my.cnfol.com/app/quotes/000001K'); 
+})
+jQuery("#hq1_nr").find("img").eq(0).click(function() {
+	quotePop('http://quotes.cnfol.com/exponent/399001J.html','http://my.cnfol.com/app/quotes/399001J'); 
+})
+jQuery("#hq2_nr").find("img").eq(0).click(function() {
+	quotePop('http://quotes.cnfol.com/exponent/000003K.html','http://my.cnfol.com/app/quotes/000003K'); 
+})
+jQuery("#hq3_nr").find("img").eq(0).click(function() {
+	quotePop('http://quotes.cnfol.com/exponent/399108J.html','http://my.cnfol.com/app/quotes/399108J'); 
+})
+jQuery("#hq4_nr").find("img").eq(0).click(function() {
+	quotePop('http://quotes.cnfol.com/exponent/399300J.html','http://my.cnfol.com/app/quotes/399300J'); 
+})
+
+
+
+</script>
+</center>
+</body>
+</html> 

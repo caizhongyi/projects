@@ -1,0 +1,112 @@
+﻿@charset "utf-8";
+/*
+* @name		:Template
+* @author	:czy
+* @version	:1.0.0.0
+* @type		:公共
+* @explain	:
+* @relating	:
+* @dependent:
+* @date     : 2011-05-16
+* @qq       : 274142680@qq.com
+*/
+/* ************ template ************* */
+
+/* template */
+html{background:#fff}
+body {font: 12px/1.5 微软雅黑,tahoma,arial;color:#666;}
+ul li{ list-style:none; margin:0; padding:0;}
+a{ text-decoration:none;}
+img{ vertical-align:middle;}
+
+/*  inline block  
+font: 12px/1.2 Tahoma, Arial, Helvetica, sans-serif;
+*/
+.layout{ 
+letter-spacing: -0.40em; /* webkit: collapse white-space between units */ 
+*letter-spacing: normal; /* reset IE < 8 */    
+word-spacing: -0.43em; /* IE < 8 && gecko: collapse white-space between units */
+}
+.layout *{ letter-spacing: normal;word-spacing: normal;  }
+.layout li,
+.layout a,
+.layout dd,
+.layout .inline
+{ 
+	 display:-moz-inline-stack;
+	 display: inline-block;     
+	 zoom: 1; *display: inline; /* IE < 8: fake inline-block */     
+	 letter-spacing: normal;     
+	 word-spacing: normal;     
+	 vertical-align:middle; 
+}
+
+
+/* grid */
+.g-l-230{ float:left; width:230px;}
+
+/* button */
+.btn-ok{ color:#613e06;width:60px; height:25px; background:url(../images/btn-ok.png) no-repeat; border:none; font-weight:bold;}
+.y-btn{ background:url(../images/btn-yellow.png) no-repeat; width:43px; height:19px; line-height:19px; text-align:center; border:none; color:#902c01;}
+
+/* dialog */
+.dialog{ background:url(../images/dialog.png) no-repeat; width:353px; height:133px; text-align:center;}
+.dialog .inner{ font-family:"微软雅黑"; color:#000;  font-weight:bold; margin:30px 30px 20px 30px; font-size:16px;}
+
+/* line */
+.dbline{ border-top:1px solid #dcdcdc; border-bottom:1px solid #ffffff; height:0px;}
+
+/* login */
+.login .login-form{ width:330px; margin:40px 20px;}
+.login li{ margin:9px 0;}
+.login .login-btn{ padding:10px 0;}
+.login .text{ background:url(../images/bg-login-text.png) no-repeat; width:222px; height:30px; }
+.login .text label{width:80px; text-align:center; line-height:30px; color:#fff; font-weight:bold; font-size:14px; margin:0;}
+.login .text input{width:129px;  background:none; border:none; padding:5px;}
+.login .button{background:url(../images/btn-login.png) no-repeat; width:73px; height:66px; border:none;}
+.login label{ color:#00364f; margin:0 20px 0 5px;}
+.login .bt{ color:#902c01;}
+.login .regist{}
+
+/* firend */
+.firend{ background:#ffffff url(../images/bg-firend.png) repeat-x;}
+.firend .msglist{ margin:15px 10px 5px 30px; height:400px; overflow:auto;}
+.firend .total{ margin:5px 30px;}
+.firend .footer{ margin-top:20px;}
+
+.msglist{ padding-right:30px;}
+.msglist div{ vertical-align:middle; }
+.msglist{font-family:"微软雅黑";  font-size:14px; color:#333;}
+.msglist .count{ color:#fd863e; font-weight:bold; background:url(../images/ico-down.png) no-repeat right center; padding-right:20px;}
+.msglist .appname{ color:#8579f9;font-weight:bold;}
+.msglist .pic{width:40px; height:40px; border:1px solid #b5b5b5; padding:1px; margin-right:5px;}
+.msglist span{ color:#878787;}
+.msglist .dbline{ margin:5px 0;}
+.msglist .total{ margin:5px 0;}
+.msglist .sublist{ margin-left:10px; font-size:12px;}
+.msglist .sublist li{ margin:5px 0;}
+
+.total{ font-size:12px;}
+.total .money,
+.total .brand{padding-left:20px; color:#e9cbb4; margin-right:15px;}
+.total .money{ background:url(../images/ico-money.png) no-repeat; }
+.total .brand{ background:url(../images/ico-brand.png) no-repeat; }
+
+.footer .lay{width:100%; height:85px;  display:block; display:inline-block; *display:inline; zoom:1;}
+.footer .lay:hover{ background:url(../images/overlay.png) repeat-x bottom;}
+
+.options{ background:url(../images/bg-footer.png) repeat-x; height:65px; text-align:center; }
+.options .bg{ height:85px;width:121px;background:url(../images/ico-opitons.png) no-repeat; display:inline-block; *display:inline; zoom:1; margin:-20px 0 0 0; margin-right:-5px;}
+.options .dt{background-position:0 -85px;}
+.options .zy{background-position:0 0}
+.options .hy{background-position:0 -170px;}
+.options .yy{background-position:0 -255px;}
+.options .gg{background-position:0 -340px;}
+
+.header{ padding:1px; position:relative;}
+.header .refur{ position:absolute; right:15px; top:15px;}
+.header .tag{ margin:53px 0 0 50px; height:42px;}
+.header .tag a{ color:#fff; font-weight:bold; font-size:14px;vertical-align:middle; margin:0 10px; }
+.header .tag a:hover{ text-decoration:none; }
+
+

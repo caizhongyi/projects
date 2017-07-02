@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>空间抽奖活动应用</title>
+<!-- The site is designed by cnfol.com,Inc 05/2009 -->
+<meta charset="utf-8">
+<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />
+<meta name="keywords" content="keywords" />
+<meta name="description" content="description" />
+<meta name="cnfol" content="cnfol@cnfol.com" />
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="cnfol UDE TEAM" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<meta http-equiv="Window-target" content="_top"/>
+<link rel = "Shortcut Icon" href="favicon.ico"/>
+<!--[if IE]><script type="text/javascript" src="js/PIE-1.0beta4/PIE.js" ></script><![endif]-->
+<!--[if IE]> <script type="text/javascript" src="js/html5.js" ></script><![endif]-->
+<link rel="stylesheet" type="text/css" media="all" href="css/base-min.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/template.css"/>
+<!--[if IE 6]>
+<script type="text/javascript" src="js/ie7/IE7.js" ></script>
+<![endif]-->
+
+<script type="text/javascript" src="js/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('a');
+</script>
+
+
+</head>
+<body >
+
+<header class="header" ><img src="images/banner.jpg" alt="" border="0" usemap="#Map"/>
+<map name="Map" id="Map">
+<area shape="circle" coords="213,158,140" href="javascript:;" onMouseOver="tab.current(0);" alt="每日登录获大奖"/>
+<area shape="circle" coords="462,164,98" href="javascript:;" onMouseOver="tab.current(2);" alt="期期大奖送不停"/>
+<area shape="circle" coords="162,397,104" href="javascript:;"  onMouseOver="tab.current(1);" alt="呼朋史唤友共分享"/>
+<area shape="rect" coords="926,466,988,529" href="javascript:;"  alt="100%中奖"/>
+</map>
+<div class="bar">
+<span>上期中奖号码:&nbsp;xxx</span>
+中奖者:&nbsp;xxxx&nbsp;获得xxx一部
+</div>
+</header>
+
+<section class="container">
+ <div id="tab"  class="tab clearfix">
+    <ul class="tab-tag">
+    <li><a href="#" class="tab-tag1"></a></li>
+    <li><a href="#" class="tab-tag2"></a></li>
+    <li><a href="#" class="tab-tag3"></a></li>
+    </ul>
+    <div class="hline"></div>
+    <ul class="tab-inner" >
+    <li><img alt="" src="images/tab-1.jpg"/></li>
+    <li><img alt="" src="images/tab-2.jpg"/></li>
+    <li><img alt="" src="images/tab-3.jpg"/></li>
+    </ul>
+</div>
+<div class="clear"></div>
+</section>
+<footer class="footer" >
+<div class="footer-inner" >
+<h4>活动说明：</h4>
+<ul class="act-desc">
+<li>登陆即送抽奖机会和奖券！抽奖100%中奖！奖券可赢取每期大奖！</li>
+<li>邀请好友获得更多的抽奖机会和奖券！每期邀请好友最多的用户还可以获得高额金券、手机充值卡！</li>
+<li>每期送出一部Ipad2，一周一期！用户持券参与，奖券越多机会越大！</li>
+<li>
+登陆即送抽奖机会和奖券！抽奖100%中奖！奖券可赢取每期大奖！<br/>
+①	取开奖日前一工作日的上证指数为前四位数和深证指数为后五位数，由此组成一个九位数；<br/>
+②	将该九位数除以本次活动参与用户数而得的余数加1，便为本期大奖的中奖号。<br/>
+如：当日上证：3303.35，深证：13301.98，则该九位数为330330198，若本次活动共有1200人参与，那么330330198÷1200=275275<br/> 
+余数=198，那么中奖号码为198+1=199号。如无199号则取相近的值，送出为止！<br/>
+</li>
+</ul>
+</div>
+</footer>
+<script type="text/javascript" src="js/jquery-1.4.3.min.js" ></script>
+<script type="text/javascript" src="js/jquery-ui.min.js" ></script>
+<script type="text/javascript" src="js/CZYJQuery-min.js" ></script>
+<script type="text/javascript">
+     var tab;
+     $(document).ready(
+        function () {
+            tab=$("#tab").CZYTabs({
+				 autoTab:true,
+				 animateType:"hor",
+				 callback:{changed:function(e){
+				   var tags=$("#tab").find(".tab-tag").children("li");
+				   tags.eq(e.index).children("a").removeClass("tab-tag"+(e.index+1)).addClass("tab-tag"+(e.index+1)+"-on");
+				   tags.eq(e.backIndex).children("a").removeClass("tab-tag"+(e.backIndex+1)+"-on").addClass("tab-tag"+(e.backIndex+1));
+				
+				 }}
+				 });
+        }
+     );
+ </script>
+
+</body>
+</html>
