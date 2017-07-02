@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>403-玩儿道</title>
+
+    <meta name="keywords" content="403, 禁止错误, 玩儿道, 活动在线, 组织者, 规划和布置的网络服务"/>
+    <meta name="description"
+          content="403, 禁止错误"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content="" />
+    <meta name="copyright" content="2001-2010 Comsenz Inc." />
+    <link rel="BookStar" href="favicon.ico" />
+    <link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="js/swipe/dist/index.css"/>
+</head>
+<body class="menu-fixed">
+<!-- header -->
+<div class="header">
+    <div class="search-box">
+        <span class="input-group">
+            <input type="text" class="form-control"/>
+            <span class="input-group-btn">
+                <button class="btn btn-danger">搜索</button>
+            </span>
+        </span>
+    </div>
+    <div id="banner_box" class="box_swipe">
+        <ul>
+            <li><img src="img/default.gif" alt=""/><span class="title">活动名称活动名称</span><div class="mask"></div></li>
+            <li><img src="img/default.gif" alt=""/><span class="title">活动名称活动名称</span><div class="mask"></div></li>
+        </ul>
+        <ol>
+            <li class="on"></li>
+            <li></li>
+        </ol>
+    </div>
+</div>
+<!-- end header -->
+
+<div class="note-tip">
+    详细地址：xxxxxx
+</div>
+<div class="note-tip note-tip-default note-tip-border">
+    <div class="pull-left  note-tip-item">
+        <img src="img/car.jpg" alt="" width="20"/>
+        128/12/21
+    </div>
+    <div class="pull-right note-tip-item">
+        <img src="img/electric.jpg" alt="" width="20"/>
+        253k,电动车大概20分
+    </div>
+</div>
+
+<div class="container-info box">
+    <h4>驾校班级</h4>
+    <ul class="media-list">
+        <li class="media">
+            <img src="img/default.gif" alt="" width="80" class="pull-left media-object" />
+            <div class="media-body">
+                <div class="media-heading">VIP[快班]</div>
+                <span class="text-warning">￥5000</span> <span class="text-muted text-through">￥5000</span>
+                <p>已出售 <span class="text-warning">100</span>件</p>
+            </div>
+        </li>
+        <li class="media">
+            <img src="img/default.gif" alt="" width="80" class="pull-left media-object" />
+            <div class="media-body">
+                <div class="media-heading">VIP[快班]</div>
+                <span class="text-warning">￥5000</span> <span class="text-muted text-through">￥5000</span>
+                <p>已出售 <span class="text-warning">100</span>件</p>
+            </div>
+        </li>
+        <li class="media">
+            <img src="img/default.gif" alt="" width="80" class="pull-left media-object" />
+            <div class="media-body">
+                <div class="media-heading">VIP[快班]</div>
+                <span class="text-warning">￥5000</span> <span class="text-muted text-through">￥5000</span>
+                <p>已出售 <span class="text-warning">100</span>件</p>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="note-tip text-center note-tip-default">
+    <img src="img/o.jpg" alt="" width="20"/>
+    至9月8号，通过率 <span class="text-success h4">10%</span>
+</div>
+
+<div class="container-info">
+    <ul class="list-unstyled row">
+        <li class="col-xs-4"><img src="img/default.gif" alt=""/></li>
+        <li class="col-xs-4"><img src="img/default.gif" alt=""/></li>
+        <li class="col-xs-4"><img src="img/default.gif" alt=""/></li>
+    </ul>
+</div>
+
+
+
+<div class="menu fixed clearfix">
+    <ul class="list-unstyled">
+        <li class="">
+            <a href=""><img src="img/icon-home.gif" alt="" width="30"/></a>
+        </li>
+        <li><a href="">全部驾校</a></li>
+        <li><a href="">我的订单</a></li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="js/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/swipe/dist/index.js"></script>
+<script>
+    $(function () {
+        new Swipe($('#banner_box')[0], {
+            speed: 500,
+            auto: 3000,
+            callback: function () {
+                var lis = $(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
+            }
+        });
+    });
+</script>
+</body>
+</html>

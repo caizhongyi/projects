@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/core.min.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" ></script>
+<script type="text/javascript" src="js/jquery.fixed.js"></script>
+<script type="text/javascript" src="js/jquery.loader.js"></script>
+<script type="text/javascript">
+
+</script>
+<style type="text/css">
+	.fixed{width:200px; height:200px; border:1px solid #ddd; background: #999; border-radius: 5px;position: fixed;}
+	.fixed .fixbar{ background:#ddd; width:100%; height:50px;}
+    .top-fixed{bottom: 0;}
+	.top-fixed .fixbar{ height:50px; float:left;}
+    .left-fixed{left: 0;}
+	.left-fixed .fixbar{  float:right;}
+    .right-fixed{right:0;}
+	.right-fixed .fixbar{ width:50px; height:100%; float:left;}
+
+    .jfixed{ left: 100px; top:100px;}
+
+    .lt{ top: 0; left: 0;}
+    .tr{ top: 0; right: 0;}
+    .rb{ right: 0; bottom: 0;}
+    .lb{ bottom: 0; left: 0;}
+    .b{ bottom: 0; left:50%;}
+    .t{ top: 0; left:50%;}
+    .l{ left: 0; top:50px;}
+    .r{ right: 0; top:50px;}
+</style>
+</head>
+
+<body style='width:2000px;height:1000px;'>
+<div class="wrap">
+    <div data-loader="jquery-fixed" class="fixed lt"></div>
+    <div data-loader="jquery-fixed"  class="fixed tr"></div>
+    <div data-loader="jquery-fixed"  class="fixed rb"></div>
+    <div data-loader="jquery-fixed"  class="fixed lb"></div>
+    <!--<div data-loader="jquery-fixed"  class="fixed b"></div>
+    <div data-loader="jquery-fixed"  class="fixed l"></div>
+    <div data-loader="jquery-fixed"  class="fixed t"></div>
+    <div data-loader="jquery-fixed"  class="fixed r"></div>-->
+</div>
+<script type="text/javascript">
+    $('body').loader();
+</script>
+</body>
+</html>

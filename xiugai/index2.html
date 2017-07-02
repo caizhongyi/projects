@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>403-玩儿道</title>
+
+    <meta name="keywords" content="403, 禁止错误, 玩儿道, 活动在线, 组织者, 规划和布置的网络服务"/>
+    <meta name="description"
+          content="403, 禁止错误"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content="" />
+    <meta name="copyright" content="2001-2010 Comsenz Inc." />
+    <link rel="BookStar" href="favicon.ico" />
+    <link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="js/swipe/dist/index.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/index.css"/>
+</head>
+<body class="menu-fixed">
+
+
+<ul class="list-unstyled row nav-bar">
+    <li class="col-xs-3"><a href=""><img src="img/menu1.jpg" alt="" width="50"/></a> 普通班 </li>
+    <li class="col-xs-3"><a href=""><img src="img/menu2.jpg" alt="" width="50"/></a> VIP班 </li>
+    <li class="col-xs-3"><a href=""><img src="img/menu3.jpg" alt="" width="50"/></a> 白领班 </li>
+    <li class="col-xs-3"><a href=""><img src="img/menu4.jpg" alt="" width="50"/></a> C2班 </li>
+</ul>
+<!-- container -->
+
+<div class="note-tip note-tip-default">
+    <h4>推荐驾校</h4>
+</div>
+<div class="note-tip note-tip-default text-center">
+    <a href="" class="input-search">
+        <img src="img/address.jpg" alt="" width="14"/>
+        选择区域进行检索
+        <img src="img/input-arrow.jpg" alt="" width="14"/>
+    </a>
+    <div class="search-panel row">
+        <ul class="list-unstyled">
+            <li class="col-xs-4"><a href="">二乐区</a></li>
+            <li class="col-xs-4"><a href="">二乐区</a></li>
+            <li class="col-xs-4"><a href="">二乐区</a></li>
+            <li class="col-xs-4"><a href="">二乐区</a></li>
+            <li class="col-xs-4"><a href="">二乐区</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="container-info">
+    <ul class="media-list">
+        <li class="media">
+            <div class="pull-left media-object" >
+                <img src="img/default.gif" alt="" width="80" />
+            </div>
+            <div class="media-body">
+                <div class="media-heading">VIP[快班] <span class="badge badge-warning">较近 </span></div>
+                <div>环境好。。。。。。</div>
+                <div>地址：。。。。。。</div>
+            </div>
+            <br/>
+            <div class="list-box">
+                <div class="box-item clearfix">
+                    <div class="pull-left">
+                        <span class="text-warning">￥5000</span> <br/> <span class="text-muted text-through">￥5000</span>
+                    </div>
+                    <div>
+                        C2快班45天拿驾照，绝无二次收费
+                        <div class="text-right text-muted">已售出<span class="text-warning">100</span>人</div>
+                    </div>
+                </div>
+                <div class="box-item clearfix">
+                    <div class="pull-left">
+                        <span class="text-warning">￥5000</span> <br/> <span class="text-muted text-through">￥5000</span>
+                    </div>
+                    <div>
+                        C2快班45天拿驾照，绝无二次收费
+                        <div class="text-right text-muted">已售出<span class="text-warning">100</span>人</div>
+                    </div>
+                </div>
+                <div class="box-item clearfix">
+                    <div class="pull-left">
+                        <span class="text-warning">￥5000</span> <br/> <span class="text-muted text-through">￥5000</span>
+                    </div>
+                    <div>
+                        C2快班45天拿驾照，绝无二次收费
+                        <div class="text-right text-muted">已售出<span class="text-warning">100</span>人</div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div>
+<!-- end container -->
+
+<div class="menu fixed clearfix">
+    <ul class="list-unstyled">
+        <li class="">
+            <a href=""><img src="img/icon-home.gif" alt="" width="30"/></a>
+        </li>
+        <li><a href="">全部驾校</a></li>
+        <li><a href="">我的订单</a></li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="js/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/swipe/dist/index.js"></script>
+<script>
+    $(function () {
+        new Swipe($('#banner_box')[0], {
+            speed: 500,
+            auto: 3000,
+            callback: function () {
+                var lis = $(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
+            }
+        });
+    });
+</script>
+</body>
+</html>

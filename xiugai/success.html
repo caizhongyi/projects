@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>403-玩儿道</title>
+
+    <meta name="keywords" content="403, 禁止错误, 玩儿道, 活动在线, 组织者, 规划和布置的网络服务"/>
+    <meta name="description"
+          content="403, 禁止错误"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content="" />
+    <meta name="copyright" content="2001-2010 Comsenz Inc." />
+    <link rel="BookStar" href="favicon.ico" />
+    <link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="js/swipe/dist/index.css"/>
+</head>
+<body class="gray">
+
+<div class="message-box">
+    <img src="img/success.gif" alt="" width="230"/>
+    <div class="h4 text-warning">恭喜您报名成功！</div>
+    <div class="text-muted">我们会在24小时与您联系，安排学车</div>
+    <div class="text-muted">联系电话：12454854884</div>
+    <a href="" class="btn-link">返回首页</a>
+</div>
+
+<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="js/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/swipe/dist/index.js"></script>
+<script>
+    $(function () {
+        new Swipe($('#banner_box')[0], {
+            speed: 500,
+            auto: 3000,
+            callback: function () {
+                var lis = $(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
+            }
+        });
+    });
+</script>
+</body>
+</html>

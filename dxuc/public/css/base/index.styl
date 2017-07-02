@@ -1,0 +1,174 @@
+/*!
+* @support  ie8 ++
+* @author   Cai Zhongyi <274142680@qq.com>
+* @website  http://www.alienjs.net
+* @version  1.0.0
+*/
+
+@require '../mixins/index'
+reset()
+base-classes()
+
+types = {
+    default:#fff,
+    link: transparent,
+    primary:#428BCA,
+    info:#5BC0DE,
+    muted:#999,
+    success:#5CB85C,
+    warning:#F0AD4E,
+    danger:#D9534F,
+    dark : #000 ,
+    light:#c4caa5
+}
+
+sizes = xs sm md lg xlg xxlg xxxlg
+
+if !ie-support
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+html
+    position: relative
+
+body, html
+  if ie-support
+    _overflow-y: auto;
+  margin:0 auto;
+  padding: 0;
+  // height: 100%;
+  // overflow-x: hidden;
+  min-height: 100%;
+
+
+if ismobile
+    html
+        max-width 640px;
+        margin 0 auto;
+
+body {
+  -webkit-text-size-adjust: none;
+  color: default-color;
+  font: font-size/1.7 "宋体";
+  //word-break: break-all;    //断词换行
+  word-wrap: break-word; //不断词内容换行
+  //white-space:pre-wrap;
+}
+img
+  max-width: 100%;
+audio {
+  width: 100%;
+}
+input,button,a,span,img,select,em,strong{ vertical-align: middle;}
+strong {font-weight: bold;}
+
+small, .small { color: #999; font-size: 85%;  display: inline-block;}
+
+-font-size = 14px;
+for i in 6...0
+    -font-size += 2
+    h{i},.h{i}
+        font-size : -font-size ;
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
+    color: #999999;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0 5px;
+}
+
+h1 small, h2 small, h3 small, h1 .small, h2 .small, h3 .small {
+    font-size: 65%;
+}
+
+blockquote small {
+  color: #999;
+  display: block;
+}
+pre { overflow: hidden;}
+p
+    text-indent: 0;
+    margin-bottom 10px;
+a
+  text-decoration none;
+  color: #428bca
+  &:hover
+    text-decoration underline;
+
+.inline-block
+   inline-block();
+
+.nowrap
+  white-space: nowrap;
+  word-break: normal;
+  word-wrap: normal;
+
+.grayscale
+  grayscale()
+
+.center-block
+  margin-left: auto;
+  margin-right: auto;
+
+// box-align 实现垂直居中  box-pack 实现水平居中
+.center-box
+  text-align: center;
+  display: box;
+  box-orient: horizontal;
+  box-pack: center;
+  box-align: center;
+
+.unstyled
+  unstyled()
+
+.links
+  a
+    margin-right 10px;
+
+.sitemap
+  a
+    margin 0 10px;
+
+.section
+  margin-bottom: 20px;
+
+.section-sub
+    margin-bottom: 10px
+
+.bg-cover
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+/* Faded out hr */
+hr
+    height: 0px;
+    border: none;
+    border-bottom:1px solid #ddd;
+    margin: 20px 0;
+
+
+.soften
+    background-image: linear-gradient(left, rgba(221, 221, 221, 0), rgba(221, 221, 221, 1), rgba(221, 221, 221, 0));
+    border-top: 1px solid #ddd\9;
+
+
+.hide
+    display none !important
+
+.show
+    display block !important
+
+.visible
+    visibility: visible !important
+
+.hidden
+    visibility: hidden !important
+
+.in
+    visibility: inherit !important
+
+.noresize
+    resize none;

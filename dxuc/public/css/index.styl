@@ -1,0 +1,116 @@
+// TODO css base setting
+font-size = 13px
+ismobile = false
+
+default-color = #444
+//vendors = moz webkit ms o official
+
+//img-path = '../img/'
+//page-width = 1024px
+//space = 15px;
+//ie-support = false
+//responsive = false
+
+@require 'base/index'
+// @require 'animate/animate'
+
+// TODO base styles
+// @require 'controls/btn/index'
+// @require 'controls/icon/index'
+// @require 'controls/form/index'
+// @require 'controls/input/index'
+// @require 'controls/layout/index'
+// @require 'controls/list/index'
+// @require 'controls/navbar/index'
+// @require 'controls/text/index'
+// @require 'controls/article/index'
+
+// TODO extend styles
+// @require 'controls/alert/index'
+// @require 'controls/code/index'
+// @require 'controls/panel/index'
+// @require 'controls/scroll/index'
+// @require 'controls/tooltip/index'
+// @require 'controls/thumbnail/index'
+// @require 'controls/media/index'
+
+// TODO site css
+@require 'site/mobile'
+
+body
+    color #333;
+    // bg-cover:'bg.jpg';
+    font-family microsoft yahei, "黑体", Arial, Simsun, "Arial Unicode MS", Mingliu, Helvetica;
+
+.avater-wrap
+    position: relative
+    .tel
+        color: #fff;
+        position: absolute
+        bottom 30px;
+        width 100%;
+        text-align center;
+        font-size 16px;
+
+    background #0d98fe url(../img/avater-bg.png) center center no-repeat;
+    background-size 250px 250px
+    text-align center
+    padding 60px 0;
+    .content
+        position: relative;
+        left: 3px;
+        top 1px;
+        margin 0 auto;
+        overflow: hidden;
+        width 110px;
+        height: 110px;
+        border-radius 100%;
+    .avater
+        width 100%;
+        height: 100%;
+        background-position center center
+
+.menus
+    li
+        border 1px solid #ddd;
+        width 33.333%
+        padding 20px 10px
+        text-align center;
+        margin -1px 0 0 -1px
+        float: left;
+    a
+        color: #666;
+    a .icon
+        display inline-block
+
+
+.icon-menu-search
+    background url(../img/icon-menu-search.png) no-repeat;
+    background-size (110px / 2) (87px / 2);
+    width (110px / 2);
+    height: (78px / 2);
+
+.icon-menu-chart
+    @extend .icon-menu-search
+    background-image url(../img/icon-menu-chart.png)
+.icon-menu-clock
+    @extend .icon-menu-search
+    background-image url(../img/icon-menu-clock.png)
+.icon-menu-clound
+    @extend .icon-menu-search
+    background-image url(../img/icon-menu-clound.png)
+.icon-menu-gift
+    @extend .icon-menu-search
+    background-image url(../img/icon-menu-gift.png)
+.icon-menu-list
+    @extend .icon-menu-search
+    background-image url(../img/icon-menu-list.png)
+.icon-menu-phone
+    @extend .icon-menu-search
+    background-image url(../img/icon-menu-phone.png)
+.icon-menu-user
+    @extend .icon-menu-search
+    background-image url(../img/icon-menu-user.png)
+.icon-menu-money
+    @extend .icon-menu-search
+    background-image url(../img/icon-menu-money.png)

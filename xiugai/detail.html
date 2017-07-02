@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>403-玩儿道</title>
+
+    <meta name="keywords" content="403, 禁止错误, 玩儿道, 活动在线, 组织者, 规划和布置的网络服务"/>
+    <meta name="description"
+          content="403, 禁止错误"/>
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content="" />
+    <meta name="copyright" content="2001-2010 Comsenz Inc." />
+    <link rel="BookStar" href="favicon.ico" />
+    <link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="js/swipe/dist/index.css"/>
+</head>
+<body class="menu-fixed">
+<!-- header -->
+<div class="header">
+    <div id="banner_box" class="box_swipe">
+        <ul>
+            <li><img src="img/default.gif" alt=""/><span class="title">活动名称活动名称</span><div class="mask"></div></li>
+            <li><img src="img/default.gif" alt=""/><span class="title">活动名称活动名称</span><div class="mask"></div></li>
+        </ul>
+        <ol>
+            <li class="on"></li>
+            <li></li>
+        </ol>
+    </div>
+</div>
+<!-- end header -->
+
+<div class="note-tip">
+    最快45天拿到证。
+</div>
+<div class="note-tip note-tip-default">
+    <div class="pull-left">
+        大专享价 <strong class="text-warning">￥ <span class="h3">4444</span></strong>
+        <span class="text-muted text-through">￥5000</span>
+    </div>
+    <div class="pull-right">
+        累计售出 <span class="text-warning">2000</span>人
+    </div>
+</div>
+<div class="note-tip note-tip-default">
+    <img src="img/tel.gif" alt="" width="25"/>
+    电话咨询：<span class="h3">1222228822</span>
+</div>
+<div class="container-info">
+    <h4>服务详情</h4>
+</div>
+
+
+<div class="menu fixed clearfix">
+    <ul class="list-unstyled">
+        <li class="">
+            <a href=""><img src="img/icon-home.gif" alt="" width="30"/></a>
+        </li>
+        <li class="btn-item">
+            <button class="btn btn-danger btn-block">立即报名</button>
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="js/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/swipe/dist/index.js"></script>
+<script>
+    $(function () {
+        new Swipe($('#banner_box')[0], {
+            speed: 500,
+            auto: 3000,
+            callback: function () {
+                var lis = $(this.element).next("ol").children();
+                lis.removeClass("on").eq(this.index).addClass("on");
+            }
+        });
+    });
+</script>
+</body>
+</html>

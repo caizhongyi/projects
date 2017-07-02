@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="http://www.bootcss.com/assets/dist/css/bootstrap.min.css"/>
+    <script src="http://www.bootcss.com/assets/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="http://v2.bootcss.com/assets/js/google-code-prettify/prettify.css"/>
+    <script src="http://v2.bootcss.com/assets/js/google-code-prettify/prettify.js"></script>
+<script type="text/javascript" src="js/Fun.js" ></script>
+<script type="text/javascript" src="js/Date.js" ></script>
+<script type="text/javascript" src="js/String.js" ></script>
+<script type="text/javascript" src="js/Array.js" ></script>
+
+</head>
+
+<body style="margin: 10px;">
+
+<pre class="prettyprint linenums">
+'test'.toUpper()  输出:<script type="text/javascript">document.write('test'.toUpper())</script>
+'Test'.toLower()  输出:<script type="text/javascript">document.write('Test'.toLower())</script>
+'   Test   '.trim()  输出:<script type="text/javascript">document.write('   Test   '.trim())</script>
+'<b>test</b>'.escapeHTML()  输出:<script type="text/javascript">document.write('<b>test</b>'.escapeHTML())</script>
+'&lt;b&gt;test&lt;/b&gt;'.unescapeHTML()  输出:<script type="text/javascript">document.write('<b>test</b>'.escapeHTML())</script>
+'test'.onhex()  输出:<script type="text/javascript">document.write('test'.onhex())</script>
+'\u0074\u0065\u0073\u0074'.unhex()  输出:<script type="text/javascript">document.write('\u0074\u0065\u0073\u0074'.unhex())</script>
+'http://www.qq.com'.addquery('q',1).addquery('q1',1)  输出:<script type="text/javascript"> document.write('http://www.qq.com'.addquery('q',1).addquery('q1',1).delquery('q'))</script>
+'http://www.qq.com'.escape()  输出:<script type="text/javascript"> document.write('http://www.qq.com'.escape())</script>
+'http://www.qq.com'.left(5)  输出:<script type="text/javascript"> document.write('http://www.qq.com'.left(5))</script>
+
+</pre>
+<textarea name="" id="escapeHtml" cols="30" rows="10" style="width: 100%; height: 200px;"></textarea>
+<button type="button" id="escapeHtml-btn">escapeHtml</button>
+<script type="text/javascript">
+    $('#escapeHtml-btn').click(function(){
+        $('#escapeHtml').val(function(){
+            return $(this).val().escapeHTML();
+        })
+    })
+</script>
+<script type="text/javascript">
+    prettyPrint();
+</script>
+
+</body>
+</html>

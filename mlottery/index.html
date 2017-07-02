@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>js抽奖</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <style>
+        *{ margin: 0; padding: 0; font-size:12px;}
+        body{ background-color: #2C1914;font-family:"宋体"; }
+        a img, ul, li { list-style: none; }
+        a{text-decoration:none; outline:none; font-size:12px;}
+        input, textarea, select, button { font-size: 100%;}
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="header"></div>
+    <div class="main">
+        <div class="con980">
+            <div class="play rel" id="lottery">
+                <p class="btn_arr abs"><input value="点击领奖" id="btn1" type="button"  class="play_btn"  data-play></p>
+                <table class="playtab" data-tb cellpadding="0" cellspacing="1">
+                    <tr>
+                        <td>Prize</td><td>Prize</td><td>Prize</td>
+                    </tr>
+                    <tr>
+                        <td>Prize</td><td></td><td>Prize</td>
+                    </tr>
+                    <tr>
+                        <td>Prize</td><td></td><td>Prize</td>
+                    </tr>
+                    <tr>
+                        <td>Prize</td><td>Prize</td><td>Prize</td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="play rel" id="lottery1">
+                <p class="btn_arr abs"><input value="点击领奖"  type="button"  class="play_btn"  data-play></p>
+                <table class="playtab" data-tb cellpadding="0" cellspacing="1">
+                    <tr>
+                        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+                    </tr>
+                    <tr>
+                        <td>16</td><td></td><td></td><td></td><td>6</td>
+                    </tr>
+                    <tr>
+                        <td>15</td><td></td><td></td><td></td><td>7</td>
+                    </tr>
+                    <tr>
+                        <td>14</td><td></td><td></td><td></td><td>8</td>
+                    </tr>
+                    <tr>
+                        <td>13</td><td>12</td><td>11</td><td>10</td><td>9</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src=" http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript">
+    new MLottery('#lottery',{
+        callback : function(){
+            console.log(this);
+        }
+    });
+    new MLottery('#lottery1');
+
+</script>
+</body>
+</html>
