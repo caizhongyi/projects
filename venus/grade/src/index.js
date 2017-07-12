@@ -1,6 +1,7 @@
 
 
 !(function( $ ){
+    // 星星评价
     $.fn.grade = function(){
 
         function setVal( index ){

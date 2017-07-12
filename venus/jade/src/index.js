@@ -1,5 +1,5 @@
 //s6d
-module { jade   } from 'jadee.js'
+//module { jade   } from 'jadee.js'
 //-s6d
 !(function( $ ){
     /**

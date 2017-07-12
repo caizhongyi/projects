@@ -1,7 +1,7 @@
 //s6d
-module "jade" {
-  export  jadeRequire("jade");
-}
+// module "jade" {
+//   export  jadeRequire("jade");
+// }
 //-s6d
 
 (function() {
