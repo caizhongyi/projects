@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="../../css/PluginCss/Share/Share.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Plugin/Share/wanerdao2.sharetools.js" type="text/javascript"></script> 
+    <script type="text/javascript">
+
+        $(function () {
+            $('div.sharetools').ShareTools({ showAcitivity: true, showGroup: true, showInformations: false, showBlog: true,
+                activityHandler: function (data) {
+                    if (data) {
+                        $('#sharetoactivity').val(data.id);
+                    } else {
+                        $('#sharetoactivity').val('');
+                    }
+                },
+                groupHandler: function (data) {
+                    if (data) {
+                        $('#sharetogroup').val(data.id);
+                    } else {
+                        $('#sharetogroup').val('');
+                    }
+                },
+                inforHandler: function (data) {
+                    if (data) {
+                        $('#sharetoinfor').val(data.id);
+                    } else {
+                        $('#sharetoinfor').val('');
+                    }
+                },
+                blogHandler: function (data) {
+                    if (data) {
+                        $('#sharetoblog').val(data.id);
+                    } else {
+                        $('#sharetoblog').val('');
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+活动<input type="text" id="sharetoactivity" />
+圈子<input type="text" id="sharetogroup" />
+杂烩<input type="text" id="sharetoinfor" />
+圈子<input type="text" id="sharetoblog" />
+<div class="sharetools"></div>
+<div style="clear:both;"></div>
+    说明：杂烩暂时不可用
+</body>
+</html>

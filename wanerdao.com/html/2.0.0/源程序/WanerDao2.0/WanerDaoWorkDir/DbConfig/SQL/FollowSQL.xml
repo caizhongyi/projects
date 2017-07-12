@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SQLScript xmlns="SQL.xsd">
+  <!--查询个人关注度SQL-->
+  <SQL ID="SelectCount_FriendsFollow">
+    SELECT count(id) as sumID FROM PersonalFriendsFollow WHERE active=1 and  attention_id =?user_id
+  </SQL>
+
+  <!--查询圈子关注度SQL-->
+  <SQL ID="SelectCount_ActivityFollow">
+    SELECT count(id) as sumID FROM PersonalActivityFollow WHERE active=1 and  attention_id =?id
+  </SQL>
+
+  <!--查询活动关注度SQL-->
+  <SQL ID="SelectCount_GroupFollow">
+    SELECT count(id) as sumID FROM PersonalGroupFollow WHERE active=1 and  attention_id =?id
+  </SQL>
+
+  <!--添加好友关注SQL-->
+  <SQL ID="ADDFriendsFollow">
+    INSERT INTO PersonalFriendsFollow (id, user_id, attention_id,attention_datetime, is_email) VALUES (Replace(uuid(),'-',''), ?user_id, ?attention_id, sysdate(),1)
+  </SQL>
+
+  <!--取消好友关注SQL-->
+  <SQL ID="DelFriendsFollow">
+    update PersonalFriendsFollow  set active = 0 where user_id=?user_id and attention_id=?attention_id
+  </SQL>
+
+  <!--圈子关注SQL-->
+  <SQL ID="AddGroupFollow">
+    INSERT INTO PersonalGroupFollow (id, user_id, attention_id,attention_datetime, is_email) VALUES (Replace(uuid(),'-',''), ?user_id, ?group_id, sysdate(),1);
+    update GroupInfo set follow_score=follow_score+?addvalue where id = ?group_id;
+  </SQL>
+
+  <!--圈子关注取消SQL-->
+  <SQL ID="DelGroupFollow">
+    update PersonalGroupFollow  set active = 0 where user_id=?user_id and attention_id=?group_id and active=1;
+    update GroupInfo set follow_score=follow_score+?addvalue where id = ?group_id;
+  </SQL>
+
+  <!--徐蓓添加开始-->
+
+  <!--个人关注圈子-->
+  <SQL ID="CreatePersonalGroupFollow">
+    insert into personalgroupfollow(id,user_id,attention_id,attention_datetime,is_email,email_duration,active) values(?id,?user_id,?attention_id,?attention_datetime,?is_email,?email_duration,?active);
+    update groupinfo set follow_score=follow_score+?value where id=?attention_id
+  </SQL>
+  <SQL ID="UpdateGroupFollowScore">
+    update GroupInfo set follow_score=follow_score+?followScore where id = ?id;
+  </SQL>
+  <SQL ID="DeletePersonalGroupFollow">
+    delete from personalgroupfollow where user_id=?user_id and attention_id=?attention_id
+  </SQL>
+  <SQL ID="HasPersonalGroupFollow">
+    select count(id) as count from personalgroupfollow where user_id=?user_id and attention_id=?attention_id and active=true
+  </SQL>
+  <SQL ID="CancelPersonalGroupFollow">
+    update personalgroupfollow set active=false where attention_id=?attention_id and user_id=?user_id;
+    update groupInfo set follow_score=follow_score-?value where id=?attention_id;
+  </SQL>
+  <SQL ID="UpdatePersonalGroupFollowDuration">
+    update personalgroupfollow set is_email=?is_email,email_duration=?email_duration where id=?id;
+  </SQL>
+  <!--个人关注朋友-->
+  <SQL ID="CreatePersonalFriendsFollow">
+    insert into personalfriendsfollow(id,user_id,attention_id,attention_datetime,is_email,email_duration,active) values(?id,?user_id,?attention_id,?attention_datetime,?is_email,?email_duration,?active);
+    update personalprofile set follow_score=follow_score+?value where user_id=?attention_id
+  </SQL>
+  <SQL ID="DeletePersonalFriendsFollow">
+    delete from personalfriendsfollow where user_id=?user_id and attention_id=?attention_id
+  </SQL>
+  <SQL ID="HasPersonalFriendsFollow">
+    select count(id) as count from personalfriendsfollow where user_id=?user_id and attention_id=?attention_id and active=true
+  </SQL>
+  <SQL ID="CancelPersonalFriendsFollow">
+    update personalfriendsfollow set active=false where attention_id=?attention_id and user_id=?user_id;
+    update personalprofile set follow_score=follow_score-?value where user_id=?attention_id
+  </SQL>
+  <SQL ID="UpdatePersonalFriendsFollowDuration">
+    update personalfriendsfollow set is_email=?is_email,email_duration=?email_duration where id=?id
+  </SQL>
+
+  <!--个人关注活动-->
+  <SQL ID="CreatePersonalActivityFollow">
+    insert into personalactivityfollow(id,user_id,attention_id,attention_datetime,is_email,email_duration,active) values(?id,?user_id,?attention_id,?attention_datetime,?is_email,?email_duration,?active);
+    update activity set follow_score=follow_score+?value where id=?attention_id;
+  </SQL>
+  <SQL ID="DeletePersonalActivityFollow">
+    delete from personalactivityfollow where user_id=?user_id and attention_id=?attention_id
+  </SQL>
+  <SQL ID="CancelPersonalActivityFollow">
+    update personalactivityfollow set active=false where user_id=?user_id and attention_id=?attention_id;
+    update activity set follow_score=follow_score-?value where id=?attention_id;
+  </SQL>
+  <!--<SQL ID="CancelPersonalActivityFollow">
+    update personalactivityfollow set active=false where id=?id;
+    update activity set follow_score=follow_score-1 where id=?id;
+  </SQL>-->
+  <SQL ID="HasPersonalActivityFollow">
+    select count(id) as count from personalactivityfollow where user_id=?user_id and attention_id=?attention_id and active=true
+  </SQL>
+  <SQL ID="GetPersonalActivitiyFollow">
+    select paf.*,a.activity_link,a.activity_name,a.address,a.join_member_nbr,a.begin_datetime,a.end_datetime,ac.category_id,acs.category_name from personalactivityfollow paf INNER JOIN activity a on paf.attention_id=a.id INNER JOIN activitycategory ac on a.id=ac.activity_id INNER JOIN activitycategorysettings acs on ac.category_id=acs.id where paf.user_id=?user_id and paf.active=TRUE and a.active=TRUE and ac.active=TRUE and acs.active=TRUE ORDER BY a.begin_datetime asc LIMIT 1
+  </SQL>
+  <SQL ID="GetPersonalActivityFollowCountByActivityId">
+    select count(*) count from personalactivityfollow where attention_id=?attention_id and active=true
+  </SQL>
+  <SQL ID="UpdatePersonalActivityFollowDuration">
+    update personalactivityfollow set is_email=?is_email,email_duration=?email_duration where id=?id
+  </SQL>
+  <!--个人关注杂烩-->
+  <SQL ID="CreatePersonalPostsFollow">
+    insert into personalpostsfollow(id,user_id,attention_id,attention_datetime,is_email,email_duration,active) values(?id,?user_id,?attention_id,?attention_datetime,?is_email,?email_duration,?active)
+  </SQL>
+  <SQL ID="DeletePersonalPostsFollow">
+    delete from personalpostsfollow where user_id=?user_id and attention_id=?attention_id
+  </SQL>
+  <SQL ID="CancelPersonalPostsFollow">
+    update personalpostsfollow set active=false where id=?id
+  </SQL>
+  <SQL ID="HasPersonalPostsFollow">
+    select count(id) as count from personalpostsfollow where user_id=?user_id and attention_id=?attention_id and active=true
+  </SQL>
+  <SQL ID="UpdatePersonalPostsFollowDuration">
+    update personalpostsfollow set is_email=?is_email,email_duration=?email_duration where id=?id
+  </SQL>
+  <!--关注活动分类-->
+  <SQL ID="CreateActivityCategoryFollow">
+    insert into activitycategoryfollow(id,user_id,attention_id,attention_datetime,is_email,email_duration,active) values(?id,?user_id,?attention_id,?attention_datetime,?is_email,?email_duration,?active);
+  </SQL>
+  <SQL ID="DeleteActivityCategoryFollow">
+    delete from activitycategoryfollow where user_id=?user_id and attention_id=?attention_id
+  </SQL>
+  <SQL ID="CancelActivityCategoryFollow">
+    update activitycategoryfollow set active=false where id=?id;
+  </SQL>
+  <SQL ID="HasActivityCategoryFollow">
+    select count(id) as count from activitycategoryfollow where user_id=?user_id and attention_id=?attention_id and active=true
+  </SQL>
+  <SQL ID="GetActivityCategoryFollowCountByActivityCategoryId">
+    select count(*) count from activitycategoryfollow where attention_id=?attention_id and active=true
+  </SQL>
+  <SQL ID="UpdateActivityCategoryDuration">
+    update activitycategoryfollow set is_email=?is_email,email_duration=?email_duration where id=?id
+  </SQL>
+  <!--关注模块-->
+  <SQL ID="CreatePersonalModuleFollow">
+    insert into personalmodulefollow values(?id,?user_id,?source_type_id,?attention_id,?attention_datetime,?is_email,?email_duration,?active);
+  </SQL>
+  <SQL ID="UpdatePersonalModuleFollowDuration">
+    update personalmodulefollow set is_email=?is_email,email_duration=?email_duration where id=?id;
+  </SQL>
+  <SQL ID="HasPersonalModuleFollow">
+    select count(*) count from personalmodulefollow where user_id=?user_id and attention_id=?attention_id and source_type_id=?source_type_id and active=true;
+  </SQL>
+  <SQL ID="GetPersonalModuleFollowCountByAttentionIdAndSourceTypeId">
+    select count(*) count from personalmodulefollow where attention_id=?attention_id and source_type_id=?source_type_id and active=true;
+  </SQL>
+  <SQL ID="GetPersonalModuleFollowCountByAttentionId">
+    select count(*) count from personalmodulefollow where attention_id=?attention_id and active=true;
+  </SQL>
+  <SQL ID="CancelPersonalModuleFollow">
+    update personalmodulefollow set active=false where attention_id=?attention_id and user_id=?user_id and source_type_id=?source_type_id
+  </SQL>
+  <!--徐蓓添加结束-->
+
+  <!--判断是否好友关注SQL-->
+  <SQL ID="hasFriendsFollow">
+    select id  from PersonalFriendsFollow  where user_id=?user_id and attention_id=?attention_id and active=true
+  </SQL>
+</SQLScript>

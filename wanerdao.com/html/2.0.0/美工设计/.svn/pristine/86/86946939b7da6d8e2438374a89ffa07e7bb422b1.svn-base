@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My group memeber-Relationship-Savorboard</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="Group member, Relationship, Savorboard, Life and social network" />
+<meta name="description" content="Group member list, administrator can confirm join application" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../css/relationship.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$(".drop_down").toggle(function(){
+		$(".drop_down i").width(0);
+		$(".drop_down i").css("display","none");
+		$(this).children("i").width($(this).width()+25);
+		$(this).children("i").css("display","block");
+	},function(){
+		$(this).children("i").css("display","none");
+	})
+	$(document).mousedown(function(){
+		$(".drop_down i").css("display","none");
+	})
+	
+	$(".list_member li").hover(function(){
+		$(this).addClass("liw_bg_blue");
+		$(this).children(".flAtteDiv").css("display","none");
+	},function(){
+		$(this).removeClass("liw_bg_blue");	
+		$(this).children(".flAtteDiv").css("display","block");
+	})
+	
+});
+</script>
+<link rel="stylesheet" type="text/css" href="../css/en.css" media="all" />
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+	<div class="header layout">
+    	<a href="index.html" class="logo"></a>
+        <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="Go Home"></a>
+            <div class="home_pop">
+            	<ul>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Activity</a>
+                        <p><a href="javascript:;">Looking for activities</a><a href="javascript:;">Create activities</a><a href="javascript:;">Classification activities</a><a href="javascript:;">Custom activities</a><a href="javascript:;">Seasonal activities</a><a href="javascript:;">My activities</a><a href="javascript:;">Historical activities</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Personal</a>
+                        <p><a href="javascript:;">Profile</a><a href="javascript:;">Diary</a><a href="javascript:;">Album</a><a href="javascript:;">Video</a></p>
+                    </li>
+                    <li  class="last">
+                        <a href="javascript:;" class="hp_title">Relationship</a>
+                        <p><a href="javascript:;">My friends</a><a href="javascript:;">Search friends</a><a href="javascript:;">Invite friends</a><a href="javascript:;">Subscription settings</a><a href="javascript:;">My groups</a><a href="javascript:;">Search group</a><a href="javascript:;">Create a group</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+                <input type="text" class="search_txt" value="Artivity/Firend/Group/Article" inputdefault="Artivity/Firend/Group/Article" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/defucult/head.jpg" width="32" height="32"></a><span class="user_infor_name"><a href="javascript:;">Cooking - life in the life journey<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">Modify profile</a></li>
+                    <li><a href="javascript:;">Account management</a></li>
+                    <li><a href="javascript:;">Privacy Settings</a></li>
+                    <li><a href="javascript:;">Change language</a></li>
+                    <li class="last"><a href="javascript:;">Exit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+	<div class="mes_box per_blog clearfix">
+        
+        <div class="black10"></div>
+        <div class="black10"></div>
+        <div class="black10"></div>
+        <div class="mes_com_box_Tab">
+            <a href="javascript:;">My friends</a>
+            <a href="javascript:;">Search friends</a>
+            <a href="javascript:;">Invite friends</a>
+            <a href="javascript:;">Follow Setting</a>
+            <a href="javascript:;" class="active">My groups</a>
+            <a href="javascript:;">Search groups</a>
+            <a href="javascript:;">Create a group</a>
+        </div>
+        <div class="black10"></div>
+        <div class="black10"></div>
+        <div class="black10"></div>
+        
+        <div class="log_tab clearfix mb12">
+            <ul>
+                <li><a href="javascript:;">Information</a></li>
+                <li><a href="javascript:;">Comprehensive</a></li>
+                <li><a href="javascript:;" class="tagf">Members</a></li>
+                <li><a href="javascript:;">Financial</a></li>
+                <li><a href="javascript:;">Setting</a></li>
+            </ul>
+        </div>
+        
+        <div class="ColuTwo_wrap clearfix">
+					<div class="leftside">
+                        <div class="black10"></div>
+                        <div class="addGroup">
+                            <h3 class="groupTit f14 follow_tit">Search members</h3>
+                            <p><input type="text" class="text" style="width:122px; color:#CCC;" onclick="if(this.value==this.defaultValue){this.value=''; this.style.color='#333';}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc'}" value="请输入圈子名称" /> <input type="button" value="Search" class="prBtn"></p>
+                        </div>
+					</div>
+					<div class="rCon" style="">
+						<div class="topNav">
+                            <div class="clearfix pagewrap">
+                        <!-- 分页右边 -->
+                        <div class="pageList  f_right">
+                            <a  href="javascript:;">More</a>&nbsp;&nbsp;
+                            <a title="First" href="javascript:;">First</a>
+                            <a title="Previous" href="javascript:;">Previous</a>
+                            <span><i>01</i>/<i>20</i></span>
+                            <a title="Next" href="javascript:;">Next</a>
+                            <a title="Last" href="javascript:;">Last</a>
+                        </div>
+                        <!-- 分页右边 -->
+                    </div>
+            	        </div>
+                        
+                        <div class="list_member">
+                              <ul>
+                                <li class="liw_bg">
+                                  <dl>
+                                    <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt="" /></a></dt>
+                                    <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                                  </dl>
+                                  <div class="se_center"> 
+                                    <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span> 
+                                    <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span> 
+                                    <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span> 
+                                    <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span> 
+                                    <span><font color="#999999">工作单位：</font> GOOGLE INC</span> 
+                                  </div>
+                                  <div class="se_righbtn"><a href="javascript:;" class="btn_info">Send message</a> <a href="javascript:;" class="btn_approve">Approve</a> <a href="javascript:;" class="btn_reject">Decline</a> </div>
+                                </li>
+                                <li class="liw_bg">
+                                  <dl>
+                                    <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt="" /></a></dt>
+                                    <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                                  </dl>
+                                  <div class="se_center"> 
+                                    <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span> 
+                                    <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span> 
+                                    <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span> 
+                                    <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span> 
+                                    <span><font color="#999999">工作单位：</font> GOOGLE INC</span> 
+                                  </div>
+                                  <div class="se_righbtn"><a href="javascript:;" class="btn_info">Send message</a> <a href="javascript:;" class="btn_approve">Approve</a> <a href="javascript:;" class="btn_reject">Decline</a> </div>
+                                </li>
+                                <li class="liw_bg">
+                                  <dl>
+                                    <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt="" /></a></dt>
+                                    <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                                  </dl>
+                                  <div class="se_center"> 
+                                    <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span> 
+                                    <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span> 
+                                    <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span> 
+                                    <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span> 
+                                    <span><font color="#999999">工作单位：</font> GOOGLE INC</span> 
+                                  </div>
+                                  <div class="se_righbtn"><a href="javascript:;" class="btn_info">Send message</a> <a href="javascript:;" class="btn_approve">Approve</a> <a href="javascript:;" class="btn_reject">Decline</a> </div>
+                                </li>
+                                <li class="">
+                                  <dl>
+                                    <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt="" /></a></dt>
+                                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                                  </dl>
+                                  <div class="se_center"> <span><img src="../images/pic_poll1.jpg" /> <a href="javascript:;" style="color:#0085c5">AHXIAOPENG</a></span></div>
+                                  <div class="flAtteDiv"><a href="javascript:;" class="has_atten">已关注</a></div>
+                                  <div class="se_righbtn se_righbtn_atten"><a href="javascript:;" class="btn_friend">交友</a> <a href="javascript:;" class="btn_winkle">踢出</a> <a href="javascript:;" class="btn_attention">关注</a> </div>
+                                </li>
+                                <li class="">
+                                  <dl>
+                                    <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt="" /></a></dt>
+                                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                                  </dl>
+                                  <div class="se_center"> <span><img src="../images/pic_poll2.jpg" /> <a href="javascript:;" style="color:#0085c5">AHXIAOPENG</a></span></div>
+                                  <div class="se_righbtn"><a href="javascript:;" class="btn_friend">交友</a> <a href="javascript:;" class="btn_winkle">踢出</a> <a href="javascript:;" class="btn_attention">关注</a> </div>
+                                </li>
+                                <li class="">
+                                  <dl>
+                                    <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt="" /></a></dt>
+                                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                                  </dl>
+                                  <div class="se_center"> <span><img src="../images/pic_poll3.png" /> <a href="javascript:;" style="color:#0085c5">AHXIAOPENG</a></span> 
+                                    <div class="se_righbtn"><a href="javascript:;" class="btn_friend">交友</a> <a href="javascript:;" class="btn_winkle">踢出</a> <a href="javascript:;" class="btn_attention">关注</a> </div>
+                                  </div>
+                                </li>
+                                <li class="">
+                                  <dl>
+                                    <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt="" /></a></dt>
+                                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                                  </dl>
+                                  <div class="se_center"> <span><img src="../images/pic_poll4.png" /> <a href="javascript:;" style="color:#0085c5">AHXIAOPENG</a></span> 
+                                    <div class="se_righbtn"><a href="javascript:;" class="btn_friend">交友</a> <a href="javascript:;" class="btn_winkle">踢出</a> <a href="javascript:;" class="btn_attention">关注</a> </div>
+                                  </div>
+                                </li>
+                                <li class="">
+                                  <dl>
+                                    <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt="" /></a></dt>
+                                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                                  </dl>
+                                  <div class="se_center"> <span><a href="javascript:;" style="color:#0085c5">AHXIAOPENG</a></span> 
+                                    <div class="se_righbtn"><a href="javascript:;" class="btn_friend">交友</a> <a href="javascript:;" class="btn_winkle">踢出</a> <a href="javascript:;" class="btn_attention">关注</a> </div>
+                                  </div>
+                                </li>
+                                <li class="">
+                                  <dl>
+                                    <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt="" /></a></dt>
+                                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                                  </dl>
+                                  <div class="se_center"> <span><a href="javascript:;" style="color:#0085c5">AHXIAOPENG</a></span> 
+                                    <div class="se_righbtn"><a href="javascript:;" class="btn_friend">交友</a> <a href="javascript:;" class="btn_winkle">踢出</a> <a href="javascript:;" class="btn_attention">关注</a> </div>
+                                  </div>
+                                </li>
+                                <li class="">
+                                  <dl>
+                                    <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt="" /></a></dt>
+                                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                                  </dl>
+                                  <div class="se_center"> <span> <a href="javascript:;" style="color:#0085c5">AHXIAOPENG</a></span> 
+                                    <div class="se_righbtn"><a href="javascript:;" class="btn_friend">交友</a> <a href="javascript:;" class="btn_winkle">踢出</a> <a href="javascript:;" class="btn_attention">关注</a> </div>
+                                  </div>
+                                </li>
+                              </ul>
+                        </div>
+                        
+              			<div class="topNav bmNav">
+                            <div class="clearfix pagewrap">
+                        <!-- 分页右边 -->
+                        <div class="pageList  f_right">
+                            <a  href="javascript:;">More</a>&nbsp;&nbsp;
+                            <a title="First" href="javascript:;">First</a>
+                            <a title="Previous" href="javascript:;">Previous</a>
+                            <span><i>01</i>/<i>20</i></span>
+                            <a title="Next" href="javascript:;">Next</a>
+                            <a title="Last" href="javascript:;">Last</a>
+                        </div>
+                        <!-- 分页右边 -->
+                    </div>
+            	        </div>
+					</div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</div>
+<div class="mes_main_bot"></div>
+
+
+<div class="footer layout">
+	<span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a href="javascript:;">Help</a></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>编辑个人信息-个人-玩儿道</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="编辑个人资料，联系方式，个人，玩儿道，生活社交网络" />
+<meta name="description" content="编辑个人资料的联系方式" />
+
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../css/personal.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".inp_modify").each(function(){
+		$(this).click(function(){
+			obj = $(this).parent().parent().parent().find(".hobby_listB");
+			if(obj.css('display')=='none'){
+				obj.show();	
+			}else{
+				obj.hide();	
+			}
+		});  
+	});
+});
+</script>
+</head>
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+	<div class="header layout">
+    	<a href="index.html" class="logo"></a>
+        <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="回到首页"></a>
+            <div class="home_pop">
+            	<ul>
+                	<li>
+                        <a href="javascript:;" class="hp_title">活动</a>
+                        <p><a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a href="javascript:;">我的活动</a><a href="javascript:;">历史活动</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">个人</a>
+                        <p><a href="javascript:;">资料</a><a href="javascript:;">日志</a><a href="javascript:;">相册</a><a href="javascript:;">视频</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">关系</a>
+                        <p><a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+        		<input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/default/32-32.jpg" width="32" height="32"></a><span class="user_infor_name"><a href="javascript:;">烧饭-人生旅途中人生旅途中<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+	<div class="mes_box clearfix">
+		<div class="mes_box_left">
+            <div class="black5"></div>
+            <div class="black10"></div>
+            <div class="black10"></div>
+            <div class="mes_com_box_Tab">
+                <a href="javascript:;" class="active">资料</a>
+                <a href="javascript:;">日志</a>
+                <a href="javascript:;">相册</a>
+                <a href="javascript:;">视频</a>
+            </div>
+            
+            <div class="mainlist clearfix" >
+                <div class="datum_hobby_le">
+                    <ul>
+                        <li><a href="personal_edit_basic.html">基本信息</a></li>
+                        <li><a href="personal_edit_teach.html">教育背景</a></li>
+                        <li><a href="personal_edit_word.html">工作背景</a></li>
+                        <li><a href="personal_edit_hobby.html">兴趣爱好</a></li>
+                        <li class="current"><a href="personal_edit_way.html">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="datum_hobby">
+                    
+                    <div class="hobby_list">
+                        <div class="hobby_listT">
+                            <ul>
+                                <li><label>E-mail：</label> Ahxiaomage@163.com</li>
+                                <li><label>QQ：</label> 1132548</li>
+                                <li><label>MSN：</label> Ahxiaomage@hotmail.com</li>
+                                <li><label>手机号：</label> 16812367895</li>
+                                <li><label>个人网站：</label> <a href="">http://www.machen.com</a></li>
+                                
+                            </ul>
+                            <div class="fdbox">
+                                <a href="javascript:void(0);" class="inp_modify">修改</a>
+                            </div>
+                        </div>
+                        <div class="hobby_listB" style="display:none;">
+                            <div class="hobby_tagT"></div>
+                            <div class="hobby_tagC">
+                                <ul>
+                                    <li><label>E-mail：</label><input type="text" class="text f_left" style="width:260px" /><span class="on">当前登录账号</span></li>
+                                    <li><label>QQ：</label><input type="text" class="text f_left" style="width:260px" /><span class="off"><a href="javascript:;">设为登录账号</a></span></li>
+                                    <li><label>MSN：</label><input type="text" class="text f_left" style="width:260px" /><span class="off"><a href="javascript:;">设为登录账号</a></span></li>
+                                    <li><label>手机号：</label><input type="text" class="text f_left" style="width:260px" /><span class="off"><a href="javascript:;">设为登录账号</a></span></li>
+                                    <li><label>个人网站：</label><input type="text" class="text f_left" style="width:260px" /></li>
+                                    <li class="pt12">
+                        				<div class="black10"></div>
+                                        <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="保存">
+                        				<input type="button" class="buttonB btn_w97 btn_h36 btnGary_97 fSize-14" value="取消">
+                        				<input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="修改个人设置">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="hobby_tagB"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+		<div class="mes_box_right">
+        	
+            
+                	<div class="user_card">
+                    	<h1><i>公开</i></h1>
+                        <img src="../images/default/user_200x200.jpg" class="per_pho" />
+                        <span><a href="javascript:;">上传头像</a></span>
+                    </div>
+                	<div class="user_bar">
+                    	<ul>
+                        	<li class="blue_tj"><label>资料完整度：</label><span><i>20%</i></span></li>
+                            <li><label>活跃度：</label><span><i>20%</i></span></li>
+                            <li><label>关注度：</label><span><i>20%</i></span></li>
+                            <li><label>爱心度：</label><span><i>20%</i></span></li>
+                            <li><label>经验度：</label><span><i>20%</i></span></li>
+                        </ul>
+                    </div>
+                    <div class="user_flei">
+                    	<ul>
+                        	 <li><label>星&nbsp;&nbsp;座：</label><select name="select" style="width:110px;">
+                                          <option value="1">不显示</option>
+                                          <option value="1">不显示</option>
+                		  				</select></li>
+                             <li><label>家&nbsp;&nbsp;乡：</label><select name="select" style="width:110px;">
+                                          <option value="1">不显示</option>
+                                          <option value="1">不显示</option>
+                		  				</select></li>
+                             <li><label>所在地：</label><select name="select" style="width:110px;">
+                                          <option value="1">不显示</option>
+                                          <option value="1">不显示</option>
+                		  				</select></li>
+                             <li><label>学&nbsp;&nbsp;校：</label><select name="select" style="width:110px;">
+                                          <option value="1">不显示</option>
+                                          <option value="1">不显示</option>
+                		  				</select></li>
+                             <li><label>工&nbsp;&nbsp;作：</label><select name="select" style="width:110px;">
+                                          <option value="1">不显示</option>
+                                          <option value="1">不显示</option>
+                		  				</select></li>
+                        </ul>
+                    </div>
+            
+            
+        </div>
+    </div>
+</div>
+<div class="mes_main_bot"></div>
+<!--mes_main-->
+
+<div class="footer layout">
+	<span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,1771 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>发起活动-活动-玩儿道</title>
+    <!--  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> -->
+    <meta name="keywords" content="发起活动，初始参数引用，基本参数设定，报名参数设定，邀请发送，个人报名，参数保存，玩儿道，生活社交网络"/>
+    <meta name="description" content="选择列表式或者导向式完成填写初始参数引用，基本参数设定，报名参数设定，邀请发送，个人报名和参数保存后发起活动"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="../css/activity_create.css" media="all"/>
+
+    <link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all"/>
+    <script src="../scripts/jquery-1.7.2.min.js"></script>
+    <script src="../scripts/jquery.core.js"></script>
+    <script src="../scripts/jquery.ui.tabs.js"></script>
+    <script src="../scripts/global.js"></script>
+    <script src="../scripts/gotop.js"></script>
+    <script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(window).scroll(function () {
+                if ($(document).scrollTop() > 0) {
+                    $('#verifyWarp').css('top', $(document).scrollTop() - 69);
+                }
+                else {
+                    $('#verifyWarp').css('top', 0)
+                }
+            });
+            //listWarp Hide&Show
+            $("#switchBtn").click(function () {
+                if ($(this).hasClass("hideBox_Btn")) {
+                    if (type == 'list') {
+                        $("#listSch_Btn").removeClass("fCgray3").addClass("currentSch");
+                        $(".listschWarp").fadeIn();
+                    } else {
+                        $("#mapSch_Btn").removeClass("fCgray3").addClass("currentSch");
+                        $(".mapschWarp").fadeIn();
+                    }
+                    $(this).removeClass("hideBox_Btn").addClass("showBox_Btn").siblings($("#addreesSchWarp").slideDown());
+                }
+                else {
+                    $(this).removeClass("showBox_Btn").addClass("hideBox_Btn").siblings($("#addreesSchWarp").slideUp());
+                    $("#listSch_Btn").removeClass("currentSch").addClass("fCgray3");
+                    $("#mapSch_Btn").removeClass("currentSch").addClass("fCgray3");
+                }
+            })
+            var type = "list";
+            //listschWarp Hide&Show
+            $("#listSch_Btn").click(function () {
+                type = "list";
+                $(this).removeClass("fCgray3").addClass("currentSch");
+                $("#mapSch_Btn").removeClass("currentSch").addClass("fCgray3");
+                $("#addreesSchWarp").css("display", "block");
+                $("#switchBtn").removeClass("hideBox_Btn").addClass("showBox_Btn");
+                $(".mapschWarp").hide();
+                if ($(".listschWarp").css("display", "none")) {
+                    $(this).siblings($("#addreesSchWarp").find(".listschWarp").fadeIn()).addClass("currentSch");
+                }
+            })
+            //mapschWarp Hide&Show
+            $("#mapSch_Btn").click(function () {
+                type = "map";
+                $(this).removeClass("fCgray3").addClass("currentSch");
+                $("#listSch_Btn").removeClass("currentSch").addClass("fCgray3");
+                $("#addreesSchWarp").css("display", "block");
+                $("#switchBtn").removeClass("hideBox_Btn").addClass("showBox_Btn");
+                $(".listschWarp").hide();
+                if ($(".mapschWarp").css("display", "none")) {
+                    $(this).siblings($("#addreesSchWarp").find(".mapschWarp").fadeIn()).addClass("currentSch");
+                }
+            })
+
+            $('.AC_Widget li a').click(function () {
+                $($(this).attr('href')).stop(true, true).slideDown();
+            })
+
+
+            //checkbox申缩效果
+            $('.ACmodList h4 input[type=checkbox]').click(function () {
+                if ($(this).attr("checked")) {
+                    $(this).closest('h4').next().stop(true, true).slideDown();
+                } else {
+                    $(this).closest('h4').next().stop(true, true).slideUp();
+                }
+            })
+
+            //列表查找中的滚动切换效果
+            new $.ui.tabs('.listSchBar', {
+                effect:'x',
+                widget:{
+                    clip:'.catList-panel',
+                    next:'.nextBtn',
+                    prev:'.prevBtn',
+                    panel:'.AC_catList'
+                }
+            });
+        });
+    </script>
+</head>
+<body class="pBgB fSize-12">
+<div class="header_wrapper pBgH">
+    <div class="header layout"><a href="index.html" class="logo"></a>
+
+        <div class="home" hoverable="true"><a href="javascript:;" class="go_home" title="回到首页"></a>
+
+            <div class="home_pop">
+                <ul>
+                    <li><a href="javascript:;" class="hp_title">活动</a>
+
+                        <p><a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a
+                                href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a
+                                href="javascript:;">我的活动</a><a href="javascript:;">历史活动</a></p>
+                    </li>
+                    <li><a href="javascript:;" class="hp_title">个人</a>
+
+                        <p><a href="javascript:;">资料</a><a href="javascript:;">日志</a><a href="javascript:;">相册</a><a
+                                href="javascript:;">视频</a></p>
+                    </li>
+                    <li><a href="javascript:;" class="hp_title">关系</a>
+
+                        <p><a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a
+                                href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a
+                                href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="search">
+            <div class="search_bg vm">
+                <input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖"/>
+                <input value="" type="submit" class="search_btn"/>
+            </div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img
+                src="../images/default/32-32.jpg" width="32" height="32"/></a><span class="user_infor_name"><a
+                href="javascript:;">烧饭-人生旅途中人生旅途中<b></b></a></span>
+
+            <div class="user_infor_pop">
+                <ul class="fSize-12">
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="activity_create layout">
+<div id="container" class="activity_create w_1004 pBgC2">
+<div class="activity_createMainList">
+<div class="black10"></div>
+<div class="black10"></div>
+<div class="mainTitile">
+    <div class="mes_com_box_Tab"><a href="javascript:;" class="active">创建活动</a></div>
+</div>
+<div class="modSwitch">
+    <label for="">
+        <input type="radio" class="radio" name="1" id=""/>
+        列表模式填写</label>
+    <label for="">
+        <input type="radio" class="radio" name="1" id=""/>
+        向导模式填写</label>
+</div>
+<h2><b>发起活动</b></h2>
+
+<div class="ACmodList">
+    <h3><b class="square ACmodListTitle"><a name="basicQuote" id="basicQuote"></a>初始参数引用</b></h3>
+
+    <div class="setmodList basicQuote">
+        <dl class="pR">
+            <dd class="formTitle">从之前活动复初始制参数：</dd>
+            <dd class="formMain">
+                <select name="" id="">
+                    <option value="选择活动名称">活动名称</option>
+                </select>
+            </dd>
+            <div class="tips-panel basicQuoteTip pA">
+                <div class="tips">
+                    <div class="arrowhead"></div>
+                    <p><span class="icon error"></span>&nbsp;帮助信息：</p>
+
+                    <p>请选择你的活动分类。<a href="javascript:;" class="close-3"></a></p>
+                </div>
+            </div>
+        </dl>
+        <dl class="clear2">
+        </dl>
+        <dl>
+            <dd class="formTitle">从保存活动中复制初始制参数：</dd>
+            <dd class="formMain">
+                <select name="" id="">
+                    <option value="选择活动名称">活动名称</option>
+                </select>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+        <dl>
+            <dd class="formTitle">发起活动者：</dd>
+            <dd class="formMain">
+                <select name="" id="">
+                    <option value="圈子名义发起">圈子名义发起</option>
+                </select>
+                <select name="" id="">
+                    <option value="圈子名称">圈子名称</option>
+                </select>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+        <dl>
+            <dd class="formTitle">创建联系人方式：</dd>
+            <dd class="formMain">
+                <label for="">电话：
+                    <input type="text" class="text" name="" id=""/>
+                </label>
+                <label for="">邮箱：
+                    <input type="text" class="text" name="" id=""/>
+                </label>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+        <dl>
+            <dd class="formTitle">超级管理员：</dd>
+            <dd class="formMain">
+                <input type="text" class="text" name="" value="侯建刚" id="" style="width:80px;"/>
+                活动管理员：
+                <input type="text" class="text" name="" value="侯建刚" id="" style="width:80px;"/>
+                财务管理员：
+                <input type="text" class="text" name="" value="侯建刚" id="" style="width:80px;"/>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+        <dl>
+            <dd class="formTitle">
+                <label for="">
+                    <input type="checkbox" name="" id=""/>
+                    &nbsp; </label>
+            </dd>
+            <dd class="formMain">活动公开让所有人可见</dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+    </div>
+</div>
+<!-- 初始参数引用 -->
+<div class="ACmodList">
+<h3><b class="square ACmodListTitle"><a name="basicSet" id="basicSet"></a>基本参数设定</b></h3>
+<h4>
+    <label for="">
+        <input type="checkbox" class="checkbox" checked="checked" name="" id="customCycleSwitch"/>
+        <b>定制周期</b></label>
+</h4>
+
+<div class="setmodList basicSet">
+    <dl>
+        <dd class="formTitle">活动周期定制：</dd>
+        <dd class="formMain">
+            <select name="" id="setperiod">
+                <option value="0">间隔周期</option>
+                <option value="1">浮动周期设定</option>
+            </select>
+            <input type="text" class="text" name="" id="" value="定制描述" style="width:343px;"/>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">间隔周期：</dd>
+        <dd class="formMain">
+            <select name="" id="">
+                <option value="每天">每天</option>
+            </select>
+            <select name="" id="">
+                <option value="直接建立活动">直接建立活动</option>
+            </select>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">选择预定周期：</dd>
+        <dd class="formMain">
+            <input type="text" class="text" name="" id="" style="width:277px;"/>
+            <input type="button" value="日历" class="buttonG btn_w56 btn_h28 btnGary_56"/>
+            <select name="" id="">
+                <option value="直接建立活动">直接建立活动</option>
+            </select>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">
+            <input type="checkbox" name="" id=""/>
+            &nbsp; </dd>
+        <dd class="formMain">周期时间临近时，发送邮件通知创建人
+            <select name="" id="">
+                <option value="提前半天">提前半天</option>
+            </select>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">
+            <input type="checkbox" name="" id=""/>
+            &nbsp;</dd>
+        <dd class="formMain">周期时间临近时，发送站内信息通知创建人
+            <select name="" id="">
+                <option value="提前半天">提前半天</option>
+            </select>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+</div>
+<!--定制周期-->
+<h4>
+    <label for="">
+        <input type="checkbox" class="checkbox" checked="checked" name="" id="addressSetSwitch"/>
+        <b>设定地址</b></label>
+</h4>
+
+<div id="addressSet" class="setmodList addressSet">
+<ul class="setBar">
+    <li><span id="listSch_Btn" class="currentSch">列表查找</span></li>
+    <li><span id="mapSch_Btn" class="fCgray3">地图查找</span></li>
+    <li><span id="switchBtn" class="buttonW showBox_Btn"></span></li>
+</ul>
+<div class="address-show">
+    <div class="MapSchBar">
+        <label for="">我的位置：
+            <input type="text" class="text" name="" id=""/>
+        </label>
+        <label for="">邮编：
+            <input type="text" class="text" name="" id=""/>
+        </label>
+        <input type="text" class="text" name="" id="" value="国家" inputdefault="国家" style="width:40px;"/>
+        <input type="text" class="text" name="" id="" value="州省" inputdefault="州省" style="width:40px;"/>
+        <input type="text" class="text tW_60" name="" id="" value="城市" inputdefault="城市" style="width:40px;"/>
+        <input type="button" class="buttonG btn_w56 btn_h28 btnGary_56" value="选择地区"/>
+    </div>
+</div>
+<div id="addreesSchWarp" class="addreesSchWarp clearfix">
+<div class="listschWarp">
+    <div class="listSchBar">
+        <ul class="activityCat">
+            <li><a href="javascript:viod(0);" class="prevBtn"></a></li>
+            <li class="tabs-clip" style="width:540px; overflow:hidden">
+                <ul class="AC_catList">
+                    <li><a href="javascript:viod(0);" class="cat_btn cat_btn-selected">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动</a></li>
+                    <li><a href="javascript:viod(0);" class="cat_btn">运动1</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:viod(0);" class="nextBtn"></a></li>
+            <li><a href="javascript:viod(0);" class="backBtn"></a></li>
+        </ul>
+    </div>
+    <div class="listSchMain">
+        <div class="listSchContent">
+            <div class="pageList">
+                <label for="">第
+                    <input type="text" name="" id="" class="text" value="0"/>
+                    页</label>
+                <span>共</span>&nbsp;<span>0</span>&nbsp;<span>页</span>&nbsp;<span>共</span>&nbsp;<span>0</span>&nbsp;<span>条</span>&nbsp;<a
+                    title="首页" href="javascript:;">首页</a><a title="上一页" href="javascript:void(0);">上一页</a><a
+                    title="下一页" href="javascript:void(0);">下一页</a><a title="尾页" href="javascript:void(0);">尾页</a>
+            </div>
+            <ul>
+                <li class="fCgray3">
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="table-fixed">
+                        <tbody>
+                        <tr>
+                            <td width="64" align="right" class="fCblue square_small">地点名：</td>
+                            <td>周末ktv</td>
+
+                        </tr>
+                        <tr>
+                            <td align="right" class="fCblue">地址：</td>
+                            <td>平阳路美特好</td>
+                        </tr>
+                        <tr>
+                            <td align="right" class="fCblue">时间段：</td>
+                            <td colspan="3">2011/11/14&mdash;2011/11/30</td>
+                        </tr>
+                        <tr style="">
+                            <td valign="top" align="right" class="fCblue">描述：</td>
+                            <td colspan="3"><p class="descript">The Colorado Springs Utilities Xeriscape Garden is
+                                designed to demonstrate the seven principles of Xeriscape in a wide variety of
+                                designs. The garden incorporates many different gardens styles that are arranged by
+                                water requirement so visitors can get a good idea of what styles can be achieved and
+                                what plants will thrive with different amounts of water. The garden displays more
+                                than 500 varieties of trees, shrubs, grasses, perennials, biennials and annuals that
+                                grow well in the Colorado Springs area.
+                            </p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="javascript:;" class="button blue-button">选择</a>
+                </li>
+                <li class="fCgray3">
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="table-fixed">
+                        <tbody>
+                        <tr>
+                            <td width="64" align="right" class="fCblue square_small">地点名：</td>
+                            <td>周末ktv</td>
+
+                        </tr>
+                        <tr>
+                            <td align="right" class="fCblue">地址：</td>
+                            <td>平阳路美特好</td>
+                        </tr>
+                        <tr>
+                            <td align="right" class="fCblue">时间段：</td>
+                            <td colspan="3">2011/11/14&mdash;2011/11/30</td>
+                        </tr>
+                        <tr style="">
+                            <td valign="top" align="right" class="fCblue">描述：</td>
+                            <td colspan="3"><p class="descript">
+                                我比谁都清楚东东拼拼凑凑爱的故事简简短短你的心事我不在你身边的日子是什么让你改变坚持让人心疼你的样子吞吞吐吐欲言又止如果有那么难以启齿我不问你又何必掩饰你过的好辛苦我比谁都清楚感情路没有勉强的幸福一开始就给的糊里糊涂想回头却又不知如何结束你装作很满足我比谁都清楚你的笑隐约透露着孤独快乐背后深深藏着痛楚坚强的面对然后偷偷的哭 </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="javascript:;" class="button blue-button">选择</a>
+                </li>
+                <li class="fCgray3">
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="table-fixed">
+                        <tbody>
+                        <tr>
+                            <td width="64" align="right" class="fCblue square_small">地点名：</td>
+                            <td>周末ktv</td>
+
+                        </tr>
+                        <tr>
+                            <td align="right" class="fCblue">地址：</td>
+                            <td>平阳路美特好</td>
+                        </tr>
+                        <tr>
+                            <td align="right" class="fCblue">时间段：</td>
+                            <td colspan="3">2011/11/14&mdash;2011/11/30</td>
+                        </tr>
+                        <tr style="">
+                            <td valign="top" align="right" class="fCblue">描述：</td>
+                            <td colspan="3"><p class="descript">
+                                我比谁都清楚东东拼拼凑凑爱的故事简简短短你的心事我不在你身边的日子是什么让你改变坚持让人心疼你的样子吞吞吐吐欲言又止如果有那么难以启齿我不问你又何必掩饰你过的好辛苦我比谁都清楚感情路没有勉强的幸福一开始就给的糊里糊涂想回头却又不知如何结束你装作很满足我比谁都清楚你的笑隐约透露着孤独快乐背后深深藏着痛楚坚强的面对然后偷偷的哭 </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="javascript:;" class="button blue-button">选择</a>
+                </li>
+            </ul>
+            <div class="pageList">
+                <label for="">第
+                    <input type="text" name="" id="" class="text" value="0"/>
+                    页</label>
+                <span>共</span>&nbsp;<span>0</span>&nbsp;<span>页</span>&nbsp;<span>共</span>&nbsp;<span>0</span>&nbsp;<span>条</span>&nbsp;<a
+                    title="首页" href="javascript:;">首页</a><a title="上一页" href="javascript:void(0);">上一页</a><a
+                    title="下一页" href="javascript:void(0);">下一页</a><a title="尾页" href="javascript:void(0);">尾页</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mapschWarp">
+
+    <div class="MapSchL"><img width="474" height="462" src="../images/defucult/map.jpg" alt=""/></div>
+    <div class="MapSchR">
+        <ul>
+            <li>
+                <label for="">
+                    <input type="checkbox" name="" id="" class="checkbox"/>
+                    同步该地址为家庭地址</label>
+            </li>
+            <li>
+                <small class="icon16 square fSize-12">离家距离:</small>
+                <select class="select" name="" id="" style="width:105px;">
+                    <option value="10公里">10公里</option>
+                </select>
+            </li>
+            <li>
+                <small class="icon16 square fSize-12">分类:</small>
+                <select class="select" name="" id="" style="width:55px;">
+                    <option value="农场">农场</option>
+                </select>
+                <select class="select" name="" id="" style="width:70px;">
+                    <option value="选项目">选项目</option>
+                </select>
+
+                <div class="tips_G tipW_190"><span class="upArrow_G"></span>
+
+                    <div class="tips_G_main tipW_190">
+                        <ul>
+                            <li class="delBtn">摘南瓜</li>
+                            <li class="delBtn">摘苹果</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <small class="icon16 square fSize-12">
+                    <input type="checkbox" name="" id=""/>
+                    所有好友参加的活动
+                </small>
+                <input type="text" class="text" name="" id="" style="width:110px;"/>
+                <input type="button" value="添加" class="buttonG btn_w56 btn_h28 gay-button"/>
+
+                <div class="tips_G tipW_190"><span class="upArrow_G"></span>
+
+                    <div class="tips_G_main tipW_190">
+                        <ul>
+                            <li class="delBtn">好友名</li>
+                            <li class="delBtn">好友名</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <small class="icon16 square fSize-12">
+                    <input type="checkbox" name="" id=""/>
+                    所有圈子参加的活动
+                </small>
+                <br/>
+                <input type="text" class="text" name="" id="" style="width:110px;"/>
+                <input type="button" value="添加" class="buttonG btn_w56 btn_h28 gay-button"/>
+
+                <div class="tips_G tipW_190"><span class="upArrow_G"></span>
+
+                    <div class="tips_G_main tipW_190">
+                        <ul>
+                            <li class="delBtn">圈子名</li>
+                            <li class="delBtn">圈子名</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <small class="icon16 square fSize-12">
+                    <input type="checkbox" name="" id=""/>
+                    过滤掉去过的地方
+                </small>
+            </li>
+        </ul>
+    </div>
+    <div class="clear2"></div>
+    <div class="MapNote">
+        <p class="mapNote"><b>注释:</b><img src="../images/icons/mapschNote.png" alt=""/><font
+                class="fCgray3">活动地点</font></p>
+    </div>
+</div>
+</div>
+<dl class="clearfix">
+    <dd class="formTitle">位置：</dd>
+    <dd class="formMain">
+        <input type="text" class="text" name="" id=""/>
+    </dd>
+</dl>
+<dl class="clear2">
+</dl>
+<dl>
+    <dd class="formTitle">地区：</dd>
+    <dd class="formMain">
+        <input type="text" class="text" name="" value="国家" inputdefault="国家" id="" style="width:100px;"/>
+        <input type="text" class="text" name="" value="州省" inputdefault="州省" id="" style="width:100px;"/>
+        <input type="text" class="text" inputdefault="城市" name="" value="城市" id="" style="width:100px;"/>
+        <input type="button" class="buttonG btn_w56 btn_h28 btnGary_56" value="选择地区"/>
+    </dd>
+</dl>
+<dl class="clear2">
+</dl>
+</div>
+<!--地址设定-->
+<h4>
+    <label for="">
+        <input type="checkbox" class="checkbox" checked="checked" name="" id="addressSetSwitch"/>
+        <b>设定活动参数</b></label>
+</h4>
+
+<div class="setmodList activityParameter">
+    <dl class="clearfix">
+        <dd class="formTitle">设定活动参数：</dd>
+        <dd class="formMain">
+            <input type="text" class="text" name="" id=""/>
+            到
+            <input type="text" class="text" name="" id=""/>
+            共
+            <input type="text" class="text" name="" id="" style="width:60px;"/>
+            天
+        </dd>
+    </dl>
+
+    <dl class="clearfix">
+        <dd class="formTitle">分类标记：</dd>
+        <dd class="formMain">
+            <input type="text" class="text" name="" id="" style="width:282px;"/>
+            <input type="button" value="选择" class="buttonG btn_w56 btn_h28 btnGary_56"/>
+            <input type="button" value="输入" class="buttonG btn_w56 btn_h28 btnGary_56"/>
+        </dd>
+    </dl>
+
+    <dl class="clearfix">
+        <dd class="formTitle">&nbsp;</dd>
+        <dd class="formMain">
+            <div class="tips-1" style="width:500px;">
+                <div style="left:60%;" class="arrowhead"></div>
+                <ul class="conditions">
+                    <li>条件1<a class="icon close-2" href="javascript:;"></a></li>
+                    <li>条件1<a class="icon close-2" href="javascript:;"></a></li>
+                    <li>条件1<a class="icon close-2" href="javascript:;"></a></li>
+                    <li>条件1<a class="icon close-2" href="javascript:;"></a></li>
+                    <li>条件1<a class="icon close-2" href="javascript:;"></a></li>
+                    <li>条件1<a class="icon close-2" href="javascript:;"></a></li>
+                    <li>条件1<a class="icon close-2" href="javascript:;"></a></li>
+                    <li>条件1<a class="icon close-2" href="javascript:;"></a></li>
+                    <li>条件1<a class="icon close-2" href="javascript:;"></a></li>
+                    <li>条件1<a class="icon close-2" href="javascript:;"></a></li>
+                </ul>
+            </div>
+        </dd>
+    </dl>
+
+    <dl class="clearfix">
+        <dd class="formTitle">活动标题：</dd>
+        <dd class="formMain">
+            <input type="text" class="text" name="" id="" inputdefault="活动标题"/>
+        </dd>
+    </dl>
+
+    <dl class="clearfix">
+        <dd class="formTitle">活动简介：</dd>
+        <dd class="formMain">
+            <textarea class="textarea" name="" id="" cols="69" rows="4" inputdefault="活动简介"></textarea>
+            &nbsp;</dd>
+    </dl>
+
+</div>
+<h4>
+    <label for="">
+        <input type="checkbox" class="checkbox" checked="checked" name="" id="addressSetSwitch"/>
+        <b>拟定计划</b></label>
+</h4>
+
+<div class="setmodList preparedPlan">
+<div class="timelineWarp">
+    <div class="timelineMain">
+        <ul>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="timelineMain">
+        <ul>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+        </ul>
+    </div>
+
+    <div class="timelineMain">
+        <ul>
+            <li>&nbsp;</li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li class="current timelineBtm timelineTop">&nbsp;
+                <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+
+                <div class="tipsWarp">
+                    <div class="tipsTop"></div>
+                    <div class="tipsMain fSize-12 fCgray3">
+                        <p>5：00-12：00 早市集DOTA</p>
+
+                        <p>16:00-20:00 南山集会品茶活动</p>
+                    </div>
+                    <div class="tipsBottom">&nbsp;</div>
+                </div>
+            </li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+
+        </ul>
+    </div>
+</div>
+<div class="tabWarp_Gray">
+    <table cellpadding="0" cellspacing="0" border="0" background="#ededed" width="662"
+           class="preparedList fSize-12 fCgray3">
+        <tr>
+            <td>早市</td>
+            <td>早晨网吧早市集体DOTA</td>
+            <td>已灭团为主要目的</td>
+            <td>2011/11/11（05：30-18：30）</td>
+            <td class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;"
+                                                                                      class="listDown">&nbsp;</a> <a
+                    href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">
+                &nbsp;</a></td>
+        </tr>
+        <tr>
+            <td>早市</td>
+            <td>早晨网吧早市集体DOTA</td>
+            <td>已灭团为主要目的</td>
+            <td>2011/11/11（05：30-18：30）</td>
+            <td class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;"
+                                                                                      class="listDown">&nbsp;</a> <a
+                    href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">
+                &nbsp;</a></td>
+        </tr>
+        <tr>
+            <td>早市</td>
+            <td>早晨网吧早市集体DOTA</td>
+            <td>已灭团为主要目的</td>
+            <td>2011/11/11（05：30-18：30）</td>
+            <td class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;"
+                                                                                      class="listDown">&nbsp;</a> <a
+                    href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">
+                &nbsp;</a></td>
+        </tr>
+        <tr>
+            <td>早市</td>
+            <td>早晨网吧早市集体DOTA</td>
+            <td>已灭团为主要目的</td>
+            <td>2011/11/11（05：30-18：30）</td>
+            <td class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;"
+                                                                                      class="listDown">&nbsp;</a> <a
+                    href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">
+                &nbsp;</a></td>
+        </tr>
+    </table>
+</div>
+<dl>
+    <dd class="formTitle">时间：</dd>
+    <dd class="formMain">
+        <select name="" id="">
+            <option value="州省">州省</option>
+        </select>
+        &nbsp;从&nbsp;
+        <input type="text" class="text" name="" id=""/>
+        &nbsp;到&nbsp;
+        <input type="text" class="text" name="" id=""/>
+    </dd>
+</dl>
+<dl class="clear2">
+</dl>
+<dl>
+    <dd class="formTitle">安排：</dd>
+    <dd class="formMain">
+        <input type="text" class="text" name="" id=""/>
+    </dd>
+</dl>
+<dl class="clear2">
+</dl>
+<dl>
+    <dd class="formTitle">备注：</dd>
+    <dd class="formMain">
+        <textarea class="textarea" name="" id="" cols="69" rows="4"></textarea>
+        &nbsp;</dd>
+</dl>
+<dl class="clear2">
+</dl>
+<dl>
+    <dd class="formTitle">&nbsp;</dd>
+    <dd class="formMain">
+        <input type="button" value="添加" class="buttonG btn_w56 btn_h28 btnGary_56"/>
+        <input type="button" value="清空" class="buttonG btn_w56 btn_h28 btnGary_56"/>
+    </dd>
+</dl>
+<dl class="clear2">
+</dl>
+</div>
+</div>
+<!-- 基本参数设定 -->
+<div class="ACmodList">
+<h3><b class="square ACmodListTitle"><a name="applySet" id="applySet"></a>报名参数设定</b></h3>
+<h4>
+    <label for="">
+        <input type="checkbox" class="checkbox" name="" id="customCycleSwitch"/>
+        <b>设定报名参数</b></label>
+</h4>
+
+<div class="setmodList applySet">
+    <dl>
+        <dd class="formTitle">人数限制：</dd>
+        <dd class="formMain">
+            <input type="text" class="text" name="" id=""/>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">报名结束日期：</dd>
+        <dd class="formMain">
+            <input type="text" class="text" name="" id=""/>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">报名方式：</dd>
+        <dd class="formMain">
+            <label for="">
+                <input type="radio" name="111" id=""/>
+                直接加入</label>
+            &nbsp;
+            <label for="">
+                <input type="radio" name="111" id=""/>
+                申请批准加入</label>
+            &nbsp;
+            <label for="">
+                <input type="radio" name="111" id=""/>
+                密码验证加入</label>
+
+            <div class="tips_G tipW_475"><span class="upArrow_G"></span>
+
+                <div class="tips_G_main tipW_475">
+                    <label for="" class="pwdWarp">再次输入：
+                        <input type="password" class="text" name="" id="" style="width:100px"/>
+                    </label>
+                    <label for="" class="pwdWarp">密码设定：
+                        <input type="password" class="text" name="" id="" style="width:100px"/>
+                    </label>
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">&nbsp;
+            <label for="">
+                <input type="checkbox" name="" id=""/>
+                &nbsp;</label>
+        </dd>
+        <dd class="formMain">启动踢人保护&nbsp;
+            <select name="" id="">
+                <option value="保护时限">保护时限</option>
+            </select>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+</div>
+<!--设定报名参数-->
+<h4>
+    <label for="">
+        <input type="checkbox" class="checkbox" name="" id="customCycleSwitch"/>
+        <b>设定报名费</b></label>
+</h4>
+
+<div class="setmodList applyFeeSet">
+    <dl>
+        <dd class="formTitle">报名费用：</dd>
+        <dd class="formMain">
+            <input type="text" class="text" name="" id=""/>
+            <label>
+                <input type="checkbox"/>
+                &nbsp;&nbsp;报名时必需缴纳</label>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">费用说明：</dd>
+        <dd class="formMain">
+            <textarea class="textarea" name="" id="" cols="69" rows="4"></textarea>
+            &nbsp;</dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">支持缴费方式以及&nbsp;<br/>
+            账号或支付地址：
+        </dd>
+        <dd class="formMain">
+            <select name="" id="">
+                <option value="缴费方式">缴费方式</option>
+            </select>
+            <input type="text" class="text"/>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+</div>
+<!--设定报名费用-->
+<h4>
+    <label for="">
+        <input type="checkbox" class="checkbox" name="" id="customCycleSwitch"/>
+        <b>设定加入门槛</b></label>
+</h4>
+
+<div class="setmodList thresholdSet">
+    <dl>
+        <dd class="formTitle">设置报名门槛：</dd>
+        <dd class="formMain">
+            <input type="text" class="text" name="" id="" value="添加"/>
+            <select name="" id="">
+                <option value="门槛条件">门槛条件</option>
+            </select>
+            <select name="" id="">
+                <option value="门槛值">门槛值</option>
+            </select>
+            <input type="button" value="添加" class="buttonG btn_w56 btn_h28 btnGary_56"/>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">&nbsp;</dd>
+        <dd class="formMain">
+            <textarea class="textarea" name="" id="" cols="69" rows="4"></textarea>
+            &nbsp; </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+</div>
+<!--设定加入门槛-->
+<h4>
+    <label for="">
+        <input type="checkbox" class="checkbox" name="" id="customCycleSwitch"/>
+        <b>拟定预算</b></label>
+</h4>
+
+<div class="setmodList preparedbudget">
+    <dl>
+        <dd class="formTitle">财务预算收支：</dd>
+        <dd class="formMain">
+            <label for="">
+                <input type="checkbox" name="" id=""/>
+                公开可见给所有想参加的人</label>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <div class="tabWarp_Gray">
+        <table cellpadding="0" cellspacing="0" border="0" background="#ededed" width="642"
+               class="preparedList fSize-12 fCgray3">
+            <tr class="fCblue" style="font-weight:normal;">
+                <th>序号</th>
+                <th>收支名目</th>
+                <th>预算收支金额</th>
+                <th>操作人名</th>
+                <th>财务人名</th>
+                <th>修改日期</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>山地野炊</td>
+                <td>600￥</td>
+                <td>曹操</td>
+                <td>刘备</td>
+                <td>2011-11-15</td>
+                <td class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;"
+                                                                                          class="listDown">&nbsp;</a> <a
+                        href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">
+                    &nbsp;</a></td>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>山地野炊</td>
+                <td>600￥</td>
+                <td>曹操</td>
+                <td>刘备</td>
+                <td>2011-11-15</td>
+                <td class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;"
+                                                                                          class="listDown">&nbsp;</a> <a
+                        href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">
+                    &nbsp;</a></td>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>山地野炊</td>
+                <td>600￥</td>
+                <td>曹操</td>
+                <td>刘备</td>
+                <td>2011-11-15</td>
+                <td class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;"
+                                                                                          class="listDown">&nbsp;</a> <a
+                        href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">
+                    &nbsp;</a></td>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>山地野炊</td>
+                <td>600￥</td>
+                <td>曹操</td>
+                <td>刘备</td>
+                <td>2011-11-15</td>
+                <td class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;"
+                                                                                          class="listDown">&nbsp;</a> <a
+                        href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">
+                    &nbsp;</a></td>
+            </tr>
+            <tr>
+                <td>001</td>
+                <td>山地野炊</td>
+                <td>600￥</td>
+                <td>曹操</td>
+                <td>刘备</td>
+                <td>2011-11-15</td>
+                <td class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;"
+                                                                                          class="listDown">&nbsp;</a> <a
+                        href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">
+                    &nbsp;</a></td>
+            </tr>
+        </table>
+    </div>
+    <dl>
+        <dd class="formTitle">预算收支项：</dd>
+        <dd class="formMain"></dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">序号：</dd>
+        <dd class="formMain">
+            <input type="text" class="text" name="" value="01" id="" style="width:60px;"/>
+            &nbsp;收支明目&nbsp;
+            <input type="text" class="text" name="" id=""/>
+            &nbsp;预算金额&nbsp;
+            <select name="" id="">
+                <option value="每天">每天</option>
+            </select>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">执行人名：</dd>
+        <dd class="formMain">
+            <input type="text" class="text" name="" id=""/>
+            &nbsp;&nbsp;
+            <select name="" id="">
+                <option value="活动人员">活动人员</option>
+            </select>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">&nbsp;</dd>
+        <dd class="formMain">
+            <textarea class="textarea" name="" id="" cols="69" rows="4"></textarea>
+            &nbsp; </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+    <dl>
+        <dd class="formTitle">&nbsp;</dd>
+        <dd class="formMain"> 操作时间：2011-11-15 23：11 财务人员：李小冉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="添加预算明目" class="buttonG btn_w102 btn_h28 btnGary_102"/>
+        </dd>
+    </dl>
+    <dl class="clear2">
+    </dl>
+</div>
+<!-- 拟定预算 -->
+</div>
+<!-- 报名参数设定 -->
+<div class="ACmodList">
+    <h3><b class="square ACmodListTitle"><a name="sendInvite" id="sendInvite"></a>发送邀请</b></h3>
+
+    <div class="setmodList sendInvite">
+        <div class="inviteTableWarp">
+            <h5>报名邀请：</h5>defucult
+            <table cellpadding="0" cellspacing="0" border="1" class="table-fixed inviteTable">
+                <tr>
+                    <td width="161" class="CL_left" valign="top">
+                        <ul class="fSize-12 fCblcak CN_list">
+                            <li class="arrowDown">圈子名称</li>
+                            <li class="selected fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20"
+                                                              alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                        </ul>
+                    </td>
+                    <td width="161" align="center" valign="middle"><input type="button" value="添加全部&gt;&gt;"
+                                                                          class="buttonW btn_w93 btn_h28 btnWhite_93 fCblue"/>
+                        <br/>
+                        <br/>
+                        <input type="button" value="&lt;&lt;删除全部" class="buttonW btn_w93 btn_h28 btnWhite_93 fCblue"/>
+                        <br/>
+                        <br/>
+                        <input type="button" value="添加个人&gt;" class="buttonW btn_w93 btn_h28 btnWhite_93 fCblue"/>
+                        <br/>
+                        <br/>
+                        <input type="button" value="&lt;删除个人" class="buttonW btn_w93 btn_h28 btnWhite_93 fCblue"/></td>
+                    <td width="161" class="CL_right" valign="top">
+                        <ul class="fSize-12 fCblcak CN_list">
+                            <li class="arrowDown">圈子名称</li>
+                            <li class="selected fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20"
+                                                              alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                            <li class="fCgray3"><img src="../images/default/32-32.jpg" width="20" height="20" alt=""/>Mike
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <dl>
+            <dd class="formTitle">&nbsp;</dd>
+            <dd class="formMain">
+                <label for="">
+                    <input type="checkbox" name="" id=""/>
+                    向所有好友发送邀请</label>
+                <label for="">
+                    <input type="checkbox" name="" id=""/>
+                    向所有圈子发送邀请</label>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+        <dl>
+            <dd class="formTitle">向部分圈子成员发送邀请：</dd>
+            <dd class="formMain">
+                <select name="" id="" style="width:80px;">
+                    <option value="圈子名">圈子名</option>
+                </select>
+                <input type="text" class="text" name="" id=""/>
+                <input type="button" value="添加" class="buttonG btn_w56 btn_h28 btnGary_56"/>
+
+                <div class="tips_G tipW_430 fCgray3"><span class="upArrow_G"></span>
+
+                    <div class="tips_G_main tipW_430">
+                        <ul>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                        </ul>
+                    </div>
+                </div>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+        <dl>
+            <dd class="formTitle">向指定好友发送邀请：</dd>
+            <dd class="formMain">
+                <select name="" id="" style="width:80px;">
+                    <option value="圈子名">圈子名</option>
+                </select>
+                <input type="text" class="text" name="" id=""/>
+                <input type="button" class="fCgray3 buttonG btn_w56 btn_h28 btnGary_56" value="查询好友"/>
+                <input type="button" value="添加" class="buttonG btn_w56 btn_h28 btnGary_56"/>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+        <dl>
+            <dd class="formTitle">已添加：</dd>
+            <dd class="formMain">
+                <div class="tips_G tipW_430 fCgray3"><span class="upArrow_G"></span>
+
+                    <div class="tips_G_main tipW_430">
+                        <ul>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                            <li class="delBtn">好友姓名</li>
+                        </ul>
+                    </div>
+                </div>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+    </div>
+</div>
+<!-- 发送邀请 -->
+<div class="ACmodList">
+    <h3><b class="square ACmodListTitle"><a name="applyPerson" id="applyPerson"></a>个人报名</b></h3>
+
+    <div class="setmodList applyPerson">
+        <dl>
+            <dd class="formTitle">准备通过：</dd>
+            <dd class="formMain">
+                <select name="" id="" style="width:80px;">
+                    <option value="汽车">汽车</option>
+                </select>
+                参加活动
+                <select name="" id="" style="width:59px;">
+                    <option value="有">有</option>
+                </select>
+                车参加活动
+                <select name="" id="" style="width:110px;">
+                    <option value="愿意提供打车">愿意提供打车</option>
+                </select>
+                <select name="" id="" style="width:110px;">
+                    <option value="可选搭车人">可选搭车人</option>
+                </select>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+        <dl>
+            <dd class="formTitle">搭车费：</dd>
+            <dd class="formMain">
+                <select name="" id="" style="width:80px;">
+                    <option value="油费均分">油费均分</option>
+                </select>
+                每人$
+                <input type="text" class="text" name="" id="" style="width:68px;"/>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+        <dl>
+            <dd class="formTitle">车型：</dd>
+            <dd class="formMain">
+                <select name="" id="" style="width:80px;">
+                    <option value="车牌">车牌</option>
+                </select>
+                <select name="" id="" style="width:114px;">
+                    <option value="车型 ">车型</option>
+                </select>
+                车牌号：
+                <input type="text" class="text" name="" id="" style="width:113px;"/>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+        <dl>
+            <dd class="formTitle">年代：</dd>
+            <dd class="formMain">
+                <input type="text" class="text" name="" id="" style="width:189px;"/>
+                愿意提供空位数
+                <input type="text" class="text" name="" id="" style="width:77px;"/>
+            </dd>
+        </dl>
+        <dl class="clear2">
+        </dl>
+    </div>
+</div>
+<!-- 个人报名 -->
+<div class="ACmodList">
+    <h3><b class="square ACmodListTitle"><a name="saveParameter" id="saveParameter"></a>参数保存</b></h3>
+
+    <div class="setmodList saveParameter">
+        <div class="saveParameterWarp">
+            <dl>
+                <dd class="fSize-12 fCblue">
+                    <p class="icon16 circle">合理保存常用的活动参数，可以让创佳更加快捷</p>
+                </dd>
+            </dl>
+            <dl>
+                <dd class="saveParameterForm">
+                    <label for="">
+                        <input type="checkbox" name="" id=""/>
+                        保存活动设置</label>
+                    <input type="text" class="text" name="" id="" style="width:160px;"/>
+                </dd>
+            </dl>
+            <dl>
+                <dd>
+                    <div class="tips_G tipW_435 pR"><span class="upArrow_G"></span>
+
+                        <div class="tips_G_main tipW_435">
+                            <ul>
+                                <li class="delBtn">保存活动名</li>
+                                <li class="delBtn">保存活动名</li>
+                                <li class="delBtn">保存活动名</li>
+                            </ul>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<!-- 参数保存 -->
+<div class="btn-warp">
+    <input type="button" class="button blue-radius-btn" button-loading="创建中..."  button-loading-class="button disable-radius-btn"  value="创建活动"/>
+    <input type="button" class="button gay-radius-btn" button-loading="恭喜您，活动创建成功！"  button-loading-class="button gay-radius-btn" value="保存参数暂不创建活动"/>
+    <input type="button" class="button gay-radius-btn" value="取消"/>
+</div>
+</div>
+<div class="activity_createWidget pR">
+    <div class="verifyWarp pA" id="verifyWarp">
+        <ul class="fSize-14 fCwhite">
+            <li class="array1"><span class="verify_accept f_right">&nbsp;</span><a id="basicQuoteSwitch"
+                                                                                   href="#basicQuote">初始参数应用</a></li>
+            <li class="array2"><span class="verify_cross f_right">&nbsp;</span><a href="#basicSet">基本参数设置</a></li>
+            <li class="array3"><span class="f_right">&nbsp;</span><a href="#applySet">报名参数设定</a></li>
+            <li class="array4"><span class="f_right">&nbsp;</span><a id="sendInviteSwitch" href="#sendInvite">邀请发送</a>
+            </li>
+            <li class="array5"><span class="f_right">&nbsp;</span><a id="applyPersonSwitch" href="#applyPerson">个人报名</a>
+            </li>
+            <li class="array6"><span class="f_right">&nbsp;</span><a id="saveParameterSwitch"
+                                                                     href="#saveParameter">参数保存</a></li>
+        </ul>
+    </div>
+</div>
+<div class="clear2"></div>
+</div>
+</div>
+<!--Main-->
+<div class="footer layout"><span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+
+    <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a
+            href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+</div>
+<script type="text/javascript">
+    (function () {
+        var $lis = $('#verifyWarp ul li');
+        $(window).scroll(function () {
+            var scrollTop = $(this).scrollTop();
+            $('.ACmodList').each(function (i, n) {
+                var $item = $lis.eq(i);
+                if (isToPos($(n), scrollTop + $(window).height())) {
+                    if (isComplate($(n))) {
+                        $item.find('span').removeClass('verify_cross').addClass('verify_accept');
+                    }
+                    else {
+                        $item.find('span').removeClass('verify_accept').addClass('verify_cross');
+                    }
+                }
+            })
+            function isToPos($elem, top) {
+                var elemTop = $elem.height() + $elem.offset().top;
+                if (top >= elemTop) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function isComplate($form) {
+                //验证是否完成
+                return true;
+            }
+        })
+    })()
+
+</script>
+</body>
+</html>

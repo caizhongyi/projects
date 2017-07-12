@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的好友-关系-玩儿道</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="我的好友，关系，玩儿道，生活社交网络" />
+<meta name="description" content="管理所有的好友，可以进行分组，解除关系等操作" />
+
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../css/relationship.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.plus.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$(".drop_down").toggle(function(){
+		$(".drop_down i").width(0);
+		$(".drop_down i").css("display","none");
+		$(this).children("i").width($(this).width()+25);
+		$(this).children("i").css("display","block");
+	},function(){
+		$(this).children("i").css("display","none");
+	})
+	$(document).mousedown(function(){
+		$(".drop_down i").css("display","none");
+	})
+	
+	$(".message_table tr").hover(function(){
+		$(this).addClass("grohover");	
+	},function(){
+		$(this).removeClass("grohover");	
+	})
+	
+	$(".fList li").hover(function(){
+		$(this).addClass("mHover");	
+	},function(){
+		$(this).removeClass("mHover");	
+	})
+	
+});
+</script>
+</head>
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+	<div class="header layout">
+    	<a href="index.html" class="logo"></a>
+        <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="回到首页"></a>
+            <div class="home_pop">
+            	<ul>
+                	<li>
+                        <a href="javascript:;" class="hp_title">活动</a>
+                        <p><a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a href="javascript:;">我的活动</a><a href="javascript:;">历史活动</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">个人</a>
+                        <p><a href="javascript:;">资料</a><a href="javascript:;">日志</a><a href="javascript:;">相册</a><a href="javascript:;">视频</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">关系</a>
+                        <p><a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+        		<input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/default/32-32.jpg" width="32" height="32"></a><span class="user_infor_name"><a href="javascript:;">烧饭-人生旅途中人生旅途中<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+	<div class="mes_box per_blog clearfix">
+
+    <div class="black5"></div>
+        <div class="black10"></div>
+        <div class="mes_com_box_Tab">
+            <a href="javascript:;" class="active">我的好友</a>
+            <a href="javascript:;">寻找好友</a>
+            <a href="javascript:;">邀请好友</a>
+            <a href="javascript:;">关注设置</a>
+            <a href="javascript:;">我的圈子</a>
+            <a href="javascript:;">寻找圈子</a>
+            <a href="javascript:;">创建圈子</a>
+        </div>
+
+        
+        <div class="ColuTwo_wrap clearfix">
+					<div class="leftside">
+						<ul class="friSideNav f14">
+                            <li class="cur"><a href="javascript:;">全部好友 <span class="fn">(652)</span></a></li>
+                            <li><a href="javascript:;"  ><span class="ellipsis" style="width: 150px; display: inline-block;" title="未分组好友未分组好友未分组好友未分组好友未分组好友未分组好友未分组好友未分组好友未分组好友">未分组好友未分组好友未分组好友未分组好友未分组好友未分组好友未分组好友未分组好友 </span><em style="position: absolute;right: 30px;">(652)</em></a><a class="icon icon-edit grop-edit" title="编辑" href=""></a><a class="icon icon-blue-close grop-del" title="删除" href="###"></a></li>
+                            <li><a href="javascript:;">我的好友 (652)</a><a class="icon icon-edit grop-edit" title="编辑" href=""></a><a class="icon icon-blue-close grop-del" title="删除" href=""></a></li>
+                            <li><a href="javascript:;">我的同学 (652)</a><a class="icon icon-edit grop-edit" title="编辑" href=""></a><a class="icon icon-blue-close grop-del" title="删除" href=""></a></li>
+                            <li><a href="javascript:;">我的亲人 (652)</a><a class="icon icon-edit grop-edit" title="编辑" href=""></a><a class="icon icon-blue-close grop-del" title="删除" href=""></a></li>
+                        </ul>
+                        <div class="addGroup">
+                            <h3 class="groupTit f14">添加分组</h3>
+                            <p><input type="text" class="text" style="width:122px; color:#CCC;" onclick="if(this.value==this.defaultValue){this.value=''; this.style.color='#333';}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc'}" value="请输入分组名称" /> <input type="button" value="搜 索" class="prBtn"></p>
+                        </div>
+					</div>
+					<div class="rCon">
+						<div class="topNav clearfix">
+                        	<div class="f_left">
+                            	<input type="checkbox"/>
+                                <div class="sift_option inline"></div>
+                              
+                                 <div class="opera inline">
+                                    <a href="javascript:void(0);" class="icon_1" style="width:2px;"></a>
+                                    <a href="javascript:void(0);" class="icon_2 layer_btn"></a>
+                                    <a href="javascript:void(0);" class="icon_3"></a>
+                                </div>
+
+                            </div>
+                        	<!-- 分页右边 -->
+                            <div class="pageList  f_right"><span>第</span><input type="text" class="text" value="0"><span>页</span><span>共</span><span>0</span><span>页</span><span>共</span><span>0</span><span>条</span><a title="首页" href="javascript:;">首页</a><a title="上一页" href="javascript:;">上一页</a><a title="下一页" href="javascript:;">下一页</a><a title="尾页" href="javascript:;">尾页</a></div>
+                            <!-- 分页右边 -->
+                           
+            	        </div>
+                        <div class="letQuery f-YH fBold">
+                        	<a href="javascript:;">全部</a>
+                            <a href="javascript:;">A</a>
+                            <a href="javascript:;">B</a>
+                            <a href="javascript:;">C</a>
+                            <a href="javascript:;">D</a>
+                            <a href="javascript:;">E</a>
+                            <a href="javascript:;">F</a>
+                            <a href="javascript:;">G</a>
+                            <a href="javascript:;">H</a>
+                            <a href="javascript:;">I</a>
+                            <a href="javascript:;">J</a>
+                            <a href="javascript:;">K</a>
+                            <a href="javascript:;">L</a>
+                            <a href="javascript:;">M</a>
+                            <a href="javascript:;">N</a>
+                            <a href="javascript:;">O</a>
+                            <a href="javascript:;">P</a>
+                            <a href="javascript:;">Q</a>
+                            <a href="javascript:;">R</a>
+                            <a href="javascript:;">S</a>
+                            <a href="javascript:;">T</a>
+                            <a href="javascript:;">U</a>
+                            <a href="javascript:;">V</a>
+                            <a href="javascript:;">W</a>
+                            <a href="javascript:;">X</a>
+                            <a href="javascript:;">Y</a>
+                            <a href="javascript:;">Z</a>
+                        </div>
+                        <ul class="fList" id="fList">
+                        	<li>
+                            	<i class="cbtn"><input type="checkbox" /></i>
+                                <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                                <dl class="fInfo">
+                                    <dt>
+                                    	<p class="makeRela"><a href="javascript:;" class="btn_delrela"><img src="../images/btn_delrelation.png" /></a> <a href="javascript:;" class="btn_focus"><img src="../images/btn_focus.png" /></a></p>
+                                        [<a href="javascript:;" class="gray">我的同学</a>] <a href="javascript:;" class="lblue">烧饭2012</a>
+                                    </dt>
+                                    <dd><p class="sign">温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展</p></dd>
+                                </dl>
+                            </li>
+                        	<li>
+                            	<i class="cbtn"><input type="checkbox" /></i>
+                                <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                                <dl class="fInfo">
+                                    <dt>
+                                    	<p class="makeRela"><a href="javascript:;" class="btn_focused"><img src="../images/btn_focused.png" /></a><a href="javascript:;" class="btn_cancelfocus"><img src="../images/btn_cancelfocus.png" /></a></p>
+                                        [<a href="javascript:;" class="gray">我的同学</a>] <a href="javascript:;" class="lblue">烧饭2012</a>
+                                    </dt>
+                                    <dd><p class="hasPic">温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展</p></dd>
+                                    <dd class="picBox">
+                                        default/48-48.jpg      	<a href="javascript:;"><img src="../images/default/48-48.jpg" /></a><a href="javascript:;"><img src="../images/default/48-48.jpg" /></a><a href="javascript:;"><img src="../images/default/48-48.jpg" /></a>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>
+                            	<i class="cbtn"><input type="checkbox" /></i>
+                                <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                                <dl class="fInfo">
+                                    <dt>
+                                    	<p class="makeRela"><a href="javascript:;" class="btn_delrela"><img src="../images/btn_delrelation.png" /></a> <a href="javascript:;" class="btn_focus"><img src="../images/btn_focus.png" /></a></p>
+                                        [<a href="javascript:;" class="gray">我的同学</a>] <a href="javascript:;" class="lblue">烧饭2012</a>
+                                    </dt>
+                                    <dd><p class="sign">温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展</p></dd>
+                                </dl>
+                            </li>
+                        	<li>
+                            	<i class="cbtn"><input type="checkbox" /></i>
+                                <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                                <dl class="fInfo">
+                                    <dt>
+                                    	<p class="makeRela"><a href="javascript:;" class="btn_focused"><img src="../images/btn_focused.png" /></a><a href="javascript:;" class="btn_cancelfocus"><img src="../images/btn_cancelfocus.png" /></a></p>
+                                        [<a href="javascript:;" class="gray">我的同学</a>] <a href="javascript:;" class="lblue">烧饭2012</a>
+                                    </dt>
+                                    <dd><p class="hasPic">温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展</p></dd>
+                                    <dd class="picBox">
+                                    	<a href="javascript:;"><img src="../images/default/48-48.jpg" /></a><a href="javascript:;"><img src="../images/default/48-48.jpg" /></a><a href="javascript:;"><img src="../images/default/48-48.jpg" /></a>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>
+                            	<i class="cbtn"><input type="checkbox" /></i>
+                                <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                                <dl class="fInfo">
+                                    <dt>
+                                    	<p class="makeRela"><a href="javascript:;" class="btn_delrela"><img src="../images/btn_delrelation.png" /></a> <a href="javascript:;" class="btn_focus"><img src="../images/btn_focus.png" /></a></p>
+                                        [<a href="javascript:;" class="gray">我的同学</a>] <a href="javascript:;" class="lblue">烧饭2012</a>
+                                    </dt>
+                                    <dd><p class="sign">温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展</p></dd>
+                                </dl>
+                            </li>
+                        	<li>
+                            	<i class="cbtn"><input type="checkbox" /></i>
+                                <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                                <dl class="fInfo">
+                                    <dt>
+                                    	<p class="makeRela"><a href="javascript:;" class="btn_focused"><img src="../images/btn_focused.png" /></a><a href="javascript:;" class="btn_cancelfocus"><img src="../images/btn_cancelfocus.png" /></a></p>
+                                        [<a href="javascript:;" class="gray">我的同学</a>] <a href="javascript:;" class="lblue">烧饭2012</a>
+                                    </dt>
+                                    <dd><p class="hasPic">温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展</p></dd>
+                                    <dd class="picBox">
+                                    	<a href="javascript:;"><img src="../images/default/48-48.jpg" /></a><a href="javascript:;"><img src="../images/default/48-48.jpg" /></a><a href="javascript:;"><img src="../images/default/48-48.jpg" /></a>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>
+                            	<i class="cbtn"><input type="checkbox" /></i>
+                                <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                                <dl class="fInfo">
+                                    <dt>
+                                    	<p class="makeRela"><a href="javascript:;" class="btn_delrela"><img src="../images/btn_delrelation.png" /></a> <a href="javascript:;" class="btn_focus"><img src="../images/btn_focus.png" /></a></p>
+                                        [<a href="javascript:;" class="gray">我的同学</a>] <a href="javascript:;" class="lblue">烧饭2012</a>
+                                    </dt>
+                                    <dd><p class="sign">温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展</p></dd>
+                                </dl>
+                            </li>
+                        	<li>
+                            	<i class="cbtn"><input type="checkbox" /></i>
+                                <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                                <dl class="fInfo">
+                                    <dt>
+                                    	<p class="makeRela"><a href="javascript:;" class="btn_focused"><img src="../images/btn_focused.png" /></a><a href="javascript:;" class="btn_cancelfocus"><img src="../images/btn_cancelfocus.png" /></a></p>
+                                        [<a href="javascript:;" class="gray">我的同学</a>] <a href="javascript:;" class="lblue">烧饭2012</a>
+                                    </dt>
+                                    <dd><p class="hasPic">温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展</p></dd>
+                                    <dd class="picBox">
+                                    	<a href="javascript:;"><img src="../images/default/48-48.jpg" /></a><a href="javascript:;"><img src="../images/default/48-48.jpg" /></a><a href="javascript:;"><img src="../images/default/48-48.jpg" /></a>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>
+                            	<i class="cbtn"><input type="checkbox" /></i>
+                                <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                                <dl class="fInfo">
+                                    <dt>
+                                    	<p class="makeRela"><a href="javascript:;" class="btn_delrela"><img src="../images/btn_delrelation.png" /></a> <a href="javascript:;" class="btn_focus"><img src="../images/btn_focus.png" /></a></p>
+                                        [<a href="javascript:;" class="gray">我的同学</a>] <a href="javascript:;" class="lblue">烧饭2012</a>
+                                    </dt>
+                                    <dd><p class="sign">温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展：金融机构不能把企业当成唐僧肉 华西村转型发展：金融机构不能把企业当成唐僧肉 华西村转型发展：金融机构不能把企业当成唐僧肉 华西村转型发展</p></dd>
+                                </dl>
+                            </li>
+                        	<li>
+                            	<i class="cbtn"><input type="checkbox" /></i>
+                                <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                                <dl class="fInfo">
+                                    <dt>
+                                    	<p class="makeRela"><a href="javascript:;" class="btn_focused"><img src="../images/btn_focused.png" /></a><a href="javascript:;" class="btn_cancelfocus"><img src="../images/btn_cancelfocus.png" /></a></p>
+                                        [<a href="javascript:;" class="gray">我的同学</a>] <a href="javascript:;" class="lblue">烧饭2012</a>
+                                    </dt>
+                                    <dd><p class="hasPic">温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展</p></dd>
+                                    <dd class="picBox">
+                                    	<a href="javascript:;"><img src="../images/default/48-48.jpg" /></a><a href="javascript:;"><img src="../images/default/48-48.jpg" /></a><a href="javascript:;"><img src="../images/default/48-48.jpg" /></a>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </ul>
+              			<div class="topNav bmNav clearfix">
+                            <div class="f_left">
+                            	<input type="checkbox"/>
+                                <div class="sift_option inline"></div>
+                                
+                                 <div class="opera inline">
+                                    <a href="javascript:void(0);" class="icon_1" style="width:2px;"></a>
+                                    <a href="javascript:void(0);" class="icon_2 layer_btn"></a>
+                                    <a href="javascript:void(0);" class="icon_3"></a>
+                                </div>
+                            </div>
+                        	<!-- 分页右边 -->
+                            <div class="pageList  f_right"><span>第</span><input type="text" class="text" value="0"><span>页</span><span>共</span><span>0</span><span>页</span><span>共</span><span>0</span><span>条</span><a title="首页" href="javascript:;">首页</a><a title="上一页" href="javascript:;">上一页</a><a title="下一页" href="javascript:;">下一页</a><a title="尾页" href="javascript:;">尾页</a></div>
+                            <!-- 分页右边 -->
+            	        </div>
+					</div>
+        </div>
+        
+
+        
+    </div>
+</div>
+<div class="mes_main_bot"></div>
+
+
+<div class="footer layout">
+	<span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+</div>
+<div class="layer" style="display:none;">
+    <ul id="selectclassUL">
+        <li><a href="#">列表1</a></li>
+        <li><a href="#">列表1</a></li>
+        <li><a href="#">列表1</a></li>
+        <li><a href="#">列表1</a></li>
+    </ul>
+</div>
+<style type="text/css">
+    .layer{ position:absolute; background:#fff; border:1px solid #ddd; padding:10px; box-shadow:1px 1px 5px #ddd; z-index:999; top:20px; left:47px;}
+    .layer li{ padding:5px 0;}
+</style>
+<script type="text/javascript">
+    $(function(){
+
+        $(".layer_btn").floatbox('click',{ move:false, box : '.layer' ,axis : 'y'});
+
+    });
+</script>
+</body>
+</html>

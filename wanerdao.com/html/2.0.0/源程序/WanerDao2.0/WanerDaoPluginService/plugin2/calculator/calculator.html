@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>玩儿道--计算器</title>
+    <meta name="keywords" content="计算器" />
+    <meta name="description" content="计算器" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="../css/layout.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../css/table.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../css/icon.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../css/appTool.css" media="all" />
+    <style type="text/css">
+        body
+        {
+            font-family: Arial,Helvetica,sans-serif;
+            font-size: 11px;
+        }
+    </style>
+    <script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.ui.datepicker.js"></script>
+    <script type="text/javascript" src='../scripts/wanerdao.js'></script>
+    <script type="text/javascript">
+        loadScript("wanerdaoutils.js");
+    </script>
+</head>
+<body>
+    <div class="calculator popDiv" onkeydown="kkdown(event)">
+        <form name="calc">
+        <div class="calculatorBox">
+            <div class="popTitle">
+                <span class="titleDes">
+                    <img src="../images/application/icon2.gif" /><span>计算器</span><span id="hint"></span></span>
+                <div class="closeWin">
+                    <a class="hideWinBtn" href="javascript:void(0)" onclick="closeWin('.calculator')">
+                    </a><a class="closeWinBtn" href="javascript:void(0)" onclick="closeWin('.calculator')">
+                    </a>
+                </div>
+            </div>
+            <div class="popContent">
+                <div class="dm">
+                    <div class="dmBox">
+                        <div class="dmBoxLeft">
+                            <input readonly="readonly" onclick='display.select();display.createTextRange().execCommand("Copy");'
+                                name="display" class="dmInput" type="text" maxlength="2" value="0"/><input type="hidden" readonly="readonly"
+                                    size="4" name="bracket" /><input type="hidden" readonly="readonly" size="4" name="memory" /><input
+                                        type="hidden" readonly="readonly" size="4" name="operator" /><input style="display: none;"
+                                            onclick="inputshift()" type="checkbox" value="ON" name="shiftf" /><input style="display: none;"
+                                                onclick="inputshift()" type="checkbox" value="ON" name="hypf" /><a href="javascript:void(0)"
+                                                    hidefocus class="dmLink"><img src="../images/application/cmBtn.gif" width="50" height="30" /></a></div>
+                    </div>
+                    <div class="dmTableBox">
+                        <table border="0" cellspacing="0" cellpadding="0" class="dmTable">
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray">2nd</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="addbracket()"
+                                        type="button" value=" (  " name="button">(</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="disbracket()"
+                                        type="button" value=" )  " name="button">)</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="operation('%',6)"
+                                        type="button" value="取余" name="button2">%</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" onclick="clearmemory()" type="button"
+                                        value=" 清存 " name="button">mc</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" onclick="addmemory()" type="button"
+                                        value=" 累存 " name="button">m+</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" onclick="submemory()" type="button"
+                                        value=" 减存 " name="button">m-</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" onclick="getmemory()" type="button"
+                                        value=" 取存 " name="button">mr</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputfunction('recip','recip')"
+                                        type="button" value="1/x " name="button">1/x</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputfunction('sqr','sqrt')"
+                                        type="button" value="x^2 " name="sqr">x<sup>2</sup></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputfunction('cube','cubt')"
+                                        type="button" value="x^3 " name="cube">x<sup>3</sup></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="operation('^',7)"
+                                        type="button" value="x^y " name="button">x<sup>y</sup></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" onclick="clearall()" type="button"
+                                        value=" 全清" name="button">C</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" onclick="changeSign()" type="button"
+                                        value="+/-" name="button2">+/-</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" onclick="operation('/',6)" type="button"
+                                        value=" / " name="button2">/</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" onclick="operation('*',6)" type="button"
+                                        value=" * " name="button2">*</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputfunction('!','!')"
+                                        type="button" value=" n! " name="button">x!</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputfunction('sqrt')"
+                                        type="button" value="√" name="sqr">√</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="operation('√',7)"
+                                        type="button" value="y√x " name="button">y√x</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputfunction('log','expdec')"
+                                        type="button" value="log " name="log">log</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" name="button2" value="7" onclick="inputkey('7')">
+                                        <b>7</b></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" name="button2" value="8" onclick="inputkey('8')">
+                                        <b>8</b></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" name="button2" value="9" onclick="inputkey('9')">
+                                        <b>9</b></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" onclick="operation('-',5)" type="button"
+                                        value=" - " name="button2">-</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputtrig('sin','arcsin','hypsin','ahypsin')"
+                                        type="button" value="sin " name="sin">sin</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputtrig('cos','arccos','hypcos','ahypcos')"
+                                        type="button" value="cos " name="cos">cos</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputtrig('tan','arctan','hyptan','ahyptan')"
+                                        type="button" value="tan " name="tan">tan</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputfunction('ln','exp')"
+                                        type="button" value=" ln " name="ln">ln</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" name="button2" value="4" onclick="inputkey('4')">
+                                        <b>4</b></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" name="button2" value="5" onclick="inputkey('5')">
+                                        <b>5</b></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" name="button2" value="6" onclick="inputkey('6')">
+                                        <b>6</b></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" onclick="operation('+',5)" type="button"
+                                        value=" + " name="button2">+</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputtrig('hypsin')"
+                                        type="button" value="hsin" name="sin">sinh</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputtrig('hypcos')"
+                                        type="button" value="hcos" name="cos">cosh</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputtrig('hyptan')"
+                                        type="button" value="htan" name="tan">tanh</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputfunction('exp')"
+                                        type="button" value="exp " name="ln">e<sup>x</sup></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" name="button2" value="1" onclick="inputkey('1')">
+                                        <b>1</b></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" name="button2" value="2" onclick="inputkey('2')">
+                                        <b>2</b></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" name="button2" value="3" onclick="inputkey('3')">
+                                        <b>3</b></a>
+                                </td>
+                                <td rowspan="2">
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn bigBlue" onclick="result()" type="button"
+                                        value=" = " name="button2">=</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputChangAngle('r')"
+                                        type="radio" value="r" name="angle">Rad</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputfunction('pi','pi')"
+                                        type="button" value=" PI " name="pi">π</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputfunction('expdec')"
+                                        type="button" value="expd" name="log">EE</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn Gray" onclick="inputfunction('rand')"
+                                        type="button" value="rand" name="rand">Rand</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn"><span class="doDmBox">展开</span></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" name="button2" value="0" onclick="inputkey('0')">
+                                        <b>0</b></a>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" hidefocus class="dmBtn" onclick="inputkey('.')" type="button"
+                                        value=" . " name="kp"><b>.</b></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="../scripts/pop.js"></script>
+    <script type="text/javascript" src="../scripts/global.js"></script>
+    <script type="text/javascript" src="scripts/calc.js"></script>
+</body>
+</html>

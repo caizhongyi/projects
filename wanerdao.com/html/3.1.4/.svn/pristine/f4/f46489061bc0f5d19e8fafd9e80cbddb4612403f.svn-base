@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>删除-信息-玩儿道</title>
+
+<meta name="keywords" content="删除, 信息, 玩儿道, 活动安排生活的社交网络服务"/>
+<meta name="description"
+      content="获取删除信息"/>
+
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="BookStar" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/message.css"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/jquery.fileupload-ui.css"/>
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="index.html" class="logo"><img src="images/logo.png" alt="玩儿道"></a>
+        <div class="home  hover">
+            <a title="Home"  class="button" href="javascript:;"><i class="icon icon-list"></i></a>
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a  href="javascript:;">活动</a></h3>
+                        <a href="activity_index.html">活动首页</a><a href="activity_search.html">查找活动</a><a href="activity_item_main.html">当前和过去的活动 </a><a href="activity_future_plan.html">未来活动</a><a href="javascript:;">发起活动 </a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">个人</a></h3>
+                        <a href="personal_edit.html">个人资料</a><a href="personal_finance_account.html">财务账号</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">关系</a></h3>
+                        <a href="relationship_friends_invite.html">我的好友</a>
+                    </li>
+                    <li>
+                        <h3><a  href="index.html">首页</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="活动 / 好友" class="text" ><input type="submit" class="button" value="">
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img  src="images/defaults/32-32.jpg"></a><a  class="name" href="javascript:;"><span >烧饭-人生旅途中人生旅途中</span><b></b></a>
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">个人资料</a></li>
+                    <li><a href="javascript:;">账号维护</a></li>
+                    <li>
+                        <a href="javascript:;">切换语言</a>
+                        <ul>
+                            <li><a href="javascript:;">中文</a></li>
+                            <li><a href="javascript:;">英文</a></li>
+                        </ul>
+                    </li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="javascript:;" class="icon-message-mail right">123</a>
+
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout message-layout">
+    <div class="left-side">
+        <div class="equal">
+            <ul class="message-nav">
+                <li><a href="message_compose.html">写信息</a></li>
+                <li><a href="message_收件箱.html">收件箱</a><em>(123)</em></li>
+                <li><a href="message_send.html">发件箱</a></li>
+                <li><a href="message_draft.html">草稿箱</a></li>
+                <li class="selected"><a href="message_delete.html">垃圾箱</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="tabs tabs-master">
+            <div class="nav">
+                <div class="pull-left"><a href="message_delete.html" class="selected">信息</a><a href="message_delete_invite.html"> 邀请</a></div>
+            </div>
+            <div class="content">
+                <div class="toolbar">
+                    <div class="pull-left"><input type="checkbox" class="checkbox"><span class="combo "  data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">全部</li><li value="2">Star</li><li value="3">No Star</li></ul>
+                                </div>
+                            </span>&nbsp;<span class="list-opts">
+                                <a href="javascript:;" title="恢复"><i  class="icon-opts-prev"></i></a><a href="javascript:;" title="删除"><i  class="icon-opts-remove"></i></a><a href="javascript:;" title="清空 "><i class="icon-opts-del"></i></a><a href="javascript:;" title="刷新" class="last"><i  class="icon-opts-refurbish"></i></a>
+                            </span></div>
+                    <div class="pagination">
+                        <a href="javascript:;" class="prev disabled">首页</a><a href="javascript:;" class="prev">上一页</a>2/18<a href="javascript:;" class="next">下一页</a><a href="javascript:;" class="prev disabled">尾页</a>
+                    </div>
+                </div>
+                <ul class="group-list list-message">
+                    <li class="new">
+                        <span class="date pull-right">11/18</span><input type="checkbox"><i class="icon-mail"></i><a href="javascript:;"  class="star icon-star-alt"></a><span class="text-important">Milky way(20)</span> - <a href="javascript:;">迄今为止，这是全国最权威，最有效，最实用的培训大餐！技术人员如...</a>
+                    </li>
+                    <li class="">
+                        <span class="date pull-right">11/18</span><input type="checkbox"><i class="icon-open-mail"></i><a href="javascript:;"  class="star icon-star-empty-alt"></a><span class="text-important">Milky way(20)</span> - <a href="javascript:;">迄今为止，这是全国最权威，最有效，最实用的培训大餐！技术人员如...</a>
+                    </li>
+                    <li>
+                        <span class="date pull-right">11/18</span><input type="checkbox"><i class="icon-pass-mail"></i><a href="javascript:;"  class="icon-no-star"></a><span class="text-important">Milky way(20)</span> - <a href="javascript:;">迄今为止，这是全国最权威，最有效，最实用的培训大餐！技术人员如...</a>
+                    </li>
+                    <li>
+                        <span class="date pull-right">11/18</span><input type="checkbox"><i class="icon-edit-mail"></i><a href="javascript:;"  class="icon-no-star"></a><span class="text-important">Milky way(20)</span> - <a href="javascript:;">迄今为止，这是全国最权威，最有效，最实用的培训大餐！技术人员如...</a>
+                    </li>
+                    <li>
+                        <span class="date pull-right">11/18</span><input type="checkbox"><i class="icon-warn-mail"></i><a href="javascript:;"  class="icon-no-star"></a><a href="javascript:;">迄今为止，这是全国最权威，最有效，最实用的培训大餐！技术人员如...</a>
+                    </li>
+                </ul>
+                <div class="toolbar">
+                    <div class="pull-left"><input type="checkbox" class="checkbox"><span class="combo "  data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">全部</li><li value="2">Star</li><li value="3">No Star</li></ul>
+                                </div>
+                            </span>&nbsp;<span class="list-opts">
+                                <a href="javascript:;" title="恢复"><i  class="icon-opts-prev"></i></a><a href="javascript:;" title="删除"><i  class="icon-opts-remove"></i></a><a href="javascript:;" title="清空 "><i class="icon-opts-del"></i></a><a href="javascript:;" title="刷新" class="last"><i  class="icon-opts-refurbish"></i></a>
+                            </span></div>
+                    <div class="pagination">
+<a href="javascript:;" class="prev disabled">首页</a><a href="javascript:;" class="prev">上一页</a>2/18<a href="javascript:;" class="next">下一页</a><a href="javascript:;" class="prev disabled">尾页</a>
+</div>
+                </div>
+                <script type="text/javascript">
+                    $('.toolbar input[type=checkbox]').click(function(){
+                        var all = $('.toolbar input[type=checkbox]');
+                        if(!$(this).attr('checked')){
+                            all.removeAttr('checked');
+                        }
+                        else{
+                            all.attr('checked',true)
+                        }
+                        $(this).checkToggle('.content > ul input[type=checkbox]');
+                    })
+                    $('.group-list .star').click(function(){
+                        if($(this).hasClass('icon-star-alt')){
+                            $(this).removeClass('icon-star-alt').addClass('icon-star-empty-alt');
+                        }
+                        else{
+                            $(this).removeClass('icon-star-empty-alt').addClass('icon-star-alt');
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+    <div class="sitemap">
+        <a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律</a><a href="javascript:;" class="text-danger">招聘</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a>
+    </div>
+    <span class="copyright">版权所有 @ 2011-2014 玩儿道团队</span>
+    </div>
+</div>
+<!-- end footer -->
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+
+</body>
+</html>

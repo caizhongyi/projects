@@ -1,0 +1,26 @@
+﻿DELIMITER $$
+
+USE `wanerdao1202`$$
+
+DROP VIEW IF EXISTS `v_activitycomments`$$
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_activitycomments` AS (
+SELECT
+  `ac`.`id`              AS `id`,
+  `ac`.`active_posts_id` AS `active_posts_id`,
+  `ac`.`follow_id`       AS `follow_id`,
+  `ac`.`content`         AS `content`,
+  `ac`.`comments_date`   AS `createdate`,
+  `ac`.`positive`        AS `positive`,
+  `ac`.`negative`        AS `negative`,
+  `ac`.`active`          AS `active`,
+  `pp`.`user_id`         AS `userid`,
+  `pp`.`name`            AS `username`,
+  `pp`.`logo_small_path` AS `userlogo`
+FROM (`activitycomments` `ac`
+   JOIN `personalprofile` `pp`
+     ON ((`ac`.`user_id` = `pp`.`user_id`)))
+WHERE ((`ac`.`active` = 1)
+       AND (`pp`.`active` = 1)))$$
+
+DELIMITER ;

@@ -1,0 +1,492 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>CreateGroup-关系-玩儿道</title>
+
+<meta name="keywords" content="CreateGroup，Group信息，邀请User，关系，玩儿道，Activity组织的生活社交网络"/>
+<meta name="description"
+      content="填写必要Group信息完成GroupCreate，并可以发出邀请"/>
+
+
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/relationship.css"/>
+
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+
+<style type="text/css">
+    body{ background: #fff ;}
+    .mod-gray,.mod-default{ width: 680px; margin: 10px; }
+</style>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Schedule to launch
+    </div>
+    <div class="bd form">
+        <div class="form-item">
+            <label class="input-control">Select repeat pattern：<span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label><span class="muted">Description：Create只能被使用一次</span>
+        </div>
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Schedule to launch
+    </div>
+    <div class="bd form">
+        <div class="form-item">
+            <label class="input-control">Select repeat pattern：<span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label><span class="muted">Description：Create只能被使用一次</span>
+        </div>
+        <div class="form-item">
+            <label>
+                Select scheduled date：<input type="text" class="text text-medium"/>
+            </label><button class="btn btn-gray btn-mini">Add</button>
+        </div>
+        <div class="form-item">
+            <div class="tipbox">
+                <i class="arrow"></i>
+                <ul class="list-label list-label-transparent">
+                    <li>01&nbsp;2012/03/15<span><a class="icon icon-light-del" href="javascript:;" data-remove=""></a></span></li>
+                    <li>01&nbsp;2012/03/15<span><a class="icon icon-light-del" href="javascript:;" data-remove=""></a></span></li>
+                    <li>01&nbsp;2012/03/15<span><a class="icon icon-light-del" href="javascript:;" data-remove=""></a></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-item">
+            <label>
+                Launch type：<span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label>
+        </div>
+        <div class="form-item">
+            <label class="checkbox">
+                <input type="checkbox"/>When date close, send an email to the Organizer
+            </label>
+            <label>
+                Range：<span class="combo" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label>
+        </div>
+        <div class="form-item">
+            <label class="checkbox">
+                <input type="checkbox"/>When date close, send an message to the Organizer
+            </label>
+            <label>
+                Range：<span class="combo" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label>
+        </div>
+        <div class="form-item">
+            <button id="calendar" class="btn btn-default btn-mini">Check schedule date in calendar</button>
+        </div>
+        <div class="form-item">
+            <div class="result">
+                <ul>
+                    <li>Note</li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-item">
+            <button type="submit" class="btn btn-primary">Save</button><button type="button" class="btn btn-default">Cancel</button>
+        </div>
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Schedule to launch
+    </div>
+    <div class="bd form">
+        <div class="form-item">
+            <label class="input-control">Select repeat pattern：<span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label><span class="muted">Description：Create只能被使用一次</span>
+        </div>
+        <div class="form-item">
+            <label class="input-control">
+               <span class="input-control">Range of repetition：Start</span><input type="text" class="text text-medium"/>
+            </label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">End after</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><input type="text" class="text text-mini input-control"/>occurrences
+        </div>
+        <div class="form-item">
+            <label>
+                Interval range：<span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Daily</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label><label>Launch type：<span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Daily</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+        </div>
+        <div class="form-item">
+            <label class="radio form-panel">
+                <input type="radio"/>each&nbsp;<input type="text" class="text text-mini input-control"/>day(s)
+            </label>
+        </div>
+        <div class="form-item">
+            <label class="radio  form-panel">
+                <input type="radio"/>Every weekday （From Monday to Friday）
+            </label>
+        </div>
+
+        <div class="form-item">
+            <label class="checkbox">
+                <input type="checkbox"/>When date close, send an email to the Organizer
+            </label>
+            <label>
+                Range：<span class="combo" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label>
+        </div>
+        <div class="form-item">
+            <label class="checkbox">
+                <input type="checkbox"/>When date close, send an email to the Organizer
+            </label>
+            <label>
+                Range：<span class="combo" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label>
+        </div>
+        <div class="form-item">
+            <div class="result">
+                <ul>
+                    <li>Note</li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-item">
+            <button type="submit" class="btn btn-default">Cancel</button>
+        </div>
+
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="bd form">
+        <div class="form-item">
+            <label>
+                <span class="input-control">Range of repetition：Start</span><input type="text" class="text text-medium"/>
+            </label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">End after</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><input type="text" class="text text-mini input-control"/>occurrences
+        </div>
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="bd form">
+        <div class="form-item">
+            <label>
+                Interval range：<span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Weekly</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label><label>&nbsp;Launch type：<span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">按定制Repetition直接Create</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+        </div>
+        <div class="form-item">
+            <label class="radio form-panel">
+                <input type="radio">Repeat every&nbsp;<input type="text" class="text text-mini input-control">Week (s) on:
+            </label>
+        </div>
+        <div class="form-item form-panel">
+            <label class="checkbox">
+                <input type="checkbox">Sun
+            </label>
+            <label class="checkbox">
+                <input type="checkbox">Mon
+            </label>
+            <label class="checkbox">
+                <input type="checkbox">Tue
+            </label>
+            <label class="checkbox">
+                <input type="checkbox">Wed
+            </label>
+            <label class="checkbox">
+                <input type="checkbox">Thu
+            </label>
+            <label class="checkbox">
+                <input type="checkbox">Fri
+            </label>
+            <label class="checkbox">
+                <input type="checkbox">Sat
+            </label>
+        </div>
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="bd form">
+        <div class="form-item">
+            <label>
+                Interval range：<span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Monthly</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label><label>&nbsp;Launch type：<span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">按定制Repetition直接Create</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+        </div>
+        <div class="form-item">
+            <label class="radio form-panel">
+                <input type="radio">each&nbsp;<input type="text" class="text text-mini input-control"><span class="input-control">of every</span><input type="text" class="text text-mini input-control">day(s)
+            </label>
+        </div>
+        <div class="form-item form-panel">
+            <label class="radio">
+                <input type="radio">each&nbsp;<input type="text" class="text text-mini input-control"><span class="input-control">of every</span><span class="combo text-mini" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">第一</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="combo text-mini" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">day(s)</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label>
+        </div>
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="bd form">
+        <div class="form-item">
+            <label>
+                Interval range：<span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Yearly</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label><label>&nbsp;Launch type：<span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">按定制Repetition直接Create</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+        </div>
+        <div class="form-item">
+            <label class="radio form-panel">
+                <input type="radio">Every&nbsp;<span class="combo text-mini" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><input type="text" class="text text-mini input-control">day(s)
+            </label>
+        </div>
+        <div class="form-item form-panel">
+            <label class="radio">
+                <input type="radio">Every&nbsp;<span class="combo text-mini input-control" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="input-control">of</span><span class="combo text-mini" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">第一</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="combo text-mini" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">day(s)</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </label>
+        </div>
+    </div>
+</div>
+<!-- end container -->
+
+
+<div id="dialogCalendar" data-loader="class-dialog"  class="dialog ui-dialog" data-options="handler:'header'">
+    <div class="bg"></div>
+    <div class="inner">
+        <div class="hd" data-options="region:'header',handle:true">
+            <h3>Note print / save settings</h3>
+            <a href="javascript:;" class="close" data-options="region:'hide'"></a>
+        </div>
+        <div class="container">
+            <div class="calendar calendar-activity">
+                <table class="table ">
+                    <caption>
+                        <div class="pull-left"><button class="btn btn-square"><i class="icon-gray-left-arrow"></i></button></div>
+                        <div class="pull-right"><button class="btn btn-square"><i class="icon-gray-right-arrow"></i></button></div>
+                        <div class="main text-center"><h4>2012-2-12</h4></div>
+                    </caption>
+                    <tr>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="act-wrap">
+                                <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                            </div>
+                            <div class="act-wrap">
+                                <div class="act-label text-ellipsis"><a href="">more 5</a></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="act-wrap"></div>
+                            <div class="act-wrap"></div>
+                            <div class="act-wrap">
+                                <div class="act-label text-ellipsis label-span2"><a href="">activity name</a></div>
+                            </div>
+                            <div class="act-wrap">
+                                <div class="act-label text-ellipsis label-span4"><a href="">activity name</a></div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="act-wrap"></div>
+                            <div class="act-wrap"></div>
+                            <div class="act-wrap"></div>
+                            <div class="act-wrap"></div>
+                            <div class="act-wrap">
+                                <div class="act-label text-ellipsis label-span4"><a href="">activity name</a></div>
+                            </div>
+                            <div class="act-wrap">
+                                <div class="act-label text-ellipsis label-span4"><a href="">Collapse</a></div>
+                            </div>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+<script>
+    $('#calendar').click(function(){
+        window.dialogCalendar && dialogCalendar.show()
+    })
+</script>
+</body>
+</html>

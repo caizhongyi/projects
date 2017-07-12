@@ -1,0 +1,973 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>Welcome to Savorboard, Activity Arrangement living social network service, search activity, arrange activity,
+        start simply </title>
+
+    <meta name="keywords"
+          content="Savorboard, Activity arrangement living social network service, Search activity, Arrange activity, Activity, Group, Personal, Relationship, Message"/>
+    <meta name="description"
+          content="Savorboard (www.savorboard,com) is activity arrangement living social network service. User can search kinds of amazing activites by their needs and savorboard can plan and arrange everything smoothly like a professional chamberlain. Through these activites, you can get together with your old friends or know more new friends around. Talk each other, play each other, share every happy moment. Let's start simply from here."/>
+
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content=""/>
+    <meta name="copyright" content="2001-2010 Comsenz Inc."/>
+    <link rel="BookStar" href="favicon.ico"/>
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="all" href="js/jquery.token/token-input.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/message.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/en.css"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/jquery.fileupload-ui.css"/>
+
+    <!-- jquery 库 -->
+    <link rel="stylesheet" href="css/animate.min.css"/>
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="index.html" class="logo"><img src="images/logo-en.png" alt="Wanerdao"></a>
+
+        <div class="home  hover">
+            <a title="Home" class="button" href="javascript:;"><i class="icon icon-list"></i></a>
+
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a href="javascript:;">Activity</a></h3>
+                        <a href="activity_index.html">Activity main</a><a href="activity_search.html">Search
+                        activity</a><a href="activity_item_main.html">Current and past activities </a><a
+                            href="activity_future_plan.html">Future activities</a><a href="javascript:;">Launch an
+                        activity </a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">Personal</a></h3>
+                        <a href="personal_edit.html">Profile</a><a href="personal_finance_account.html">Finance
+                        account</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">Relationship</a></h3>
+                        <a href="relationship_friends_invite.html">My friends</a>
+                    </li>
+                    <li>
+                        <h3><a href="index.html">Main</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="Activity / Friend" class="text"><input type="submit" class="button"
+                                                                                   value="">
+        </div>
+
+        <div class="infotips">
+                <span class="floatbox-wrap dropdown">
+                    <a href="javascript:;" class="hint"><i class="icon icon-bell "></i><span
+                            class="badge badge-important">20</span></a>
+                    <div class="dropdown-pane floatbox slide">
+                        <i class="arrow"></i>
+
+                        <div class="scroll">
+                            <div class="accordion scroll-panel" data-collapse="">
+                                <div class="accordion-item active">
+                                    <div class="accordion-heading toolbar"><i class="icon-minus-sign"></i><!--<i class="icon-collapse"></i>--><span
+                                            class="text-important">1223</span>&nbsp;Activity name，city/state <span
+                                            class="time">2012/12 - 2021/12</span></div>
+                                    <div class="accordion-panel" style="display: block">
+                                        <ul class="group-list">
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                    class="title"><strong>Task name</strong><small class="desc">
+                                                Description
+                                            </small></span><a href="" class="opts">Detail</a></li>
+                                            <li>
+                                                <i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                    class="title "><strong>Task name</strong><small
+                                                    class="desc detail-short">Description
+                                            </small></span>
+
+                                                <div class="detail">
+                                                    <small class="desc">Description</small>
+                                                    <br/>
+                                                    <span class="price">$123</span>&nbsp;
+                                                    <small class="desc">Private message&nbsp;Attachment</small>
+                                                    <br/>
+                                                    Creator
+                                                    <a href="" class="opts">Detail</a>
+                                                </div>
+                                            </li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                    class="title"><strong>Task name</strong><small class="desc">
+                                                Description
+                                            </small></span><a href="" class="opts">Request content</a></li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                    class="title"><strong>Task name</strong><small class="desc">
+                                                Description
+                                            </small></span><a href="" class="opts">Request content</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="accordion-item ">
+                                    <div class="accordion-heading toolbar"><i class="icon-plus-sign"></i><!--<i class="icon-collapse"></i>--><span
+                                            class="text-important">1223</span>&nbsp;Activity name，city/state
+                                    </div>
+                                    <div class="accordion-panel" style="display: block">
+                                        <ul class="group-list">
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                    class="title"><strong>Task name</strong><small class="desc">
+                                                Description
+                                            </small></span><a href="" class="opts">Detail</a></li>
+                                            <li>
+                                                <i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                    class="title"><strong>Task name</strong><small
+                                                    class="desc detail-short">Description
+                                            </small></span>
+
+                                                <div class="detail">
+                                                    <small class="desc">Description</small>
+                                                    <br/>
+                                                    <span class="price">$123</span>&nbsp;
+                                                    <small class="desc">Private message</small>
+                                                    <br/>
+                                                    Creator
+                                                    <a href="" class="opts">Detail</a>
+                                                </div>
+                                            </li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                    class="title"><strong>Task name</strong><small class="desc">
+                                                Description
+                                            </small></span><a href="" class="opts">Request content</a></li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                    class="title"><strong>Task name</strong><small class="desc">
+                                                Description
+                                            </small></span><a href="" class="opts">Request content</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+                <span class="floatbox-wrap dropdown">
+                    <a href="javascript:;" class="hint"><i class="icon icon-bullhorn"></i><span
+                            class="badge badge-important">20</span></a>
+                    <div class="dropdown-pane floatbox slide">
+                        <i class="arrow"></i>
+
+                        <div class="scroll">
+                            <ul class="group-list scroll-panel">
+                                <li>2012/12/23&nbsp;
+                                    <small class="desc">notification</small>
+                                    <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;
+                                    <small class="desc">notification</small>
+                                    <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;
+                                    <small class="desc">notification</small>
+                                    <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;
+                                    <small class="desc">notification</small>
+                                    <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;
+                                    <small class="desc">notification</small>
+                                    <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;
+                                    <small class="desc">notification</small>
+                                    <a href="" class="opts">I know</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </span>
+                <span class="floatbox-wrap ">
+                    <span class="dropdown">
+                        <a href="javascript:;" class="hint"><i class="icon icon-envelope"></i><span
+                                class="badge badge-important">20</span></a>
+                        <div class="dropdown-pane floatbox slide" id="message-box">
+                            <i class="arrow"></i>
+
+                            <div class="scroll">
+                                <div class="scroll-panel">
+                                    <div class="toolbar"><a href="###" class="message-box">Go to message box<span
+                                            class="text-important">（200）</span></a>•<a
+                                            href="###" class="message-compose">Compose a message</a></div>
+                                    <ul class="group-list">
+                                        <li>
+                                            <div class="heading">
+                                                <i class="icon icon-star-alt"></i><span class="title">Name<small
+                                                    class="desc detail-short">Content
+                                            </small></span><span class="opts in"><span class="date">2012-12-21</span><a
+                                                    href="">Detail</a></span>
+                                            </div>
+                                            <div class="form detail">
+                                                <div class="form-item ">
+                                                    <p class="desc">Content...</p>
+                                                </div>
+                                                <div class="form-item">
+                                                    <div class="input-block">
+                                                        <textarea class="textarea " placeholder="Replay"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <label><input type="checkbox"/>Save a draft</label>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <span class="tips-result">Tips</span>
+                                                        <button class="btn btn-primary btn-mini">Reply</button>
+                                                        <button class="btn btn-default btn-mini">Forward</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="heading">
+                                                <i class="icon icon-star-alt"></i><span class="title">Name<small
+                                                    class="desc detail-short">Content
+                                            </small></span><span class="opts in"><span class="date">2012-12-21</span><a
+                                                    href="">Detail</a></span>
+                                            </div>
+                                            <div class="form detail">
+                                                <div class="form-item ">
+                                                    <p class="desc">Content...</p>
+                                                </div>
+                                                <div class="form-item">
+                                                    <div class="input-block">
+                                                        <textarea class="textarea " placeholder="Replay"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <label><input type="checkbox"/>Save a draft</label>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <span class="tips-result">Tips</span>
+                                                        <button class="btn btn-primary btn-mini">Send</button>
+                                                        <button class="btn btn-default btn-mini">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><i class="icon icon-star-alt"></i><span class="title">Name<small
+                                                class="desc">Content
+                                        </small></span><span class="opts in"><span class="date">2012-12-21</span><a
+                                                href="">Read</a></span></li>
+                                        <li><i class="icon icon-star-empty-alt"></i><span class="title">Name<small
+                                                class="desc">Content
+                                        </small></span><span class="opts in"><span class="date">2012-12-21</span><a
+                                                href="">Read</a></span></li>
+                                        <li><i class="icon icon-star-alt"></i><span class="title">Name<small
+                                                class="desc">Content
+                                        </small></span><span class="opts in"><span class="date">2012-12-21</span><a
+                                                href="">Read</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    <div class="dropdown-pane floatbox slide" id="message-compose">
+                        <i class="arrow"></i>
+
+                        <div class="scroll">
+                            <div class=" scroll-panel">
+                                <div class="toolbar"><a href="###" class="message-box">Go to message box<span
+                                        class="text-important">（200）</span></a>•<a
+                                        href="###" class="message-compose">Compose a message</a><span class="opts">Content saved, Date: MM/dd/yyyy hh:mm</span>
+                                </div>
+                                <div class="form container sendbox">
+                                    <div class="form-item ">
+                                        <label><span class="input-label">To:</span><input type="text"
+                                                                                          class="text span7"/>
+                                            <button class="btn btn-default btn-mini">Search</button>
+                                        </label>
+                                    </div>
+                                    <div class="form-item">
+                                        <label><span class="input-label">Content:</span><textarea class="textarea span8"
+                                                                                                  placeholder="Replay"></textarea></label>
+                                    </div>
+                                    <div class="form-panel clearfix">
+                                        <div class="pull-left ">
+                                            <label><input type="checkbox"/>Save a draft</label>
+                                        </div>
+                                        <div class="pull-right">
+                                            <span class="tips-result">Tips</span>
+                                            <button class="btn btn-primary btn-mini">Send</button>
+                                            <button class="btn btn-default btn-mini">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </span>
+            <!-- <a href="javascript:;" class="icon-message-mail">123</a>-->
+            <script>
+
+                $('.message-box').click(function (e) {
+                    $('#message-compose').removeClass('in')
+                    $('#message-box').addClass('in');
+                })
+                $('.message-compose').click(function () {
+                    $('#message-box').removeClass('in')
+                    $('#message-compose').addClass('in');
+                })
+
+
+            </script>
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img src="images/defaults/32-32.jpg"></a><a class="name"
+                                                                                                 href="javascript:;"><span>烧饭-人生旅途中人生旅途中</span><b></b></a>
+
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">Profile</a></li>
+                    <li><a href="javascript:;">Account</a></li>
+                    <li>
+                        <a href="javascript:;">Switch language</a>
+                        <ul>
+                            <li><a href="javascript:;">Chinese</a></li>
+                            <li><a href="javascript:;">English</a></li>
+                        </ul>
+                    </li>
+                    <li class="last"><a href="javascript:;">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout message-layout">
+    <div class="left-side">
+        <div class="equal">
+            <ul class="message-nav">
+                <li><a href="message_compose.html">Compose</a></li>
+                <li class="selected"><a href="message_inbox.html">Inbox</a><em>(123)</em></li>
+                <li><a href="message_send.html">Sent</a></li>
+                <li><a href="message_draft.html">Draft</a></li>
+                <li><a href="message_delete.html">Garbage bin</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="tabs tabs-master">
+
+            <div class="content">
+                <div class="toolbar">
+                    <div class="pagination text-right">
+                        <a href="javascript:;" class="prev disabled">First</a><a href="javascript:;"
+                                                                                 class="prev">Prev</a>2/18<a
+                            href="javascript:;" class="next">Next</a><a href="javascript:;"
+                                                                        class="prev disabled">Last</a>
+                    </div>
+                </div>
+
+                <ul class="group-list">
+                    <li>
+                        <small><i class="icon-star-alt"></i><i class="icon-star-empty-alt"></i></small>
+                        Title&nbsp;1月27日
+                    </li>
+                    <li>
+                        <div class="morebar"><a href="###">History<em>（190）</em></a></div>
+                        <div class="clearfix push-down">
+                            <div class="tipbox mesagebar clearfix">
+                                <div class="pull-right">
+                                    <span class="message-date">Receive date</span>
+                                    <span class="short-date" style="display: none;">1月27日</span>
+                                    <span class="list-opts" style="display: none">
+                                        <a href="javascript:;" title="Replay"><i class="icon-opts-more"></i></a><a
+                                            href="javascript:;" title="Go back"><i class="icon-opts-back"></i></a><a
+                                            href="javascript:;" title="Delete"><i class="icon-opts-remove"></i></a><!---<a href="javascript:;" title="Previous"><i  class="icon-opts-prev"></i></a><a href="javascript:;" title="Next" class="last"><i  class="icon-opts-next"></i></a>-->
+                                    </span>
+                                </div>
+                                <div class="item-side" style="display: none; width: auto"> <img alt="" src="images/defaults/32-32.jpg" style="height:32px; width: 32px;"></div>
+                                <div class="overhidden">
+                                    From:<span class="text-black"> Name</span> - <span class="short ">short email message ...</span>
+
+                                </div>
+                            </div>
+                            <div class="relative subcontent">
+                                <div class="item-main">
+                                    <div class="message">
+                                        <div class="line"><a href="javascript:;"><em>Other receivers<i
+                                                class="icon-down-arrow"></i></em></a></div>
+                                        <ul class="list-label">
+                                            <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                        </ul>
+                                        <p>China is a step closer to setting up a lunar base after a 105-day manned
+                                            airtight test, in which the bio-regenerative life support ...</p>
+
+                                        <div class="message-send">
+                                            <div class="replay-line">
+                                                <div class="replay-line-btn">
+                                                    <a class="btn-option replay" href="javascript:;"><i
+                                                            class="icon icon-replay"></i>Replay</a><a class="btn-option"
+                                                                                                      href="javascript:;"><i
+                                                        class="icon-share-alt"></i>Foword</a>
+                                                </div>
+                                            </div>
+                                            <div class="replay-content" style="display: none;">
+                                                <form>
+                                                    <div class="form form-block">
+                                                        <div class="form-item">
+                                                            <label>
+                                                                <span class="input-label input-control">To:</span><input
+                                                                    type="text" class="text text-xxlarge"
+                                                                    name="username" id="username"><a href="javascript:;"
+                                                                                                     class="icon"></a>
+                                                            </label>
+                                                            <button class="btn btn-primary btn-mini">Search</button>
+                                                        </div>
+                                                        <div class="form-item">
+                                                            <label>
+                                                                <span class="input-label input-control">To:</span><input
+                                                                    type="text" class="text text-xxlarge input-control"
+                                                                    name="username-populated"
+                                                                    id="demo-input-pre-populated"></span>
+                                                            </label><!--<button class="btn btn-primary btn-mini">Search</button>-->
+                                                        </div>
+                                                        <div class="form-item">
+                                                            <label>
+                                                                <span class="input-label ">Content:</span>
+
+                                                                <div class="input-block"><textarea class="textarea"
+                                                                                                   name="" id=""
+                                                                                                   cols="30"
+                                                                                                   rows="10"></textarea>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-item">
+                                                            <label class="checkbox pull-left">
+                                                                <input type="checkbox"/>Save to draft
+                                                            </label>
+
+                                                            <div class="pull-right">
+                                                                 <span class="tips-result">
+                                                                    <ul>
+                                                                        <li>NoteMessage</li>
+                                                                    </ul>
+                                                                </span>
+                                                                <input type="button" class="btn btn-primary"
+                                                                       value="send"><input type="button"
+                                                                                           class="button btn btn-default"
+                                                                                           value="Save"><input
+                                                                    type="button" class="button btn btn-default"
+                                                                    value="Clean up">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tipbox mesagebar">
+                                <div class="pull-right">Send date</div>
+                                To: Name - <span class="short">short email message ...</span></div>
+                            <div class="relative subcontent">
+                                <div class="item-side"><img alt="" src="images/defaults/64-64.jpg"></div>
+                                <div class="item-main">
+                                    <div class="item-title"><a href="javascript:;">千雨千寻</a>&nbsp;1月27日</div>
+                                    <div class="message">
+                                        <div class="line"><a href="javascript:;"><em>Other receivers<i
+                                                class="icon-down-arrow"></i></em></a></div>
+                                        <ul class="list-label">
+                                            <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                        </ul>
+                                        <p>China is a step closer to setting up a lunar base after a 105-day manned
+                                            airtight test, in which the bio-regenerative life support ...</p>
+
+                                        <div class="message-send">
+                                            <div class="replay-line">
+                                                <div class="replay-line-btn">
+                                                    <a class="btn-option replay" href="javascript:;"><i
+                                                            class="icon icon-replay"></i>Replay</a><a class="btn-option"
+                                                                                                      href="javascript:;"><i
+                                                        class="icon-share-alt"></i>Foword</a>
+                                                </div>
+                                            </div>
+                                            <div class="replay-content" style="display: none;">
+                                                <form>
+                                                    <div class="form form-block">
+                                                        <div class="form-item">
+                                                            <label>
+                                                                <span class="input-label input-control">To:</span><input
+                                                                    type="text" class="text text-xxlarge"
+                                                                    name="username"><a href="javascript:;"
+                                                                                       class="icon"></a>
+                                                            </label>
+                                                            <button class="btn btn-primary btn-mini">Search</button>
+                                                        </div>
+                                                        <div class="form-item">
+                                                            <label>
+                                                                <span class="input-label input-control">To:</span><input
+                                                                    type="text" class="text text-xxlarge input-control"
+                                                                    name="username-populated"></span>
+                                                            </label><!--<button class="btn btn-primary btn-mini">Search</button>-->
+                                                        </div>
+                                                        <div class="form-item">
+                                                            <label>
+                                                                <span class="input-label ">Content:</span>
+
+                                                                <div class="input-block"><textarea class="textarea"
+                                                                                                   name="" id=""
+                                                                                                   cols="30"
+                                                                                                   rows="10"></textarea>
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-item">
+                                                            <label class="checkbox pull-left">
+                                                                <input type="checkbox"/>Save to draft
+                                                            </label>
+
+                                                            <div class="pull-right">
+                                                                 <span class="tips-result">
+                                                                    <ul>
+                                                                        <li>NoteMessage</li>
+                                                                    </ul>
+                                                                </span>
+                                                                <input type="button" class="btn btn-primary"
+                                                                       value="send"><input type="button"
+                                                                                           class="button btn btn-default"
+                                                                                           value="Save"><input
+                                                                    type="button" class="button btn btn-default"
+                                                                    value="Clean up">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-date">
+                                <span class="list-opts">
+                                    <a href="javascript:;" title="Replay"><i class="icon-opts-more"></i></a><a
+                                        href="javascript:;" title="Go back"><i class="icon-opts-back"></i></a><a
+                                        href="javascript:;" title="Delete"><i class="icon-opts-remove"></i></a><!---<a href="javascript:;" title="Previous"><i  class="icon-opts-prev"></i></a><a href="javascript:;" title="Next" class="last"><i  class="icon-opts-next"></i></a>-->
+                                </span>
+                                </div>
+                            </div>
+                            <div class="messagebar-more " style="display: none;">
+                                <div class="tipbox mesagebar">
+                                    <div class="pull-right">Receive date</div>
+                                    From: Name - <span class="short">short email message ...</span></div>
+                                <div class="relative subcontent">
+                                    <div class="item-side"><img alt="" src="images/defaults/64-64.jpg"></div>
+                                    <div class="item-main">
+                                        <div class="item-title"><a href="javascript:;">千雨千寻</a>&nbsp;1月27日</div>
+
+                                        <div class="message">
+                                            <div class="line"><a href="javascript:;"><em>Other receivers<i
+                                                    class="icon-down-arrow"></i></em></a></div>
+                                            <ul class="list-label">
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            </ul>
+                                            <p>China is a step closer to setting up a lunar base after a 105-day manned
+                                                airtight test, in which the bio-regenerative life support ...</p>
+
+                                            <div class="message-send">
+                                                <div class="replay-line">
+                                                    <div class="replay-line-btn">
+                                                        <a class="btn-option replay" href="javascript:;"><i
+                                                                class="icon icon-replay"></i>Replay</a><a
+                                                            class="btn-option" href="javascript:;"><i
+                                                            class="icon-share-alt"></i>Foword</a>
+                                                    </div>
+                                                </div>
+                                                <div class="replay-content" style="display: none;">
+                                                    <form>
+                                                        <div class="form send-form">
+                                                            <div class="form-item">
+                                                                <label class="input-label">Content:</label><textarea
+                                                                    class="textarea" name="" id="" cols="30"
+                                                                    rows="10"></textarea>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                                <label><input type="checkbox"/>Save to draft box</label>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                        <span class="tips-result">
+                                                            <ul>
+                                                                <li>NoteMessage</li>
+                                                            </ul>
+                                                        </span>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                                <input type="button" class="btn btn-primary"
+                                                                       value="Send"><input type="button"
+                                                                                           class="button btn btn-default"
+                                                                                           value="Save"><input
+                                                                    type="button" class="button btn btn-default"
+                                                                    value="Clean up">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-date">
+                                <span class="list-opts">
+                                    <a href="javascript:;" title="Replay"><i class="icon-opts-more"></i></a><a
+                                        href="javascript:;" title="Go back"><i class="icon-opts-back"></i></a><a
+                                        href="javascript:;" title="Delete"><i class="icon-opts-remove"></i></a><!---<a href="javascript:;" title="Previous"><i  class="icon-opts-prev"></i></a><a href="javascript:;" title="Next" class="last"><i  class="icon-opts-next"></i></a>-->
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="tipbox mesagebar">
+                                    <div class="pull-right">Send date</div>
+                                    To: Name - <span class="short">short email message ...</span></div>
+                                <div class="relative subcontent">
+                                    <div class="item-side"><img alt="" src="images/defaults/64-64.jpg"></div>
+                                    <div class="item-main">
+                                        <div class="item-title"><a href="javascript:;">千雨千寻</a>&nbsp;1月27日</div>
+                                        <div class="message">
+                                            <div class="line"><a href="javascript:;"><em>Other receivers<i
+                                                    class="icon-down-arrow"></i></em></a></div>
+                                            <ul class="list-label">
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            </ul>
+                                            <p>China is a step closer to setting up a lunar base after a 105-day manned
+                                                airtight test, in which the bio-regenerative life support ...</p>
+
+                                            <div class="message-send">
+                                                <div class="replay-line">
+                                                    <div class="replay-line-btn">
+                                                        <a class="btn-option replay" href="javascript:;"><i
+                                                                class="icon icon-replay"></i>Replay</a><a
+                                                            class="btn-option" href="javascript:;"><i
+                                                            class="icon-share-alt"></i>Foword</a>
+                                                    </div>
+                                                </div>
+                                                <div class="replay-content" style="display: none;">
+                                                    <form>
+                                                        <div class="form send-form">
+                                                            <div class="form-item">
+                                                                <label class="input-label">Content:</label><textarea
+                                                                    class="textarea" name="" id="" cols="30"
+                                                                    rows="10"></textarea>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                                <label><input type="checkbox"/>Save to draft box</label>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                        <span class="tips-result">
+                                                            <ul>
+                                                                <li>NoteMessage</li>
+                                                            </ul>
+                                                        </span>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                                <input type="button" class="btn btn-primary"
+                                                                       value="Send"><input type="button"
+                                                                                           class="button btn btn-default"
+                                                                                           value="Save"><input
+                                                                    type="button" class="button btn btn-default"
+                                                                    value="Clean up">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-date">
+                                <span class="list-opts">
+                                    <a href="javascript:;" title="Replay"><i class="icon-opts-more"></i></a><a
+                                        href="javascript:;" title="Go back"><i class="icon-opts-back"></i></a><a
+                                        href="javascript:;" title="Delete"><i class="icon-opts-remove"></i></a><!---<a href="javascript:;" title="Previous"><i  class="icon-opts-prev"></i></a><a href="javascript:;" title="Next" class="last"><i  class="icon-opts-next"></i></a>-->
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="tipbox mesagebar">
+                                    <div class="pull-right">Receive date</div>
+                                    From: Name - <span class="short">short email message ...</span></div>
+                                <div class="relative subcontent">
+                                    <div class="item-side"><img alt="" src="images/defaults/64-64.jpg"></div>
+                                    <div class="item-main">
+                                        <div class="item-title"><a href="javascript:;">千雨千寻</a>&nbsp;1月27日</div>
+
+                                        <div class="message">
+                                            <div class="line"><a href="javascript:;"><em>Other receivers<i
+                                                    class="icon-down-arrow"></i></em></a></div>
+                                            <ul class="list-label">
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            </ul>
+                                            <p>China is a step closer to setting up a lunar base after a 105-day manned
+                                                airtight test, in which the bio-regenerative life support ...</p>
+
+                                            <div class="message-send">
+                                                <div class="replay-line">
+                                                    <div class="replay-line-btn">
+                                                        <a class="btn-option replay" href="javascript:;"><i
+                                                                class="icon icon-replay"></i>Replay</a><a
+                                                            class="btn-option" href="javascript:;"><i
+                                                            class="icon-share-alt"></i>Foword</a>
+                                                    </div>
+                                                </div>
+                                                <div class="replay-content" style="display: none;">
+                                                    <form>
+                                                        <div class="form send-form">
+                                                            <div class="form-item">
+                                                                <label class="input-label">Content:</label><textarea
+                                                                    class="textarea" name="" id="" cols="30"
+                                                                    rows="10"></textarea>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                                <label><input type="checkbox"/>Save to draft box</label>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                        <span class="tips-result">
+                                                            <ul>
+                                                                <li>NoteMessage</li>
+                                                            </ul>
+                                                        </span>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                                <input type="button" class="btn btn-primary"
+                                                                       value="Send"><input type="button"
+                                                                                           class="button btn btn-default"
+                                                                                           value="Save"><input
+                                                                    type="button" class="button btn btn-default"
+                                                                    value="Clean up">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-date">
+                                <span class="list-opts">
+                                    <a href="javascript:;" title="Replay"><i class="icon-opts-more"></i></a><a
+                                        href="javascript:;" title="Go back"><i class="icon-opts-back"></i></a><a
+                                        href="javascript:;" title="Delete"><i class="icon-opts-remove"></i></a><!---<a href="javascript:;" title="Previous"><i  class="icon-opts-prev"></i></a><a href="javascript:;" title="Next" class="last"><i  class="icon-opts-next"></i></a>-->
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="tipbox mesagebar">
+                                    <div class="pull-right">Send date</div>
+                                    To: Name - <span class="short">short email message ...</span></div>
+                                <div class="relative subcontent">
+                                    <div class="item-side"><img alt="" src="images/defaults/64-64.jpg"></div>
+                                    <div class="item-main">
+                                        <div class="item-title"><a href="javascript:;">千雨千寻</a>&nbsp;1月27日</div>
+                                        <div class="message">
+                                            <div class="line"><a href="javascript:;"><em>Other receivers<i
+                                                    class="icon-down-arrow"></i></em></a></div>
+                                            <ul class="list-label">
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                                <li>Name<a href="#" class="icon-close-sign" data-remove></a></li>
+                                            </ul>
+                                            <p>China is a step closer to setting up a lunar base after a 105-day manned
+                                                airtight test, in which the bio-regenerative life support ...</p>
+
+                                            <div class="message-send">
+                                                <div class="replay-line">
+                                                    <div class="replay-line-btn">
+                                                        <a class="btn-option replay" href="javascript:;"><i
+                                                                class="icon icon-replay"></i>Replay</a><a
+                                                            class="btn-option" href="javascript:;"><i
+                                                            class="icon-share-alt"></i>Foword</a>
+                                                    </div>
+                                                </div>
+                                                <div class="replay-content" style="display: none;">
+                                                    <form>
+                                                        <div class="form send-form">
+                                                            <div class="form-item">
+                                                                <label class="input-label">Content:</label><textarea
+                                                                    class="textarea" name="" id="" cols="30"
+                                                                    rows="10"></textarea>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                                <label><input type="checkbox"/>Save to draft box</label>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                                <span class="tips-result">
+                                                                    <ul>
+                                                                        <li>NoteMessage</li>
+                                                                    </ul>
+                                                                </span>
+                                                            </div>
+                                                            <div class="form-item form-panel">
+                                                                <input type="button" class="btn btn-primary"
+                                                                       value="Send"><input type="button"
+                                                                                           class="button btn btn-default"
+                                                                                           value="Save"><input
+                                                                    type="button" class="button btn btn-default"
+                                                                    value="Clean up">
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item-date">
+                                <span class="list-opts">
+                                    <a href="javascript:;" title="Replay"><i class="icon-opts-more"></i></a><a
+                                        href="javascript:;" title="Go back"><i class="icon-opts-back"></i></a><a
+                                        href="javascript:;" title="Delete"><i class="icon-opts-remove"></i></a><!---<a href="javascript:;" title="Previous"><i  class="icon-opts-prev"></i></a><a href="javascript:;" title="Next" class="last"><i  class="icon-opts-next"></i></a>-->
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="toolbar">
+                    <div class="pagination text-right">
+                        <a href="javascript:;" class="prev disabled">First</a><a href="javascript:;"
+                                                                                 class="prev">Prev</a>2/18<a
+                            href="javascript:;" class="next">Next</a><a href="javascript:;"
+                                                                        class="prev disabled">Last</a>
+                    </div>
+                </div>
+                <script type="text/javascript">
+
+                    $('.item-main .line a').click(function () {
+                        var list = $(this).closest('.line').next();
+                        if (list.is(':hidden')) {
+                            list.stop(true, true).slideDown();
+                            $(this).find('i').removeClass('icon-down-arrow').addClass('icon-up-arrow');
+                        }
+                        else {
+                            list.stop(true, true).slideUp();
+                            $(this).find('i').removeClass('icon-up-arrow').addClass('icon-down-arrow');
+                        }
+                    })
+                    $('.replay-line .replay').click(function () {
+                        $(this).closest('.replay-line').next().stop(true).slideToggle();
+                    })
+
+                    $('.message,.item-date,.item-title small').click(function (e) {
+                        e.stopPropagation();
+                    });
+
+                    $('.group-list').on('click', '.mesagebar', function () {
+                        $(this).find('.short,.short-date').stop(true).toggle().end().find('.list-opts,.message-date,.item-side').toggle();
+                        $(this).next('.subcontent').stop(true).slideToggle();
+                    })
+
+                    $('.morebar').click(function () {
+                        $(this).hide().next().find('.messagebar-more').stop(true).slideDown();
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+        <div class="sitemap">
+            <a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Terms</a><a
+                href="javascript:;" class="text-danger">Help wanted</a><a href="javascript:;">Suggestion</a><a
+                href="javascript:;">Help</a>
+        </div>
+        <span class="copyright">Copyright @ 2011-2014 Savorboard Corporation</span>
+    </div>
+</div>
+<!-- end footer -->
+<a href="javascript:;" class="gotop"></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/class.ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.placeholer.js"></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="js/jquery.token/jquery.token.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("[name=username]").tokenInput([
+            {id: 7, name: "Ruby"},
+            {id: 11, name: "Python"},
+            {id: 13, name: "JavaScript"},
+            {id: 17, name: "ActionScript"},
+            {id: 19, name: "Scheme"},
+            {id: 23, name: "Lisp"},
+            {id: 29, name: "C#"},
+            {id: 31, name: "Fortran"},
+            {id: 37, name: "Visual Basic"},
+            {id: 41, name: "C"},
+            {id: 43, name: "C++"},
+            {id: 47, name: "Java"}
+        ]);
+    });
+
+    $(document).ready(function () {
+        $("[name=username-populated]").tokenInput("http://shell.loopj.com/tokeninput/tvshows.php", {
+            prePopulate: [
+                {id: 123, name: "Slurms MacKenzie"},
+                {id: 555, name: "Bob Hoskins"},
+                {id: 9000, name: "Kriss Akabusi"}
+            ]
+//theme: "facebook"
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿@charset "utf-8";
+
+html{ background: #dceff5; }
+body{ font-family: '宋体' "microsoft yahei" arial tohoma;}
+
+@import "mixins/index" ;
+@import "btn";
+@import "icon";
+
+.header{
+    padding: 10px 0;
+   .container{ position: relative; }
+    .logo{ float: left; width: 200px;}
+    .user{ width: 300px; position:absolute; top: -10px;right: 0;  font-size: 12px; background: #464646;  color: #ccc; padding: 0px 20px; height: 26px; line-height: 26px; border-bottom: 1px solid #000;}
+    .box-left,.box-right { background: url(../img/fixebar.png) no-repeat; width: 22px; height: 27px; position: absolute; left: -22px; top: 0;}
+    .box-right{ background-position: -23px 0 ; left: auto; right: -22px;}
+    .combo{ width: 70px;color: inherit; border-radius: 0; border:1px solid transparent; padding: 0px 4px;}
+    .combo:hover,
+    .combo-list{ background: #f2f2f2; color: #333333;border-color: inherit; }
+    .combo-list{ top: 24px;}
+    .combo-list li { padding: 2px 4px;}
+    .combo-icon{ border-top-color:#ccc; }
+    .combo:hover .combo-icon{ border-top-color:#333; }
+    img{ margin: 0 5px;}
+}
+
+.navbar{
+    z-index: 1;
+    position: relative;
+    margin-bottom: 20px;
+    background: #367a99;
+    .container{ position: relative;}
+    li{ position: static;}
+    li ul{ display: none; }
+    li:hover,.selected{
+        background: #4badcc;
+        ul,.navbar-item{ display: block;}
+    }
+    li ul li { float: none; }
+    .navbar-item{ font-size: 12px; position: absolute; width: 100%; left: 0; background: #4badcc; top: 47px; display: none; border: 1px solid #2D82C1;  margin-top: -1px; border-top: none;}
+    .navbar-item a{ float: left;  margin: 0 10px;padding: 10px;}
+}
+.panel{ border-top: 1px solid #458FCE; padding: 20px; background: #fff;}
+
+.footer{ color: #849fa6;  font-size: 12px; text-align: center; padding: 30px 0; }
+
+
+.table{
+    font-size: 12px;
+    th{ font-size: 12px;}
+    th,td{ padding: 10px; }
+    thead{ border-top: 1px solid #458FCE;}
+    > tr:nth-child(even){ background: #f3f9fd;}
+    > tr:hover{ background: #e1f1fb;}
+    a{ margin: 0 5px;}
+    .table-panel{ padding: 0;display: none;}
+}
+
+.tab .tab-list > li ,
+.tab-list .item{ padding:20px 0; position: static; display: none; visibility: inherit; }
+.tab .tab-list .selected{ display: block;}
+
+.input-inner-group{
+   position: relative;
+    [type=text],[type=password]{ }
+    .add-on{ position: absolute; right: 20px; top: 0px;}
+}

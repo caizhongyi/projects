@@ -1,0 +1,934 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>CreateGroup-Relationship-Savorboard</title>
+
+<meta name="keywords" content="Create group，Group message，Invitation user，Relationship，Savorboard，Activity arrangement living social network"/>
+<meta name="description"
+      content="Fill in the necessary group infomation finished group create，and can send the invitation"/>
+
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/relationship.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/en.css"/>
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+
+<style type="text/css">
+    body{ background: #fff ; padding: 10px;width: 680px;}
+</style>
+
+<h3>View:</h3>
+
+<div class="accordion warning  active">
+    <div class="titlebar titlebar-info">
+        <div class="pull-right list-link">
+            <a href="">Approve to launch</a>•<a href="">Give up this launch</a>•<a href="">Edit</a>
+        </div>
+        <h3 class="offset">
+            This is a scheduled activity
+        </h3>
+    </div>
+    <div class="accordion-panel">
+        <p>The activity scheduled to launch on MM/dd/yyyy. Please confirm before MM/dd/yyyy , otherwise, the activity will give up this time by settings. (directly launch this time by settings)</p>
+    </div>
+</div>
+
+
+
+<h3>Edit:</h3>
+
+<div class="accordion  active">
+    <!--<div class="titlebar titlebar-info">
+        <h3>
+            <i class="icon-blue-minus"></i>Schedule to launch
+        </h3>
+    </div>-->
+    <div class="accordion-panel">
+        <div class=" form">
+            <div class="form-item">
+                <label class="input-control"><span class="input-control">Repetition pattern:</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                </label><span class="muted">Description</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion  active">
+    <div class="titlebar titlebar-info">
+        <!-- <div class="pull-right list-link">
+             <a href="">Approve to launch</a>•<a href="">Give up this launch</a>•<a href="">Edit</a>
+         </div>-->
+        <h3>
+            <i class="icon-blue-minus"></i>Schedule to launch
+        </h3>
+    </div>
+    <div class="accordion-panel">
+        <div class=" form form-special">
+            <div class="form-item">
+                <label class="input-control"><span class="input-control">Repetition pattern:</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                </label><span class="muted">Description</span>
+                <div class="tips error">tips</div>
+            </div>
+            <div class="form-item">
+                <label>
+                    <span class="input-control">Select date:</span><input type="text" class="text text-medium"/>
+                </label>
+                <button class="btn btn-primary btn-mini">Calendar</button><button class="btn btn-gray btn-mini">Add</button>
+            </div>
+            <div class="form-item">
+                <div class="tipbox">
+                    <ul class="list-label list-label-block list-label-transparent animation-opts">
+                        <li>
+                            <span class="input-control">01</span><span>2012/03/15</span>
+                        <span class="opts">
+                            <a href="javascript:;" class="icon icon-light-del" data-remove title="Delete"></a>
+                        </span>
+                        </li>
+                        <li>
+                            <span class="input-control">01</span><span>2012/03/15</span>
+                         <span class="opts">
+                            <a href="javascript:;" class="icon icon-light-del" data-remove title="Delete"></a>
+                        </span>
+                        </li>
+                        <li>
+                            <span class="input-control">01</span><span>2012/03/15</span>
+                        <span class="opts">
+                            <a href="javascript:;" class="icon icon-light-del" data-remove title="Delete"></a>
+                        </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-item">
+                <label>
+                    <span class="input-control">Launch type:</span><span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="checkbox">
+                    <input type="checkbox"/>When schedule date approach,notice by email
+                </label>
+                <label>
+                    <span class="input-control">before:</span><span class="combo text-small"  data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                </label>
+            </div>
+            <div class="form-item">
+                <label>
+                    <input type="checkbox"/>When schedule date approach,notice by message
+                </label>
+                <label>
+                    <span class="input-control">before:</span><span class="combo text-small" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                </label>
+            </div>
+            <div class="form-item">
+                <button id="calendar" class="btn btn-default btn-mini">Check schedule date in calendar</button>
+            </div>
+            <div class="form-item">
+                <div class="tips-result">
+                    <ul>
+                        <li>Note</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-item">
+                <button type="submit" class="btn btn-primary">Save</button><button type="button" class="btn btn-default">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="accordion  active">
+    <div class="titlebar titlebar-info">
+        <!-- <div class="pull-right list-link">
+             <a href="">Approve to launch</a>•<a href="">Give up this launch</a>•<a href="">Edit</a>
+         </div>-->
+        <h3>
+            <i class="icon-blue-minus"></i>Schedule to launch
+        </h3>
+    </div>
+    <div class="accordion-panel">
+        <div class=" form">
+            <div class="form-item">
+                <label class="input-control"><span class="input-control">Repetition pattern:</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                </label><span class="muted">Description:Create只能被使用一次</span>
+            </div>
+            <div class="form-item">
+                <label class="input-control">
+                    <span class="input-control">Range of repetition:Start</span><input type="text" class="text text-medium"/>
+                </label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">End after</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><input type="text" class="text text-mini input-control"/>occurrences
+            </div>
+            <div class="form-item">
+                <label>
+                    <span class="input-control"> Interval range:</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Daily</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                </label><label> Launch type: <span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Daily</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+            </div>
+            <div class="form-item">
+                    <input type="radio"/>each <input type="text" class="text text-mini input-control"/>day(s)
+            </div>
+            <div class="form-item">
+                <label class="radio">
+                    <input type="radio"/>Every weekday （From Monday to Friday）
+                </label>
+            </div>
+
+            <div class="form-item">
+                <label class="checkbox">
+                    <input type="checkbox"/>When schedule date approach,notice by email
+                </label>
+                <label>
+                    before:<span class="combo" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                </label>
+            </div>
+            <div class="form-item">
+                <label class="">
+                    <input type="checkbox"/>When schedule date approach,notice by message
+                </label>
+                <label>
+                 before:<span class="combo" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一次性</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                </label>
+            </div>
+            <div class="form-item">
+                <div class="tips-result">
+                    <ul>
+                        <li>Note</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-item">
+                <button type="submit" class="btn btn-primary">Save</button><button type="button" class="btn btn-default">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="accordion  active">
+    <div class="titlebar titlebar-info">
+        <!-- <div class="pull-right list-link">
+             <a href="">Approve to launch</a>•<a href="">Give up this launch</a>•<a href="">Edit</a>
+         </div>-->
+        <h3>
+            <i class="icon-blue-minus"></i>Schedule to launch
+        </h3>
+    </div>
+    <div class="accordion-panel">
+        <div class=" form">
+            <div class="form-item">
+                <label>
+                    <span class="input-control">Range of repetition:Start</span><input type="text" class="text text-medium"/>
+                </label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">End after</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><input type="text" class="text text-mini input-control"/>occurrences
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion  active">
+    <div class="titlebar titlebar-info">
+        <!-- <div class="pull-right list-link">
+             <a href="">Approve to launch</a>•<a href="">Give up this launch</a>•<a href="">Edit</a>
+         </div>-->
+        <h3>
+            <i class="icon-blue-minus"></i>Schedule to launch
+        </h3>
+    </div>
+    <div class="accordion-panel">
+        <div class=" form">
+           <!-- <div class="form-item">
+                <label>
+                    <span class="input-control">Interval range:</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Weekly</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                </label><label> Launch type: <span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">按定制Repetition直接Create</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+            </div>-->
+            <div class="form-item">
+                    <input type="radio">Repeat every&nbsp;<input type="text" class="text text-mini input-control">Week (s) on:
+            </div>
+            <div class="form-item ">
+                <label class="checkbox">
+                    <input type="checkbox">Sun
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox">Mon
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox">Tue
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox">Wed
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox">Thu
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox">Fri
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox">Sat
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="accordion  active">
+    <div class="titlebar titlebar-info">
+        <!-- <div class="pull-right list-link">
+             <a href="">Approve to launch</a>•<a href="">Give up this launch</a>•<a href="">Edit</a>
+         </div>-->
+        <h3>
+            <i class="icon-blue-minus"></i>Schedule to launch
+        </h3>
+    </div>
+    <div class="accordion-panel">
+        <div class=" form">
+           <!-- <div class="form-item">
+                <label>
+                    <span class="input-control">Interval range:</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Monthly</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                </label><label>&nbsp;<span class="input-control">Launch type:</span><span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">按定制Repetition直接Create</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+            </div>-->
+            <div class="form-item">
+                    <input type="radio">every <input type="text" class="text text-mini input-control"><span class="input-control">month of</span><input type="text" class="text text-mini input-control">day(s)
+            </div>
+            <div class="form-item ">
+                    <input type="radio">every <input type="text" class="text text-mini input-control"><span class="input-control">month of</span><span class="combo text-small" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">第一</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="combo text-small" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">day(s)</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion  active">
+    <div class="titlebar titlebar-info">
+        <!-- <div class="pull-right list-link">
+             <a href="">Approve to launch</a>•<a href="">Give up this launch</a>•<a href="">Edit</a>
+         </div>-->
+        <h3>
+            <i class="icon-blue-minus"></i>Schedule to launch
+        </h3>
+    </div>
+    <div class="accordion-panel">
+        <div class=" form">
+            <!--<div class="form-item">
+
+                    <span class="input-control">Interval range:</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Yearly</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                <label> <span class="input-control">Launch type:</span><span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">按定制Repetition直接Create</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+            </div>-->
+            <div class="form-item">
+                    <input type="radio">Every&nbsp;<span class="combo text-small" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><input type="text" class="text text-mini input-control">day(s)
+            </div>
+            <div class="form-item ">
+                    <input type="radio">Every <span class="combo text-small input-control" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">一月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="input-control">of</span><span class="combo text-small" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">第一</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="combo text-small" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">day(s)</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end container -->
+
+
+<div id="dialogCalendar" data-loader="class-dialog"  class="dialog ui-dialog" data-options="handler:'header'">
+    <div class="bg"></div>
+    <div class="inner">
+        <div class="hd" data-options="region:'header',handle:true">
+            <h3>Note print / save settings</h3>
+            <a href="javascript:;" class="close" data-options="region:'hide'"></a>
+        </div>
+        <div class="container">
+        <div class="calendar calendar-activity">
+        <table class="table ">
+        <caption>
+            <div class="pull-left"><button class="btn btn-square"><i class="icon-gray-left-arrow"></i></button></div>
+            <div class="pull-right"><button class="btn btn-square"><i class="icon-gray-right-arrow"></i></button></div>
+            <div class="main text-center"><h4>2012-2-12</h4></div>
+        </caption>
+        <tbody><tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+        </tr>
+        </tbody><tbody>
+        <tr>
+            <td>
+                <span class="num">1</span>
+                <div class="act-wrap">
+                    <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                </div>
+                <div class="act-contain" style="display: none;">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+                <div class="act-wrap">
+                    <a href="#" class="act-label text-ellipsis label-span7 more" style="display: block;">more 5</a>
+                    <a href="#" class="act-label text-ellipsis label-span7 collapse" style="display: none;">Collapse</a>
+                </div>
+            </td>
+            <td>
+                <span class="num">2</span>
+                <div class="act-wrap"></div>
+                <div class="act-contain" style="display: none;">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="num">3</span>
+                <div class="act-wrap"></div>
+                <div class="act-contain" style="display: none;">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+            </td>
+            <td><span class="num">4</span></td>
+            <td><span class="num">5</span></td>
+            <td><span class="num">6</span></td>
+            <td><span class="num">7</span></td>
+        </tr>
+        <tr>
+            <td>
+                <span class="num">8</span>
+                <div class="act-wrap">
+                    <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                </div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+                <div class="act-wrap">
+                    <a href="#" class="act-label text-ellipsis label-span7 more">more 5</a>
+                    <a href="#" class="act-label text-ellipsis label-span7 collapse">Collapse</a>
+                </div>
+            </td>
+            <td>
+                <span class="num">9</span>
+                <div class="act-wrap"></div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="num">10</span>
+                <div class="act-wrap"></div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+            </td>
+            <td><span class="num">11</span></td>
+            <td><span class="num">12</span></td>
+            <td><span class="num">13</span></td>
+            <td><span class="num">14</span></td>
+        </tr>
+        <tr>
+            <td>
+                <span class="num">15</span>
+                <div class="act-wrap">
+                    <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                </div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+                <div class="act-wrap">
+                    <a href="#" class="act-label text-ellipsis label-span7 more">more 5</a>
+                    <a href="#" class="act-label text-ellipsis label-span7 collapse">Collapse</a>
+                </div>
+            </td>
+            <td>
+                <span class="num">16</span>
+                <div class="act-wrap"></div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="num">17</span>
+                <div class="act-wrap"></div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+            </td>
+            <td><span class="num">18</span></td>
+            <td><span class="num">19</span></td>
+            <td><span class="num">20</span></td>
+            <td><span class="num">21</span></td>
+        </tr>
+        <tr>
+            <td>
+                <span class="num">22</span>
+                <div class="act-wrap">
+                    <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                </div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+                <div class="act-wrap">
+                    <a href="#" class="act-label text-ellipsis label-span7 more">more 5</a>
+                    <a href="#" class="act-label text-ellipsis label-span7 collapse">Collapse</a>
+                </div>
+            </td>
+            <td>
+                <span class="num">23</span>
+                <div class="act-wrap"></div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="num">24</span>
+                <div class="act-wrap"></div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+            </td>
+            <td><span class="num">254</span></td>
+            <td><span class="num">26</span></td>
+            <td><span class="num">27</span></td>
+            <td><span class="num">28</span></td>
+        </tr>
+        <tr>
+            <td>
+                <span class="num">29</span>
+                <div class="act-wrap">
+                    <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                </div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+                <div class="act-wrap">
+                    <a href="#" class="act-label text-ellipsis label-span7 more">more 5</a>
+                    <a href="#" class="act-label text-ellipsis label-span7 collapse">Collapse</a>
+                </div>
+            </td>
+            <td>
+                <span class="num">30</span>
+                <div class="act-wrap"></div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <span class="num">31</span>
+                <div class="act-wrap"></div>
+                <div class="act-contain">
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                    <div class="act-wrap">
+                        <div class="act-label text-ellipsis act-label"><a href="">activity name</a></div>
+                    </div>
+                </div>
+            </td>
+            <td><span class="num"></span></td>
+            <td><span class="num"></span></td>
+            <td><span class="num"></span></td>
+            <td><span class="num"></span></td>
+        </tr>
+        </tbody>
+        </table>
+
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/jquery.accordion.min.js"></script>
+<script>
+    $('#calendar').click(function(){
+        var dialog = new Class.dialog('#dialogCalendar').show();
+        //dialog.hide();
+    })
+</script>
+<script>
+    $('.calendar-activity').on('click','.more',function(e){
+        e.preventDefault();
+        $(this).hide().closest('tr').find('.act-contain').stop(true).slideDown().end().find('.collapse').show();
+    }).on('click','.collapse',function(e){
+        e.preventDefault();
+        $(this).hide().closest('tr').find('.act-contain').stop(true).slideUp().end().find('.more').show();
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>CreateGroup-Relationship-Savorboard</title>
+
+<meta name="keywords" content="Create group，Group message，Invitation user，Relationship，Savorboard，Activity arrangement living social network"/>
+<meta name="description"
+      content="Fill in the necessary group infomation finished group create，and can send the invitation"/>
+
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/relationship.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/en.css"/>
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+
+<style type="text/css">
+    body{ background: #fff ; font-size:12px; padding: 10px;width: 680px;}
+</style>
+<h3>View:</h3>
+
+<div class="titlebar titlebar-info">
+    <div class="pull-right list-link">
+        <a href="">Edit</a>
+    </div>
+    <h3 >
+        <i class="icon-blue-minus"></i>Will join this activity
+    </h3>
+</div>
+<div class="accordion accordion-collapse active">
+    <div class="accordion-heading titlebar titlebar-info">
+        <div class="pull-right list-link">
+            <a href="">Edit</a>
+        </div>
+        <h3>
+            <i class="icon-blue-minus"></i>Will join this activity
+        </h3>
+    </div>
+    <div class="accordion-panel">
+        <div class="mapway clearfix">
+            <div class="map-content"><img alt="" src="pics/3.png"></div>
+            <div class="map-side">
+                <div class="side-header">Map way</div>
+                <ul>
+                    <li><i class="icon way-start">Start</i><span class="bold">桃园</span></li>
+                    <li><i class="icon way-walk"></i>步行至<a href="javascript:;">南山站医院站</a><em>210米</em></li>
+                    <li><i class="icon way-car"></i>乘坐<a href="javascript:;">36路（或223，324路）</a>在 <a href="javascript:;">深圳大学站</a>下车<em>2站</em></li>
+                    <li><i class="icon way-walk"></i>步行至<a href="javascript:;">深圳大学</a><em>10米</em></li>
+                    <li><i class="icon way-end">End</i><span class="bold">深圳大学</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Edit:</h3>
+<div class="accordion active">
+   <!-- <div class="accordion-heading titlebar titlebar-info">
+        <div class="pull-right list-link">
+           <a href="">Edit</a>
+        </div>
+        <h3>
+            <i class="icon-blue-minus"></i>Will join this activity
+        </h3>
+    </div>-->
+    <div class="accordion-panel">
+    <div class="bd form">
+        <div class="form-item">
+            <label><input type="checkbox"/>I will join this activity</label>
+        </div>
+    </div>
+    <div class="titlebar"><i class="icon-black-block"></i>Contact methods</div>
+    <div class="bd form form-block form-special">
+        <div class="form-item">
+            <label><span class="input-control">Phone:</span><input type="text" class="text text-large"/></label>
+            <br/><label><input type="checkbox"/>Synchronize to phone in personal profile</label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-control">Email:</span><input type="text" class="text text-large"/></label>
+            <br/><label><input type="checkbox"/>Synchronize to secondary email in personal profile</label>
+        </div>
+    </div>
+
+    <div class="titlebar"><i class="icon-black-block"></i>Route personal plan and traffic method</div>
+    <div class="push-down">
+        <div class="transportation">
+                    <span class="item">
+                       <i class="icon icon-landmark danger "></i>
+                        <span class="opts"><a class="icon-delete-gray"></a><a href="javascript:;" class="icon-setting-gray"></a></span>
+                    </span><a class="icon-add-gray" href="#"></a><span class="item">
+                        <i class="icon icon-landmark"></i>
+                        <span class="opts"><a class="icon-delete-gray"></a><a href="javascript:;" class="icon-setting-gray"></a></span>
+                    </span><a class="icon-add-gray" href="#"></a><span class="item">
+                        <i class="icon icon-landmark warning"></i>
+                        <span class="opts"><a class="icon-delete-gray"></a><a href="javascript:;" class="icon-setting-gray"></a></span>
+                    </span><a class="icon-add-gray" href="#"></a><span class="item">
+                       <i class="icon icon-landmark"></i>
+                    </span>
+
+        </div>
+        <div class="accordion traffic">
+            <div class="accordion-heading">
+                <h4 class="accordion-inner"><i class="icon icon-gray-plus"></i>Click to check details</h4>
+            </div>
+            <div class="accordion-panel scroll">
+                <ul class="list scroll-panel">
+                    <li>01&nbsp;起始Address</li>
+                    <li>01&nbsp;起始Address&nbsp;Route plan and traffic method</li>
+                    <li>01&nbsp;起始Address&nbsp;Route plan and traffic method</li>
+                    <li>01&nbsp;起始Address&nbsp;Route plan and traffic method</li>
+                    <li>01&nbsp;起始Address&nbsp;Route plan and traffic method</li>
+                    <li>01&nbsp;起始Address&nbsp;Route plan and traffic method</li>
+                    <li>01&nbsp;起始Address&nbsp;Route plan and traffic method</li>
+                    <li>01&nbsp;起始Address&nbsp;Route plan and traffic method</li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            $('.accordion').on('change',function(){
+                $(this).find('.scroll-panel').initslimscroll();
+            })
+        </script>
+        <div class="form form-block block form-special ">
+            <div class="form-item">
+                <label><span class="input-control">Address:</span><input type="text" class="text  text-large"/></label>
+                 <label>Zip: <input type="text" class="text text-small"/></label>
+                <div class="form-panel">
+                    <div class="push-item">
+                                <span class="combo text-small" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">国家</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><span class="combo  text-small" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">省</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><input class="text text-large" type="text "/>
+                    </div>
+                    <div class="push-item">
+                        <label  class="checkbox"><input type="checkbox" name="" />Syn to home address in personal profile</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-item">
+                <label ><span class="input-control">I prepare to take:</span><span class="combo input-control" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">Select route plan and traffic method</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span></label>to go
+            </div>
+            <div class="form-item">
+                <span class="tips-result">
+                    <ul>
+                        <li>tips</li>
+                    </ul>
+                </span>
+            </div>
+            <div class=" form-panel">
+                <div class="push-item">
+                    <button class="btn btn-primary" type="submit">Save</button><button class="btn btn-default" type="button">Clean up</button><button class="btn btn-default" type="button">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form form-block  bd form-special">
+        <div class="form-item">
+            <label><span class="input-control">Address:</span><input type="text" class="text text-large"/></label>
+            <label>Zip : <input type="text" class="text text-small"/></label>
+
+
+            <div class="form-panel">
+                <div class="push-item">
+                        <span class="combo text-small" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">国家</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><span class="combo  text-small" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">省</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><input class="text text-large" type="text " />
+                </div>
+                <div class="push-item">
+                    <label  class="checkbox"><input type="checkbox" name=""/>Syn to home address in personal profile</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-item">
+            <label ><span class="input-control">I prepare to take:</span><span class="combo text-small" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">Select route plan and traffic method</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span></label><span> to go </span><label><span class="combo text-mini" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">with</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span></label><label ><span class="input-control">own auto</span><span class="combo text-mini" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">请选择</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span></label>
+        </div>
+        <div class="form-item">
+            Provide: <input class="text input-control" type="text"/>empty seates
+        </div>
+        <div class="form-item">
+            <label ><span class="input-control">Carpool fee:</span><input type="text" class="text text-medium"/></label><label class="input-control"><span>each  $ </span><span class="combo text-small" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">请选择</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span></label><span class="input-control"></span>
+            <div class="tips">tips</div>
+        </div>
+        <div class="form-item">
+            <label ><span class="input-control">Module type:</span><span class="combo text-mini" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">请选择</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span></label><span class="combo input-control text-mini" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">请选择</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span><label ><span>Year:</span><input type="text" class="text text-mini"/></label><label ><span>Plant:</span><input type="text" class="text text-mini"/></label>
+
+            <div class="tips">tips</div>
+        </div>
+        <div class="form-item">
+            <span class="tips-result">
+                <ul>
+                    <li>tips</li>
+                </ul>
+            </span>
+        </div>
+        <div class=" form-panel">
+            <div class="push-item">
+                <button class="btn btn-primary" type="submit">Save</button><button class="btn btn-default" type="button">Clean up</button><button class="btn btn-default" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form form-block form-special bd">
+        <div class="form-item">
+            <label ><span class="input-control">I prepare to take:</span><span class="combo text-small" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">Select route plan and traffic method</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span></label><span> to go </span><label><span class="combo text-mini" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">with</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span></label><label ><span class="input-control">own auto</span><span class="combo text-mini" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">请选择</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span></label>
+            <div class="tips">tips</div>
+        </div>
+        <div class="form-item">
+            <span class="tips-result">
+                <ul>
+                    <li>tips</li>
+                </ul>
+            </span>
+        </div>
+        <div class=" form-panel">
+            <div class="push-item">
+                <button class="btn btn-primary" type="submit">Save</button><button class="btn btn-default" type="button">Clean up</button><button class="btn btn-default" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script type="text/javascript" src="js/jquery.accordion.js" ></script>
+<script src="js/jquery.draggable.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,166 @@
+@require "mixins/index";
+
+.carousel
+    border: 1px solid #ddd;
+    padding:20px 40px;
+    position: relative;
+    clearfix()
+    .clip
+      overflow: hidden;
+      height: 152px;
+    .list
+      position: relative;
+      clearfix()
+      width: 1000%;
+    ul, li
+      list-style: none; margin: 0; padding: 0;
+    li
+      width: 150px; height: 150px;overflow: hidden; float: left;
+    img
+      width: 100%;
+    li
+      a
+        display: block; padding: 5px; border:1px solid transparent;
+    .active a
+      border-color: red;
+
+    /* - prev and next - */
+    .prev,.next
+      margin: 0 10px; position: absolute; top: 45%;  display: block;z-index: 1; transition:all .2s ease-in-out;
+    .prev
+      left: 5px;
+    .next
+      right: 5px;
+    /* - prev and next - */
+
+.carousel.vertical
+    li 
+      float: none; 
+      width: auto; 
+      height: 100px;
+    
+
+
+.slider
+   /* box-shadow:  0 0 5px #333;*/
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    img
+      width: 100%;
+    .clip
+      overflow: hidden;height: 100%; position: relative;
+    .slider-item
+      position: absolute; left: 0; top: 0; width: 100%;
+    .list
+      @extend .carousel .list
+     ul
+      @extend .carousel ul
+     li
+      overflow: hidden; float: left;
+
+    /* - prev and next - */
+    .prev,.next
+        font-size: 40px;
+        top: 45%;
+        transform:scale(0);
+        text-decoration none;
+        color:#333;
+
+
+    &:hover
+        .prev,.next
+            transform:scale(1);
+
+    .prev
+      @extend .carousel .prev
+      left: 20px;
+    .next
+      @extend .carousel .next
+      right: 20px;
+    /* - prev and next - */
+
+    /* - navigation - */
+    .slider-nav
+        z-index: 2;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        clearfix()
+        li
+          transition: all .2s linear ;
+          float: left;
+          margin: 0 5px;
+          cursor: pointer ;
+          background: #999;
+          border-radius: 100%;
+          width: 5px;
+          height: 5px;
+          border: 1px solid #ddd;
+          box-shadow: 0 0 4px #333;
+        .active
+          background: #fff;
+    
+    /* - navigation - */
+
+    /* - CSS3 animation - */
+    .slider-item.slider-item-transition
+      transition: all .5s ease-in-out ;
+    .slider-left
+      left: -100%;
+    .slider-right
+      left: 100%;
+
+    .slider-next
+      left: -100%;
+    .slider-next.slider-left
+      left: -200%;
+    .slider-next.slider-right
+      left: 0;
+
+    .slider-prev
+      left: 100%;
+    .slider-prev.slider-left
+      left: 0;
+    .slider-prev.slide-right
+      left: 200%;
+    /* - CSS3 animation - */
+
+
+.slider.vertical
+    /* - prev and next - */
+    .prev,.next
+        font-size: 40px;
+        left: 45%;
+        right: auto;
+    
+    .prev
+      top: 0 ;
+    .next
+      bottom: 0 ;top:auto;
+    /* - CSS3 animation - */
+    .slider-left, .slider-right, .slider-next,.slider-prev
+      left: 0 !important; ;
+    .slider-left
+      top: -100%;
+    .slider-right
+      top: 100%;
+
+    .slider-next
+      top: -100%;
+    .slider-next.slider-left
+      top: -200%;
+    .slider-next.slider-right
+      top: 0;
+
+    .slider-prev
+      top: 100%;
+    .slider-prev.slider-left
+      top: 0;
+    .slider-prev.slider-right
+      top: 200%;
+    /* - CSS3 animation - */
+
+
+.slider-article img
+  width: auto;

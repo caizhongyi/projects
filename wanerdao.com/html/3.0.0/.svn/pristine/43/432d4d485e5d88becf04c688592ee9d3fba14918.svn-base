@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>管理个人记事-个人-玩儿道</title>
+
+    <meta name="keywords" content="管理个人记事，个人，玩儿道，活动组织的生活社交网络"/>
+    <meta name="description"
+          content="对个人记事进行修改，删除，重分类等管理操作，并能对分类进行重命名，删除，设定权限等操作"/>
+
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content=""/>
+    <meta name="copyright" content="2001-2010 Comsenz Inc."/>
+    <link rel="Bookmark" href="favicon.ico"/>
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/personal.css"/>
+
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="#" class="logo"><img src="images/logo.png" alt="玩儿道"></a>
+
+        <div class="home hover">
+            <a title="回到首页" class="button" href="javascript:;"></a>
+
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a href="javascript:;">活动</a></h3>
+                        <a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a
+                            href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a href="javascript:;">我的活动</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">个人</a></h3>
+                        <a href="javascript:;">资料</a><a href="javascript:;">记事</a><a href="javascript:;">相册</a><a
+                            href="javascript:;">视频</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">关系</a></h3>
+                        <a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a
+                            href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a href="javascript:;">寻找圈子</a><a
+                            href="javascript:;">创建圈子</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">主页</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="活动/好友/圈子/发帖" class="text"><input type="submit" class="button" value="">
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img src="images/defaults/32-32.jpg"></a><a class="name"
+                                                                                            href="javascript:;"><span>烧饭-人生旅途中人生旅途中</span><b></b></a>
+
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+        <a href="javascript:;" class="icon-message-mail right">123</a>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout personal-layout">
+    <div class="container">
+        <div class="tabs-master">
+            <div class="nav">
+                <div class="pull-left"><a href="#">资 料</a><a href="#"  class="selected">记 事</a><a href="#">相 片</a><a href="#">视 频</a><span><a
+                        href="#">帐 户</a></span></div>
+            </div>
+            <div class="subnav">
+                <a href="javascript:;"  >查看</a><a href="javascript:;">发表修改</a><a href="javascript:;">设置</a><a href="javascript:;" class="selected">管理</a>
+            </div>
+        </div>
+        <div class="layout-side">
+            <div class="equal">
+                <div class="side-inner form">
+                    <div class="title">分类设置</div>
+                    <div class="form">
+                        <div class="form-item">
+                            <span>默认分类:</span> <span class="combo" data-loader="class-combo">
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">未分类</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="form-item">
+                            <span>默认权限:</span> <span class="combo" data-loader="class-combo">
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">公开</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="form-item">
+                            <input type="text" class="text" placeholder="新建分组名"/><input type="submit" class="btn btn-default" value="新 建" />
+                        </div>
+                    </div>
+                    <ul class="list list-split">
+                        <li><span class="short-caption">记事分类名称 </span><span class="muted">(354)</span><div class="opts">
+                            <a href="javascript:;" class="icon-blue-lock"></a><a href="javascript:;" class="icon-blue-edit"></a><a href="javascript:;" class="icon-blue-close"></a>
+                        </div></li>
+                        <li><span class="short-caption">记事分类名称 </span><span class="muted">(354)</span><div class="opts">
+                            <a href="javascript:;" class="icon-blue-lock"></a><a href="javascript:;" class="icon-blue-edit"></a><a href="javascript:;" class="icon-del"></a>
+                        </div></li>
+                        <li><span class="short-caption">记事分类名称 </span><span class="muted">(354)</span><div class="opts">
+                            <a href="javascript:;" class="icon-blue-lock"></a><a href="javascript:;" class="icon-blue-edit"></a><a href="javascript:;" class="icon-del"></a>
+                        </div></li>
+                        <li><span class="short-caption">记事分类名称 </span><span class="muted">(354)</span><div class="opts">
+                            <a href="javascript:;" class="icon-blue-lock"></a><a href="javascript:;" class="icon-blue-edit"></a><a href="javascript:;" class="icon-del"></a>
+                        </div></li>
+                        <li><span class="short-caption">记事分类名称 </span><span class="muted">(354)</span><div class="opts">
+                            <a href="javascript:;" class="icon-blue-lock"></a><a href="javascript:;" class="icon-blue-edit"></a><a href="javascript:;" class="icon-del"></a>
+                        </div></li>
+                        <li><span class="short-caption">记事分类名称 </span><span class="muted">(354)</span><div class="opts">
+                            <a href="javascript:;" class="icon-blue-lock"></a><a href="javascript:;" class="icon-blue-edit"></a><a href="javascript:;" class="icon-blue-close"></a>
+                        </div></li>
+                        <li><span class="short-caption">记事分类名称 </span><span class="muted">(354)</span><div class="opts">
+                            <a href="javascript:;" class="icon-blue-lock"></a><a href="javascript:;" class="icon-blue-edit"></a><a href="javascript:;" class="icon-del"></a>
+                        </div></li>
+                        <li><span class="short-caption">记事分类名称 </span><span class="muted">(354)</span><div class="opts">
+                            <a href="javascript:;" class="icon-blue-lock"></a><a href="javascript:;" class="icon-blue-edit"></a><a href="javascript:;" class="icon-del"></a>
+                        </div></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="layout-main">
+             <div class="blue-titlebar form">
+                 时间：<span class="input-control">从</span><span class="input-append text-small">
+                    <label class="input-inner">
+                        <input type="text" class="text"/>
+                        <a href="javascript:;" class="input-icon"><i class="icon-gray-date"></i></a>
+                    </label>
+                </span><span class="input-control">到</span><span class="input-append text-small">
+                    <label class="input-inner">
+                        <input type="text" class="text"/>
+                        <a href="javascript:;" class="input-icon"><i class="icon-gray-date"></i></a>
+                    </label>
+                </span><span class="combo" data-loader="class-combo">
+                    <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                    <input  name="usr" type="hidden" class="combo-input-hidden">
+                    <div class="combo-list" >
+                        <ul><li value="1">未分类</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                    </div>
+                </span><input type="text" class="text text-medium"/><button type="submit" class="btn btn-gray btn-mini">搜索</button>
+             </div>
+             <div class="toolbar">
+                 <div class="pull-left">
+
+                 </div>
+                <div class="pagination-arrow right">
+                    <a href="javascript:;" class="prevmulti"></a><a href="javascript:;" class="prev"></a>&nbsp;第<input type="text" class="text">页 / 18页<a href="javascript:;" class="next"></a><a href="javascript:;" class="nextmulti"></a>
+                </div>
+             </div>
+            <ul class="group-list">
+                <li>
+                    <input type="checkbox"/><a href="javascript:;">[分类名称]</a><a href="javascript:;" class="normal">百度新闻手机客户端成获取雅安地震灾情的主要信息窗口</a>
+                    <div class="item-date">11/04/2013</div>
+                </li>
+                <li>
+                    <input type="checkbox"/><a href="javascript:;">[分类名称]</a><a href="javascript:;" class="normal">百度新闻手机客户端成获取雅安地震灾情的主要信息窗口</a>
+                    <div class="item-date">11/04/2013</div>
+                </li>
+                <li>
+                    <input type="checkbox"/><a href="javascript:;">[分类名称]</a><a href="javascript:;" class="normal">百度新闻手机客户端成获取雅安地震灾情的主要信息窗口</a>
+                    <div class="item-date">11/04/2013</div>
+                </li>
+                <li>
+                    <input type="checkbox"/><a href="javascript:;">[分类名称]</a><a href="javascript:;" class="normal">百度新闻手机客户端成获取雅安地震灾情的主要信息窗口</a>
+                    <div class="item-date">11/04/2013</div>
+                </li>
+                <li>
+                    <input type="checkbox"/><a href="javascript:;">[分类名称]</a><a href="javascript:;" class="normal">百度新闻手机客户端成获取雅安地震灾情的主要信息窗口</a>
+                    <div class="item-date">11/04/2013</div>
+                </li>
+                <li>
+                    <input type="checkbox"/><a href="javascript:;">[分类名称]</a><a href="javascript:;" class="normal">百度新闻手机客户端成获取雅安地震灾情的主要信息窗口</a>
+                    <div class="item-date">11/04/2013</div>
+                </li>
+                <li>
+                    <input type="checkbox"/><a href="javascript:;">[分类名称]</a><a href="javascript:;" class="normal">百度新闻手机客户端成获取雅安地震灾情的主要信息窗口</a>
+                    <div class="item-date">11/04/2013</div>
+                </li>
+                <li>
+                    <input type="checkbox"/><a href="javascript:;">[分类名称]</a><a href="javascript:;" class="normal">百度新闻手机客户端成获取雅安地震灾情的主要信息窗口</a>
+                    <div class="item-date">11/04/2013</div>
+                </li>
+            </ul>
+            <div class="toolbar">
+                <div class="pull-left">
+                    <label for="" class="checkbox"><input type="checkbox" name="" id=""/><span class="combo" data-loader="class-combo">
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">更改权限</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span></label><span class="combo" data-loader="class-combo">
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">移动到</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span><a href="javascript:;">删除</a>
+                </div>
+                <div class="pagination-arrow right">
+                    <a href="javascript:;" class="prevmulti"></a><a href="javascript:;" class="prev"></a>&nbsp;第<input type="text" class="text">页 / 18页<a href="javascript:;" class="next"></a><a href="javascript:;" class="nextmulti"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+    <div class="sitemap">
+        <a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a
+            href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a>
+    </div>
+    <span class="copyright">版权所有 @ 2011-2014 Savorboard Corporation</span>
+    </div>
+</div>
+<!-- end footer -->
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/class.ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.placeholer.js"></script>
+
+
+</body>
+</html>

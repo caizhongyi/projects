@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Create activity-Activity-Savorboard</title>
+<!--  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> -->
+<meta name="keywords" content="Create activity, Set joining Paras, Basic Paras, Set join fee, Set join requirement, Calculate budget, Savorboard, Life and social network" />
+<meta name="description" content="Create activity 3st step, fill set joining Paras section include basic Paras, set join fee, set join requirement and calculate budget" />
+<link rel="stylesheet" type="text/css" href="../css/activity_create.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/jquery.core.js"></script>
+<script src="../scripts/jquery.ui.tabs.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/gotop.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.ACmodGuide h4 input[type=checkbox]').click(function(){
+		if($(this).attr("checked")){
+	    	$(this).closest('h4').next().stop(true,true).slideDown();
+		}else{
+		    $(this).closest('h4').next().stop(true,true).slideUp();
+		}
+	 })
+	
+	});
+</script>
+<link rel="stylesheet" type="text/css" href="../css/en.css" media="all" />
+<body class="pBgB fSize-12">
+<div class="header_wrapper pBgH">
+     <div class="header layout"><a href="index.html" class="logo"></a>
+          <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="Go Home"></a>
+            <div class="home_pop">
+            	<ul>
+                	<li>
+                        <a href="javascript:;" class="hp_title">Activity</a>
+                        <p><a href="javascript:;">Looking for activities</a><a href="javascript:;">Create activities</a><a href="javascript:;">Classification activities</a><a href="javascript:;">Custom activities</a><a href="javascript:;">Seasonal activities</a><a href="javascript:;">My activities</a><a href="javascript:;">Historical activities</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Personal</a>
+                        <p><a href="javascript:;">Profile</a><a href="javascript:;">Diary</a><a href="javascript:;">Album</a><a href="javascript:;">Video</a></p>
+                    </li>
+                    <li  class="last">
+                        <a href="javascript:;" class="hp_title">Relationship</a>
+                        <p><a href="javascript:;">My friends</a><a href="javascript:;">Search friends</a><a href="javascript:;">Invite friends</a><a href="javascript:;">Subscription settings</a><a href="javascript:;">My groups</a><a href="javascript:;">Search group</a><a href="javascript:;">Create a group</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+        		<input type="text" class="search_txt" value="Artivity/Firend/Group/Article" inputdefault="Artivity/Firend/Group/Article" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/defucult/head.jpg" width="32" height="32" /></a><span class="user_infor_name"><a href="javascript:;">Cooking - life in the life journey<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">Modify profile</a></li>
+                    <li><a href="javascript:;">Account management</a></li>
+                    <li><a href="javascript:;">Privacy Settings</a></li>
+                    <li><a href="javascript:;">Change language</a></li>
+                    <li class="last"><a href="javascript:;">Exit</a></li>
+                    </ul>
+               </div>
+          </div>
+     </div>
+</div>
+<div class="activity_create layout">
+     <div id="container" class="activity_create w_1004 pBgC">
+          <div class="activity_createMainGuide">
+               <div class="mainTitile">
+                    <div class="mes_com_box_Tab"><a href="javascript:;" class="active">Create Activity</a></div>
+               </div>
+               <div class="modSwitch">
+                    <label for="">
+                         <input type="radio" class="radio" name="1" id="" />
+                         List view</label>
+                    <label for="">
+                         <input type="radio" class="radio" name="1" id="" />
+                         Guided view</label>
+               </div>
+               <div class="setbar6 pR">
+                    <div class="setbar6-l pA"></div>
+                    <div class="setbar6-r pA"></div>
+                    <ul>
+                         <li class="item1 stepbar_end">
+                              <div class="item_img item1_end"></div>
+							<p class="setp_title">Initial Paras</p>
+                         </li>
+                         <li class="item2 stepbar_end">
+                              <div class="item_img item2_end"></div>
+							<p class="setp_title">Basic Paras</p>
+                         </li>
+                         <li class="item3 stepbar_star">
+                              <div class="item_img item3_star"></div>
+							<p class="setp_title">Join Paras</p>
+                         </li>
+                         <li class="item4 stepbar_will">
+                              <div class="item_img item4_will"></div>
+							<p class="setp_title">Invitation</p>
+                         </li>
+                         <li class="item5 stepbar_will">
+                              <div class="item_img item5_will"></div>
+							<p class="setp_title">Sign up</p>
+                         </li>
+                         <li class="item6 stepbar_will">
+                              <div class="item_img item6_will"></div>
+							<p class="setp_title">Save settings</p>
+                         </li>
+                    </ul>
+               </div>
+               <div class="ACmodGuide">
+                    <h4>
+                         <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="customCycleSwitch" />
+                              <b>Set joining Paras</b></label>
+                    </h4>
+                    <div class="setmodList applySet">
+                         <dl>
+                              <dd class="formTitle">Total number：</dd>
+                              <dd class="formMain">
+                                   <input type="text" class="text" name="" id="" />
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">Join deadline date：</dd>
+                              <dd class="formMain">
+                                   <input type="text" class="text" name="" id="" />
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">Join Type：</dd>
+                              <dd class="formMain">
+                                    <label for="">
+                                        <input type="radio" name="111" id="" />
+                                        Directly join</label>
+                                    &nbsp;
+                                    <label for="">
+                                        <input type="radio" name="111" id="" />
+                                        Approved to join</label>
+                                    &nbsp;
+                                    <label for="">
+                                        <input type="radio" name="111" id="" />
+                                        Password authorized to join</label>
+                                    <div class="tips_G tipW_475"><span class="upArrow_G"></span>
+                                        <div class="tips_G_main tipW_475">
+                                              <label for="" class="pwdWarp">Set password：
+                                                  <input type="password" class="text" name="" id="" style="width:100px"/>
+                                             </label>
+                                              <label for="" class="pwdWarp">Re-set password：
+                                                  <input type="password" class="text" name="" id="" style="width:100px"/>
+                                             </label>
+                                        </div>
+                                   </div>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">&nbsp;
+                                   <label for="">
+                                        <input type="checkbox" name="" id="" />
+                                        &nbsp;</label>
+                              </dd>
+                              <dd class="formMain">Open kick out protection&nbsp;
+                                    <select name="" id="">
+                                        <option value="保护时限">保护时限</option>
+                                   </select>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                    </div>
+                    <!--设定报名参数-->
+                    <h4>
+                         <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="customCycleSwitch" />
+                              <b>Set join fee</b></label>
+                     </h4>
+                    <div class="setmodList applyFeeSet">
+                          <dl>
+                              <dd class="formTitle">Join fee：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" />
+                                    <label>
+                                        <input  type="checkbox"/>
+                                        &nbsp;&nbsp;Application must pay</label>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Pre-pay notification：</dd>
+                              <dd class="formMain">
+                                   <textarea name="" id="" cols="69" rows="4"></textarea>
+                                   &nbsp;</dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd><br />Payment methods and ID or Pay address：
+                                    <select name="" id="">
+                                        <option value="缴费方式">缴费方式</option>
+                                   </select>
+                                   <input  type="text" class="text"/></dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                    </div>
+                    <!--设定报名费用-->
+                    <h4>
+                         <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="customCycleSwitch" />
+                              <b>Set join requirement</b></label>
+                     </h4>
+                    <div class="setmodList thresholdSet">
+                          <dl>
+                              <dd class="formTitle">Set join requirement：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" value="添加" />
+                                    <select name="" id="">
+                                        <option value="Condition">Condition</option>
+                                   </select>
+                                    <select name="" id="">
+                                        <option value="Value">Value</option>
+                                   </select>
+                                    <input type="button" value="Add" class="buttonG btn_w56 btn_h28 btnGary_56" />
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain">
+                                   <textarea name="" id="" cols="69" rows="4"></textarea>
+                                   &nbsp; </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                    </div>
+                    <!--设定加入门槛-->
+                    <h4>
+                         <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="customCycleSwitch" />
+                              <b>Plan budget</b></label>
+                     </h4>
+                    <div class="setmodList preparedbudget">
+                          <dl>
+                              <dd class="formTitle">Budget Details：</dd>
+                              <dd class="formMain">
+                                    <label for="">
+                                        <input type="checkbox" name="" id="" />
+                                        Publish budget</label>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <div class="tabWarp_Gray">
+                              <table cellpadding="0" cellspacing="0" border="0" background="#ededed" width="642" class="preparedList fSize-12 fCgray3">
+                                    <tr class="fCblue" style="font-weight:normal;">
+                                        <th>ID</th>
+                                        <th>Item</th>
+                                        <th>Balance</th>
+                                        <th>Operator</th>
+                                        <th>Finance staff</th>
+                                        <th>Date</th>
+                                        <th></th>
+                                   </tr>
+                                   <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                                   <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                                   <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                                   <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                                   <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                              </table>
+                         </div>
+                         <dl>
+                              <dd class="formTitle">Item Details：</dd>
+                              <dd class="formMain"></dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">ID：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" value="01" id="" style="width:60px;" />
+                                    &nbsp;Item&nbsp;
+                                    <input type="text" class="text" name="" id="" />
+                                    &nbsp;Balance&nbsp;
+                                    <select name="" id="">
+                                        <option value="每天">每天</option>
+                                   </select>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">执行人名：</dd>
+                              <dd class="formMain">
+                                   <input type="text" class="text" name="" id="" />
+                                   &nbsp;&nbsp;
+                                   <select name="" id="">
+                                        <option value="活动人员">活动人员</option>
+                                   </select>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain">
+                                   <textarea name="" id="" cols="69" rows="4"></textarea>
+                                   &nbsp; </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain"> 操作时间：2011-11-15 23：11   财务人员：李小冉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                   <input type="button" value="添加预算明目" class="buttonG btn_w102 btn_h28 btnGary_102"/>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                    </div>
+                    <!-- 拟定预算 --> 
+               </div>
+               <div class="btn-warp">
+                    <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="Previous" onclick="location.href='activity_create_step2.html'" />
+                    &nbsp;&nbsp;
+                    <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="Next" onclick="location.href='activity_create_step4.html'" />
+               </div>
+          </div>
+     </div>
+</div>
+<!--Main-->
+<div class="footer layout">
+	<span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a href="javascript:;">Help</a></p>
+</div>
+</body>
+</html>

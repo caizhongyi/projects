@@ -1,0 +1,60 @@
+{php $cur_menu = 'index';}
+{template "public","header"}
+
+<!--页头-->
+<div id="main">
+    {template "poster","suge_banner"}
+    <!--中间大图-->
+    <div class="shopinfo">
+        <div id="cats-breadcr">
+           <!-- <div class="img1"><img src="{APP_PATH}statics/suge/img/qq.png"/></div>
+            <div class="text1"><a class="" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=239180013&site=qq&menu=yes">QQ在线咨询</a></div>
+            <div class="img1"><img src="{APP_PATH}statics/suge/img/sina.png"/></div>
+            <div class="text1"><a class="" href="http://e.weibo.com/xmsuge">关注苏格动态</a></div>
+            <div class="img1"><img src="{APP_PATH}statics/suge/img/tel.png"/></div>
+            <div class="text1"><span>0592-5663466</span>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="webo">
+
+        <div class="l_list_q">
+            <div id="l_add">
+                <div class="leftadd"><a href="http://wpa.qq.com/msgrd?v=3&uin=239180013&site=qq&menu=yes"><img src="{APP_PATH}statics/suge/img/add.png" /></a></div>
+                <div class="rightadd"></div></div>
+
+            <div id="l_newslist">
+                <div class="yyhq"></div>
+                <div class="news"><div class="h1">苏格点滴-带你走进温馨的苏格世界</div>
+                    {pc:content action="category" catid="32" num="4" siteid="$siteid" order="listorder asc,id desc,posids desc"}
+                    <!--{pc:content action="lists" catid="34" num="10" order="listorder asc,posids desc,id desc" page="$page"}-->
+                    <dl>
+                        {loop $data $r}
+                        <dd style="float: left;width: 305px;">
+                            <span class="gying">
+                                <a  href="{$r[url]}">{str_cut($r[title],64)}</a>
+                            </span><span>
+                            <a style="color:#939393;" href="{$r[url]}">{date('m-d',$r['updatetime'])}</a>
+                            </span>
+                        </dd>
+                        {/loop}
+                    </dl>
+                    {/pc}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="r_webo">
+            <iframe width="300px" height="400px" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=400&fansRow=1&ptype=1&speed=300&skin=3&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=3206559395&verifier=98aacb97&dpc=1"></iframe></div>
+    </div>
+    <!--新闻列表-->
+    <!--QQ-->
+    {template "poster","suge_beautiful_moments"}
+
+    <!--下部图片-->
+</div>
+<!--中部-->
+
+{template "public","footer"}

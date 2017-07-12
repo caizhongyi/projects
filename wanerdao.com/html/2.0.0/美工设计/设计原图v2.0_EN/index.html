@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Welcome to Savorboard, Life and social network, find activity, organize activity, start simply </title>
+
+    <meta name="keywords"
+          content="Savorboard, Life and social network, Search activity, Organise activity, Group, Personal, Relationship, Forum, Information, Message"/>
+    <meta name="description"
+          content="Savorboard (www.savorboard,com) is the most warm life and social network. User can find kinds of amazon activites by their needs and savorboard can plan and organise everything smoothly like a professional chamberlain. Through these activites, you can get together with your old friends or know some new friends around. Talk each other, play each other, share every happy. Let's start simply from here."/>
+
+    <script type="text/javascript" src="scripts/in-min.js" autoload="true" core="scripts/jquery-1.7.2.min.js"></script>
+
+    <script type="text/javascript">
+
+        In.add('chosen', {path:'scripts/jquery.chosen/jquery.chosen.js', type:'js', charset:'utf-8'});
+        In.add('global', {path:'scripts/global.js', type:'js', charset:'utf-8', rely:['chosen']});
+        In.add('layout', {path:'css/public/base.css', type:'css'});
+        In.add('chosen-css', {path:'scripts/jquery.chosen/jquery.chosen.css', type:'css', rely:['chosen']});
+        In.add('index', {path:'css/index.css', type:'css', rely:['layout']});
+        In.add('en', {path:'css/en.css', type:'css', rely:['layout']});
+
+        In.ready('chosen', 'global', 'layout','chosen-css', 'index', 'en', function () {
+            $('.regist-side .regist .button').click(function () {
+                $('.sidetabs').show();
+                $('.regist-side').hide();
+            })
+            $('.sidetabs .regist .button').click(function () {
+                $('.regist-side').show();
+                $('.sidetabs').hide();
+            })
+            console && console.log('load complated');
+        });
+    </script>
+<link rel="stylesheet" type="text/css" href="../css/en.css" media="all" />
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+    <div class="header layout">
+        <a href="index.html" class="logo"  ></a>
+    </div>
+</div>
+
+<div class="container layout clearfix">
+    <div class="side">
+        <div class="sidetabs">
+            <div class="login">
+                <h3>Log in</h3>
+
+                <div class="labeltext"><label for="username">Username：</label><input id="username" name="username"
+                                                                                     type="text" class="username"/>
+                </div>
+                <div class="labeltext"><label for="password">Password：</label><input id="password" name="password"
+                                                                                     type="passwrod" class="password"/>
+                </div>
+                <div class="clearfix">
+                    <div class="f_left"><input id="islogin" type="checkbox" class="checkbox"/><label for="islogin">Remember
+                        me</label></div>
+                    <div class="f_right">
+                        <a href="javascript:;">Forgot account? </a><br/>
+                        <a href="javascript:;">Forgot password? </a>
+                    </div>
+                    <input class="button button1" type="submit" value="Log In"/>
+                </div>
+            </div>
+            <div class="regist">
+                <h3>New to Savorboard? Join today!</h3>
+                <a href="javascript:;" class="button">Sign Up</a>
+            </div>
+        </div>
+        <div class="regist-side" style="display: none;">
+            <div class="regist-from">
+                <h3>Sign up Savorboard</h3>
+
+                <div class="labeltext"><label for="username">Email：</label><input id="username" name="username"
+                                                                                  type="text" class="email"/></div>
+                <div class="labeltext"><label for="password">Password：</label><input id="password" name="password"
+                                                                                     type="passwrod" class="reg_pwd"/>
+                </div>
+                <div class="labeltext"><label for="password">Confrim pass：</label><input id="password" name="password"
+                                                                                         type="passwrod"
+                                                                                         class="reg_enpwd"/></div>
+                <div class="labeltext"><label for="password">Name：</label><input id="password" name="password"
+                                                                                 type="passwrod" class="name"/></div>
+                <div class="sex">Gender:<input type="radio" id="man" name="sex"/><label for="man">Male</label><input
+                        type="radio" id="feman" name="sex" checked="checked"/><label for="feman">Female</label></div>
+                <div class="birthday">Birthday:<select class="year">
+                    <option>1021</option>
+                </select>-<select class="month">
+                    <option>21</option>
+                </select>-<select class="day">
+                    <option>21</option>
+                </select></div>
+                <input class="button button1" type="submit" value="Sign up"/>
+            </div>
+
+            <div class="regist-side">
+                <div class="regist">
+                    <h3>New to Savorboard? Join today!</h3>
+                    <a href="javascript:;" class="button">Log in</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="lan">Languages：<select>
+            <option>English</option>
+        </select></div>
+    </div>
+    <div class="main">
+        <div class="title">
+            <a href="javascript:;" class="button custom-login-btn">
+                <span>Try a different social way</span>
+                Login
+            </a>
+            <span>It’s the most amazing activity arrangement living social network</span></div>
+        <ul class="images clearfix">
+            <li><a href="javascript:;"><img alt="" src="images/index/p1-en.jpg"/></a></li>
+            <li><a href="javascript:;"><img alt="" src="images/index/p2-en.jpg"/></a></li>
+            <li><a href="javascript:;"><img alt="" src="images/index/p3-en.jpg"/></a></li>
+            <li><a href="javascript:;"><img alt="" src="images/index/p4-en.jpg"/></a></li>
+        </ul>
+        <div class="main-search"><input type="text" value="Search friends" inputdefault='Search friends'/><a
+                href="javascript:;" class="search-button"></a></div>
+    </div>
+</div>
+<!--loginMain-->
+
+<div class="footer layout">
+    <span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a
+            href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a
+            href="javascript:;">Help</a></p>
+</div>
+</body>
+</html>

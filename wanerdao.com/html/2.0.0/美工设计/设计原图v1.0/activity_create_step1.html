@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link href="style/activity.css" rel="stylesheet" type="text/css" />
+<link href="style/select_upload.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript">
+var winScreenWidth = window.screen.width;
+if(winScreenWidth>1024){
+document.writeln('<style>');
+document.writeln('.jz{padding:0px 2px;}');
+document.writeln('</style>');
+}
+</script>
+<body>
+	<!--头部-->
+	<div class="head">
+    	<div class="jz">
+        	<div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+            <ul class="nav left yh">
+            	<li><a href="#">首页</a></li>
+            	<li class="cur"><a href="#" class="arr">个人</a></li>
+            	<li><a href="#" class="arr">关系</a></li>
+            	<li><a href="#" class="arr">杂烩</a></li>
+            	<li><a href="#" class="arr">活动</a></li>
+            	<li><a href="#" class="arr">资道</a></li>
+            	<li class="newMsg"><a href="#">站内信息</a><i><a href="#">5</a></i></li>
+            </ul>
+            <div class="userInfo">
+            	<a href="#" class="left"  title="烧饭-人生旅途中-飞砂走石风过"><img src="images/layout_main/img_32x32.png" width="32" height="32" /></a>
+                <a href="javascript:void(0);" title="烧饭-人生旅途中-飞砂走石风过留痕！" class="name">烧饭-人生旅途中</a>
+            </div>
+        </div>
+    </div>
+    <!--头部end-->
+    <!--主体-->
+    <div class="main jz">
+    	<div class="mCon">
+            <div class="layout_m ">
+
+		<div class="main_share">
+		<div class="blank10px"></div>
+        <div class="title">
+          <h2 class="sub_nav"><a class="active" href="#">创建活动</a></h2>
+          </div>
+          <p class="info_type"><input type="radio" name="info_type" id="listStyle"><label for="listStyle">列表式填写</label><input type="radio" name="info_type" id="guiteStyle"><label for="guiteStyle">导向式填写</label></p>
+          <h3 class="event_h3 yh">发起活动</h3>
+          
+          <ul class="steps yh fb">
+            <li class="active"><i>1</i><span>初始参数引用</span></li>
+            <li class="link"><i>2</i><span>基本参数设定</span></li>
+            <li class="link"><i>3</i><span>报名参数设定</span></li>
+            <li class="link"><i>4</i><span>邀请发送</span></li>
+            <li class="link"><i>5</i><span>个人报名</span></li>
+            <li class="link"><i>6</i><span>参数保存</span></li>
+        </ul>
+             <table width="100%" cellspacing="1" border="0">
+  	<tr>
+    <td width="25%" align="right">从之前活动复制初始参数：</td>
+    <td width="75%">
+    <div class="relate">
+    <select class="combobox w128px" name="select">
+      <option value="AL">活动名称</option>
+      <option value="AL">活动名称</option>
+    </select>
+    <div style="left:180px; top:-24px; display:block" class="showTip" id="wrongMailTip">
+                        <div class="WtTop"></div>
+                        <div class="WtCon">
+                            <em>帮助信息</em>
+                            <p>请选择您的活动分类。</p>
+                            <a onclick="this.parentNode.parentNode.style.display='none'" class="close" href="javascript:void(0)">关闭</a>
+                        </div>
+                        <div class="WtBtm"></div>
+                        <ins></ins>
+                    </div>
+    </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right">从保存活动中复制初始参数：</td>
+    <td><select class="combobox w128px" name="select2">
+      <option value="AL">活动名称</option>
+      <option value="AL">活动名称</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td align="right">发起活动者：</td>
+    <td><select class="combobox w123px" name="select3">
+      <option value="AL">圈子的名义发起</option>
+      <option value="AK">圈子名称</option>
+    </select>
+      <select class="combobox w123px" name="select4">
+        <option value="AL">圈子名称</option>
+        <option value="AK">圈子名称</option>
+      </select></td>
+  </tr>
+  <tr>
+    <td align="right">创建人联系方式：</td>
+    <td>电话&nbsp;
+      <input type="text" class="txtInt">
+      &nbsp;邮箱
+<input type="text" class="txtInt"></td>
+  </tr>
+  <tr>
+    <td align="right">超级管理员：</td>
+    <td><input type="text" style="width:120px;" class="txtInt">&nbsp;&nbsp;活动管理员：<input type="text" style="width:120px;" class="txtInt">&nbsp;&nbsp;财务管理员：<input type="text" style="width:120px;" class="txtInt"></td>
+  </tr>
+  <tr>
+    <td align="right"><input type="checkbox" id="toPublic"></td>
+    <td><label for="toPublic">活动公开让所有人可见</label></td>
+  </tr>
+	</table>
+            <div class="next_pre"><a href="#" class="btn_137x32">上一步</a> &nbsp;&nbsp; <a href="#" class="btn_137x32">下一步</a></div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                </div>
+        </div>
+    </div>
+    <div class="mBtm jz"></div>
+    <!--主体end-->
+    <!--底部-->
+    <div class="foot jz"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></div>
+    <!--底部end-->
+
+<!--页面脚本区-->
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+
+</body>
+</html>

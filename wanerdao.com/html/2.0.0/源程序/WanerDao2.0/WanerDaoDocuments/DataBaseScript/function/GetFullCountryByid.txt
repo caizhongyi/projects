@@ -1,0 +1,31 @@
+﻿/*作者:杨晓东  时间:2011年11月10日21:25:44  摘要: (根据国家州城市id获取对应全名称)
+
+
+参数:      homecountry varchar(150), homestate varchar(150), homecity varchar(150)
+
+返回类型:  varchar(100)
+
+类型:      FUNCTION
+
+定义:  */
+
+CREATE DEFINER = CURRENT_USER FUNCTION `GetFullCountryByid`(homecountry varchar(150), homestate varchar(150), homecity varchar(150))
+RETURNS varchar(100)
+BEGIN
+DECLARE home1 varchar(50);
+DECLARE home2 varchar(50);
+DECLARE home3 varchar(50);
+
+set home1 = '';
+
+if homecountry != '' THEN
+	set home1=(select country_name from country where country_id=homecountry and language_id = languageId);
+	if homestate != '' THEN
+		SET home1=CONCAT(home1,' ', (SELECT state_name from state where  state_id=homestate and language_id = languageId)) ;
+		if homecity != '' THEN
+			set home1 = CONCAT(home1,' ',(SELECT city_name  from city where  city_id=homecity and language_id = languageId )) ;
+		end if;
+	end IF;
+end IF;
+return home1;
+END

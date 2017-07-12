@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SQLScript xmlns="SQL.xsd">
+  <!--杂烩-->
+  <SQL ID="GetPostCountSinceTime">
+    select COUNT(*) count from posts p INNER JOIN topiccategory tc on p.category_id=tc.id INNER JOIN personalprofile pp on p.post_id=pp.user_id where p.post_datetime>=?time and p.active=true and pp.active=true and tc.active=true and p.page_language_id=?language_id
+  </SQL>
+  <SQL ID="GetPostAllCount">
+    select COUNT(*) count from posts p INNER JOIN topiccategory tc on p.category_id=tc.id INNER JOIN personalprofile pp on p.post_id=pp.user_id where p.active=true and pp.active=true and tc.active=true and p.page_language_id=?language_id
+  </SQL>
+  <SQL ID="CreatePost">
+    insert into posts(id,post_id,is_anonymity,post_datetime,category_id,subject,content,counter,page_language_id,active) values(?id,?post_id,?is_anonymity,?post_datetime,?category_id,?subject,?content,?counter,?page_language_id,?active);
+  </SQL>
+  <SQL ID="DeletePost">delete from posts where id=?id</SQL>
+  <SQL ID="UpdatePost">update posts set post_id=?post_id,is_anonymity=?is_anonymity,category_id=?category_id,subject=?subject,content=?content,counter=?counter,page_language_id=?page_language_id where id=?id</SQL>
+  <SQL ID="GetPostById">select p.id,p.post_id,p.is_anonymity,p.post_datetime,p.category_id,p.subject,p.content,p.counter,tc.category_name,pp.`name` from posts p inner join topiccategory tc on p.category_id=tc.id INNER JOIN personalprofile pp on p.post_id=pp.user_id where p.id=?id</SQL>
+  <SQL ID="GetPostsCountAfterPostTime">select count(id) as count from posts where post_datetime>=?post_datetime and p.page_language_id=?language_id</SQL>
+  <SQL ID="GetPostNext">
+    <![CDATA[select id,subject from posts where post_datetime>?post_datetime and page_language_id=?language_id order by post_datetime asc limit 1]]>
+  </SQL>
+  <SQL ID="GetPostPrev">
+    <![CDATA[select id,subject from posts where post_datetime<?post_datetime and page_language_id=?language_id order by post_datetime desc limit 1]]>
+  </SQL>
+  <!--杂烩关注-->
+  <SQL ID="FollowPost">insert into personalpostsfollow(id,user_id,attention_id,attention_datetime,is_email,email_duration,active) values(?id,?user_id,?attention_id,?attention_datetime,?is_email,?email_duration,?active)</SQL>
+  <SQL ID="UnFollowPost">delete from personalpostsfollow where user_id=?user_id and attention_id=?attention_id</SQL>
+  <SQL ID="CancelPersonalPostsFollow">
+    update personalpostsfollow set active=false where id=?id
+  </SQL>
+  <SQL ID="HasPostFollow">select count(id) as count from personalpostsfollow where user_id=?user_id and attention_id=?attention_id</SQL>
+  <!--杂烩草稿-->
+  <SQL ID="CreatePostDraft">insert into personalpostsdraft(id,user_id,title,content,is_system,save_date,active) values(?id,?user_id,?title,?content,?is_system,?save_date,?active)</SQL>
+  <SQL ID="UpdatePostDraft">update personalpostsdraft set title=?title,content=?content,is_system=?is_system,save_date=?save_date where user_id=?user_id</SQL>
+  <SQL ID="HasPostDraft">select count(id) as count from personalpostsdraft where user_id=?user_id</SQL>
+  <!--杂烩回复-->
+  <SQL ID="CreatePostComment">insert into postscomments(id,news_id,follow_id,user_id,content,comments_date,positive,negative,active) values(?id,?news_id,?follow_id,?user_id,?content,?comments_date,?positive,?negative,?active)</SQL>
+  <SQL ID="GetPostCommentCountByFollowIdAndNewsId">select count(*) count from postscomments where news_id=?news_id and follow_id=?follow_id</SQL>
+  <SQL ID="GetPostCommentCountByNewsId">select count(*) count from postscomments where news_id=?news_id</SQL>
+  <!--杂烩话题分类-->
+  <!--<SQL ID="CreateTopicCategory">insert into topiccategory(id,parent_id,category_name,is_available_forum,is_available_group,is_available_activity,update_date,language_id) values(?id,?parent_id,?category_name,?is_available_forum,?is_available_group,?is_available_activity,?update_date,?language_id)</SQL>
+  <SQL ID="UpdateTopicCategory">update topiccategory set parent_id=?parent_id,category_name=?category_name,is_available_forum=?is_available_forum,is_available_group=?is_available_group,is_available_activity=?is_available_activity,update_date=?update_date,language_id=?language_id where id=?id</SQL>
+  <SQL ID="DeleteTopicCategory">delete from topiccategory where id=?id</SQL>
+  <SQL ID="GetTopicCategoryById">select id,parent_id,category_name,is_available_forum,is_available_group,is_available_activity,update_date,languange_id,active from topiccategory where id=?id</SQL>
+  <SQL ID="GetTopicCategoryByParentId">select id,parent_id,category_name,is_available_forum,is_available_group,is_available_activity,update_date,language_id,active from topiccategory where parent_id=?parent_id</SQL>-->
+  <SQL ID="CreateTopicCategory">insert into topiccategory(id,parent_id,category_name,update_date,language_id,active) values(?id,?parent_id,?category_name,?update_date,?language_id,?active)</SQL>
+  <SQL ID="UpdateTopicCategory">update topiccategory  set category_name=?category_name and parent_id=?parent_id where id=?id</SQL>
+  <SQL ID="DeleteTopicCategory">delete from topiccategory where id=?id</SQL>
+  <SQL ID="DiableTopicCategory">update topiccategory set active=?active where id=?id</SQL>
+  <SQL ID="GetAllTopicCategory">select id,parent_id,category_name,update_date,language_id,active from topiccategory where language_id=?language_id</SQL>
+  <!--获取指定数量的杂烩-->
+  <SQL ID="GetNewPosts"><![CDATA[select id,post_name,is_anonymity,post_datetime,subject,content,counter,rec_date,category_name,is_read,sort_id from mainposts where sort_id>?sort_id and p.page_language_id=?language_id order by sort_id asc limit ?size]]></SQL>
+
+</SQLScript>

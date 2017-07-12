@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>查询好友以及圈子</title>
+     <link rel="stylesheet" type="text/css" href="/css/layout.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/table.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/icon.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/form.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/pop.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/pager.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="/scripts/jquery.chosen/jquery.chosen.css" media="all" />
+     <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+     <script type="text/javascript" src="/scripts/plugin/cookie/wanerdao2.cookies.js"></script>
+     <script type="text/javascript" src="/Scripts/multipleLanguage/loader.js"></script>
+    <script type="text/javascript" src="../../scripts/common/wanerdaoutils.js"></script>
+     <script type="text/javascript" src="/scripts/jquery.core.js"></script>
+     <script type="text/javascript" src="/scripts/jquery.ui.tabs.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.center.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.overlay.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.dialog.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.chosen/jquery.chosen.js"></script>
+    <script type="text/javascript" src="/scripts/plugin/search/wanerdao2.compop.js"></script>
+     <script type="text/javascript">
+     /*
+      *	好友与圈子操作相同
+      */
+      $(function () {
+      $("#btnfriend").click(function () {
+            wanerdaoPop({comopts:{titleid:'common_00011',typename: 'friends', callback:function (data) {
+                $.each(data.friends, function (i, n) {
+                            alert(n.name);
+                            alert(n.id);
+                         });
+            } }});
+        });
+        $("#btngroup").click(function () {
+            wanerdaoPop({comopts:{titleid:'common_00012',typename: 'group', callback:function (data) {
+                $.each(data.group, function (i, n) {
+                            alert(n.name);
+                            alert(n.id);
+                         });
+            } }});
+        });
+
+      });
+         
+     </script>
+</head>
+<body>
+<input id="btnfriend" type="button" value="选择好友" class="buttonG btn_w56 btn_h28 btnGary_56" />
+<input id="btngroup" type="button" value="选择圈子" class="buttonG btn_w56 btn_h28 btnGary_56" />
+</body>
+</html>

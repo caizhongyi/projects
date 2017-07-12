@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>Savorboard popup window</title>
+
+<meta name="keywords" content="Savorboard popup window"/>
+<meta name="description"
+      content=""/>
+
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="../css/base.css"/>
+<link rel="stylesheet" href="../css/font-awesome.min.css"/>
+<!--[if IE 7]>
+    <link rel="stylesheet" href="../css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="../css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.plus.min.js" ></script>
+    <style type="text/css">
+        .dialog{
+            display: block;
+            position: relative;
+        }
+    </style>
+</head>
+<body style="height: 1000px;">
+<div id="dialogCategory" data-options="handler:'header'" style="position: fixed;  " class="dialog ui-dialog">
+    <div class="bg"></div>
+    <div class="inner">
+        <div data-options="region:'header',handle:true" class="hd">
+            <h3>Select the category</h3>
+            <a data-options="region:'hide'" class="close" href="javascript:;"></a>
+        </div>
+        <div class="category-list">
+            <div class="list-bar clearfix">
+                <a href="javascript:;" class="btn btn-option"><i class="icon icon-return"></i>Back</a>
+                <div class="parent-category">
+                    <a href="javascript:;">Category <i class="icon icon-del"></i></a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category
+                </a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category
+                </a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category</a><a href="javascript:;">Category
+                </a>
+                </div>
+            </div>
+            <div class="bd">
+                <table>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
+                <ul class="list-col list-col-7">
+                    <li>
+                        <div class="col-inner thumb">
+                            <img alt="" src="../images/defaults/100-100.png">
+                            <div class="caption">Category</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner thumb">
+                            <img alt="" src="../images/defaults/100-100.png">
+                            <div class="caption">Category</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner thumb">
+                            <img alt="" src="../images/defaults/100-100.png">
+                            <div class="caption">Category</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner thumb">
+                            <img alt="" src="../images/defaults/100-100.png">
+                            <div class="caption">Category</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner thumb">
+                            <img alt="" src="../images/defaults/100-100.png">
+                            <div class="caption">Category</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner thumb">
+                            <img alt="" src="../images/defaults/100-100.png">
+                            <div class="caption">Category</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner thumb">
+                            <img alt="" src="../images/defaults/100-100.png">
+                            <div class="caption">Category</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner thumb">
+                            <img alt="" src="../images/defaults/100-100.png">
+                            <div class="caption">Category</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner thumb">
+                            <img alt="" src="../images/defaults/100-100.png">
+                            <div class="caption">Category</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="../js/jquery.toTop.js"></script>
+<script src="../js/jquery.dropdown.js"></script>
+<!--<script type="text/javascript" src="../js/global.js" ></script>-->
+<script type="text/javascript" src="../js/class.ui.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.placeholer.js" ></script>
+<script src="../js/jquery.draggable.js"></script>
+<script src="../js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+       // $('.dialog .bd').initslimscroll();
+
+        console.log(($(window).height() - $('#dialogCategory').height()) / 2);
+        $("#dialogCategory").fadeIn(1000).css('top',  ($(window).height() - $('#dialogCategory').height()) / 2)
+
+        $('#enableclick').click(function(e){
+            e.stopPropagation();
+            $('#addEditTopic').stop(true,true).slideDown();
+        })
+    })
+</script>;
+</body>
+</html>

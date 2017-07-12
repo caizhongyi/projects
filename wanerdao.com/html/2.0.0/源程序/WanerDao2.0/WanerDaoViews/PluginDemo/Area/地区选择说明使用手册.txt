@@ -1,0 +1,46 @@
+﻿作者：金广亮
+时间：2011-11-05
+1.文件说明：
+	(css\PluginCss)存放插件样式\Area(样式)\boxy.css
+	Scripts\OpenProjectPlugin(第三方JQUERY插件)\jquery.boxy.js
+	Plugin(插件js存放目录)\Area(地区js存放目录)\wanerdao2.area.js
+	images\PluginImages(插件使用图片存放路径，创建各自对应的插件文件夹)\Area(地区)
+2.参数说明：
+jquery.boxy.js插件的参数说明
+    DEFAULTS: {
+        title:                  null,           // titlebar text. titlebar will not be visible if not set.
+        closeable:              true,           // display close link in titlebar?
+        draggable:              true,           // can this dialog be dragged?
+        clone:                  false,          // clone content prior to insertion into dialog?
+        actuator:               null,           // element which opened this dialog
+        center:                 true,           // center dialog in viewport?
+        show:                   true,           // show dialog immediately?
+        modal:                  false,          // make dialog modal?
+        fixed:                  true,           // use fixed positioning, if supported? absolute positioning used otherwise
+        closeText:              '[关闭]',      // text to use for default close link
+        unloadOnHide:           false,          // should this dialog be removed from the DOM after being hidden?
+        clickToFront:           false,          // bring dialog to foreground on any click (not just titlebar)?
+        behaviours:             Boxy.EF,        // function used to apply behaviours to all content embedded in dialog.
+        afterDrop:              Boxy.EF,        // callback fired after dialog is dropped. executes in context of Boxy instance.
+        afterShow:              Boxy.EF,        // callback fired after dialog becomes visible. executes in context of Boxy instance.
+        afterHide:              Boxy.EF,        // callback fired after dialog is hidden. executed in context of Boxy instance.
+        beforeUnload:           Boxy.EF,         // callback fired after dialog is unloaded. executed in context of Boxy instance.
+        okbtn:					'确定',
+        cancelbtn:				'取消'
+    }
+wanerdao2.area.js插件参数说明
+    AreaSettings: {
+        loadmsg: '数据加载中...', //数据加载时提示信息
+        errormsg: '数据加载错误', //数据加载错误时信息
+        validatemsg: '选择地区不满足，国家+省州+市县3级策略', //当不满足国家省州市县3级条件时信息
+        validatetitle: '提示信息', //效验警告框的标题
+        nodatamsg: '暂无数据', //无数据时显示信息
+        languagetype: 'cn',        //中英文地区，中文cn，英文en
+        countrymsg: '国家：', //作为国家集合前面的标题
+        statemsg: '的省州：', //作为省州集合前面的标题
+        citymsg: '的市县：', //作为市县集合前面的标题
+        footmsg: '备注：地区选择', //底部左侧的提示信息
+        tipmsg: '您的选择', //选择后的提示信息
+        areaokbtn: '确定', //确定按钮文字信息
+        areacancelbtn: '取消'//取消按钮文字信息
+    }

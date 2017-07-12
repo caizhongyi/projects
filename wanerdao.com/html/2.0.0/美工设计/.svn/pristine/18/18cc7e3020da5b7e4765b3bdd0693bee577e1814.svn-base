@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Upload history activity album-Activity-Savorboard</title>
+<!--  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> -->
+<meta name="keywords" content="Upload photo, History activity, Savorboard, Life and social network" />
+<meta name="description" content="Upload photos in selected history activity" />
+<link rel="stylesheet" type="text/css" href="../css/activity_myhistory.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+$(function(){
+  $(".delPhoto").click(function(){
+	 $(this).closest("li").remove();
+	});
+  });
+</script>
+<link rel="stylesheet" type="text/css" href="../css/en.css" media="all" />
+<body class="pBgB fSize-12">
+<div class="header_wrapper pBgH">
+ <div class="header layout"><a href="index.html" class="logo"></a>
+  <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="Go Home"></a>
+            <div class="home_pop">
+            	<ul>
+                	<li>
+                        <a href="javascript:;" class="hp_title">Activity</a>
+                        <p><a href="javascript:;">Looking for activities</a><a href="javascript:;">Create activities</a><a href="javascript:;">Classification activities</a><a href="javascript:;">Custom activities</a><a href="javascript:;">Seasonal activities</a><a href="javascript:;">My activities</a><a href="javascript:;">Historical activities</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Personal</a>
+                        <p><a href="javascript:;">Profile</a><a href="javascript:;">Diary</a><a href="javascript:;">Album</a><a href="javascript:;">Video</a></p>
+                    </li>
+                    <li  class="last">
+                        <a href="javascript:;" class="hp_title">Relationship</a>
+                        <p><a href="javascript:;">My friends</a><a href="javascript:;">Search friends</a><a href="javascript:;">Invite friends</a><a href="javascript:;">Subscription settings</a><a href="javascript:;">My groups</a><a href="javascript:;">Search group</a><a href="javascript:;">Create a group</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+        		<input type="text" class="search_txt" value="Artivity/Firend/Group/Article" inputdefault="Artivity/Firend/Group/Article" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/defucult/head.jpg" width="32" height="32" /></a><span class="user_infor_name"><a href="javascript:;">Cooking - life in the life journey<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">Modify profile</a></li>
+                    <li><a href="javascript:;">Account management</a></li>
+                    <li><a href="javascript:;">Privacy Settings</a></li>
+                    <li><a href="javascript:;">Change language</a></li>
+                    <li class="last"><a href="javascript:;">Exit</a></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+<div class="activityMain layout">
+<div id="container" class="activity_myhistory container pBgC">
+  <div class="myhistroyTitle">
+    <div class="black10"></div>
+     <div class="black10"></div>
+     <div class="mes_com_box_Tab">
+        <a href="javascript:;">Activity info</a>
+        <a href="javascript:;" class="active">My activity</a>
+     </div>
+    
+ </div>
+  <!-- myhistroyTitle -->
+ <div class="myhistoryMenu">
+  <ul>
+   <li>Info and discuss</li>
+   <li><a class="current"  href="javascript:;">View</a></li>
+   <li><a href="javascript:;">Upload</a></li>
+   <li><a href="javascript:;">Edit album</a></li>
+   <li>View and publish Sentiment</li>
+  </ul>
+ </div>
+ <!-- myhistoryMenu -->
+ <div class="AM_albumUploadWarp">
+  <h4 class="tBgb AM_photoAlbum"><b class="icon32 fCblue">Upload settings</b> <small class="fSize-12 fCred">Albums uploaded by the same user can be edited in the personal photo page</small></h4>
+  <!--pohtoedit widget -->
+  <div class="AM_albumUpload_Main">
+   <div class="albumUploadSetmod">
+   <dl>
+    <dd class="formTitle">Share to an activity：</dd>
+    <dd class="formMain fCblue">雷克萨斯行动</dd>
+   </dl>
+   <dl class="clear"></dl>
+   <dl>
+    <dd class="formTitle">&nbsp;<input type="radio" name="" id="" /></dd>
+    <dd class="formMain">Upload to a new folder,Filename&nbsp;<input type="text" class="text" name="" id="" /></dd>
+   </dl>
+   <dl class="clear"></dl>
+   <dl>
+    <dd class="formTitle">&nbsp;<input type="radio" name="" id="" /></dd>
+    <dd class="formMain">Upload to an existing folder，<select name="" id="" style="width:200px;">
+     <option value="共享同一个活动的文件夹名">共享同一个活动的文件夹名
+     </option>
+     </select></dd>
+   </dl>
+   <dl class="clear"></dl>
+   <dl>
+    <dd class="formTitle">&nbsp;</dd>
+    <dd class="formMain">Access permission&nbsp;&nbsp;<select name="" id="">
+     <option value="选择权限">选择权限</option></select></dd>
+   </dl>
+   <dl class="clear"></dl>
+      <dl>
+    <dd class="formTitle">&nbsp;</dd>
+    <dd class="formMain"><input type="button" class="uploadBtn" value="Upload" />&nbsp;<input type="button" class="definiteBtn" value="Submit" /></dd>
+   </dl>
+   <dl class="clear"></dl>
+  </div>
+  <div class="photoViewBox">
+  <h4><b class="icon32 fCblue">View photo</b></h4>
+  <ul class="photos clearfix ">
+        <li>
+            <a class="icon close-5 photos-close" href="javascript:;"></a>
+            <img src="../images/photos/photo1.gif" alt="">
+            <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+   		</li> 
+          <li>
+        <a class="icon close-5 photos-close" href="javascript:;"></a>
+        <img src="../images/photos/photo1.gif" alt="">
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li>
+    
+      <li>
+        <a class="icon close-5 photos-close" href="javascript:;"></a>
+        <img src="../images/photos/photo1.gif" alt="">
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li>
+    
+      <li>
+        <a class="icon close-5 photos-close" href="javascript:;"></a>
+        <img src="../images/photos/photo1.gif" alt="">
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li>
+    
+      <li>
+        <a class="icon close-5 photos-close" href="javascript:;"></a>
+        <img src="../images/photos/photo1.gif" alt="">
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li> 
+    
+    <li>
+        <a class="icon close-5 photos-close" href="javascript:;"></a>
+        <img src="../images/photos/photo1.gif" alt="">
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li>
+    <li>
+        <a class="icon close-5 photos-close" href="javascript:;"></a>
+        <img src="../images/photos/photo1.gif" alt="">
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li>
+    </ul>
+  </div>
+  </div>
+  <!--photoList main -->
+  <div class="clear"></div>
+ </div>
+ <!-- AM_photoEditWarp -->
+ </div>
+</div>
+<!--Main-->
+<div class="footer layout">
+	<span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a href="javascript:;">Help</a></p>
+</div>
+</body>
+</html>

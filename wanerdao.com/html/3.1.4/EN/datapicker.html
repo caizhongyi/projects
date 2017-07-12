@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <link rel="stylesheet" href="js/jquery-ui-1.10.3.custom/development-bundle/themes/cupertino/jquery.ui.datepicker.min.css"/>
+    <link rel="stylesheet" href="js/jquery-ui-1.10.3.custom/development-bundle/themes/cupertino/jquery.ui.slider.min.css"/>
+    <link rel="stylesheet" media="screen" type="text/css" href="css/layout.css"/>
+    <title>DatePicker - jQuery plugin</title>
+<!--    <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.3.custom/css/cupertino/jquery-ui-1.10.3.custom.min.css"/>-->
+    <link rel="stylesheet" href="css/font-awesome.css"/>
+
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui-timepicker/jquery-ui-timepicker-addon.min.css"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/account.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/en.css"/>
+
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-timepicker/jquery-ui-timepicker-addon.min.js"></script>
+</head>
+<body>
+<input type="text" id="rest_example_4_start" class="text text-large" />
+<input type="text" id="rest_example_4_end" class="text text-large" />
+
+
+<style>
+    .ui-autocomplete {
+        background: #fff none repeat scroll 0 0;
+        border: 1px solid #ddd;
+        max-height: 200px;
+        max-width: 350px;
+        overflow-y: auto;
+        position: absolute;
+        z-index: 99;
+    }
+    .ui-autocomplete li {
+        padding: 5px;
+    }
+    .ui-autocomplete li:hover {
+        background: #eef7fe none repeat scroll 0 0;
+    }
+</style>
+
+
+<ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0" style="display: block; top: 0.8px; right: 0.6px; left:auto;width: 311.4px;"><li class="ui-menu-item" id="ui-id-44" tabindex="-1">Celebration</li><li class="ui-menu-item" id="ui-id-45" tabindex="-1">Concert</li><li class="ui-menu-item" id="ui-id-46" tabindex="-1">Card Games</li><li class="ui-menu-item" id="ui-id-47" tabindex="-1">Camping</li><li class="ui-menu-item" id="ui-id-48" tabindex="-1">Cheerleading</li><li class="ui-menu-item" id="ui-id-49" tabindex="-1">Creative Art</li><li class="ui-menu-item" id="ui-id-50" tabindex="-1">Creative Thinking</li><li class="ui-menu-item" id="ui-id-51" tabindex="-1">Chemistry</li><li class="ui-menu-item" id="ui-id-52" tabindex="-1">Canoeing</li><li class="ui-menu-item" id="ui-id-53" tabindex="-1">Cross Country Cycling</li><li class="ui-menu-item" id="ui-id-54" tabindex="-1">Cycling</li><li class="ui-menu-item" id="ui-id-55" tabindex="-1">Computer Animation</li><li class="ui-menu-item" id="ui-id-56" tabindex="-1">Computer Science</li><li class="ui-menu-item" id="ui-id-57" tabindex="-1">Computer</li></ul>
+<script type="text/javascript">
+    $(function() {
+        var startDateTextBox = $('#rest_example_4_start');
+        var endDateTextBox = $('#rest_example_4_end');
+
+        startDateTextBox.datetimepicker({
+            timeFormat: 'HH:mm z',
+            onClose: function(dateText, inst) {
+                if (endDateTextBox.val() != '') {
+                    var testStartDate = startDateTextBox.datetimepicker('getDate');
+                    var testEndDate = endDateTextBox.datetimepicker('getDate');
+                    if (testStartDate > testEndDate)
+                        endDateTextBox.datetimepicker('setDate', testStartDate);
+                }
+                else {
+                    endDateTextBox.val(dateText);
+                }
+            },
+            onSelect: function (selectedDateTime){
+                endDateTextBox.datetimepicker('option', 'minDate', startDateTextBox.datetimepicker('getDate') );
+            }
+        });
+        endDateTextBox.datetimepicker({
+            timeFormat: 'HH:mm z',
+            onClose: function(dateText, inst) {
+                if (startDateTextBox.val() != '') {
+                    var testStartDate = startDateTextBox.datetimepicker('getDate');
+                    var testEndDate = endDateTextBox.datetimepicker('getDate');
+                    if (testStartDate > testEndDate)
+                        startDateTextBox.datetimepicker('setDate', testEndDate);
+                }
+                else {
+                    startDateTextBox.val(dateText);
+                }
+            },
+            onSelect: function (selectedDateTime){
+                startDateTextBox.datetimepicker('option', 'maxDate', endDateTextBox.datetimepicker('getDate') );
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

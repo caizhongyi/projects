@@ -1,0 +1,66 @@
+@charset "utf-8";
+@import "css3";
+
+.mixin-clearfix(){
+    *zoom: 1;
+    &:before,
+    &:after {
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.mixin-unstyled(){
+   &,li{ list-style: none; margin: 0 ; padding: 0;}
+}
+
+.mixin-text-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: normal;
+  word-wrap: normal;
+  vertical-align: middle;
+}
+
+.mixin-placeholder (@color: #999) {
+  input {
+    &:-moz-placeholder{
+      color: @color;
+    }
+    &:-ms-input-placeholder{
+      color: @color;
+    }
+    &::-webkit-input-placeholder {
+      color: @color;
+    }
+  }
+}
+
+
+//filter 渐变滤镜详细用法，[参见这里]
+//StartColorStr 和 EndColorStr:
+//#4c000000 是 30% 透明度的 #000000 的意思
+//组成: # + 透明度 + 颜色
+//算法: Math.floor(0.6 * 255).toString(16);
+.mixin-opacity (@val) {
+    @opacity : (@val * 100 );
+    filter: ~"alpha(opacity = @{opacity})\9";
+    opacity: @val;
+    //background : rgba(0, 0, 0, @val);
+    // @color : `Math.floor(0.6 * 255).toString(16)`;
+    //filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=@color, EndColorStr=@color)/9;
+}
+
+.media-callback () {}
+
+.media (@min-width:500px,@max-width:1024px) {
+    @media only screen and (min-width: @min-width) and (max-width: @max-width) {
+        .media-callback();
+    }
+}
+

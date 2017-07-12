@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLScript xmlns="SQL.xsd">
+  <!--插件信息相关SQL-->
+  <SQL ID="SelectAllToolPackage">
+    SELECT * FROM toolpackage;
+  </SQL>
+  <SQL ID="SelectValidateToolPackage">
+    SELECT * FROM toolpackage WHERE active = 1;
+  </SQL>
+  <SQL ID="InsertToolPackage">
+    INSERT INTO toolpackage(id, tool_key, version, permission, developer_id, secrect, url, logo_location,
+    tool_description, category_id, tool_name, status, approval_id, update_time, active) VALUES (?id, ?tool_key,
+    ?version, ?permission, ?developer_id, ?secrect, ?url, ?logo_location, ?tool_description, ?category_id,
+    ?tool_name, ?status, ?approval_id, ?update_time, ?active);
+  </SQL>
+  <SQL ID="UpdateToolPackage">
+    UPDATE toolpackage SET version = ?version, secrect = ?secrect, url = ?url, logo_location = ?logo_location,
+    tool_description = ?tool_description, category_id = ?category_id, tool_name = ?tool_name, status = ?status,
+    approval_id = ?approval_id, update_time = ?update_time WHERE id = ?id;
+  </SQL>
+  <SQL ID="DeleteToolPackage">
+    DELETE FROM toolpackage WHERE id = ?id;
+  </SQL>
+  <SQL ID="CancelToolPackage">
+    update toolpackage set active=false where id=?id;
+  </SQL>
+  <SQL ID="SelectToolPageByCategoryId">
+    SELECT * FROM toolpackage WHERE category_id = ?id AND active = 1;
+  </SQL>
+  <SQL ID="SelectToolPackageById">
+    SELECT * FROM toolpackage WHERE id = ?id AND active = 1;
+  </SQL>
+  <SQL ID="SelectToolPackageByDeveloperId">
+    SELECT * FROM toolpackage WHERE developer_id = ?developer_id AND active = 1;
+  </SQL>
+
+  <!--插件类型相关SQL-->
+  <SQL ID="SelectValidateToolCategory">
+    SELECT * FROM toolcategory WHERE active = 1;
+  </SQL>
+  <SQL ID ="SelectAllToolCategory">
+    SELECT * FROM toolcategory;
+  </SQL>
+  <SQL ID="InsertToolCategory">
+    INSERT INTO toolcategory (category_id, parent_id, category_name, description, update_time, active)
+    VALUES (?category_id, ?parent_id, ?category_name, ?description, ?update_time, ?active);
+  </SQL>
+  <SQL ID="UpdateToolCategory">
+    UPDATE toolcategory SET parent_id = ?parent_id, category_name = ?category_name, description = ?description,
+    update_time = ?update_time, active = ?active WHERE category_id = ?category_id;
+  </SQL>
+  <SQL ID="DeleteToolCategory">
+    DELETE FROM toolcategory WHERE category_id = ?category_id;
+  </SQL>
+  <SQL ID="SelectToolCategoryByParentId">
+    SELECT * FROM toolcategory WHERE parent_id = ?parent_id AND active = 1;
+  </SQL>
+  
+  <!--个人插件设定信息表-->
+  <SQL ID="GetPersonalToolsByUserId">
+    <!--先返回全部字段，调试的时候在定具体返回哪些字段-->
+    select * from personaltools pt inner join toolpackage tp on (pt.tool_id=tp.id and tp.active=true) where user_id=?user_id and pt.active=true;
+  </SQL>
+  <SQL ID="GetPersonalToolsById">
+    <!--先返回全部字段，调试的时候在定具体返回哪些字段-->
+    select * from personaltools pt inner join toolpackage tp on (pt.tool_id=tp.id and tp.active=true) where id=?id and pt.active=true;
+  </SQL>
+  <SQL ID="CanclePersonalTools">
+    update personaltools set active=false where id=?id;
+  </SQL>
+  <SQL ID="CreatePersonalTools">
+    insert into personaltools(id,tool_id,user_id,is_onbar,sequence,active) values(?id,?tool_id,?user_id,?is_onbar,?sequence,?active);
+  </SQL>
+  <SQL ID="HasSetupPersonalTool">
+    select count(*) count from personaltools where user_id=?user_id and tool_id=?tool_id and active=true;
+  </SQL>
+  
+  <!--转换器-->
+   <!--获取单位分类的所有单位-->
+  <SQL ID="GetUnitByCategoryId">
+    select * from unitlist where category_id=?category_id and language_id=?language_id and active=true
+  </SQL>
+  <!--获取所有单位分类-->
+  <SQL ID="GetAllUnitCategory">
+    select * from unitcategory where language_id=?language_id and active=true
+  </SQL>
+  <!--获取单位转换中间集及与标准单位的转换标准值-->
+  <SQL ID="GetUnitResultTempListAndConvStartardValue">
+    create TEMPORARY TABLE tmp_unitConv as SELECT ul.id,ul.category_id,ul.code_name,ul.unit_name,ur.`value` from unitlist ul inner join unitrules ur on (ul.category_id=ur.category_id and ul.code_name=ur.to_code_name and ul.category_id=?category_id and ul.language_id=?language_id and ul.active=true and ur.active=TRUE);
+    SELECT * from tmp_unitConv;
+    SELECT value from tmp_unitConv where id=?id;
+    DROP TEMPORARY TABLE tmp_unitConv;
+  </SQL>
+</SQLScript>

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" media="all" href="css/framework.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
+<script type="text/javascript" src="jquery/jquery-1.7.2.min.js" ></script>
+<script type="text/javascript" src="js/jquery.core.js"></script>
+<script type="text/javascript" src="js/jquery.ui.core.min.js"></script>
+<script type="text/javascript" src="js/jquery.ui.draggable.js"></script>
+<!--<script type="text/javascript" src="../ui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="../ui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="../ui/jquery.ui.mouse.js"></script>-->
+
+<script type="text/javascript" src="js/jquery.ui.tabs.js"></script>
+<script type="text/javascript" src="js/jquery.ui.scrollbar.js"></script>
+<style type="text/css">
+	.tabs{}
+	.tabs .tabs-nav li{ display:inline-block; *dispaly:inline; zoom:1; margin-right:10px; border:1px solid #ddd; padding:1px; cursor:pointer;}
+	.tabs .tabs-view,
+	.tabs .tabs-clip{width:500px; height:333px; }
+	.tabs .tabs-panel li{width:500px; height:333px;}
+	.tabs .tabs-nav li.selected{ border:1px solid red;}
+	
+	#scroll-tabs .tabs-panel li{width:250px;} 
+</style>
+
+<style type="text/css">
+	.scroll{ position:relative; display:none;}
+	.scroll .scroll-bar{ position:absolute; bottom: 0;}
+	.scroll .scroll-track{ position:relative; border:1px  solid red; height:20px; background:#fff;}
+	.scroll .scroll-thumb{ position:absolute; background:#ddd; width:20px; height:20px;}
+	.scroll .scroll-panel{}
+</style>
+</head>
+
+<body class="pBgB">
+<div id="horiztal" class="tabs">
+	<ul class="tabs-nav">
+    	<li><img alt="" src="images/1_s.jpg" data-url="images/1_b.jpg"/></li>
+        <li><img alt="" src="images/2_s.jpg" data-url="images/2_b.jpg"/></li>
+        <li><img alt="" src="images/3_s.jpg" data-url="images/3_b.jpg"/></li>
+        <li><img alt="" src="images/4_s.jpg" data-url="images/4_b.jpg"/></li>
+    </ul>
+	<div class="tabs-clip">
+    	<ul class="tabs-panel" id="scrollbar">
+        	<li data-url="images/1_b.jpg"><img alt="" src="images/1_b.jpg"/></li>
+            <li data-url="images/2_b.jpg"><img alt="" src="images/2_b.jpg" /></li>
+            <li data-url="images/3_b.jpg"><img alt="" src="images/3_b.jpg" /></li>
+            <li data-url="images/4_b.jpg"><img alt="" src="images/4_b.jpg"/></li>
+        </ul>
+    </div>
+    <a href="javascript:;" class="tabs-prev">prev</a> <a class="tabs-next" href="javascript:;">next</a><br/>
+    view image:
+    <div class="tabs-view"><img /></div>
+</div>
+
+<br/>
+<div id="vertical" class="tabs">
+	<ul class="tabs-nav">
+    	<li><img alt="" src="images/1_s.jpg" data-url="images/1_b.jpg"/></li>
+        <li><img alt="" src="images/2_s.jpg" data-url="images/2_b.jpg"/></li>
+        <li><img alt="" src="images/3_s.jpg" data-url="images/3_b.jpg"/></li>
+        <li><img alt="" src="images/4_s.jpg" data-url="images/4_b.jpg"/></li>
+    </ul>
+	<div class="tabs-clip">
+    	<ul class="tabs-panel">
+        	<li><img alt="" src="images/1_b.jpg"/></li>
+            <li><img alt="" src="images/2_b.jpg"/></li>
+            <li><img alt="" src="images/3_b.jpg"/></li>
+            <li><img alt="" src="images/4_b.jpg"/></li>
+        </ul>
+    </div>
+</div>
+
+<br/>
+<div id="fade" class="tabs">
+	<ul class="tabs-nav">
+    	<li><img alt="" src="images/1_s.jpg" data-url="images/1_b.jpg"/></li>
+        <li><img alt="" src="images/2_s.jpg" data-url="images/2_b.jpg"/></li>
+        <li><img alt="" src="images/3_s.jpg" data-url="images/3_b.jpg"/></li>
+        <li><img alt="" src="images/4_s.jpg" data-url="images/4_b.jpg"/></li>
+    </ul>
+    <div class="tabs-panel" style="width:500px; height:333px;">
+        <img />
+    </div>
+</div>
+
+
+<div id="scroll-tabs" class="tabs">
+	<ul class="tabs-nav">
+    	<li><img alt="" src="images/1_s.jpg" data-url="images/1_b.jpg"/></li>
+        <li><img alt="" src="images/2_s.jpg" data-url="images/2_b.jpg"/></li>
+        <li><img alt="" src="images/3_s.jpg" data-url="images/3_b.jpg"/></li>
+        <li><img alt="" src="images/4_s.jpg" data-url="images/4_b.jpg"/></li>
+    </ul>
+	<div class="tabs-clip scroll">
+    	<ul class="tabs-panel scroll-panel">
+        	<li data-url="images/1_b.jpg"><img alt="" src="images/1_b.jpg"/></li>
+            <li data-url="images/2_b.jpg"><img alt="" src="images/2_b.jpg" /></li>
+            <li data-url="images/3_b.jpg"><img alt="" src="images/3_b.jpg" /></li>
+            <li data-url="images/4_b.jpg"><img alt="" src="images/4_b.jpg"/></li>
+        </ul>
+        <div class="scroll-bar">
+            <div class="scroll-prev"></div>
+            <div class="scroll-track">
+                <div class="scroll-thumb"></div>
+            </div>
+            <div class="scroll-next"></div>
+        </div>
+    </div>
+    <a href="javascript:;" class="tabs-prev">prev</a> <a class="tabs-next" href="javascript:;">next</a><br/>
+    view image:
+    <div class="tabs-view"><img /></div>
+</div>
+
+<script  type="text/javascript">
+	
+	var recordCount = 10 ;
+	new $.ui.tabs('#horiztal',{ effect : 'x' , auto : true ,
+		loadCallback	: function(e , $panel){
+			//$.get('',{},function(data){
+				
+				if(e.count < recordCount)
+					$panel.append('<li style="float:left"><img alt="" src="images/1_b.jpg"/></li>');
+			//})
+			e.target.update();
+		}
+	})
+	
+	new $.ui.tabs('#fade',{
+		loadCallback	: function(e , $panel){
+			//$.get('',{},function(data){
+			$panel.append('mydata');
+			e.target.update();
+			//})
+		}
+	})
+	new $.ui.tabs('#vertical',{ effect : 'y'})
+	
+	var scrollbar ;
+	new $.ui.tabs('#scroll-tabs',{
+		offset : 2, 
+		effect : 'x' , 
+		changedCallback : function(e){
+			if(scrollbar){
+				var offset = e.offset * e.index / e.$panel.width() * scrollbar.$trackX.width();
+				
+				scrollbar.moveThumb('x',offset);
+			}
+		},
+		loadCallback	: function(e , $panel , update){
+			//$.get('',{},function(data){
+
+				if(e.count < recordCount)
+				{
+					$panel.append('<li data-url="images/1_b.jpg" style="float:left"><img alt="" src="images/1_b.jpg"/></li><li data-url="images/1_b.jpg" style="float:left"><img alt="" src="images/1_b.jpg"/></li>');
+			//})
+					e.target.update();
+					scrollbar && scrollbar.update();
+					update();
+				}
+		}
+	})
+	var scrollbar = new $.ui.scrollbar('.scroll',{ axis : 'x'});
+</script>
+</body class="pBgB">
+</html>

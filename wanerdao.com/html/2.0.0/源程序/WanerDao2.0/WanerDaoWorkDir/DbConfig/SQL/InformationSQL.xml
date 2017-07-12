@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLScript xmlns="SQL.xsd">
+    <SQL ID ="GetActivityCategoryOfDropList">
+        select id,parent_id,category_name,update_date,language_id,active from InfoActivityCategory where active=true;
+    </SQL>
+    <SQL ID ="SubmitInfomation">
+        insert into InfoActivityRecords(id,source_type_id,source_id,is_anonymity,category_id,level,subject,content,update_date,
+        counter,page_language_id) values (
+        ?id,?source_type_id,?source_id,?is_anonymity,?category_id,?level,?subject,?content,?update_date,
+        0,?page_language_id);
+    </SQL>
+    <SQL ID ="GetInformationCount">
+        select count(*) as infomation_count from InfoActivityRecords where source_id=?source_id and active=true;
+    </SQL>
+    <SQL ID ="GetPostsCountByCategoryId">
+        select count(id) as count from InfoActivityRecords where category_id=?category_id and active=true;
+    </SQL>
+
+    <SQL ID ="ActivityRecordsComment">
+        insert into  InfoActivityRecordsComments(id,record_id,follow_id,user_id,content,comments_date,positive,negative,active)
+        values(?id,?record_id,?follow_id,?user_id,?content,?comments_date,?positive,?negative,?active);
+    </SQL>
+</SQLScript>

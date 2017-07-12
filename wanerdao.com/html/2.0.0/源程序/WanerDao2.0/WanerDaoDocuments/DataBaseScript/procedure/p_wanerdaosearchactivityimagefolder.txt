@@ -1,0 +1,228 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `p_wanerdaosearchactivityimagefolder`(
+/*查询类型 
+1*：查询个人相册(11:单个人相册，12：多个人),
+2*：根据活动查询相册（21：个人相册+活动相册+好友相册，22：个人相册类型，
+    23：活动相册类型，24：好友相册类型，25：活动的所有相册）
+*/
+p_searchType varchar(10),
+#用户ID,可以多个用英文逗号分隔
+p_userIds varchar(1024),
+#活动名ID
+p_activityIds varchar(1024),
+#是否显示屏蔽相册 1：是 0：否 2:只显示被屏蔽的
+p_isSearchBlock varchar(4),
+#排序字段
+p_orderByFileds varchar(521),
+#0升序 1倒序
+p_sort varchar(521),
+#当前页
+p_pagecurrent int(4),
+#每页记录数
+p_pageSize  int(4)
+	
+)
+    COMMENT '相册查找'
+BEGIN
+    /*定义变量*/
+	  DECLARE i_beginSize varchar(8) ; 
+    declare v_tableNames varchar(512) default 'activityimagefolder f';
+    declare v_filedSql varchar(1024) default '';
+    DECLARE v_limitSql VARCHAR(64) default '';
+    declare v_orderSql varchar(128) default '';
+    declare v_whereSql varchar(4096) default ' where f.active=1 ';
+    declare v_imageCountSql varchar(512) default '';
+    declare v_firstImageSmallPath varchar(256) default '';
+    
+    set v_imageCountSql=' (select count(1) from activityimage i where  i.fold_id=f.id and i.active=1) as image_count ';
+    set v_firstImageSmallPath=' (select image_small_path 
+    from activityimage i where i.fold_id=f.id and i.active=1 limit 1) as image_small_path ';
+    
+    /*	确保索引正确1	*/
+		IF p_pageSize <1 THEN
+            SET p_pageSize =100 ;
+		END IF ;
+
+		IF p_pagecurrent < 1 THEN
+            SET p_pagecurrent = 1 ;
+		END IF ;
+    SET i_beginSize =(p_pagecurrent - 1)* p_pageSize ;
+		SET v_limitSql = CONCAT(
+			' LIMIT ',
+			i_beginSize,
+			', ',
+			p_pageSize
+		);
+    
+    
+    if p_isSearchBlock=0 then
+        set v_whereSql= CONCAT( v_whereSql,' and f.is_block=1');
+    elseif p_isSearchBlock=2 then
+        set v_whereSql= CONCAT( v_whereSql,' and f.is_block=0');
+    end if;
+    
+    set v_filedSql='f.id,f.activity_id,f.activity_name,f.folder_name,f.is_block,f.create_date';
+    case left(p_searchType,1)
+        when '1' then #根据人员ID查询相册
+            begin
+            IF p_orderByFileds = '' THEN
+                set p_orderByFileds=' f.create_date ';
+            END IF ;
+            set v_tableNames='activityimagefolder f,PersonalProfile p';
+            set v_filedSql=concat(v_filedSql,
+                                    ',',
+                                    'p.name as user_name',
+                                    ',',
+                                    v_imageCountSql,
+                                    ',',
+                                    v_firstImageSmallPath
+                                    );
+            set v_whereSql= CONCAT( v_whereSql,' and f.user_id=p.user_id '
+                            );
+            case p_searchType
+                when '11' then #单个人
+                begin
+                    set v_whereSql= CONCAT( v_whereSql,
+                            ' and f.user_id=',
+                                p_userIds
+                            );
+                end;
+                when '12' then #多个人
+                begin
+                    set v_whereSql= CONCAT( v_whereSql,
+                            ' and f.user_id in (',
+                                p_userIds,
+                                ')'
+                            );
+                end;
+            end case;
+            
+            end;
+        when '2' then #活动相册
+            begin
+            IF p_orderByFileds = '' THEN
+                set p_orderByFileds=' folderType,f.create_date ';
+            END IF ;
+            set v_tableNames='activityimagefolder f,PersonalProfile p';
+            set v_filedSql=concat(v_filedSql,
+                                    ',',
+                                    'p.name as user_name',
+                                    ',',
+                                    ' case when f.is_system=1 then 2
+                                    when f.user_id=',p_userIds,' then 1 else 3 end as folderType',
+                                    ',',
+                                    v_imageCountSql,
+                                    ',',
+                                    v_firstImageSmallPath
+                                    );
+            set v_whereSql= CONCAT( v_whereSql,' and f.user_id=p.user_id '
+                            );
+            case p_searchType
+                when '21' then #个人相册类型+活动相册类型+好友相册类型
+                begin
+                    set v_whereSql= CONCAT( v_whereSql,
+                                ' and f.activity_id=',
+                                p_activityIds,
+                                ' and (f.user_id=',
+                                p_userIds,
+                                ' or f.is_system=1 ',
+                                ' or exists( select 1 from PersonalFriends pf where pf.is_authorize=1 and pf.active=1 
+                                and ((pf.relation_from_id=',
+                                p_userIds,
+                                ' and pf.relation_to_id=f.user_id) or (pf.relation_to_id=',
+                                p_userIds,
+                                '',
+                                ' and pf.relation_from_id=f.user_id))))'
+                            );
+                end;
+                when '22' then #个人相册类型
+                begin
+                    set v_whereSql= CONCAT( v_whereSql,
+                                ' and f.activity_id=',
+                                p_activityIds,
+                                ' and f.user_id=',
+                                p_userIds,
+                                ' and f.is_system=0'
+                            );
+                end;
+                when '23' then #活动相册类型
+                begin
+                    set v_whereSql= CONCAT( v_whereSql,
+                                ' and f.activity_id=',
+                                p_activityIds,
+                                ' and f.is_system=1'
+                            );
+                end;
+                when '24' then #好友相册类型
+                begin
+                    set v_whereSql= CONCAT( v_whereSql,
+                                ' and f.activity_id=',
+                                p_activityIds,
+                                ' and f.is_system=0',
+                                ' and exists( select 1 from PersonalFriends pf where pf.is_authorize=1 and pf.active=1 
+                                and ((pf.relation_from_id=',
+                                p_userIds,
+                                ' and pf.relation_to_id=f.user_id) or (pf.relation_to_id=',
+                                p_userIds,
+                                '',
+                                ' and pf.relation_from_id=f.user_id)))'
+                            );
+                end;
+                when '25' then #活动的所有相册
+                begin
+                    set v_whereSql= CONCAT( v_whereSql,
+                                ' and f.activity_id=',
+                                p_activityIds
+                            );
+                end;
+            end case;
+            
+            end;
+        else
+            begin
+                select p_searchType;
+            end;
+            
+    end case;
+    
+    SET v_orderSql = CONCAT(' order by ', p_orderByFileds);
+            IF p_sort THEN
+                SET v_orderSql = CONCAT(v_orderSql, ' desc');
+            ELSE
+                SET v_orderSql = CONCAT(v_orderSql, ' asc');
+            END IF ;
+    
+    SET @COUNT_STRING = CONCAT(
+			'SELECT COUNT(1) INTO @ROWS_TOTAL FROM ',
+      v_tableNames,
+      ' ',
+			v_whereSql
+		);
+		SET @MAIN_STRING = CONCAT(
+			'SELECT ',
+			v_filedSql,
+			' FROM ',
+      v_tableNames,
+      ' ',
+			v_whereSql,
+			' ',
+			v_orderSql,
+      ' ',
+			v_limitSql
+		); 
+        
+    select @MAIN_STRING;
+    /*预处理 */
+		PREPARE count_stmt
+		FROM
+			@COUNT_STRING ; EXECUTE count_stmt ; DEALLOCATE PREPARE count_stmt ;
+		  SELECT @ROWS_TOTAL as ToTal;  
+    PREPARE main_stmt
+		FROM
+			@MAIN_STRING ; EXECUTE main_stmt ; DEALLOCATE PREPARE main_stmt ;
+END

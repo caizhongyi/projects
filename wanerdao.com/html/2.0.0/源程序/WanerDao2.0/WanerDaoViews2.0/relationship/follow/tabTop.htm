@@ -1,0 +1,24 @@
+﻿<script type="text/javascript">
+    $(function () {
+        var strUrl = window.location.href;
+        var arrUrl = strUrl.split("/");
+        var strPage = arrUrl[arrUrl.length - 1];
+        $(".log_tab ul li a").each(function () {
+            if ($(this).attr("href").toString().indexOf(strPage.toString()) != -1) {
+                $(this).addClass("tagf");
+                return false;
+            }
+        });
+
+    });
+</script>
+<div class="log_tab clearfix mb12">
+    <ul>
+        <li><a href="follow_friends.html">关注好友</a></li>
+        <li><a href="follow_group.html">关注圈子</a></li>
+        <!--<li><a href="follow_post.html">关注帖子</a></li>-->
+        <li><a href="follow_activity.html">关注活动</a></li>
+        <li><a href="follow_module.html">关注活动模块</a></li>
+        <li><a href="follow_myself.html">关注我的人</a></li>
+    </ul>
+</div>

@@ -1,0 +1,56 @@
+﻿作者：金广亮
+时间：2011-10-26
+1.文件说明：
+	(css\PluginCss)存放插件样式\Pagination(分页样式)\Pagination.css
+	Plugin(插件js存放目录)\Pagination(分页js存放目录)\wanerdao2.pagination.js
+2.参数说明：
+var defaults = new Object({
+                currPage: 1,//起始页码
+                pageSize: 10,//分页条显示的页数
+                cssStyle: 'badoo',//分页插件样式可以在Pagination.css文件中查找
+                toolbar: null,//工具条
+				/*toolbar: [{ 
+				text: '全选', //显示文字
+				type: 'checkbox', //创建的控件类型
+				handler: function () {//处理函数
+                    alert("全选");
+                }
+                },
+                { text: '提醒缴费', type: 'button', handler: function () {
+                    alert("提醒缴费");
+                }
+                }]*/
+                ajax: {
+                    on: true,//启用Jajax，目前只支持ajax
+                    loadmsg: '数据加载中...',//运行ajax的时候在前台的提示信息
+                    errormsg: '访问服务器超时，请重新刷新加载，谢谢！',//当运行Ajax出错时候的提示信息
+                    param: {//往后台传递的参数
+                        pagecurrent: 1,//其实页码
+                        pageSize: '',//查询条数
+                        opertype: ''//操作类型
+						//,id:1可以自定义添加所要用到的where参数
+                    },
+                    ajaxStart: function () {//默认即可
+                        return false;
+                    }
+                },
+                info: {
+                    first: '首页',//前台显示信息
+                    last: '尾页',
+                    next: '下一页',
+                    prev: '上一页',
+                    first_on: true,//是否启用首页
+                    last_on: true,
+                    next_on: true,
+                    prev_on: true,
+                    tipmsg: '第{tip}页',//当鼠标放上去的提示信息
+                    msg_on: true,//是否启用msg
+                    link: '#',//暂时默认，不要填写其他
+                    msg: '<span>&nbsp;&nbsp;跳{currText}/{sumPage}页</span>',//启用
+                    text: {
+                        width: '22px'
+                    }
+                }
+            });
+3.使用时候注意事项：
+	需要在WanerDaoBLLFactory\Common\WanerDaoCommonFactory.cs写对应的处理，请查看demo

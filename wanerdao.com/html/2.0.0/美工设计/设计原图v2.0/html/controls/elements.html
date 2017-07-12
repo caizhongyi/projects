@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+
+<script type="text/javascript" src="../scripts/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<script type="text/javascript" src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript" src="../scripts/global.js"></script>
+
+<script type="text/javascript" src="../scripts/jquery.floatbox.js"></script>
+
+ <link rel="stylesheet" type="text/css" href="../css/activity.css" media="all" />
+<style type="text/css">
+	.list{ }
+	.list li{background:#ddd;width:100px; height:100px; margin:10px; float:left;}
+	.floatbox{ width:200px; height:200px; background:red; display:none; position:absolute; z-index:1;}
+</style>
+</head>
+
+<body>
+<ul class="list">
+	<li>1</li>
+    <li>2</li>
+
+</ul>
+
+<div class="floatbox"></div>
+<script type="text/javascript">
+	var timer ;
+	$('.list li').hover(function(){
+		clearTimeout(timer)
+		$('.floatbox').floatbox({target : $(this), moveAnimate : false , offset :{ x: 50 , y :50} } );	
+	},function(){
+		timer = setTimeout(function(){$('.floatbox').fadeOut()},100);
+	})
+	
+	$('.floatbox').hover(function(){
+		clearTimeout(timer);
+		//$(this).stop(true,true).fadeIn();
+	},function(){
+		timer = setTimeout(function(){$('.floatbox').fadeOut()},100);
+	})
+</script>
+ 
+<pre style="font-family:微软雅黑;">
+Text:
+<input  type="text" class="text time-text"/>
+
+<input  type="text" class="text" style="width:400px;"/>
+
+<textarea class="textarea" style="width:400px; height:100px;"></textarea>
+
+Buttons:
+<a href="javascript:;" class="button button1">button1</a>
+<input type="button"  value="button1" class="button button1" style="font-family:微软雅黑;"/>
+<a href="javascript:;" class="button button2">button2</a>
+<input type="button"  value="button2" class="button button2"/>
+<a href="javascript:;" class="button button3">button3</a>
+<input type="button"  value="button3" class="button button3"/>
+<a href="javascript:;" class="button button4">button4</a>
+<input type="button"  value="button4" class="button button4"/>
+<a href="javascript:;" class="button button5">butto5</a>
+<input type="button"  value="button5" class="button button5"/>
+<a href="javascript:;" class="button button-gay">button-gay</a>
+<input type="button"  value="button-gay" class="button button-gay"/>
+
+<a href="javascript:;" class="button blue-button">blue-button</a>
+<input type="button"  value="blue-button" class="button blue-button"/>
+
+<a href="javascript:;" class="button radius-gay-button"><span class="icon icon-gay-right"></span>radius-gay-button</a>
+<a href="javascript:;" class="button radius-gay-button"><span class="icon icon-gay-close"></span>radius-gay-button</a>
+<a href="javascript:;" class="button radius-gay-button"><span class="icon icon-gay-message"></span>radius-gay-button</a>
+<input type="button"  value="radius-gay-button" class="button radius-gay-button"/>
+
+<a href="javascript:;" class="button blue-button"><span class="icon icon-success"></span>送&nbsp;&nbsp;礼</a>
+
+<input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="创建活动" />
+
+<span class="labeltext"><label>name : </label><input  type="text" style="width:400px;"/></span>
+
+<select  class="select" ><option>select</option></select>
+</pre>
+
+Tips:
+<div class="tips-panel">
+    <div class="tips-1">
+    <div class="arrowhead"></div>
+    &nbsp;错误提示<br/>您输入的邮箱格式有误。</div>
+</div>
+
+<div class="tips-panel">
+    <div class="tips">
+    <div class="arrowhead"></div>
+    <img alt="" src="../images/error.gif"/>&nbsp;错误提示<br/>您输入的邮箱格式有误。<a href="javascript:;" class="close-3"></a></div>
+</div>
+
+<div class="tips-panel" style="width:400px;">
+    <div class="tips tips-2">
+    <div class="down-arrowhead"></div>
+    <div class="form">
+    <h3 class="">日历<span class="icon icon-tips">2123次</span></h3>
+    <ul>
+    	<li><label class="wraplabel">类别:<span>类别名称</span></label></li>
+        <li><label class="wraplabel">类别:<span>类别名称</span></label></li>
+        <li><label class="wraplabel">类别:<span>类别名称</span></label></li>
+        <li><label class="wraplabel">类别:<span>类别名称</span></label></li>
+    </ul>
+    </div>
+    <a href="javascript:;" class="close-3"></a></div>
+</div>
+
+<div class="tips-panel" style="width:400px;">
+    <div class="tips tips-2">
+    <div class="up-arrowhead"></div>
+    <div class="form">
+    <h3 class="">日历<span class="icon icon-tips">2123次</span></h3>
+    <ul>
+    	<li><label class="wraplabel">类别:<span>类别名称</span></label></li>
+        <li><label class="wraplabel">类别:<span>类别名称</span></label></li>
+        <li><label class="wraplabel">类别:<span>类别名称</span></label></li>
+        <li><label class="wraplabel">类别:<span>类别名称</span></label></li>
+    </ul>
+    </div>
+    <a href="javascript:;" class="close-3"></a></div>
+</div>
+
+<br/>
+Close:<br/>
+<a href="javascript:;" class="close-3"></a>
+<a href="javascript:;" class="close-1"></a>
+<a href="javascript:;" class="close-2"></a>
+
+Star:<br/>
+<span class="star star1"></span><br/>
+<span class="star star2"></span><br/>
+<span class="star star3"></span><br/>
+<span class="star star4"></span><br/>
+<span class="star star5"></span><br/>
+
+Tabs:
+<div class="tabs">
+     <ul class="tabs-nav">
+        <li><a href="javascript:;">安全密保</a></li><li class="current"><a href="javascript:;">修改密码</a></li>
+    </ul>
+</div>
+
+ <span class="inputclick "><input  type="text" inputdefault="请选择活动分类" value="请选择活动分类" class="text act-type"/><a href="#" class="clickbtn"></a></span>
+
+<div class="pageList"><span>第</span><input type="text" class="text" value="0"><span>页</span><span>共</span><span>0</span><span>页</span><span>共</span><span>0</span><span>条</span><a title="首页" href="javascript:;">首页</a><a title="上一页" href="javascript:;">上一页</a><a title="下一页" href="javascript:;">下一页</a><a title="尾页" href="javascript:;">尾页</a></div>
+</body>
+</html>

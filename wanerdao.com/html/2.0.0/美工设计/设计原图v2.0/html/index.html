@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>欢迎来到玩儿道,最好玩最贴心的生活社交网络，发现活动，组织活动，简单开始</title>
+
+    <meta name="keywords" content="玩儿道，生活社交网络，寻找活动，组织活动，圈子，个人，关系，杂烩，资道，站内信息"/>
+    <meta name="description"
+          content="玩儿道（www.wanerdao.com，www.savorboard.com）是最温暖的生活社交网络。用户在这里可以随心所欲的寻找适合自己的各种各样的活动，并且可以像拥有了一位职业管家一样，全智能化将你的活动安排井井有条。通过活动去重逢老朋友，认识周围的新朋友，玩在一起，了解彼此，分享快乐，让这一切从玩儿道简单开始吧。"/>
+    <script type="text/javascript" src="scripts/in-min.js" autoload="true" core="scripts/jquery-1.7.2.min.js"></script>
+
+    <script type="text/javascript">
+
+        In.add('chosen', {path:'scripts/jquery.chosen/jquery.chosen.js', type:'js', charset:'utf-8'});
+        In.add('chosen-css', {path:'scripts/jquery.chosen/jquery.chosen.css', type:'css', rely:['chosen']});
+        In.add('global', {path:'scripts/global.js', type:'js', charset:'utf-8', rely:['chosen']});
+        In.add('base', {path:'css/public/base.css', type:'css'});
+        In.add('index', {path:'css/index.css', type:'css', rely:['base']});
+
+        In.ready('chosen', 'global', 'chosen-css','index', function () {
+
+            $('.regist-side .regist .button').click(function () {
+               $('.sidetabs').show();
+                $('.regist-side').hide();
+            })
+            $('.sidetabs .regist .button').click(function () {
+                $('.regist-side').show();
+                $('.sidetabs').hide();
+            })
+            console && console.log('load complated');
+        });
+    </script>
+
+
+</head>
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+    <div class="header layout">
+        <a href="index.html" class="logo"></a>
+    </div>
+</div>
+
+<div class="container layout clearfix">
+    <div class="side">
+        <div class="sidetabs">
+            <div class="login">
+                <h3>登录玩儿道</h3>
+
+                <div class="labeltext"><label for="username">账号：</label><input id="username" name="username"
+                                                                               type="text"/></div>
+                <div class="labeltext"><label for="password">密码：</label><input id="password" name="password"
+                                                                               type="passwrod"/></div>
+                <div class="clearfix">
+                    <div class="f_left"><input id="islogin" type="checkbox" class="checkbox"/><label for="islogin">下次自动登录</label>
+                    </div>
+                    <div class="f_right">
+                        <a href="javascript:;">忘记密码 </a><br/>
+                        <a href="javascript:;">忘记账号 </a>
+                    </div>
+                    <input class="button button1" type="submit" value="登  录"/>
+                </div>
+            </div>
+
+            <div class="regist">
+                <h3>还没有玩儿道账号？</h3>
+                <a href="javascript:;" class="button">立即注册玩儿道账号</a>
+            </div>
+        </div>
+
+        <div class="regist-side" style="display: none;">
+            <div class="regist-from">
+                <h3>注册玩儿道</h3>
+                <div class="labeltext"><label for="username">电子邮件：</label><input id="username" name="username"  type="text"/></div>
+                <div class="labeltext"><label for="password1">设置密码：</label><input id="password1" name="password"  type="passwrod"/></div>
+                <div class="labeltext"><label for="password2">确认密码：</label><input id="password2" name="password"  type="passwrod"/></div>
+                <div class="labeltext"><label for="password3">真实姓名：</label><input id="password3" name="password"  type="passwrod"/></div>
+                <div class="sex">性别:<input  type="radio" id="man" name="sex"/><label for="man">男</label><input  type="radio"  id="feman" name="sex" checked="checked"/><label for="feman">女</label></div>
+                <div class="birthday">生日:<select id="year"><option>1021</option></select>-<select  id="month"><option>21</option></select>-<select  id="day"><option>21</option></select></div>
+                <input  class="button button1" type="submit" value="注册帐号" />
+            </div>
+
+            <div class="regist">
+                <h3>还没有玩儿道账号？</h3>
+                <a href="javascript:;" class="button">立即注册玩儿道账号</a>
+            </div>
+        </div>
+
+        <div class="lan">语言：<select>
+            <option>中文简体</option>
+        </select></div>
+    </div>
+
+
+
+    <div class="main">
+        <div class="title">
+            <a href="javascript:;" class="button custom-login-btn">
+                <span>体验不一样的社交</span>
+
+            </a>活动组织的生活社交网络新概念
+        </div>
+        <ul class="images clearfix">
+            <li><a href="javascript:;"><img alt="" src="images/index/p1.png"/></a></li>
+            <li><a href="javascript:;"><img alt="" src="images/index/p2.png"/></a></li>
+            <li><a href="javascript:;"><img alt="" src="images/index/p3.png"/></a></li>
+            <li><a href="javascript:;"><img alt="" src="images/index/p4.png"/></a></li>
+        </ul>
+        <div class="main-search"><input type="text"  inputdefault='寻找留学好友'/><a href="javascript:;"
+                                                                                             class="search-button"></a>
+        </div>
+    </div>
+</div>
+<!--loginMain-->
+
+<div class="footer layout">
+    <span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+
+    <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a
+            href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+</div>
+
+</body>
+
+
+</html>

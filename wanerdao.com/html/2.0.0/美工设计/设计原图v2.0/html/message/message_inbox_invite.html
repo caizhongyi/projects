@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>邀请收件箱-站内信息-玩儿道</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="接收邀请箱，站内信息，玩儿道，生活社交网络" />
+<meta name="description" content="存放接收邀请" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../css/message.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$(".drop_down").toggle(function(){
+		$(".drop_down i").width(0);
+		$(".drop_down i").css("display","none");
+		$(this).children("i").width($(this).width()+25);
+		$(this).children("i").css("display","block");
+	},function(){
+		$(this).children("i").css("display","none");
+	})
+	$(document).mousedown(function(){
+		$(".drop_down i").css("display","none");
+	})
+	
+	$("#fList li").hover(function(){
+		$(this).addClass("mHover");	
+	},function(){
+		$(this).removeClass("mHover");	
+	})
+	
+});
+</script>
+</head>
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+	<div class="header layout">
+    	<a href="index.html" class="logo"></a>
+        <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="回到首页"></a>
+            <div class="home_pop">
+            	<ul>
+                	<li>
+                        <a href="javascript:;" class="hp_title">活动</a>
+                        <p><a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a href="javascript:;">我的活动</a><a href="javascript:;">历史活动</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">个人</a>
+                        <p><a href="javascript:;">资料</a><a href="javascript:;">日志</a><a href="javascript:;">相册</a><a href="javascript:;">视频</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">关系</a>
+                        <p><a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+        		<input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/default/32-32.jpg" width="32" height="32"></a><span class="user_infor_name"><a href="javascript:;">烧饭-人生旅途中人生旅途中<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+	<div class="mes_box clearfix">
+		<div class="mes_box_left">
+        	<div class="mes_nav_box">
+                <a href="javascript:;">写信息</a>
+                <a href="javascript:;">收件箱</a>
+                <a href="javascript:;">发件箱</a>
+                <a href="javascript:;">草稿箱</a>
+                <a href="javascript:;" class="active">垃圾信息</a>
+            </div>
+        </div>
+		<div class="mes_box_right">
+        	<div class="mes_com_box">
+                <div class="black10"></div>
+                <div class="mes_com_box_Tab">
+                    <a href="javascript:;">消 息</a>
+                    <a href="javascript:;" class="active">邀 请</a>
+                </div>
+                
+                <div class="black10"></div>
+                <div class="black10"></div>
+                
+                <div class="pubCon2">
+                	<div class="topNav clearfix ">
+                        	<div class="f_left">
+                            	<input type="checkbox" />
+                                <div class="sift_option"></div>
+                                显示
+                                <div class="drop_down">
+                                    <span>全部信息</span>
+                                    <b></b>
+                                    <i>
+                                        <a href="">全部信息</a>
+                                        <a href="">未读信息</a>
+                                    </i>
+                                </div>
+                                <div class="sift_option"></div>
+                                <div class="opera opera_inbox_inv">
+                                		<a href="javascript:void(0);" class="icon_1" style="width:2px;"></a>
+                                		<a href="javascript:void(0);" class="icon_2"></a>
+                                		<a href="javascript:void(0);" class="icon_3"></a>
+                                    </div>
+                            </div>
+                        	<!-- 分页右边 -->
+                            <div class="pageList  f_right"><span>共</span>&nbsp;<span>0</span>&nbsp;<span>页</span>&nbsp;&nbsp;<span>共</span>&nbsp;<span>0</span>&nbsp;<span>条</span>&nbsp;&nbsp;<a href="javascript:;" title="首页">首页</a><a href="javascript:;" title="上一页">上一页</a><a href="javascript:;" title="下一页">下一页</a><a href="javascript:;" title="尾页">尾页</a></div>
+                            <!-- 分页右边 -->
+                            
+            	        </div>
+                
+                   
+                    <div class="message_action">
+                        <ul class="fList fList_inbox" id="fList">
+                          <li> 
+                            <i class="cbtn"><input type="checkbox" /></i>
+                            <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                            <dl class="fInfo">
+                              <dt>
+                                <i class="date">12/12</i><i class="icon i_1 fb"><a href="javascript:;" class="fb">烧饭烧饭</a>请求与您成为好友[纽约市/纽约州/美国]</i>
+                              </dt>
+                              <dd>
+                                <p><span><em>星座：</em>双子座</span><span><em>毕业院校：</em>耶鲁大学</span> <span><em>工作单位：</em>google</span> <span><em>家乡：</em>广东汕尾</span></p>
+                              </dd>
+                            </dl>
+                            <p class="ifAgree"><a href="javascript:;">同意</a>|<a href="javascript:;">忽略</a></p>
+                          </li>
+                          <li> 
+                            <i class="cbtn"><input type="checkbox" /></i>
+                            <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                            <dl class="fInfo">
+                              <dt>
+                                <i class="date">12/12</i><i class="icon i_2"><a href="javascript:;" target="_blank" title="烧饭">烧饭</a> 邀请您加入 <a href="javascript:;" class="fb">烧饭烧饭烧饭烧饭烧饭</a> (<b class="red">256人</b>)</i>
+                              </dt>
+                                <dd class="ddBar">
+                                    关注度：<i class="iBar"><i style="width:12%;"></i><em>12%</em></i>&nbsp;&nbsp;活跃度：<i class="iBar"><i style="width:75%;"></i><em>75%</em></i>
+                                </dd>
+                              <dd>
+                                <p>温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展</p>
+                              </dd>
+
+                            </dl>
+                            <p class="ifAgree"><a href="javascript:;">同意</a>|<a href="javascript:;">忽略</a></p>
+                          </li>
+                          <li> 
+                            <i class="cbtn"><input type="checkbox" /></i>
+                            <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                            <dl class="fInfo">
+                              <dt>
+                                <i class="date">12/12</i><i class="icon i_3">我邀请<a href="javascript:;">XXX</a> 加入 <a href="javascript:;" class="fb">烧饭烧饭烧饭烧饭烧饭</a> [纽约市/纽约州/美国] (<b class="red">256人</b>)</i>
+                              </dt>
+                              <dd>
+                                <p><span><em>活动时间：</em>04/03-04/05</span><span><em>报名截止时间：</em>04/08</span> <span><em>预交费用：</em>100$</span> </p>
+                              </dd>
+                            </dl>
+                            <p class="ifAgree"><a href="javascript:;">同意</a>|<a href="javascript:;">忽略</a></p>
+                          </li>
+                          <li> 
+                            <i class="cbtn"><input type="checkbox" /></i>
+                            <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                            <dl class="fInfo">
+                              <dt>
+                                <i class="date">12/12</i><i class="icon i_1 fb"><a href="javascript:;" class="fb">烧饭烧饭</a>请求与您成为好友[纽约市/纽约州/美国]</i>
+                              </dt>
+                              <dd>
+                                <p><span><em>星座：</em>双子座</span><span><em>毕业院校：</em>耶鲁大学</span> <span><em>工作单位：</em>google</span> <span><em>家乡：</em>广东汕尾</span></p>
+                              </dd>
+                            </dl>
+                            <p class="ifAgree"><a href="javascript:;">同意</a>|<a href="javascript:;">忽略</a></p>
+                          </li>
+                          <li> 
+                            <i class="cbtn"><input type="checkbox" /></i>
+                            <i class="iPic"><a href="javascript:;" target="_blank" title="烧饭"><img src="../images/default/32-32.jpg" alt="烧饭" /></a></i>
+                            <dl class="fInfo">
+                              <dt>
+                                <i class="date">12/12</i><i class="icon i_2">我邀请<a href="javascript:;">XXX</a> 加入 <a href="javascript:;" class="fb">烧饭烧饭烧饭烧饭烧饭</a> [纽约市/纽约州/美国] (<b class="red">256人</b>)</i>
+                              </dt>
+                              <dd>
+                               <p>温家宝：金融机构不能把企业当成唐僧肉 华西村转型发展</p>
+                              </dd>
+                              <dd class="ddBar">
+                                关注度：<i class="iBar"><i style="width:0%;"></i><em>0%</em></i>&nbsp;&nbsp;活跃度：<i class="iBar"><i style="width:75%;"></i><em>75%</em></i> 
+                              </dd>
+                            </dl>
+                            <p class="ifAgree"><a href="javascript:;">同意</a>|<a href="javascript:;">忽略</a></p>
+                          </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="black10"></div>
+                    <div class="black10"></div>
+                    <div class="imporInfo"><div class="loading"><a href="javascript:;">加载更多</a></div></div>
+                    <div class="black10"></div>
+                    
+                    <div class="topNav clearfix bmNav">
+                        	<div class="f_left">
+                            	<input type="checkbox" />
+                                <div class="sift_option"></div>
+                                显示
+                                <div class="drop_down">
+                                    <span>全部信息</span>
+                                    <b></b>
+                                    <i>
+                                        <a href="">全部信息</a>
+                                        <a href="">未读信息</a>
+                                    </i>
+                                </div>
+                                <div class="sift_option"></div>
+                                <div class="opera opera_inbox_inv"> 
+                                		<a href="javascript:void(0);" class="icon_1" style="width:2px;" ></a>
+                                		<a href="javascript:void(0);" class="icon_2"></a>
+                                		<a href="javascript:void(0);" class="icon_3"></a>
+                                    </div>
+                            </div>
+                        	<!-- 分页右边 -->
+                            <div class="pageList  f_right"><span>共</span>&nbsp;<span>0</span>&nbsp;<span>页</span>&nbsp;&nbsp;<span>共</span>&nbsp;<span>0</span>&nbsp;<span>条</span>&nbsp;&nbsp;<a href="javascript:;" title="首页">首页</a><a href="javascript:;" title="上一页">上一页</a><a href="javascript:;" title="下一页">下一页</a><a href="javascript:;" title="尾页">尾页</a></div>
+                            <!-- 分页右边 -->
+                            
+            	        </div>
+                     </div>
+                
+                <div class="black10"></div>
+                <div class="black10"></div>
+                <div class="black10"></div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mes_main_bot"></div>
+<!--mes_main-->
+
+<div class="footer layout mes_footer">
+	<span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+</div>
+</body>
+</html>

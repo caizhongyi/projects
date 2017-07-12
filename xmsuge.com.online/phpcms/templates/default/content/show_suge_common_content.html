@@ -1,0 +1,70 @@
+{php $load_css = array('photo','team','bigphoto');}
+{template "public","header"}
+
+
+<!--中间图-->
+<div id="main">
+    <div id="productCats" class="flexslider">
+        {pc:content action="lists" catid="$catid" num="6" order="listorder ASC,id DESC" }
+        <h2><span>{$data[$id]['title']}</span></h2>
+        {/pc}
+        <div class="semitransp">
+            {php //$page = isset($_GET['page'])&&!empty($page) ? intval($page):1;}
+            {if $page>1}
+            {php $url = buildurl('lists','index','content',array('catid'=>$catid)).'&page='.$page}
+            {else}
+            {php $url = buildurl('lists','index','content',array('catid'=>$catid))}
+            {/if}
+			
+			{if $noreturn !=1}
+            <a id="back-portfolio" href="{$url}">返回上一页</a>
+			{/if}
+
+            <div id="gallery-slider" class="flexslider" data-loader="Class-tabs" data-options="auto:true,initCallback:sliderInit,effect:'fade'">
+                <div class="tab-clip" data-role="clip" >
+                    <ul class="tab-panel" data-role="panel">
+                        {loop $pictureurls $pic_k $r}
+                        <li><img src="{$r[url]}"/></li>
+                        {/loop}
+                    </ul>
+                </div>
+
+                <ul class="flex-direction-nav">
+                    <li><a href="javascript:;" class="flex-prev" data-role="prev">Previous</a></li>
+                    <li><a href="javascript:;" class="flex-next" data-role="next">Next</a></li>
+                </ul>
+                <div class="carousel" data-role="carousel">
+						{loop $pictureurls $pic_k $r}<a href="javascript:;"><img src="{$r[url]}"/></a>{/loop}
+				</div>
+				<div class="flex-pauseplay"><a class="flex-pause">Pause slideshow</a></div>
+            </div>
+            <div class="numbers-info">- <span class="current-photo-num">1</span> of <span class="photo-total">14</span> -</div>
+            <script type="text/javascript">
+                $(function(){
+                    $('.photo-total').html($('#gallery-slider .tab-panel li').length);
+                })
+                function sliderInit(){
+                    var that = this;
+                    this.on('onchange',function(e , args ){
+                        $('.current-photo-num').html(args.current + 1);
+                    })
+                    $('.flex-pause').click(function(){
+                        if(!$(this).hasClass('stop')){
+                            $(this).html('Start slideshow').addClass('stop')
+                            that.stop();
+                        }
+                        else{
+                            $(this).html('Pause slideshow').removeClass('stop')
+                            that.auto();
+                        }
+                    })
+                }
+            </script>
+        </div>
+    </div>
+</div>
+<!--中间图-->
+
+
+
+{template "public","footer"}

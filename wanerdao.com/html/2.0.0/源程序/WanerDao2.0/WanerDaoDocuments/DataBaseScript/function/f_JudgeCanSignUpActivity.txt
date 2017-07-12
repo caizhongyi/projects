@@ -1,0 +1,22 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `f_JudgeCanSignUpActivity`(activityid varchar(40),
+                                                                    userid varchar(40)
+                                                                    ) RETURNS int(11)
+    COMMENT '判断活动能否报名 0：不能 1：能'
+BEGIN
+       DECLARE sCount int default 0;
+       
+       select count(*) into sCount from activity a,activitymember m  where m.activity_id=a.id 
+            and a.id=activityid and a.report_datetime>CURRENT_TIMESTAMP and m.user_id=userid and a.active=1;
+       
+       if sCount>0 then
+            return 0;
+        end if;
+       
+       RETURN 1;
+     END

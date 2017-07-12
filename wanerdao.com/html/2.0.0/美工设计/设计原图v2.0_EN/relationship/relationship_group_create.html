@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Create group-Relationship-Savorboard</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="Create group, Group Information, Invitation, Relationship, Savorboard, Life and social network" />
+<meta name="description" content="Fill group information and invitation to create a group" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../css/relationship.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	
+	
+});
+</script>
+<link rel="stylesheet" type="text/css" href="../css/en.css" media="all" />
+</head>
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+	<div class="header layout">
+    	<a href="index.html" class="logo"></a>
+        <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="Go Home"></a>
+            <div class="home_pop">
+            	<ul>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Activity</a>
+                        <p><a href="javascript:;">Looking for activities</a><a href="javascript:;">Create activities</a><a href="javascript:;">Classification activities</a><a href="javascript:;">Custom activities</a><a href="javascript:;">Seasonal activities</a><a href="javascript:;">My activities</a><a href="javascript:;">Historical activities</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Personal</a>
+                        <p><a href="javascript:;">Profile</a><a href="javascript:;">Diary</a><a href="javascript:;">Album</a><a href="javascript:;">Video</a></p>
+                    </li>
+                    <li  class="last">
+                        <a href="javascript:;" class="hp_title">Relationship</a>
+                        <p><a href="javascript:;">My friends</a><a href="javascript:;">Search friends</a><a href="javascript:;">Invite friends</a><a href="javascript:;">Subscription settings</a><a href="javascript:;">My groups</a><a href="javascript:;">Search group</a><a href="javascript:;">Create a group</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+                <input type="text" class="search_txt" value="Artivity/Firend/Group/Article" inputdefault="Artivity/Firend/Group/Article" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/defucult/head.jpg" width="32" height="32"></a><span class="user_infor_name"><a href="javascript:;">Cooking - life in the life journey<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">Modify profile</a></li>
+                    <li><a href="javascript:;">Account management</a></li>
+                    <li><a href="javascript:;">Privacy Settings</a></li>
+                    <li><a href="javascript:;">Change language</a></li>
+                    <li class="last"><a href="javascript:;">Exit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+	<div class="mes_box per_blog clearfix">
+        
+        <div class="black10"></div>
+        <div class="black10"></div>
+        <div class="black10"></div>
+        <div class="mes_com_box_Tab">
+            <a href="javascript:;">My friends</a>
+            <a href="javascript:;">Search friends</a>
+            <a href="javascript:;">Invite friends</a>
+            <a href="javascript:;">Subscription</a>
+            <a href="javascript:;">My groups</a>
+            <a href="javascript:;">Search groups</a>
+            <a href="javascript:;" class="active">Create a group</a>
+        </div>
+        
+        <div class="rgcTip">Create a group</div>
+        
+		<div class="prTnvit_wrap">
+              <div class="prT_name"><b></b>Group info<span>Founder, Super administrator, General administrator, Treasurer： <i>AHXIAOPENG</i></span></div>
+              <div class="rgc_box">
+                <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                  <tr>
+                    <th class="rowNam" scope="row">Joining type：</th>
+                    <td><input type="radio" name="radio" id="dicAdd" class="vInput" value="radio"><label for="dicAdd" style="margin-right:20px;">Directly join</label>
+                      <input type="radio" name="radio" id="aprAdd" class="vInput" value="radio"><label for="aprAdd">Approved to join</label></td>
+                  </tr>
+                  <tr>
+                    <th valign="top" class="rowNam" scope="row">Image Upload：</th>
+                    <td>
+                    <div class="fileArea">
+                    <b></b>
+                    <input class="fileTxt prInpSty text" value="浏览您要上传的圈子图片" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" type="text" id="filTxt" name="txt" />
+					<input type="button" class="fileBtn prBtn" value="Upload" onclick="document.getElementById('upfile').click()" />
+					<input class="fileSty" name="upfile" id="upfile" size="30" type="file" onchange="document.getElementById('filTxt').value=this.value;document.getElementById('filTxt').style.color='#333'" />
+                    </div>
+                    <div style="line-height:26px;"><input name="" type="checkbox" value="" class="vInput" id="cpRt"><label for="cpRt">I declare the picture that I upload does not infringe the third parties copyright</label></div>
+                    <div class="flie_pic"><img src="../images/demo/file_pic.jpg"></div></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row"><i>*</i>Name：</th>
+                    <td><input name="" value="请输入圈子名称" type="text" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}"  class="prInpSty text"></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row"><i>*</i>Category：</th>
+                    <td><select name="select" style="width:140px">
+                                  <option value="1">请选择圈子分类</option>
+                                  <option value="1">请选择圈子分类</option>
+                                </select></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row"><i>*</i>Public：</th>
+                    <td><input name="g" type="checkbox" value="公开圈子" class="vInput" id="input_1" />
+                <label for="input_1">Open group</label></td>
+                  </tr>
+                  <tr>
+                    <th valign="top" class="rowNam" scope="row"><i>*</i>Description：</th>
+                    <td><textarea name="" cols="" class="prTxaSty text" rows="" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" >请输入圈子简介</textarea></td>
+                  </tr>
+                  <tr>
+                    <th valign="top" class="rowNam" scope="row"><i>*</i>Rules：</th>
+                    <td><textarea name="" cols="" class="prTxaSty text" rows="" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" >请输入圈子规章</textarea></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row">Website：</th>
+                    <td><input name="" type="text" value="请输入圈子主页地址" class="prInpSty text" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" ></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row"><i>*</i>Founder email：</th>
+                    <td><input name="" type="text" value="请输入创建者邮箱" class="prInpSty text" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" ></td>
+                  </tr>
+                  <tr>
+                    <th valign="top" class="rowNam" scope="row">Management structure：</th>
+                    <td><ul class="zzjg">
+                        <li>
+                          <div class="jg_hd">
+                            <input name="" type="radio" value="" id="cjjg">
+                             <label for="cjjg">Hierarchy</label></div>
+                          <img src="../images/demo/name_jg.jpg" width="225" height="155" />
+                        </li>
+                        <li>
+                          <div class="jg_hd">
+                            <input name="" type="radio" disabled value="" id="disab">
+                            <label for="disab">Democracy</label></div>
+                          <img src="../images/demo/name_jgr.jpg" width="225" height="155" />
+                        </li>
+                      </ul></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row">Join fee：</th>
+                    <td><ul class="Capt">
+                        <li>
+                          <input name="" type="text" value="请输入费用" class="prInpSty text" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" style="height:16px;" >
+                        </li>
+                        <li>
+                          <select name="select" style="width:80px">
+                              <option value="1">unit</option>
+                              <option value="1">unit</option>
+                          </select>
+                        </li>
+                        <li>
+                          <input name="" type="text" value="请输入单位值" class="prInpSty text" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" style="height:16px;" >
+                        </li>
+                        <li>
+                          <select name="select" style="width:80px">
+                              <option value="1">unit</option>
+                              <option value="1">unit</option>
+                          </select>
+                        </li>
+                      </ul></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row">Account No.：</th>
+                    <td><input name="" type="text" value="清输入汇款帐号" class="prInpSty text" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" ></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row">Payment description：</th>
+                    <td><input name="" type="text" value="请输入说明内容" class="prInpSty text" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" ></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row">Kick out protection：</th>
+                    <td><div class="prote">
+                        <input name="" type="checkbox" id="prote" value="">
+                        <label for="prote">Turn on kick out protection</label></div>
+                    <select name="select" style="width:150px">
+                              <option value="1">Protection time</option>
+                              <option value="1">Protection time</option>
+                          </select></td>
+                  </tr>
+                </table>
+              </div>
+        </div>
+        
+        <div class="prTnvit_wrap">
+            <div class="prT_name"><b></b>Send the invitation</div>
+            <div class="select_pep_bot">
+            <p>
+              <input type="checkbox">
+              Send the invitation to all friends
+              <input type="checkbox">
+              Send the invitation to all groups</p>
+            Send the invitation to some groups： &nbsp;&nbsp;
+            <select name="select22" class="combobox">
+              <option value="AL">圈子名</option>
+              <option value="AK">圈子名</option>
+            </select>
+            <input type="text" class=" input_a text" style="width:180px;">
+            <input type="submit" class="button" value="Add">
+            <div class="select_pep_name">
+              <div class="select_name_list"> <img class="this_pep1" src="../images/this_pep.png"> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> </div>
+            </div>
+            Send the invitation to some friends： &nbsp;&nbsp;
+            <input type="text" class=" input_a text" style="width:180px;">&nbsp;&nbsp;
+            <input type="submit" class="button" value="Search friends">
+            <input type="submit" class="button" value="Add">
+            <div class="select_pep_name">
+              <div class="select_name_list"> <img class="this_pep2" src="../images/this_pep.png"> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> <span><a href="javascript:;">好有名字</a><a href="javascript:;"><img src="../images/del_pep.png"></a></span> </div>
+            </div>
+            <div class="blank10px"></div>
+            <div class="agrTerm"><input name="" type="checkbox" id="agree" class="vInput" value=""><label for="agree">Agree Agreement and read user’s guide</label></div>
+            <div class="sA_btn clearfix" style="padding-left:14px;">
+                        	<input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="Create">
+                        	<input type="button" class="buttonB btn_w97 btn_h36 btnGary_97 fSize-14" value="Cancel"></div>
+            
+            <div class="blank10"></div>
+          </div>
+              
+        </div>
+        
+        
+    </div>
+</div>
+<div class="mes_main_bot"></div>
+
+
+<div class="footer layout">
+	<span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a href="javascript:;">Help</a></p>
+</div>
+
+</body>
+</html>

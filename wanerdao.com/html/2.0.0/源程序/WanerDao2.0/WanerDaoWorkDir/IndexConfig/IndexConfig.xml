@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<index>
+  <category id="publish_state" description="" sqlkey="Index_GetNewFeeds">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name}
+                {content}
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+  <category id="publish_link" description="" sqlkey="Index_GetNewLinkFeeds">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name} <a href="{link}" target="_blank">{link}</a>
+                <p> {description}</p>
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+  <category id="publish_image" description="" sqlkey="Index_GetPersonalImage">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+		<input type="hidden" class="infoId" value="{image_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name}
+                <p><a href="{image_path}" ><img src="{image_small_path}" style=" width:180px; height: 120px;" /></a></p>
+              
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+  <category id="publish_video" description="" sqlkey="Index_GetPersonalVideo">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+		<input type="hidden" class="infoId" value="{video_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name} 
+				<a href="/personal/video_view.html?videoId={video_id}&albumId={fold_id}&uid={user_id}">{video_name}</a>
+                <p><div style="width:180px; height: 120px;">{video_code}</div></p>
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+  <category id="publish_blog" description="" sqlkey="Index_GetPersonalBlog">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+		<input type="hidden" class="viewDetail" value="/personal/blog_view.html?blogid={blog_id}"/>
+		<input type="hidden" class="infoId" value="{blog_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name} 
+				<a href="/personal/blog_view.html?blogid={blog_id}&uid={user_id}" target="_blank">{title}</a>
+                <p style="overflow-x:hidden; word-break: break-all">{content}</p>
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+  <category id="upload_image" description="" sqlkey="Index_UpLoadImage">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+		<input type="hidden" class="folderId" value="{folder_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name}
+				<a href="/personal/photo_album_preview.html?albumId={imagefolder_id}">{folder_name}</a>
+                <p>照片</p>
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+  <category id="forward_state" description="" sqlkey="Index_ForwardState">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} 
+				<a href="/personal/index.html?uid={source_user_id}" target="_blank">{source_user_name}</a> {category_name}
+                {content}
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+
+  <category id="forward_link" description="" sqlkey="Index_ForwardLink">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} 
+				<a href="/personal/index.html?uid={source_user_id}" target="_blank">{source_user_name}</a> {category_name} <a href="{link}">{link}</a>
+                <p>{description}</p>
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+
+
+  <category id="forward_image" description="" sqlkey="Index_ForwardImage">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+		<input type="hidden" class="infoId" value="{image_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} 
+				<a href="/personal/index.html?uid={source_user_id}" target="_blank">{source_user_name}</a> {category_name}
+                <p><a href="{image_path}"><img src="{image_small_path}" style="width:50px; height:50px;"/></a></p>
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+
+
+
+  <category id="forward_video" description="" sqlkey="Index_ForwardVideo">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+		<input type="hidden" class="infoId" value="{video_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} 
+				<a href="/personal/index.html?uid={source_user_id}" target="_blank">{source_user_name}</a> {category_name}
+                <p tip="{video_id}{video_code}{video_link}{video_path}{source}">{video_code}</p>
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+
+  <category id="forward_blog" description="" sqlkey="Index_ForwardBlog">
+    <![CDATA[   	
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+		<input type="hidden" class="infoId" value="{blog_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} 
+				<a href="/personal/index.html?uid={source_user_id}" target="_blank">{source_user_name}</a> {category_name}
+                <p><a href="/personal/blog_view.html?blogid={blog_id}" target="_blank">{title}</a></p>
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+  <category id="forward_uploadimage" description="" sqlkey="Index_ForwardUploadImage">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+		<input type="hidden" class="commentCount" value="{comment_count}"/>
+		<input type="hidden" class="folderId" value="{folder_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} 
+				<a href="/personal/index.html?uid={source_user_id}" target="_blank">{source_user_name}</a> {category_name}
+				<a href="/personal/photo_album_preview.html?albumId={folder_id}">{folder_name}</a>
+                <p style="display:none;">照片</p>
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+  <category id="join_activity" description="" sqlkey="Index_JoinActivity">
+    <![CDATA[    
+		 <li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name}
+				<a href="/activity/Activity_index.aspx?id={activity_id}" target="_blank">{activity_name}</a> 
+            </div>
+            <div class="time">{post_date}</div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+  <category id="join_group" description="" sqlkey="Index_JoinGroup">
+    <![CDATA[    
+		 <li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name}
+				<a href="/relationship/relationship_mygroup_info.aspx?id={group_id}" target="_blank">{group_name}</a> 
+            </div>
+            <div class="time">{post_date}</div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+  <category id="exit_group" description="" sqlkey="Index_ExitGroup">
+    <![CDATA[    
+		 <li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name}
+				<a href="/relationship/relationship_mygroup_info.aspx?id={group_id}" target="_blank">{group_name}</a> 
+            </div>
+            <div class="time">{post_date}</div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+  <category id="Publish_group" description="" sqlkey="Index_PublishGroup">
+    <![CDATA[    
+		 <li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name}
+				<a href="/relationship/relationship_mygroup_info.aspx?id={group_id}" target="_blank">{group_name}</a> 
+        {subject}
+            </div>
+            <div class="time">{post_date}</div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+
+  <category id="add_friend" description="" sqlkey="Index_AddFriends">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name}
+				<a href="/personal/index.html?uid={to_user_id}" target="_blank">{to_user_name}</a> 
+            </div>
+            <div class="time">{post_date}</div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+  <category id="present_gift" description="" sqlkey="Index_PresentGift">
+    <![CDATA[    
+		<li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <div class="main">
+            <div class="content">
+                <a href="/personal/index.html?uid={user_id}" target="_blank">{user_name}</a> {action_name} {category_name}
+				<a href="{gift_id}">{gift_name}</a><br> {content}
+            </div>
+            <div class="time">{post_date}</div>
+           
+        </div>
+        </li>
+    ]]>
+  </category>
+
+
+  <category id="festival_gift" description="" sqlkey="Index_FestivalGift">
+    <![CDATA[    
+    <li class="f_single imgBlock bor2">
+        <div class="f_aside imgBlock_img">   
+            <div class="f_user_head">
+              {logo_small_path} : {user_name}{action_name}{category_name}
+           礼物类别: {category_id}{giftcategory_name}<br><br/>
+             
+              userid:{user_id}<br/>
+              category:{state_category}<br/>
+              发表日期:{post_date}<br/>
+              评论数:{comment_count}<br/>
+            </div>
+        </div>  
+    </li> 
+    ]]>
+  </category>
+
+
+  <!--<category id="modify_name" description="" sqlkey="personalprofile">
+        <![CDATA[    
+    <li class="f_single imgBlock bor2">
+        <div class="f_aside imgBlock_img">   
+            <div class="f_user_head">
+              {logo_small_path} : {user_name}{action_name}{category_name}
+             链接:{activity_name}{id}<br> {description}<br/>
+             
+              userid:{user_id}<br/>
+              category:{state_category}<br/>
+              发表日期:{post_date}<br/>
+              评论数:{comment_count}<br/>
+            </div>
+        </div>  
+    </li> 
+    ]]>
+    </category>-->
+
+  <!--最新留言-->
+
+  <category id="leave_message" description="" sqlkey="Index_LeaveMessage">
+    <![CDATA[    
+     <li class="clearfix {state_category}">
+		<input type="hidden" class="stateId" value="{id}"/>
+		<input type="hidden" class="uid" value="{user_id}"/>
+        <a href="/personal/index.html?uid={user_id}" target="_blank"><img  class="photo" alt="" src="{logo_small_path}" style="width:50px; height:50px;"/></a>
+        <a href="/personal/index.html?uid={user_id}" target="_blank">{from_user_name}</a> {action_name}：
+        <div class="main">
+            <div class="content">
+              {content}
+            </div>
+            <div class="time">{post_date}</div>
+            <div class="comments-options">
+            </div>
+                 <div class="clear"></div>
+        </div>
+        </li>
+    ]]>
+  </category>
+
+  <sourcetype id="new">
+    <![CDATA[b2d2b73b-12aa-4ddf-a9fc-6391f4108984]]>
+  </sourcetype>
+  <sourcetype id="message">
+    <![CDATA[28907f21-3239-4217-a5b9-fcea63c621dd]]>
+  </sourcetype>
+  <sourcetype id="group">
+    <![CDATA[ff45a617-203c-11e1-8a87-000c29a5c50c]]>
+  </sourcetype>
+  <sourcetype id="activity">
+    <![CDATA[ff1f981d-203c-11e1-8a87-000c29a5c50c]]>
+  </sourcetype>
+  <sourcetype id="post">
+    <![CDATA[    
+     
+    ]]>
+  </sourcetype>
+
+  <!--<category id="receive_gift" description="" sqlkey="giftsmarket">
+        <![CDATA[    
+    <li class="f_single imgBlock bor2">
+        <div class="f_aside imgBlock_img">   
+            <div class="f_user_head">
+              {logo_small_path} : {user_name}{action_name}{category_name}
+             链接:{activity_name}{id}<br> {description}<br/>
+             
+              userid:{user_id}<br/>
+              category:{state_category}<br/>
+              发表日期:{post_date}<br/>
+              评论数:{comment_count}<br/>
+            </div>
+        </div>  
+    </li> 
+    ]]>
+    </category>-->
+
+
+  <!--
+    <category id="reply_posts" description="" sqlkey="posts">
+        <![CDATA[    
+    <li class="f_single imgBlock bor2">
+        <div class="f_aside imgBlock_img">   
+            <div class="f_user_head">
+              {logo_small_path} : {user_name}{action_name}{category_name}
+             链接:{activity_name}{id}<br> {description}<br/>
+             
+              userid:{user_id}<br/>
+              category:{state_category}<br/>
+              发表日期:{post_date}<br/>
+              评论数:{comment_count}<br/>
+            </div>
+        </div>  
+    </li> 
+    ]]>
+    </category>
+
+    -->
+  <!--圈子更新-->
+  <!--
+    <category id="add_group" description="" sqlkey="groupinfo">
+        <![CDATA[    
+    <li class="f_single imgBlock bor2">
+        <div class="f_aside imgBlock_img">   
+            <div class="f_user_head">
+              {logo_small_path} : {user_name}{action_name}{category_name}
+             链接:{activity_name}{id}<br> {description}<br/>
+             
+              userid:{user_id}<br/>
+              category:{state_category}<br/>
+              发表日期:{post_date}<br/>
+              评论数:{comment_count}<br/>
+            </div>
+        </div>  
+    </li> 
+    ]]>
+    </category>
+
+    <category id="quit_group" description="" sqlkey="groupinfo">
+        <![CDATA[    
+    <li class="f_single imgBlock bor2">
+        <div class="f_aside imgBlock_img">   
+            <div class="f_user_head">
+              {logo_small_path} : {user_name}{action_name}{category_name}
+             链接:{activity_name}{id}<br> {description}<br/>
+             
+              userid:{user_id}<br/>
+              category:{state_category}<br/>
+              发表日期:{post_date}<br/>
+              评论数:{comment_count}<br/>
+            </div>
+        </div>  
+    </li> 
+    ]]>
+    </category>-->
+
+</index>

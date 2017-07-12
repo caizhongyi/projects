@@ -1,0 +1,91 @@
+﻿<ul>
+    <li class="xz_events">
+        <label>
+            变 更 点：</label>
+            <select name="select" id="sel_point" onchange="changepoint()">
+                <option value="">请选择变更点</option>
+                <option value="0">圈子名称</option>
+                <option value="1">圈子分类</option>
+                <option value="2">是否公开</option>
+                <option value="3">加入方式</option>
+                <option value="4">圈子图片</option>
+                <option value="5">圈子简介</option>
+                <option value="6">圈子规章</option>
+                <option value="7">圈子主页</option>
+                <option value="8">缴纳费用</option>
+                <option value="9">汇款账号</option>
+                <option value="10">缴费说明</option>
+                <option value="11">踢人保护</option>
+            </select></li>
+    <dl id="pointbody">
+        <dd>
+            <label>
+                圈子名称：</label><input type="text" class="inp35" value="" id="txt_groupName" /></dd>
+        <dd class="xz_events">
+            <label>
+                圈子分类：</label><select name="select" id="groupCateList">
+                </select></dd>
+        <dd>
+            <label>
+                是否公开：</label><input name="" type="checkbox" value="" id="chk_publie" />
+            <a onclick="checkbox2('chk_publie')">公开圈子</a></dd>
+        <dd>
+            <label>
+                加入方式：</label><input name="" type="radio" value="" id="dicAdd" />
+            <a onclick="checkbox2('dicAdd')">直接加入</a><input name="" type="radio" value="" class="ml25"
+                id="aprAdd" />
+            <a onclick="checkbox2('aprAdd')">批准加入</a></dd>
+       
+        <dd>
+            <label>
+                圈子图片：</label><span id="spanButtonPlaceholder"></span></dd>
+        <dt class="tp_bq">
+            <input name="" type="checkbox" value="" id="cpRt" /><a> 我知道上传的图片不侵犯第三方的版权 </a></dt>
+        <dt class="tp_bq" id="thumbnails"></dt>
+        <dd>
+            <label class="v_top">
+                圈子简介：</label><textarea name="input" id="txt_summary"></textarea></dd>
+        <dd>
+            <label class="v_top">
+                圈子规章：</label><textarea name="input" id="txt_description"></textarea></dd>
+        <dd>
+            <label>
+                圈子主页：</label><input type="text" class="inp35" value="" id="txt_website" /></dd>
+ 
+        <dd class="qz_jj">
+            <label>
+                缴纳费用：</label><span>
+                        <input name="g" type="text" id="txt_fee" value=""   class="Stext he24" style=" width:112px; display:none; ">
+                        &nbsp;
+                        <select id="feeUnitList" name="select" style=" width:71px; height:24px"></select>
+                        
+                        &nbsp;
+                        <input name="g" type="text" id="txt_defind" value=""   class="Stext he24" style=" width:112px; display:none;"/>
+                        &nbsp;
+                         <select id="definedUnitList" name="select"  style="width:71px; height:24px; display:none;"></select>                     
+                        </span></dd>
+        <dd>
+            <label>
+                汇款账号：</label><input type="text" class="inp35" value="请输入圈子名称" id="txt_transfer" /></dd>
+        <dd>
+            <label class="v_top">
+                缴费说明：</label><textarea name="input" id="txt_transfer_description"></textarea></dd>
+        <dd class="tr_bh">
+            <label>
+                踢人保护：</label><input name="" type="checkbox" value="" class="v_top1" id="prote" />
+            <a href="javascript:void(0);" onclick="checkbox2('prote')">启动踢人保护</a>
+            <select name="select" id="protecttimeList">
+       
+            </select></dd>
+    </dl>
+    <li>
+        <label>
+            主&nbsp;&nbsp;&nbsp;&nbsp;题：</label><input type="text" class="inp35"  id="txt_baseInfoTitle" /></li>
+    <li>
+        <label class="v_top">
+            内&nbsp;&nbsp;&nbsp;&nbsp;容：</label><textarea name="input" id="txt_baseInfoComment"></textarea></li>
+    <li>
+        <input name="" type="button" value="发起事件" class="hobby_but" onclick="submitBaseInfo()">
+        <input name="" type="button"
+            value="取 消" class="hobby_but01" onclick ="cancelEvent()"></li>
+</ul>

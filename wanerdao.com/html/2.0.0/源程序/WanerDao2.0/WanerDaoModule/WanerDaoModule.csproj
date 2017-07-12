@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2DBE2894-4202-4EB2-8208-519CF7D1F90F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WanerDao2.WanerDaoModule</RootNamespace>
+    <AssemblyName>WanerDaoModule</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\WanerDaoDocuments\Dlls\Castle\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.MicroKernel">
+      <HintPath>..\WanerDaoDocuments\Dlls\Castle\Castle.MicroKernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\WanerDaoDocuments\Dlls\Castle\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.Core, Version=1.7.0.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WanerDaoDocuments\Dlls\GoogleMap\GMap.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>..\WanerDaoDocuments\Dlls\Newtonsoft.Json.Net35\release\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\WanerDaoDocuments\Dlls\GoogleMap\System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\WanerDaoBaseConfig.cs" />
+    <Compile Include="Config\WanerDaoConfigReader.cs" />
+    <Compile Include="Config\WanerDaoFilterReader.cs" />
+    <Compile Include="Config\WanerDaoSqlReader.cs" />
+    <Compile Include="Cookie\WanerDaoCookie.cs" />
+    <Compile Include="DbUtil\DataBaseType.cs" />
+    <Compile Include="ExtensionObject\ExtensionMethods.cs" />
+    <Compile Include="Enum\WanerDaoGlobalEnum.cs" />
+    <Compile Include="FileUpload\UploadTempFileManger.cs" />
+    <Compile Include="FileUpload\UploadFileInfo.cs" />
+    <Compile Include="GoogleMap\MapHelper.cs" />
+    <Compile Include="IOC\IIOCProvider.cs" />
+    <Compile Include="IOC\IOCContainer.cs" />
+    <Compile Include="IOC\Provider\CastleIOC.cs" />
+    <Compile Include="IO\WanerDaoFileUtils.cs" />
+    <Compile Include="Json\WanerDaoJSON.cs" />
+    <Compile Include="RolePermission\WanerDaoPropertyPermission.cs" />
+    <Compile Include="Security\WanerDaoEncrypt.cs" />
+    <Compile Include="Serialization\WanerDaoSerialHelper.cs" />
+    <Compile Include="TipInfo\WanerDaoGlobalTip.cs" />
+    <Compile Include="Utils\WanerDaoUtils.cs" />
+    <Compile Include="Validation\WanerDaoValidation.cs" />
+    <Compile Include="WanerDaoImage\WanerDaoThumbnail.cs" />
+    <Compile Include="RegexWrapper\WanerDaoRegex.cs" />
+    <Compile Include="String\TypeConverter.cs" />
+    <Compile Include="String\WanerDaoString.cs" />
+    <Compile Include="WanerDaoGuid\WanerDaoGuid.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WanerDaoImage\WanerDaoUploadImageResult.cs" />
+    <Compile Include="Weather\WeatherDeal.cs" />
+    <Compile Include="Weather\WeatherInfo.cs" />
+    <Compile Include="XML\WanerDaoXml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Email\" />
+    <Folder Include="InfoPush\" />
+    <Folder Include="PrintSave\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WanerDaoCacheManager\WanerDaoCacheManager.csproj">
+      <Project>{6783384B-4128-422F-B527-96AD1BCD7F1F}</Project>
+      <Name>WanerDaoCacheManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoDocuments\WanerDaoDocuments.csproj">
+      <Project>{AF2D721B-6B22-4325-84D3-E5EE6263BEC4}</Project>
+      <Name>WanerDaoDocuments</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoExceptionManager\WanerDaoExceptionManager.csproj">
+      <Project>{474D4B38-30EB-4513-A899-02F34330C91C}</Project>
+      <Name>WanerDaoExceptionManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

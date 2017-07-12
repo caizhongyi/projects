@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>DatePicker - jQuery plugin</title>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.3.custom/css/cupertino/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui-timepicker/jquery-ui-timepicker-addon.min.css"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/account.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/en.css"/>
+
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-timepicker/jquery-ui-timepicker-addon.min.js"></script>
+</head>
+<body>
+
+<div class="content" style="width: 500px; height: 200px;">
+    <div class="loading-wrap">
+        <div class="loading"></div>
+        <div class="loading-mask"></div>
+        <ul>
+            <li>列表</li>
+            <li>列表</li>
+            <li>列表</li>
+            <li>列表</li>
+        </ul>
+    </div>
+</div>
+
+
+<div id="printPop" class="dialog ui-dialog " data-options="handler:'header'" style="display: block; position: relative">
+    <div class="bg"></div>
+    <div class="inner">
+        <div class="hd" data-options="region:'header',handle:true">
+            <h3>Note print / save settings</h3>
+            <a href="javascript:;" class="close" data-options="region:'hide'"></a>
+        </div>
+
+        <div class="loading-wrap">
+            <div class="loading"></div>
+            <div class="loading-mask"></div>
+            <form>
+                <div class=" form">
+                    <div class="form-item">
+                        <label for="username" class="input-label-mini">Account:</label><input type="text" class="text" name="username" id="username"><span class="tips-static error">* Enter username，And Case-sensitive</span>
+                    </div>
+                    <div class="form-item">
+                        <label for="password" class="input-label-mini">Password:</label><input type="text" class="text" name="username" id="password"><span class="tips-static error">* Please enter your password</span>
+                    </div>
+                    <div class="form-item">
+                        <label for="" class="input-label-mini">&nbsp;</label><input type="checkbox" class="f12" />Keep me login in next three
+                    </div>
+                    <div class="form-item">
+                        <label for="" class="input-label-mini">&nbsp;</label><input type="checkbox" class="f12" />Keep me login in next three
+                    </div>
+                    <div class="form-item">
+                        <label for="" class="input-label-mini">&nbsp;</label>
+                        <ul class="tips-result">
+                            <li>Hint information</li>
+                        </ul>
+                    </div>
+                    <div class="form-item">
+                        <label for="" class="input-label-mini">&nbsp;</label>
+                        <input type="button" class="btn btn-primary input-control" value="Login" data-options="region:'hide'" data-active-class="button-disable"
+                               data-active-val="Loading..."><input type="button" class="btn btn-primary input-control" value="Cancel" data-options="region:'hide'" ><input type="button" class="button btn btn-default"
+                                                                                                                                                                              value="Go to Sign up" data-options="region:'hide'" data-active-class="button-disable" data-active-val="loading...">
+                    </div>
+                </div>
+            </form>
+         </div>
+    </div>
+</div>
+<script>
+ $('.loading , .loading-mask').stop(true,true).fadeIn();
+</script>
+</body>
+</html>

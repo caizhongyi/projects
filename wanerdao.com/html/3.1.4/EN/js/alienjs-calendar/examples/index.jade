@@ -1,0 +1,66 @@
+doctype
+html(lang="zh-cn")
+    head
+        title
+        meta(charset="utf-8")
+
+        script( src = '../../jquery/dist/jquery.js')
+        script( src = '../../alienjs-date/src/index.js')
+        script( src = '../src/index.js')
+        block css
+    body
+        .calendar
+            table
+                caption.calendar-title
+                tbody
+                    tr
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                    tr
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                    tr
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                    tr
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                    tr
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+                        td.calendar-day
+            button(type=button).btn.month-prev prev
+            button(type=button).btn.month-next next
+        block js
+        script.
+            $(function () {
+                $('.calendar').on('render',function( e ){
+                    console.log(e.relatedTarget)
+                }).calendar()
+            })
+
+

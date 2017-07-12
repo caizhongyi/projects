@@ -1,0 +1,90 @@
+﻿/*
+	存储过程名：p_wanerdaopages
+	作者：金广亮
+	时间：2011-10-12
+	描述：分页存储过程
+*/
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `p_wanerdaopages`$$
+CREATE PROCEDURE `p_wanerdaopages`(
+	IN _tblName VARCHAR(1024),
+	/*表名*/
+	IN _fldName VARCHAR(1024),
+	/*查询字段*/
+	IN _where VARCHAR(1024),
+	/*WHERE条件(包含WHERE关键字,可为空)*/
+	IN _fldSortId VARCHAR(128),
+	/*排序条件(包含ORDER关键字,可为空)*/
+	IN _sort VARCHAR(128),
+	/*1升序 0倒序*/
+	IN _pagecurrent VARCHAR(1024),
+	/*当前页*/
+	IN _pageSize  VARCHAR(1024)
+	/*每页记录数*/
+	/*OUT total INT ,输出记录总数*/
+)COMMENT '分页存储过程'
+BEGIN
+	/*定义变量*/
+	DECLARE
+		m_begin_row INT ; DECLARE
+			m_limit_string VARCHAR(64); /*构造语句*/
+			/*	确保索引正确	*/
+		IF _pageSize <= 1 THEN
+
+		SET _pageSize = 10 ;
+		END
+		IF ;
+		IF _pagecurrent < 1 THEN
+
+		SET _pagecurrent = 1 ;
+		END
+		IF ;
+		SET m_begin_row =(_pagecurrent - 1)* _pageSize ;
+		SET m_limit_string = CONCAT(
+			' LIMIT ',
+			m_begin_row,
+			', ',
+			_pageSize
+		);
+		IF _fldSortId <> '' THEN
+
+		SET _fldSortId = CONCAT(' order by ', _fldSortId);
+		IF _sort THEN
+
+		SET _fldSortId = CONCAT(_fldSortId, ' asc');
+		ELSE
+
+		SET _fldSortId = CONCAT(_fldSortId, ' desc');
+		END
+		IF ;
+		END
+		IF ;
+		IF _where <> '' THEN
+
+		SET _where = CONCAT('WHERE 1=1 ', _where);
+		END
+		IF ;
+		SET @COUNT_STRING = CONCAT(
+			'SELECT COUNT(1) INTO @ROWS_TOTAL FROM ',
+			_tblName,
+			' ',
+			_where
+		);
+		SET @MAIN_STRING = CONCAT(
+			'SELECT ',
+			_fldName,
+			' FROM ',
+			_tblName,
+			' ',
+			_where,
+			' ',
+			_fldSortId,
+			m_limit_string
+		); /*预处理 */
+		PREPARE count_stmt
+		FROM
+			@COUNT_STRING ; EXECUTE count_stmt ; DEALLOCATE PREPARE count_stmt ;
+		/*SET total = @ROWS_TOTAL ;*/SELECT @ROWS_TOTAL as ToTal;  PREPARE main_stmt
+		FROM
+			@MAIN_STRING ; EXECUTE main_stmt ; DEALLOCATE PREPARE main_stmt ; END$$
+

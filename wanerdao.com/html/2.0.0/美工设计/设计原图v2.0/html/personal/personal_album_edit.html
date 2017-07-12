@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>编辑个人相册-个人-玩儿道</title>
+    <meta name="keywords" content="修改相册，个人，玩儿道，生活社交网络"/>
+    <meta name="description" content="修改个人相册权限，共享活动范围，并可以选择需要进一步修改相册"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="../css/activity.css" media="all"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/personal.css" media="all"/>
+
+    <link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all"/>
+    <script src="../scripts/jquery-1.7.2.min.js"></script>
+    <script src="../scripts/global.js"></script>
+    <script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+    <script src="../scripts/jquery.core.js"></script>
+    <script src="../scripts/jquery.ui.tabs.js"></script>
+</head>
+<body class="pBgB fSize-12">
+<div class="header_wrapper pBgH">
+    <div class="header layout"><a href="index.html" class="logo"></a>
+
+        <div class="home" hoverable="true"><a href="javascript:;" class="go_home" title="回到首页"></a>
+
+            <div class="home_pop">
+                <ul>
+                    <li><a href="javascript:;" class="hp_title">活动</a>
+
+                        <p><a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a
+                                href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a
+                                href="javascript:;">我的活动</a><a href="javascript:;">历史活动</a></p>
+                    </li>
+                    <li><a href="javascript:;" class="hp_title">个人</a>
+
+                        <p><a href="javascript:;">资料</a><a href="javascript:;">日志</a><a href="javascript:;">相册</a><a
+                                href="javascript:;">视频</a></p>
+                    </li>
+                    <li><a href="javascript:;" class="hp_title">关系</a>
+
+                        <p><a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a
+                                href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a
+                                href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="search">
+            <div class="search_bg vm">
+                <input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖"/>
+                <input value="" type="submit" class="search_btn"/>
+            </div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img
+                src="../images/default/32-32.jpg" width="32" height="32"/></a><span class="user_infor_name"><a
+                href="javascript:;">烧饭-人生旅途中人生旅途中<b></b></a></span>
+
+            <div class="user_infor_pop">
+                <ul class="fSize-12">
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="container" class="container activityMain">
+<div class="black10"></div><div class="black10"></div>
+<div class="mes_com_box_Tab"><a href="javascript:;">资料</a> <a href="javascript:;">日志</a> <a class="active"
+                                                                                            href="javascript:;">相册</a>
+    <a href="javascript:;">视频</a></div>
+<div class="tabs-panel">
+<!-- myhistroyTitle -->
+<div class="myhistoryMenu">
+    <ul>
+        <li><a href="javascript:;">浏览相册</a></li>
+        <li><a href="javascript:;">上传照片</a></li>
+        <li><a class="current" href="javascript:;">管理相册</a></li>
+    </ul>
+</div>
+<!-- myhistoryMenu -->
+<div class="AM_photoEditWarp">
+    <h4 class="tBgb AM_photoAlbum clearfix">
+        <div class="f_left">
+            <b class="icon icon-photo">相册设置</b><a href="javascript:;">&nbsp;&nbsp;(56)</a>&nbsp;&nbsp;&nbsp;&nbsp;设置新视频默认权限&nbsp;&nbsp;
+            <select>
+                <option>更改权限</option>
+            </select>
+            &nbsp;&nbsp;新建视频&nbsp;&nbsp;
+            <input type="text" inputdefault="新建相册" value="新建相册" class="text">
+            &nbsp;&nbsp;
+            <input type="button" class="button button-gay" value="新建"/>
+    </h4>
+</div>
+</h4>
+<div class="clearfix pagewrap media-header">
+    <div class="f_left"> <span class="search-textbox">
+          <input type="text" class="" value="相片编号/相片序号" inputdefault="相片编号/相片序号">
+          <input type="button">
+          </span> <span class="icon icon-blue-block"></span>&nbsp;&nbsp;<span>自己创建相册</span>&nbsp;&nbsp;<span
+            class="icon icon-red-block"></span>&nbsp;&nbsp;<span>活动自建相册</span></div>
+    <div class="pageList f_right"><span>第</span>
+        <input type="text" value="0" class="text">
+        <span>页</span>&nbsp;&nbsp;<span>共</span>&nbsp;<span>0</span>&nbsp;<span>页</span>&nbsp;&nbsp;<span>共</span>&nbsp;<span>0</span>&nbsp;<span>条</span>&nbsp;&nbsp;<a
+                href="javascript:;" title="首页">首页</a><a href="javascript:;" title="上一页">上一页</a><a
+                href="javascript:;" title="下一页">下一页</a><a href="javascript:;" title="尾页">尾页</a></div>
+</div>
+<br/>
+<ul class="albums album-edit clearfix">
+    <li>
+        <div class="album-box clearfix">
+            <div class="edit-box">
+                <div class="edit-layer">
+                    <div class="layer-content">
+                        <div class="edit-inner">
+                            <div class="edit-right">
+                                <label>权限:</label>
+                                <select>
+                                    <option>权限</option>
+                                </select>
+                            </div>
+                            <span class="edit-all">所有人可见</span>
+
+                            <div class="edit-right">
+                                <label>共享:</label>
+                                <select>
+                                    <option>共享</option>
+                                </select>
+                            </div>
+                            <span class="edit-all">周末K歌</span></div>
+                        <div class="clearfix"><span class="f_left">2012/12/21</span><a href="javascript:;"
+                                                                                       class="button">所有人可见</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="../images/default/205-145.png" class="album" alt=""></div>
+            <div class="album-name ellipsis">
+                <input type="checkbox"/>
+                <a href="javascript:;">我的周末派对</a>(24)
+            </div>
+            <div class="album-opt"><a href="javascript:;" class="icon icon-tool"></a> <a href="javascript:;"
+                                                                                         class="icon icon-delete"></a>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="album-box clearfix">
+            <div class="edit-box">
+                <div class="edit-layer">
+                    <div class="layer-content">
+                        <div class="edit-inner">
+                            <div class="edit-right">
+                                <label>权限:</label>
+                                <select>
+                                    <option>权限</option>
+                                </select>
+                            </div>
+                            <span class="edit-all">所有人可见</span>
+
+                            <div class="edit-right">
+                                <label>共享:</label>
+                                <select>
+                                    <option>共享</option>
+                                </select>
+                            </div>
+                            <span class="edit-all">周末K歌</span></div>
+                        <div class="clearfix"><span class="f_left">2012/12/21</span><a href="javascript:;"
+                                                                                       class="button">所有人可见</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="../images/default/205-145.png" class="album" alt=""></div>
+            <div class="album-name ellipsis">
+                <input type="checkbox"/>
+                <a href="javascript:;">我的周末派对</a>(24)
+            </div>
+            <div class="album-opt"><a href="javascript:;" class="icon icon-tool"></a> <a href="javascript:;"
+                                                                                         class="icon icon-delete"></a>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="album-box clearfix edit">
+            <div class="edit-box">
+                <div class="edit-layer">
+                    <div class="layer-content">
+                        <div class="edit-inner">
+                            <div class="edit-right">
+                                <label>权限:</label>
+                                <select>
+                                    <option>权限</option>
+                                </select>
+                            </div>
+                            <span class="edit-all">所有人可见</span>
+
+                            <div class="edit-right">
+                                <label>共享:</label>
+                                <select>
+                                    <option>共享</option>
+                                </select>
+                            </div>
+                            <span class="edit-all">周末K歌</span></div>
+                        <div class="clearfix"><span class="f_left">2012/12/21</span><a href="javascript:;"
+                                                                                       class="button">所有人可见</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="../images/default/205-145.png" class="album" alt=""></div>
+            <div class="album-name ellipsis">
+                <input type="checkbox"/>
+                <a href="javascript:;">我的周末派对</a>(24)
+            </div>
+            <div class="album-opt"><a href="javascript:;" class="icon icon-tool"></a> <a href="javascript:;"
+                                                                                         class="icon icon-delete"></a>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="album-box clearfix album-sys ">
+            <div class="edit-box">
+                <div class="edit-layer">
+                    <div class="layer-content">
+                        <div class="edit-inner">
+                            <div class="edit-right">
+                                <label>权限:</label>
+                                <select>
+                                    <option>权限</option>
+                                </select>
+                            </div>
+                            <span class="edit-all">所有人可见</span>
+
+                            <div class="edit-right">
+                                <label>共享:</label>
+                                <select>
+                                    <option>共享</option>
+                                </select>
+                            </div>
+                            <span class="edit-all">周末K歌</span></div>
+                        <div class="clearfix"><span class="f_left">2012/12/21</span><a href="javascript:;"
+                                                                                       class="button">所有人可见</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="../images/default/205-145.png" class="album" alt=""></div>
+            <div class="album-name ellipsis">
+                <input type="checkbox"/>
+                <a href="javascript:;">我的周末派对</a>(24)
+            </div>
+            <div class="album-opt"><a href="javascript:;" class="icon icon-tool"></a> <a href="javascript:;"
+                                                                                         class="icon icon-delete"></a>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="album-box clearfix">
+            <div class="edit-box">
+                <div class="edit-layer">
+                    <div class="layer-content">
+                        <div class="edit-inner">
+                            <div class="edit-right">
+                                <label>权限:</label>
+                                <select>
+                                    <option>权限</option>
+                                </select>
+                            </div>
+                            <span class="edit-all">所有人可见</span>
+
+                            <div class="edit-right">
+                                <label>共享:</label>
+                                <select>
+                                    <option>共享</option>
+                                </select>
+                            </div>
+                            <span class="edit-all">周末K歌</span></div>
+                        <div class="clearfix"><span class="f_left">2012/12/21</span><a href="javascript:;"
+                                                                                       class="button">所有人可见</a>
+                        </div>
+                    </div>
+                </div>
+                <img src="../images/default/205-145.png" class="album" alt=""></div>
+            <div class="album-name ellipsis">
+                <input type="checkbox"/>
+                <a href="javascript:;">我的周末派对</a>(24)
+            </div>
+            <div class="album-opt"><a href="javascript:;" class="icon icon-tool"></a> <a href="javascript:;"
+                                                                                         class="icon icon-delete"></a>
+            </div>
+        </div>
+    </li>
+</ul>
+<div class="clearfix media-footer">
+    <div class="video-right f_left">
+        <input type="checkbox"/>
+        &nbsp;&nbsp;
+        <select>
+            <option>更改权限</option>
+        </select>
+        &nbsp;&nbsp;<a href="javascript:;">删除</a></div>
+    <div class="pageList f_right"><a href="javascript:;">显示更多</a>&nbsp;&nbsp;<span>第</span><input type="text"
+                                                                                                  class="text"
+                                                                                                  value="0"><span>页</span><span>共</span><span>0</span><span>页</span><span>共</span><span>0</span><span>条</span><a
+            title="首页" href="javascript:;">首页</a><a title="上一页" href="javascript:;">上一页</a><a title="下一页"
+                                                                                              href="javascript:;">下一页</a><a
+            title="尾页" href="javascript:;">尾页</a></div>
+</div>
+</div>
+
+</div>
+
+<!--Main-->
+<div class="footer layout"><span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+
+    <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a
+            href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+</div>
+
+</body>
+</html>

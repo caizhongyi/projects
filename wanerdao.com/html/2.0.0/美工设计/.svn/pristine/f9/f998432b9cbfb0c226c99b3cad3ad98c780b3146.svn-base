@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link href="style/activity.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript">
+var winScreenWidth = window.screen.width;
+if(winScreenWidth>1024){
+document.writeln('<style>');
+document.writeln('.jz{padding:0px 2px;}');
+document.writeln('</style>');
+}
+</script>
+<body>
+<!--头部-->
+<div class="head">
+  <div class="jz">
+    <div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+    <ul class="nav left yh">
+      <li><a href="#">首页</a></li>
+      <li class="cur"><a href="#" class="arr">个人</a></li>
+      <li><a href="#" class="arr">关系</a></li>
+      <li><a href="#" class="arr">杂烩</a></li>
+      <li><a href="#" class="arr">活动</a></li>
+      <li><a href="#" class="arr">资道</a></li>
+      <li class="newMsg"><a href="#">站内信息</a><i><a href="#">5</a></i></li>
+    </ul>
+    <div class="userInfo"> <a href="#" class="left"  title="烧饭-人生旅途中-飞砂走石风过"><img src="images/layout_main/img_32x32.png" width="32" height="32" /></a> <a href="javascript:void(0);" title="烧饭-人生旅途中-飞砂走石风过留痕！" class="name">烧饭-人生旅途中</a> </div>
+  </div>
+</div>
+<!--头部end--> 
+<!--主体-->
+<div class="main jz">
+  <div class="mCon">
+    <div class="layout_m ">
+      <div class="main_share">
+        <div class="blank10px"></div>
+        <div class="subChaTab"> <a href="#" class="active">创建活动</a> </div>
+        <p class="info_type">
+          <input type="radio" name="info_type" id="listStyle">
+          <label for="listStyle">列表式填写</label>
+          <input type="radio" name="info_type" id="guiteStyle">
+          <label for="guiteStyle">导向式填写</label>
+        </p>
+        <h3 class="event_h3 yh">发起活动</h3>
+        <ul class="steps yh fb">
+          <li class="visited"><i>1</i><span>初始参数引用</span></li>
+          <li class="visited"><i>2</i><span>基本参数设定</span></li>
+          <li class="active"><i>3</i><span>报名参数设定</span></li>
+          <li class="link"><i>4</i><span>邀请发送</span></li>
+          <li class="link"><i>5</i><span>个人报名</span></li>
+          <li class="link"><i>6</i><span>参数保存</span></li>
+        </ul>
+        <div id="divstep3">
+        <h3 class="activity_h3">参数设定</h3>
+      <table width="100%" border="0" cellspacing="1">
+        <tr>
+          <td width="25%" align="right">人数限制：</td>
+          <td width="75%"><input type="text" class="txtInt" /></td>
+        </tr>
+        <tr>
+          <td align="right">报名结束日期：</td>
+          <td><input type="text" class="txtInt" /></td>
+        </tr>
+        <tr>
+          <td align="right">报名方式：</td>
+          <td><input type="radio" name="add_event" id="directJoin" checked="checked"/>
+            <label for="directJoin">直接加入</label>
+            &nbsp;&nbsp;
+            <input type="radio" name="add_event" id="appJoin"/>
+            <label for="appJoin">申请批准加</label>
+            &nbsp;&nbsp;
+            <input type="radio" name="add_event" id="pwdJoin"/>
+            <label for="pwdJoin">密码验证加入</label></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center" class="pwdJoin"><div class="tipShow"> <ins style="left:240px;"></ins>
+              <div class="tCon"> 密码设定：
+                <input type="text" class="txtInt" />
+                &nbsp;&nbsp;
+                再次输入：
+                <input type="text" class="txtInt" />
+              </div>
+            </div></td>
+        </tr>
+        <tr>
+          <td align="right"><input type="checkbox" id="openProtect"/>
+            &nbsp;</td>
+          <td><label for="openProtect">启动踢人保护</label>
+            <select name="select22" class="" >
+              <option value="AL">保护时限</option>
+            </select></td>
+        </tr>
+      </table>
+      <h3 class="activity_h3">报名费拟定</h3>
+      <table width="80%" border="0" cellspacing="1">
+        <tr>
+          <td width="25%" align="right">报名费用：</td>
+          <td width="75%"><input type="text" class="txtInt" />
+            <select name="select18" class="" >
+              <option value="AL">缴费方式</option>
+              <option value="AK">缴费方式</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td align="right" valign="top">预交费用说明：</td>
+          <td><textarea class="txtInt" style="height:88px; width:452px;"></textarea></td>
+        </tr>
+        <tr>
+          <td align="right">缴费方式说明：</td>
+          <td><select name="select19" class="" >
+              <option value="AL">方式选择</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><textarea class="txtInt" style="height:88px; width:452px;"></textarea></td>
+        </tr>
+      </table>
+      <h3 class="activity_h3">加入门槛设定 </h3>
+      <table width="80%" border="0" cellspacing="1">
+        <tr>
+          <td width="25%" align="right">设置报名门槛：</td>
+          <td width="75%"><input type="text" class="txtInt" />
+            <select name="select20" class="" >
+              <option value="AL">门槛条件</option>
+              <option value="AK">门槛条件</option>
+            </select>
+            <select name="select21" class="" >
+              <option value="AL">门槛值</option>
+              <option value="AK">门槛</option>
+            </select>
+            <input type="submit" class="button"  value="添加"/></td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;</td>
+          <td><textarea class="txtInt" style="height:88px; width:452px;"></textarea></td>
+        </tr>
+      </table>
+      <div class="blank10px"></div>
+      <h3 class="activity_h3">预算拟定 <span>
+        <input type="checkbox" id="nowEdit"  />
+        <label for="nowEdit">现在就编辑预算</label>
+        </span></h3>
+      <table width="100%" border="0" cellspacing="1" cellpadding="0">
+        <tr>
+          <td width="25%" align="right">财务预算收支：</td>
+          <td colspan="2"><input type="checkbox" id="openShow"  />
+            <label for="openShow">公开可见给所有想参加的人</label></td>
+        </tr>
+        <tr>
+          <td colspan="3" align="right"><div class="tim_mark_tale tc" style="margin-bottom:10px;">
+              <table width="100%"   height="170" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <th>序号</th>
+                  <th>收支名目</th>
+                  <th>预算收支金额</th>
+                  <th>操作人名</th>
+                  <th>财务人名</th>
+                  <th>修改时间</th>
+                  <th>&nbsp;</th>
+                </tr>
+                <tr>
+                  <td align="center">001</td>
+                  <td>山地野炊</td>
+                  <td>600$</td>
+                  <td>曹操</td>
+                  <td>刘备</td>
+                  <td>2012-02-15</td>
+                  <td width="120"><p class="opera"><a href="javascript:void(0);" class="icon_Up" title="上"></a> <a href="javascript:void(0);" class="icon_Down" title="下"></a> <a href="javascript:void(0);" class="icon_Edit" title="编辑"></a> <a href="javascript:void(0);" class="icon_Del" title="删除"></a></p></td>
+                </tr>
+                <tr>
+                  <td align="center">001</td>
+                  <td>山地野炊</td>
+                  <td>600$</td>
+                  <td>曹操</td>
+                  <td>刘备</td>
+                  <td>2012-02-15</td>
+                  <td width="120"><p class="opera"><a href="javascript:void(0);" class="icon_Up" title="上"></a> <a href="javascript:void(0);" class="icon_Down" title="下"></a> <a href="javascript:void(0);" class="icon_Edit" title="编辑"></a> <a href="javascript:void(0);" class="icon_Del" title="删除"></a></p></td>
+                </tr>
+                <tr>
+                  <td align="center">001</td>
+                  <td>山地野炊</td>
+                  <td>600$</td>
+                  <td>曹操</td>
+                  <td>刘备</td>
+                  <td>2012-02-15</td>
+                  <td width="120"><p class="opera"><a href="javascript:void(0);" class="icon_Up" title="上"></a> <a href="javascript:void(0);" class="icon_Down" title="下"></a> <a href="javascript:void(0);" class="icon_Edit" title="编辑"></a> <a href="javascript:void(0);" class="icon_Del" title="删除"></a></p></td>
+                </tr>
+                <tr>
+                  <td align="center">001</td>
+                  <td>山地野炊</td>
+                  <td>600$</td>
+                  <td>曹操</td>
+                  <td>刘备</td>
+                  <td>2012-02-15</td>
+                  <td width="120"><p class="opera"><a href="javascript:void(0);" class="icon_Up" title="上"></a> <a href="javascript:void(0);" class="icon_Down" title="下"></a> <a href="javascript:void(0);" class="icon_Edit" title="编辑"></a> <a href="javascript:void(0);" class="icon_Del" title="删除"></a></p></td>
+                </tr>
+                <tr>
+                  <td align="center">001</td>
+                  <td>山地野炊</td>
+                  <td>600$</td>
+                  <td>曹操</td>
+                  <td>刘备</td>
+                  <td>2012-02-15</td>
+                  <td width="120"><p class="opera"><a href="javascript:void(0);" class="icon_Up" title="上"></a> <a href="javascript:void(0);" class="icon_Down" title="下"></a> <a href="javascript:void(0);" class="icon_Edit" title="编辑"></a> <a href="javascript:void(0);" class="icon_Del" title="删除"></a></p></td>
+                </tr>
+              </table>
+            </div></td>
+        </tr>
+      </table>
+      <table width="80%"   height="170" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td align="right">预算收支项：</td>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="right" style="height:40px;">序号：</td>
+          <td colspan="2"><input type="text"  class="txtInt" style="width:60px;"/>
+            &nbsp;&nbsp;收支名目
+            <input type="text"  class="txtInt" style="width:148px;"/>
+            &nbsp;&nbsp;预算金额
+            <select>
+              <option value="AL">每天</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td align="right" style="height:40px;">执行人名：</td>
+          <td colspan="2"><input type="text" class="txtInt"/>
+            <select name="select21" class="" >
+              <option value="AL">活动人员</option>
+              <option value="AK">活动人员</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td colspan="3"><textarea class="txtInt" style="height:88px; width:450px; margin-left:156px;"></textarea></td>
+        </tr>
+        <tr>
+          <td align="right">操作时间：</td>
+          <td width="39%">2011-11-15 23:32 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;财务人员：AAA </td>
+          <td width="36%"><input type="submit" class="button" value="添加预算名目"/></td>
+        </tr>
+      </table>
+    </div>
+      <div class="actPageArea"> <a href="javascript:void(0);" class="btn_137x32">上一步</a> <a href="javascript:void(0);" class="btn_137x32">下一步</a> </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="mBtm jz"></div>
+<!--主体end--> 
+<!--底部-->
+<div class="foot jz"> <span class="left"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></span> <span class="right">版权所有 &copy;玩儿道</span> </div>
+<!--底部end--> 
+
+<!--页面脚本区--> 
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script> 
+<script type="text/javascript">
+	//$(".rcLine li").hover(function(){
+//					$(this).addClass("cur");	
+//				},function(){
+//					$(this).removeClass("cur");		
+//				})
+	$(".tim_mark_tale tr").hover(function(){
+		$(this).addClass("active");	
+	},function(){
+		$(this).removeClass("active");		
+	})
+</script>
+</body>
+</html>

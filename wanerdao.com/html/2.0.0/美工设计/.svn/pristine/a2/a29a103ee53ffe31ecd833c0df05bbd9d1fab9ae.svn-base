@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/public/base.css" media="all"/>
+    <script type="text/javascript" src="scripts/jquery-1.7.2.min.js" ></script>
+</head>
+<body>
+<br/><br/><br/><br/><br/><br/>
+<div class="copytext">
+    <div style="display: none;" class="tips-panel">
+        <div class="tips tips-2">
+            <div class="down-arrowhead"></div>
+            <div class="">
+                提示提示提示提示提示提示提示提示
+            </div>
+            <a title="关闭" class="close close-3" href="javascript:;"></a>
+        </div>
+    </div>
+    <input type="text" class="text" value="http://www.qq.com" ><input type="button" class="button button1" value="复制">
+</div>
+<script type="text/javascript">
+    $('.copytext .text').click(function(){
+        $(this).prev().stop(true).fadeIn();
+    })
+
+    $('.tips-panel .close').click(function(){
+        $(this).closest('.tips-panel').stop(true).fadeOut();
+    })
+</script>
+</body>
+</html>

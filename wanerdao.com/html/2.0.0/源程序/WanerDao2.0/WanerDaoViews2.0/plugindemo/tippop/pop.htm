@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/css/layout.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/form.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/icon.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/pop.css" media="all" />
+    <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/scripts/plugin/cookie/wanerdao2.cookies.js"></script>
+    <script type="text/javascript" src="/Scripts/multipleLanguage/loader.js"></script>
+    <script type="text/javascript" src="/scripts/global.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.core.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.tabs.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.center.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.overlay.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.dialog.js"></script>
+    <script type="text/javascript" src="../../scripts/plugin/TipPop/wanerdao2.pop.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //typename: 'confirm', //warning是警告弹出层，error是错误弹出层，confirm是确认弹出层,success是成功，message是信息提示
+            $("#success").click(function () {
+                new pop({ typename: 'success', msginfo: '成功' });
+            });
+            $("#confirm").click(function () {
+                new pop({ typename: 'confirm', msginfo: '确认测试？', callback: function () {//callback: null, 回调函数只适用于确认弹出层、success是成功，message是信息提示（后面2种应胥鑫的要求做出修改）
+                    alert('确认');
+                } });
+            });
+        })
+    </script>
+</head>
+<body>
+<input type="button" value="success" id="success"/>
+<input type="button" value="confirm" id="confirm"/>
+</body>
+</html>

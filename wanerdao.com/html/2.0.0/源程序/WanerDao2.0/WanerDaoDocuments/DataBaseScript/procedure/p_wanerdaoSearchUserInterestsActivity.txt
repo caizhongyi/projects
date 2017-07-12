@@ -1,0 +1,111 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `p_wanerdaoSearchUserInterestsActivity`(
+    IN p_tableNames VARCHAR(1024),
+    /*表名*/    
+	 IN p_fieldNames VARCHAR(1024),
+	 /*查询字段*/    
+    IN p_userid varchar(40),
+    IN p_ortherWhereSql VARCHAR(128),
+    /*其他自定义查询条件，开头不要带where、and */ 
+    IN p_fieldSortId VARCHAR(128),
+	/*排序字段(不用传入ORDER BY关键字,可为空)*/
+	IN p_sort int(2),
+	/*0升序 1倒序*/
+	IN p_pagecurrent int(8),
+	/*当前页*/
+	IN p_pageSize  int(8)
+	/*每页记录数*/
+    )
+    COMMENT '获取用户感兴趣活动ID'
+begin
+    /*定义变量*/
+    DECLARE v_hobby VARCHAR(2048) default '';
+	  DECLARE i_beginSize INT ; 
+    DECLARE v_limitSql VARCHAR(64) default '';
+    declare v_orderSql varchar(128) default '';
+    declare v_whereSql varchar(4096) default '';
+    
+    if p_tableNames='' then
+        set p_tableNames='activity';
+    end if;
+    if p_fieldNames='' then
+        set p_fieldNames=' * ';
+    end if;
+    /*	确保索引正确1	*/
+		IF p_pageSize <1 THEN
+            SET p_pageSize =100 ;
+		END IF ;
+
+		IF p_pagecurrent < 1 THEN
+            SET p_pagecurrent = 1 ;
+		END IF ;
+            SET i_beginSize =(p_pagecurrent - 1)* p_pageSize ;
+		SET v_limitSql = CONCAT(
+			' LIMIT ',
+			i_beginSize,
+			', ',
+			p_pageSize
+		);
+    
+    set v_whereSql=' where 1=1 '; 
+    
+		IF p_fieldSortId <> '' THEN
+            SET v_orderSql = CONCAT(' order by ', p_fieldSortId);
+            IF p_sort THEN
+                SET v_orderSql = CONCAT(v_orderSql, ' desc ');
+            ELSE
+                SET v_orderSql = CONCAT(v_orderSql, ' asc ');
+            END IF ;
+    end if;
+    
+    set @hobbySql =concat( ' select CONCAT_WS(\',\',IFNULL(hobby,\'\'),IFNULL(music,\'\'),IFNULL(movie,\'\'),IFNULL(game,\'\'),IFNULL(sport,\'\'),IFNULL(book,\'\'),IFNULL(cartoon,\'\'),IFNULL(permission,\'\')) 
+    from personalinterests where personalinterests.user_id=\'',p_userid,'\'');
+    
+    
+    set @activityIDSql=concat(' select atc.activity_id  from activitycategory atc
+    where  atc.active=1 and  atc.category_id in (
+    select id from activitycategorysettings where (',@hobbySql,') rlike Concat(\'.*\',category_name,\'.*\'))');
+    
+    set v_whereSql= CONCAT( v_whereSql,' and activity.id in ( ', 
+                            @activityIDSql,
+                            ') ');
+    
+    
+    if p_ortherWhereSql<>'' then
+        set v_whereSql=CONCAT(v_whereSql, ' and ',p_ortherWhereSql); 
+    end if;    
+    
+		SET @COUNT_STRING = CONCAT(
+			'SELECT COUNT(1) INTO @ROWS_TOTAL FROM ',
+      p_tableNames,
+      ' ',
+			v_whereSql
+		);
+		SET @MAIN_STRING = CONCAT(
+			'SELECT ',
+			p_fieldNames,
+			' FROM ',
+      p_tableNames,
+      ' ',
+			v_whereSql,
+			' ',
+			v_orderSql,
+      ' ',
+			v_limitSql
+		); 
+    -- select @MAIN_STRING;
+    /*预处理 */
+		PREPARE count_stmt
+		FROM
+			@COUNT_STRING ; EXECUTE count_stmt ; DEALLOCATE PREPARE count_stmt ;
+		  SELECT @ROWS_TOTAL as ToTal;  
+    PREPARE main_stmt
+		FROM
+			@MAIN_STRING ; EXECUTE main_stmt ; DEALLOCATE PREPARE main_stmt ;
+    
+end

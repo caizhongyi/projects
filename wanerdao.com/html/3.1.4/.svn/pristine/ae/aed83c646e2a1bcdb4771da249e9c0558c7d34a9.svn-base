@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>玩道弹出窗</title>
+
+<meta name="keywords" content="玩儿道弹出窗口"/>
+<meta name="description"
+      content=""/>
+
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="BookStar" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="../css/base.css"/>
+<link rel="stylesheet" href="../css/font-awesome.min.css"/>
+<!--[if IE 7]>
+    <link rel="stylesheet" href="../css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+<link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/en.css"/>
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="../css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.plus.min.js" ></script>
+    <style type="text/css">
+        .dialog {
+            display: block;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="dialog ui-dialog " data-options="handler:'header'">
+    <div class="bg"></div>
+    <div class="inner">
+        <div class="hd" data-options="region:'header',handle:true">
+            <h3>浏览器版本检测</h3>
+            <a href="javascript:;" class="btn btn-primary btn-mini pull-right" data-options="region:'hide'">刷新</a>
+        </div>
+        <div class=" browser">
+            <div class="browse-info">
+                <h3>亲爱的用户:</h3>
+                很抱歉通知你的浏览器的版本太低，我们不在提供支持.<br>
+                您可以 <br/>
+                1) 更新当前浏览器至最新版本要<br>
+                2) 使用其他安装的浏览器;<br>
+                3) 通过下面链接下载最新版本的浏览器.<br>
+                谢谢.
+                <div class="author">－ 玩儿道团队</div>
+            </div>
+            <div class="browser-list">
+                <a href="javascript:;">
+                    <span class="icon ie"></span><br>
+                    <span class="browser-name">IE</span>
+                </a><a href="javascript:;">
+                <span class="icon chrome"></span><br>
+                <span class="browser-name">Chrome</span>
+            </a><a href="javascript:;">
+                <span class="icon firefox"></span><br>
+                <span class="browser-name">Firefox</span>
+            </a><a href="javascript:;">
+                <span class="icon safari"></span><br>
+                <span class="browser-name">Safari</span>
+            </a><a href="javascript:;">
+                <span class="icon opera"></span><br>
+                <span class="browser-name">Opera</span>
+            </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="../js/jquery.toTop.js"></script>
+<script src="../js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="../js/global.js" ></script>
+<script type="text/javascript" src="../js/class.ui.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.placeholer.js" ></script>
+<script src="../js/jquery.draggable.min.js"></script>
+<script src="../js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script>
+    $('.dialog .bd').initslimscroll();
+</script>
+</body>
+</html>

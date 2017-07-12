@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>Savorboard popup window</title>
+
+<meta name="keywords" content="Savorboard popup window"/>
+<meta name="description"
+      content=""/>
+
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="../css/base.css"/>
+<link rel="stylesheet" href="../css/font-awesome.min.css"/>
+<!--[if IE 7]>
+    <link rel="stylesheet" href="../css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="../css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.plus.min.js" ></script>
+    <style type="text/css">
+        .dialog{
+            display: block;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div data-options="handler:'header'" class="dialog ui-dialog">
+    <div class="bg"></div>
+    <div class="inner">
+        <div data-options="region:'header',handle:true" class="hd">
+            <h3>Route map</h3>
+            <a data-options="region:'hide'" class="close" href="javascript:;"></a>
+        </div>
+         <div class="bd mapway clearfix">
+                <div class="main">
+                    <div class="form container">
+                        <div class="form-item"><label  class="form-label">Start:</label>深圳市南区桃园地铁站</div>
+                        <div class="form-item"><label  class="form-label">Mid-point:</label>无Mid-point</div>
+                        <div class="form-item"><label  class="form-label">Destination:</label>深圳市深圳大学</div>
+                    </div>
+                    <div class="map-content"><img src="../pics/3.png" alt=""/></div>
+                </div>
+                <div class="map-side">
+                    <div class="side-header">Suggested routes</div>
+                    <div class="scroll">
+                        <ul class="" >
+                            <li><i class="icon way-start">始</i><span class="bold">桃园</span></li>
+                            <li><i class="icon way-walk"></i>步行至<a href="javascript:;">南山站医院站</a><em>210米</em></li>
+                            <li><i class="icon way-car"></i>乘坐<a href="javascript:;">36路（或223，324路）</a>在 <a href="javascript:;">深圳大学站</a>下车<em>2站</em></li>
+                            <li><i class="icon way-walk"></i>步行至<a href="javascript:;">深圳大学</a><em>10米</em></li>
+                            <li><i class="icon way-walk"></i>步行至<a href="javascript:;">深圳大学</a><em>10米</em></li>
+                            <li><i class="icon way-walk"></i>步行至<a href="javascript:;">深圳大学</a><em>10米</em></li>
+                            <li><i class="icon way-walk"></i>步行至<a href="javascript:;">深圳大学</a><em>10米</em></li>
+                            <li><i class="icon way-walk"></i>步行至<a href="javascript:;">深圳大学</a><em>10米</em></li>
+                            <li><i class="icon way-end">终</i><span class="bold">深圳大学</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<!-- end footer -->
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="../js/jquery.toTop.js"></script>
+<script src="../js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="../js/global.js" ></script>
+<script type="text/javascript" src="../js/class.ui.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.placeholer.js" ></script>
+<script src="../js/jquery.draggable.min.js"></script>
+<script src="../js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        $('.dialog .bd').initslimscroll();
+    })
+</script>;
+</body>
+</html>

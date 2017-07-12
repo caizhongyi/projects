@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>玩道弹出窗</title>
+
+<meta name="keywords" content="玩儿道弹出窗口"/>
+<meta name="description"
+      content=""/>
+
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="BookStar" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="../css/base.css"/>
+<link rel="stylesheet" href="../css/font-awesome.min.css"/>
+<!--[if IE 7]>
+    <link rel="stylesheet" href="../css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="all" href="../js/jquery.token/token-input.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="../css/message.css"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="../css/jquery.fileupload-ui.css"/>
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="../css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.plus.min.js" ></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="../index.html" class="logo"><img src="../images/logo.png" alt="玩儿道"></a>
+        <div class="home  hover">
+            <a title="Home"  class="button" href="javascript:;"><i class="icon icon-list"></i></a>
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a  href="javascript:;">活动</a></h3>
+                        <a href="../activity_index.html">活动首页</a><a href="../activity_search.html">查找活动</a><a href="../activity_item_main.html">当前和过去的活动 </a><a href="../activity_future_plan.html">未来活动</a><a href="javascript:;">发起活动 </a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">个人</a></h3>
+                        <a href="../personal_edit.html">个人资料</a><a href="../personal_finance_account.html">财务</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">关系</a></h3>
+                        <a href="relationship_friends_invite.html">我的好友</a>
+                    </li>
+                    <li>
+                        <h3><a  href="../index.html">主页</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="活动 / 好友" class="text" ><input type="submit" class="button" value="">
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img  src="../images/defaults/32-32.jpg"></a><a  class="name" href="javascript:;"><span >烧饭-人生旅途中人生旅途中</span><b></b></a>
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">个人资料</a></li>
+                    <li><a href="javascript:;">账号维护</a></li>
+                    <li>
+                        <a href="javascript:;">切换语言</a>
+                        <ul>
+                            <li><a href="javascript:;">中文</a></li>
+                            <li><a href="javascript:;">英文</a></li>
+                        </ul>
+                    </li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout message-layout">
+    <div class="left-side">
+        <div class="equal">
+            <ul class="message-nav">
+                <li class="selected"><a href="../message_compose.html">写信息</a></li>
+                <li><a href="../message_收件箱.html">收件箱</a><em>(123)</em></li>
+                <li><a href="../message_send.html">发件箱</a></li>
+                <li><a href="../message_draft.html">草稿箱</a></li>
+                <li><a href="../message_delete.html">垃圾箱</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <button id="pop" data-popup="" href="#sendMessage">show pop</button>
+    </div>
+</div>
+
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+    <div class="sitemap">
+        <a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律</a><a href="javascript:;" class="text-danger">招聘</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a>
+    </div>
+    <span class="copyright">版权所有 @ 2011-2014 玩儿道团队</span>
+</div>
+
+<!--<div id="sendMessage" class="dialog ui-dialog" data-loader="class-dialog" data-options="handler:'header',overlay:false">-->
+<div id="sendMessage" class="dialog ui-dialog" data-loader="class-dialog" data-options="handler:'header'">
+    <div class="bg"></div>
+    <div class="inner">
+        <div class="hd" data-options="region:'header'">
+            <h3 class="pull-left">发送消息</h3>
+            <a href="javascript:;" class="close" data-options="region:'hide'"></a>
+            <div class="main">时间:10:52</div>
+        </div>
+
+        <div class="bd">
+            <form>
+                <div class="form form-block">
+                    <div class="form-item">
+                        <label >
+                            <span class="input-label-mini input-control">发送给:</span><input type="text" class="text text-xxlarge" name="username" id="username"><a href="javascript:;" class="icon"></a>
+                        </label><button class="btn btn-primary btn-mini">查找</button>
+                    </div>
+                    <div class="form-item">
+                        <label >
+                            <span class="input-label-mini input-control">发送给:</span><input type="text" class="text text-xxlarge input-control" name="username" id="demo-input-pre-populated" ></span>
+                        </label><!--<button class="btn btn-primary btn-mini">查找</button>-->
+                    </div>
+                    <div class="form-item">
+                        <label >
+                            <span class="input-label-mini ">内容:</span>
+                            <div class="input-block"><textarea class="textarea" name="" id="" cols="30"  rows="10"></textarea></div>
+                        </label>
+                    </div>
+                    <div class="form-item ">
+                        <label class="checkbox pull-left">
+                            <input type="checkbox" />保存草稿
+                        </label>
+
+                        <div class="pull-right">
+                                 <span  class="tips-result">
+                                    <ul>
+                                        <li>NoteMessage</li>
+                                    </ul>
+                                </span>
+                            <input type="button" class="btn btn-primary" value="发送"><input type="button" class=" btn btn-default" value="保存"><input type="button" class=" btn btn-default" value="清空">
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    </div>
+</div>
+<!-- end footer -->
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="../js/jquery.toTop.js"></script>
+<script src="../js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="../js/global.js" ></script>
+<script type="text/javascript" src="../js/class.ui.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.placeholer.js" ></script>
+<script src="../js/jquery.draggable.min.js"></script>
+<script src="../js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="../js/jquery.token/jquery.token.js" ></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("[name=username]").tokenInput([
+            {id: 7, name: "Ruby"},
+            {id: 11, name: "Python"},
+            {id: 13, name: "JavaScript"},
+            {id: 17, name: "ActionScript"},
+            {id: 19, name: "Scheme"},
+            {id: 23, name: "Lisp"},
+            {id: 29, name: "C#"},
+            {id: 31, name: "Fortran"},
+            {id: 37, name: "Visual Basic"},
+            {id: 41, name: "C"},
+            {id: 43, name: "C++"},
+            {id: 47, name: "Java"}
+        ]);
+    });
+
+    $(document).ready(function() {
+        $("[name=username-populated]").tokenInput("http://shell.loopj.com/tokeninput/tvshows.php", {
+            prePopulate: [
+                {id: 123, name: "Slurms MacKenzie"},
+                {id: 555, name: "Bob Hoskins"},
+                {id: 9000, name: "Kriss Akabusi"}
+            ]
+//theme: "facebook"
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('.dialog .bd').initslimscroll();
+    })
+</script>
+</body>
+</html>

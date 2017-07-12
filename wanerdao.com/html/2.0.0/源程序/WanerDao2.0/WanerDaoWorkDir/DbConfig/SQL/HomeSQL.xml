@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SQLScript xmlns="SQL.xsd">
+  <!--主页 begin-->
+  <SQL ID="UserOperationModel">
+    select uo.id,uo.user_id,uo.action_category_id,uo.object_id,uo.permission,uo.ope_date,ac.table_id,ua.description as action_name,uo.option_id,
+    uc.category_name,uo.active from UserOperation uo inner join ActionCategory ac on uo.action_category_id=ac.id
+    inner JOIN UserAction ua on ac.action_id=ua.id  inner join UserOperateCategory uc on ac.category_id=uc.id
+    where uo.id=?id and uo.active=true ORDER BY uo.ope_date desc;
+  </SQL>
+  <SQL ID="AddLinkFeeds">
+    insert into linkfeeds(id,user_id,link,description,post_date,counter,permission) values(?id,?user_id,?link,?description,?post_date,?counter,?permission);
+  </SQL>
+  <SQL ID="AddNewFeeds">
+    insert into newfeeds(id,user_id,content,post_date,counter,permission,active) values(?id,?user_id,?content,?post_date,?counter,?permission,?active);
+  </SQL>
+  <SQL ID="ForwardState">
+    insert into newfeeds(id,user_id,content,post_date,counter,permission,active,is_transmit,transmit_id)
+    select ?guid,?user_id,content,now(),-1,GetPublicPermission(),1,1,?id  from newfeeds
+    where id=?id and active=true;
+  </SQL>
+  <SQL ID="ForwardLink">
+    insert into linkfeeds(id,user_id,link,description,post_date,counter,permission,active,is_transmit,transmit_id)
+    select ?guid,?user_id,link,description,now(),-1,GetPublicPermission(),1,1,?id  from linkfeeds
+    where id=?id and active=true;
+  </SQL>
+  <SQL ID="GetNewFeedsById">
+    select * from newfeeds where id=?id and active =true;
+  </SQL>
+  <SQL ID="GetLinkFeedsById">
+    select * from linkfeeds where id=?id and active =true;
+  </SQL>
+  <SQL ID="DeleteLinkFeeds">
+    delete from linkfeeds where id=?id and active=true;
+  </SQL>
+  <SQL ID="DeleteNewFeeds">
+    delete from newfeeds where id=?id and active=true;
+  </SQL>
+  <SQL ID="AddUserOperation">
+    insert into UserOperation(id,user_id,action_category_id,object_id,permission,ope_date,option_id,active)
+    values(?id,?user_id,?action_category_id,?object_id,?permission,?ope_date,?option_id,?active);
+  </SQL>
+  <SQL ID="ModifyUserOperation">
+    update UserOperation set user_id=?user_id,action_category_id=?action_category_id,object_id=?object_id,
+    permission=?permission,ope_date=?ope_date,active=?active where id=?id and active=true;
+  </SQL>
+  <SQL ID="DeleteUserOperation">
+    delete from UserOperation where id=?id and active=true;
+  </SQL>
+  <SQL ID="GetVisitedUser">
+    select pv.id,pv.user_id,pv.visit_user_id,
+    (select name from personalprofile where user_id=pv.visit_user_id) as visit_user_name,
+    (select logo_small_path from personalprofile where user_id=pv.visit_user_id) as logo_small_path,
+    pv.update_date from PersonalVisitRecord pv,personalprofile pp
+    where pv.user_id=pp.user_id and pv.user_id=?user_id and pv.active=true order by pv.update_date desc limit 500;
+  </SQL>
+  <SQL ID="ShieldDynamicState">
+    insert into newfeedsblocklist(id,user_id,block_type_id,block_id,update_date,active) values
+    (getguid(),?user_id,?block_type_id,?block_id,now(),1);
+  </SQL>
+  <SQL ID ="GetShieldStateList">
+    select id,GetUserNameById(block_id) as `name`,update_date,block_id from newfeedsblocklist where block_type_id=?block_type_id and user_id=?user_id and active=true;
+  </SQL>
+  <SQL ID ="ShieldDynamicStateOfDel">
+    delete from newfeedsblocklist where id=?id;
+  </SQL>
+  <SQL ID ="DelShieldDynState">
+    delete from newfeedsblocklist where block_type_id=?block_type_id and block_id=?block_id
+  </SQL>
+  <SQL ID="ReportDust">
+    <!--insert into report(id,report_id,type_id,report_date,page_language_id,active) values(
+        ?id,?report_id,?type_id,?report_date,?page_language_id,?active);
+        insert into reportprocess(id,process_id,follow_id,answer_id,is_answer,content,reply_date,active) values
+        (getguid(),?id,-->
+  </SQL>
+  <SQL ID="GetMayKnowFrieds">
+    call p_GetMayKnowFrieds(?user_id);
+  </SQL>
+  <SQL ID="GetBaseTableModelList">
+    call p_GetBaseTableModelList(?user_id,?pageCurrent,?pageSize,?whereCategory,?sourceTypeId,?isSelf,?language_id);
+  </SQL>
+  <SQL ID ="LeaveMessages">
+    insert into leavemessage(id,from_id,to_id,content,post_date,is_open,active)
+    values(?id,?from_id,?to_id,?content,?post_date,?is_open,1);
+  </SQL>
+  <SQL ID="Index_GetNewFeeds">
+    select  pp.user_id,pp.name as user_name,pp.logo_small_path,up.ope_date as post_date,'publish_state' as state_category,
+    nf.content,(select count(id) from NewFeedsComments where news_id=nf.id) as comment_count
+    from PersonalProfile pp join newfeeds nf on nf.user_id=pp.user_id  join UserOperation up ON nf.id=up.object_id
+    where up.id=?data_id and up.active=true;
+  </SQL>
+  <SQL ID="Index_GetNewLinkFeeds">
+    select  pp.user_id,pp.name as user_name,pp.logo_small_path,up.ope_date as post_date,'publish_link' as state_category,
+    nf.description,(select count(id) from NewLinkFeedsComments where link_id=nf.id) as comment_count,
+    nf.link as link,nf.permission as permission from PersonalProfile pp  join LinkFeeds nf on nf.user_id=pp.user_id
+    join UserOperation up ON nf.id=up.object_id
+    where up.id=?data_id and up.active=true;
+  </SQL>
+
+  <SQL ID="Index_GetPersonalImage">
+    select pp.user_id,pp.name as user_name,pp.logo_small_path, up.ope_date as post_date,'publish_image' as state_category,nf.fold_id,
+    nf.id as image_id,nf.description,(select count(id) from ImageComments where image_id=nf.id) as comment_count,nf.image_small_path
+    ,nf.image_path from PersonalProfile pp join  PersonalImage nf on nf.user_id=pp.user_id join
+    UserOperation up ON nf.id=up.object_id
+    where up.id=?data_id and up.active=true;
+  </SQL>
+  <SQL ID="Index_GetPersonalVideo">
+    select  pp.user_id,pp.name as user_name,pp.logo_small_path,nf.video_name,nf.fold_id,
+    up.ope_date as post_date,'publish_video' as state_category,
+    nf.id as video_id,nf.description,nf.video_name,nf.video_code,nf.video_link,nf.video_path,nf.source,
+    (select count(id) from VideoComments where video_id=nf.id)
+    as comment_count,nf.permission as permission
+    from PersonalProfile pp join  PersonalVideo nf on nf.user_id=pp.user_id join
+    UserOperation up ON nf.id=up.object_id
+    where up.id=?data_id  and up.active=true ;
+  </SQL>
+  <SQL ID="Index_GetPersonalBlog">
+    select pp.user_id,pp.name as user_name,pp.logo_small_path,
+    up.ope_date as post_date,'publish_blog' as state_category,
+    nf.id as blog_id,nf.content,
+    (select count(id) from BlogComments where blog_id=nf.id)
+    as comment_count,nf.title,nf.permission as permission
+    from PersonalProfile pp join  PersonalBlog nf on nf.user_id=pp.user_id join
+    UserOperation up ON nf.id=up.object_id
+    where up.id=?data_id and up.active=true ;
+  </SQL>
+  <SQL ID="Index_UpLoadImage">
+    SELECT useroperation.user_id, personalprofile.name as user_name,
+    personalprofile.logo_small_path, useroperation.ope_date as post_date,
+    imagefolder.folder_name, imagefolder.id as imagefolder_id,'upload_image' as state_category
+    FROM imagefolder
+    INNER JOIN useroperation ON imagefolder.id = useroperation.object_id
+    INNER JOIN personalprofile ON personalprofile.user_id = imagefolder.user_id
+    WHERE useroperation.active = true and useroperation.id=?data_id;
+  </SQL>
+  <SQL ID="Index_ForwardState">
+    select pp.user_id,pp.name as user_name,pp.logo_small_path,nf.transmit_id as source_user_id,nf.content,
+    (select pp2.name from personalprofile as  pp2 where pp2.user_id=nf.transmit_id) as source_user_name,
+    (select count(id) from NewFeedsComments where news_id=nf.id) as comment_count,
+    up.ope_date as post_date,'forward_state' as state_category
+    from newfeeds nf inner join personalprofile pp on nf.user_id=pp.user_id
+    inner join UserOperation up ON up.object_id=nf.id
+    where nf.is_transmit=true and up.active=true and up.id=?data_id;
+  </SQL>
+  <SQL ID="Index_ForwardLink">
+    select pp.user_id,pp.name as user_name,pp.logo_small_path,nf.transmit_id as source_user_id,nf.link,nf.description,
+    (select pp2.name from personalprofile as  pp2 where pp2.user_id=nf.transmit_id) as source_user_name,
+    (select count(id) from  newlinkfeedscomments where newlinkfeedscomments.link_id=nf.id) as comment_count,
+    up.ope_date as post_date,'forward_link' as state_category
+    from linkfeeds nf inner join personalprofile pp on nf.user_id=pp.user_id
+    inner join UserOperation up ON up.object_id=nf.id
+    where nf.is_transmit=true and up.active=true and up.id=?data_id;
+  </SQL>
+  <SQL ID="Index_ForwardImage">
+    select pp.user_id,pp.name,pp.logo_small_path,nf.transmit_id as source_user_id,nf.image_small_path,nf.image_path,nf.fold_id,nf.id as image_id
+    (select pp2.name from personalprofile as  pp2 where pp2.user_id=nf.transmit_id) as source_user_name,
+    (select count(id) from imagecomments  where imagecomments.image_id=nf.id) as comment_count,
+    up.ope_date as post_date,'forward_image' as state_category
+    from personalimage nf inner join personalprofile pp on nf.user_id=pp.user_id
+    inner join UserOperation up ON up.object_id=nf.id
+    where nf.is_transmit=true and up.active=true and up.id=?data_id;
+  </SQL>
+  <SQL ID="Index_ForwardVideo">
+    select pp.user_id,pp.name,pp.logo_small_path,nf.transmit_id as source_user_id,nf.fold_id,
+    (select pp2.name from personalprofile as  pp2 where pp2.user_id=nf.transmit_id) as source_user_name,
+    nf.id as video_id,nf.description,nf.video_name,nf.video_code,nf.video_link,nf.video_path,nf.source,
+    (select count(id) from videocomments  where videocomments.video_id=nf.id) as comment_count,
+    up.ope_date as post_date,'forward_video' as state_category
+    from personalvideo nf inner join personalprofile pp on nf.user_id=pp.user_id
+    inner join UserOperation up ON up.object_id=nf.id
+    where nf.is_transmit=true and up.active=true and up.id=?data_id;
+  </SQL>
+  <SQL ID="Index_ForwardBlog">
+    select pp.user_id,pp.name,pp.logo_small_path,nf.transmit_id as source_user_id,
+    (select pp2.name from personalprofile as  pp2 where pp2.user_id=nf.transmit_id) as source_user_name,
+    nf.id as blog_id,nf.content,nf.title,
+    (select count(id) from blogcomments  where blogcomments.blog_id=nf.id) as comment_count,
+    up.ope_date as post_date,'forward_blog' as state_category
+    from personalblog nf inner join personalprofile pp on nf.user_id=pp.user_id
+    inner join UserOperation up ON up.object_id=nf.id
+    where nf.is_transmit=true and up.active=true and up.id=?data_id;
+  </SQL>
+  <SQL ID="Index_ForwardUploadImage">
+    select pp.user_id,pp.name,pp.logo_small_path,nf.transmit_id as source_user_id,
+    (select pp2.name from personalprofile as  pp2 where pp2.user_id=nf.transmit_id) as source_user_name,
+    up.ope_date as post_date,'forward_uploadimage' as state_category,nf.folder_name,nf.id as folder_id
+    from imagefolder nf inner join personalprofile pp on nf.user_id=pp.user_id
+    inner join UserOperation up ON up.object_id=nf.id
+    where nf.is_transmit=true  and up.id=?data_id;
+  </SQL>
+  <SQL ID="Index_JoinActivity">
+    select  pp.user_id,pp.name as user_name,pp.logo_small_path,
+    up.ope_date as post_date,'join_activity' as state_category,
+    av.id as activity_id,av.activity_name,av.join_member_nbr
+    from activitymember nf join UserOperation up ON nf.id=up.object_id
+    join PersonalProfile pp ON  pp.user_id=nf.user_id  join activity av
+    on nf.activity_id=av.id
+    where up.id=?data_id and up.active=true;
+  </SQL>
+  <SQL ID="Index_JoinGroup">
+    select  pp.user_id,pp.name as user_name,pp.logo_small_path,
+    up.ope_date as post_date,'join_group' as state_category,
+    gi.id as group_id,gi.group_name,gi.member_nbr,gi.logo_path
+    from groupmember nf  join UserOperation up ON
+    nf.id = up.object_id join PersonalProfile pp
+    on pp.user_id=nf.user_id join groupinfo gi on  gi.id=nf.group_id
+    where up.id=?data_id and up.active=true;
+  </SQL>
+  <SQL ID="Index_ExitGroup">
+    select  pp.user_id,pp.name as user_name,pp.logo_small_path,
+    up.ope_date as post_date,'exit_group' as state_category,
+    gi.id as group_id,gi.group_name,gi.member_nbr,gi.logo_path
+    from groupmember nf  join UserOperation up ON
+    nf.id = up.object_id join PersonalProfile pp
+    on pp.user_id=nf.user_id join groupinfo gi on  gi.id=nf.group_id
+    where up.id=?data_id and up.active=true;
+  </SQL>
+  <SQL ID="Index_PublishGroup">
+    select  pp.user_id,pp.name as user_name,pp.logo_small_path,
+    up.ope_date as post_date,'Publish_group' as state_category,
+    gi.id as group_id,gi.group_name,gi.member_nbr,gi.logo_path,gd.subject
+    from groupmember nf
+    join GroupDiscuss gd on nf.user_id =  gd.post_id and nf.group_id =  gd.group_id
+    join UserOperation up ON
+    gd.id = up.object_id join PersonalProfile pp
+    on pp.user_id=nf.user_id join groupinfo gi on  gi.id=nf.group_id
+    where up.id=?data_id and up.active=true;
+  </SQL>
+  <SQL ID="Index_AddFriends">
+    select  pp.user_id,pp.name as user_name,pp.logo_small_path,x.to_user_id,x.to_user_name,
+    up.ope_date as post_date,'add_friend' as state_category
+    from personalfriends nf join
+    (select p.user_id as to_user_id,p.name  as to_user_name from personalprofile p )  as x
+    on x.to_user_id = nf.relation_to_id
+    join UserOperation up ON
+    nf.id=up.object_id join personalprofile pp on  pp.user_id=nf.relation_from_id
+    where up.id=?data_id and up.active=true;
+  </SQL>
+  <SQL ID="Index_PresentGift">
+    select  pp.user_id,pp.name as user_name,pp.logo_small_path,gs.id as gift_id,gs.gift_name,nf.content,
+    up.ope_date as post_date,'present_gift' as state_category
+    from personalgift nf join UserOperation up ON
+    nf.id=up.object_id join giftsmarket gs on gs.id=nf.gift_id
+    join personalprofile pp on  pp.user_id=nf.user_id
+    where up.id=?data_id and up.active=true;
+  </SQL>
+  <SQL ID="Index_FestivalGift">
+    select  pp.user_id,pp.name as user_name,pp.logo_small_path,nf.id as category_id,nf.category_name,
+    up.ope_date as post_date,'festival_gift' as state_category
+    from giftcategory nf join UserOperation up ON
+    nf.id=up.object_id
+    join personalprofile pp on  pp.user_id=up.user_id
+    where up.id=?data_id and up.active=true;
+  </SQL>
+  <SQL ID="Index_LeaveMessage">
+    select pp.user_id,pp.name as user_name,pp.name as to_user_name,pp.user_id as to_user_id,
+    pp1.name as from_user_name,pp.user_id as from_user_id,pp.logo_small_path,nf.content,
+    up.ope_date as post_date,'leave_message' as state_category,
+    (select count(id) from  leavemessagecomments where leavemessagecomments.message_id=nf.id) as comment_count
+    from leavemessage nf join UserOperation up ON
+    nf.id=up.object_id
+    join personalprofile pp on pp.user_id=nf.to_id inner join personalprofile pp1 on pp1.user_id=nf.from_id
+    where up.id=?data_id and up.active=true;
+  </SQL>
+
+  <SQL ID="ReplayLinkFeedsComment">
+    insert into LinkFeedsComment(id,news_id,follow_id,user_id,content,comments_date,positive,negative)
+    values(getguid(),?id,?fid,?comment_user_id,?content,now(),?positive,?negative);
+  </SQL>
+  <SQL ID="ReplayNewFeedsComment">
+    insert into NewFeedsComment(id,link_id,follow_id,user_id,content,comments_date,positive,negative)
+    values(getguid(),?id,?fid,?comment_user_id,?content,now(),?positive,?negative);
+  </SQL>
+  <!--主页 end-->
+</SQLScript>

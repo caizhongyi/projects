@@ -1,0 +1,80 @@
+﻿作者：王渝友
+时间：2011-10-26
+1.文件说明：
+	(css\PluginCss)存放插件样式\SideBar\sidebar.css
+	Plugin(插件js存放目录)\SideBar(分页js存放目录)\wanerdao2.pagination.js
+2.参数说明：
+$(function () {
+    $("#pageid").myPagination({   //分页插件，详见分页插件说明
+        currPage: 1,
+        callback: test,
+        cssStyle: 'noll',
+        sidebarpage: true,
+        ajax: {
+            param: {
+                pageSize: 5,
+                opertype: 'sidebar', //业务类型
+                strTablename: 'activity', //侧栏显示数据的表名
+                strFldname: 'active_name,begin_datetime,end_datetime,max_nbr,title',  //侧栏显示数据的列名
+                strWhere: '', //查询表的where 条件
+                strFldnortid: '', //查询表的排序ID
+                strSort: ''  //查询表的排序方式，即正序 、倒序
+            }
+        },
+        info: {
+            first: '首页',
+            last: '尾页',
+            next: '下',
+            prev: '上',
+            first_on: false,
+            last_on: false,
+            next_on: true,
+            prev_on: true,
+            showpageno: false, //是否显示页码
+            tipmsg: '第{tip}页',
+            msg_on: false,
+            link: '#',
+            msg: '<span>&nbsp;&nbsp;跳{currText}/{sumPage}页</span>',
+            text: {
+                width: '22px'
+            }
+        }
+
+    });
+
+    function test(data) {
+        var strContent = ""; 
+		//查询出的数据，循环操作，拼装html语句
+        $.each(data.rows, function (i, msg) {
+            strContent += "<div  class='statDiv'>" +
+                	"<p><span class='rqtTitle'><a href='#'>" + msg.active_name + "</a></span><span class='floatRight subLink'><a href='#'>详情</a></span></p>" +
+                	"<p class='newsDetail'><span class='time03 rqtTitle'><a href='#'>" + msg.title + "</a>&nbsp;&nbsp;" + msg.max_nbr + "人&nbsp;&nbsp;03/21 - 03/24</span><span class='act_addw floatRight'><a class='act_add' href='#'>加入</a></span></p>"
+                    + "</div>";    
+        });
+
+        $('#actsidebarContent').html(strContent);//把拼装的html语句赋给待显示的html控件。
+    }
+})
+3.使用时候注意事项：
+	需要在WanerDaoBLLFactory\Common\WanerDaoCommonFactory.cs写对应的处理，请查看demo
+4 测试sql
+/*Data for the table `activity` */
+insert  into `activity`(`id`,`sort_id`,`active_name`,`active_link`,`datetime`,`original_id`,`create_id`,`create_type_id`,`title`,`description`,`create_email`,`create_phone`,`activity_score`,`max_nbr`,`join_member_nbr`,`sight_id`,`sight_name`,`address`,`country_id`,`province_id`,`city_id`,`zip`,`begin_datetime`,`end_datetime`,`report_datetime`,`report_type_id`,`report_pass`,`pay_type_id`,`pay_method`,`prepay_nbr`,`prepay_reason`,`is_kick_protected`,`kick_protected_duration`,`is_balance`,`balance_date`,`balance_type`,`is_public`,`schedule_type`,`counter`,`active`) values
+('1',1,'滑雪',NULL,'2012-01-01 00:00:00',NULL,NULL,NULL,'滑雪',NULL,NULL,NULL,12,118,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-11-30 00:00:00','2012-01-29 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('2',2,'苏州园林',NULL,NULL,NULL,NULL,NULL,'苏州园林',NULL,NULL,NULL,80,800,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-12-12 00:00:00','2011-11-30 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('3',3,'四川九寨沟',NULL,NULL,NULL,NULL,NULL,'四川九寨沟',NULL,NULL,NULL,89,12,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-12-19 00:00:00','2011-12-29 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('4',4,'光棍节',NULL,NULL,NULL,NULL,NULL,'光棍节',NULL,NULL,NULL,52,123,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-11-08 00:00:00','2012-03-30 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('5',5,'圣诞节',NULL,NULL,NULL,NULL,NULL,'圣诞节',NULL,NULL,NULL,30,54,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-11-18 00:00:00','2012-01-13 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('6',6,'圣诞节',NULL,NULL,NULL,NULL,NULL,'圣诞节',NULL,NULL,NULL,10,10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-11-19 00:00:00','2011-12-30 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('7',7,'公路自行车',NULL,NULL,NULL,NULL,NULL,'公路自行车',NULL,NULL,NULL,20,20,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-11-23 00:00:00','2012-01-20 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('8',8,'太湖湿地',NULL,NULL,NULL,NULL,NULL,'太湖湿地',NULL,NULL,NULL,136,120,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-12-02 00:00:00','2012-11-23 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('9',9,'相亲会',NULL,NULL,NULL,NULL,NULL,'相亲会',NULL,NULL,NULL,98,43,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-11-18 00:00:00','2011-11-23 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('10',10,'义工敬老院',NULL,NULL,NULL,NULL,NULL,'义工敬老院',NULL,NULL,NULL,428,34,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-11-08 00:00:00','2011-11-30 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('11',11,'足球赛',NULL,NULL,NULL,NULL,NULL,'足球赛',NULL,NULL,NULL,189,100,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-11-12 00:00:00','2012-02-02 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('12',12,'烧烤',NULL,NULL,NULL,NULL,NULL,'烧烤',NULL,NULL,NULL,100,123,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-11-18 00:00:00','2012-02-02 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('13',13,'羽毛球赛',NULL,NULL,NULL,NULL,NULL,'羽毛球赛',NULL,NULL,NULL,65,543,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-11-23 00:00:00','2012-01-02 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('14',14,'音乐会',NULL,NULL,NULL,NULL,NULL,'音乐会',NULL,NULL,NULL,78,654,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-11-27 00:00:00','2012-01-02 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('15',15,'数码团购',NULL,NULL,NULL,NULL,NULL,'数码团购',NULL,NULL,NULL,80,120,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-12-03 00:00:00','2012-01-28 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('16',16,'苏州一日游',NULL,NULL,NULL,NULL,NULL,'苏州一日游',NULL,NULL,NULL,88,48,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-12-09 00:00:00','2012-01-31 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('17',17,'上海一日游',NULL,NULL,NULL,NULL,NULL,'上海一日游',NULL,NULL,NULL,100,200,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-12-10 00:00:00','2012-02-02 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),
+('18',18,'音乐会',NULL,NULL,NULL,NULL,NULL,'音乐会',NULL,NULL,NULL,80,38,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-01-13 00:00:00','2012-05-23 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1);

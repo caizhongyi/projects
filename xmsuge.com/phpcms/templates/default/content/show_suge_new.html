@@ -1,0 +1,47 @@
+{php $cur_menu = 'new';}
+{php $load_css = array('photo','team','new');}
+{php $footer_js =  array('jquery.jscrollpanel/jquery.mousewheel','jquery.jscrollpanel/jquery.jscrollpane.min')}
+{template "public","header"}
+{php $cat_parentid = 32;}
+
+<div id="main">
+    <div id="productCats" class="flexslider">
+        <h2><span>苏 格 点 滴</span></h2>
+
+        <div class="subpages-holder semitransp">
+
+            <div class="subpages-holder semitransp">
+                {pc:content action="category" catid="32" num="4" siteid="$siteid" order="listorder ASC"}
+                <ul class="submenu">
+                    {php $category = $data;}
+                    {loop $data $r}
+                    {if $n%3 ==1}
+                    {if $n==1}
+                    {php $first_cat = $r}
+                    {/if}
+                    <li><a data-id="162" class="subpage-switch {if $r['parentid']==$catid|| $r['catid']==$catid} active {/if}"
+                           href="{buildurl('lists','index','content',array('catid'=>$r['catid']))}">{$r['catname']}</a></li>
+                    {else}
+                    <li><a data-id="164" class="subpage-switch {if $r['pareantid']==$catid|| $r['catid']==$catid} active {/if} "
+                           href="{buildurl('lists','index','content',array('catid'=>$r['catid']))}">{$r['catname']}</a></li>
+                    {/if}
+                    {/loop}
+                </ul>
+                {/pc}
+
+                <div id="content"> 
+					<div class="article">
+					<!--<h1 style="text-align:center;">{$title}</h1> -->
+					{$content}
+					</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+{template "public","footer"}

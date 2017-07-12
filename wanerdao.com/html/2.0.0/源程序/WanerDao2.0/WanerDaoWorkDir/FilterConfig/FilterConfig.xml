@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FilterWord>
+  <FilterType name="inValidWorld">
+    <!--
+    过滤列表用英文状态的|,;这三个字符分割例如过滤select与update应该写成
+    select|update
+    select |insert |delete from |count\\(|drop table|update |truncate |asc\\(|mid\\(|char\\(|xp_cmdshell|exec master|net localgroup administrators|:|net user|\"|\\'| or 
+    -->
+    <FilterList>opertype|select |insert |delete from |count\\(|drop table|update |truncate |asc\\(|mid\\(|char\\(|xp_cmdshell|exec master|net localgroup administrators|:|net user|\"|\\'| or </FilterList>
+  </FilterType>
+  <FilterType name="printfile">
+    <FilterList>printfile</FilterList>
+  </FilterType>
+  <FilterType name="printdatafile">
+    <FilterList>printdatafile</FilterList>
+  </FilterType>
+  <FilterType name="printdata">
+    <FilterList>printdata</FilterList>
+  </FilterType>
+</FilterWord>

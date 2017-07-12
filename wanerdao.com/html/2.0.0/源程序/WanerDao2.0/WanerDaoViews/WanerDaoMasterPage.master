@@ -1,0 +1,240 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="WanerDaoMasterPage.master.cs"
+    Inherits="WanerDaoMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" type="image/x-icon" href="/savorboard.ico" />
+    <script type="text/javascript">
+        var wd_B = { uin: { uid: '<%=PersonalSecurity.user_id%>', name: '<%=PersonalProfile.name%>', second_name: '<%=PersonalProfile.second_name%>', small_logo: '<%=PersonalProfile.logo_small_path %>' }, clientlang: '<%=WanerDao2.WanerDaoModule.TipInfo.WanerDaoGlobalTip.GetClientLanguage() %>' };
+        function getCurrentUserId() {
+            return wd_B.uin.uid;
+        }
+    </script>
+    <!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+    <link href="/style/layout.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="/Scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <!--和jquery.ui.datepicker的样式冲突，需要美工解决-->
+    <link href="/style/pop_c.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        var winScreenWidth = window.screen.width;
+        if (winScreenWidth > 1024) {
+            document.writeln('<style>');
+            document.writeln('.jz{padding:0px 2px;}');
+            document.writeln('</style>');
+        }
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-31932768-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!--头部-->
+    <div class="head">
+        <div class="jz move">
+            <div class="logo left">
+                <a href="/personal" title="玩儿道">
+                    <img src="/images/layout_main/logo.png" alt="玩儿道" /></a></div>
+            <div class="nav_mian left">
+                <a href="javascript:void(0);" id="home"></a>
+                <div class="left search_info">
+                    <input type="text" class="inp" id="srch_str" maxlength="50" /><input type="button"
+                        class="inp_bot" id="srch_info" /></div>
+                <div class="left search_mail" id="z_msg">
+                    <img src="/images/layout_main/banner_mail.jpg" /><b></b></div>
+            </div>
+            <div class="userInfo" id="userInfo">
+                <a href="javascript:void(0);" class="left" title="">
+                    <img width="32" height="32" /></a> <a href="javascript:void(0);" title="" class="name"
+                        id="uname"></a>
+            </div>
+            <div class="search_list" id="search_list" style="display: none;">
+                <div class="search_listM">
+                    <ul>
+                        <li><a href="/personal/personal_info.html">资料修改</a></li>
+                        <li><a href="/personal/personal_info.html?infoType=contact">账号管理</a></li>
+                        <li><a href="/personal/private_set.html">隐私管理</a></li>
+                        <li><a href="javascript:;" id="toggleLang">切换为英语</a></li>
+                        <li class="b0" id="logout"><a href="javascript:;">退出</a></li>
+                    </ul>
+                </div>
+                <div class="search_listB">
+                </div>
+            </div>
+            <div class="search_list01" style="display: none;">
+                <div class="search_listM01">
+                    <ul id="search_list02">
+                        <li>
+                            <h1>
+                                <a href="/activity/activity_main.html">活动</a></h1>
+                            <a href="/activity/Activity_search.html?activityNames=&catygoryNames=&friendsName=&groupNames=&sightNames=&countryId=&provinceId=&cityId=&countryName=&stateidName=&cityName=">
+                                寻找活动</a> <a href="/activity/activity_create.aspx">创建活动</a> <a href="/activity/activity_item_main.html?categoryid=407c608f-1430-11e1-ae3c-000c295f9365">
+                                    分类活动</a> <a href="/activity/activity_define_main.html?categoryid=846a7cc0437211e187e18901690cfed8">
+                                        自定义活动</a> <a href="/activity/activity_season_main.html?categoryid=b727f8fa437211q187e18901tyhcfed8">
+                                            时令活动</a> <a href="/activity/activity_myactivity.html?pgType=history">历史活动</a>
+                        </li>
+                        <li>
+                            <h1>
+                                <a href="/personal/personal_info.html">个人</a></h1>
+                            <a href="/personal/index.html">主页</a> <a href="/personal/personal_info.html">资料</a>
+                            <a href="/personal/blog.html">日志</a> <a href="/personal/photo_album.html">相册</a>
+                            <a href="/personal/video_album.html">视频</a> </li>
+                        <li>
+                            <h1>
+                                <a href="/relationship/relationship_myfriends.aspx">关系</a></h1>
+                            <a href="/relationship/relationship_myfriends.aspx">我的好友</a> <a href="/relationship/relationship_friends_search.aspx">
+                                寻找好友</a> <a href="/relationship/relationship_friends_invite.aspx">邀请好友</a> <a href="/relationship/follow/follow_friends.html">
+                                    关注设置</a> <a href="/relationship/relationship_mygroup.aspx">我的圈子</a> <a href="/relationship/relationship_group_search.aspx">
+                                        寻找圈子</a> <a href="/relationship/relationship_group_create.aspx">创建圈子</a>
+                            <a href="/relationship/relationship_gift_info.aspx">我的礼物</a> <a href="/relationship/relationship_gift_market.aspx">
+                                礼物市场</a> </li>
+                        <%-- <li>
+                            <h1>
+                                <a href="/relationship/relationship_myfriends.aspx">关系</a></h1>
+                            <a href="/relationship/relationship_myfriends.aspx">我的好友</a> <a href="/relationship/relationship_friends_search.aspx">
+                                寻找好友</a> <a href="/relationship/relationship_friends_invite.aspx">邀请好友</a> <a href="/relationship/follow/follow_friends.html">
+                                    关注设置</a> <a href="/relationship/relationship_mygroup.aspx">我的圈子</a> <a href="/relationship/relationship_group_search.aspx">
+                                        寻找圈子</a> <a href="/relationship/relationship_group_create.aspx">创建圈子</a>
+                            <a href="/relationship/relationship_gift_info.aspx">我的礼物</a> <a href="/relationship/relationship_gift_market.aspx">
+                                礼物市场</a> </li>
+                        <%-- <li>
+                            <h1>
+                                <a href="/posts/post_main.html">杂烩</a></h1>
+                            <a href="/posts/post_main.html">综合显示各种信息资料</a> </li>
+                        <li>
+                            <h1>
+                                <a href="#">资道</a></h1>
+                            <a href="#">分类限制活动信息，跳蚤市场，工作信息，房屋买卖，汽车买卖等等</a> </li>--%>
+                    </ul>
+                </div>
+                <div class="search_listB01">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--头部end-->
+    <!--主体-->
+    <div class="main jz">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div class="mBtm jz">
+    </div>
+    <!--主体end-->
+    <!--底部-->
+    <div class="foot jz">
+        <span class="left"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a
+            href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></span> <span class="right">版权所有
+                &copy;玩儿道</span>
+    </div>
+    <!--底部end-->
+    <div class="footBarSmall">
+        <div class="footBarConA">
+        </div>
+        <div class="footBarCon">
+            <div class="fbBox">
+                <div class="slideBtn">
+                    <a href="javascript:;" class="doConfig"></a><a href="javascript:scroll(0,0);" class="goTop"></a><a href="javascript:void(0)"
+                        class="doSlide" type="top"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footBar-->
+    <div class="footBar">
+        <div class="footBarConA">
+        </div>
+        <div class="footBarCon">
+            <div class="fbBox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            <div class="configBox">
+                                <div class="configBoxBtn">
+                                    <span></span>
+                                </div>
+                                <div class="cbCon">
+                                    <div class="popE">
+                                    </div>
+                                    <div class="cbConBox">
+                                        <div class="cbcBoxLeft">
+                                            <div class="cbTitle">
+                                                <b>已经安装应用</b></div>
+                                            <!--因为设计原因 自适应几乎不太可能 只有宽高都给你定了 -->
+                                            <div class="cbLeft">
+                                                <ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="cbcBoxRight">
+                                            <div class="cbTitle">
+                                                <b class="bg">可选应用</b><span>（选择您想要安装的应用添加至右边）</span></div>
+                                            <div class="cbRight">
+                                                <div class="cbRightL">
+                                                    <ul>
+                                                    </ul>
+                                                </div>
+                                                <div class="cbRightR">
+                                                    <ul>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="popE">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="funcBox">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="slideBtn">
+                                <a href="javascript:scroll(0,0);" class="goTop"></a><a href="javascript:void(0)" class="doSlide" type="down">
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--footBar End-->
+    <!--弹窗区-->
+    <!--计算器-->
+    <iframe class="pop" width="800px" height="575px" frameborder="0" scrolling="no"
+        style="display: none;margin:auto auto auto autl;z-index:999"></iframe>
+    <!--页面脚本区-->
+    <!--<script type="text/javascript" src="/scripts/OpenProjectPlugin/jquery.ui.datepicker.js"></script>-->
+    <script type="text/javascript" src="/scripts/common/pop.js"></script>
+    <script src="/Scripts/multipleLanguage/loader.js" type="text/javascript"></script>
+    <script src="/Scripts/common/wandao.js" type="text/javascript"></script>
+    <script src="/Scripts/common/wanerdaoutils.js" type="text/javascript"></script>
+    <script src="/Scripts/common/layout.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Scripts/common/utility.js"></script>
+    <script type="text/javascript" src="/Scripts/personaltool/personaltool.js"></script>
+    <%--    <script type="text/javascript">
+        $(function () {
+            openWin('rl', '日历', '.datePop');
+        });
+    </script>--%>
+    <script src="/Scripts/person/curInfo.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="Script" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>

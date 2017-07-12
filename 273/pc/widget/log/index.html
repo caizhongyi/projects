@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Log</title>
+</head>
+<body>
+
+<a href="###" data-eqselog="/nav@etype=click@place=sale"> log click </a> <br/>
+<a href="###" data-eqselog="/nav@etype=hover@place=sale"> log hover</a>
+
+
+<script type="text/javascript" src="/mod.js"></script>
+<script type="text/javascript">
+    var Log = require('js/log');
+    new Log({
+        eqsch : "/index@version=v2@pageType=",
+        eqschver: 'B'
+    }).trackPageView();
+    require('cookie')
+</script>
+</body>
+</html>

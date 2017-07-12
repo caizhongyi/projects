@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SQLScript xmlns="SQL.xsd">
+    <!--查询指定权限SQL-->
+    <SQL ID="ValidateUser">
+      select * from PropertyPermission where id=?id and active=1;
+    </SQL>
+  <!--查询权限黑名单SQL-->
+  <SQL ID="PermissionBlack">
+    SELECT id FROM CustomizedPermission WHERE user_id = ?user_id and permission_id = ?permission_id and visit_type = 0 and active=1;
+  </SQL>
+  <!--查询是否在允许的个人、好友分组、圈子权限SQL-->
+  <SQL ID="PermissionAllowArray">
+    SELECT id FROM CustomizedPermission WHERE  permission_id = ?permission_id and visit_type = 1 and active=1  and (( user_id = ?user_id  and obj_type = 'User') or 
+     (id in (select T0.id from PersonalFriends T1 inner join CustomizedPermission T0 where T1.relation_from_id = ?user_id and  T0.user_id = T1.class_id 
+    and T0.permission_id = ?permission_id and T0.obj_type = 'Friends' and T0.active=1 and T1.active=1)) or (id in (select T0.id from GroupMember T1 inner join CustomizedPermission T0
+     where T1.user_id = ?user_id and  T0.user_id = T1.group_id and T0.permission_id = ?permission_id and T0.obj_type = 'Group' and T0.active=1 and T1.active=1)))
+  </SQL>
+  <!--查询是否有允许的全部好友、圈子权限SQL-->
+  <SQL ID="PermissionAllAllowArray">
+    SELECT user_id FROM CustomizedPermission   WHERE active=1 and permission_id = ?permission_id and obj_type=?obj_type
+  </SQL>
+  <!--查询是否有允许的全部好友、圈子权限SQL-->
+  <SQL ID="PersonalSameGroup">
+    select T0.group_id as id from GroupMember T0 inner join GroupMember T1 on T0.group_id = T1.group_id where T0.active=1  and T1.active=1 and T0.user_id = ?relation_to_id and T1.user_id = ?relation_from_id
+  </SQL>
+
+  <!--查询个人全部权限SQL-->
+  <SQL ID="GetAll_propertyPermission">
+    SELECT  T0.NAME, T0.ID FROM PropertyPermission T0
+    WHERE T0.active=1 and id != 'ce6aceb2-a617-11e1-aa1f-101f74b66417' and ( ( T0.language_id=?language_id and T0.user_id = 'all' )
+    or ( T0.user_id = ?user_id and T0.per_type='PerDefault')) order by per_type
+  </SQL>
+
+  <!--查询个人自定义权限数量SQL-->
+  <SQL ID="GetCount_propertyDefaultPermission">
+    SELECT  count(ID) as IDSUM  FROM PropertyPermission WHERE active=1 and user_id = ?user_id and per_type='PerDefault'
+  </SQL>
+
+  <!--查询个人自定义权限SQL-->
+  <SQL ID="get_propertyDefaultPermission">
+    SELECT  NAME,ID  FROM PropertyPermission WHERE active=1 and user_id = ?user_id and per_type='PerDefault'
+  </SQL>
+  <!--查询个人自定义权限SQL-->
+  <SQL ID="get_DefaultPermission">
+    SELECT CONCAT(visit_type,'-,-',obj_type,'-,-',user_id ,'-,-', IFNULL(user_name,'') )  as obj FROM customizedpermission WHERE active=1 and permission_id = ?PermissionID
+  </SQL>
+
+  <!--判断是否为基础权限SQL-->
+  <SQL ID="ifBasePermission">
+    SELECT  case when per_type ='base' then 'true' else 'false' end as id FROM PropertyPermission WHERE active=1 and id = ?permission_id
+  </SQL>
+
+
+  <!--删除自定义权限SQL-->
+  <SQL ID="del_propertyPermission">
+    update CustomizedPermission set active = 0  where permission_id=?permission_id;
+    update PropertyPermission set active = 0  where id=?permission_id;
+  </SQL>
+
+  <!--新增临时权限SQL-->
+  <SQL ID="add_tempPropertyPermission">
+    INSERT INTO PropertyPermission (id ,name ,level ,per_type ,user_id,update_date,language_id ) VALUES (?id ,?name ,?level ,?per_type ,?user_id,sysdate(),?language_id )
+  </SQL>
+
+  <!--新增自定义权限内容SQL-->
+  <SQL ID="add_tempCustomizedPermission">
+    INSERT INTO CustomizedPermission (id ,user_id ,user_name,obj_type ,visit_type ,permission_id,update_date,language_id ) VALUES (Replace(uuid(),'-','') ,?user_id ,?user_name,?obj_type ,?visit_type ,?permission_id,sysdate(),?language_id )
+  </SQL>
+
+  <!--权限复制SQL-->
+  <SQL ID="copy_tempPropertyPermission">
+    INSERT INTO PropertyPermission (id ,name ,level ,per_type ,user_id,update_date ) select ?newpermission_id as newpermission_id,name,'7','temp',user_id,sysdate() from PropertyPermission where id =?permission_id;
+    INSERT INTO CustomizedPermission (id ,user_id ,user_name,obj_type ,visit_type ,permission_id,update_date ) select Replace(uuid(),'-','') as tid,user_id,user_name,obj_type,visit_type,?newpermission_id as newpermission_id,sysdate() from CustomizedPermission where permission_id =?permission_id;
+  </SQL>
+</SQLScript>

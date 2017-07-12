@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <link rel="stylesheet" type="text/css" href="css/public/base.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/public/pop.css" media="all"/>
+
+    <script src="scripts/jquery-1.7.2.min.js"></script>
+    <script src="scripts/jquery.plus.js"></script>
+    <script src="scripts/jquery.plugin.js"></script>
+</head>
+<body>
+
+<div id="check_authorization_popup1" class="pop" style="width:450px; ">
+    <div class="pop-bg"></div>
+
+    <div class="pop-container">
+        <div class="pop-hd clearfix"><h3></h3><a href="javascript:;" class="dialog-hide close-3" title="关闭"></a></div>
+        <div class="pop-bd check-authorization-form">
+            <ul>
+                <li><label for="">加入密码确认:</label><input type="password" class="text" maxlength="20"></li>
+            </ul>
+            <div class="form-btns">
+                <span class="checktips">验证中...</span><input type="button" class="button button1" value="验证">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="check_authorization_popup" class="pop" style="width:450px; ">
+    <div class="pop-bg"></div>
+
+    <div class="pop-container">
+        <div class="pop-hd clearfix"><h3></h3><a href="javascript:;" class="dialog-hide close-3" title="关闭"></a></div>
+        <div class="pop-bd check-authorization-form">
+            <ul>
+                <li><label for="">加入密码确认:</label><input type="password" class="text" maxlength="20"></li>
+            </ul>
+            <div class="form-btns">
+                <span class="checktips">验证中...</span><input type="button" class="button button1" value="验证"><input type="button" class="button button1-disable" value="验证">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var dialog = new $.ui.dialog('#check_authorization_popup',{ overlay : false });
+    dialog.show();
+    new $.ui.dialog('#check_authorization_popup1',{ overlay : true }).show();
+</script>
+</body>
+</html>

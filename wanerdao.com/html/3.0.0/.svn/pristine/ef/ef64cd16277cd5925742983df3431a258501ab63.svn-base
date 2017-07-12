@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>Login-Account-Savorboard</title>
+
+<meta name="keywords" content="Welcome to Savorboard, New register, Savorboard, Activty arrangement living social network"/>
+<meta name="description"
+      content="New user fill necessary information to Sign up Savorboard"/>
+
+
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="BookStar" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/account.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/en.css"/>
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="#" class="logo"><img src="images/logo-en.png" alt="savorboard"></a>
+        <div class="home  hover">
+            <a title="Home"  class="button" href="javascript:;"><i class="icon icon-list"></i></a>
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a  href="javascript:;">Activity</a></h3>
+                        <a href="activity_index.html">Activity main</a><a href="activity_search.html">Search activities</a><a href="activity_item_main.html">Current and past activities </a><a href="activity_future_plan.html">Future  activities</a><a href="javascript:;">Launch an activity </a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">Personal</a></h3>
+                        <a href="personal_edit.html">Profile</a><a href="personal_account.html">Finance account</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">Relationship</a></h3>
+                        <a href="relationship_friends_invite.html">My friends</a>
+                    </li>
+                    <li>
+                        <h3><a  href="index.html">Main</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="Activity / Friend" class="text" ><input type="submit" class="button" value="">
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img  src="images/defaults/32-32.jpg"></a><a  class="name" href="javascript:;"><span >烧饭-人生旅途中人生旅途中</span><b></b></a>
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">Profile</a></li>
+                    <li><a href="javascript:;">Account</a></li>
+                    <li>
+                        <a href="javascript:;">Switch language</a>
+                        <ul>
+                            <li><a href="javascript:;">Chinese</a></li>
+                            <li><a href="javascript:;">English</a></li>
+                        </ul>
+                    </li>
+                    <li class="last"><a href="javascript:;">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout account-layout">
+        <div class="tabs ui-tabs" >
+            <div class="nav">
+                <a href="account_login.html" class="selected" >Log in</a><a href="account_register.html">Sign up</a><a href="account_find_account_step1.html" >Forgot account</a><a href="account_find_pass_step1.html.html">Forgot password</a>
+            </div>
+            <div class="panel">
+
+                <form>
+                    <div class="form ui-form">
+                        <ul>
+                            <li><label for="username" class="label">Account:</label><input type="text" class="text" name="username" id="username"><span class="tips error">* Enter username，And Case-sensitive</span></li>
+                            <li><label for="password" class="label">Password:</label><input type="text" class="text" name="username" id="password"><span class="tips error">* Please enter your password</span></li>
+                            <li><label for="" class="label">&nbsp;</label><input type="checkbox" class="f12" />Keep me login in next three</li>
+                            <li><label for="" class="label">&nbsp;</label><ul class="result">
+                                        <li>Hint information</li>
+                                 </ul>
+                            </li>
+                            <li><label for="" class="label">&nbsp;</label><input type="submit" class="btn btn-primary" value="Login" data-active-class="btn-primary-active" data-active-val="loading..."></li>
+                        </ul>
+                        <hr class="solid">
+                        <div>
+                            <label>Login with other accounts:</label><a href=""><i class="icon icon-facebook-alt"></i></a><a href=""><i class="icon icon-twitter-alt"></i></a><a href=""><i class="icon icon-google-alt"></i></a><a href=""><i class="icon icon-linkedin-alt"></i></a>
+                        </div>
+                       <!-- <div>
+                            <button class="btn btn-facebook" type="button">
+                                <em></em>
+                                <span class="buttonText">Facebook</span>
+                            </button>
+                            <button class="btn btn-twitter" type="button">
+                                <em></em>
+                                <span class="buttonText">Twitter</span>
+                            </button>
+                            <button class="btn btn-google" type="button">
+                                <em></em>
+                                <span class="buttonText">Google+</span>
+                            </button>
+                            <button class="btn btn-linkedin" type="button">
+                                <em></em>
+                                <span class="buttonText">LinkedIn</span>
+                            </button>
+                        </div>-->
+                    </div>
+                </form>
+
+            </div>
+        </div>
+</div>
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+    <div class="sitemap">
+        <a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Term</a><a href="javascript:;">Job</a><a href="javascript:;">Suggestion</a><a href="javascript:;">Help</a>
+    </div>
+    <span class="copyright">Copyright @ 2011-2014 Savorboard Corporation, All right reserved.</span>
+    </div>
+</div>
+<!-- end footer -->
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+</body>
+</html>

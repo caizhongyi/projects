@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>活动人员弹出层</title>
+     <link rel="stylesheet" type="text/css" href="/css/layout.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/table.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/icon.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/form.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/pop.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/pager.css" media="all" />
+    <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/scripts/plugin/cookie/wanerdao2.cookies.js"></script>
+    <script type="text/javascript" src="/Scripts/multipleLanguage/loader.js"></script>
+    <script type="text/javascript" src="../../scripts/common/wanerdaoutils.js"></script>
+    <script type="text/javascript" src="/scripts/global.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.core.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.tabs.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.center.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.overlay.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.dialog.js"></script>
+    <script type="text/javascript" src="../../scripts/plugin/activityperson/wanerdao2.activityperson.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#success").click(function () {
+                //activityid活动ID必须填写
+                new activityperson({ activityid: '76bd3fece6364a36a2f57cff5f485988', callback: function (data) {
+                    $.each(data.acperson, function (i, n) {
+                        alert("你使用的是success按钮生成的分类，你选择的是: " + data.acperson[i].id + "|" + data.acperson[i].name);
+                    });
+                }
+                });
+            });
+            $("#confirm").click(function () {
+                new activityperson({ activityid: '04edf97bf7564b36bac3d69a9e01a9f3', callback: function (data) {
+                    $.each(data.acperson, function (i, n) {
+                        alert("你使用的是success按钮生成的分类，你选择的是: " + data.acperson[i].id + "|" + data.acperson[i].name);
+                    });
+                }
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+<input type="button" value="弹出层" id="success"/>
+<input type="button" value="弹出层2" id="confirm"/>
+</body>
+</html>

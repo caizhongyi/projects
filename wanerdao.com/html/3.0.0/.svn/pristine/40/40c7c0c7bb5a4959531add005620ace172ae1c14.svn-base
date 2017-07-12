@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>CreateGroup-关系-玩儿道</title>
+
+<meta name="keywords" content="CreateGroup，Group信息，邀请User，关系，玩儿道，Activity组织的生活社交网络"/>
+<meta name="description"
+      content="填写必要Group信息完成GroupCreate，并可以发出邀请"/>
+
+
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/relationship.css"/>
+
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+
+<style type="text/css">
+    body{ background: #fff ; font-size:12px;}
+    .mod-gray{ width: 670px; margin: 10px; }
+</style>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Send invitations
+    </div>
+    <div class="bd form">
+            <div class="form-item"><label><input type="checkbox"/>Send to all friends</label></div>
+            <div class="form-item">
+                <label for="">Send to：</label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">All</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>&nbsp;<input type="text" class="text text-large" style="width: 269px"/><input type="button" class="btn btn-gray btn-mini" value="Add"/>
+            </div>
+            <div class="form-item">
+                   <div class="tipbox form-tips list-label">
+                        <i class="arrow"></i>
+                        <span>Name<a class="icon-circle-close" href="#"></a></span><span>Name<a class="icon-circle-close" href="#"></a></span><span>Name<a class="icon-circle-close" href="#"></a></span>
+                    </div>
+            </div>
+            <div class="form-item">
+                <label for="">Method：</label><label for="" class="checkbox"><input type="checkbox" class="checkbox"/>Message</label><label
+                    for="" class="checkbox"><input type="checkbox"/>Email</label>
+            </div>
+            <div class="line"></div>
+         <!--   <div class="form-item">
+                <label><input type="checkbox"/>Send to all groups</label>
+            </div>
+            <div class="form-item" >
+                <label for="">Send to：</label><input type="text" class="text text-xlarge" style="width: 396px;"/><input type="button" class="btn btn-gray btn-mini" value="Add"/>
+            </div>
+            <div class="form-item">
+                    <span class="tipbox form-tips list-label">
+                        <i class="arrow"></i>
+                        <span>Name<a class="icon-circle-close" href="#"></a></span><span>Name<a class="icon-circle-close" href="#"></a></span><span>Name<a class="icon-circle-close" href="#"></a></span>
+                    </span>
+            </div>
+            <div class="line" ></div>-->
+            <div class="form-item">
+                <label><input type="checkbox"/>Invite by email</label>
+            </div>
+            <div class="form-item">
+                <label for="">Email：</label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">All</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><input type="text" class="text text-medium" style="width: 287px;"/><input type="button" class="btn btn-gray btn-mini" value="Add"/>
+            </div>
+            <div class="form-item">
+                     <div class="tipbox form-tips list-label">
+                        <i class="arrow"></i>
+                        <span>01&nbsp;ahxiaopeng@163.com<a class="icon-circle-close" href="#"></a></span><span>01&nbsp;ahxiaopeng@163.com<a class="icon-circle-close" href="#"></a></span><span>01&nbsp;ahxiaopeng@163.com<a class="icon-circle-close" href="#"></a></span><span>01&nbsp;ahxiaopeng@163.com<a class="icon-circle-close" href="#"></a></span><span>01&nbsp;ahxiaopeng@163.com<a class="icon-circle-close" href="#"></a></span><span>01&nbsp;ahxiaopeng@163.com<a class="icon-circle-close" href="#"></a></span>
+                    </div>
+            </div>
+
+            <div class="form-item">
+            <button class="btn btn-primary">Send</button><button class="btn btn-default">Cancle</button>
+        </div>
+    </div>
+</div>
+
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+</body>
+</html>

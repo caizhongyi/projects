@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link href="style/account.css" rel="stylesheet" type="text/css" />
+<link href="style/select_upload.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<!--头部-->
+	<div class="head">
+    	<div class="jz">
+        	<div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+        </div>
+    </div>
+    <!--头部end-->
+    <!--主体-->
+    <div class="jz yh">
+    	<div class="account">
+        	<div class="sub_nav">
+                <a href="#">用户登录</a>
+                <a href="#" class="active">新用户注册</a>
+                <a href="#">找回帐号</a>
+                <a href="#">找回密码</a>
+            </div>
+            <div class="layout_t"></div>
+            <div class="layout_m">
+                    <br />
+            
+                    <form class='accout_edit_form'>
+            <table width="100%" class="f14" height="340" border="0" cellspacing="1">
+              <tr>
+                <td width="18%" align="right">电子邮件：</td>
+                <td width="82%"><div class="relate"><input type="text" id="mail" class="input_a" />
+                    <div id="wrongMailTip" class="wrongTip" style="left:260px; top:-18px;">
+                        <div class="WtTop"></div>
+                        <div class="WtCon">
+                            <em>错误提示</em>
+                            <p>您输入的邮箱格式有误。</p>
+                            <a href="javascript:void(0)" class="close" onclick="this.parentNode.parentNode.style.display='none'">关闭</a>
+                        </div>
+                        <div class="WtBtm"></div>
+                        <ins></ins>
+                    </div>
+                    </div></td>
+              </tr>
+              <tr>
+                <td align="right">设置密码：</td>
+                <td><div class="relate"><input type="text" id="mail" class="input_a" />
+                    <div id="" class="pwdTip" style="left:260px; top:-11px;">
+                        <div class="pwdTop"></div>
+                        <div class="pwdCon">
+                            <p class="bar"><b class="weak">差</b></p><!--weak:差;common:中;strong:强-->
+                        </div>
+                        <div class="pwdBtm"></div>
+                    	<ins></ins>
+                    </div>
+                    </div>
+                </td>
+              </tr>
+              <tr>
+                <td align="right">再次确认密码：</td>
+                <td><div class="relate"><input type="password" class="input_a" />
+                    <div id="wrongMailTip" class="wrongTip" style="left:260px; top:-18px;">
+                        <div class="WtTop"></div>
+                        <div class="WtCon">
+                            <em>错误提示</em>
+                            <p>您输入的邮箱格式有误。</p>
+                            <a href="javascript:void(0)" class="close" onclick="this.parentNode.parentNode.style.display='none'">关闭</a>
+                        </div>
+                        <div class="WtBtm"></div>
+                        <ins></ins>
+                    </div>
+                    </div></td>
+              </tr>
+              <tr>
+                <td align="right">真实姓名：</td>
+                <td><div class="relate"><input type="text" class="input_a" />
+                    <div id="wrongMailTip" class="wrongTip" style="left:260px; top:-18px;">
+                        <div class="WtTop"></div>
+                        <div class="WtCon">
+                            <em>错误提示</em>
+                            <p>您输入的邮箱格式有误。</p>
+                            <a href="javascript:void(0)" class="close" onclick="this.parentNode.parentNode.style.display='none'">关闭</a>
+                        </div>
+                        <div class="WtBtm"></div>
+                        <ins></ins>
+                    </div>
+                    </div></td>
+              </tr>
+              <tr>
+                <td align="right">性别：</td>
+                <td> &nbsp; <input type="radio" name="sex" id="male" class="" /><label for="male">男</label>&nbsp;&nbsp;&nbsp;<input type="radio" name="sex" id="female" class="" /><label for="female">女</label></td>
+              </tr>
+              <tr>
+                <td align="right">生日：</td>
+                <td><select name="year"><option>2011</option><option>2012</option><option>2013</option><option>2014</option><option>2011</option><option>2012</option><option>2013</option><option>2014</option><option>2011</option><option>2012</option><option>2013</option><option>2014</option><option>2011</option><option>2012</option><option>2013</option><option>2014</option><option>2011</option><option>2012</option><option>2013</option><option>2014</option><option>2011</option><option>2012</option><option>2013</option><option>2014</option></select>年 &nbsp;<select name="month"><option>11</option></select>月 &nbsp;<select name="date"><option>11</option></select>日</td>
+              </tr>
+              <tr>
+                <td align="right" height="80">&nbsp;</td>
+                <td height="80"><a href="javascript:void(0);" class="btn_137x32" onclick="checkform();">注册账号</a></td>
+              </tr>
+            </table>
+                    </form>
+            
+                <br/>
+                <br/>
+                <br/>
+                </div>
+            <div class="layout_b"></div>
+    		<!--底部-->
+            <div class="foot">
+                <span class="left"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></span>
+                <span class="right">版权所有 &copy;玩儿道</span>
+            </div>
+    		<!--底部end-->
+        </div>
+    </div>
+    <!--主体end-->
+
+<!--页面脚本区-->
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="js/select_upload.js"></script><!-- 表单select  Js -->
+<script type="text/javascript">
+	var mail = document.getElementById("mail");
+	var wrongMailTip = document.getElementById("wrongMailTip");
+	function checkform() {
+		if(mail.value != '') {
+			if(!Isyx(mail.value)){ 
+				wrongMailTip.style.display = "block";
+				mail.focus(); 
+				return false; 
+			}else{
+				alert("成功")	
+			}
+		}else{
+			wrongMailTip.style.display = "block";
+			mail.focus(); 
+			return false; 
+		}
+	}
+	function Isyx(yx){
+		var reyx= /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+		return(reyx.test(yx));
+	}
+</script>
+</body>
+</html>

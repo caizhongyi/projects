@@ -1,0 +1,1465 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>pop</title>
+		<meta name="description" content="" />
+		<meta name="author" content="zhangwei" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link href="style/layout.css" rel="stylesheet" type="text/css" />
+        <link href="style/nav_info.css" rel="stylesheet" type="text/css" />
+		<link href="style/pop.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="http://s.xnimg.cn/xnapp/music/js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jcarousellite.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				/*滚动插件*/
+				$("#pic_list").jCarouselLite({
+					btnNext : "#next",
+					btnPrev : "#prev",
+					auto : false,
+					scroll : 1,
+					visible : 9,
+					speed : 300
+				});
+				$("#key_list").jCarouselLite({
+					btnNext : "#keynext",
+					btnPrev : "#keyprev",
+					auto : false,
+					scroll : 1,
+					visible : 8,
+					speed : 300
+				});
+				//简单的利用小图路径指引大图
+				var p_index = 0;
+				$("#pic_list img").each(function(i) {
+					$("#pic_list img").bind("click", function() {
+						p_index = $("#pic_list img").index(this);
+						$("#pic_list img").removeClass("selected").eq(p_index).addClass("selected");
+						$("#large_pic").attr("src", $("#pic_list img").eq(p_index).attr("src"))
+					})
+				})
+				//泡沫显示
+				$("#detial").find("li").hover(function() {
+					$("#detial li").removeClass("hover");
+					$(this).addClass("hover");
+				})
+			})
+		</script>
+	</head>
+	<body style="background: #dff1f6;">
+		<div style="width:940px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content">
+							<h2>活动地图 <a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+							<div class="dialog_body clearfix">
+								<div class="dialog_left map">
+									<div class="control clearfix">
+										<ul class="c">
+											<li>
+												<span>出发地：</span>
+												<input type="text" class="input-text" value="美国纽约州" />
+											</li>
+											<li>
+												<span>目的地：</span>
+												<input type="text" class="input-text" value="美国纽约州" />
+											</li>
+										</ul>
+									</div>
+									<div class="blank"></div>
+									<div class="map-box">
+										<img src="images/map.png" width="709" height="525" />
+									</div>
+								</div>
+								<div class="dialog_right map">
+									<h3 class="title">地图路径</h3>
+								</div>
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:560px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content">
+							<h2>续费通知 <a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+							<div class="dialog_body">
+								<div class="control f14">
+									圈子（纽约空中飞人俱乐部）为期（30）天的会费已经过期，您是否继续续费？
+								</div>
+								<div class="blank"></div>
+								<div class="notice-box">
+									<dl>
+										<dt>
+											缴费金额：
+										</dt>
+										<dd>
+											<strong class="red">$1000</strong>
+										</dd>
+									</dl>
+									<dl>
+										<dt>
+											缴费方式：
+										</dt>
+										<dd>
+											现金缴费
+										</dd>
+									</dl>
+									<dl>
+										<dt>
+											执行管理员：
+										</dt>
+										<dd>
+											<a href="#" class="icon-message">钟钟钟</a><a href="#" class="icon-message">钟钟钟</a><a href="#" class="icon-message">钟钟钟</a>
+										</dd>
+									</dl>
+									<dl>
+										<dt>
+											财务员：
+										</dt>
+										<dd>
+											<a href="#" class="icon-message">钟钟钟</a><a href="#" class="icon-message">钟钟钟</a><a href="#" class="icon-message">钟钟钟</a>
+										</dd>
+									</dl>
+                                    
+                                    <dl>
+										<dt class="black">汇款接受人:</dt>
+										<dd><input  type="text"  class="input-text"></dd>
+									</dl>
+                                    
+                                     <dl>
+										<dt class="black">汇款金额:</dt>
+										<dd><input  type="text"  class="input-text"></dd>
+									</dl>
+                                    
+                                     <dl>
+										<dt class="black">汇款描述:</dt>
+										<dd><textarea class="input-text"></textarea></dd>
+									</dl>
+                                  
+								</div>
+     
+							</div>
+							<div class="dialog_buttons">
+								<input type="button" class="input-submit"/>
+								<input type="button" class="input-cancel" value="取消"/>
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:630px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content">
+							<h2>投票标题 <a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+							<div class="dialog_body">
+								<div>
+									<img src="images/data.png"/>
+								</div>
+								<div class="blank"></div>
+								<div class="options">
+									<a href="javascript:;"><span style="background:#91cedd;"></span>系列1</a><a href="javascript:;"><span style="background:#8edf91;"></span>系列2</a><a href="javascript:;"><span style="background:#918edf;"></span>系列3</a><a href="javascript:;"><span style="background:#dd91db;"></span>系列4</a><a href="javascript:;"><span style="background:#e08d8f;"></span>系列5</a><a href="javascript:;"><span style="background:#dbd293;"></span>系列6</a><a href="javascript:;"><span style="background:#93dbc9;"></span>系列7</a><a href="javascript:;"><span style="background:#8b8fe2;"></span>系列8</a>
+								</div>
+								<div class="blank"></div>
+								<div class="control">
+									<h3 class="title">详细投票参数</h3>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+								</div>
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:490px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content warning">
+							<div class="dialog_body">
+								<p class="msg">
+									<br/>
+									<br/>
+									确定要删除 <span class="red">我是你姐姐</span> 吗？
+								</p>
+							</div>
+							<div class="dialog_buttons tc">
+								<input type="button" class="input-submit" />
+								<input type="button" class="input-cancel" />
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:490px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content transmit">
+							<h2>转发设定 <a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+							<div class="dialog_body">
+								<p class="t">
+									<span>将日志</span>
+									<input type="text" class="input-text" value="说点什么吧，占位符" />
+								</p>
+								<p class="t">
+									<span>转发到</span>
+									<select class="t">
+										<option>默认分类</option>
+										<option>默认分类</option>
+										<option>默认分类</option>
+									</select>
+								</p>
+							</div>
+							<div class="dialog_buttons tc">
+								<input type="button" class="input-submit large" />
+								<input type="button" class="input-cancel large" />
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:850px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content">
+							<h2>照片名称 <a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+							<div class="dialog_body">
+								<div class="large-pic"><img src="images/person.png" id="large_pic" height="600" width="800" />
+								</div>
+								<div class="blank"></div>
+								<div class="pic-lists control clearfix">
+									<a href="javascript:;" class="left" id="prev">left</a>
+									<div class="p-list" id="pic_list">
+										<ul>
+											<li>
+												<img src="http://fmn.rrimg.com/fmn059/20120221/1645/p_large_acEO_136e00003aeb125d.jpg" width="56" height="56" class="selected"/>
+											</li>
+											<li>
+												<img src="http://fmn.rrimg.com/fmn059/20120220/1640/p_large_piJN_452d00000a52125f.jpg" width="56" height="56"/>
+											</li>
+											<li>
+												<img src="http://fmn.rrfmn.com/fmn058/20120220/1640/p_large_BXHZ_452d00000a4d125f.jpg" width="56" height="56"/>
+											</li>
+											<li>
+												<img src="http://fmn.rrimg.com/fmn059/20120219/1655/p_large_3jWs_2d2300008f4d1260.jpg" width="56" height="56"/>
+											</li>
+											<li>
+												<img src="http://fmn.rrimg.com/fmn060/20120218/1030/p_large_cnwx_26f4000012811260.jpg" width="56" height="56"/>
+											</li>
+											<li>
+												<img src="images/person.png" width="56" height="56"/>
+											</li>
+											<li>
+												<img src="http://fmn.rrfmn.com/fmn058/20120220/1640/p_large_BXHZ_452d00000a4d125f.jpg" width="56" height="56"/>
+											</li>
+											<li>
+												<img src="http://fmn.rrfmn.com/fmn058/20120220/1640/p_large_BXHZ_452d00000a4d125f.jpg" width="56" height="56"/>
+											</li>
+											<li>
+												<img src="http://fmn.rrfmn.com/fmn058/20120220/1640/p_large_BXHZ_452d00000a4d125f.jpg" width="56" height="56"/>
+											</li>
+											<li>
+												<img src="http://fmn.rrfmn.com/fmn058/20120220/1640/p_large_BXHZ_452d00000a4d125f.jpg" width="56" height="56"/>
+											</li>
+										</ul>
+									</div>
+									<a href="javascript:;" class="right" id="next">right</a>
+								</div>
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:850px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content exit-popup">
+							<h2>活动保存打印设定 <a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+							<div class="dialog_body setting">
+								<ul class="item f14">
+									<li class="clearfix">
+										<span>
+											<input type="checkbox" id="posts455" />
+											<label for="posts455">未读贴</label> </span><span>
+											<input type="checkbox" id="posts455" />
+											<label for="posts455">未读贴</label> </span><span>
+											<input type="checkbox" id="posts455" />
+											<label for="posts455">未读贴</label> </span><span>
+											<input type="checkbox" id="posts455" />
+											<label for="posts455">未读贴</label> </span>
+									</li>
+									<li class="clearfix">
+										<span>
+											<input type="checkbox" id="posts455" />
+											<label for="posts455">未读贴</label> </span>
+									</li>
+									<li class="clearfix">
+										<span>
+											<input type="checkbox" id="posts455" />
+											<label for="posts455">未读贴</label> </span>
+									</li>
+								</ul>
+								<div class="blank"></div>
+								<div>
+									<ul class="b">
+										<li class="left">
+											<select class="input-text">
+												<option>PDF格式</option>
+												<option>其他格式  　　 </option>
+											</select>
+										</li>
+										<li class="left">
+											<a href="#" class="input-save">保存</a>
+										</li>
+										<li class="left">
+											<a href="#" class="input-print">打印</a>
+										</li>
+										<li class="left">
+											<a href="#" class="input-cancel">关闭</a>
+										</li>
+									</ul>
+								</div>
+								<div class="blank"></div>
+								<div class="control">
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+									<br/>
+								</div>
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:820px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content">
+							<h2>学校查找 <a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+							<div class="dialog_body">
+								<div class="control select-bar clearfix">
+									<a href="" class="selected">选择国家</a><a href="">选择州省</a><a href="">选择的城市</a><a href="" class="right">返回上一层</a>
+								</div>
+								<div class="blank"></div>
+								<div class="select-box clearfix">
+									<dl class="item">
+										<dt>
+											<strong>A</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>B</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>C</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>D</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>E</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>F</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>G</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>H</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>I</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>J</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>K</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>L</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>M</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>N</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>O</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>P</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>Q</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>R</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>S</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>T</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>U</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>V</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>W</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>X</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>Y</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+									<dl class="item">
+										<dt>
+											<strong>Z</strong><em>|</em>
+										</dt>
+										<dd>
+											<a href="#">美国</a><a href="#">奥地利</a><a href="#">美国</a><a href="#">奥地利</a><a href="#">美国</a><a href="#">奥地利</a><a href="#">美国</a><a href="#">奥地利</a><a href="#">美国</a><a href="#">奥地利</a><a href="#">美国</a><a href="#">奥地利</a><a href="#">美国</a><a href="#">奥地利</a><a href="#">美国</a><a href="#">奥地利</a><a href="#">美国</a><a href="#">奥地利</a>
+										</dd>
+									</dl>
+								</div>
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:630px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content exit-popup">
+							<h2>确认退出吗？ <a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+							<div class="dialog_body">
+								<p class="f14">
+									您是唯一的超级管理员，你想
+									<select class="input-text">
+										<option>保留</option>
+									</select>
+									该圈子/活动。
+								</p>
+								<div class="blank"></div>
+								<div class="control clearfix">
+									<div class="b left">
+										<ul>
+											<li>
+												<input type="checkbox" />
+												<img src="images/map.png" width="25" height="25" /><a href="">我是一条测试数据，你想知道我下面要说什么吗？</a>
+											</li>
+											<li class="selected">
+												<input type="checkbox" />
+												<img src="images/map.png" width="25" height="25" /><a href="">测试数据测试数据测试数据测试数据测试数据</a>
+											</li>
+											<li>
+												<input type="checkbox" />
+												<img src="images/map.png" width="25" height="25" /><a href="">测试数据测试数据测试数据测试数据测试数据</a>
+											</li>
+											<li>
+												<input type="checkbox" />
+												<img src="images/map.png" width="25" height="25" /><a href="">测试数据测试数据测试数据测试数据测试数据</a>
+											</li>
+											<li>
+												<input type="checkbox" />
+												<img src="images/map.png" width="25" height="25" /><a href="">测试数据测试数据测试数据测试数据测试数据</a>
+											</li>
+										</ul>
+									</div>
+									<div class="s-bar">
+										<a class="left" href="javascript:;">left</a><a class="right" href="javascript:;">right</a>
+									</div>
+									<div class="b right">
+										<ul>
+											<li>
+												<input type="checkbox" />
+												<img src="images/map.png" width="25" height="25" /><a href="">测试数据测试数据测试数据测试数据测试数据</a>
+											</li>
+											<li>
+												<input type="checkbox" />
+												<img src="images/map.png" width="25" height="25" /><a href="">测试数据测试数据测试数据测试数据测试数据</a>
+											</li>
+											<li>
+												<input type="checkbox" />
+												<img src="images/map.png" width="25" height="25" /><a href="">测试数据测试数据测试数据测试数据测试数据</a>
+											</li>
+											<li class="selected">
+												<input type="checkbox" />
+												<img src="images/map.png" width="25" height="25" /><a href="">测试数据测试数据测试数据测试数据测试数据</a>
+											</li>
+											<li>
+												<input type="checkbox" />
+												<img src="images/map.png" width="25" height="25" /><a href="">测试数据测试数据测试数据测试数据测试数据</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="blank"></div>
+								<p class="f14">
+									退出理由：
+								</p>
+								<div class="textarea">
+									<textarea placeholder="请输入内容"></textarea>
+								</div>
+							</div>
+							<div class="dialog_buttons">
+								<input type="button" class="input-submit">
+								<input type="button" value="取消" class="input-cancel">
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:820px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content">
+							<h2>景点搜索 <a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+							<div class="dialog_body">
+								<div class="control select-bar clearfix">
+									<a href="" class="selected">列表查找</a><a href="">地图查找</a>
+								</div>
+								<div class="blank"></div>
+								<div class="pic-lists clearfix s">
+									<a href="javascript:;" class="l" id="keyprev">&lt;</a>
+									<div class="p-list" id="key_list">
+										<ul>
+											<li>
+												<a href="">运动</a>
+											</li>
+											<li>
+												<a href="">运动</a>
+											</li>
+											<li>
+												<a href="">运动</a>
+											</li>
+											<li>
+												<a href="">运动</a>
+											</li>
+											<li>
+												<a href="">运动</a>
+											</li>
+											<li>
+												<a href="">运动</a>
+											</li>
+											<li>
+												<a href="">运动</a>
+											</li>
+											<li>
+												<a href="">运动</a>
+											</li>
+											<li>
+												<a href="">运动</a>
+											</li>
+											<li>
+												<a href="">运动</a>
+											</li>
+										</ul>
+									</div>
+									<a href="javascript:;" class="r" id="keynext">&gt;</a>
+								</div>
+								<div class="blank"></div>
+								<div class="select-box hauto">
+									<ul class="s clearfix">
+										<li class="left">
+											<select class="input-text">
+												<option>洲省  　 </option>
+											</select>
+										</li>
+										<li class="left">
+											<select class="input-text">
+												<option>城市  　 </option>
+											</select>
+										</li>
+										<li>
+											<input type="text" class="input-text" />
+										</li>
+										<li>
+											<a href="#" class="search-btn">搜索</a>
+										</li>
+										<li class="right">
+											<a href="" class="l"></a><span>1/20</span><a href="" class="r"></a>
+										</li>
+									</ul>
+									<div class="blank"></div>
+									<div class="sight-list clearfix">
+										<div class="item">
+											<p>
+												<a href="" class="f14 lblue">·测试信息，测试信息，测试信息，测试信息</a><span>时间段：<em class="lblue">11-11/12-12</em></span><span>地点：<em class="lblue">附近的刷卡记录聊聊</em></span>
+											</p>
+											<p class="c-999">
+												这十分激动死啦记录了苏打绿，就雷锋精神多了啊。
+											</p>
+											<a href="" class="selected">选择</a>
+										</div>
+										<div class="item">
+											<p>
+												<a href="" class="f14 lblue">·测试信息，测试信息，测试信息，测试信息</a><span>时间段：<em class="lblue">11-11/12-12</em></span><span>地点：<em class="lblue">附近的刷卡记录聊聊</em></span>
+											</p>
+											<p class="c-999">
+												这十分激动死啦记录了苏打绿，就雷锋精神多了啊。
+											</p>
+											<a href="" class="selected">选择</a>
+										</div>
+										<div class="item">
+											<p>
+												<a href="" class="f14 lblue">·测试信息，测试信息，测试信息，测试信息</a><span>时间段：<em class="lblue">11-11/12-12</em></span><span>地点：<em class="lblue">附近的刷卡记录聊聊</em></span>
+											</p>
+											<p class="c-999">
+												这十分激动死啦记录了苏打绿，就雷锋精神多了啊。
+											</p>
+											<a href="" class="selected">选择</a>
+										</div>
+										<div class="item">
+											<p>
+												<a href="" class="f14 lblue">·测试信息，测试信息，测试信息，测试信息</a><span>时间段：<em class="lblue">11-11/12-12</em></span><span>地点：<em class="lblue">附近的刷卡记录聊聊</em></span>
+											</p>
+											<p class="c-999">
+												这十分激动死啦记录了苏打绿，就雷锋精神多了啊。
+											</p>
+											<a href="" class="selected">选择</a>
+										</div>
+										<div class="item">
+											<p>
+												<a href="" class="f14 lblue">·测试信息，测试信息，测试信息，测试信息</a><span>时间段：<em class="lblue">11-11/12-12</em></span><span>地点：<em class="lblue">附近的刷卡记录聊聊</em></span>
+											</p>
+											<p class="c-999">
+												这十分激动死啦记录了苏打绿，就雷锋精神多了啊。
+											</p>
+											<a href="" class="selected">选择</a>
+										</div>
+										<div class="item">
+											<p>
+												<a href="" class="f14 lblue">·测试信息，测试信息，测试信息，测试信息</a><span>时间段：<em class="lblue">11-11/12-12</em></span><span>地点：<em class="lblue">附近的刷卡记录聊聊</em></span>
+											</p>
+											<p class="c-999">
+												这十分激动死啦记录了苏打绿，就雷锋精神多了啊。
+											</p>
+											<a href="" class="selected">选择</a>
+										</div>
+									</div>
+									<div class="blank"></div>
+									<ul class="s clearfix">
+										<li class="right">
+											<a href="" class="l"></a><span>1/20</span><a href="" class="r"></a>
+										</li>
+									</ul>
+									<div class="blank"></div>
+								</div>
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:770px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content">
+							<h2>好友查找 <a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+							<div class="dialog_body transmit sf clearfix">
+								<div class="l">
+									<p class="t">
+										<input type="text" placeholder="请输入好友姓名" class="input-text">
+										<select class="t">
+											<option>默认分类</option>
+											<option>默认分类</option>
+											<option>默认分类</option>
+										</select>
+										<a href="#" class="btn"></a>
+									</p>
+									<div class="blank"></div>
+									<ul class="s clearfix">
+										<li class="left">
+											<input type="checkbox" />
+											<a href="" class="btn">添加</a>
+										</li>
+										<li class="right">
+											<a class="l" href=""></a><span>1/20</span><a class="r" href=""></a>
+										</li>
+									</ul>
+									<div class="blank"></div>
+									<ul class="l">
+										<li>
+											<input type="checkbox">
+											<img width="25" height="25" src="images/map.png"><span>[分组名称]</span><a href="" class="name">测试数据！测试数据！测试出局！测试数据！测试数据！测试数据！测试数据！测试数据！测试数据！测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<img width="25" height="25" src="images/map.png"><span>[分组名称]</span><a href="" class="name">测试数据！测试数据！测试出局！测试数据！测试数据！测试数据！测试数据！测试数据！测试数据！测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<img width="25" height="25" src="images/map.png"><span>[分组名称]</span><a href="" class="name">测试数据！测试数据！测试出局！测试数据！测试数据！测试数据！测试数据！测试数据！测试数据！测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<img width="25" height="25" src="images/map.png"><span>[分组名称]</span><a href="" class="name">福建省打开</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<img width="25" height="25" src="images/map.png"><span>[分组名称]</span><a href="" class="name">福建省打开</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<img width="25" height="25" src="images/map.png"><span>[分组名称]</span><a href="" class="name">福建省打开</a><a class="selected" href="">选择</a>
+										</li>
+									</ul>
+									<div class="blank"></div>
+									<ul class="s clearfix">
+										<li class="left">
+											<input type="checkbox" />
+											<a href="" class="btn">添加</a>
+										</li>
+										<li class="right">
+											<a class="l" href=""></a><span>1/20</span><a class="r" href=""></a>
+										</li>
+									</ul>
+									<div class="blank"></div>
+								</div>
+								<div class="r">
+									<ul>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">我是测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">我是测试数据！我是测试数据！我是测试数据！我是测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">我是测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">我是测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">我是测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">我是测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">我是测试数据！我是测试数据！我是测试数据！我是测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">我是测试数据！我是测试数据！我是测试数据！我是测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">我是测试数据！我是测试数据！我是测试数据！我是测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">我是测试数据！我是测试数据！我是测试数据！我是测试数据！</a><a class="selected" href="">选择</a>
+										</li>
+									</ul>
+									<div class="blank"></div>
+									<div class="dialog_buttons clearfix">
+										<label class="left">
+											<input type="checkbox" />
+											全选</label><a class="input-submit"></a><a class="input-cancel">移除</a>
+									</div>
+								</div>
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:770px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content">
+						<div class="dialog_content">
+							<h2>圈子查找 <a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+							<div class="dialog_body transmit sf clearfix">
+								<div class="l">
+									<p class="t">
+										<input type="text" value="" class="input-text" placeholder="说点什么吧，占位符" style="width:310px!important;"/>
+										<a href="#" class="btn"></a>
+									</p>
+									<div class="blank"></div>
+									<ul class="s clearfix">
+										<li class="left">
+											<input type="checkbox" />
+											<a href="" class="btn">添加</a>
+										</li>
+										<li class="right">
+											<a class="l" href=""></a><span>1/20</span><a class="r" href=""></a>
+										</li>
+									</ul>
+									<div class="blank"></div>
+									<ul class="l detial" id="detial">
+										<li class="clearfix">
+											<div class="left">
+												<input type="checkbox">
+												<img width="25" height="25" src="images/map.png" class="lg" />
+											</div>
+											<div class="left">
+												<a href="">福建省打开<span class="red">(250)</span></a>
+												<p>
+													关注度：<span class="percent"><em class="num">45%</em><em style="width:45%;" class="pcent"></em></span> 活跃度：<span class="percent"><em class="num">90%</em><em style="width:90%;" class="pcent"></em></span>
+												</p>
+											</div>
+											<a class="selected" href="">选择</a>
+										</li>
+										<li class="clearfix">
+											<div class="left">
+												<input type="checkbox">
+												<img width="25" height="25" src="images/map.png" class="lg" />
+											</div>
+											<div class="left">
+												<a href="">福建省打开<span class="red">(250)</span></a>
+												<p>
+													关注度：<span class="percent"><em class="num">45%</em><em style="width:45%;" class="pcent"></em></span> 活跃度：<span class="percent"><em class="num">90%</em><em style="width:90%;" class="pcent"></em></span>
+												</p>
+											</div>
+											<a class="selected" href="">选择</a>
+										</li>
+										<li class="clearfix">
+											<div class="left">
+												<input type="checkbox">
+												<img width="25" height="25" src="images/map.png" class="lg" />
+											</div>
+											<div class="left">
+												<a href="">福建省打开<span class="red">(250)</span></a>
+												<p>
+													关注度：<span class="percent"><em class="num">45%</em><em style="width:45%;" class="pcent"></em></span> 活跃度：<span class="percent"><em class="num">90%</em><em style="width:90%;" class="pcent"></em></span>
+												</p>
+											</div>
+											<a class="selected" href="">选择</a>
+										</li>
+										<li class="clearfix">
+											<div class="left">
+												<input type="checkbox">
+												<img width="25" height="25" src="images/map.png" class="lg" />
+											</div>
+											<div class="left">
+												<a href="">福建省打开<span class="red">(250)</span></a>
+												<p>
+													关注度：<span class="percent"><em class="num">45%</em><em style="width:45%;" class="pcent"></em></span> 活跃度：<span class="percent"><em class="num">10%</em><em style="width:10%;" class="pcent"></em></span>
+												</p>
+											</div>
+											<a class="selected" href="">选择</a>
+										</li>
+										<li class="clearfix">
+											<div class="left">
+												<input type="checkbox">
+												<img width="25" height="25" src="images/map.png" class="lg" />
+											</div>
+											<div class="left">
+												<a href="" class="name">测试数据 ！测试数据 ！测试数据 ！测试数据 ！<span class="red">(250)</span></a>
+												<p>
+													关注度：<span class="percent"><em class="num">45%</em><em style="width:45%;" class="pcent"></em></span> 活跃度：<span class="percent"><em class="num">90%</em><em style="width:90%;" class="pcent"></em></span>
+												</p>
+											</div>
+											<a class="selected" href="">选择</a>
+										</li>
+										<li class="clearfix hover">
+											<div class="left">
+												<input type="checkbox">
+												<img width="25" height="25" src="images/map.png" class="lg" />
+											</div>
+											<div class="left">
+												<a href="" class="name">测试数据 ！测试数据 ！测试数据 ！测试数据 ！<span class="red">(250)</span></a>
+												<p>
+													关注度：<span class="percent"><em class="num">45%</em><em style="width:45%;" class="pcent"></em></span> 活跃度：<span class="percent"><em class="num">90%</em><em style="width:90%;" class="pcent"></em></span>
+												</p>
+											</div>
+											<a class="selected" href="">选择</a>
+										</li>
+									</ul>
+									<div class="blank"></div>
+									<ul class="s clearfix">
+										<li class="left">
+											<input type="checkbox" />
+											<a href="" class="btn">添加</a>
+										</li>
+										<li class="right">
+											<a class="l" href=""></a><span>1/20</span><a class="r" href=""></a>
+										</li>
+									</ul>
+									<div class="blank"></div>
+								</div>
+								<div class="r f14">
+									<ul>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">选择选择选择选择选择</a><span class="f12 red">(250)</span><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">选择选择选择选择选择</a><span class="f12 red">(250)</span><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">选择选择选择选择选择</a><span class="f12 red">(250)</span><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">选择选择选择选择选择</a><span class="f12 red">(250)</span><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">选择选择选择选择选择</a><span class="f12 red">(250)</span><a class="selected" href="">选择</a>
+										</li>
+										<li class="selected">
+											<input type="checkbox">
+											<a href="" class="desc">选择选择选择选择选择</a><span class="f12 red">(250)</span><a class="selected" href="">选择</a>
+										</li>
+										<li>
+											<input type="checkbox">
+											<a href="" class="desc">选择选择选择选择选择</a><span class="f12 red">(250)</span><a class="selected" href="">选择</a>
+										</li>
+									</ul>
+									<div class="blank"></div>
+									<div class="dialog_buttons clearfix">
+										<a class="input-submit"></a><a class="input-cancel">移除</a>
+									</div>
+								</div>
+							</div>
+						</div></td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="blank"></div>
+		<div style="width:470px;margin:0 auto;">
+			<div class="pop_dialog">
+				<div class="pop_content">
+					<ul class="item f14">
+						<li class="clearfix">
+							<span>
+								<input type="checkbox" id="posts" />
+								<label for="posts">未读贴</label> </span>
+						</li>
+						<li class="clearfix">
+							<select class="input-text">
+								<option>洲省</option>
+								<option>城市城市</option>
+							</select>
+							<select class="input-text">
+								<option>城市</option>
+								<option>城市城市</option>
+							</select>
+						</li>
+						<li class="clearfix">
+							<span>
+								<input type="checkbox" id="posts1" />
+								<label for="posts1">未读贴</label> </span>
+						</li>
+						<li class="clearfix">
+							<span>
+								<input type="checkbox" id="posts2" />
+								<label for="posts2">未读贴</label> </span>
+						</li>
+					</ul>
+				</div>
+				<div class="pop_buttons clearfix">
+					<input type="checkbox" class="left" />
+					<a href="#" class="btn">关闭</a><a href="#" class="btn">确定</a>
+				</div>
+			</div>
+		</div>
+		<div class="blank"></div>
+		<div style="width:470px;margin:0 auto;">
+			<div class="pop_dialog">
+				<div class="pop_content">
+					<ul class="item f14">
+						<li class="clearfix">
+							<span>
+								<input type="checkbox" id="posts3" />
+								<label for="posts3">未读贴</label> </span>
+						</li>
+						<li class="clearfix">
+							<span>
+								<input type="checkbox" id="posts4" />
+								<label for="posts4">未读贴</label> </span>
+						</li>
+					</ul>
+				</div>
+				<div class="pop_buttons clearfix">
+					<input type="checkbox" class="left" />
+					<a href="#" class="btn">关闭</a><a href="#" class="btn">确定</a>
+				</div>
+			</div>
+		</div>
+		<div class="blank"></div>
+		<div style="width:470px;margin:0 auto;">
+			<div class="pop_dialog">
+				<div class="pop_content">
+					<ul class="item f14">
+						<li class="clearfix">
+							<span>
+								<input type="checkbox" id="posts145" />
+								<label for="posts145">未读贴</label> </span>
+						</li>
+						<li class="clearfix">
+							<div class="bl">
+								<span>
+									<input type="checkbox" id="posts00" />
+									<label class="fb" for="posts00">分类一</label> </span>
+							</div>
+							<div class="br">
+								<span>
+									<input type="checkbox" id="posts45" />
+									<label for="posts45">未读贴</label> </span>
+							</div>
+						</li>
+						<li class="clearfix">
+							<div class="bl">
+								<span>
+									<input type="checkbox" id="posts7" />
+									<label for="posts7" class="fb">分类二</label> </span>
+							</div>
+							<div class="br">
+								<span>
+									<input type="checkbox" id="posts455" />
+									<label for="posts455">未读贴</label> </span>
+							</div>
+						</li>
+						<li class="clearfix">
+							<span>
+								<input type="checkbox" id="posts4145" />
+								<label for="posts4145">未读贴</label> </span>
+						</li>
+					</ul>
+				</div>
+				<div class="pop_buttons clearfix">
+					<input type="checkbox" class="left" />
+					<a href="#" class="btn">关闭</a><a href="#" class="btn">确定</a>
+				</div>
+			</div>
+		</div>
+		<div class="blank"></div>
+        
+        
+           <div style="width:710px;margin: 0 auto;">
+			<table class="pop_dialog_table" style="width: 100%; height: 100%;">
+				<tbody>
+					<tr>
+						<td class="pop_topleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_topright"></td>
+					</tr>
+					<tr>
+						<td class="pop_border"></td>
+						<td class="pop_content" style="background:#F9FDFF;">
+                       	   <h2>自定义权限设置<a href="javascript:;" class="close" title="关闭">关闭</a></h2>
+                        	<div id="Sfrist_box" class="Sfrist_box" style="width:auto; margin:0 10px 10px 10px;">
+                            <div class="Ssecond_box_con" style=" padding:10px; border:none;">
+                   
+                        	<div class="custom_box clearfix">
+                            	<ul>
+                                	<li><label>自定义权限名 1 </label><a href="#"></a><a href="#" class="custom_bg"></a></li>
+                                    <li><label>自定义权限名 2 </label><a href="#"></a><a href="#" class="custom_bg"></a></li>
+                                    <li><label>自定义权限名 3 </label><a href="#"></a><a href="#" class="custom_bg"></a></li>
+                                </ul>
+                            </div>
+                            <div class="custom_box01 clearfix">
+                            	<ul>
+                                	<li class="custom_tit">自定义权限</li>
+                                    <li class="custom_qx"><label>权限名：</label><input name="" type="text"></li>
+                                    <li class="custom_ts">对他们可见 <font color="#E84C4F">(可多条件输入，结果为所有条件的并集)</font></li>
+                                    <li class="custom_friend clearfix" >
+                                    	<label>1</label><select name="select">
+                                          <option value="1">话题分类</option>
+                                          <option value="2">帖子分类</option>
+                                          <option value="3">辩论分类</option>
+                		  				</select>
+                                        <label>2</label><select name="select">
+                                          <option value="1">话题分类</option>
+                                          <option value="2">帖子分类</option>
+                                          <option value="3">辩论分类</option>
+                		  				</select>
+                                        <label>3</label>
+                                        <input name="" type="text" class="cus_inp">
+                                        <input name="" type="button" value="添加" class="cus_but">
+                                    </li>
+                                    <li class="custom_tj">
+                                    	<span>条件1<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                    </li>
+                                    <li>对他们不可见<font color="#E84C4F">(可多条件输入，结果为所有条件的并集)</font></li>
+                                    <li class="custom_xz clearfix">
+                                    	<input name="" type="text" class="cus_inp m0">
+                                        <input name="" type="button" value="添加" class="cus_but">
+                                    </li>
+                                    <li class="custom_tj custom_bg01">
+                                    	<span>条件1<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                        <span>条件2<a href="#"><img src="images/list/set_icon06.jpg"></a></span>
+                                    </li>
+                                    <li><input name="" type="button" value="保存" class="hobby_but close"><input name="" type="button" value="取消" class="hobby_but01 close"></li>
+                                </ul>
+                            </div>
+                        </div>
+                      </div>
+                        
+						</td>
+						<td class="pop_border"></td>
+					</tr>
+					<tr>
+						<td class="pop_bottomleft"></td>
+						<td class="pop_border"></td>
+						<td class="pop_bottomright"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+        
+        
+        
+	</body>
+</html>

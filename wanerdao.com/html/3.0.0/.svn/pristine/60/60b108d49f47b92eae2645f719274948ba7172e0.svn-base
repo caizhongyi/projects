@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>CreateGroup-关系-玩儿道</title>
+
+<meta name="keywords" content="CreateGroup，Group信息，邀请User，关系，玩儿道，Activity组织的生活社交网络"/>
+<meta name="description"
+      content="填写必要Group信息完成GroupCreate，并可以发出邀请"/>
+
+
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/relationship.css"/>
+
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+
+<style type="text/css">
+    body{ background: #fff ; font-size:12px;}
+    .mod-gray{ width: 600px; margin: 10px; }
+</style>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Basic information
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item mod-line">
+            <button class="btn large-light-blue-btn"><i class="icon icon-book"></i>Address book</button>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Address:</span><input type="text" class="text text-large"/></label><label for=""><span class="input-control">Zip code:</span><input type="text" class="text text-small"/></label>
+            <div class="form-panel">
+                <div class="push-item">
+                       <span class="combo text-mini" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">国家</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><span class="combo  text-mini" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">省</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><span class="combo text-medium" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">City</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Date:</span></label><span class="input-control">from</span><span class="input-append text-medium">
+                    <label class="input-inner">
+                        <input type="text" class="text"/>
+                        <a href="javascript:;" class="input-icon"><i class="icon-gray-date"></i></a>
+                    </label>
+                </span><span class="input-control">to</span><span class="input-append text-medium">
+                    <label class="input-inner">
+                        <input type="text" class="text"/>
+                        <a href="javascript:;" class="input-icon"><i class="icon-gray-date"></i></a>
+                    </label>
+                </span>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Category tag:</span><input type="text" class="text  text-large"/><a href="javascript:;" class="btn btn-gray btn-mini">Add</a></label>
+            <span class="tipbox tipbox-arrow name-list">
+                <i class="arrow"></i>
+                <ul class="acount-list">
+                    <li>01&nbsp;Category标记 <span class="opts"><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                    <li>01&nbsp;Category标记 <span class="opts"><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                    <li>01&nbsp;Category标记 <span class="opts"><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                </ul>
+            </span>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Name:</span><input type="text" class="text  text-large"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Description:</span><textarea class="textarea"></textarea></label>
+        </div>
+        <div class="form-item">
+            <label class="checkbox form-panel"><input type="checkbox"/>Public</label> <label class="checkbox"><input type="checkbox"/>Can be searched</label>
+        </div>
+
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Prepayment settings
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item">
+            <label for=""><span class="input-label-small">Prepayment:</span><span class="combo text-large" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">Year</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span></label>
+        </div>
+        <div class="form-item">
+            <label for=""><span class="input-label-small">All members/Non-group members:</span><input type="text" class="text text-medium"/></label><span class="text-control">each
+            </span><input type="text" class="text text-mini"/><span class="combo text-mini" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">Year</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span>
+        </div>
+        <div class="form-item">
+            <label for=""><span class="input-label-small">Group members:</span><input type="text" class="text text-medium"/></label><span class="text-control">each
+            </span><input type="text" class="text text-mini"/><span class="combo text-mini" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">Year</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span>
+        </div>
+        <div class="form-item">
+            <label for=""><span class="input-label-small">Payment method:</span><span class="combo text-large" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Paypal</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+        </div>
+        <div class="form-item">
+            <label for=""><span class="input-label-small">Description:</span><input type="text" class="text  text-large"/><a href="javascript:;" class="btn btn-gray btn-mini">Add</a></label>
+            <span class="tipbox tipbox-arrow name-list">
+                <i class="arrow"></i>
+                <ul class="acount-list">
+                    <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                    <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                    <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                </ul>
+            </span>
+        </div>
+
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Join conditions settings
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item">
+            <label class="input-control"><span class="input-label-mini">Join conditions: </span><span class="combo text-small" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">无条件</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+           </span></label><span class="combo text-small" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">无条件</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span><input type="text" class="text"/><a href="javascript:;" class="btn btn-gray btn-mini">Add</a>
+            <div class="tipbox tipbox-arrow name-list">
+                <i class="arrow"></i>
+                <ul class="acount-list grid">
+                    <li class="clearfix"><span class="span1">01</span><span class="span3">条件名目</span><span class="span4">判断条件</span><span class="span4">条件值</span><span class="opts"><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                    <li class="clearfix muted"><span class="span1">01</span><span class="span3">条件名目</span><span class="span4">判断条件</span><span class="span4">条件值</span><span class="opts"><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                    <li class="clearfix muted"><span class="span1">01</span><span class="span3">条件名目</span><span class="span4">判断条件</span><span class="span4">条件值</span><span class="opts"><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Signup settings
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item">
+            <label><span class="input-label-mini">Member limitation:</span><input type="text" class="text text-xlarge"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label-mini">Join deadline:</span><input type="text" class="text text-xlarge"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label-mini">Join method:</span><span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Approve to join</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><input type="text" class="text text-medium" style="width: 178px;"/>
+        </div>
+    </div>
+</div>
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+</body>
+</html>

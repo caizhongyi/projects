@@ -1,0 +1,40 @@
+﻿DELIMITER $$
+
+USE `wanerdao1202`$$
+
+DROP VIEW IF EXISTS `v_getactivityformain`$$
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_getactivityformain` AS (
+SELECT
+  `a`.`id`              AS `id`,
+  GROUP_CONCAT(`acs`.`id` SEPARATOR ',') AS `categoryall`,
+  GROUP_CONCAT(`acs`.`parent_id` SEPARATOR ',') AS `parent_idall`,
+  `a`.`datetime`        AS `createtime`,
+  `ac`.`category_id`    AS `category_id`,
+  `acs`.`parent_id`     AS `parent_id`,
+  `a`.`activity_name`   AS `activity_name`,
+  `a`.`active_link`     AS `active_link`,
+  `ps`.`name`           AS `create_name`,
+  `a`.`description`     AS `description`,
+  `a`.`max_nbr`         AS `max_nbr`,
+  `acs`.`category_name` AS `category_name`,
+  `a`.`join_member_nbr` AS `join_member_nbr`,
+  `a`.`address`         AS `address`,
+  `a`.`begin_datetime`  AS `begin_datetime`,
+  `a`.`end_datetime`    AS `end_datetime`,
+  `a`.`report_datetime` AS `report_datetime`,
+  `acs`.`logo_path`     AS `logo_path`,
+  CAST((`a`.`begin_datetime` + INTERVAL -(1) DAY) AS DATE) AS `report_end_datetime`,
+  `a`.`prepay_nbr`      AS `prepay_nbr`
+FROM (((`activity` `a`
+     JOIN `activitycategory` `ac`
+       ON ((`a`.`id` = `ac`.`activity_id`)))
+    JOIN `personalprofile` `ps`
+      ON ((`ps`.`user_id` = `a`.`create_id`)))
+   JOIN `activitycategorysettings` `acs`
+     ON ((CONVERT(`acs`.`id` USING utf8) = `ac`.`category_id`)))
+WHERE ((`a`.`active` = 1)
+       AND (`a`.`is_visible` = 1))
+GROUP BY `a`.`id`)$$
+
+DELIMITER ;

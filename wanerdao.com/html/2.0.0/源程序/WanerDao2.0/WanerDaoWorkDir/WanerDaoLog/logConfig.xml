@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+        <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net" />
+    </configSections>
+
+    <log4net>
+        <appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
+            <file value="../WanerDaoWorkDir/log/" />
+            <param name="AppendToFile" value="true" />
+            <param name="RollingStyle" value="Date" />
+            <param name="DatePattern" value="yyyyMMdd&quot;.log&quot;" />
+            <param name="StaticLogFileName" value="false" />
+            <layout type="log4net.Layout.PatternLayout">
+                <conversionPattern value="%date [%thread] %-5level %logger  - %message%newline" />
+            </layout>
+        </appender>
+        <!--轮询日志记录-->
+        <appender name="PollingFileLog" type="log4net.Appender.PollingFileLog">
+            <file value="../WanerDaoWorkDir/log/PollingService.txt" />
+            <param name="AppendToFile" value="true" />
+            <param name="RollingStyle" value="Size" />
+            <param name="MaximumFileSize" value="1MB" />
+            <param name="StaticLogFileName" value="true" />
+            <layout type="log4net.Layout.PatternLayout">
+                <conversionPattern value="%date [%thread] %-5level %logger  - %message%newline" />
+            </layout>
+        </appender>
+        <logger name="PollingLog">
+            <level value="INFO" />
+            <appender-ref ref="PollingFileLog" />
+        </logger>
+        <root>
+            <level value="ALL" />
+            <appender-ref ref="RollingFileAppender" />
+            <!--<appender-ref ref="PollingFileLog" />-->
+        </root>
+    </log4net>
+    <connectionStrings/>
+
+
+</configuration>

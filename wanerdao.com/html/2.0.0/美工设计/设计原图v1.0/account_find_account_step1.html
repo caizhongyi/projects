@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link href="style/account.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<!--头部-->
+	<div class="head">
+    	<div class="jz">
+        	<div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+        </div>
+    </div>
+    <!--头部end-->
+    <!--主体-->
+    <div class="jz yh">
+    	<div class="account">
+        	<div class="sub_nav">
+                <a href="#">用户登录</a>
+                <a href="#">新用户注册</a>
+                <a href="#" class="active">找回帐号</a>
+                <a href="#">找回密码</a>
+            </div>
+            <div class="layout_t"></div>
+            <div class="layout_m">
+                <ul class="account_nav">
+                    <li class="visited"><i>1</i><span>输入注册邮箱</span></li>
+                    <li class="link"><i>2</i><span>回答安全问题</span></li>
+                    <li class="link"><i>3</i><span>重新登录</span></li>
+                </ul>
+                <form  class='accout_edit_form' name="myForm">
+                <table width="100%" height="170" border="0" cellspacing="1">
+                  <tr>
+                    <td width="26%" height="44" align="right" class="f14">请输入安全邮箱：</td>
+                    <td width="74%"><div class="relate"><input type="text" id="mail" class="input_a" />
+                    <div id="wrongMailTip" class="wrongTip" style="left:260px; top:-18px;">
+                        <div class="WtTop"></div>
+                        <div class="WtCon">
+                            <em>错误提示</em>
+                            <p>您输入的邮箱格式有误。</p>
+                            <a href="javascript:void(0)" class="close" onclick="this.parentNode.parentNode.style.display='none'">关闭</a>
+                        </div>
+                        <div class="WtBtm"></div>
+                        <ins></ins>
+                    </div>
+                    </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="right">&nbsp;</td>
+                    <td><a href="javascript:void(0);" onclick="checkform()" class="btn_137x32">下一步</a></td>
+                  </tr>
+                </table>
+                </form>
+
+                <br/>
+                <br/>
+                <br/>
+            </div>
+            <div class="layout_b"></div>
+    		<!--底部-->
+            <div class="foot">
+                <span class="left"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></span>
+                <span class="right">版权所有 &copy;玩儿道</span>
+            </div>
+    		<!--底部end-->
+        </div>
+    </div>
+    <!--主体end-->
+
+<!--页面脚本区-->
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript">
+	var mail = document.getElementById("mail");
+	var wrongMailTip = document.getElementById("wrongMailTip");
+	function checkform() {
+		if(mail.value != '') {
+			if(!Isyx(mail.value)){ 
+				wrongMailTip.style.display = "block";
+				mail.focus(); 
+				return false; 
+			}else{
+				alert("成功")	
+			}
+		}else{
+			wrongMailTip.style.display = "block";
+			mail.focus(); 
+			return false; 
+		}
+	}
+	function Isyx(yx){
+		var reyx= /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+		return(reyx.test(yx));
+	}
+</script>
+</body>
+</html>

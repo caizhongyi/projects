@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <tableIndexSetting>
+    <!--数据库需要建立索引的表名称 -->
+    
+    <!--个人-->
+    <add tableName="SELECT
+	pp.user_id,
+	pp. NAME,
+	pp.logo_small_path,
+	GetFullCountryByid (
+		current_country_id,
+		current_state_id,
+		current_city_id,
+		?language_id
+	) AS current_address,
+	GetFullCountryByid (
+		birth_country_id,
+		birth_state_id,
+		birth_city_id,
+		?language_id
+	) AS hometown,
+	pp.constellation,
+	pw.company_name,
+	pe.school_name
+FROM
+	personalprofile pp
+LEFT JOIN PersonalWork pw ON (
+	pp.user_id = pw.user_id
+	AND pw.is_present = TRUE
+)
+LEFT JOIN (
+	SELECT
+		pe1.school_name,
+		pe1.use_id
+	FROM
+		personaleducation pe1
+	WHERE
+		pe1.id = (
+			SELECT
+				pe2.id
+			FROM
+				personaleducation pe2
+			WHERE
+				pe2.use_id = pe1.use_id
+			AND pe2.active = TRUE
+			ORDER BY
+				pe2.school_type ASC,
+				pe2.end_year DESC,
+				pe2.end_month DESC
+			LIMIT 1
+		)
+) pe ON (pp.user_id = pe.use_id)
+WHERE
+	pp.active = TRUE"
+  indexColumn="name" tableCategory="Person"  otherColumn="user_id,logo_small_path,current_address,hometown,constellation,school_name,company_name"/>
+    <!--暂时先返回中文版本-->
+    
+    <!--圈子-->
+    <add tableName="select gi.id,gc.category_name,member_nbr,logo_path,group_name,summary from groupinfo gi inner join 
+			groupcategory gc on gc.id=gi.category_id and gc.language_id=?language_id"  indexColumn="group_name,summary" tableCategory="Group"
+   otherColumn="id,member_nbr,logo_path,category_name"/>
+    <!--活动-->
+    <add tableName="Activity" indexColumn="activity_name,description" tableCategory="Activity"
+  otherColumn="id,address,join_member_nbr,begin_datetime,end_datetime"/>
+
+    <!--<add tableName="select p.id,pp.name,tc.category_name,subject,content,post_datetime from Posts p join TopicCategory 
+			tc on p.category_id=tc.id join personalprofile pp on pp.user_id=p.post_id"
+   indexColumn="subject,content"  tableCategory="Posts" otherColumn="id,name,category_name,post_datetime"/>-->
+
+    <!--<add tableName="NewFeeds" indexColumn="content" tableCategory="NewFeeds" otherColumn="id,post_date" />
+
+    <add tableName="LinkFeeds" indexColumn="description"  tableCategory="LinkFeeds"  otherColumn="id,link,post_date"/>
+
+    <add tableName="select id,pp.`name`,content,post_date from LeaveMessage lm join personalprofile  
+			pp on pp.user_id=lm.to_id" indexColumn="content"  tableCategory="LeaveMessage"  otherColumn="id,name,post_date"/>
+
+    <add tableName="select sr.id,title,content,public_date,sc.category_name,st.type_name from StatusRecords 
+			sr join sourcetype st on sr.source_type_id=st.id join StatusCategorySettings sc on sr.category_id=sc.id"
+indexColumn="title,content" tableCategory="StatusRecords" otherColumn="id,public_date,category_name,type_name"/>
+
+    <add tableName="select sr.id,title,content,public_date,sc.category_name,st.type_name from GotoUSRecords 
+			sr join sourcetype st on sr.source_type_id=st.id join StatusCategorySettings sc on sr.category_id=sc.id"
+indexColumn="title,content" tableCategory="GotoUSRecords"  otherColumn="id,public_date,category_name,type_name"/>
+
+    <add tableName="select sr.id,title,content,public_date,sc.category_name,st.type_name from BackCNRecords 
+			sr join sourcetype st on sr.source_type_id=st.id join StatusCategorySettings sc on sr.category_id=sc.id"
+indexColumn="title,content" tableCategory="BackCNRecords"  otherColumn="id,public_date,category_name,type_name"/>
+
+    <add tableName="select jr.id,title,subject,company_name,description,st.type_name,location,type,payrate,
+			public_date from JobRecords jr join sourcetype st on jr.source_id=st.id"
+indexColumn="title,subject,company_name,description"
+tableCategory="JobRecords" otherColumn="id,type_name,location,type,payrate,public_date"/>
+
+    <add tableName="select sr.id,`name`,`subject`,type_name,pay_type,address,contact,price,public_date,description
+			from SalesRecords sr join sourcetype st on sr.source_type_id=st.id where sr.active=true"
+indexColumn="name,subject" tableCategory="SalesRecords"
+otherColumn="id,type_name,pay_type,address,contact,price,public_date,description"/>
+
+    <add tableName="select id,subject,pay_type,CONCAT(city,',',state) as pay_address,contact,price,description,
+			public_date from SaleAutoRecords" indexColumn="subject,description" tableCategory="SaleAutoRecords"
+ otherColumn="id,subject,pay_type,pay_address,contact,price,description,public_date"/>
+
+    <add tableName="select dr.id,st.type_name,price,public_date,subject,goods,description,content
+			from DealsRecords dr join sourcetype st on dr.source_type_id=st.id where dr.active=true"
+indexColumn="subject,goods,description,content" tableCategory="DealsRecords"
+ otherColumn="id,type_name,price,description,public_date"/>
+
+    <add tableName="select ir.id,st.type_name,ir.update_date,subject,content from InfoActivityRecords ir join sourcetype 
+			st on ir.source_type_id=st.id where ir.active=true" indexColumn="subject,content"
+   tableCategory="InfoActivityRecords" otherColumn="id,type_name,update_date"/>
+
+    <add tableName="select rr.id,house_name,subject,st.type_name,pay_type,address,contact,price,public_date,description
+			from RentalHouseRecords rr join sourcetype st on rr.source_type_id=st.id where rr.active=true"
+indexColumn="subject,house_name,description" tableCategory="RentalHouseRecords"
+ otherColumn="id,type_name,pay_type,address,contact,price,public_date"/>
+
+    <add tableName="select gm.id,gift_name,sc.category_name,sc.description from GiftsMarket gm join GiftCategory 
+			sc on gm.category_id=sc.id where gm.active=true" indexColumn="gift_name,description"
+   tableCategory="GiftsMarket" otherColumn="id,category_name,description"/>
+
+    <add tableName="select id,pp.name,post_date,title,content from PersonalBlog pb join personalprofile pp on pp.user_id=pb.user_id"
+indexColumn="title,content" tableCategory="PersonalBlog" otherColumn="id,name,post_date"/>
+
+    <add tableName="select pi.id,pp.name,image_name,image_small_path,description,upload_date from Personalimage 
+			pi join personalprofile pp on pp.user_id=pi.user_id" indexColumn="image_name,description" tableCategory="Personalimage"
+otherColumn="id,name,image_small_path,upload_date"/>
+
+    <add tableName="select pv.id,pp.name,video_name,video_code,description,upload_date from PersonalVideo pv join 
+			personalprofile pp on pp.user_id=pv.user_id" indexColumn="video_name,description" tableCategory="PersonalVideo"
+   otherColumn="id,upload_date,video_code,name"/>
+
+    <add tableName="PositionPool" indexColumn="position_id,requirements,PositionPool" tableCategory="LinkFeeds" otherColumn="id,update_date"/>
+
+    <add tableName="HelpDoc" indexColumn="doc_name,doc_content" tableCategory="HelpDoc" otherColumn="id"/>-->
+  </tableIndexSetting>
+</configuration>

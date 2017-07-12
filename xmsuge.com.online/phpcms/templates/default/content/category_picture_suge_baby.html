@@ -1,0 +1,40 @@
+{php $cur_menu = 'baby';}
+{php $load_css = array('photo');}
+{template "public","header"}
+
+<!--页头-->
+<div id="main">
+    <div id="productCats" class="flexslider">
+        <h2><span>天 使 宝 宝</span></h2>
+
+
+        {pc:content action="category" catid="13" num="4" siteid="$siteid" order="listorder ASC"}
+        <div class="semitransp">
+            <div id="galthumbs">
+                {loop $data $r}
+                {if $n%2==0 && $n!=0}
+                <a class="galthumb  left"  href="{buildurl('lists','index','content',array('catid'=>$r['catid']))}">
+                    <div class="figure"><img width="257" height="172" alt="ja1"
+                                             class="attachment-gallery-feat wp-post-image"
+                                             src="{$r['image']}"></div>
+                    <h3>{$r[catname]}</h3></a>
+                <div class="cf"></div>
+                {else}
+                <a class="galthumb  left"   href="{buildurl('lists','index','content',array('catid'=>$r['catid']))}">
+                    <div class="figure"><img width="257" height="172" alt="ja1"
+                                             class="attachment-gallery-feat wp-post-image"
+                                             src="{$r['image']}"></div>
+                    <h3>{$r[catname]}</h3></a>
+                {/if}
+                {/loop}
+            </div>
+        </div>
+    </div>
+    <!--中间图-->
+    <div id="page" class="">{$pages}</div>
+    {/pc}
+    <!--页码-->
+</div>
+
+
+{template "public","footer"}

@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{34B78607-322B-4D08-B013-351891952BB6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WanerDaoPluginService</RootNamespace>
+    <AssemblyName>WanerDaoPluginService</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Intelligencia.UrlRewriter">
+      <HintPath>..\WanerDaoDocuments\Dlls\UrlRewrite.net\Intelligencia.UrlRewriter.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WanerDaoExceptionManager\bin\Debug\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IService\ICommon\IUnitConverter.cs" />
+    <Compile Include="IService\IPerson\IPersonalCalendar.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Common\UnitConverter.svc.cs">
+      <DependentUpon>UnitConverter.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Person\PersonalCalendar.svc.cs">
+      <DependentUpon>PersonalCalendar.svc</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WanerDaoBLL\WanerDaoBLL.csproj">
+      <Project>{1F7D54F1-2D46-4126-B949-34CA86760A64}</Project>
+      <Name>WanerDaoBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoComponent\WanerDaoComponent.csproj">
+      <Project>{4A8E43A1-77E3-422E-816A-0D979FD54EAF}</Project>
+      <Name>WanerDaoComponent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoExceptionManager\WanerDaoExceptionManager.csproj">
+      <Project>{474D4B38-30EB-4513-A899-02F34330C91C}</Project>
+      <Name>WanerDaoExceptionManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoFactory\WanerDaoBLLFactory.csproj">
+      <Project>{88826250-8CAD-4F9E-8CDF-079F96E3F2BD}</Project>
+      <Name>WanerDaoBLLFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoIBLL\WanerDaoIBLL.csproj">
+      <Project>{B9214DA2-61D5-46B0-8B8E-7008616A4824}</Project>
+      <Name>WanerDaoIBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoModel\WanerDaoModel.csproj">
+      <Project>{97506175-F62F-4FC0-8886-B4FC0AF2BCEE}</Project>
+      <Name>WanerDaoModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoModule\WanerDaoModule.csproj">
+      <Project>{2DBE2894-4202-4EB2-8208-519CF7D1F90F}</Project>
+      <Name>WanerDaoModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoMySqlDAL\WanerDaoMySqlDAL.csproj">
+      <Project>{3A8B0E71-049F-4882-9851-FBD2EEFBD033}</Project>
+      <Name>WanerDaoMySqlDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="plugin2\calculator\calculator.html" />
+    <Content Include="plugin2\calculator\scripts\calc.js" />
+    <Content Include="plugin2\calendar\calendar.html" />
+    <Content Include="plugin2\calendar\images\layout_main\bg_body.png" />
+    <Content Include="plugin2\calendar\images\layout_main\bg_foot.png" />
+    <Content Include="plugin2\calendar\images\layout_main\bg_head.png" />
+    <Content Include="plugin2\calendar\images\layout_main\bg_mbg.png" />
+    <Content Include="plugin2\calendar\images\layout_main\bg_msg.png" />
+    <Content Include="plugin2\calendar\images\layout_main\bg_nav_cur.png" />
+    <Content Include="plugin2\calendar\images\layout_main\bg_tab.png" />
+    <Content Include="plugin2\calendar\images\layout_main\bg_tab_cur.png" />
+    <Content Include="plugin2\calendar\images\layout_main\bg_userName.png" />
+    <Content Include="plugin2\calendar\images\layout_main\icon_downArrow.png" />
+    <Content Include="plugin2\calendar\images\layout_main\icon_userdownArrow.png" />
+    <Content Include="plugin2\calendar\images\layout_main\img_32x32.png" />
+    <Content Include="plugin2\calendar\images\layout_main\layout_body_b.gif" />
+    <Content Include="plugin2\calendar\images\layout_main\layout_body_m.gif" />
+    <Content Include="plugin2\calendar\images\layout_main\layout_body_t.gif" />
+    <Content Include="plugin2\calendar\images\layout_main\logo.png" />
+    <Content Include="plugin2\calendar\images\layout_main\tab_option.gif" />
+    <Content Include="plugin2\calendar\scripts\operation.js" />
+    <Content Include="plugin2\images\loading.gif" />
+    <Content Include="plugin2\calendar\images\loading12.gif" />
+    <Content Include="plugin2\calendar\images\popImg\bg.gif" />
+    <Content Include="plugin2\calendar\images\popImg\bg1.gif" />
+    <Content Include="plugin2\calendar\images\popImg\bgPng.png" />
+    <Content Include="plugin2\calendar\images\popImg\btn.gif" />
+    <Content Include="plugin2\calendar\images\popImg\cbLeft.gif" />
+    <Content Include="plugin2\calendar\images\popImg\cbLeftTitle.gif" />
+    <Content Include="plugin2\calendar\images\popImg\cbRight.gif" />
+    <Content Include="plugin2\calendar\images\popImg\cBtns.png" />
+    <Content Include="plugin2\calendar\images\popImg\cmBtn.gif" />
+    <Content Include="plugin2\calendar\images\popImg\cmInput.gif" />
+    <Content Include="plugin2\calendar\images\popImg\cmInput.png" />
+    <Content Include="plugin2\calendar\images\popImg\config.png" />
+    <Content Include="plugin2\calendar\images\popImg\configOn.gif" />
+    <Content Include="plugin2\calendar\images\popImg\dateConBg.gif" />
+    <Content Include="plugin2\calendar\images\popImg\dmFlag.png" />
+    <Content Include="plugin2\calendar\images\popImg\doConfig.png" />
+    <Content Include="plugin2\calendar\images\popImg\flag.gif" />
+    <Content Include="plugin2\calendar\images\popImg\fresh.png" />
+    <Content Include="plugin2\calendar\images\popImg\glr.gif" />
+    <Content Include="plugin2\calendar\images\popImg\goTop.png" />
+    <Content Include="plugin2\calendar\images\popImg\icon1.gif" />
+    <Content Include="plugin2\calendar\images\popImg\icon1.png" />
+    <Content Include="plugin2\calendar\images\popImg\icon2.gif" />
+    <Content Include="plugin2\calendar\images\popImg\icon2.png" />
+    <Content Include="plugin2\calendar\images\popImg\icon3.gif" />
+    <Content Include="plugin2\calendar\images\popImg\icon3.png" />
+    <Content Include="plugin2\calendar\images\popImg\icon4.gif" />
+    <Content Include="plugin2\calendar\images\popImg\icon4.png" />
+    <Content Include="plugin2\calendar\images\popImg\icon5.gif" />
+    <Content Include="plugin2\calendar\images\popImg\icon5.png" />
+    <Content Include="plugin2\calendar\images\popImg\icon6.png" />
+    <Content Include="plugin2\calendar\images\popImg\iconBtns.gif" />
+    <Content Include="plugin2\calendar\images\popImg\noteBg.gif" />
+    <Content Include="plugin2\calendar\images\popImg\pageUse.gif" />
+    <Content Include="plugin2\calendar\images\popImg\point.gif" />
+    <Content Include="plugin2\calendar\images\popImg\popDateEditClose.gif" />
+    <Content Include="plugin2\calendar\images\popImg\popFlag.gif" />
+    <Content Include="plugin2\calendar\images\popImg\popFlag_up.gif" />
+    <Content Include="plugin2\calendar\images\popImg\popIcon.gif" />
+    <Content Include="plugin2\calendar\images\popImg\popIconGray.gif" />
+    <Content Include="plugin2\calendar\images\popImg\rightLi.gif" />
+    <Content Include="plugin2\calendar\images\popImg\slideDown.png" />
+    <Content Include="plugin2\calendar\images\popImg\slideUp.png" />
+    <Content Include="plugin2\calendar\images\popImg\turn.png" />
+    <Content Include="plugin2\calendar\scripts\calendar.js" />
+    <Content Include="plugin2\calendar\scripts\fullcalendar.js" />
+    <Content Include="plugin2\calendar\scripts\jquery-ui-1.8.11.custom.min.js" />
+    <Content Include="plugin2\calendar\scripts\jquery.ui.datepicker-zh-CN.js" />
+    <Content Include="plugin2\calendar\css\fullcalendar.css" />
+    <Content Include="plugin2\calendar\css\fullcalendar.print.css" />
+    <Content Include="plugin2\calendar\css\layout.css" />
+    <Content Include="plugin2\calendar\css\pop.css" />
+    <Content Include="plugin2\converter\converter.html" />
+    <Content Include="plugin2\converter\scripts\baseConv.js" />
+    <Content Include="plugin2\converter\scripts\conv.js" />
+    <Content Include="plugin2\images\layout_main\bg_body.png" />
+    <Content Include="plugin2\scripts\multLng.js" />
+    <Content Include="plugin2\scripts\json2.js" />
+    <Content Include="plugin2\scripts\common.js" />
+    <Content Include="plugin2\scripts\utility.js" />
+    <Content Include="plugin2\scripts\wanerdao.js" />
+    <Content Include="Plugin\calculator\calculator.html" />
+    <Content Include="Plugin\calculator\images\layout_main\bg_body.png" />
+    <Content Include="Plugin\calculator\images\layout_main\bg_foot.png" />
+    <Content Include="Plugin\calculator\images\layout_main\bg_head.png" />
+    <Content Include="Plugin\calculator\images\layout_main\bg_mbg.png" />
+    <Content Include="Plugin\calculator\images\layout_main\bg_msg.png" />
+    <Content Include="Plugin\calculator\images\layout_main\bg_nav_cur.png" />
+    <Content Include="Plugin\calculator\images\layout_main\bg_tab.png" />
+    <Content Include="Plugin\calculator\images\layout_main\bg_tab_cur.png" />
+    <Content Include="Plugin\calculator\images\layout_main\bg_userName.png" />
+    <Content Include="Plugin\calculator\images\layout_main\icon_downArrow.png" />
+    <Content Include="Plugin\calculator\images\layout_main\icon_userdownArrow.png" />
+    <Content Include="Plugin\calculator\images\layout_main\img_32x32.png" />
+    <Content Include="Plugin\calculator\images\layout_main\layout_body_b.gif" />
+    <Content Include="Plugin\calculator\images\layout_main\layout_body_m.gif" />
+    <Content Include="Plugin\calculator\images\layout_main\layout_body_t.gif" />
+    <Content Include="Plugin\calculator\images\layout_main\logo.png" />
+    <Content Include="Plugin\calculator\images\layout_main\tab_option.gif" />
+    <Content Include="Plugin\calculator\images\loading12.gif" />
+    <Content Include="Plugin\calculator\images\popImg\bg.gif" />
+    <Content Include="Plugin\calculator\images\popImg\bg1.gif" />
+    <Content Include="Plugin\calculator\images\popImg\bgPng.png" />
+    <Content Include="Plugin\calculator\images\popImg\btn.gif" />
+    <Content Include="Plugin\calculator\images\popImg\cbLeft.gif" />
+    <Content Include="Plugin\calculator\images\popImg\cbLeftTitle.gif" />
+    <Content Include="Plugin\calculator\images\popImg\cbRight.gif" />
+    <Content Include="Plugin\calculator\images\popImg\cBtns.png" />
+    <Content Include="Plugin\calculator\images\popImg\cmBtn.gif" />
+    <Content Include="Plugin\calculator\images\popImg\cmInput.gif" />
+    <Content Include="Plugin\calculator\images\popImg\cmInput.png" />
+    <Content Include="Plugin\calculator\images\popImg\config.png" />
+    <Content Include="Plugin\calculator\images\popImg\configOn.gif" />
+    <Content Include="Plugin\calculator\images\popImg\dateConBg.gif" />
+    <Content Include="Plugin\calculator\images\popImg\dmFlag.png" />
+    <Content Include="Plugin\calculator\images\popImg\doConfig.png" />
+    <Content Include="Plugin\calculator\images\popImg\flag.gif" />
+    <Content Include="Plugin\calculator\images\popImg\fresh.png" />
+    <Content Include="Plugin\calculator\images\popImg\glr.gif" />
+    <Content Include="Plugin\calculator\images\popImg\goTop.png" />
+    <Content Include="Plugin\calculator\images\popImg\icon1.gif" />
+    <Content Include="Plugin\calculator\images\popImg\icon1.png" />
+    <Content Include="Plugin\calculator\images\popImg\icon2.gif" />
+    <Content Include="Plugin\calculator\images\popImg\icon2.png" />
+    <Content Include="Plugin\calculator\images\popImg\icon3.gif" />
+    <Content Include="Plugin\calculator\images\popImg\icon3.png" />
+    <Content Include="Plugin\calculator\images\popImg\icon4.gif" />
+    <Content Include="Plugin\calculator\images\popImg\icon4.png" />
+    <Content Include="Plugin\calculator\images\popImg\icon5.gif" />
+    <Content Include="Plugin\calculator\images\popImg\icon5.png" />
+    <Content Include="Plugin\calculator\images\popImg\icon6.png" />
+    <Content Include="Plugin\calculator\images\popImg\iconBtns.gif" />
+    <Content Include="Plugin\calculator\images\popImg\noteBg.gif" />
+    <Content Include="Plugin\calculator\images\popImg\pageUse.gif" />
+    <Content Include="Plugin\calculator\images\popImg\point.gif" />
+    <Content Include="Plugin\calculator\images\popImg\popDateEditClose.gif" />
+    <Content Include="Plugin\calculator\images\popImg\popFlag.gif" />
+    <Content Include="Plugin\calculator\images\popImg\popIcon.gif" />
+    <Content Include="Plugin\calculator\images\popImg\popIconGray.gif" />
+    <Content Include="Plugin\calculator\images\popImg\rightLi.gif" />
+    <Content Include="Plugin\calculator\images\popImg\slideDown.png" />
+    <Content Include="Plugin\calculator\images\popImg\slideUp.png" />
+    <Content Include="Plugin\calculator\images\popImg\turn.png" />
+    <Content Include="Plugin\calculator\scripts\calc.js" />
+    <Content Include="Plugin\calculator\style\layout.css" />
+    <Content Include="Plugin\calculator\style\pop.css" />
+    <Content Include="Plugin\calendar\calendar.html" />
+    <Content Include="Plugin\calendar\images\layout_main\bg_body.png" />
+    <Content Include="Plugin\calendar\images\layout_main\bg_foot.png" />
+    <Content Include="Plugin\calendar\images\layout_main\bg_head.png" />
+    <Content Include="Plugin\calendar\images\layout_main\bg_mbg.png" />
+    <Content Include="Plugin\calendar\images\layout_main\bg_msg.png" />
+    <Content Include="Plugin\calendar\images\layout_main\bg_nav_cur.png" />
+    <Content Include="Plugin\calendar\images\layout_main\bg_tab.png" />
+    <Content Include="Plugin\calendar\images\layout_main\bg_tab_cur.png" />
+    <Content Include="Plugin\calendar\images\layout_main\bg_userName.png" />
+    <Content Include="Plugin\calendar\images\layout_main\icon_downArrow.png" />
+    <Content Include="Plugin\calendar\images\layout_main\icon_userdownArrow.png" />
+    <Content Include="Plugin\calendar\images\layout_main\img_32x32.png" />
+    <Content Include="Plugin\calendar\images\layout_main\layout_body_b.gif" />
+    <Content Include="Plugin\calendar\images\layout_main\layout_body_m.gif" />
+    <Content Include="Plugin\calendar\images\layout_main\layout_body_t.gif" />
+    <Content Include="Plugin\calendar\images\layout_main\logo.png" />
+    <Content Include="Plugin\calendar\images\layout_main\tab_option.gif" />
+    <Content Include="Plugin\calendar\images\loading12.gif" />
+    <Content Include="Plugin\calendar\images\popImg\popFlag_up.gif" />
+    <Content Include="Plugin\calendar\style\fullcalendar.css" />
+    <Content Include="Plugin\calendar\style\fullcalendar.print.css" />
+    <Content Include="Plugin\calendar\images\popImg\bg.gif" />
+    <Content Include="Plugin\calendar\images\popImg\bg1.gif" />
+    <Content Include="Plugin\calendar\images\popImg\bgPng.png" />
+    <Content Include="Plugin\calendar\images\popImg\btn.gif" />
+    <Content Include="Plugin\calendar\images\popImg\cbLeft.gif" />
+    <Content Include="Plugin\calendar\images\popImg\cbLeftTitle.gif" />
+    <Content Include="Plugin\calendar\images\popImg\cbRight.gif" />
+    <Content Include="Plugin\calendar\images\popImg\cBtns.png" />
+    <Content Include="Plugin\calendar\images\popImg\cmBtn.gif" />
+    <Content Include="Plugin\calendar\images\popImg\cmInput.gif" />
+    <Content Include="Plugin\calendar\images\popImg\cmInput.png" />
+    <Content Include="Plugin\calendar\images\popImg\config.png" />
+    <Content Include="Plugin\calendar\images\popImg\configOn.gif" />
+    <Content Include="Plugin\calendar\images\popImg\dateConBg.gif" />
+    <Content Include="Plugin\calendar\images\popImg\dmFlag.png" />
+    <Content Include="Plugin\calendar\images\popImg\doConfig.png" />
+    <Content Include="Plugin\calendar\images\popImg\flag.gif" />
+    <Content Include="Plugin\calendar\images\popImg\fresh.png" />
+    <Content Include="Plugin\calendar\images\popImg\glr.gif" />
+    <Content Include="Plugin\calendar\images\popImg\goTop.png" />
+    <Content Include="Plugin\calendar\images\popImg\icon1.gif" />
+    <Content Include="Plugin\calendar\images\popImg\icon1.png" />
+    <Content Include="Plugin\calendar\images\popImg\icon2.gif" />
+    <Content Include="Plugin\calendar\images\popImg\icon2.png" />
+    <Content Include="Plugin\calendar\images\popImg\icon3.gif" />
+    <Content Include="Plugin\calendar\images\popImg\icon3.png" />
+    <Content Include="Plugin\calendar\images\popImg\icon4.gif" />
+    <Content Include="Plugin\calendar\images\popImg\icon4.png" />
+    <Content Include="Plugin\calendar\images\popImg\icon5.gif" />
+    <Content Include="Plugin\calendar\images\popImg\icon5.png" />
+    <Content Include="Plugin\calendar\images\popImg\icon6.png" />
+    <Content Include="Plugin\calendar\images\popImg\iconBtns.gif" />
+    <Content Include="Plugin\calendar\images\popImg\noteBg.gif" />
+    <Content Include="Plugin\calendar\images\popImg\pageUse.gif" />
+    <Content Include="Plugin\calendar\images\popImg\point.gif" />
+    <Content Include="Plugin\calendar\images\popImg\popDateEditClose.gif" />
+    <Content Include="Plugin\calendar\images\popImg\popFlag.gif" />
+    <Content Include="Plugin\calendar\images\popImg\popIcon.gif" />
+    <Content Include="Plugin\calendar\images\popImg\popIconGray.gif" />
+    <Content Include="Plugin\calendar\images\popImg\rightLi.gif" />
+    <Content Include="Plugin\calendar\images\popImg\slideDown.png" />
+    <Content Include="Plugin\calendar\images\popImg\slideUp.png" />
+    <Content Include="Plugin\calendar\images\popImg\turn.png" />
+    <Content Include="Plugin\calendar\scripts\calendar.js" />
+    <Content Include="Plugin\calendar\scripts\fullcalendar.js" />
+    <Content Include="Plugin\calendar\scripts\jquery-ui-1.8.11.custom.min.js" />
+    <Content Include="Plugin\calendar\scripts\jquery.ui.datepicker-zh-CN.js" />
+    <Content Include="Plugin\calendar\style\layout.css" />
+    <Content Include="Plugin\calendar\style\pop.css" />
+    <Content Include="Plugin\converter\conv.html" />
+    <Content Include="Plugin\converter\images\layout_main\bg_body.png" />
+    <Content Include="Plugin\converter\images\layout_main\bg_foot.png" />
+    <Content Include="Plugin\converter\images\layout_main\bg_head.png" />
+    <Content Include="Plugin\converter\images\layout_main\bg_mbg.png" />
+    <Content Include="Plugin\converter\images\layout_main\bg_msg.png" />
+    <Content Include="Plugin\converter\images\layout_main\bg_nav_cur.png" />
+    <Content Include="Plugin\converter\images\layout_main\bg_tab.png" />
+    <Content Include="Plugin\converter\images\layout_main\bg_tab_cur.png" />
+    <Content Include="Plugin\converter\images\layout_main\bg_userName.png" />
+    <Content Include="Plugin\converter\images\layout_main\icon_downArrow.png" />
+    <Content Include="Plugin\converter\images\layout_main\icon_userdownArrow.png" />
+    <Content Include="Plugin\converter\images\layout_main\img_32x32.png" />
+    <Content Include="Plugin\converter\images\layout_main\layout_body_b.gif" />
+    <Content Include="Plugin\converter\images\layout_main\layout_body_m.gif" />
+    <Content Include="Plugin\converter\images\layout_main\layout_body_t.gif" />
+    <Content Include="Plugin\converter\images\layout_main\logo.png" />
+    <Content Include="Plugin\converter\images\layout_main\tab_option.gif" />
+    <Content Include="Plugin\converter\images\loading12.gif" />
+    <Content Include="Plugin\converter\images\popImg\bg.gif" />
+    <Content Include="Plugin\converter\images\popImg\bg1.gif" />
+    <Content Include="Plugin\converter\images\popImg\bgPng.png" />
+    <Content Include="Plugin\converter\images\popImg\btn.gif" />
+    <Content Include="Plugin\converter\images\popImg\cbLeft.gif" />
+    <Content Include="Plugin\converter\images\popImg\cbLeftTitle.gif" />
+    <Content Include="Plugin\converter\images\popImg\cbRight.gif" />
+    <Content Include="Plugin\converter\images\popImg\cBtns.png" />
+    <Content Include="Plugin\converter\images\popImg\cmBtn.gif" />
+    <Content Include="Plugin\converter\images\popImg\cmInput.gif" />
+    <Content Include="Plugin\converter\images\popImg\cmInput.png" />
+    <Content Include="Plugin\converter\images\popImg\config.png" />
+    <Content Include="Plugin\converter\images\popImg\configOn.gif" />
+    <Content Include="Plugin\converter\images\popImg\dateConBg.gif" />
+    <Content Include="Plugin\converter\images\popImg\dmFlag.png" />
+    <Content Include="Plugin\converter\images\popImg\doConfig.png" />
+    <Content Include="Plugin\converter\images\popImg\flag.gif" />
+    <Content Include="Plugin\converter\images\popImg\fresh.png" />
+    <Content Include="Plugin\converter\images\popImg\glr.gif" />
+    <Content Include="Plugin\converter\images\popImg\goTop.png" />
+    <Content Include="Plugin\converter\images\popImg\icon1.gif" />
+    <Content Include="Plugin\converter\images\popImg\icon1.png" />
+    <Content Include="Plugin\converter\images\popImg\icon2.gif" />
+    <Content Include="Plugin\converter\images\popImg\icon2.png" />
+    <Content Include="Plugin\converter\images\popImg\icon3.gif" />
+    <Content Include="Plugin\converter\images\popImg\icon3.png" />
+    <Content Include="Plugin\converter\images\popImg\icon4.gif" />
+    <Content Include="Plugin\converter\images\popImg\icon4.png" />
+    <Content Include="Plugin\converter\images\popImg\icon5.gif" />
+    <Content Include="Plugin\converter\images\popImg\icon5.png" />
+    <Content Include="Plugin\converter\images\popImg\icon6.png" />
+    <Content Include="Plugin\converter\images\popImg\iconBtns.gif" />
+    <Content Include="Plugin\converter\images\popImg\noteBg.gif" />
+    <Content Include="Plugin\converter\images\popImg\pageUse.gif" />
+    <Content Include="Plugin\converter\images\popImg\point.gif" />
+    <Content Include="Plugin\converter\images\popImg\popDateEditClose.gif" />
+    <Content Include="Plugin\converter\images\popImg\popFlag.gif" />
+    <Content Include="Plugin\converter\images\popImg\popIcon.gif" />
+    <Content Include="Plugin\converter\images\popImg\popIconGray.gif" />
+    <Content Include="Plugin\converter\images\popImg\rightLi.gif" />
+    <Content Include="Plugin\converter\images\popImg\slideDown.png" />
+    <Content Include="Plugin\converter\images\popImg\slideUp.png" />
+    <Content Include="Plugin\converter\images\popImg\turn.png" />
+    <Content Include="Plugin\converter\scripts\baseConv.js" />
+    <Content Include="Plugin\converter\scripts\conv.js" />
+    <Content Include="plugin2\css\appTool.css" />
+    <Content Include="plugin2\css\icon.css" />
+    <Content Include="plugin2\css\layout.css" />
+    <Content Include="plugin2\css\style.css" />
+    <Content Include="plugin2\css\table.css" />
+    <Content Include="plugin2\images\application\bg.gif" />
+    <Content Include="plugin2\images\application\bg1.gif" />
+    <Content Include="plugin2\images\application\bgPng.png" />
+    <Content Include="plugin2\images\application\bg_pop_dialog.png" />
+    <Content Include="plugin2\images\application\btn.gif" />
+    <Content Include="plugin2\images\application\cbLeft.gif" />
+    <Content Include="plugin2\images\application\cbLeftTitle.gif" />
+    <Content Include="plugin2\images\application\cbRight.gif" />
+    <Content Include="plugin2\images\application\cBtns.png" />
+    <Content Include="plugin2\images\application\cmBtn.gif" />
+    <Content Include="plugin2\images\application\cmInput.gif" />
+    <Content Include="plugin2\images\application\cmInput.png" />
+    <Content Include="plugin2\images\application\config.png" />
+    <Content Include="plugin2\images\application\configOn.gif" />
+    <Content Include="plugin2\images\application\data.png" />
+    <Content Include="plugin2\images\application\dateConBg.gif" />
+    <Content Include="plugin2\images\application\dmFlag.png" />
+    <Content Include="plugin2\images\application\doConfig.png" />
+    <Content Include="plugin2\images\application\flag.gif" />
+    <Content Include="plugin2\images\application\fresh.png" />
+    <Content Include="plugin2\images\application\glr.gif" />
+    <Content Include="plugin2\images\application\goTop.png" />
+    <Content Include="plugin2\images\application\icon1.gif" />
+    <Content Include="plugin2\images\application\icon1.png" />
+    <Content Include="plugin2\images\application\icon2.gif" />
+    <Content Include="plugin2\images\application\icon2.png" />
+    <Content Include="plugin2\images\application\icon3.gif" />
+    <Content Include="plugin2\images\application\icon3.png" />
+    <Content Include="plugin2\images\application\icon4.gif" />
+    <Content Include="plugin2\images\application\icon4.png" />
+    <Content Include="plugin2\images\application\icon5.gif" />
+    <Content Include="plugin2\images\application\icon5.png" />
+    <Content Include="plugin2\images\application\icon6.png" />
+    <Content Include="plugin2\images\application\iconBtns.gif" />
+    <Content Include="plugin2\images\application\map.png" />
+    <Content Include="plugin2\images\application\noteBg.gif" />
+    <Content Include="plugin2\images\application\pageUse.gif" />
+    <Content Include="plugin2\images\application\person.png" />
+    <Content Include="plugin2\images\application\point.gif" />
+    <Content Include="plugin2\images\application\popDateEditClose.gif" />
+    <Content Include="plugin2\images\application\popFlag.gif" />
+    <Content Include="plugin2\images\application\popIcon.gif" />
+    <Content Include="plugin2\images\application\popIconGray.gif" />
+    <Content Include="plugin2\images\application\pop_dialog_border.png" />
+    <Content Include="plugin2\images\application\pop_dialog_bottom_left.png" />
+    <Content Include="plugin2\images\application\pop_dialog_bottom_right.png" />
+    <Content Include="plugin2\images\application\pop_dialog_top_left.png" />
+    <Content Include="plugin2\images\application\pop_dialog_top_right.png" />
+    <Content Include="plugin2\images\application\rightLi.gif" />
+    <Content Include="plugin2\images\application\slideDown.png" />
+    <Content Include="plugin2\images\application\slideUp.png" />
+    <Content Include="plugin2\images\application\themes.png" />
+    <Content Include="plugin2\images\application\turn.png" />
+    <Content Include="plugin2\scripts\global.js" />
+    <Content Include="plugin2\scripts\jquery-1.7.2.min.js" />
+    <Content Include="plugin2\scripts\jquery.ui.datepicker.js" />
+    <Content Include="plugin2\scripts\pop.js" />
+    <Content Include="Plugin\scripts\jquery-1.7.2.min.js" />
+    <Content Include="Plugin\scripts\json2.js" />
+    <Content Include="Plugin\scripts\pop.js" />
+    <Content Include="Plugin\scripts\utility.js" />
+    <Content Include="Plugin\scripts\wanerdao.js" />
+    <Content Include="Plugin\converter\style\layout.css" />
+    <Content Include="Plugin\converter\style\pop.css" />
+    <Content Include="Service\Common\UnitConverter.svc" />
+    <Content Include="Service\Person\PersonalCalendar.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="plugin2\calendar\images\layout_main\Thumbs.db" />
+    <None Include="plugin2\calendar\images\popImg\Thumbs.db" />
+    <None Include="Plugin\calculator\images\layout_main\Thumbs.db" />
+    <None Include="Plugin\calculator\images\popImg\Thumbs.db" />
+    <None Include="Plugin\calendar\images\layout_main\Thumbs.db" />
+    <None Include="Plugin\calendar\images\popImg\Thumbs.db" />
+    <None Include="Plugin\converter\images\layout_main\Thumbs.db" />
+    <None Include="Plugin\converter\images\popImg\Thumbs.db" />
+    <None Include="plugin2\images\application\Thumbs.db" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8587</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <EnableWcfTestClientForSVCDefaultValue>True</EnableWcfTestClientForSVCDefaultValue>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

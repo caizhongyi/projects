@@ -1,0 +1,205 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="WanerDaoMasterPage.master.cs"
+    Inherits="WanerDaoMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="icon" type="image/x-icon" href="/savorboard.ico" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/layout.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/form.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/pop.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/icon.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/appTool.css" media="all" />
+    <script type="text/javascript">
+        var wd_B = { uin: { uid: '<%=PersonalSecurity.user_id%>', name: '<%=PersonalProfile.name%>', second_name: '<%=PersonalProfile.second_name%>', small_logo: '<%=PersonalProfile.logo_small_path %>' }, clientlang: '<%=WanerDao2.WanerDaoModule.TipInfo.WanerDaoGlobalTip.GetClientLanguage() %>' };
+        function getCurrentUserId() {
+            return wd_B.uin.uid;
+        }
+        function getCurrentLangType() {
+            return wd_B.clientlang;
+        }
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-31932768-1']);
+        _gaq.push(['_trackPageview']);
+    </script>
+    <script type="text/javascript">
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="pBgB">
+    <div class="header_wrapper pBgH">
+        <div class="header layout">
+            <a href="/personal/index.html" class="logo"></a>
+            <div class="home" hoverable="true">
+                <a href="javascript:;" class="go_home" title="回到首页"></a>
+                <div class="home_pop">
+                    <ul>
+                        <li><a href="/activity/activity_main.html" class="hp_title">活动</a>
+                            <p>
+                                <a href="/activity/activity_search.html?activityNames=&catygoryNames=&friendsName=&groupNames=&sightNames=&countryId=&provinceId=&cityId=&address=">
+                                    寻找活动</a><a href="/activity/activity_create.html">创建活动</a><a href="/activity/activity_main.html">分类活动</a><a
+                                        href="/activity/activity_define_main.html?categoryid=76d234ee-c429-11e1-a032-000c29821f28">自定义活动</a><a
+                                            href="/activity/activity_season_main.html?categoryid=76d23b58-c429-11e1-a032-000c29821f28">时令活动</a><a
+                                                href="/activity/activity_myactivity.html">我的活动</a><a
+                                                href="/activity/activity_myactivity.html?urltype=history">历史活动</a></p>
+                        </li>
+                        <li><a href="/personal/index.html" class="hp_title">个人</a>
+                            <p>
+                            <a href="/personal/personal_info.html">资料</a><a
+                                    href="/personal/blog.html">日志</a><a href="/personal/photo_album.html">相册</a><a href="/personal/video_album.html">视频</a></p>
+                        </li>
+                        <li><a href="/relationship/relationship_myfriends.aspx" class="hp_title">关系</a>
+                            <p>
+                                <a href="/relationship/relationship_myfriends.aspx">我的好友</a><a href="/relationship/relationship_friends_search.aspx">寻找好友</a><a
+                                    href="/relationship/relationship_friends_invite.aspx">邀请好友</a><a href="/relationship/follow/follow_friends.html">关注设置</a><a
+                                        href="/relationship/relationship_mygroup.aspx">我的圈子</a><a href="/relationship/relationship_group_search.aspx">寻找圈子</a><a
+                                            href="/relationship/relationship_group_create.aspx">创建圈子</a><%--<a href="/relationship/relationship_gift_info.aspx">我的礼物</a><a
+                                                href="/relationship/relationship_gift_market.aspx">礼物市场</a>--%></p>
+                        </li>
+                        <li class="last"><a href="/personal/index.html" class="hp_title">主页</a></li>
+                    </ul>
+                    <div class="home_pop_bottom">
+                        <p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="search">
+                <div class="search_bg vm">
+                    <input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖"
+                        id="srch_str" maxlength="50" /><input value="" type="submit" class="search_btn" id="srch_info" />
+                </div>
+            </div>
+            <div class="user_infor" hoverable="true" id="userInfo">
+                <a href="javascript:;" class="f_left">
+                    <img width="32" height="32"></a><span class="user_infor_name"><a href="/personal/personal_info.html"><span
+                        id="uname"></span><b></b></a></span>
+                <div class="user_infor_pop">
+                    <ul>
+                        <li><a href="/personal/personal_info.html">资料修改</a></li>
+                        <li><a href="/account/account_set_security.html">账号管理</a></li>
+                        <li><a href="/personal/private_set.html">隐私管理</a></li>
+                        <li><a href="javascript:;" id="toggleLang">切换为英语</a></li>
+                        <li class="last" id="logout"><a href="javascript:;">退出</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="/message/inbox.html" class="messagetip" id="z_msg">
+        	<span>
+                <span class="tip-num" style=" display: none;"></span>
+                <img src="/images/messagetip.png" />
+            </span>
+        </a>
+        </div>
+    </div>
+    <asp:ContentPlaceHolder ID="Content" runat="server">
+    </asp:ContentPlaceHolder>
+    <div class="footer layout mes_footer">
+        <span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved</span>
+        <p class="footer_link">
+            <a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a
+                href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+    </div>
+    <div class="footBarSmall">
+        <div class="footBarConA">
+        </div>
+        <div class="footBarCon">
+            <div class="fbBox">
+                <div class="slideBtn">
+                    <a href="javascript:;" class="doConfig"></a><a href="javascript:scroll(0,0);" class="goTop">
+                    </a><a href="javascript:void(0)" class="doSlide doSlideUp" type="top"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footBar">
+        <div class="footBarConA">
+        </div>
+        <div class="footBarCon">
+            <div class="fbBox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" id="barTable">
+                    <tr>
+                        <td id="configTd">
+                            <div class="configBox">
+                                <div class="configBoxBtn">
+                                    <span></span>
+                                </div>
+                                <div class="cbCon">
+                                    <div class="popE">
+                                    </div>
+                                    <div class="cbConBox">
+                                        <div class="cbcBoxLeft">
+                                            <h2 class="h26 cbTitle" style="width: 100%;">
+                                                <b>已经安装应用</b></h2>
+                                            <!--因为设计原因 自适应几乎不太可能 只有宽高都给你定了 -->
+                                            <div class="cbLeft">
+                                                <ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="cbcBoxRight">
+                                            <h2 class="h26 cbTitle" style="width: 100%;">
+                                                <b class="bg">可选应用</b><small>（选择您想要安装的应用添加至左边）</small></h2>
+                                            <div class="cbRight">
+                                                <div class="cbRightL">
+                                                    <ul>
+                                                    </ul>
+                                                </div>
+                                                <div class="cbRightR">
+                                                    <ul>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="popE">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="slideBtn">
+                                <a href="javascript:scroll(0,0);" class="goTop"></a><a href="javascript:void(0)"
+                                    class="doSlide doSlideDown" type="down"></a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pop" style="position: absolute; left: 50%; top: 50%; z-index: 99; display: none;
+        margin: -250px 0 0 -400px">
+        <iframe frameborder="0" scrolling="no" id="popFrame" name="popFrame" style="width: 1000px; height: 575px">
+        </iframe>
+    </div>
+    <!--js脚步-->
+    <script src="/scripts/common/json2.js" type="text/javascript"></script>
+    <script src="/scripts/plugin/cookie/wanerdao2.cookies.js" type="text/javascript"></script>
+    <script src="/Scripts/multipleLanguage/loader.js" type="text/javascript"></script>
+    <script src="/Scripts/common/wandao.js" type="text/javascript"></script>
+    <script src="/Scripts/common/wanerdaoutils.js" type="text/javascript"></script>
+    <script src="/scripts/common/wanerdao2.date.js" type="text/javascript"></script>
+    <script src="/scripts/openplugin/jquery.floatbox.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/scripts/global.js"></script>
+    <script src="/Scripts/personal/curInfo.js" type="text/javascript"></script>
+    <script src="/scripts/pop.js" type="text/javascript"></script>
+    <script src="/scripts/plugin/TipPop/wanerdao2.pop.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/scripts/plugintool/plugintool.js"></script>
+    <asp:ContentPlaceHolder ID="Script" runat="server">
+    </asp:ContentPlaceHolder>
+    <script src="/scripts/gotop.js" type="text/javascript"></script>
+</body>
+</html>

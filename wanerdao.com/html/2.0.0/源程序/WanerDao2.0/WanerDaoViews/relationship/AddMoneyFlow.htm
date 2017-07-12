@@ -1,0 +1,60 @@
+﻿
+                              <div><input name="" type="button" value="添加流水项" class="hobby_but03" onclick="showAdd();" /></div>
+                            	<ul style=" display:none;" id="MoneyFlowUL">
+                                	
+                                   
+                                	<li><label>流水名目：</label><input type="text" class="inp19" id="txt_itemname" /><label>金额：</label>
+                                    <select name="select" onchange="changeType()" id="sel_flowtype">
+                                          <option value="1">收</option>
+                                          <option value="2">支</option>
+                                          <option value="3">缴纳会费</option>
+                		  				</select>
+                               	  <input type="text" class="inp20" id="txt_money" onblur ="calculate()" />
+                                  <label id="lab_item_money"></label>
+                                  <select name="select" onchange="changeobj()" id="sel_obj">
+                                          <option value="1">人均</option>
+                                          <option value="2">全体</option>
+                		  				</select>
+                               	  	</li>
+                                    <li id="payUser">
+                                        <label>付 款 人：</label><input name="" rel="#gmember" type="button" class="inp22" value="添 加" id="addpay" />
+                                    </li>
+                                    <li class="mt5" id="payUserLi">
+                                    	<div class="lsz_tagT"></div>
+                                    	<div class="lsz_tagB clearfix" id="payUserDIV">
+                                           
+                                        </div>
+                                    </li>
+                                    <li>
+                                    	<label class="lsz_ms">描&nbsp;&nbsp;&nbsp;&nbsp;述：</label><textarea class="inp23" name="input" id="txt_description"></textarea>
+                                    </li>
+                                    <li id="executor" style="display:none;">
+                                        <label>委托执行人：</label><input name="" type="button" class="inp22" rel="#gmember" value="添 加" id="addexecutor" id="addexecutor" />
+                                    </li>
+                                    <li class="mt5" id="executorLi" style="display:none;">
+                                    	<div class="lsz_tagT "></div>
+                                    	<div class="lsz_tagB clearfix" id="executorDIV">
+                                           
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label>上传附件：</label> <span id="spanButtonPlaceholder"></span>
+                                    </li>
+                                    <li class="mt5">
+                                     <div id="divUploadMessage" class="floatL marginL10" style="width: 60%; display:none;">
+                                            <span style="width: 60%; display: block; line-height: 18px;">正在上传"<label id="labUploadFile" style="width:100%; text-align:left; left:0;"></label>"...</span>
+                                            <span class="bar_grey"><span class="bar_Yellow" id="spanProgress"></span></span>
+                                        </div>
+                                    	<div class="lsz_tagT bg"></div>
+                                    	<div class="lsz_tagB clearfix pl5" id="thumbnails">
+                                
+
+                                         
+                                        </div>
+                                    </li>
+                                    <li>
+                                    	<span class="inp_ri"><input name="" type="button" value="保存" class="hobby_but" onclick="saveFlow()" /><input name="" type="button" value="取消" class="hobby_but" onclick="cancelFlow()" /></span>
+                                    	<s>操作时间：<label id="operateTime"></label>&nbsp;&nbsp;&nbsp;&nbsp;财务人员：<label id="operateUser"></label></s>
+                                    </li>
+                                </ul>
+                          

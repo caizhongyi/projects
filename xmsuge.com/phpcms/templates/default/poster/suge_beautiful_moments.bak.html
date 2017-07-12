@@ -1,0 +1,43 @@
+<div class="flexslider" id="productCats">
+    <h2><span>美 丽 瞬 间</span></h2>
+    <div class="flex-viewport" style="overflow: hidden; position: relative;">
+        <ul class="slides" style="width: 600%; margin-left: 0px;">
+            {pc:poster action="get_poster_data" spaceid="12"  limit="1" return="result"}
+            {loop $result $rs}
+            {php $ad = string2array($rs['setting']);}
+            <li class="frame-1" >
+                <a href="{buildurl('lists','index','content',array('catid'=>12))}">
+                    <img width="265" height="240" class="alignnone size-large wp-image-1013" alt="{$ad[1]['imageurl']}"
+                         src="{$ad[1]['imageurl']}">  <br>
+                    <span>{$rs['name']} <!--<i>works</i>--> </span></a>
+            </li>
+            {php $spicids[] = $rs['small_pic'];}
+            {/loop}
+            {/pc}
+            {pc:poster action="get_poster_data" spaceid="13"  limit="1" return="result"}
+            {loop $result $rs}
+            {php $ad = string2array($rs['setting']);}
+            <li class="frame-2" >
+                <a href="{buildurl('lists','index','content',array('catid'=>13))}">
+                    <img width="265" height="240" class="alignnone size-large wp-image-1013" alt="{$ad[1]['imageurl']}"
+                         src="{$ad[1]['imageurl']}">  <br>
+                    <span>{$rs['name']} <!--<i>works</i>--> </span></a>
+            </li>
+            {php $spicids[] = $rs['small_pic'];}
+            {/loop}
+            {/pc}
+            {pc:poster action="get_poster_data" spaceid="14"  limit="1" return="result"}
+            {loop $result $rs}
+            {php $ad = string2array($rs['setting']);}
+            <li class="frame-3" >
+                <a href="{buildurl('show','index','content',array('catid'=>14,'id'=>23))}">
+                    <img width="265" height="240" class="alignnone size-large wp-image-1013" alt="{$ad[1]['imageurl']}"
+                         src="{$ad[1]['imageurl']}">  <br>
+                    <span>{$rs['name']} <!--<i>works</i>--> </span></a>
+            </li>
+            {php $spicids[] = $rs['small_pic'];}
+            {/loop}
+            {/pc}
+        </ul>
+    </div>
+</div>

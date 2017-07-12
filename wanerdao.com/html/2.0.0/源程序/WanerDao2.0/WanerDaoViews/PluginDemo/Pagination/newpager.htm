@@ -1,0 +1,115 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>myPaginationV4.0 Jquery Plug-in --- LinApex</title>
+
+
+
+<link rel="stylesheet" type="text/css" href="../../css/PluginCss/Pagination/wanerdao2.pagination.css" />
+
+<script src="../../Scripts/jquery-1.4.2.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../../Scripts/common/wanerdaoutils.js"></script>
+    <script type="text/javascript" src="../../Scripts/multipleLanguage/loader.js"></script> 
+<script src="../../Scripts/Plugin/Pagination/wanerdao2.pager.js" type="text/javascript">      
+
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            //基础配置
+            //            $("#pageid").myPagination({
+            //                currPage: 10
+            //            });
+            $(".pagediv").myPagination({
+                showmore: true, //是否显示加载更多
+                showpagingnav: true, //是否显示分页导航,当showpagingnav为false的时候info就暂时不用
+                contentid: '#content', //此处ID或者样式类名或者用来加载提示信息或者可以用来显示“加载更多”这个功能
+                callback: test,
+                ajax: {
+                    url: 'pop_common.axd',//此处必须填写，分页已没有固定处理工厂
+                    param: {
+                        pagecurrent: 1,
+                        pageSize: 10,
+                        opertype: 'demopagiation'//操作码
+                    },
+                    info: {
+                        first: '首页',
+                        last: '尾页',
+                        next: '下一页',
+                        prev: '上一页',
+                        first_on: true,
+                        last_on: true,
+                        next_on: true,
+                        prev_on: true,
+                        msg_on: true,//如果为true显示第几页以及总页数，否则不显示
+                        tipmsg: '第{tip}页'
+                    }
+                },
+                //在出现2个导航条时，需要注意的事情就是自定义操作没有办法事件同步，所以需要程序自己来控制自定义事件的同步
+                toolbar: [{ text: '全选', cls: 'checkbox', type: 'checkbox', handler: function (data) {
+                    //$(this).attr("checked", false);
+                    //                    if ($(this).attr("checked")) {
+                    //                        $(this).attr("checked", "");
+                    //                    }
+                    //.attr("checked")==true
+                    alert("全选");
+                }
+                },
+                { symbol: '|', type: 'separator'
+                },
+                { text: '提醒缴费', cls: '', type: 'button', handler: function (data) {
+                    alert("提醒缴费");
+                }
+                },
+                { symbol: '|', type: 'separator'
+                },
+                { text: '提醒缴费1', cls: '', type: 'text', handler: function (data) {
+                    var v = $(this);
+                    alert("提醒缴费1");
+                }
+            }, { cls: '', type: 'select', url: '', ajaxdata: '', localdata: [{ "id": "1", "value": "1" }, { "id": "2", "value": "2"}], handler: function () {
+                    alert("select");
+                }
+            },
+                { title: 'a测试', cls: '', type: 'a', handler: function (data) {
+                    var v = data;
+                    alert("aaaa");
+                }
+                }
+                ]
+            });
+            //更改样式
+            function test(data,total) {
+                //debugger;
+                //alert(total);
+                var pagecontent = $('<ul></ul>').appendTo("#content");
+                $.each(data.rows, function (i, msg) {
+                    //alert(msg.name);
+                    $('<li>' + msg.unit_name + '</li>').appendTo(pagecontent);
+                });
+            }
+        })
+
+    </script>
+
+</head>
+
+<body>
+<select ><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option></select>
+<!--<div class="pagediv"></div>-->
+<div id="content"></div>
+<div class="pagediv"></div>
+<!-- end of main_container -->
+
+</body>
+
+</html>

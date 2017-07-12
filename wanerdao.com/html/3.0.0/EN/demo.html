@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css">
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css">
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+    <script type="text/javascript" src="js/class.ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.notification.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            /*
+                jquery弹出Tips框插件
+                $(selector).notification(type,options)
+                type：有alert、warn、error类型
+                options：
+                        {
+                            positive: {//确认按钮
+                                text: "ok",//按钮文字
+                                callback: function () {
+                                    alert(123);
+                                }},
+                            negative: {//取消按钮
+                                text: "cancel"//按钮文字
+                                callback: function () {
+                                    alert(123);
+                                 }},
+                            title: "notification",//标题
+                            content: "123"//内容
+                        }
+            */
+            $("#notification").notification("warn", {
+                positive: {
+                    text: "ok",
+                    callback: function () {
+                        alert(123);
+                    }},
+                negative: {text: "cancel",
+                    callback: function () {
+                        alert(123);
+                    }},
+                title: "notification",
+                content: "123"
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="notification"></div>
+</body>
+</html>

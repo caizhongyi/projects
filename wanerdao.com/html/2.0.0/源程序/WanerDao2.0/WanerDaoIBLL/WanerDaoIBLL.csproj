@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B9214DA2-61D5-46B0-8B8E-7008616A4824}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WanerDao2.WanerDaoIBLL</RootNamespace>
+    <AssemblyName>WanerDaoIBLL</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IBase\IActivityBLLBase.cs" />
+    <Compile Include="IActivity\IActivityImageBLL.cs" />
+    <Compile Include="IActivity\IActivityImageFolderBLL.cs" />
+    <Compile Include="IBase\IBLL.cs" />
+    <Compile Include="IActivity\IWanerDaoActivity.cs" />
+    <Compile Include="ICommon\IImagePythicalLocationBLL.cs" />
+    <Compile Include="ICommon\IWanerDaoCommon.cs" />
+    <Compile Include="IFollow\IWanerDaoActivityCategoryFollow.cs" />
+    <Compile Include="IFollow\IWanerDaoFollow.cs" />
+    <Compile Include="IFollow\IWanerDaoPersonalActivityFollow.cs" />
+    <Compile Include="IFollow\IWanerDaoPersonalFriendsFollow.cs" />
+    <Compile Include="IFollow\IWanerDaoPersonalGroupFollow.cs" />
+    <Compile Include="IFollow\IWanerDaoPersonalModuleFollow.cs" />
+    <Compile Include="IFollow\IWanerDaoPersonalPostsFollow.cs" />
+    <Compile Include="IIndex\IWanerDaoActionState.cs" />
+    <Compile Include="IInformation\IInfomationCommon.cs" />
+    <Compile Include="IInformation\IWanerDaoDeals.cs" />
+    <Compile Include="IInformation\IWanerDaoInfoActivity.cs" />
+    <Compile Include="IInformation\IWanerDaoJob.cs" />
+    <Compile Include="IInformation\IWanerDaoRentalHouse.cs" />
+    <Compile Include="IInformation\IWanerDaoSales.cs" />
+    <Compile Include="IMessage\IWanerDaoMessage.cs" />
+    <Compile Include="IOCContainert.cs" />
+    <Compile Include="IPerson\IWanerDaoPersonalBookMark.cs" />
+    <Compile Include="IPerson\IWanerDaoPersonalCalendar.cs" />
+    <Compile Include="IPerson\IWanerDaoPersonalViewRecord.cs" />
+    <Compile Include="IRelation\IWanerDaoGift.cs" />
+    <Compile Include="IPosts\IWanerDaoPosts.cs" />
+    <Compile Include="IPerson\IWanerDaoPersonalNote.cs" />
+    <Compile Include="IPosts\IWanerDaoTopicCategory.cs" />
+    <Compile Include="IRelation\IWanerDaoFollow.cs" />
+    <Compile Include="IRelation\IWanerDaoFriends.cs" />
+    <Compile Include="IRelation\IWanerDaoGroup.cs" />
+    <Compile Include="IPerson\IWanerDaoBlogManager.cs" />
+    <Compile Include="IPerson\IWanerDaoImageManager.cs" />
+    <Compile Include="IPerson\IWanerDaoPermission.cs" />
+    <Compile Include="IPerson\IWanerDaoPersonalRelation.cs" />
+    <Compile Include="IPerson\IWanerDaoPersonConfig.cs" />
+    <Compile Include="IPerson\IWanerDaoPersonFind.cs" />
+    <Compile Include="IPerson\IWanerDaoPersonInfoManager.cs" />
+    <Compile Include="IPerson\IWanerDaoPersonSecurity.cs" />
+    <Compile Include="IIndex\IWanerDaoPersonState.cs" />
+    <Compile Include="IPerson\IWanerDaoVideoManager.cs" />
+    <Compile Include="ITool\IWanerDaoUnit.cs" />
+    <Compile Include="ITool\IWanerDaoPersonalTools.cs" />
+    <Compile Include="ITool\IWanerDaoToolManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WanerDaoModel\WanerDaoModel.csproj">
+      <Project>{97506175-F62F-4FC0-8886-B4FC0AF2BCEE}</Project>
+      <Name>WanerDaoModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoModule\WanerDaoModule.csproj">
+      <Project>{2DBE2894-4202-4EB2-8208-519CF7D1F90F}</Project>
+      <Name>WanerDaoModule</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

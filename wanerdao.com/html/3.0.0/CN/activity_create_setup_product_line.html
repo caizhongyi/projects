@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>创建圈子-关系-玩儿道</title>
+
+    <meta name="keywords" content="创建圈子，圈子信息，邀请用户，关系，玩儿道，活动组织的生活社交网络"/>
+    <meta name="description"
+          content="填写必要圈子信息完成圈子创建，并可以发出邀请"/>
+
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content=""/>
+    <meta name="copyright" content="2001-2010 Comsenz Inc."/>
+    <link rel="Bookmark" href="favicon.ico"/>
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/activity.css"/>
+
+
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="#" class="logo"><img src="images/logo.png" alt="玩儿道"></a>
+
+        <div class="home hover">
+            <a title="回到首页" class="button" href="javascript:;"></a>
+
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a href="javascript:;">活动</a></h3>
+                        <a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a
+                            href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a href="javascript:;">我的活动</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">个人</a></h3>
+                        <a href="javascript:;">资料</a><a href="javascript:;">记事</a><a href="javascript:;">相册</a><a
+                            href="javascript:;">视频</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">关系</a></h3>
+                        <a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a
+                            href="javascript:;">关注设置</a><span data-loader="class-combo"><a href="#">我的圈子</a>|<i
+                            class="item-arrow combo-icon"></i> <div class="combo-list">
+                        <ul>
+                            <li value="1">12</li>
+                            <li value="2">item2</li>
+                            <li value="3">item3</li>
+                            <li value="4">item4</li>
+                            <li value="5">item5</li>
+                        </ul>
+                    </div></span><a href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">主页</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="活动/好友/圈子/发帖" class="text"><input type="submit" class="button" value="">
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img src="images/defaults/32-32.jpg"></a><a class="name"
+                                                                                            href="javascript:;"><span>烧饭-人生旅途中人生旅途中</span><b></b></a>
+
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+        <a href="javascript:;" class="icon-message-mail right">123</a>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout activity-layout">
+    <div class="container">
+        <div class="tabs-master">
+            <div class="nav">
+                <div class="pull-left"><a href="#">活动主页</a><a href="#">分类活动</a><a href="#">寻找活动</a><a href="#">我的活动</a><a
+                        href="#" class="selected">创建活动</a></div>
+            </div>
+            <div class="titlebar">活动组织装配工厂 &#8901; 设置模块</div>
+            <div class="sitenav">
+                <a href="javascript:;" class="selected"><i class="icon icon-list"></i>创建列表</a>|<a href="javascript:;"><i
+                    class="icon icon-direct"></i>向导创建</a>
+            </div>
+            <div class="mod mod-default mod-special">
+                <div class="hd">
+                    <i class="icon icon-blue-block"></i>初始参数
+                </div>
+                <div class="bd form">
+                    <ul>
+                        <li>创建人、超级管理员、执行管理员、财务员: <a href="javascript:;">AHXIAOPENG</a></li>
+                        <li><label for="">参数引用：</label><span class="combo " data-loader="class-combo">
+                            <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list">
+                                <ul>
+                                    <li value="1">请选择圈子分类</li>
+                                    <li value="2">item2</li>
+                                    <li value="3">item3</li>
+                                    <li value="4">item4</li>
+                                    <li value="5">item5</li>
+                                </ul>
+                            </div>
+                        </span><span class="combo wide-combo" data-loader="class-combo">
+                            <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list">
+                                <ul>
+                                    <li value="1">请选择圈子分类</li>
+                                    <li value="2">item2</li>
+                                    <li value="3">item3</li>
+                                    <li value="4">item4</li>
+                                    <li value="5">item5</li>
+                                </ul>
+                            </div>
+                        </span><div class="tips error">提示</div>
+                        </li>
+                        <li><label for="">参数引用：</label><span class="combo " data-loader="class-combo">
+                            <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list">
+                                <ul>
+                                    <li value="1">请选择圈子分类</li>
+                                    <li value="2">item2</li>
+                                    <li value="3">item3</li>
+                                    <li value="4">item4</li>
+                                    <li value="5">item5</li>
+                                </ul>
+                            </div>
+                        </span><span class="combo wide-combo" data-loader="class-combo">
+                            <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list">
+                                <ul>
+                                    <li value="1">请选择圈子分类</li>
+                                    <li value="2">item2</li>
+                                    <li value="3">item3</li>
+                                    <li value="4">item4</li>
+                                    <li value="5">item5</li>
+                                </ul>
+                            </div>
+                        </span><div class="tips error">提示</div>
+                        </li>
+                        <li>
+                            <div class="module">活动基本信息设置模块</div>
+                        </li>
+                        <li>
+                            <div class="module">活动报名设置模块</div>
+                        </li>
+                        <li>
+                            <div class="module">活动计划拟定模块</div>
+                        </li>
+                        <li>
+                            <div class="module">活动财务模块</div>
+                        </li>
+                        <li>
+                            <div class="module">活动基本信息设置模块</div>
+                        </li>
+                        <li>
+                            <div class="module">活动任务分配模块</div>
+                        </li>
+                        <li>
+                            <div class="module">活动预交费设定模块</div>
+                        </li>
+                        <li>
+                            <div class="module">活动踢人保护模块</div>
+                        </li>
+                        <li>
+                            <div class="module">活动周期创建模块</div>
+                        </li>
+                        <li>
+                            <div class="module">活动个人报名模块</div>
+                        </li>
+                        <li>
+                            <div class="module">活动发送邀请模块</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mod mod-default mod-special">
+                <div class="hd">
+                    <i class="icon icon-blue-block"></i>保存活动参数
+                </div>
+                <div class="bd form">
+                    <ul class="invite-list">
+                        <li><label for=""><input type="checkbox"/>保存参数：</label><input type="text" class="text wide-text"/></li>
+                        <li><label for="">&nbsp;</label><span class="tipbox tipbox-arrow list-label">
+                        <i class="arrow"></i>
+                        <span>姓名<a href="#" class="icon-circle-close"></a></span><span>姓名<a href="#" class="icon-circle-close"></a></span><span>姓名<a href="#" class="icon-circle-close"></a></span>
+                    </span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form">
+                <ul>
+                    <li><label for="">&nbsp;</label><input type="checkbox"/><a href="javascript:;">同意玩儿道圈子条款</a>&nbsp;<i class="icon icon-adobe"></i><a
+                            href="javascript:;">玩儿道圈子使用教程</a></li>
+                    <li class="btns"><label for="">&nbsp;</label><input type="submit" class="btn btn-primary btn-mini" value="创建活动" data-active-class="disabled" /><input type="button" class="btn btn-default btn-mini" value="保存参数但不创建"/><input type="button" class="btn btn-default btn-mini" value="放 弃"/><div class="tips error">信息提示框</div></li>
+                </ul>
+            </div>
+        </div>
+        <ul class="guide">
+            <li class="success"><i class=" icon-blue-circle"></i><a href="javascript:;">初始参数</a><i class="icon-20x20"></i></li>
+            <li class="success"><i class=" icon-blue-circle"></i><a href="javascript:;">活动基本信息设置</a><i class="icon-20x20"></i></li>
+            <li class="success"><i class=" icon-blue-circle"></i><a href="javascript:;">活动报名设置</a><i class="icon-20x20"></i></li>
+            <li class="error"><i class=" icon-blue-circle"></i><a href="javascript:;">活动计划拟定</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">活动财务</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">活动预交费</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">活动加入条件设定</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">活动保护</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">活动周期创建</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">活动个人报名</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">活动发送邀请</a><i class="icon-20x20"></i></li>
+        </ul>
+    </div>
+
+
+</div>
+<div class="float-search float-module" id="float-search">
+    <a class="search-btn" href="javascript:;">模<br>块<br>变<br>动</a><span class="search-panel" href="javascript:;">
+        <div class="change-module">
+            <div class="hd"><span>现装配模块数： <em>5219</em></span><a href="javascript:;" class="btn btn-default"  >执行</a></div>
+            <div class="bd">
+                 <div class="module-side">
+                     <ul class="module-items">
+                         <li><img src="" alt=""/><a href="javascript:;" class="name">模块名称</a><br>分类名</li>
+                     </ul>
+                 </div>
+                 <div class="module-main">
+                     <div class="main-hd"> 分类名称：<em>168</em></div>
+                     <div class="main-bd pagination-radius">
+                         <a class="prev" href="javascript:;"></a>
+                         <ul class="module-items">
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                         </ul>
+                         <a class="next disabled" href="javascript:;"></a>
+                     </div>
+                     <div class="main-hd"> 分类名称：<em>168</em></div>
+                     <div class="main-bd pagination-radius">
+                         <a class="prev" href="javascript:;"></a>
+                         <ul class="module-items">
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                         </ul>
+                         <a class="next" href="javascript:;"></a>
+                     </div>
+                     <div class="main-hd"> 分类名称：<em>168</em></div>
+                     <div class="main-bd pagination-radius">
+                         <a class="prev" href="javascript:;"></a>
+
+                         <ul class="module-items">
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                         </ul>
+                         <a class="next" href="javascript:;"></a>
+                     </div>
+                     <div class="main-hd"> 分类名称：<em>168</em></div>
+                     <div class="main-bd pagination-radius">
+                         <a class="prev" href="javascript:;"></a>
+                         <ul class="module-items">
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                             <li><img src="" alt=""/><div class="overhidden"><a href="javascript:;" class="name">模块名称</a><br>分类名<br><a href="javascript:;" class="btn-option"><i class="icon icon-add"></i>装配</a></div></li>
+                         </ul>
+                         <a class="next" href="javascript:;"></a>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </span>
+</div>
+    <!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+    <div class="sitemap">
+        <a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a
+            href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a>
+    </div>
+    <span class="copyright">版权所有 @ 2011-2014 Savorboard Corporation</span>
+    </div>
+</div>
+<!-- end footer -->
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/class.ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.placeholer.js"></script>
+<script type="text/javascript" src="js/jquery.smartfloat.js"></script>
+<script type="text/javascript">
+    $('#guide').smartFloat();
+</script>
+
+</body>
+</html>

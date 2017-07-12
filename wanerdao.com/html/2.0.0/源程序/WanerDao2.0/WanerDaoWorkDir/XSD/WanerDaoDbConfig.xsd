@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WanerDaoDbConfig"
+    targetNamespace="WanerDaoDbConfig.xsd"
+    elementFormDefault="qualified"
+    xmlns="WanerDaoDbConfig.xsd"
+    xmlns:mstns="WanerDaoDbConfig.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="Config">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="Settings" maxOccurs="1" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="add" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="key" type="mstns:NonEmptyStr" use="required"/>
+                  <xs:attribute name="value" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="NonEmptyStr">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

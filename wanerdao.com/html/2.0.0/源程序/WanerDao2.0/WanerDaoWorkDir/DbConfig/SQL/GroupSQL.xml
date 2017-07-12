@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SQLScript xmlns="SQL.xsd">
+
+
+  <!--查询超级管理员或者执行管理员的全部圈子SQL-->
+  <SQL ID="SelectAllGroupForActivity">
+    select gi.id,gi.group_name as value from GroupManageRole gmr inner join GroupInfo gi on gmr.group_id = gi.id
+    where gmr.user_id = ?user_id and gmr.active = 1
+    and (( gmr.role_level = 'd8a302bd-15fc-11e1-bb4e-000c295f9365' and gmr.manage_type_id =0) or
+    ( gmr.role_level in ('d8a302bd-15fc-11e1-bb4e-000c295f9365','d8cd3da4-15fc-11e1-bb4e-000c295f9365') and gmr.manage_type_id =1))
+  </SQL>
+  
+  
+    <!--查询用户参与的全部圈子SQL-->
+    <SQL ID="SelectAll_UserGroup">
+      SELECT group_id as id  FROM GroupMember WHERE active=1 and  user_id =?user_id
+    </SQL>
+
+  <!--查询用户好友参与的全部圈子SQL-->
+  <SQL ID="selectFriendGroup">
+    SELECT distinct group_id FROM GroupMember WHERE active=1 and  user_id in (
+    select relation_to_id from PersonalFriends where relation_from_id  = ?user_id and active = 1)
+  </SQL>
+  <!--活跃度增加SQL-->
+  <SQL ID="UpdateActivityScoreExperience">
+    update GroupInfo set activity_score=activity_score+?addvalue where id = ?id
+  </SQL>
+
+  <!--活跃度增加SQL-->
+  <SQL ID="GetActivityScoreExperience">
+    select activity_score from GroupInfo where id = ?id
+  </SQL>
+  <!--关注度SQL-->
+  <SQL ID="UpdateGroupfollow">
+    update GroupInfo set follow_score=follow_score+?addvalue where id = ?id
+  </SQL>
+
+  <!--删除未创建的圈子的图片-->
+  <SQL ID="Delete_TempGroupInfo">
+    delete  GroupInfo where create_id = ?create_id and isnull(create_date) and active = 0
+  </SQL>
+
+
+  <!--查询圈子基础类型-->
+  <SQL ID="select_groupmanagetype">
+    select id,type_name from groupmanagetype where language_id = ?language_id and  active = 1
+  </SQL>
+  
+  
+  <!--查询圈子分类-->
+  <SQL ID="SelectAll_GroupCategory">
+    SELECT id,category_name as value from  GroupCategory where language_id = ?language_id  and active = 1
+  </SQL>
+
+  <!--创建圈子-->
+  <SQL ID="ADD_GroupInfor">
+    insert into GroupInfo (id,create_id,create_date,category_id,group_name,member_nbr,group_account,summary,description,
+    activity_score,follow_score,website,logo_path,manage_type_id,join_method_id,join_fee,fee_unit,transfer_account,
+    transfer_description,is_kick_protected,kick_protected_duration,is_public)
+    values
+    (?group_id,?user_id,sysdate(),?category_id,?group_name,1,0,?summary,?description,
+    0,0,?website,?logo_path,?manage_type_id,?join_method_id,?join_fee,?fee_unit,?transfer_account,
+    ?transfer_description,?is_kick_protected,?kick_protected_duration,1);
+    
+   </SQL>
+
+  <!--判断圈子是否存在-->
+  <SQL ID="ifexistgroup">
+    SELECT count(id) as isexist
+    from  GroupInfo
+    where id = ?group_id and active = 1
+  </SQL>
+
+
+  <!--判断是否是圈子成员-->
+  <SQL ID="Select_GroupMember">
+    SELECT gm.id,gm.is_authorized,gm.is_pay,gi.join_fee
+    from  GroupMember gm inner join GroupInfo gi on gi.id= gm.group_id
+    where gm.group_id = ?group_id and gm.user_id=?user_id  and gm.active = 1
+  </SQL>
+
+
+  <!--查询圈子成员过期时间-->
+  <SQL ID="Select_GroupMemberExpire_date">
+    SELECT expire_date
+    from  GroupMember
+    where group_id = ?group_id and user_id=?member_id  and active = 1
+  </SQL>
+
+  <!--查询用户角色-->
+  <SQL ID="Select_UserRole">
+    SELECT gr.id as role_id,gr.level
+    from  groupmanagerole gmr   inner join GroupRole gr on gr.id = gmr.role_level
+    where gmr.group_id = ?group_id and gmr.user_id=?user_id   and gmr.active = 1
+  </SQL>
+
+  <!--查询用户角色-->
+  <SQL ID="Select_UserRoleImg">
+    SELECT case role_level when 'd8a302bd-15fc-11e1-bb4e-000c295f9365' then 'pic_poll1.jpg' when 'd8cd3da4-15fc-11e1-bb4e-000c295f9365' then 'pic_poll2.jpg' when 'd899747f-15fc-11e1-bb4e-000c295f9365'  then 'pic_poll4.png' else '' end  as roleimg
+    from  groupmanagerole
+    where group_id = ?group_id and user_id=?user_id  and active = 1
+  </SQL>
+
+  <!--查询圈子信息-->
+  <SQL ID="Select_GroupInfo">
+    select g.id,g.create_date,g.group_name,g.logo_path,g.category_id,g.is_public,g.manage_type_id,p.name,gc.category_name,g.member_nbr,g.activity_score,g.follow_score,
+    g.summary,g.description,g.fee_unit,g.democracy_rate,g.join_fee,g.join_method_id,g.transfer_account,g.transfer_description,g.website,g.is_kick_protected,g.kick_protected_duration
+    from GroupInfo g inner join PersonalProfile p on g.create_id = p.user_id
+    inner join GroupCategory gc on g.category_id = gc.id
+    where g.id=?group_id
+  </SQL>
+
+  <!--查询圈子信息-->
+  <SQL ID="Select_UserJoinGroup">
+    select g.id,g.group_name value
+    from GroupInfo g ,groupmember m
+    where g.id=m.group_id and m.user_id=?user_id and m.is_authorized=1 and m.active=1 and m.expire_date>CURRENT_TIMESTAMP and g.active=1
+  </SQL>
+
+  <!--查询圈子类型-->
+  <SQL ID="Select_GroupInfoType">
+    select manage_type_id
+    from GroupInfo 
+    where id=?group_id
+  </SQL>
+  <!--查询圈子缴费类型-->
+  <SQL ID="Select_GroupFee_unit">
+    select fee_unit
+    from GroupInfo
+    where id=?group_id
+  </SQL>
+
+
+  <!--查询某种角色名-->
+  <SQL ID="Select_GroupNormalManage">
+    SELECT p.user_id as id,p.name  from  GroupManageRole g inner join PersonalProfile p on g.user_id = p.user_id where g.group_id = ?group_id and g.role_level =?role_level and g.active = 1
+  </SQL>
+
+  <!--查询某种角色名-->
+  <SQL ID="SelectRole_GroupNormalManage">
+    SELECT count(*) as RoleSum  from  GroupManageRole where group_id = ?group_id and role_level =?role_level and user_id = ?user_id and active = 1
+  </SQL>
+
+
+  <!--查询圈子保护时限-->
+  <SQL ID="Select_GroupKickDuration">
+    SELECT id,duration_name  from  GroupKickDuration where  language_id =?language_id and active = 1
+  </SQL>
+
+  <!--查询圈子全部成员-->
+  <SQL ID="Select_GroupAllMember">
+    SELECT GM.user_id,GM.user_name,PSP.security_email
+    from  GroupMember GM inner join PersonalSecurityProfile PSP on GM.user_id = PSP.user_id
+    where GM.group_id = ?group_id  and GM.is_authorized = 1  and GM.active = 1
+  </SQL>
+  
+  <!--修改圈子信息-->
+  <SQL ID="Edit_GroupInformation">
+    update GroupInfo
+    set group_name=?group_name,category_id=?category_id,summary = ?summary,description=?description,website=?website,logo_path=?logo_path,
+    manage_type_id = ?manage_type_id,join_method_id=?join_method_id,join_fee=?join_fee,fee_unit=?fee_unit,transfer_account=?transfer_account,
+    transfer_description=?transfer_description,is_kick_protected=?is_kick_protected,kick_protected_duration=?kick_protected_duration,
+    is_public=?is_public,democracy_rate=?democracy_rate,update_date = sysdate()
+    where id =?group_id
+  </SQL>
+
+  <!--创建圈子民主制度-->
+  <SQL ID="Create_GroupDemocratic">
+    insert into RoleEventRules (id,group_id,manage_type_id,manage_type_name,vote_life,public_life,vote_pass_rate,update_date) values (Replace(uuid(),'-',''),?group_id,?manage_type_id,?manage_type_name,?vote_life,?public_life,?vote_pass_rate,sysdate())
+  </SQL>
+
+  <!--创建圈子民主制度角色信息-->
+  <SQL ID="Create_GroupManageRole">
+    insert into GroupManageRole (id,group_id,group_name,manage_type_id,user_id,user_name,role_level,change_duration,salary,unit,begin_date) values (Replace(uuid(),'-',''),?group_id,?group_name,?manage_type_id,?user_id,?user_name,?role_level,?change_duration,?salary,?unit,sysdate())
+  </SQL>
+
+
+
+  <!--创建圈子民主制度人员基础参数-->
+  <SQL ID="Create_DemocraticRoleEventRulesSetting">
+    insert into GroupManageRole (id,group_id,manage_type_id,user_id,role_level,change_duration,pay_duration,salary)
+    values (Replace(uuid(),'-',''),?group_id,?manage_type_id,0,?role_level,?change_duration,?pay_duration,?salary)
+  </SQL>
+
+  <!--创建圈子民主制度基础参数-->
+  <SQL ID="Create_DemocraticGroupSetting">
+    insert into RoleEventRules (id,group_id,manage_type_id,vote_life,public_life,vote_pass_rate)
+    values (Replace(uuid(),'-',''),?group_id,?manage_type_id,?vote_life,?public_life,?vote_pass_rate)
+  </SQL>
+  
+  <!--查询圈子民主制度基础参数-->
+  <SQL ID="Select_DemocraticGroupSetting">
+    select  vote_life,public_life,is_self_approve,is_join_approve,is_vote,vote_pass_rate from RoleEventRules where group_id = ?group_id and active = 1
+  </SQL>
+
+
+  <!--加入圈子-->
+  <SQL ID="Join_GroupInformation">
+    insert into   GroupMember (id,group_id,user_id,is_authorized,is_pay,role_id,expire_date,join_date) values(Replace(uuid(),'-',''),?group_id,?user_id,?is_authorized,?is_pay,?role_id,?expire_date,sysdate())
+  </SQL>
+  
+  <!--修改过期时间-->
+  <SQL ID="update_expire_date">
+    update  GroupMember set expire_date =?expire_date
+    where group_id=?group_id and user_id=?member_id and active=1
+  </SQL>
+  
+  <!--允许加入圈子-->
+  <SQL ID="AgreedJoin_GroupInformation">
+    update GroupMember set is_authorized  = 1,join_date =sysdate()  where group_id=?group_id and user_id=?user_id and active = 1;
+ </SQL>
+
+  <!--圈子人数修改-->
+  <SQL ID="update_GroupInfoMember">
+    update GroupInfo set member_nbr  = member_nbr +?member_nbr  where id=?group_id ;
+  </SQL>
+
+  <!--查询圈子人数-->
+  <SQL ID="get_GroupInfoMember">
+    select member_nbr  from GroupInfo where id=?group_id;
+  </SQL>
+
+  
+  
+  <!--拒绝加入圈子-->
+  <SQL ID="Refused_joinGroup">
+    update GroupMember set active  = 0 where group_id=?group_id and user_id=?user_id and active = 1;
+
+    insert into GroupKickList (id,group_id,user_id,kick_date) values (Replace(uuid(),'-',''),?group_id,?user_id,sysdate())
+  </SQL>
+
+  <!--退出圈子-->
+  <SQL ID="quit_Group">
+    update GroupMember set active  = 0 where group_id=?group_id and user_id=?user_id and active = 1;
+  </SQL>
+
+  <!--解散圈子1-->
+  <SQL ID="Del_GroupInfo">
+    update GroupInfo set active  = 0 where id=?group_id and active = 1;
+  </SQL>
+
+  <!--解散圈子2-->
+  <SQL ID="Del_AllGroupManageRole">
+    update GroupManageRole set active  = 0 where group_id=?group_id and active = 1;
+  </SQL>
+
+  <!--解散圈子3-->
+  <SQL ID="Del_AllGroupMember">
+    update GroupMember set active  = 0 where group_id=?group_id and active = 1;
+  </SQL>
+
+
+  <!--删除用户-->
+  <SQL ID="Del_GroupMember">
+    update GroupMember set active  = 0 where group_id=?group_id and user_id=?user_id and active = 1;
+  </SQL>
+
+  
+  <!--删除角色-->
+  <SQL ID="quit_GroupRole">
+    update GroupManageRole set active  = 0 where group_id=?group_id and user_id=?user_id and active = 1;
+  </SQL>
+
+  <!--职位变更-->
+  <SQL ID="Update_GroupRole">
+    update GroupMember set role_id  = ?role_id,role_name =?role_name where group_id=?group_id and user_id=?user_id;
+  </SQL>
+
+  <!--查询个人圈子设定-->
+  <SQL ID="get_PersonalGroupSettings">
+    select id,contact_email,is_email_event,is_notice_event,is_email_updates,is_notice_updates,is_email_digest,is_notice_digest,digest_duration,is_allow_msg
+    from PersonalGroupSettings where  user_id = ?user_id and group_id=?group_id and active = 1
+  </SQL>
+
+
+  <!--圈子发帖-->
+  <SQL ID="add_GroupDiscuss">
+    insert into GroupDiscuss
+    (id,group_id,post_id,post_date,subject,content,counter)
+    values
+    (?id,?group_id,?user_id,sysdate(),?subject,?content,0)
+  </SQL>
+
+  <!--删除圈子发帖-->
+  <SQL ID="del_GroupDiscuss">
+    update GroupDiscuss set active = 0 where id= ?id and active = 1;
+  </SQL>
+
+  <!--圈子发帖回复-->
+  <SQL ID="add_GroupReply">
+    insert into discusscomments
+    (id,gourp_posts_id,user_id,content,comments_date)
+    values
+    (Replace(uuid(),'-',''),?postid,?user_id,?content,sysdate())
+  </SQL>
+  
+  <!--删除圈子发帖回复-->
+  <SQL ID="del_GroupReply">
+    update discusscomments set active = 0 where id= ?id and active = 1;
+  </SQL>
+  
+  <!--活动相关圈子总数-->
+  <SQL ID="searchGroupRelateActivityCount">
+    select count(id) as countID from GroupInfo where summary like ?category_name or description like ?category_name and active = 1
+  </SQL>
+
+
+  <!--删除圈子中某个职务用户-->
+  <SQL ID="del_GroupManageRole">
+    update  GroupManageRole set active = 0  where group_id = ?group_id and role_level=?role_level and active = 1
+  </SQL>
+
+
+  <!--删除圈子中某个用户某个职务-->
+  <SQL ID="delRole_GroupManageRole">
+    update  GroupManageRole set active = 0  where group_id = ?group_id and role_level=?role_level and user_id=?user_id and active = 1
+  </SQL>
+
+  <!--添加圈子中某个职务用户-->
+  <SQL ID="add_GroupManageRole">
+    insert into GroupManageRole (id,group_id,manage_type_id,user_id,role_level) values(Replace(uuid(),'-',''),?group_id,?manage_type_id,?user_id,?role_level);
+  </SQL>
+
+  <!--查询用户踢出时间-->
+  <SQL ID="select_GroupKickList">
+    select gk.kick_date,gi.is_kick_protected,gi.kick_protected_duration  from   GroupKickList gk left join GroupInfo gi on gk.group_id = gi.id where gk.group_id=?group_id and gk.user_id = ?user_id;
+  </SQL>
+
+  <!-- 添加用户圈子设置-->
+  <SQL ID="add_GroupSetting">
+    insert into PersonalGroupSettings
+    (id,user_id,group_id,contact_email,is_email_event,is_notice_event,is_email_updates,is_notice_updates,is_email_digest,is_notice_digest,digest_duration,is_allow_msg,update_date)
+    values
+    (Replace(uuid(),'-',''),?user_id,?group_id,?contact_email,?is_email_event,?is_notice_event,?is_email_updates,?is_notice_updates,?is_email_digest,?is_notice_digest,?digest_duration,?is_allow_msg,sysdate());
+  </SQL>
+
+  <!-- 添加用户圈子设置-->
+  <SQL ID="update_GroupSetting">
+    update PersonalGroupSettings
+    set contact_email = ?contact_email,is_email_event=?is_email_event,is_notice_event =?is_notice_event,is_email_updates=?is_email_updates,
+    is_notice_updates = ?is_notice_updates,is_email_digest =?is_email_digest,is_notice_digest = ?is_notice_digest,digest_duration = ?digest_duration,is_allow_msg = ?is_allow_msg,update_date= sysdate()
+    where id=?id
+  </SQL>
+
+  <!-- 添加特例用户-->
+  <SQL ID="add_GroupMsgExceptionList">
+    insert into GroupMsgExceptionList
+    (id,user_id,group_id,special_id,update_date)
+    values
+    (Replace(uuid(),'-',''),?user_id,?group_id,?special_id,sysdate());
+
+  </SQL>
+
+
+  <!-- 查询特例用户-->
+  <SQL ID="get_GroupMsgExceptionList">
+    select T0.special_id as id,T1.name from GroupMsgExceptionList T0 inner join PersonalProfile T1 on T1.user_id = T0.special_id
+    where T0.user_id = ?user_id and T0.group_id = ?group_id and T0.active = 1
+  </SQL>
+
+  <!-- 删除特例用户-->
+  <SQL ID="del_GroupMsgExceptionList">
+   update GroupMsgExceptionList set active =0 
+   where user_id = ?user_id and group_id = ?group_id and active = 1
+  </SQL>
+
+  <!-- 查询流水号-->
+  <SQL ID="select_GroupMoneyFlowID">
+    select max(id) as id from GroupMoneyFlow
+    where id like ?flow_id and active = 1
+  </SQL>
+
+  <!-- 查询执行人-->
+  <SQL ID="select_GroupMoneyFlowPayer">
+    select pp.name from GroupMoneyFlowPayer gmfp
+    inner join PersonalProfile pp on gmfp.member_id = pp.user_id
+    where gmfp.money_flow_id =?flow_id and gmfp.active = 1
+  </SQL>
+
+  <!-- 查询附件-->
+  <SQL ID="select_GroupMoneyFlowAttachedFile">
+    select store_path from GroupMoneyFlowAttachedFile
+    where money_flow_id =?flow_id and active = 1
+  </SQL>
+  
+  <!-- 添加流水号-->
+  <SQL ID="add_GroupMoneyFlow">
+    insert into GroupMoneyFlow
+    (id,group_id,item_name,description,is_in,is_per_payer,payer_nbr,item_money,money_ope_id,ope_date)
+    values
+    (?flow_id,?group_id,?item_name,?description,?is_in,?is_per_payer,?payer_nbr,?item_money,?money_ope_id,sysdate());
+
+  </SQL>
+
+  <!-- 添加执行人-->
+  <SQL ID="add_GroupMoneyFlowOpe">
+    insert into GroupMoneyFlowOpe
+    (id,group_id,money_flow_id,ope_id,ope_date)
+    values
+    (Replace(uuid(),'-',''),?group_id,?flow_id,?ope_id,sysdate());
+
+  </SQL>
+
+  <!-- 添加现金流相关人-->
+  <SQL ID="add_GroupMoneyFlowPayer">
+    insert into GroupMoneyFlowPayer
+    (id,group_id,money_flow_id,member_id,add_date)
+    values
+    (Replace(uuid(),'-',''),?group_id,?flow_id,?member_id,sysdate());
+
+  </SQL>
+
+
+  <!-- 添加流水表附件-->
+  <SQL ID="add_GroupMoneyFlowAttachedFile">
+    insert into GroupMoneyFlowAttachedFile
+    (id,group_id,money_flow_id,store_path,update_date,file_name)
+    values
+    (Replace(uuid(),'-',''),?group_id,?flow_id,?store_path,sysdate(),?file_name);
+
+  </SQL>
+
+  <!-- 查询财务金额-->
+  <SQL ID="select_item_money">
+    select ifnull(sum(item_money),0)  as m from GroupMoneyFlow where is_in  in (1,3) and group_id= ?group_id and active =1
+    union
+    select ifnull(sum(item_money),0)  as m from GroupMoneyFlow where is_in  in (2) and group_id= ?group_id and active =1;
+  </SQL>
+
+  <!-- 按条件查询财务金额-->
+  <SQL ID="select_sre_item_money">
+    select sum(item_money) as m from GroupMoneyFlow where is_in  in (2) and group_id= ?group_id and active =1 and id like ?id and item_name like ?item_name
+    union
+    select sum(item_money) as m from GroupMoneyFlow where is_in  in (1,3) and group_id= ?group_id and active =1 and id like ?id and item_name like ?item_name;
+  </SQL>
+
+
+  <!-- 按角色取事件权限-->
+  <SQL ID="select_roleEvent">
+    SELECT distinct ge.id,ge.event_name as name,ge.event_description,
+    case when gi.manage_type_id='f1ceb590-125a-11e1-9997-000c295f9365' then 'T' else 'F'  end as ismanage,
+    case when ge.id='36555607-8a16-11e1-8de6-101f74b66417' then 'T' else 'F'  end as isEditdemocratic
+    from GroupEvent ge inner join DefaultEventSettings des on ge.id = des.event_id
+    left join groupinfo gi on gi.manage_type_id = des.manage_type_id and gi.id = ?group_id
+    where (des.level = 6 or des.level in (
+    select gr.level from GroupManageRole gmr inner join GroupRole gr on gmr.role_level = gr.id
+    where gmr.group_id =?group_id and gmr.user_id =?user_id and gmr.active= 1))
+    and ge.standard_title !='' and ge.language_id = ?language_id
+  </SQL>
+
+  <!-- 查询用户事件权限-->
+  <SQL ID="select_eventRole">
+    select distinct des.vote_life,des.public_life,des.is_self_approve,des.is_join_approve,des.is_vote,des.vote_pass_rate
+    from DefaultEventSettings des inner join GroupInfo gi on gi.manage_type_id = des.manage_type_id
+    where gi.id = ?group_id and des.event_id = ?event_id and des.active = 1
+  </SQL>
+
+  
+  <!---查询民主结构设置-->
+  <SQL ID="Select_GroupDemocratic">
+    select gi.democracy_rate,RR.vote_life,RR.public_life,RR.vote_pass_rate,gr1.change_duration,gr1.unit,gr1.salary,gr2.change_duration as change_duration2,gr2.unit as unit2,gr2.salary as salary2
+    from GroupInfo gi inner join  RoleEventRules RR on gi.id = RR.group_id inner join GroupManageRole gr1 on gi.id = gr1.group_id
+    inner join GroupManageRole gr2 on gi.id = gr2.group_id
+    where gi.id=?group_id and gr1.role_level =?manager_role and gr2.role_level = ?financial_role
+  </SQL>
+  
+  
+  <!--查询事件权限-->
+  <SQL ID="Select_RoleEventRules">
+    select RR.event_id,RR.event_name,RE.event_description from RoleEventRules RR inner join GroupEvent RE on RR.event_id =  RE.id where RR.group_id=?group_id and RR.manage_type_id =?manage_type_id and RR.level=?level
+  </SQL>
+
+  <!--发起事件-->
+  <SQL ID="Add_GroupEventRecords">
+    insert into GroupEventRecords
+    (id,group_id,class_id,event_id,create_id,delay_invoke,title,content,link_value1,link_value2,link_value3,link_value4,link_value5,link_value6,link_value7,link_value8,process_status,begin_date,end_date,positive,negative)
+    values (Replace(uuid(),'-',''),?group_id,?class_id,?event_id,?user_id,?delay_invoke,?title,?content,?link_value1,?link_value2,?link_value3,?link_value4,?link_value5,?link_value6,?link_value7,?link_value8,?process_status,?begin_date,?end_date,?positive,0)
+  </SQL>
+
+  <!--查询事件记录-->
+  <SQL ID="View_RoleEventRules">
+    select create_name,event_name,title,begin_date,end_date,process_status,positive,negative, from RoleEventRules where RR.group_id=?group_id and RR.manage_type_id =?manage_type_id and RR.level=?level
+  </SQL>
+
+  <!--查询事件记录最大分组ID-->
+  <SQL ID="get_maxGroupEventRecords">
+    select ifnull( max(class_id),0) as class_id  from GroupEventRecords where group_id=?group_id
+  </SQL>
+
+
+  <!--事件投票操作-->
+  <SQL ID="add_GroupEventVoteHistory">
+    insert into GroupEventVoteHistory
+    (id,event_id,user_id,vote_date,positive,negative)
+    values (Replace(uuid(),'-',''),?id,?user_id,sysdate(),?positive,?negative)
+  </SQL>
+
+  <!--事件投票数量修改操作-->
+  <SQL ID="update_GroupEventRecords">
+    update GroupEventRecords set positive = positive+?positive ,negative=negative+?negative
+    where id = ?id
+  </SQL>
+
+  <!--事件阶段修改-->
+  <SQL ID="update_GroupEventRecordsprocess">
+    update GroupEventRecords set process_status = ?process_status
+    where id = ?id
+  </SQL>
+
+  <!--财务流水账-->
+  <SQL ID="groupmoneyflow">
+    select  gmf.id,gmf.item_name,gmf.description,gmf.item_money,pp.name,gmf.ope_date
+    from GroupMoneyFlow gmf inner join PersonalProfile pp on gmf.money_ope_id = pp.user_id
+    where  gmf.group_id=?group_id  and gmf.item_name  like ?sre_name and gmf.id like ?sre_id
+    and gmf.ope_date >= ?start_time  and gmf.ope_date <![CDATA[<= ]]>?end_time
+  </SQL>
+</SQLScript>

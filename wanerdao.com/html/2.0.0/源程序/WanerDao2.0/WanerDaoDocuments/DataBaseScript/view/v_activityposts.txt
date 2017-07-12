@@ -1,0 +1,27 @@
+﻿DELIMITER $$
+
+USE `wanerdao1202`$$
+
+DROP VIEW IF EXISTS `v_activityposts`$$
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_activityposts` AS (
+SELECT
+  `ap`.`id`              AS `id`,
+  `ap`.`active_id`       AS `active_id`,
+  `ap`.`active_name`     AS `active_name`,
+  `ap`.`subject`         AS `subject`,
+  `ap`.`content`         AS `content`,
+  `ap`.`post_date`       AS `createdate`,
+  `ap`.`counter`         AS `counter`,
+  `ap`.`is_block`        AS `is_block`,
+  `ap`.`active`          AS `active`,
+  `pp`.`user_id`         AS `userid`,
+  `pp`.`name`            AS `username`,
+  `pp`.`logo_small_path` AS `userlogo`
+FROM (`activityposts` `ap`
+   JOIN `personalprofile` `pp`
+     ON ((`ap`.`create_id` = `pp`.`user_id`)))
+WHERE ((`ap`.`active` = 1)
+       AND (`pp`.`active` = 1)))$$
+
+DELIMITER ;

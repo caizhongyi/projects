@@ -1,0 +1,89 @@
+/*
+SQLyog 企业版 - MySQL GUI v8.14 
+MySQL - 5.1.55-community : Database - wanerdao1202
+*********************************************************************
+*/
+
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`wanerdao1202` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `wanerdao1202`;
+
+/* Procedure structure for procedure `p_wanerdaoMyFriendJoinActivity` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `p_wanerdaoMyFriendJoinActivity` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `p_wanerdaoMyFriendJoinActivity`(
+	    #用户ID 
+	    p_userId VARCHAR(1024), 
+	    #当前页
+	    _pagecurrent INT(4),
+	    #每页记录数
+	    _pageSize  INT(4)
+    )
+BEGIN
+    /*定义变量*/
+	DECLARE m_begin_row INT ;
+	DECLARE m_limit_string VARCHAR(64); /*构造语句*/
+	 
+	/*	确保索引正确	*/
+	IF _pageSize < 1 THEN
+	SET _pageSize = 10 ;
+	END
+	IF ;
+	IF _pagecurrent < 1 THEN
+	SET _pagecurrent = 1 ;
+	END
+	IF ;
+	SET m_begin_row =(_pagecurrent - 1)* _pageSize ;
+	SET m_limit_string = CONCAT( ' LIMIT ', m_begin_row, ', ', _pageSize );     
+     
+       SET @COUNT_STRING =  CONCAT('SELECT      COUNT(DISTINCT a.id)  INTO @ROWS_TOTAL  FROM  activitymember am
+	INNER JOIN activity a ON  am.activity_id=a.id
+	INNER JOIN PersonalFriends friend ON friend.relation_to_id=am.user_id
+	INNER JOIN PersonalProfile users ON users.user_id=am.user_id
+	WHERE 
+	a.active=1 AND a.is_visible=1 AND  a.end_datetime>NOW() AND
+	friend.relation_from_id=\'',
+	p_userId,
+	'\' ');
+     
+     
+     
+        SET @MAIN_STRING = CONCAT('SELECT a.title, a.active_name,a.id, a.begin_datetime,a.end_datetime,a.max_nbr,a.join_member_nbr, GROUP_CONCAT( users.name  SEPARATOR  \'、\')  username
+        FROM  activitymember am
+	INNER JOIN activity a ON  am.activity_id=a.id
+	INNER JOIN PersonalFriends friend ON friend.relation_to_id=am.user_id
+	INNER JOIN PersonalProfile users ON users.user_id=am.user_id
+	WHERE 
+	a.active=1 AND a.is_visible=1 AND   a.end_datetime>NOW() AND
+	friend.relation_from_id=\'',
+	p_userId,
+	'\' GROUP BY a.id  order by a.begin_datetime desc',
+	m_limit_string);     
+     
+	    /*预处理 */
+		PREPARE count_stmt
+		FROM
+			@COUNT_STRING ; EXECUTE count_stmt ; DEALLOCATE PREPARE count_stmt ;
+		  SELECT @ROWS_TOTAL AS ToTal;  
+		PREPARE main_stmt
+		FROM
+			@MAIN_STRING ; EXECUTE main_stmt ; DEALLOCATE PREPARE main_stmt ;
+END */$$
+DELIMITER ;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

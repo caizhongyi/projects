@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>浏览个人日记-个人-玩儿道</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="日记浏览，个人，玩儿道，生活社交网络" />
+<meta name="description" content="日记浏览及评论" />
+
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../css/relationship.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+	
+$(document).ready(function(){
+	
+	$(".handle_list li .log_view_list li").hover(function(){
+		$(this).addClass("grohover");	
+	},function(){
+		$(this).removeClass("grohover");	
+	})
+	
+	$(".inp32").focus(function(){
+		$(this).animate({height:"80px"},1000);
+		$(this).parent().find("input").css({"vertical-align":"top"});
+	}).blur(function(){
+		$(this).animate({height:"28px"},1000);
+	});
+	
+});
+
+</script>
+
+</head>
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+	<div class="header layout">
+    	<a href="index.html" class="logo"></a>
+        <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="回到首页"></a>
+            <div class="home_pop">
+            	<ul>
+                	<li>
+                        <a href="javascript:;" class="hp_title">活动</a>
+                        <p><a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a href="javascript:;">我的活动</a><a href="javascript:;">历史活动</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">个人</a>
+                        <p><a href="javascript:;">资料</a><a href="javascript:;">日志</a><a href="javascript:;">相册</a><a href="javascript:;">视频</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">关系</a>
+                        <p><a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+        		<input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/default/32-32.jpg" width="32" height="32"></a><span class="user_infor_name"><a href="javascript:;">烧饭-人生旅途中人生旅途中<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+	<div class="mes_box per_blog clearfix">
+        
+        <div class="black10"></div>
+        <div class="black5"></div>
+        <div class="mes_com_box_Tab">
+            <a href="javascript:;">我的好友</a>
+            <a href="javascript:;">寻找好友</a>
+            <a href="javascript:;">邀请好友</a>
+            <a href="javascript:;">关注设置</a>
+            <a href="javascript:;" class="active">我的圈子</a>
+            <a href="javascript:;">寻找圈子</a>
+            <a href="javascript:;">创建圈子</a>
+        </div>
+        <div class="black10"></div>
+
+        
+        <div class="log_tab clearfix mb12">
+            <ul>
+                <li><a href="javascript:;" class="tagf">信息</a></li>
+                <li><a href="javascript:;">综合</a></li>
+                <li><a href="javascript:;">成员</a></li>
+                <li><a href="javascript:;">财务</a></li>
+                <li><a href="javascript:;">设置</a></li>
+            </ul>
+        </div>
+        
+        <div class="follow_main clearfix no_bg pb50">
+            <div class="handle_box">
+                <div class="handle_top">
+                    <span>
+                        <div class="drop_down f_left" style="height:25px; line-height:25px;">
+                            <span>过滤器</span>
+                            <b></b>
+                            <i>
+                                <a href="">过滤器</a>
+                            </i>
+                        </div>
+                        <div class="f_left"><input type="text" class="inp25" /></div>
+                        <div class="f_left"><input name="" type="button" class="inp26" value="添 加" /></div>
+                        <label><a href="javascript:;"></a><a href="javascript:;" class="tabf"></a></label>
+                    </span>
+                    <a href="javascript:;"><img src="../images/groupbg14.jpg" /></a>
+                    <div class="handle_tab">
+                        <a href="javascript:;" class="tagf">待处理事件</a><a href="javascript:;">事件记录</a>
+                    </div>
+                </div>
+                <div class="handle_bottom">
+                    <ul id="report_list">
+                        <li class="report">
+                            <span>创建人：<a>钟志阁</a><label>12-12</label> <a href="javascript:;" class="h_top"></a><a href="javascript:;" class="h_bot"></a></span>
+                            [<font color="#37922D">处理中</font>] 0000001 <a href="javascript:;">登山活动收费明细</a> <i>2011年11月登山活动描述文字登山活动描述文字</i>
+                        </li>
+                        <li class="report">
+                            <span>创建人：<a>钟志阁</a><label>12-12</label> <a href="javascript:;" class="h_top"></a><a href="javascript:;" class="h_bot"></a></span>
+                            [<font color="#37922D">处理中</font>] 0000001 <a href="javascript:;">登山活动收费明细</a> <i>2011年11月登山活动描述文字登山活动描述文字</i>
+                        </li>
+                        <li class="report">
+                            <span>创建人：<a>钟志阁</a><label>12-12</label> <a href="javascript:;" class="h_top"></a><a href="javascript:;" class="h_bot"></a></span>
+                            [<font color="#CC0000">未处理</font>] 0000001 <a href="javascript:;">登山活动收费明细</a> <i>2011年11月登山活动描述文字登山活动描述文字</i>
+                        </li>   
+                        <li class="pl69 report bb0">
+                            <span><a href="javascript:;">发送信息</a> | <a href="javascript:;">批准</a> | <a href="javascript:;">拒绝</a></span>
+                            0000001 <a href="javascript:;">钟志阁</a> 申请加入圈子
+                        </li>                                                                                             
+                    </ul>
+                </div>                        
+            </div>
+            
+            <div class="handle_box">
+                <div class="handle_top">
+                    <span>
+                        <div class="drop_down f_left" style="height:25px; line-height:25px;">
+                            <span>过滤器</span>
+                            <b></b>
+                            <i>
+                                <a href="">过滤器</a>
+                            </i>
+                        </div>
+                        <div class="f_left"><input type="text" class="inp25" /></div>
+                        <div class="f_left"><input name="" type="button" class="inp26" value="添 加" /></div>
+                        <label><a href="javascript:;"></a><a href="javascript:;" class="tabf"></a></label>
+                    </span>
+                    <a href="javascript:;"><img src="../images/groupbg14.jpg" /></a>
+                    <div class="handle_tab w145">
+                        <a href="javascript:;" class="tagf">当前活动</a><a href="javascript:;">历史活动</a>
+                    </div>
+                </div>
+                <div class="handle_bottom">
+                    <ul id="report_list">
+                        <li class="h70 report">
+                            <div class="hd_tit">
+                                <span>12-12</span>
+                                0000001 <a href="javascript:;">周末去等珠穆朗玛活动</a> <font color="#cc0000">(423)</font>
+                            </div>
+                            <div class="hd_xx">
+                                <span class="mygroup_xq"><a href="javascript:;">查看详情</a> | <a href="javascript:;">加入</a></span>
+                                <i>活动地点：</i>美国纽约州XXX公园门口<i class="ml25">预交金额：</i><a>$100</a> / <i>实际金额：</i><a>$3210</a>
+                            </div>
+                        </li>
+                        <li class="h70 report">
+                            <div class="hd_tit">
+                                <span>12-12</span>
+                                0000001 <a href="javascript:;">周末去等珠穆朗玛活动</a> <font color="#cc0000">(423)</font>
+                            </div>
+                            <div class="hd_xx">
+                                <span class="mygroup_xq"><a href="javascript:;">查看详情</a> | <a href="javascript:;">加入</a></span>
+                                <i>活动地点：</i>美国纽约州XXX公园门口<i class="ml25">预交金额：</i><a>$100</a> / <i>实际金额：</i><a>$3210</a>
+                            </div>
+                        </li>
+                        <li class="h70 report">
+                            <div class="hd_tit">
+                                <span>12-12</span>
+                                0000001 <a href="javascript:;">周末去等珠穆朗玛活动</a> <font color="#cc0000">(423)</font>
+                            </div>
+                            <div class="hd_xx">
+                                <span class="mygroup_xq"><a href="javascript:;">查看详情</a> | <a href="javascript:;">加入</a></span>
+                                <i>活动地点：</i>美国纽约州XXX公园门口<i class="ml25">预交金额：</i><a>$100</a> / <i>实际金额：</i><a>$3210</a>
+                            </div>
+                        </li>
+                        <li class="h70 report bb0">
+                            <div class="hd_tit">
+                                <span>12-12</span>
+                                0000001 <a href="javascript:;">周末去等珠穆朗玛活动</a> <font color="#cc0000">(423)</font>
+                            </div>
+                            <div class="hd_xx">
+                                <span class="mygroup_xq"><a href="javascript:;">查看详情</a> | <a href="javascript:;">加入</a></span>
+                                <i>活动地点：</i>美国纽约州XXX公园门口<i class="ml25">预交金额：</i><a>$100</a> / <i>实际金额：</i><a>$3210</a>
+                            </div>
+                        </li>                                                                                           
+                    </ul>
+                </div>                        
+            </div>
+            
+            <div class="handle_inp">
+                <a href="javascript:;" class="inp27">发表评论</a><a href="javascript:;" class="inp28">发起事件</a><a href="javascript:;" class="inp29">发起活动</a>
+            </div>
+            
+            <div class="fb_events mt30">
+                <h1>发表事件</h1>
+                <div class="events_con">
+                    <div class="events_top">
+                        <ul>
+                            <li class="xz_events"><label>选择事件：</label><select name="select" style="width:200px;">
+                                  <option value="1">基本信息变更</option>
+                                </select></li>
+                            <li><label>事件描述：</label>这里是事件描述</li>
+                        </ul>
+                    </div>
+                    <div class="events_bot">
+                        <ul>
+                            <li><label>变&nbsp;更&nbsp;点：</label><select name="select" style="width:200px;">
+                                  <option value="1">请选择变更点</option>
+                                </select></li>
+                            <dl>
+                                <dd><label>圈子名称：</label><input type="text" class="text" value="请输入圈子名称" style="width:360px;" /></dd>
+                                <dd class="xz_events"><label>圈子分类：</label><select name="select">
+                                  <option value="1">请选择圈子分类</option>
+                                </select></dd>
+                                <dd><label>是否公开：</label><input name="" type="checkbox" value=""  id="box12"  /> <a onclick="checkbox2('box12')">公开圈子</a></dd>
+                                <dd><label>加入方式：</label><input name="" type="radio" value=""  id="box13"  /> <a onclick="checkbox2('box13')">直接加入</a><input name="" type="radio" value="" class="ml25"  id="box14"  /> <a onclick="checkbox2('box14')">批准加入</a></dd> 
+                                <dd><label>执行管理员：</label><input type="text" class="w190 text" /><input name="" type="button" class="inp22" value="添 加"/></dd>
+                                <dt>
+                                    <div class="hylist">
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                    </div>
+                                </dt>
+                                <dd><label>财务员：</label><input type="text" class="w190 text" /><input name="" type="button" class="inp22" value="添 加"/></dd>
+                                <dt>
+                                    <div class="hylist">
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                        <span><a>好友名字 <img src="../images/del_pep.png" /></a></span>
+                                    </div>
+                                </dt>
+                                <dd><label>财务员：</label><input type="text" class="w190 text" /><input name="" type="button" class="inp22" value="添 加"/></dd>
+                                <dt class="tp_bq"><input name="" type="checkbox" value="" /><a> 我知道上传的图片不侵犯第三方的版权 </a></dt>
+                                <dt class="tp_bq"><img src="../images/default/220-150.png" class="tp_bq_img"/></dt>
+                                <dd><label class="v_top">圈子简介：</label><textarea name="input" class="text"></textarea></dd>
+                                <dd><label class="v_top">圈子规章：</label><textarea name="input" class="text"></textarea></dd>
+                                <dd><label>圈子主页：</label><input type="text" class="text" value="请输入圈子主页地址" style="width:360px;" /></dd>
+                                <dd><label>管理架构：</label><input name="" type="radio" value=""  id="box16" /> <a href="javascript:void(0);" onclick="checkbox2('box16')">层级结构</a><input name="" type="radio" value="" class="ml180" id="box15" /> <a href="javascript:void(0);" onclick="checkbox2('box15')">民主结构</a></dd>
+                                <dt class="tp_bq">
+                                    <img src="../images/demo/name_jg.jpg" class="tp_bq_img01"/><img src="../images/demo/name_jgr.jpg" class="tp_bq_img01"/>
+                                </dt>
+                                <dd class="qz_jj"><label>缴纳费用：</label>
+                                <input type="text" class="text" style="width:100px;" />
+                                <select name="select" style="width:80px;">
+                                  <option value="1">单位</option>
+                                </select>
+                                <input type="text" class="text" style="width:100px;" />
+                                <select name="select" style="width:80px;">
+                                  <option value="1">单位</option>
+                                </select></dd>
+                                <dd><label>汇款账号：</label><input type="text" class="text" value="请输入圈子名称" style="width:360px;" /></dd>
+                                <dd><label class="v_top">缴费说明：</label><textarea name="input" class="text"></textarea></dd>
+                                <dd class="tr_bh"><label>踢人保护：</label><input name="" type="checkbox" value="" class="v_top1" id="box17" /> <a href="javascript:void(0);" onclick="checkbox2('box17')">启动踢人保护</a>
+                                <select name="select">
+                                  <option value="1">保护时限</option>
+                                </select></dd>
+                            </dl>
+                            <li><label>主&nbsp;&nbsp;&nbsp;&nbsp;题：</label><input type="text" class="text" style="width:320px;" /></li>
+                            <li><label style="vertical-align:top">内&nbsp;&nbsp;&nbsp;&nbsp;容：</label><textarea name="input" class="textarea"></textarea></li>
+                            <li>
+                            <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="发起事件" style="margin-left:77px;">
+                        	<input type="button" class="buttonB btn_w97 btn_h36 btnGary_97 fSize-14" value="取 消"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="handle_list clearfix">
+                
+                <div class="topNav clearfix">
+                			<div class="f_left lsz_frist_tit">
+                            	<input type="text" class="inp30" /><input type="button" class="inp31" />
+                            </div>
+                        	<!-- 分页右边 -->
+                            <div class="pageList  f_right"><span>第</span><input type="text" class="text" value="0"><span>页</span><span>共</span><span>0</span><span>页</span><span>共</span><span>0</span><span>条</span><a title="首页" href="javascript:;">首页</a><a title="上一页" href="javascript:;">上一页</a><a title="下一页" href="javascript:;">下一页</a><a title="尾页" href="javascript:;">尾页</a></div>
+                            <!-- 分页右边 -->
+                   
+                </div>
+                
+                <ul id="report_list">
+                    <li class="report">
+                        <img src="../images/default/32-32.jpg"/>
+                        <div class="handle_view_pl cli_hf">
+                            <font color="#0085C5">AHXIAOPENG</font>  评论标题评论标题评论标题评论标题 <font color="#FF0000">[已读]</font>
+                        </div>
+                        <div class="handle_view_con">
+                        <a href="javascript:;">21日中午1时30分许，丘北县离城16公里左右的猫猫冲小学，用马车当校车载20余名小学生上学，途中与一货车相撞，造成20多人不同程度受伤，目前已确认有2人死亡。部分学生正在</a>  
+                        </div>
+                        <div class="handle_view_data">18分钟前</div>
+                        
+                        <div class="log_view_tabC" style="display:">
+                                <div class="log_view_hf">
+                                    <textarea name="" type="text" class="inp32"></textarea><input name="" type="button" class="inp33" value="回 复"><input name="" type="button" class="inp34" value="取 消">
+                                </div>
+                                <div class="log_view_list clearfix">
+                                    <ul>
+                                        <li>
+                                            <img src="../images/default/32-32.jpg"/>
+                                            <div class="log_view_pl">
+                                            武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的
+                                            </div>
+                                            <div class="log_view_data">
+                                                <span><a href="javascript:;">删除</a><a href="javascript:;">回复</a></span>30分钟前
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="../images/default/32-32.jpg"/>
+                                            <div class="log_view_pl">
+                                            武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的
+                                            </div>
+                                            <div class="log_view_data">
+                                                <span><a href="javascript:;">删除</a><a href="javascript:;">回复</a></span>30分钟前
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="../images/default/32-32.jpg"/>
+                                            <div class="log_view_pl">
+                                            武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的
+                                            </div>
+                                            <div class="log_view_data">
+                                                <span><a href="javascript:;">删除</a><a href="javascript:;">回复</a></span>30分钟前
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="../images/default/32-32.jpg"/>
+                                            <div class="log_view_pl">
+                                            武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的
+                                            </div>
+                                            <div class="log_view_data">
+                                                <span><a href="javascript:;">删除</a><a href="javascript:;">回复</a></span>30分钟前
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="../images/default/32-32.jpg"/>
+                                            <div class="log_view_pl">
+                                            武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的
+                                            </div>
+                                            <div class="log_view_data">
+                                                <span><a href="javascript:;">删除</a><a href="javascript:;">回复</a></span>30分钟前
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="log_view_bin clearfix">
+                                    <a href="javascript:void(0);" class="log_viewbg09">收起</a>                                
+                                    <a href="javascript:;" class="log_viewbg08">更多回复</a>
+                                </div>
+                            </div>
+                        
+                    </li>
+                    <li class="report">
+                        <img src="../images/default/32-32.jpg"/>
+                        <div class="handle_view_pl">
+                            <font color="#0085C5">AHXIAOPENG</font>  评论标题评论标题评论标题评论标题 <font color="#FF0000">[已读]</font>
+                        </div>
+                        <div class="handle_view_con">
+                        <a href="javascript:;">21日中午1时30分许，丘北县离城16公里左右的猫猫冲小学，用马车当校车载20余名小学生上学，途中与一货车相撞，造成20多人不同程度受伤，目前已确认有2人死亡。部分学生正在</a>  
+                        </div>
+                        <div class="handle_view_data">18分钟前</div>
+                    </li>
+                    <li class="report bb0">
+                        <img src="../images/default/32-32.jpg"/>
+                        <div class="handle_view_pl">
+                            <font color="#0085C5">AHXIAOPENG</font>  评论标题评论标题评论标题评论标题 <font color="#FF0000">[已读]</font>
+                        </div>
+                        <div class="handle_view_con">
+                        <a href="javascript:;">21日中午1时30分许，丘北县离城16公里左右的猫猫冲小学，用马车当校车载20余名小学生上学，途中与一货车相撞，造成20多人不同程度受伤，目前已确认有2人死亡。部分学生正在</a>  
+                        </div>
+                        <div class="handle_view_data">18分钟前</div>
+                    </li>                                                        
+                </ul>
+                
+                <div class="topNav bmNav clearfix">
+                        	
+                    <!-- 分页右边 -->
+                            <div class="pageList  f_right"><a href="javascript:;" class="more">查看更多</a>&nbsp;&nbsp;<span>第</span><input type="text" class="text" value="0"><span>页</span><span>共</span><span>0</span><span>页</span><span>共</span><span>0</span><span>条</span><a title="首页" href="javascript:;">首页</a><a title="上一页" href="javascript:;">上一页</a><a title="下一页" href="javascript:;">下一页</a><a title="尾页" href="javascript:;">尾页</a></div>
+                            <!-- 分页右边 -->
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        
+        
+        
+    </div>
+</div>
+<div class="mes_main_bot"></div>
+
+
+<div class="footer layout">
+	<span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+</div>
+
+<script type="text/javascript">
+$(function(){
+	
+	$(".drop_down").toggle(function(){
+		$(".drop_down i").width(0);
+		$(".drop_down i").css("display","none");
+		$(this).children("i").width($(this).width()+25);
+		$(this).children("i").css("display","block");
+	},function(){
+		$(this).children("i").css("display","none");
+	})
+	$(document).mousedown(function(){
+		$(".drop_down i").css("display","none");
+	})
+	
+});
+
+$("#report_list .report").each(function(i){
+	$(this).attr('order',i);
+	$(this).mouseout(
+		function(){		
+			color = '#DFDFDF';
+			order = $(this).attr('order');
+			$("#report_list .report").each(
+				function(j){
+					if(order-j==1){
+						$(this).css('border-bottom','1px dashed '+color);		
+					}
+				}
+			);
+			$(this).css('border-bottom','1px dashed '+color);
+			$(this).css('background','');
+			$(this).find('.mygroup_xq').hide();
+		}	
+	);
+
+	$(this).mouseover(
+		function(){
+			color = '#5FB0D3';
+			order = $(this).attr('order');
+			$("#report_list .report").each(
+				function(j){
+					if(order-j==1){
+						$(this).css('border-bottom','1px dashed '+color);		
+					}
+				}
+			);
+			$(this).css('border-bottom','1px dashed '+color);
+			$(this).css('background','#EEF7FE');
+			$(this).find('.mygroup_xq').show();
+		}	
+	);
+});
+
+//blog、blog_view 展开评论
+		$(".gxbox").each(function(){
+		$(this).click(function(){
+			obj = $(this).parent().parent().parent().find(".log_view_box");
+			if(obj.css('display')=='none'){
+				obj.show();	
+			}else{
+				obj.hide();	
+			}
+		});  
+	});
+	
+//blog_post 收起共享
+	$(".shgx").each(function(){
+		$(this).click(function(){									 
+			obj = $(this).parent().parent();							 
+			obj.hide();
+		});
+	});
+	
+</script>
+
+</body>
+</html>

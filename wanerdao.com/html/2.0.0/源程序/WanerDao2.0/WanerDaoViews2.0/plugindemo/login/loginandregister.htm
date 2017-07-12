@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>登录与注册弹出层</title>
+    <link rel="stylesheet" type="text/css" href="/css/lib.css" media="all"/>
+    <link href="/css/plugin/jquery/QapTcha.jquery.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .QapTcha
+        {
+            margin-left: 120px;
+        }
+        #password-strength
+        {
+            width: 220px;
+            line-height: 8px;
+            margin-left: 110px;
+            margin-top: 5px;
+        }
+        span.password-min-char
+        {
+            line-height: 8px;
+            height: 8px;
+            width: 90px;
+            font-size: 8px;
+        }
+        span.password-strength-bar
+        {
+            height: 8px;
+            line-height: 8px;
+        }
+        span.password-strength-bar-conatiner
+        {
+            width: 150px;
+            height: 8px;
+            border: solid 1px #eee;
+            display: block;
+            float: left;
+        }
+        .sex_lbl
+        {
+            position: relative;
+        }
+        .sex_lbl .fail
+        {
+            position: absolute;
+            left: 200px;
+        }
+        .fail
+        {
+            color: Red;
+        }
+    </style>
+    <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/scripts/plugin/cookie/wanerdao2.cookies.js"></script>
+    <script type="text/javascript" src="/Scripts/multipleLanguage/loader.js"></script>
+    <script type="text/javascript" src="../../scripts/common/wanerdaoutils.js"></script>
+    <script type="text/javascript" src="/scripts/global.js"></script>
+    <script type="text/javascript" src="/scripts/common/wandao.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.core.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.tabs.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.center.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.overlay.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.dialog.js"></script>
+     <script type="text/javascript" src="/scripts/openplugin/jquery-ui.js"></script>
+    <script type="text/javascript" src="/scripts/openplugin/jquery.ui.touch.js"></script>
+    <script type="text/javascript" src="/Scripts/openplugin/jquery.metadata.js"></script>
+    <script type="text/javascript" src="/Scripts/openplugin/digitalspaghetti.password.js"></script>
+    <script type="text/javascript" src="/scripts/openplugin/QapTcha.jquery.js"></script>
+    <script type="text/javascript" src="/scripts/openplugin/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.chosen/jquery.chosen.js"></script>
+    <script type="text/javascript" src="../../scripts/plugin/login/wanerdao2.login.js"></script>
+    <script type="text/javascript" src="../../scripts/plugin/login/wanerdao2.register.js"></script>
+    
+    <script type="text/javascript">
+        $(function () {
+            $("#success").click(function () {
+           // * 1.当没有回调函数时，默认刷新当前页面                
+                new wanerdaologin();
+            //* 2.当有回调时，执行回调函数不刷新当前页面
+//                new wanerdaologin({ callback: function () {
+//                    alert(1);
+//                }});
+            });
+            $("#confirm").click(function () {
+                //如果注册成功刷新当前页面
+                new wanerdaoregister();
+            });
+        })
+    </script>
+</head>
+<body>
+<input type="button" value="login" id="success"/>
+<input type="button" value="register" id="confirm"/>
+</body>
+</html>

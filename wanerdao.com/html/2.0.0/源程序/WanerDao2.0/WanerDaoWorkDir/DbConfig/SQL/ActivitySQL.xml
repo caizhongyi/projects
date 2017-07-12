@@ -1,0 +1,1304 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLScript xmlns="SQL.xsd">
+  <SQL ID="SelectActivityID">
+    select * from w where id=?a and uid=?b
+  </SQL>
+  <SQL ID="SelectActivityName">
+
+  </SQL>
+  <SQL ID="CheckAuthorization">
+    select id from  Activity where id = ?keyid and apply_pass=?password
+  </SQL>
+  <!-- 胥鑫添加 开始-->
+  <!--活跃度增加SQL-->
+  <SQL ID="UpdateActivityScoreExperienceNew">
+    update Activity set activity_score=activity_score+?addvalue where id = ?id
+  </SQL>
+
+  <!--获取活跃度SQL-->
+  <SQL ID="GetActivityScoreExperienceNew">
+    select activity_score from  Activity where id = ?id
+  </SQL>
+  <!-- 胥鑫添加 结束-->
+
+  <!-- 徐兵添加 开始-->
+  <!--按照活动ID查找活动详细信息SQL-->
+  <SQL ID="SearchActivityDetailsInfoByID">
+    select activity_name,address,join_member_nbr,prepay_nbr,begin_datetime,end_datetime,description,activity_link,original_id,is_public,ActivityJoinConditions.condition_name,ActivityJoinConditions.value,personalprofile.name from activity,ActivityJoinConditions,personalprofile where activity.id=ActivityJoinConditions.activity_id and personalprofile.user_id=activity.original_id and activity.id=?id and activity.active=1
+  </SQL>
+
+  <!--按照活动ID查找活动详细信息SQL--><!--
+  <SQL ID="SearchActivityMap">
+    select a.id as activityId,a.activity_name as activityName,a.address as activityAddress,CONCAT(a.lat,',',a.lng)
+    from activity a
+    where a.active=1 and a.is_create=1 and a.is_visible=1 and  f_JudgeCanSignUpActivity(a.id,?userId)=1
+    ?distance
+    ?category
+    ?beanPlace
+    ?unite
+  </SQL>-->
+  
+  <!--查找用户最近创建类活动-->
+  <SQL ID="GetKeyValueActivityParamByUserID">
+    select a.id,a.activity_name from activity a,activitymember m
+    where a.active=1 and a.id=m.activity_id and a.is_visible=1
+    and m.user_id=?user_id order by a.datetime desc limit ?limitmax
+  </SQL>
+  <SQL ID="GetActivityParamByActivityID">
+    select id,activity_name,create_type_id,description,create_email,create_phone,follow_score,max_nbr,address,country_id,province_id,city_id,zip,apply_type_id,apply_type_name,apply_pass,prepay_nbr,is_budget_open,is_kick_protected,kick_protected_duration,is_public,schedule_type
+    from activity where active=1 and id=?id;
+  </SQL>
+  <!--按照活动ID查找活动名字-->
+  <SQL ID="SelectActivityNameById">
+    select activity_name from activity where activity.id=?id and active=1
+  </SQL>
+  
+  <!--根据指定的日期查询每日活动数目-->
+  <SQL ID="SelectActivityCountByDate">
+    select date(datetime) as date,count(*) as count from  activity a,activitymember am
+    where a.id=am.activity_id and am.user_id=?user_id and a.active=1 and am.active=1 and is_visible=1
+    and datetime between ?begindatetime and ?enddatetime
+    group by date(datetime) order by datetime
+  </SQL>
+  <!--返回指定数量最新、距离最近的活动-->
+  <SQL ID="GetNewestAndNearestActivity">
+    select a.id,a.activity_name,a.activity_score,a.address,join_member_nbr,a.follow_score,original_id,p.name,description,
+    0 personcost, '' imagepath
+    from activity a
+    left join personalprofile p on a.original_id=p.user_id
+    where f_JudgeCanSignUpActivity(a.id,?userid)=1
+    order by a.datetime desc limit ?count
+  </SQL>
+  <!--可以根据地域、兴趣爱好返回指定数量的活动-->
+  <SQL ID="GetRegionAndInterestActivity">
+    select a.id,a.activity_name,a.activity_score,a.address,join_member_nbr,a.follow_score,original_id,p.name,description,
+    0 personcost, '' imagepath
+    from activity a
+    left join personalprofile p on a.original_id=p.user_id
+    order by a.datetime desc limit ?count
+  </SQL>
+  
+  <!--创建活动-->
+  <SQL ID="InsertActivity">
+    INSERT INTO activity(
+    id,activity_name,activity_link,datetime,original_id,create_type_id,create_id,description,create_email,create_phone,follow_score,activity_score,max_nbr,join_member_nbr,address,country_id,province_id,city_id,zip,begin_datetime,end_datetime,report_datetime,apply_type_id,apply_type_name,apply_pass,prepay_nbr,is_budget_open,is_kick_protected,kick_protected_duration,is_balance,balance_date,balance_type,is_public,schedule_type,counter,update_date,is_visible,active,refund_type,is_create,pay_description,is_pay_need,pay_nbr,lat,lng)
+    VALUES(?id,?activity_name,?activity_link,CURRENT_TIMESTAMP,?original_id,?create_type_id,?create_id,?description,?create_email,?create_phone,0,0,?max_nbr,0,?address,?country_id,?province_id,?city_id,?zip,?begin_datetime,?end_datetime,?report_datetime,?apply_type_id,?apply_type_name,?apply_pass,?prepay_nbr,?is_budget_open,?is_kick_protected,?kick_protected_duration,?is_balance,?balance_date,?balance_type,?is_public,?schedule_type,0,CURRENT_TIMESTAMP,1,1,?refund_type,?is_create,?pay_description,?is_pay_need,?pay_nbr,?lat,?lng);
+ </SQL>
+   <!--创建修改-->
+  <SQL ID="UpdateActivity">
+    UPDATE activity SET
+    activity_name = ?activity_name,
+    activity_link = ?activity_link,
+    datetime = ?datetime,
+    original_id = ?original_id,
+    create_type_id = ?create_type_id,
+    create_id = ?create_id,
+    description = ?description,
+    create_email = ?create_email,
+    create_phone = ?create_phone,
+    follow_score = ?follow_score,
+    activity_score = ?activity_score,
+    max_nbr = ?max_nbr,
+    join_member_nbr = ?join_member_nbr,
+    address = ?address,
+    country_id = ?country_id,
+    province_id = ?province_id,
+    city_id = ?city_id,
+    zip = ?zip,
+    begin_datetime = ?begin_datetime,
+    end_datetime = ?end_datetime,
+    report_datetime = ?report_datetime,
+    apply_type_id = ?apply_type_id,
+    apply_type_name = ?apply_type_name,
+    apply_pass = ?apply_pass,
+    prepay_nbr = ?prepay_nbr,
+    is_budget_open = ?is_budget_open,
+    refund_type = ?refund_type,
+    is_kick_protected = ?is_kick_protected,
+    kick_protected_duration = ?kick_protected_duration,
+    is_balance = ?is_balance,
+    balance_date = ?balance_date,
+    balance_type = ?balance_type,
+    is_public = ?is_public,
+    schedule_type = ?schedule_type,
+    counter = ?counter,
+    update_date = CURRENT_TIMESTAMP,
+    is_visible = ?is_visible,
+    is_create = ?is_create,
+    pay_description=?pay_description,
+    is_pay_need=?is_pay_need,
+    pay_nbr=?pay_nbr
+    WHERE id = ?id and active = 1;
+  </SQL> 
+  <!--删除活动-->
+  <SQL ID="DeleteActivity">
+    update activity set active=0
+    where id=?id and active=1
+  </SQL>
+  <!--修改活动成员数-->
+  <SQL ID="UpdateActivityJoinMemberNbr">
+    update activity set join_member_nbr=join_member_nbr+?changecount
+    where id=?id and active=1
+  </SQL>
+  <!--按照活动ID查找活动详细信息SQL-->
+  <SQL ID="SearchActivityByID">
+    SELECT
+    a.id,a.activity_name,a.activity_link,a.datetime,a.original_id,a.create_type_id,a.create_id,a.description,a.create_email,a.create_phone,a.follow_score,a.activity_score,a.max_nbr,a.join_member_nbr,a.address,a.country_id,a.province_id,a.city_id,a.zip,a.begin_datetime,a.end_datetime,a.report_datetime,a.apply_type_id,a.apply_type_name,a.apply_pass,a.prepay_nbr,a.is_budget_open,a.refund_type,a.is_kick_protected,a.kick_protected_duration,a.is_balance,a.balance_date,a.balance_type,a.is_public,a.schedule_type,a.counter,a.update_date,a.is_visible,a.is_create,a.active,a.pay_description,a.is_pay_need,a.pay_nbr
+    ,ps.name as original_name
+    FROM activity a
+    left JOIN personalprofile ps ON ps.user_id=a.original_id
+    where a.id=?id  AND a.active=1 AND a.is_visible=1
+  </SQL>
+
+  <!--按照活动ID查找活动详细信息SQL-->
+  <SQL ID="SearchActivityMainInfoByID">
+    <!--SELECT
+        id,activity_name,activity_link,datetime,create_name,title,description,max_nbr,join_member_nbr,address,begin_datetime,end_datetime,report_datetime,DATE(ADDDATE(begin_datetime,-1)) report_end_datetime,apply_type_name,pay_type_name,pay_method,prepay_nbr,prepay_reason
+        FROM activity
+        where id=?id and active=1 and is_visible=1-->
+    SELECT a.id,a.activity_name,a.activity_link,a.datetime,ps.name create_name,a.description,a.max_nbr,a.join_member_nbr,a.original_id,
+    a.create_phone,a.create_email,a.join_member_nbr,a.address,a.begin_datetime,a.end_datetime, a.datetime report_datetime,acs.logo_path,
+    a.report_datetime report_end_datetime,a.apply_type_name,a.prepay_nbr,a.apply_pass,
+    f_JudgeCanSignUpActivity(a.id,?user_id) as cansingup,
+    (select count(1) from activitymember am where a.id=am.activity_id and am.user_id=?user_id and am.active=1) issignup
+    FROM activity a
+    left JOIN activitycategory ac  ON a.id=ac.activity_id
+    left JOIN activitycategorysettings acs ON ac.category_id=acs.id
+    left JOIN personalprofile ps ON ps.user_id=a.original_id
+    WHERE a.id=?id  AND a.active=1 AND a.is_visible=1 ORDER BY ac.update_date LIMIT 1
+  </SQL>
+
+  <!--创建用户创建的活动参数-->
+  <SQL ID="InsertPersonalActivitySchedule">
+    INSERT personalactivityschedule
+    (id,user_id,activity_id,is_build_directly,begin_date,email_pre_date,is_notice,notice_pre_date,is_email,is_fixed_schedule,fix_schedule,active)
+    VALUES
+    (
+    ?id,?user_id,?activity_id,?is_build_directly,?begin_date,?email_pre_date,?is_notice,?notice_pre_date,?is_email,?is_fixed_schedule,?fix_schedule,?active
+    );
+  </SQL>
+  <!--创建用户创建的活动参数-->
+  <SQL ID="SelectPersonalActivityScheduleByActivityID">
+    select ac.id,ac.user_id,ps.name  user_name,activity_id,is_build_directly,begin_date,email_pre_date,is_notice,notice_pre_date,is_email,is_fixed_schedule,fix_schedule,ac.active
+    from personalactivityschedule ac
+    left JOIN personalprofile ps ON ps.user_id= ac.user_id
+    where ac.active=1 and activity_id=?activity_id
+  </SQL>
+
+  <!--创建用户创建的活动参数-->
+  <SQL ID="InsertPersonalActivityArchives">
+    INSERT INTO personalactivityarchives
+    (id,user_id,activity_id,save_name,save_date,active)
+    VALUES
+    (
+    ?id,?user_id,?activity_id,?save_name,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <!--查找用户创建的活动参数-->
+  <SQL ID="GetPersonalActivityArchivesCountByUserId">
+    SELECT count(1) from personalactivityarchives where user_id=?user_id and active=1
+  </SQL>
+  <!--查找用户创建的活动参数-->
+  <SQL ID="GetPersonalActivityArchivesRepeat">
+    SELECT count(1) from personalactivityarchives where user_id=?user_id and save_name=?save_name and active=1
+  </SQL>
+  <!--查找用户创建的活动参数-->
+  <SQL ID="GetKeyValuePersonalActivityArchivesParam">
+    SELECT save_name,activity_id from personalactivityarchives where user_id=?user_id and active=1
+  </SQL>
+  <!--查找用户创建的活动参数-->
+  <SQL ID="SelectPersonalActivityArchivesByID">
+    SELECT id,save_name,user_id,activity_id,save_date,active from personalactivityarchives where id=?id and active=1
+  </SQL>
+
+
+  <!--创建用户活动设置 -->
+  <SQL ID="InsertPersonalActivitySettings">
+    INSERT INTO personalactivitysettings
+    (id,user_id,user_email,activity_id,is_carpool_kick_protected,kick_carpool_duration,contact_email,is_email_event,is_notice_event,is_email_updates,is_notice_updates,is_email_digest,is_notice_digest,digest_duration,is_allow_msg,update_date,active)
+    VALUES
+    (
+    ?id,?user_id,?user_email,?activity_id,?is_carpool_kick_protected,?kick_carpool_duration,?contact_email,?is_email_event,?is_notice_event,?is_email_updates,?is_notice_updates,?is_email_digest,?is_notice_digest,?digest_duration,?is_allow_msg,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <!--修改用户活动设置 -->
+  <SQL ID="UpdatePersonalActivitySettings">
+    UPDATE personalactivitysettings
+    SET
+    user_email = ?user_email,
+    is_carpool_kick_protected = ?is_carpool_kick_protected,
+    kick_carpool_duration = ?kick_carpool_duration,
+    contact_email = ?contact_email,
+    is_email_event = ?is_email_event,
+    is_notice_event = ?is_notice_event,
+    is_email_updates = ?is_email_updates,
+    is_notice_updates = ?is_notice_updates,
+    is_email_digest = ?is_email_digest,
+    is_notice_digest = ?is_notice_digest,
+    digest_duration = ?digest_duration,
+    is_allow_msg = ?is_allow_msg,
+    update_date = CURRENT_TIMESTAMP,
+    active = ?active
+    WHERE id = ?id ;
+  </SQL>  
+  <!--查找用户活动设置-->
+  <SQL ID="GetPersonalActivitySettingsByActivityIDAndUserID">
+    SELECT id,user_id,user_email,activity_id,is_carpool_kick_protected,kick_carpool_duration,contact_email,is_email_event,is_notice_event,is_email_updates,is_notice_updates,is_email_digest,is_notice_digest,digest_duration,is_allow_msg,update_date,active
+    from personalactivitysettings
+    where  active=1 and user_id=?user_id and activity_id=?activity_id
+  </SQL>
+  <!--查找用户活动设置-->
+  <SQL ID="GetPersonalActivitySettingsByID">
+    SELECT id,user_id,user_email,activity_id,is_carpool_kick_protected,kick_carpool_duration,contact_email,is_email_event,is_notice_event,is_email_updates,is_notice_updates,is_email_digest,is_notice_digest,digest_duration,is_allow_msg,update_date,active
+    from personalactivitysettings
+    where  active=1 and id=?id
+  </SQL>
+  
+  <!--创建例外名单 -->
+  <SQL ID="InsertActivityMsgExceptionList">
+    INSERT INTO activitymsgexceptionlist
+    (id,user_id,activity_id,special_id,update_date,active)
+    VALUES
+    (
+    ?id,?user_id,?activity_id,?special_id,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <!--删除例外名单 -->
+  <SQL ID="DeleteActivityMsgExceptionList">
+    UPDATE activitymsgexceptionlist
+    SET
+    active = 0
+    WHERE special_id=?special_id and activity_id=?activity_id ;
+  </SQL>
+  <!--查找例外名单-->
+  <SQL ID="GetActivityMsgExceptionListByActivityIDAndUserID">
+    SELECT id,user_id,activity_id,special_id,update_date
+    from activitymsgexceptionlist
+    where  active=1 and user_id=?user_id and activity_id=?activity_id;
+  </SQL>
+
+
+  <!--活动报名-->
+  <SQL ID="Insertactivitymember">
+    INSERT INTO activitymember(
+    id,activity_id,user_id,vehicle_type_id,is_auto,is_need_carpool,is_permit_carpool,carpool_type_id,carpool_money,auto_brand_id,auto_model_id,auto_year,auto_plate,carpool_nbr,current_carpool_nbr,address,country_id,state_id,city_id,zip,distance,phone,email,pay_status,is_authorized,report_date,join_date,like_nbr,dislike_nbr,soso_nbr,active
+    )
+    VALUES(
+    ?id,?activity_id,?user_id,?vehicle_type_id,?is_auto,?is_need_carpool,?is_permit_carpool,?carpool_type_id,?carpool_money,?auto_brand_id,?auto_model_id,?auto_year,?auto_plate,?carpool_nbr,0,?address,?country_id,?state_id,?city_id,?zip,?distance,?phone,?email,?pay_status,?is_authorized,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,0,0,0,1
+    );
+  </SQL>
+  <!--修改活动成员角色-->
+  <SQL ID="UpdateActivityMemberRole">
+    update activitymember set
+    role_id=?role_id
+    where id=?id and active=1
+  </SQL>
+  
+  <!--修改活动评价-->
+  <SQL ID="UpdateActivityMemberEvaluate">
+    update activitymember set
+    like_nbr=?like_nbr,
+    dislike_nbr=?dislike_nbr,
+    soso_nbr=?soso_nbr
+    where activity_id=?activity_id and user_id=?user_id  and active=1
+  </SQL>
+  <!--统计活动评价-->
+  <SQL ID="GetActivityEvaluateTotal">
+    select sum(am.like_nbr) likeit,sum(am.soso_nbr) sosoit,sum(am.dislike_nbr) dislikeit,ac.activity_name as aname
+    from activitymember am,activity ac where am.activity_id=ac.id and am.activity_id=?activity_id and am.active=1
+  </SQL>
+  
+  <!--活动管理人员-->
+  <SQL ID="GetActivityMemberByRoleId">
+    select  am.id,am.activity_id,am.user_id,vehicle_type_id,is_auto,is_need_carpool,is_permit_carpool,carpool_type_id,carpool_money,auto_brand_id,auto_model_id,auto_year,auto_plate,carpool_nbr,current_carpool_nbr,address,country_id,state_id,city_id,zip,distance,phone,email,pay_status,is_authorized,report_date,join_date,ps.name user_name
+    from activitymemberrole amr,activitymember am
+    left JOIN personalprofile ps ON ps.user_id= am.user_id
+    where am.id=amr.member_id and am.activity_id=?activity_id and amr.role_id=?role_id and am.active=1 and amr.active=1;
+  </SQL>
+  <!--删除活动成员-->
+  <SQL ID="DeleteActivityMember">
+    update activitymember set
+    active=0
+    where activity_id=?activity_id and user_id=?user_id and active=1
+  </SQL>
+
+  
+  <SQL ID="GetActivitymemberParamByActivityidAndUserid">
+    select am.id,am.activity_id,am.user_id,am.vehicle_type_id,am.is_auto,am.is_need_carpool,am.is_permit_carpool,
+    am.carpool_type_id,am.carpool_money,am.auto_brand_id,am.auto_model_id,am.auto_year,am.auto_plate,am.carpool_nbr,am.current_carpool_nbr,
+    am.address,am.country_id,am.state_id,am.city_id,am.zip,am.distance,am.phone,am.email,am.pay_status,
+    am.is_authorized,am.report_date,am.join_date,am.like_nbr,am.dislike_nbr,am.soso_nbr, ps.name user_name
+    from activitymember am
+    left JOIN personalprofile ps ON ps.user_id= am.user_id
+    where activity_id=?activity_id and am.user_id=?user_id and am.active=1
+  </SQL>
+  <SQL ID="GetActivityMemberByActivityID">
+    select am.id,am.activity_id,am.user_id,am.vehicle_type_id,am.is_auto,am.is_need_carpool,am.is_permit_carpool,
+ am.carpool_type_id,am.carpool_money,am.auto_brand_id,am.auto_model_id,am.auto_year,am.auto_plate,am.carpool_nbr,am.current_carpool_nbr,
+    am.address,am.country_id,am.state_id,am.city_id,am.zip,am.distance,am.phone,am.email,am.pay_status,
+    am.is_authorized,am.report_date,am.join_date,am.like_nbr,am.dislike_nbr,am.soso_nbr, ps.name user_name
+    from activitymember am
+    left JOIN personalprofile ps ON ps.user_id= am.user_id
+    where activity_id=?activity_id and am.active=1
+  </SQL>
+  <SQL ID="GetActivitymemberParamByActivityid">
+    select am.id,am.activity_id,am.user_id,am.vehicle_type_id,am.is_auto,am.is_need_carpool,am.is_permit_carpool,
+    am.carpool_type_id,am.carpool_money,am.auto_brand_id,am.auto_model_id,am.auto_year,am.auto_plate,am.carpool_nbr,am.current_carpool_nbr,
+    am.address,am.country_id,am.state_id,am.city_id,am.zip,am.distance,am.phone,am.email,am.pay_status,
+    am.is_authorized,am.report_date,am.join_date,am.like_nbr,am.dislike_nbr,am.soso_nbr, ps.name user_name
+    from activitymember am
+    left JOIN personalprofile ps ON ps.user_id= am.user_id
+    where activity_id=?activity_id and am.active=1
+  </SQL>
+  <SQL ID="GetGroupCarpoolMoney">
+    select am.carpool_money
+    from activitymember am
+    where  am.is_auto=1 and  am.is_permit_carpool=1 and am.is_authorized=1
+    and am.carpool_nbr> am.current_carpool_nbr and am.vehicle_type_id='0329e2cc-8ae2-11e1-a95e-101f74b66417'
+    and am.carpool_type_id='a0a72d9f-599e-11e1-9350-101f74b66417'
+    and am.activity_id=?activity_id
+    group by am.carpool_money order by am.carpool_money;
+  </SQL>
+
+    <!--添加活动支付方式-->
+  <SQL ID="InsertActivityPayMethods">
+    INSERT ActivityPayMethods
+    (id,activity_id,user_id,pay_type_id,pay_address,pay_date,active,name,description,notice)
+    VALUES
+    (?id,?activity_id,?user_id,?pay_type_id,?pay_address,CURRENT_TIMESTAMP,1,?name,?description,?notice);
+  </SQL>
+  <!--查询活动支付方式-->
+  <SQL ID="SelectActivityPayMethodsByID">
+    SELECT
+    pm.id,pm.activity_id,user_id,pay_type_id,pay_address,pay_date,pm.active,p.type_name pay_type_name,pm.name,pm.description,pm.notice
+    from  ActivityPayMethods pm
+    left join paytype p on  pay_type_id=p.id and p.language_id=?language_id
+    where pm.id=?id and pm.active=1
+  </SQL>
+  <!--查询活动支付方式-->
+  <SQL ID="SelectActivityPayMethodsByActivityIDAndUserID">
+    SELECT
+    pm.id,pm.activity_id,user_id,pay_type_id,pay_address,pay_date,pm.active,p.type_name pay_type_name,pm.name,pm.description,pm.notice
+    from  ActivityPayMethods pm
+    left join paytype p on  pay_type_id=p.id and p.language_id=?language_id
+    where activity_id=?activity_id and user_id=?user_id and pm.active=1
+  </SQL>
+  <!--查询活动支付方式-->
+  <SQL ID="SelectActivityPayMethodsByActivityID">
+    SELECT
+    pm.id,pm.activity_id,user_id,pay_type_id,pay_address,pay_date,pm.active,p.type_name pay_type_name,pm.name,pm.description,pm.notice
+    from  ActivityPayMethods pm
+    left join paytype p on  pay_type_id=p.id and p.language_id=?language_id
+    where activity_id=?activity_id and pm.active=1
+  </SQL>
+  <!--删除活动支付方式-->
+  <SQL ID="DeleteActivityPayMethodsByID">
+    update ActivityPayMethods
+    set active=0
+    where id=?id and active=1
+  </SQL>
+
+  <!--添加活动成员角色-->
+  <SQL ID="InsertActivityMemberRole">
+    INSERT INTO ActivityMemberRole
+    (id,activity_id,member_id,role_id,add_date,active)
+    VALUES
+    (
+    ?id,?activity_id,?member_id,?role_id,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <!--删除活动成员所有角色-->
+  <SQL ID="DeleteActivityMemberRoleByMemberID">
+    update ActivityMemberRole
+    set active=0
+    where member_id=?member_id and active=1
+  </SQL>
+  <!--删除活动成员角色-->
+  <SQL ID="DeleteActivityMemberRoleByID">
+    update ActivityMemberRole
+    set active=0
+    where id=?id and active=1
+  </SQL>
+  <!--根据成员ID活动成员角色-->
+  <SQL ID="SelectActivityMemberRoleByMemberID">
+    SELECT
+    amr.id,amr.activity_id,amr.member_id,amr.role_id,amr.add_date,ar.role_name,am.user_id,ps.name user_name,am.email,am.phone
+    FROM ActivityMemberRole amr
+    left join activitymember am on amr.member_id=am.id
+    left JOIN personalprofile ps ON ps.user_id= am.user_id
+    left join activityrole ar on ar.id=amr.role_id and  ar.language_id=?language_id
+    where  amr.member_id=?member_id and amr.active=1
+  </SQL>
+
+  <!--用户-->
+  <SQL ID="SelectPersonalprofileNameByUserID">
+    SELECT
+    name
+    FROM personalprofile
+    where user_id=?user_id and active=1
+  </SQL>
+
+  <!--活动创建类型-->
+  <SQL ID="SelectAllActivityCreateType">
+      SELECT
+      id,type_name
+      FROM activitycreatetype
+      where active=1 and language_id=?language_id
+  </SQL>
+  <!--活动EMAIL发送周期-->
+  <SQL ID="SelectAllActivityEmailDuration">
+      SELECT
+      id,duration_name,(unit_hour/24) as unit_day
+      FROM activityemailduration
+      where active=1 and language_id=?language_id
+  </SQL>
+
+  <!--活动地址分类-->
+  <SQL ID="SelectAllActivityPlaceCategory">
+    SELECT
+    id,parent_id,map_table,category_name,language_id
+    FROM activityplacecategory
+    where  active=1
+  </SQL>
+
+  <!--活动地址-->
+  <SQL ID="SelectAllActivityPlace">
+    SELECT
+    id,place_name,description,address,
+    country_id ,(select country_name from country where country.country_id=p.country_id and country.language_id=?language_id) country_name,
+    state_id,(select state_name from state where state.state_id=p.state_id and state.language_id=?language_id) state_name,
+    city_id,(select city_name from city where city.city_id=p.city_id and city.language_id=?language_id) city_name,
+    zip
+    FROM ?placetablename as p
+    where active=1 and language_id=?language_id
+  </SQL>
+
+  <!--活动分类设置-->
+  <SQL ID="SelectAllActivityCategorySettings">
+      <!--select GROUP_CONCAT(id,',',category_name ORDER BY category_name SEPARATOR '|')as name,if(STRCMP(CHAR(INTERVAL(CONV(HEX(left(category_name,1)),16,10),
+      0xB0A1,0xB0C5,0xB2C1,0xB4EE,0xB6EA,0xB7A2,0xB8C1,0xB9FE,
+      0xBBF7,0xBBF7,0xBFA6,0xC0AC,0xC2E8,0xC4C3,0xC5B6,0xC5BE,
+      0xC6DA,0xC8BB,0xC8F6,0xCBFA,0xCDDA,0xCDDA,0xCDDA,0xCEF4,
+      0xD1B9,0xD4D1)+64) ,'@'),CONVERT(ELT(INTERVAL(CONV(HEX(left(CONVERT(category_name USING gb2312),1)),16,10),
+      0xB0A1,0xB0C5,0xB2C1,0xB4EE,0xB6EA,0xB7A2,0xB8C1,0xB9FE,0xBBF7,0xBFA6,0xC0AC,
+      0xC2E8,0xC4C3,0xC5B6,0xC5BE,0xC6DA,0xC8BB,0xC8F6,0xCBFA,0xCDDA,0xCEF4,0xD1B9,0xD4D1),
+      'A','B','C','D','E','F','G','H','J','K','L','M','N','O','P','Q','R','S','T','W','X','Y','Z') USING UTF8),left(category_name,1))as firstchar
+      from activitycategorysettings where  active=1 and language_id=?language_id and parent_id!='-1'  group BY firstchar-->
+    SELECT
+    id,parent_id,category_name,logo_path,section_type_id,language_id
+    FROM activitycategorysettings
+    where active=1
+  </SQL>
+
+  <!--活动踢人保护时限-->
+  <SQL ID="SelectAllActivityKickDuration">
+      SELECT
+      id,duration_name,unit_hour,language_id
+      FROM activitykickduration
+      where active=1 and language_id=?language_id
+  </SQL>
+
+  <!--活动踢人保护时限-->
+  <SQL ID="SelectActivityKickListByActivityIDAndUserID">
+    SELECT
+    id,active_id,user_id,kick_date,active
+    FROM activitykicklist
+    where active=1 and active_id=?active_id and user_id=?user_id
+
+  </SQL>
+
+  <!--活动分类-->
+  <SQL ID="InsertActivityCategory">
+    INSERT INTO activitycategory
+    (id,activity_id,category_id,update_date,active)
+    VALUES
+    (
+    ?id,?activity_id,?category_id,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <SQL ID="DeleteActivityCategory">
+    update activitycategory set active=0
+    where activity_id=?activity_id and category_id=?category_id and active=1
+  </SQL>
+  <SQL ID="SelectActivitycategoryByActivityID">
+    select
+    ab.id,activity_id,category_name,ab.update_date,ab.category_id
+    from activitycategory ab
+    LEFT JOIN  activitycategorysettings  acs ON ab.category_id=acs.id
+    where activity_id=?activity_id and ab.active=1
+  </SQL>
+
+  <!--添加加入条件-->
+  <SQL ID="InsertActivityJoinConditions">
+    INSERT INTO activityjoinconditions(
+    id,activity_id,condition_id,value,update_date,active
+    )
+    VALUES(
+    ?id,?activity_id,?condition_id,?value,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <!--根据活动ID查找加入条件-->
+  <SQL ID="SelectActivityJoinconditionsByActivityID">
+    select
+    aj.id,activity_id,aj.condition_id,condition_name,value,aj.update_date
+    from activityjoinconditions aj
+    LEFT JOIN  joinconditions  jd ON aj.condition_id=jd.id and jd.language_id=?language_id
+    where activity_id=?activity_id and aj.active=1
+  </SQL>
+
+  <!--添加活动计划-->
+  <SQL ID="InsertActivityPlan">
+    INSERT INTO activityplan(
+    id,activity_id,start_date,end_date,plan_content,note,update_date,active
+    )
+    VALUES(
+    ?id,?activity_id,?start_date,?end_date,?plan_content,?note,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <!--修改活动计划-->
+  <SQL ID="UpdateActivityPlan">
+    Update activityplan  set
+    start_date=?start_date,end_date=?end_date,plan_content=?plan_content,note=?note,update_date=CURRENT_TIMESTAMP
+    where
+    id=?id
+  </SQL>
+  <!--修改活动计划-->
+  <SQL ID="DeleteActivityPlan">
+    Update activityplan  set
+    active=0
+    where
+    id=?id
+  </SQL>
+  <!--根据活动ID查找计划-->
+  <SQL ID="SelectActivityPlanByActivityID">
+    SELECT
+    id,activity_id,start_date,end_date,plan_content,note,update_date
+    FROM activityplan
+    where activity_id=?activity_id and active=1
+  </SQL>
+
+  <!--添加活动活动加入退出情况表-->
+  <SQL ID="InsertActivityJoinInfo">
+    INSERT INTO activityjoininfo
+    (id,user_id,activity_id,update_date,active,remark,flag)
+    VALUES
+    (
+    ?id,?user_id,?activity_id,?update_date,1,?remark,?flag
+    );
+  </SQL>
+  <!--根据活动ID查找活动加入退出情况表-->
+  <SQL ID="SelectActivityJoinInfoByActivityID">
+    SELECT
+    i.id,i.user_id, p.name user_name,i.activity_id,a.activity_name activity_name ,i.update_date,i.active,i.remark,i.flag
+    FROM activityjoininfo i
+    left join activity a on i.activity_id=a.id
+    left join personalprofile p on i.user_id=p.user_id
+    where i.activity_id=?activity_id and i.active=1
+  </SQL>
+  <!--活动加入退出情况表 活动成员加入退出通知-->
+  <SQL ID="SelectActivityJoinInfoByPerson">
+    SELECT
+    i.id,i.user_id, p.name user_name,i.activity_id,a.activity_name activity_name ,i.update_date,i.active,i.remark,i.flag
+    FROM activityjoininfo i
+    left join activity a on i.activity_id=a.id
+    left join personalprofile p on i.user_id=p.user_id
+    where i.active=1
+    and i.update_date>?update_date
+    and exists (select 1 from activitymember m where m.activity_id=i.activity_id and m.user_id=?user_id and m.active=1)
+  </SQL>
+  
+
+  <!--查询预算和收支统计-->
+  <SQL ID="SelectBudgetSumAndFlowSum">
+    select
+    (select sum(budget_money) from activitybudget
+    where activity_id=?activity_id and active=1 ) as budget_count
+    ,
+    (select sum(sum_cost) from activitymoneyflow
+    where activity_id=?activity_id and active=1 ) as flow_count
+  </SQL>
+  
+  <!--添加活动预算-->
+  <SQL ID="InsertActivityBudget">
+    INSERT INTO activitybudget(
+    id,activity_id,item_description,item_content,is_in,budget_money,conver_unit,cover_note,create_id,create_date,active
+    )
+    VALUES(
+    ?id,?activity_id,?item_description,?item_content,?is_in,?budget_money,?conver_unit,?cover_note,?create_id,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <!--修改活动预算-->
+  <SQL ID="UpdateActivityBudget">
+    update activitybudget set
+    activity_id=?activity_id,item_description=?item_description,item_content=?item_content,is_in=?is_in,budget_money=?budget_money,conver_unit=?conver_unit,cover_note=?cover_note
+    where id=?id and active=1
+  </SQL>
+  <!--删除活动预算-->
+  <SQL ID="DeleteActivityBudget">
+    update activitybudget set active=0
+    where id=?id and active=1
+  </SQL>
+  <!--根据活动ID查找预算-->
+  <SQL ID="SelectActivityBudgetByActivityID">
+    <!--SELECT
+    id,activity_id,item_description,item_content,is_in,budget_money,conver_unit,cover_note,create_id,create_date
+    FROM activitybudget
+    where activity_id=?activity_id and active=1-->
+    SELECT   ab.id, ab.activity_id, ab.item_description, ab.item_content, ab.is_in, ab.budget_money, ab.conver_unit, ab.cover_note, ab.create_id, ab.create_date,pf.name username
+    FROM activitybudget ab
+    LEFT JOIN  personalprofile  pf ON ab.create_id=pf.user_id    
+    WHERE  ab.activity_id=?activity_id AND ab.active=1
+  </SQL>
+
+  <SQL ID="SearchActivityBudgetByID">
+    SELECT   ab.id, ab.activity_id, ab.item_description, ab.item_content, ab.is_in, ab.budget_money, ab.conver_unit, ab.cover_note, ab.create_id, ab.create_date,pf.name username
+    FROM activitybudget ab
+    LEFT JOIN  personalprofile  pf ON ab.create_id=pf.user_id
+    WHERE  ab.id=?id and  ab.active=1
+  </SQL>
+
+  <!--添加活动预算操作人-->
+  <SQL ID="InsertActivityBudgetOpe">
+    INSERT INTO activitybudgetope(
+    id,activity_id,budget_id,ope_id,update_date,active
+    )
+    VALUES(
+    ?id,?activity_id,?budget_id,?ope_id,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <!--删除活动预算操作人-->
+  <SQL ID="DeleteActivityBudgetOpe">
+    update activitybudgetope
+    set active=0
+    where budget_id=?budget_id and ope_id=?ope_id and active=1
+  </SQL>
+  <!--根据活动ID查找预算人-->
+  <SQL ID="SelectActivityBudgetOpeByActivityID">
+    SELECT
+    bo.id,activity_id,budget_id,ope_id,pf.name opt_name,bo.update_date
+    FROM activitybudgetope bo
+    LEFT JOIN  personalprofile  pf ON bo.ope_id=pf.user_id
+    where bo.active=1 and activity_id=?activity_id
+  </SQL>
+  <!--根据预算ID查找预算人-->
+  <SQL ID="SelectActivityBudgetOpeByBudgetID">
+    SELECT
+    bo.id,activity_id,budget_id,ope_id,pf.name opt_name,bo.update_date
+    FROM activitybudgetope bo
+    LEFT JOIN  personalprofile  pf ON bo.ope_id=pf.user_id
+    where bo.active=1 and budget_id=?budget_id
+  </SQL>
+
+
+  <!--添加活动实际收支项-->
+  <SQL ID="InsertActivityMoneyFlow">
+    INSERT INTO activitymoneyflow
+    (id,activity_id,match_budget_id,item_content,description,is_in,sum_cost,money_ope_id,ope_date,active)
+    VALUES
+    (
+    ?id,?activity_id,?match_budget_id,?item_content,?description,?is_in,?sum_cost,?money_ope_id,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <!--修改活动实际收支项-->
+  <SQL ID="UpdateActivityMoneyFlow">
+    update activitymoneyflow set
+    activity_id=?activity_id,match_budget_id=?match_budget_id,item_content=?item_content,description=?description,is_in=?is_in,sum_cost=?sum_cost,money_ope_id=?money_ope_id
+    where id=?id and active=1
+  </SQL>
+  <!--根据活动ID查找实际收支项-->
+  <SQL ID="SelectActivityMoneyFlowByActivityID">
+    SELECT   am.id,am.activity_id,am.match_budget_id,item_content,description,is_in,sum_cost,money_ope_id,am.ope_date,pf.name username
+    FROM activitymoneyflow am
+    LEFT JOIN  personalprofile  pf ON am.money_ope_id=pf.user_id
+    WHERE  am.activity_id=?activity_id AND am.active=1
+  </SQL>
+
+  <SQL ID="SearchActivityMoneyFlowByID">
+    SELECT   am.id,am.activity_id,am.match_budget_id,item_content,description,is_in,sum_cost,money_ope_id,am.ope_date,pf.name username
+    FROM activitymoneyflow am
+    LEFT JOIN  personalprofile  pf ON am.money_ope_id=pf.user_id
+    WHERE  am.id=?id AND am.active=1
+  </SQL>
+  
+  
+  <!--添加实际收支项操作人-->
+  <SQL ID="InsertActivityMoneyFlowOpe">
+    INSERT INTO activitymoneyflowope
+    (id,activity_id,money_flow_id,ope_id,ope_date,active)
+    VALUES
+    (
+    ?id,?activity_id,?money_flow_id,?ope_id,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <!--删除实际收支项操作人-->
+  <SQL ID="DeleteActivityMoneyFlowOpe">
+    update activitymoneyflowope
+    set active=0
+    where money_flow_id=?money_flow_id and ope_id=?ope_id and active=1
+  </SQL>
+  <!--根据活动ID查找实际收支项人-->
+  <SQL ID="SelectActivityMoneyFlowOpeByActivityID">
+    SELECT
+    fo.id,fo.activity_id,money_flow_id,fo.ope_id,pf.name opt_name,fo.ope_date
+    FROM activitymoneyflowope fo
+    LEFT JOIN  personalprofile  pf ON fo.ope_id=pf.user_id
+    where fo.active=1 and activity_id=?activity_id
+  </SQL>
+  <!--根据预算ID查找实际收支项人-->
+  <SQL ID="SelectActivityMoneyFlowOpeByMoneyFlowID">
+    select fo.id,fo.activity_id,money_flow_id,fo.ope_id,pf.name opt_name,fo.ope_date
+    FROM activitymoneyflowope fo
+    LEFT JOIN  personalprofile  pf ON fo.ope_id=pf.user_id
+    where fo.active=1 and money_flow_id=?money_flow_id
+  </SQL>
+
+  <!--添加付款人-->
+  <SQL ID="InsertActivityMoneyFlowPayer">
+    INSERT activitymoneyflowpayer
+    (id,activity_id,money_flow_id,member_id,add_date,active)
+    VALUES
+    (
+    ?id,?activity_id,?money_flow_id,?member_id,CURRENT_TIMESTAMP,1
+    );
+  </SQL>
+  <!--删除付款人-->
+  <SQL ID="DeleteActivityMoneyFlowPayer">
+    update activitymoneyflowpayer
+    set active=0
+    where money_flow_id=?money_flow_id and member_id=?member_id and active=1
+  </SQL>
+  <!--根据活动ID查找付款人-->
+  <SQL ID="SelectActivityMoneyFlowPayerByActivityID">
+    SELECT
+    fp.id,fp.activity_id,fp.money_flow_id,fp.member_id,fp.add_date,pf.name member_name
+    FROM activitymoneyflowpayer fp
+    left join activitymember am on fp.member_id = am.id
+    LEFT JOIN  personalprofile pf ON am.user_id=pf.user_id
+    where fp.active=1 and fp.activity_id=?activity_id
+  </SQL>
+  <!--根据预算ID查找付款人-->
+  <SQL ID="SelectActivityMoneyFlowPayerByMoneyFlowID">
+    SELECT
+    fp.id,fp.activity_id,fp.money_flow_id,fp.member_id,fp.add_date,pf.name member_name
+    FROM activitymoneyflowpayer fp
+    left join activitymember am on fp.member_id = am.id
+    LEFT JOIN  personalprofile pf ON am.user_id=pf.user_id
+    where fp.active=1 and fp.money_flow_id=?money_flow_id
+  </SQL>
+  
+  
+ <SQL ID="SelectActivitySectionPageByID">
+   SELECT
+   id,category_id,section_name,section_description,logo_path,sequence,update_date,language_id,active,section_type_id
+   FROM activitysectionpage where category_id=?id and language_id=?language_id and active=1;
+ </SQL>
+  <!--查找活动分类活动数(自定义活动和一般活动)-->
+  <SQL ID="SelectActivityCategoryActivityCount">
+    <![CDATA[select '' name, COUNT(CASE WHEN a.datetime>CURRENT_TIMESTAMP THEN 1 ELSE NULL END ) latelyActivityCount,
+    COUNT(CASE WHEN a.report_datetime>CURRENT_TIMESTAMP THEN 1 ELSE NULL END ) openActivityCount,
+    (select count(*) from personalmodulefollow pf where pf.active=1 and pf.attention_id=?sectionpageid) followCount,'' logo_path,
+    (select if(count(*)>0,1,0)  from personalmodulefollow pff where pff.active=1 and pff.attention_id=?sectionpageid and pff.user_id=?user_id ) isfollow
+    from activity a where a.active=1 and a.is_create=1 and a.is_public=1 and exists(
+    select 1 from activityCategory ac where ac.active=1 and a.id=ac.activity_id and FIND_IN_SET(ac.category_id, f_GetCategoryChildList(?sectionpageid,?section_type))
+    )]]>
+    <!--SELECT '' name,COUNT(CASE WHEN update_date>DATE(ADDDATE(CURRENT_TIMESTAMP,-30)) THEN 1 ELSE NULL END ) latelyActivityCount,
+    COUNT(CASE WHEN report_datetime>CURRENT_TIMESTAMP THEN 1 ELSE NULL END ) openActivityCount,
+    (select count(*) from personalmodulefollow where active=1 and attention_id=?sectionpageid) followCount,'' logo_path,
+    (select if(count(*)>0,1,0)  from personalmodulefollow where active=1 and source_type_id='fb2fd8f2-5c94-11e1-b02d-101f74b66417' and attention_id=?sectionpageid and user_id=?user_id ) isfollow
+    FROM activity,
+    (select  ac.activity_id id from activitycategory ac,activitycategorysettings act
+    where ac.category_id=act.id ?actcondition and ac.active=1 group by id
+    ) b
+    where  activity.id=b.id and active=1 and activity.is_create=1 and 11月20日注释-->
+    <!--select count(1) activityCount,count(case when update_date>DATE(ADDDATE(CURRENT_TIMESTAMP,-3)) THEN 1 ELSE NULL END ) latelyActivityCount
+        from activitycategory
+        where category_id=?category_id and active=1-->
+    <!--SELECT COUNT(CASE WHEN createtime>DATE(ADDDATE(CURRENT_TIMESTAMP,-30)) THEN 1 ELSE NULL END ) latelyActivityCount,
+    COUNT(CASE WHEN begin_datetime>DATE(CURRENT_TIMESTAMP) THEN 1 ELSE NULL END ) openActivityCount
+    FROM v_getactivityformain where  FIND_IN_SET( ?category_id,categoryall)>0   or FIND_IN_SET(?parent_id,parent_idall)>0-->
+  </SQL>
+  <SQL ID="SelectActivityCategoryActivityCount2">
+    <!--select count(1) activityCount,count(case when update_date>DATE(ADDDATE(CURRENT_TIMESTAMP,-3)) THEN 1 ELSE NULL END ) latelyActivityCount
+        from activitycategory
+        where category_id=?category_id and active=1-->
+    SELECT COUNT(CASE WHEN createtime>DATE(ADDDATE(CURRENT_TIMESTAMP,-30)) THEN 1 ELSE NULL END ) latelyActivityCount,
+    COUNT(CASE WHEN begin_datetime>DATE(CURRENT_TIMESTAMP) THEN 1 ELSE NULL END ) openActivityCount
+    FROM v_getactivityformain where  FIND_IN_SET(?category_id,categoryall)=0 and FIND_IN_SET(?parent_id,parent_idall)=0 and FIND_IN_SET(?category_id2,categoryall)=0   and FIND_IN_SET(?parent_id2,parent_idall)=0
+  </SQL>
+  <!--添加搭车人-->
+  <SQL ID="InsertAutoCarPool">
+    INSERT INTO autocarpool(
+    id,active_id,owner_id,carpool_id,is_pass,active
+    )
+    VALUES(
+    ?id,?active_id,?owner_id,?carpool_id,?is_pass,1
+    );
+  </SQL>
+  <SQL ID="SelectAutoCarPoolByActivityIdAndCarPoolId">
+    select
+    ap.id,active_id,ap.owner_id,pf.name owner_name,carpool_id,pf2.name carpool_name,is_pass
+    from autocarpool ap
+    LEFT JOIN  personalprofile  pf ON ap.owner_id=pf.user_id
+    LEFT JOIN  personalprofile  pf2 ON ap.carpool_id=pf2.user_id
+    where active_id=?active_id and carpool_id=?carpool_id and ap.active=1
+  </SQL>
+  <SQL ID="SelectAutoCarPoolByActivityIdAndOwnerId">
+    select
+    ap.id,active_id,ap.owner_id,pf.name owner_name,carpool_id,pf2.name carpool_name,is_pass
+    from autocarpool ap
+    LEFT JOIN  personalprofile  pf ON ap.owner_id=pf.user_id
+    LEFT JOIN  personalprofile  pf2 ON ap.carpool_id=pf2.user_id
+    where active_id=?active_id and owner_id=?owner_id and ap.active=1
+  </SQL>
+  
+
+  <!--根据角色ID查询角色名称-->
+  <SQL ID="SelectRoleNameById">
+      select role_name from activityrole where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--根据角色ID查询角色信息-->
+  <SQL ID="SelectActivityRoleById">
+      select language_id,role_name,id,description,level,update_date
+      from activityrole
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--查询所有角色信息-->
+  <SQL ID="SelectAllActivityRole">
+      select language_id,role_name,id,description,level,update_date
+      from activityrole
+      where active=1 and language_id=?language_id
+  </SQL>
+
+  <!--根据报名方式ID查询方式名称-->
+  <SQL ID="SelectSignUpTypeNameById">
+      SELECT type_name
+      FROM activitysignuptype
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--根据报名方式ID查询信息-->
+  <SQL ID="SelectSignUpTypeById">
+      SELECT language_id,id,type_name,update_date
+      FROM activitysignuptype
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--查询所有报名方式信息-->
+  <SQL ID="SelectAllSignUpType">
+      SELECT language_id,id,type_name,update_date
+      FROM activitysignuptype
+      where active=1 and language_id=?language_id
+  </SQL>
+
+  <!--根据交通方式ID查询交通名称-->
+  <SQL ID="SelectVehicleTypeNameById">
+      SELECT type_name
+      FROM activityvehicletype
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--根据交通方式ID查询信息-->
+  <SQL ID="SelectVehicleTypeById">
+      SELECT id,type_name,language_id,update_date,active
+      FROM activityvehicletype
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--查询所有交通方式信息-->
+  <SQL ID="SelectAllVehicleType">
+      SELECT id,type_name,language_id,update_date,active
+      FROM activityvehicletype
+      where active=1 and language_id=?language_id
+  </SQL>
+
+  <!--根据付费方式ID查询付费名称-->
+  <SQL ID="SelectPayTypeNameById">
+      SELECT type_name
+      FROM paytype
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--根据付费方式ID查询信息-->
+  <SQL ID="SelectPayTypeById">
+      SELECT id,type_name,description,update_date,active,language_id
+      FROM paytype
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--查询所有付费方式信息-->
+  <SQL ID="SelectAllPayType">
+      SELECT id,type_name,description,update_date,active,language_id
+      FROM paytype
+      where active=1 and language_id=?language_id
+  </SQL>
+
+
+  <!--根据cityID获取cityName-->
+  <SQL ID="SelectCityNameByCityId">
+    select city_name from city where active=1 and city_id=?city_id 
+  </SQL>
+  <SQL ID="SelectCityEnglishNameByCityId">
+    select city_name from city where active=1 and city_id=?city_id 
+  </SQL>
+  <!--根据countryD获取countryyName-->
+  <SQL ID="SelectCountryNameByCountryId">
+    select country_name from country where active=1 and country_id=?country_id and language_id=?language_id
+  </SQL>
+  <!--根据stateID获取stateName-->
+  <SQL ID="SelectStateNameByStateId">
+    select state_name from state where active=1 and state_id=?state_id 
+  </SQL>
+  
+  
+  <!--根据搭车付费方式ID查询付费名称-->
+  <SQL ID="SelectCarPoolTypeNameById">
+      SELECT type_name
+      FROM carpooltype
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--根据搭车付费方式ID查询信息-->
+  <SQL ID="SelectCarPoolTypeById">
+      SELECT id,description,update_date,active,language_id,type_name
+      FROM carpooltype
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--查询所有搭车付费方式信息-->
+  <SQL ID="SelectAllCarPoolType">
+      SELECT id,description,update_date,active,language_id,type_name
+      FROM carpooltype
+      where active=1 and language_id=?language_id
+  </SQL>
+
+  <!--根据车品牌类型ID查询品牌名称-->
+  <SQL ID="SelectAutoBrandNameById">
+      SELECT brand_name
+      FROM autobrand
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--根据车品牌类型ID查询信息-->
+  <SQL ID="SelectAutoBrandById">
+      SELECT language_id,id,company_id,brand_name,description,logo_path,update_date,active
+      FROM autobrand
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--查询所有车品牌类型信息-->
+  <SQL ID="SelectAllAutoBrand">
+      SELECT language_id,id,company_id,brand_name,description,logo_path,update_date,active
+      FROM autobrand
+      where active=1 and language_id=?language_id
+  </SQL>
+
+  <!--根据车型号ID查询型号名称-->
+  <SQL ID="SelectAutoModelNameById">
+      SELECT model_name
+      FROM automodel
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--根据车型号ID查询信息-->
+  <SQL ID="SelectAutoModelById">
+      SELECT id,brand_id,brand_name,model_name,image_path,description,update_date,active,language_id
+      FROM automodel
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--根据车品牌ID查询所有车型号-->
+  <SQL ID="SelectAllAutoModelByBrandId">
+      SELECT id,brand_id,model_name,image_path,description,update_date,active,language_id
+      FROM automodel
+      where brand_id=?brand_id and active=1 and language_id=?language_id
+  </SQL>
+  <!--查询所有车型号-->
+  <SQL ID="SelectAllAutoModel">
+      SELECT id,brand_id,brand_name,model_name,image_path,description,update_date,active,language_id
+      FROM automodel
+      where active=1 and language_id=?language_id
+  </SQL>
+
+  <!--根据加入条件ID查询条件名称-->
+  <SQL ID="SelectJoinConditionsNameById">
+      SELECT condition_name
+      FROM joinconditions
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--根据加入条件ID查询信息-->
+  <SQL ID="SelectJoinConditionsById">
+      SELECT id,condition_name,update_date,active,language_id
+      FROM joinconditions
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--查询所有加入条件信息-->
+  <SQL ID="SelectAllJoinConditions">
+      SELECT id,condition_name,update_date,active,language_id
+      FROM joinconditions
+      where active=1 and language_id=?language_id
+  </SQL>
+
+  <!--根据邮件发送周期ID查询条件名称-->
+  <SQL ID="SelectActivityemaildurationNameById">
+      SELECT duration_name
+      FROM activityemailduration
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--根据邮件发送周期ID查询信息-->
+  <SQL ID="SelectActivityemaildurationById">
+    SELECT
+    id,duration_name,(unit_hour/24) as unit_day,update_date,language_id
+    FROM activityemailduration
+    where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--查询所有邮件发送周期信息-->
+  <SQL ID="SelectAllActivityemailduration">
+      SELECT
+      id,duration_name,unit_day,update_date,language_id
+      FROM activityemailduration
+      where active=1 and language_id=?language_id
+  </SQL>
+
+  <!--根据踢人保护时限ID查询条件名称-->
+  <SQL ID="SelectActivitykickdurationNameById">
+      SELECT duration_name
+      FROM activitykickduration
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--根据踢人保护时限ID查询信息-->
+  <SQL ID="SelectActivitykickdurationById">
+      SELECT
+      id,duration_name,unit_day,update_date,language_id,active
+      FROM activitykickduration
+      where id=?id and active=1 and language_id=?language_id
+  </SQL>
+  <!--查询所有踢人保护时限信息-->
+  <SQL ID="SelectAllActivitykickduration">
+      SELECT
+      id,duration_name,unit_day,update_date,language_id,active
+      FROM activitykickduration
+      where active=1 and language_id=?language_id
+  </SQL>
+
+  <!-- 徐兵添加 结束-->
+  <!-- 活动留言，感想表 添加  by 王渝友-->
+  <SQL ID="addActivityposts">
+    INSERT INTO .activityposts
+    (id,active_id,active_name,create_id,SUBJECT,content,post_date,counter,is_block, active)
+    VALUES
+    (?id,?active_id,?active_name,?create_id,?subject,?content,?post_date,?counter,?is_block,?active);
+  </SQL>
+  <!-- 根据id号和活动号查询活动留言，感想表 （个人日志有个共享到活动表的操作，提供id 和活动号） by 王渝友-->
+  <SQL ID="searchActivitypostsbyIdAndActivityId">
+    SELECT COUNT(id) FROM  activityposts  WHERE id=?id AND active_id=?active_id
+  </SQL>
+  <!---活动回复表-查询指定的记录数 by 王渝友-->
+  <SQL ID="activitycommentsGetlimit">
+      SELECT  id,follow_id,content,active_posts_id,createdate,userid,username,userlogo  FROM v_activitycomments WHERE follow_id=?follow_id  AND active_posts_id=?active_posts_id order by createdate desc limit ?offsetcount, ?rcount
+  </SQL>
+
+  <!---活动回复表-查询指定的记录数 by 王渝友-->
+  <SQL ID="activityoldCount">
+    <![CDATA[
+      SELECT  count(distinct id) total FROM  activity a
+      WHERE  DATE(end_Datetime)< CURRENT_DATE  AND  (a.original_id=?original_id OR a.id IN(SELECT  am.activity_id FROM activitymember am WHERE 
+      am.user_id=?user_id))
+   ]]>
+  </SQL>
+
+  <!---活动设置查询 by 王渝友-->
+  <SQL ID="ActivitySetting">
+    SELECT * FROM personalactivitysettings pas WHERE pas.activity_id=?activity_id AND pas.user_id=?user_id;
+    SELECT am.user_ID,pp.name FROM activitymember am,PersonalProfile pp WHERE
+    pp.user_id=am.user_id AND am.active=1 AND pp.active=1
+    AND am.activity_id=?activity_id;
+    SELECT * FROM ActivityMsgExceptionList WHERE user_id=?user_id AND activity_id=?activity_id;
+  </SQL>
+  <!---保存活动设置 by 王渝友-->
+  <SQL ID="saveActivitySetting">
+    INSERT INTO  personalactivitysettings
+    (id,user_id,activity_id, contact_email,is_email_event, is_notice_event,is_email_updates, is_notice_updates, active)
+    VALUES
+    (?id,?user_id,?activity_id,?contact_email,?is_email_event, ?is_notice_event,?is_email_updates, ?is_notice_updates,1);
+  </SQL>
+  <!---更新活动设置 by 王渝友-->
+  <SQL ID="updateActivitySetting">
+    UPDATE  personalactivitysettings  SET contact_email =?contact_email,
+    is_email_event = ?is_email_event,  is_notice_event =?is_notice_event,
+    is_email_updates =?is_email_updates, is_notice_updates =?is_notice_updates
+    WHERE user_id =?user_id  AND  activity_id =?activity_id
+  </SQL>
+
+  <!---查询活动设置个数 by 王渝友-->
+  <SQL ID="ActivitySettingCount">
+    SELECT count(*) FROM personalactivitysettings pas WHERE pas.activity_id=?activity_id AND pas.user_id=?user_id;
+  </SQL>
+  <!---查询相册根据用户id和活动id。 by 王渝友,修改by 金广亮，修改原因这个sql应该是活动自建相册，而活动自建相册默认为管理员或
+  创建者使用。-->
+  <SQL ID="ActivityAlbumListByUser">
+    <!--SELECT id,folder_name FROM activityimagefolder WHERE user_id=?user_id AND activity_id=?activity_id and active=1-->
+    SELECT id,folder_name FROM activityimagefolder WHERE (user_id=?user_id or is_system=1) AND activity_id=?activity_id and active=1
+  </SQL>
+  <!---查询相册根据用户id和活动id。 by 王渝友-->
+  <SQL ID="updatePhoto">
+    UPDATE activityimage  SET  image_name=?image_name,sequence=?sequence,description=?description WHERE id=?id;
+  </SQL>
+  <!---写入活动回复留言信息。 by 王渝友-->
+  <SQL ID="insertactivitycomments">
+    INSERT INTO activitycomments
+    (id, active_posts_id,follow_id,user_id, content, positive, negative)
+    VALUES
+    (?id,?active_posts_id,?follow_id,?user_id, ?content,?positive,?negative);
+  </SQL>
+
+  
+  <Module ID="ActivityImage">
+    <SQL ID="Insert">
+      INSERT INTO activityimage
+      (id,create_id,activity_id,link_id,folder_id,image_name,image_path,image_small_path,fileSize,sequence,description,upload_date,is_submit,counter,is_block,active)
+      VALUES
+      (?id,?create_id,?activity_id,?link_id,?folder_id,?image_name,?image_path,?image_small_path,?fileSize,?sequence,?description,CURRENT_TIMESTAMP,?is_submit,?counter,?is_block,1)
+    </SQL>
+    <SQL ID="DeleteByID">
+      update activityimage set active=0 where id=?id;
+    </SQL>
+    <SQL ID="SelectAll">
+      select i.id,i.create_id,i.activity_id,p.name as user_name,i.link_id,i.folder_id,f.folder_name,i.image_name,i.image_path,i.image_small_path,i.fileSize,i.description,i.upload_date,i.counter,i.is_block,is_submit
+      from activityimage i
+      left join PersonalProfile p on i.create_id=p.user_id
+      left join activityImageFolder f on i.folder_id=f.id
+      where  i.active=1
+    </SQL>
+    <SQL ID="SelectByID">
+      select i.id,i.create_id,i.activity_id,p.name as user_name,i.link_id,i.folder_id,f.folder_name,i.image_name,i.image_path,i.image_small_path,i.fileSize,i.description,i.upload_date,i.counter,i.is_block,is_submit
+      from activityimage i
+      left join PersonalProfile p on i.create_id=p.user_id
+      left join activityImageFolder f on i.folder_id=f.id
+      where  i.active=1 and i.is_block=?is_block and i.is_submit=?is_submit and i.id=?id
+    </SQL>
+    <SQL ID="SelectAllByFolderID">
+      select i.id,i.create_id,i.activity_id,p.name as user_name,i.link_id,i.folder_id,f.folder_name,i.image_name,i.image_path,i.image_small_path,i.fileSize,i.description,i.upload_date,i.counter,i.is_block,is_submit
+      from activityimage i
+      left join PersonalProfile p on i.create_id=p.user_id
+      left join activityImageFolder f on i.folder_id=f.id
+      where  i.active=1 and i.is_block=?is_block and i.is_submit=?is_submit and i.folder_id=?folder_id
+    </SQL>
+    <SQL ID="UpdateAllByID">
+      update activityimage set image_name=?image_name,description=?description where id=?id;
+    </SQL>
+    <SQL ID="UpdateBlockState">
+      update activityimage set is_block=?is_block where id=?id
+    </SQL>
+    <SQL ID="UpdateSubmitState">
+      update activityimage set is_submit=1 where id=?id
+    </SQL>
+    <SQL ID="AddCounterNuber">
+      update activityimage set counter=counter+?counter where id=?id
+    </SQL>
+  </Module>
+
+  <Module ID="ActivityImageFolder">
+    <SQL ID="Insert">
+      INSERT INTO activityimagefolder
+      (id,user_id,activity_id,folder_name,create_date,description,is_system,is_block,active)
+      VALUES
+      (
+      ?id,?user_id,?activity_id,?folder_name,CURRENT_TIMESTAMP,?description,?is_system,?is_block,1
+      );
+    </SQL>
+    <SQL ID="DeleteByID">
+      update activityimagefolder set active=0 where id=?id;
+    </SQL>
+    <SQL ID="SelectAll">
+      SELECT
+      f.id,f.user_id,p.name as user_name,f.activity_id,a.activity_name,f.share_key_id,f.folder_name,f.create_date,f.description,f.is_system,f.is_block
+      FROM activityimagefolder f
+      left join PersonalProfile p on f.user_id=p.user_id
+      left join activity a on a.id=f.activity_id
+      where  f.active=1
+    </SQL>
+    <SQL ID="SelectByID">
+      SELECT
+      f.id,f.user_id,p.name as user_name,f.activity_id,a.activity_name,f.share_key_id,f.folder_name,f.create_date,f.description,f.is_system,f.is_block
+      FROM activityimagefolder f
+      left join PersonalProfile p on f.user_id=p.user_id
+      left join activity a on a.id=f.activity_id
+      where  f.active=1 f.id=?id
+    </SQL>
+    <SQL ID="SelectByActivity">
+      SELECT
+      f.id,f.user_id,p.name as user_name,f.activity_id,a.activity_name,f.share_key_id,f.folder_name,f.create_date,f.description,f.is_system,f.is_block
+      FROM activityimagefolder f
+      left join PersonalProfile p on f.user_id=p.user_id
+      left join activity a on a.id=f.activity_id
+      where  f.active=1 and f.is_block=?is_block and f.is_system=?is_system and f.activity_id=?activity_id
+    </SQL>
+    <SQL ID="SelectActivityFolder">
+      SELECT
+      f.id,f.user_id,p.name as user_name,f.activity_id,a.activity_name,f.share_key_id,f.folder_name,f.create_date,f.description,f.is_system,f.is_block
+      FROM activityimagefolder f
+      left join PersonalProfile p on f.user_id=p.user_id
+      left join activity a on a.id=f.activity_id
+      where  f.active=1 and f.is_system=1 and f.activity_id=?activity_id
+    </SQL>
+    <SQL ID="UpdateAllByID">
+      update activityimagefolder set folder_name=?folder_name,description=?description where id=?id;
+    </SQL>
+    <SQL ID="UpdateFolderBlockState">
+      update activityimagefolder set is_block=?is_block where id=?id
+    </SQL>
+    <SQL ID="ShareActivityFolder">
+      INSERT INTO activityimagefolder
+      (id,user_id,activity_id,folder_name,create_date,description,is_system,is_block,active)
+      select
+      ?newfolderid,?user_id,activity_id,folder_name,CURRENT_TIMESTAMP,description,0,is_block,active
+      from activityimagefolder where id=?folder_id;
+
+      INSERT INTO activityimage
+      (
+      id,create_id,activity_id,link_id,folder_id,image_name,image_path,image_small_path,fileSize,sequence,description,upload_date,is_submit,counter,is_block,active
+      )
+      select
+      GetGuid(),?user_id,activity_id,link_id,?newfolderid,image_name,image_path,image_small_path,fileSize,0,description,CURRENT_TIMESTAMP,is_submit,0,is_block,active
+      from activityimage
+      where active=1 and is_block=0 and is_submit=1 and folder_id=?folder_id;
+
+      update imagepythicallocation n set n.link_nbr=n.link_nbr+1
+      where  exists(select 1 from activityimage e where e.link_id=n.id and e.active=1 and e.is_block=0 and e.is_submit=1 and e.folder_id=?folder_id );
+
+    </SQL>
+  </Module>
+  
+  <!--活动相册共享-->
+  <!---系统自建相册-->
+  <SQL ID="activitysystemimagefolder">
+    <![CDATA[select id,user_id,folder_name,description from activityimagefolder where activity_id=?activity_id and active=1 and is_system=1 and is_block=1]]>
+  </SQL>
+  <!---自己自建相册-->
+  <SQL ID="mycreateimagefolder">
+    <![CDATA[select id,user_id,folder_name,description from activityimagefolder where activity_id=?activity_id and active=1 and is_system=0 and user_id=?user_id and is_block=1 and share_key_id!=id]]>
+  </SQL>
+  <!---自己共享相册-->
+  <SQL ID="myshareimagefolder">
+    <![CDATA[select share_key_id as id,user_id,folder_name,description from activityimagefolder where activity_id=?activity_id and active=1 and is_system=0 and user_id=?user_id and is_block=1 and share_key_id=id]]>
+  </SQL>
+  <!---他人自建相册-->
+  <SQL ID="otherpersoncreateimagefolder">
+    <![CDATA[select id,user_id,folder_name,description from activityimagefolder where activity_id=?activity_id and active=1 and is_system=0 and user_id<>?user_id and is_block=1 and share_key_id!=id]]>
+  </SQL>
+  <!---他人共享相册-->
+  <SQL ID="otherpersonshareimagefolder">
+    <![CDATA[select share_key_id as id,user_id,folder_name,description from activityimagefolder where activity_id=?activity_id and active=1 and is_system=0 and user_id<>?user_id and is_block=1 and share_key_id=id]]>
+  </SQL>
+  <!---向活动系统自建相册共享图片,直接操作活动相片表-->
+  <SQL ID="shareimagestosystemfolder">
+    INSERT INTO activityimage(id,create_id,activity_id,link_id,folder_id,image_name,image_path,image_small_path,fileSize,sequence,description,upload_date,is_submit,counter,is_block,active)
+    select    GetGuid(),?user_id,?activity_id,link_id,(select id from activityimagefolder f where f.activity_id=?activity_id and f.is_system=1 and f.active=1) as folder_id,image_name,image_path,image_small_path,fileSize,
+    (select max(aimg.sequence)+1 from activityimage aimg inner join activityimagefolder imf on imf.id=aimg.folder_id where imf.activity_id=?activity_id and f.is_system=1 and f.active=1) as sequence,description,CURRENT_TIMESTAMP,is_submit,0,0,active
+    from personalimage   where active=1 and is_submit=1 and fold_id=?folder_id;
+    update imagepythicallocation n set n.link_nbr=n.link_nbr+1  where  exists(select 1 from activityimage e where e.link_id=n.id and e.active=1 and e.is_block=0 and e.is_submit=1 and e.folder_id=?folder_id );
+  </SQL>
+  <!---向活动共享整个个人相册文件夹-->
+  <SQL ID="shareimagestoactivity">
+    INSERT INTO activityimagefolder   (id,user_id,activity_id,share_key_id,folder_name,create_date,description,is_system,is_block,active)
+    select   ?folder_id,?user_id,?activity_id,?folder_id,?folder_name,CURRENT_TIMESTAMP,description,0,1,active  from imagefolder where id=?folder_id;
+    INSERT INTO activityimage(id,create_id,activity_id,link_id,folder_id,image_name,image_path,image_small_path,fileSize,sequence,description,upload_date,is_submit,counter,is_block,active)
+    select    id,?user_id,?activity_id,link_id,?folder_id,image_name,image_path,image_small_path,fileSize,sequence,description,CURRENT_TIMESTAMP,is_submit,0,0,active from personalimage   where active=1 and is_submit=1 and fold_id=?folder_id;
+    update imagepythicallocation n set n.link_nbr=n.link_nbr+1  where  exists(select 1 from activityimage e where e.link_id=n.id and e.active=1 and e.is_block=0 and e.is_submit=1 and e.folder_id=?folder_id );
+  </SQL>
+  <!---向活动指定相册共享图片-->
+  <SQL ID="shareimagestocustomfolder">
+    INSERT INTO activityimage(id,create_id,activity_id,link_id,folder_id,image_name,image_path,image_small_path,fileSize,sequence,description,upload_date,is_submit,counter,is_block,active)
+    select    id,?user_id,?activity_id,link_id,?folder_id,image_name,image_path,image_small_path,fileSize,(select max(sequence)+1 from activityimage where folder_id=?folder_id and activity_id=?activity_id and active=1) as sequence,description,CURRENT_TIMESTAMP,is_submit,0,0,active
+    from personalimage   where active=1 and is_submit=1 and FIND_IN_SET(n.id ,?photoids);
+    update imagepythicallocation n set n.link_nbr=n.link_nbr+1  where FIND_IN_SET(n.id ,?photoids);
+  </SQL>
+</SQLScript>

@@ -1,0 +1,12 @@
+﻿/**************************************************
+ 作者：杨晓东
+时间：2011年12月17日0:31:48
+摘要：  创建了一个获取guid的函数
+***************************************************/
+    CREATE DEFINER = `root`@`localhost` FUNCTION `GetGuid`()
+    RETURNS varchar(40)
+    BEGIN
+    DECLARE id VARCHAR(40);
+    SET id=(SELECT Replace(uuid(),'-',''));
+    return id;
+    END;

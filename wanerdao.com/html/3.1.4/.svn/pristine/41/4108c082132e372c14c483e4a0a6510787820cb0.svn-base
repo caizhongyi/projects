@@ -1,0 +1,901 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>活动类别-活动-玩儿道</title>
+
+    <meta name="keywords" content="活动类别, 定义活动, 周期活动, 足球, 棒球, 曲棍球, 英式足球, 篮球, 徒步旅行, 摄影, 羽毛球, 网球, 野营, 高尔夫球, 乒乓球, 捕鱼, 自行车, 骑马, 旅行, 帆船运动, 棋牌, 保龄球运动, 玩儿道, 生活和社会网络"/>
+    <meta name="description"
+          content="默认类别, 包括定义活动, 周期活动, 足球, 棒球, 曲棍球, 英式足球, 篮球, 徒步旅行, 照片, 羽毛球, 网球, 野营, 高尔夫球, 乒乓球, 捕鱼, 自行车, 骑马, 旅行, 帆船运动, 棋牌, 保龄球运动等"/>
+
+
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content="" />
+    <meta name="copyright" content="2001-2010 Comsenz Inc." />
+    <link rel="Bookmark" href="favicon.ico" />
+    <link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/activity.css"/>
+
+
+    <!-- jquery 库 -->
+    <link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="index.html" class="logo"><img src="images/logo.png" alt="玩儿道"></a>
+        <div class="home  hover">
+            <a title="Home"  class="button" href="javascript:;"><i class="icon icon-list"></i></a>
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a  href="javascript:;">活动</a></h3>
+                        <a href="activity_index.html">活动首页</a><a href="activity_search.html">查找活动</a><a href="activity_item_main.html">当前和过去的活动 </a><a href="activity_future_plan.html">未来活动</a><a href="javascript:;">发起活动 </a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">个人</a></h3>
+                        <a href="personal_edit.html">个人资料</a><a href="personal_finance_account.html">财务账号</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">关系</a></h3>
+                        <a href="relationship_friends_invite.html">我的好友</a>
+                    </li>
+                    <li>
+                        <h3><a  href="index.html">首页</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="活动 / 好友" class="text" ><input type="submit" class="button" value="">
+        </div>
+
+        <div class="infotips">
+                <span class="floatbox-wrap dropdown">
+                    <a href="javascript:;" class="hint"><i class="icon icon-bell "></i><span class="badge badge-important">20</span></a>
+                    <div class="dropdown-pane floatbox slide">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <div class="accordion scroll-panel" data-collapse="">
+                                <div class="accordion-item active">
+                                    <div class="accordion-heading toolbar"><i class="icon-minus-sign"></i><!--<i class="icon-collapse"></i>--><span class="text-important">1223</span> 活动名，城市/国家  <span class="time">2012/12 - 2021/12</span></div>
+                                    <div class="accordion-panel" style="display: block">
+                                        <ul class="group-list">
+                                            <li><i class="icon-block-blue"></i>（任务）&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">详细</a></li>
+                                            <li>
+                                                <i class="icon-block-blue"></i>（任务）&nbsp;<span class="title "><strong>任务名</strong><small class="desc detail-short">描述</small></span>
+                                                <div class="detail">
+                                                    <small class="desc">描述</small>
+                                                    <br/>
+                                                    <span class="price">$123</span>&nbsp;<small class="desc">私有信息，附件</small>
+                                                    <br/>
+                                                    创建者
+                                                    <a href="" class="opts">详细</a>
+                                                </div>
+                                            </li>
+                                            <li><i class="icon-block-blue"></i>（任务）&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">Request content</a></li>
+                                            <li><i class="icon-block-blue"></i>（任务）&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">Request content</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="accordion-item ">
+                                    <div class="accordion-heading toolbar"><i class="icon-plus-sign"></i><!--<i class="icon-collapse"></i>--><span class="text-important">1223</span> 活动名，城市/国家 </div>
+                                    <div class="accordion-panel" style="display: block">
+                                        <ul class="group-list">
+                                            <li><i class="icon-block-blue"></i>（任务）&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">详细</a></li>
+                                            <li>
+                                                <i class="icon-block-blue"></i>（任务）&nbsp;<span class="title"><strong>任务名</strong><small class="desc detail-short">描述</small></span>
+                                                <div class="detail">
+                                                    <small class="desc">描述</small>
+                                                    <br/>
+                                                    <span class="price">$123</span>&nbsp;<small class="desc">私信</small>
+                                                    <br/>
+                                                    创建者
+                                                    <a href="" class="opts">详细</a>
+                                                </div>
+                                            </li>
+                                            <li><i class="icon-block-blue"></i>（任务）&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">Request content</a></li>
+                                            <li><i class="icon-block-blue"></i>（任务）&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">Request content</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+                <span class="floatbox-wrap dropdown">
+                    <a href="javascript:;" class="hint"><i class="icon icon-bullhorn"></i><span class="badge badge-important">20</span></a>
+                    <div class="dropdown-pane floatbox slide">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <ul class="group-list scroll-panel">
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </span>
+                <span class="floatbox-wrap ">
+                    <span class="dropdown">
+                        <a href="javascript:;" class="hint"><i class="icon icon-envelope"></i><span class="badge badge-important">20</span></a>
+                        <div class="dropdown-pane floatbox slide" id="message-box">
+                            <i class="arrow"></i>
+                            <div class="scroll">
+                                <div class="scroll-panel">
+                                    <div class="toolbar"><a href="###" class="message-box">留言箱<span class="text-important">（200）</span></a>•<a
+                                            href="###" class="message-compose">写邮件</a></div>
+                                    <ul class="group-list">
+                                        <li>
+                                            <div class="heading">
+                                                <i class="icon icon-star-alt"></i><span class="title">Name<small class="desc detail-short">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">详细</a></span>
+                                            </div>
+                                            <div class="form detail">
+                                                <div class="form-item ">
+                                                    <p class="desc">Content...</p>
+                                                </div>
+                                                <div class="form-item">
+                                                    <div class="input-block">
+                                                        <textarea  class="textarea " placeholder="回复" ></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <label><input type="checkbox"/>保存草稿</label>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <span class="tips-result">Tips</span>
+                                                        <button class="btn btn-primary btn-mini">回复</button><button class="btn btn-default btn-mini">转发</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="heading">
+                                                <i class="icon icon-star-alt"></i><span class="title">Name<small class="desc detail-short">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">详细</a></span>
+                                            </div>
+                                            <div class="form detail">
+                                                <div class="form-item ">
+                                                    <p class="desc">Content...</p>
+                                                </div>
+                                                <div class="form-item">
+                                                    <div class="input-block">
+                                                        <textarea  class="textarea " placeholder="回复" ></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <label><input type="checkbox"/>保存草稿</label>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <span class="tips-result">Tips</span>
+                                                        <button class="btn btn-primary btn-mini">发送</button><button class="btn btn-default btn-mini">保存</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><i class="icon icon-star-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">阅读</a></span></li>
+                                        <li><i class="icon icon-star-empty-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">阅读</a></span></li>
+                                        <li><i class="icon icon-star-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">阅读</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    <div class="dropdown-pane floatbox slide" id="message-compose">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <div class=" scroll-panel">
+                                <div class="toolbar"><a href="###" class="message-box">留言箱<span class="text-important">（200）</span></a>•<a
+                                        href="###" class="message-compose">写邮件</a><span class="opts">内容已保存, 时间: MM/dd/yyyy hh:mm</span></div>
+                                    <div class="form container sendbox">
+                                        <div class="form-item ">
+                                            <label><span class="input-label">发送给:</span><input type="text" class="text span7"/><button class="btn btn-default btn-mini">查找</button></label>
+                                        </div>
+                                        <div class="form-item">
+                                            <label><span class="input-label">内容:</span><textarea  class="textarea span8" placeholder="回复" ></textarea></label>
+                                        </div>
+                                        <div class="form-panel clearfix">
+                                            <div class="pull-left ">
+                                                <label><input type="checkbox"/>保存草稿</label>
+                                            </div>
+                                            <div class="pull-right">
+                                                <span class="tips-result">Tips</span>
+                                                <button class="btn btn-primary btn-mini">发送</button><button class="btn btn-default btn-mini">保存</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                 </span>
+            <!-- <a href="javascript:;" class="icon-message-mail">123</a>-->
+            <script>
+
+                $('.message-box').click(function(e){
+                    $('#message-compose').removeClass('in')
+                    $('#message-box').addClass('in');
+                })
+                $('.message-compose').click(function(){
+                    $('#message-box').removeClass('in')
+                    $('#message-compose').addClass('in');
+                })
+
+
+            </script>
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img  src="images/defaults/32-32.jpg"></a><a  class="name" href="javascript:;"><span >烧饭-人生旅途中人生旅途中</span><b></b></a>
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">个人资料</a></li>
+                    <li><a href="javascript:;">账号维护</a></li>
+                    <li>
+                        <a href="javascript:;">切换语言</a>
+                        <ul>
+                            <li><a href="javascript:;">中文</a></li>
+                            <li><a href="javascript:;">英文</a></li>
+                        </ul>
+                    </li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout right-activity-layout">
+    <div class="container">
+        <div class="tabs-master">
+            <div class="nav">
+                <div class="pull-left"><a href="activity_main.html" class="selected" >活动首页</a><a href="activity_search.html">查找活动</a><a href="activity_myactivity.html" >我的活动</a><a href="activity_myactivity.html" >我的活动</a><a href="activity_create_finish.html" class="">发起活动</a></div>
+            </div>
+        </div>
+        <div class="layout-side">
+            <div class="equal">
+                <div class="side-inner">
+                    <a href="javascript:;" class="yel-gradient-btn">发起活动</a>
+                    <div class="form">
+                        <div class="title">查找活动</div>
+                        <ul>
+                            <li>
+                                <span class="input-block"><input type="text" class="text input" placeholder="名称 / 描述"/></span>
+                            </li>
+                            <li>
+                                 <span class="input-append input-block">
+                                    <input class="input text" type="text"><a href=""><i class="icon icon-file-sign"></i></a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="input-append input-block">
+                                    <input class="input text" type="text"><a href=""><i class="icon icon-personal"></i></a>
+                                </span>
+                            </li>
+                            <!--<li>
+                                 <span class="input-append input-block">
+                                    <input class="input text" type="text"><a href=""><i class="icon icon-personals"></i></a>
+                                </span>
+                            </li>-->
+                            <li>
+                                <span class="input-append input-block">
+                                    <input class="input text" type="text"><a href=""><i class="icon icon-global"></i></a>
+                                </span>
+                            </li>
+                            <!--<li>
+                                <span class="input-block"><input type="text" class="text input" placeholder="Address / City / State / Country"/></span>
+                            </li>-->
+                        </ul>
+                        <div class="btns"><button type="submit" class="btn btn-default btn-mini"><i class="icon icon-blue-search"></i>查找</button></div>
+                    </div>
+                    <dl class="side-infos">
+                        <dt>
+                            <div class="pagination-arrow-blue">
+                                <a class="prev" href="javascript:;"></a><a class="next disabled" href="javascript:;"></a>
+                            </div>
+                            <div class="title">好友参加的活动</div>
+                        </dt>
+                        <dd>
+                            <p>
+                                <a href="javascript:;">王蛋蛋</a>（等）加入<a href="javascript:;">美国东升乡滑雪节</a><br>
+                                香港特区立法会Finance委员会，就特首梁...
+                            </p>
+                            <em>22/100人</em>&nbsp;<em>03/22-04/22</em>
+                            <div class="opts"><a href="javascript:;" class="btn-option"><i class="icon icon icon-hand"></i>注册</a></div>
+                        </dd>
+                        <dd>
+                            <p>
+                                <a href="javascript:;">王蛋蛋</a>（等）加入<a href="javascript:;">美国东升乡滑雪节</a><br>
+                                香港特区立法会Finance委员会，就特首梁...
+                            </p>
+                            <em>22/100人</em>&nbsp;<em>03/22-04/22</em>
+                            <div class="opts"><a href="javascript:;" class="btn-option"><i class="icon icon icon-hand"></i>注册</a></div>
+                        </dd>
+                    </dl>
+
+                    <dl class="side-infos">
+                        <dt>
+                        <div class="pagination-arrow-blue">
+                            <a class="prev" href="javascript:;"></a><a class="next disabled" href="javascript:;"></a>
+                        </div>
+                        <div class="title">可能感兴趣的活动</div>
+                        </dt>
+                        <dd>
+                            <p>
+                                <a href="javascript:;">美国东升乡滑雪节</a><br>
+                                香港特区立法会Finance委员会，就特首梁...
+                            </p>
+                            <em>22/100人</em>&nbsp;<em>03/22-04/22</em>
+                            <div class="opts"><a href="javascript:;" class="btn-option"><i class="icon icon icon-hand"></i>注册</a></div>
+                        </dd>
+                        <dd>
+                            <p>
+                                <a href="javascript:;">美国东升乡滑雪节</a><br>
+                                香港特区立法会Finance委员会，就特首梁...
+                            </p>
+                            <em>22/100人</em>&nbsp;<em>03/22-04/22</em>
+                            <div class="opts"><a href="javascript:;" class="btn-option"><i class="icon icon icon-hand"></i>注册</a></div>
+                        </dd>
+                    </dl>
+
+                    <dl class="side-infos">
+                        <dt>
+                        <div class="pagination-arrow-blue">
+                            <a class="prev" href="javascript:;"></a><a class="next disabled" href="javascript:;"></a>
+                        </div>
+                        <div class="title">最新活动</div>
+                        </dt>
+                        <dd>
+                            <p>
+                                <a href="javascript:;">王蛋蛋</a>（等）加入<a href="javascript:;">美国东升乡滑雪节</a><br>
+                                香港特区立法会Finance委员会，就特首梁...
+                            </p>
+                            <em>22/100人</em>&nbsp;<em>03/22-04/22</em>
+                            <div class="opts"><a href="javascript:;" class="btn-option"><i class="icon icon icon-hand"></i>注册</a></div>
+                        </dd>
+                        <dd>
+                            <p>
+                                <a href="javascript:;">王蛋蛋</a>（等）加入<a href="javascript:;">美国东升乡滑雪节</a><br>
+                                香港特区立法会Finance委员会，就特首梁...
+                            </p>
+                            <em>22/100人</em>&nbsp;<em>03/22-04/22</em>
+                            <div class="opts"><a href="javascript:;" class="btn-option"><i class="icon icon icon-hand"></i>注册</a></div>
+                        </dd>
+                    </dl>
+
+                </div>
+            </div>
+        </div>
+        <div class="layout-main"  >
+            <div class="sitenav">
+                <a href="javascript:;" class="selected"><i class="icon icon-alist"></i>按分类查找</a>|<a href="javascript:;"><i class="icon icon icon-pos"></i>按位置查找</a>
+            </div>
+           <ul class="activity-image-list" id="container">
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                           <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                           <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">时令</div>
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">自定义</div>
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li class="last">
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">足球</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">棒球</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">曲棍球</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li class="last">
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">英式足球</div>
+
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">篮球</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">徒步旅行</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li class="last">
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">摄影</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">羽毛球</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">网球</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li class="last">
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">野营</div>
+ 
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">高尔夫球</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">乒乓球</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li class="last">
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">捕鱼</div>
+
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">自行车</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">骑马</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li class="last">
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">旅行</div>
+
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">帆船</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li>
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">棋牌</div>
+                   
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+               <li class="last">
+                   <div class="img">
+                       <img src="images/defaults/165x150.gif" alt=""/>
+                       <div class="summary-mask"></div>
+                       <div class="summary">
+                          <span class="inline-block"><i class="icon icon-gray-date"></i>122</span>
+                          <span class="inline-block"><i class="icon icon-gray-see"></i>122</span>
+                       </div>
+                   </div>
+                   <div class="name">保龄球</div>
+
+                   <div class="mask-info">
+                       <dl>
+                           <dt><h3>最新活动:</h3></dt>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                           <dd><a href="#">四川/成都－攻占珠穆朗玛峰最高处</a> <br><span>200人</span><span>11/11/2013</span></dd>
+                       </dl>
+                   </div>
+                   <div class="mask"></div>
+               </li>
+           </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+        <div class="sitemap">
+            <a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律</a><a href="javascript:;" class="text-danger">招聘</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a>
+        </div>
+        <span class="copyright">版权所有 @ 2011-2014 玩儿道团队</span>
+    </div>
+</div>
+<!-- end footer -->
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/jquery.masonry-site/js/jquery.infinitescroll.min.js"></script>
+
+<nav id="page-nav">
+    <a href="pages/2.html"></a>
+</nav>
+<script type="text/javascript">
+    $(function(){
+
+        var $container = $('#container');
+
+        $container.infinitescroll({
+                    navSelector  : '#page-nav',    //页面分页元素--本页的导航，意思就是一个可以触发ajax函数的模块
+                    nextSelector : '#page-nav a',  //下一页的导航
+                    itemSelector : '.activity-image-list li',     //此处我用了类选择器，选择的是你要加载的那一个块（每次载入的数据放的地方）
+                    animate: true,
+                    loading: {
+                        finishedMsg: 'No more pages to load.',
+                        img: 'http://i.imgur.com/6RMhx.gif'
+                    }
+                }
+                // trigger Masonry as a callback
+               /* function( newElements ) {
+                    // hide new items while they are loading
+                    var $newElems = $( newElements ).css({ opacity: 0 });
+                    // ensure that images load before adding to masonry layout
+                   *//* $newElems.imagesLoaded(function(){
+                        // show elems now they're ready
+                        $newElems.animate({ opacity: 1 });
+                        $container.masonry( 'appended', $newElems, true );
+                    });*//*
+                }*/
+        );
+
+    });
+
+</script>
+</body>
+</html>

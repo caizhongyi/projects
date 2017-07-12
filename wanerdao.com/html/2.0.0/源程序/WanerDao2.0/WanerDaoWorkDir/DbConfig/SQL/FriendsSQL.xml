@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SQLScript xmlns="SQL.xsd">
+    <!--查询用户全部分组SQL-->
+    <SQL ID="SelectInitData_Class">
+      select T0.relation_name as name,T0.class_id as id,count(T1.relation_to_id) as num from FriendsClass  T0
+      left join  PersonalFriends  T1 on  T0.class_id=T1.class_id and T1.active =1
+      where T0.user_id=?user_id   and T0.active=1
+      group by T0.relation_name,t0.class_id order by T0.seq
+    </SQL>
+
+  <!--查询用户全部分组SQL-->
+  <SQL ID="Selectfriend_Class">
+    select T2.user_id as id,T2.name
+    from FriendsClass  T0
+    inner join  PersonalFriends  T1 on  T0.class_id=T1.class_id and T1.active =1
+    inner join PersonalProfile T2 on T2.user_id = T1.relation_to_id
+    where T0.class_id=?class_id   and T0.active=1 and T1.relation_from_id = ?user_id
+  </SQL>
+  
+  <!--查询用户全部好友SQL-->
+  <SQL ID="SelectAllfriends">
+    select relation_to_id as id from  PersonalFriends
+    where relation_from_id=?user_id   and active=1
+  </SQL>
+
+  <!--创建好友分组SQL-->
+  <SQL ID="CreateFriendGroup">
+    insert into FriendsClass (class_id,seq,user_id,relation_name,create_date)
+    select Replace(uuid(),'-',''), ifnull(max(seq),0) +1 ,?user_id,?relation_name,sysdate()
+    from  FriendsClass where user_id = ?user_id and active =1
+
+  </SQL>
+
+  <!--修改好友分组SQL-->
+  <SQL ID="UpdateFriendsGounp">
+    update PersonalFriends set class_id=?class_id where relation_from_id=?friend_id and relation_to_id =?user_id
+  </SQL>
+
+  <!--修改好友分组名SQL-->
+  <SQL ID="UpdateFriendsGounpName">
+    update friendsclass set relation_name=?relation_name where class_id=?class_id
+  </SQL>
+
+
+  <!--删除好友分组SQL-->
+  <SQL ID="Delete_myclass">
+    UPDATE friendsclass SET active=0 where class_id = ?class_id and active =1;
+
+  </SQL>
+
+  <!--删除好友SQL-->
+  <SQL ID="Delete_myfriend">
+    UPDATE personalfriends SET active=0 where (relation_from_id=?user_id and relation_to_id = ?friend_id) or (relation_from_id=?friend_id and relation_to_id = ?user_id);
+
+  </SQL>
+
+  <!--邀请好友SQL-->
+  <SQL ID="Invite_myfriend">
+    insert into InboxInviteMessage(id,user_id,from_id,msg_type,content,send_date)
+    values(Replace(uuid(),'-',''),?send_id,?user_id,?msgtype,?content,sysdate());
+  </SQL>
+</SQLScript>

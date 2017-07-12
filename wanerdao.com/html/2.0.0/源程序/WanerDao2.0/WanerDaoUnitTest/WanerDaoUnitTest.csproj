@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{098FA498-D6A7-42CA-9EAE-A1C9CB12861E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WanerDaoUnitTest</RootNamespace>
+    <AssemblyName>WanerDaoUnitTest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>..\WanerDaoDocuments\Dlls\Newtonsoft.Json.Net35\release\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WanerDaoBlogManagerTest.cs" />
+    <Compile Include="WanerDaoPersonInfoManagerTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Shadow Include="测试引用\WanerDaoBLL.accessor" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WanerDaoBLL\WanerDaoBLL.csproj">
+      <Project>{1F7D54F1-2D46-4126-B949-34CA86760A64}</Project>
+      <Name>WanerDaoBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoCacheManager\WanerDaoCacheManager.csproj">
+      <Project>{6783384B-4128-422F-B527-96AD1BCD7F1F}</Project>
+      <Name>WanerDaoCacheManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoComponent\WanerDaoComponent.csproj">
+      <Project>{4A8E43A1-77E3-422E-816A-0D979FD54EAF}</Project>
+      <Name>WanerDaoComponent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoDALFactory\WanerDaoDALFactory.csproj">
+      <Project>{843952B1-FE4A-48AA-A3FB-4F032125D4B1}</Project>
+      <Name>WanerDaoDALFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoEmail\WanerDaoEmail.csproj">
+      <Project>{147A4430-CC0F-4081-A615-1B9925B3FF96}</Project>
+      <Name>WanerDaoEmail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoExceptionManager\WanerDaoExceptionManager.csproj">
+      <Project>{474D4B38-30EB-4513-A899-02F34330C91C}</Project>
+      <Name>WanerDaoExceptionManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoIBLL\WanerDaoIBLL.csproj">
+      <Project>{B9214DA2-61D5-46B0-8B8E-7008616A4824}</Project>
+      <Name>WanerDaoIBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoModel\WanerDaoModel.csproj">
+      <Project>{97506175-F62F-4FC0-8886-B4FC0AF2BCEE}</Project>
+      <Name>WanerDaoModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoModule\WanerDaoModule.csproj">
+      <Project>{2DBE2894-4202-4EB2-8208-519CF7D1F90F}</Project>
+      <Name>WanerDaoModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WanerDaoPlugInManager\WanerDaoPlugInManager.csproj">
+      <Project>{E2DB463D-754D-4F69-83B6-97C6991B4937}</Project>
+      <Name>WanerDaoPlugInManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

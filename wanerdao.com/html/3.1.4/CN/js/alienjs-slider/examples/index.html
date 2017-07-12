@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Tabs</title>
+
+    <meta name="keywords" content="Tabs,轮播样式,图片切换样式"/>
+    <meta name="description" content="轮播样式"/>
+    <link rel="stylesheet" href="../../../../css/font-awesome/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="../../prettify/src/index.css"/>
+    <script type="text/javascript" src="../../jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../../jquery-migrate/dist/index.js"></script>
+    <!--<script type="text/javascript" src="lib/String.min.js"></script>-->
+</head>
+
+<body>
+<style></style>
+
+<div class="code-example" title="carousel sample">
+    <ul class="slider slider-image" >
+        <li class="active"><a href=""><img src="pic/11_b.jpg" alt=""/></a></li>
+        <li><a href="pic/11_b.jpg"><img src="pic/2_b.jpg" alt=""/></a></li>
+        <li><a href="pic/2_b.jpg"><img src="pic/3_b.jpg" alt=""/></a></li>
+        <li><a href="pic/3_b.jpg"><img src="pic/4_b.jpg" alt=""/></a></li>
+        <li><a href="pic/4_b.jpg"><img src="pic/5_b.jpg" alt=""/></a></li>
+        <li><a href="pic/5_b.jpg"><img src="pic/6_b.jpg" alt=""/></a></li>
+        <li><a href="pic/6_b.jpg"><img src="pic/7_b.jpg" alt=""/></a></li>
+        <li><a href="pic/7_b.jpg"><img src="pic/8_b.jpg" alt=""/></a></li>
+        <li><a href="pic/8_b.jpg"><img src="pic/9_b.jpg" alt=""/></a></li>
+        <li><a href="pic/9_b.jpg"><img src="pic/10_b.jpg" alt=""/></a></li>
+    </ul>
+</div>
+
+<div class="code-example" title="carousel sample vertical">
+    <ul class="slider  vertical"   >
+        <li class="active">
+            slider page 1 content ...
+        </li>
+        <li>
+            slider page 2 content ...
+        </li>
+        <li>
+            slider page 3 content ...
+        </li>
+        <li>
+            slider page 4 content ...
+        </li>
+    </ul>
+</div>
+
+<div class="code-example" title="carousel">
+    <div class="slider" id="slider">
+        <a class="prev" href="#" data-prev><i class="icon icon-chevron-left"></i></a>
+        <a class="next" href="#" data-next><i class="icon icon-chevron-right"></i></a>
+        <ul class="list" data-list>
+            <li class="active"><a href=""><img src="pic/11_b.jpg" alt=""/></a></li>
+            <li><a href="pic/11_b.jpg"><img src="pic/2_b.jpg" alt=""/></a></li>
+            <li><a href="pic/2_b.jpg"><img src="pic/3_b.jpg" alt=""/></a></li>
+        </ul>
+        <ul class="slider-nav" data-nav>
+            <li class="active"><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+        </ul>
+    </div>
+</div>
+
+<button id="addImg" class="btn btn-default" type="button">add image</button>
+
+<script>
+    $(function(){
+        $('.slider').slider();
+        $('#addImg').click(function(){
+            $('#slider').data('slider').add('<li><a href="pic/2_b.jpg"><img src="pic/3_b.jpg" alt=""/></a></li>');
+        })
+    })
+</script>
+
+<link rel="stylesheet" href="../src/index.css"/>
+
+<!-- CSS3 animate  -->
+<script src="../../jquery-transitionEnd/src/index.js"></script>
+<script src="../../alienjs-browser/src/index.js"></script>
+<!-- end CSS3 animate  -->
+<script type="text/javascript" src="../src/index.js"></script>
+
+</body>
+</html>

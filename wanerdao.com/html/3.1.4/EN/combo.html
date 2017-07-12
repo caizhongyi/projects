@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <meta name="keywords" content="keywords"/>
+    <meta name="description" content="description"/>
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <!-- author  -->
+    <meta name="author" content=""/>
+    <!-- copyright  -->
+    <meta name="copyright" content="2001-2010 Comsenz Inc."/>
+    <!-- 文章标签  -->
+    <link rel="Bookmark" href="favicon.ico"/>
+    <!-- 网站url icon  -->
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <!-- support html 5  -->
+    <script type="text/javascript" src="js/html5.js"></script>
+
+    <!-- jquery 库 -->
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <!-- jquery 功能扩展库 -->
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+<div class="content">
+   <span id="combo" class="combo " data-loader="class-combo">
+        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+        <input name="usr" type="hidden" class="combo-input-hidden">
+        <div class="combo-list">
+            <ul>
+               <li value="1">item1</li>
+               <li value="2">item2</li>
+            </ul>
+        </div>
+    </span>
+     <span id="combo1" class="combo " data-loader="class-combo">
+        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+        <input name="usr" type="hidden" class="combo-input-hidden">
+        <div class="combo-list">
+            <ul>
+                <li value="1">item1</li>
+                <li value="2">item2</li>
+            </ul>
+        </div>
+    </span>
+    <span id="combo2" class="combo " data-loader="class-combo">
+        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+        <input name="usr" type="hidden" class="combo-input-hidden">
+        <div class="combo-list">
+            <ul>
+                <li value="1">item1</li>
+                <li value="2">item2</li>
+            </ul>
+        </div>
+    </span>
+</div>
+<input type="button" onclick="combo.remove(3)"/>
+
+
+
+<div class="tips-result"></div>
+
+//重新初始化
+$('.content').loader();  <br>
+//元素的id                   <br>
+combo.val('test'); //附值        <br>
+document.write(combo.val()); //取值     <br>
+combo.add({ val : '233' , text : '123' }); // 增加     <br>
+combo.add({ val : '111' , text : '111' }); // 增加      <br>
+combo.remove(111); // 增加                         <br>
+<!-- placeholer 支持所有浏览器 -->
+<script type="text/javascript" src="js/jquery.placeholer.js"></script>
+
+<!-- ui 库 -->
+<script type="text/javascript" src="js/class.ui.min.js"></script>
+
+<!-- 全局  -->
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript">
+    // combo id  对象要存在改需放在class.ui.min.js 引用后面 , 并且加入文档加载后的执行函数$(function(){})
+    $(function(){
+
+        combo1.on('onchange',function(e,val){
+            console.log(val)
+            combo2.val(val.val)
+        });
+        combo2.on('onchange',function(e,val){
+            console.log(val)
+            combo1.val(val.val)
+        });
+        //如果是异步加载的可以，重新初始化 （注:些方法只能初始化一次）
+        $('.content').loader();
+        //combo 元素的id
+        //console.log(combo)
+        combo.val(1); //附值 index or key
+        $('.result').append(combo.val() + '<br>'); //取值
+        $('.result').append(combo.text()); //取值
+        // combo.get(0);   // get by index  获取jquery对象
+        // combo.get('test2'); // get by key   获取jquery对象
+        combo.add({ val : 'test1' , text : 'test1' }); // 增加
+        combo.add({ val : 'test2' , text : 'test2' }); // 增加
+        combo.add({ val : 'test3' , text : 'test3' }); // 增加
+        combo.add(12323); // 增加
+        combo.remove('test1'); // 跟据val删除
+        combo.remove(0); // 跟据index删除
+    })
+</script>
+</body>
+</html>

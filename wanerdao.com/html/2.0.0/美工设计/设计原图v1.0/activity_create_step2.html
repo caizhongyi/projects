@@ -1,0 +1,494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link href="style/activity.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript">
+var winScreenWidth = window.screen.width;
+if(winScreenWidth>1024){
+document.writeln('<style>');
+document.writeln('.jz{padding:0px 2px;}');
+document.writeln('</style>');
+}
+</script>
+<body>
+<!--头部-->
+<div class="head">
+  <div class="jz">
+    <div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+    <ul class="nav left yh">
+      <li><a href="#">首页</a></li>
+      <li class="cur"><a href="#" class="arr">个人</a></li>
+      <li><a href="#" class="arr">关系</a></li>
+      <li><a href="#" class="arr">杂烩</a></li>
+      <li><a href="#" class="arr">活动</a></li>
+      <li><a href="#" class="arr">资道</a></li>
+      <li class="newMsg"><a href="#">站内信息</a><i><a href="#">5</a></i></li>
+    </ul>
+    <div class="userInfo"> <a href="#" class="left"  title="烧饭-人生旅途中-飞砂走石风过"><img src="images/layout_main/img_32x32.png" width="32" height="32" /></a> <a href="javascript:void(0);" title="烧饭-人生旅途中-飞砂走石风过留痕！" class="name">烧饭-人生旅途中</a> </div>
+  </div>
+</div>
+<!--头部end--> 
+<!--主体-->
+<div class="main jz">
+  <div class="mCon">
+    <div class="layout_m ">
+      <div class="main_share">
+        <div class="blank10px"></div>
+        <div class="subChaTab"> <a href="#" class="active">创建活动</a> </div>
+        <p class="info_type">
+          <input type="radio" name="info_type" id="listStyle">
+          <label for="listStyle">列表式填写</label>
+          <input type="radio" name="info_type" id="guiteStyle">
+          <label for="guiteStyle">导向式填写</label>
+        </p>
+        <h3 class="event_h3 yh">发起活动</h3>
+        <ul class="steps yh fb">
+          <li class="visited"><i>1</i><span>初始参数引用</span></li>
+          <li class="active"><i>2</i><span>基本参数设定</span></li>
+          <li class="link"><i>3</i><span>报名参数设定</span></li>
+          <li class="link"><i>4</i><span>邀请发送</span></li>
+          <li class="link"><i>5</i><span>个人报名</span></li>
+          <li class="link"><i>6</i><span>参数保存</span></li>
+        </ul>
+        <div id="divstep2">
+        <h3 class="activity_h3">周期订制</h3>
+        <div class="blank10px"></div>
+        <table width="100%" border="0" cellspacing="1">
+          <tr>
+            <td width="25%" align="right">活动周期定制：</td>
+            <td width="75%"><select name="select5" class="combobox w123px" >
+                <option value="AL">一次性</option>
+              </select>
+              <input type="text" class="txtInt" value="订制描述" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" style="color:#ccc;" /></td>
+          </tr>
+          <tr>
+            <td align="right">间隔周期：</td>
+            <td><select name="select7" class="combobox w123px" >
+                <option value="AL">每天</option>
+                <option value="AK">每天</option>
+              </select>
+              <select name="select8" class="combobox w123px" >
+                <option value="AL">直接建立活动</option>
+                <option value="AK">直接建立活动</option>
+              </select></td>
+          </tr>
+          <tr>
+            <td align="right"><input type="checkbox" id="sentmail"/>
+              &nbsp;</td>
+            <td><label for="sentmail">周期时间临近，发送邮件通知创建人</label>
+              <select name="select9" class="combobox w123px" >
+                <option value="AL">提前半天</option>
+                <option value="AK">提前半天</option>
+              </select></td>
+          </tr>
+          <tr>
+            <td align="right"><input type="checkbox" id="siteNotice"/>
+              &nbsp;</td>
+            <td><label for="siteNotice">周期时间临近，发送站内信息通知创建人</label>
+              <select name="select10" class="combobox w123px" >
+                <option value="AL">提前半天</option>
+                <option value="AK">提前半天</option>
+              </select></td>
+          </tr>
+          <tr>
+            <td align="right">&nbsp;</td>
+            <td align="right"><input class="button"  type="submit"  value="取消定制" style="margin-right:50px;"  /></td>
+          </tr>
+        </table>
+        <h3 class="activity_h3">地址设定</h3>
+        <div class="activity_map">
+          <div class="show_map"> <span class="cur">列表查询</span> &nbsp; &nbsp; <span>地图查找</span> &nbsp; &nbsp; <a href="#"><img src="images/map_l.png" /></a> </div>
+          <div class="address-content">
+            <div>
+              <div class="addressSet">
+                <div class="adtivity_select">
+                  <div class="addrBox">
+                    <div class="addScroll"> <ins class="addrLeft"></ins>
+                      <div class="ulBox">
+                        <ul>
+                          <li><a href="javascript:void(0)">运动</a></li>
+                          <li><a href="javascript:void(0)">外出</a></li>
+                          <li><a href="javascript:void(0)">娱乐</a></li>
+                          <li><a href="javascript:void(0)">运动</a></li>
+                          <li><a href="javascript:void(0)">外出</a></li>
+                          <li><a href="javascript:void(0)">娱乐</a></li>
+                          <li><a href="javascript:void(0)">外出</a></li>
+                          <li><a href="javascript:void(0)">娱乐</a></li>
+                        </ul>
+                      </div>
+                      <ins class="addrRight"></ins> </div>
+                    <a href="javascript:void(0)" class="toTop"></a> </div>
+                  <p class="Pages_addrees"> <span>
+                    <select name="select10" class=" w123px" >
+                      <option value="AL">州省</option>
+                      <option value="AK">州省</option>
+                    </select>
+                    <input class="txtKeyword" type="text" value="关键词" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#6f6f6f'}" style=" width:123px;" />
+                    <input class="btn_sx" type="submit" value="" />
+                    </span> <a href="#">首页</a> <a href="#">上页</a> 01/23 <a href="#">下页</a> <a href="#">未页</a> </p>
+                </div>
+              </div>
+              <div class="address_info">
+                <table class="item" width="90%" border="0" cellspacing="1" cellpadding="0">
+                  <tr>
+                    <td width="12%" align="right"><span>地点名：</span></td>
+                    <td width="78%">周未KTV <span>地址：</span>平阳路上大本营</td>
+                  </tr>
+                  <tr>
+                    <td align="right" valign="top"><span class="lh22">描述：</span></td>
+                    <td valign="top"><p>平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营</p></td>
+                  </tr>
+                </table>
+                <table class="item" width="90%" border="0" cellspacing="1" cellpadding="0">
+                  <tr>
+                    <td width="12%" align="right"><span>地点名：</span></td>
+                    <td width="78%">周未KTV <span>地址：</span>平阳路上大本营</td>
+                  </tr>
+                  <tr>
+                    <td align="right" valign="top"><span class="lh22">描述：</span></td>
+                    <td valign="top"><p>平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营</p></td>
+                  </tr>
+                </table>
+                <table class="item"  width="90%" border="0" cellspacing="1" cellpadding="0">
+                  <tr>
+                    <td width="12%" align="right"><span>地点名：</span></td>
+                    <td width="78%">周未KTV <span>地址：</span>平阳路上大本营</td>
+                  </tr>
+                  <tr>
+                    <td align="right" valign="top"><span class="lh22">描述：</span></td>
+                    <td valign="top"><p>平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营平阳路上大本营</p></td>
+                  </tr>
+                </table>
+                <div class="Pages_addrees" style="margin-right:20px;"> <a href="#">首页</a> <a href="#">上页</a> <a href="#">01/23</a> <a href="#">下页</a> <a href="#">未页</a> </div>
+              </div>
+            </div>
+            <div class="addressSet" style="display:none;">
+              <div class="searBar"> <span class="left"> 我的位置：
+                <input type="text" style="width:204px;" class="txtInput">
+                &nbsp;
+                邮编：
+                <input type="text" style="width:88px;" class="txtInput">
+                <select>
+                  <option>州省</option>
+                </select>
+                <select>
+                  <option>城市</option>
+                </select>
+                <select>
+                  <option>国家</option>
+                </select>
+                <!--<a href="javascript:void(0);" class="btn_search">查找</a>--> 
+                </span> </div>
+              <div class="mapSearch">
+                <div class="map left"><img width="447" height="462" src="images/activity/map.jpg"></div>
+                <div class="mapCondition right">
+                  <p class="item lh24">
+                    <input type="checkbox" id="setHomeAddress" class="vInput">
+                    <label for="setHomeAddress">同步该地址为家庭地址</label>
+                  </p>
+                  <p class="item icon">离家距离：
+                    <select style="width:116px;">
+                      <option>10公里</option>
+                    </select>
+                  </p>
+                  <p class="item icon">分类：
+                    <select style="width:68px;">
+                      <option>农场</option>
+                    </select>
+                    <select style="width:68px;">
+                      <option>选项目</option>
+                    </select>
+                  </p>
+                  <div class="tipShow"> <ins style="left:140px;"></ins>
+                    <p class="tCon"> <i>摘苹果<a href="javascript:void(0);"></a></i> <i>摘苹果<a href="javascript:void(0);"></a></i> <i>摘苹果<a href="javascript:void(0);"></a></i> </p>
+                  </div>
+                  <p class="item icon">
+                    <input type="checkbox" id="allFriend" class="vInput">
+                    <label for="allFriend">所有好友参加的活动</label>
+                  </p>
+                  <p class="item icon">
+                    <input type="checkbox" id="allGroup" class="vInput">
+                    <label for="allGroup">所有圈子参加的活动</label>
+                  </p>
+                  <p class="item">
+                    <input type="text" value="自定义好友" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#909090'}" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" class="txtInput txt_cusFriend">
+                    <input type="button" value="添加" class="btn_add">
+                  </p>
+                  <div class="tipShow"> <ins style="left:90px;"></ins>
+                    <p class="tCon"> <i>摘苹果<a href="javascript:void(0);"></a></i> <i>摘苹果<a href="javascript:void(0);"></a></i> <i>摘苹果<a href="javascript:void(0);"></a></i> </p>
+                  </div>
+                  <p class="item">
+                    <input type="text" value="自定义圈子" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#909090'}" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" class="txtInput txt_cusGroup">
+                    <input type="button" value="添加" class="btn_add">
+                  </p>
+                  <div class="tipShow"> <ins style="left:90px;"></ins>
+                    <p class="tCon"> <i>摘苹果<a href="javascript:void(0);"></a></i> <i>摘苹果<a href="javascript:void(0);"></a></i> <i>摘苹果<a href="javascript:void(0);"></a></i> </p>
+                  </div>
+                  <p class="item icon">
+                    <input type="checkbox" id="filter" class="vInput">
+                    <label for="filter">过滤掉去过的地方</label>
+                  </p>
+                </div>
+                <div class="explain"> <b class="lblue">注释：</b><i class="iLocat">活动地址</i> </div>
+              </div>
+            </div>
+          </div>
+          <div class="address_info" style="background-color:#fff;">
+            <table width="90%" border="0" style="border:0;" cellspacing="1" cellpadding="0">
+              <tr>
+                <td width="12%" align="right">位置：</td>
+                <td width="78%"><input type="text" class="txtInt" style="width:200px;" /></td>
+              </tr>
+              <tr>
+                <td align="right" valign="top">&nbsp;</td>
+                <td valign="top"><select>
+                    <option>国家</option>
+                  </select>
+                  <select>
+                    <option>州省</option>
+                  </select>
+                  <select>
+                    <option>城市</option>
+                  </select>
+                  <input type="text" class="txtInt" value="邮编" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#B6B6B6'}" style="width:120px; color:#B6B6B6;" /></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="blank10px"></div>
+        <h3 class="activity_h3">活动参数设定</h3>
+        <table width="100%" border="0" cellspacing="1">
+          <tr>
+            <td width="22%" align="right">活动时间：</td>
+            <td width="78%">从
+              <input type="text" class="txtInt" value="" style="width:120px;" />
+              到
+              <input type="text" class="txtInt" value="" style="width:120px;" />
+              共<input type="text" class="txtInt" value="" style="width:58px;" />
+              天 </td>
+          </tr>
+          <tr>
+            <td align="right">分类标记：</td>
+            <td><!--<input type="text" class="txtInt" value="" style="width:280px;" />-->
+              
+              <input class="button"  type="submit"  value="选择"  />
+              
+              <!-- <input class="button" type="submit"  value="输入" />--></td>
+          </tr>
+          <tr>
+            <td align="right">&nbsp;</td>
+            <td><div class="select_pep_name">
+                <div class="select_name_list clearfix">
+                	 <img class="this_pep1" src="images/this_pep.png"> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> 
+                	 <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> 
+                	 <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> 
+                	 <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> 
+                	 <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> 
+                	 <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> 
+                	 <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> </div>
+              </div></td>
+          </tr>
+          <tr>
+            <td align="right">活动标题：</td>
+            <td><input type="text" class="txtInt" style="width:342px;" /></td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">活动简介：</td>
+            <td><textarea class="txtInt" style="height:88px; width:452px;"></textarea></td>
+          </tr>
+        </table>
+        <div class="blank10px"></div>
+        <h3 class="activity_h3">计划拟定 <span class="fn">
+          <input type="checkbox" id="nowPlan" />
+          <label for="nowPlan">现在拟定活动计划</label>
+          </span></h3>
+        <div class="richeng">
+          <div class="rcLine"> <i class="iDate f14 yh">02/17</i> <i class="sTime">00:00</i> <i class="eTime">24:00</i>
+            <ul>
+              <li></li>
+              <li></li>
+              <li class="more">
+                <p class="rcInfo"> <i class="iTop"></i> <i class="iCon"> 5:00-12:00 早市集体DOTA<br />
+                  5:00-12:00 早市集体DOTA </i> <i class="iBtm"></i> </p>
+              </li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li class="more">
+                <p class="rcInfo"> <i class="iTop"></i> <i class="iCon"> 5:00-12:00 早市集体DOTA<br />
+                  5:00-12:00 早市集体DOTA </i> <i class="iBtm"></i> </p>
+              </li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li class="more">
+                <p class="rcInfo"> <i class="iTop"></i> <i class="iCon"> 5:00-12:00 早市集体DOTA<br />
+                  5:00-12:00 早市集体DOTA </i> <i class="iBtm"></i> </p>
+              </li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li class="more">
+                <p class="rcInfo"> <i class="iTop"></i> <i class="iCon"> 5:00-12:00 早市集体DOTA<br />
+                  5:00-12:00 早市集体DOTA </i> <i class="iBtm"></i> </p>
+              </li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="rcLine"> <i class="iDate f14 yh">02/18</i> <i class="sTime">00:00</i> <i class="eTime">24:00</i>
+            <ul>
+              <li></li>
+              <li></li>
+              <li class="more">
+                <p class="rcInfo"> <i class="iTop"></i> <i class="iCon"> 5:00-12:00 早市集体DOTA<br />
+                  5:00-12:00 早市集体DOTA </i> <i class="iBtm"></i> </p>
+              </li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li class="more">
+                <p class="rcInfo"> <i class="iTop"></i> <i class="iCon"> 5:00-12:00 早市集体DOTA<br />
+                  5:00-12:00 早市集体DOTA </i> <i class="iBtm"></i> </p>
+              </li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li class="more">
+                <p class="rcInfo"> <i class="iTop"></i> <i class="iCon"> 5:00-12:00 早市集体DOTA<br />
+                  5:00-12:00 早市集体DOTA </i> <i class="iBtm"></i> </p>
+              </li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li class="more">
+                <p class="rcInfo"> <i class="iTop"></i> <i class="iCon"> 5:00-12:00 早市集体DOTA<br />
+                  5:00-12:00 早市集体DOTA </i> <i class="iBtm"></i> </p>
+              </li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
+        </div>
+        <div class="activity_mark">
+          <div class="tim_mark_tale">
+            <table width="100%"   height="170" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center">早市</td>
+                <td>早晨网吧早市集体DOTA</td>
+                <td>以灭团为主要目的</td>
+                <td>2011/11/11(04:43-10:43)</td>
+                <td width="120"><p class="opera"><a href="javascript:void(0);" class="icon_Up" title="上"></a> <a href="javascript:void(0);" class="icon_Down" title="下"></a> <a href="javascript:void(0);" class="icon_Edit" title="编辑"></a> <a href="javascript:void(0);" class="icon_Del" title="删除"></a></p></td>
+              </tr>
+              <tr>
+                <td align="center">早市</td>
+                <td>早晨网吧早市集体DOTA</td>
+                <td>以灭团为主要目的</td>
+                <td>2011/11/11(04:43-10:43)</td>
+                <td width="120"><p class="opera"><a href="javascript:void(0);" class="icon_Up" title="上"></a> <a href="javascript:void(0);" class="icon_Down" title="下"></a> <a href="javascript:void(0);" class="icon_Edit" title="编辑"></a> <a href="javascript:void(0);" class="icon_Del" title="删除"></a></p></td>
+              </tr>
+              <tr>
+                <td align="center">早市</td>
+                <td>早晨网吧早市集体DOTA</td>
+                <td>以灭团为主要目的</td>
+                <td>2011/11/11(04:43-10:43)</td>
+                <td width="120"><p class="opera"><a href="javascript:void(0);" class="icon_Up" title="上"></a> <a href="javascript:void(0);" class="icon_Down" title="下"></a> <a href="javascript:void(0);" class="icon_Edit" title="编辑"></a> <a href="javascript:void(0);" class="icon_Del" title="删除"></a></p></td>
+              </tr>
+              <tr>
+                <td align="center">早市</td>
+                <td>早晨网吧早市集体DOTA</td>
+                <td>以灭团为主要目的</td>
+                <td>2011/11/11(04:43-10:43)</td>
+                <td width="120"><p class="opera"><a href="javascript:void(0);" class="icon_Up" title="上"></a> <a href="javascript:void(0);" class="icon_Down" title="下"></a> <a href="javascript:void(0);" class="icon_Edit" title="编辑"></a> <a href="javascript:void(0);" class="icon_Del" title="删除"></a></p></td>
+              </tr>
+              <tr>
+                <td align="center">早市</td>
+                <td>早晨网吧早市集体DOTA</td>
+                <td>以灭团为主要目的</td>
+                <td>2011/11/11(04:43-10:43)</td>
+                <td width="120"><p class="opera"><a href="javascript:void(0);" class="icon_Up" title="上"></a> <a href="javascript:void(0);" class="icon_Down" title="下"></a> <a href="javascript:void(0);" class="icon_Edit" title="编辑"></a> <a href="javascript:void(0);" class="icon_Del" title="删除"></a></p></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <table width="80%" border="0" cellspacing="1">
+          <tr>
+            <td width="25%" align="right">时间：</td>
+            <td width="75%"><select name="select17" class="" >
+                <option value="AL">州省</option>
+                <option value="AK">州省</option>
+              </select>
+              从
+              <input type="text" class="txtInt" />
+              到
+              <input type="text" class="txtInt" /></td>
+          </tr>
+          <tr>
+            <td align="right">安排：</td>
+            <td><input type="text" class="txtInt" /></td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">备注：</td>
+            <td><textarea name="textarea" class="txtInt" style="height:88px; width:452px;"></textarea></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td><input type="submit" class="button" value="添加" />&nbsp;&nbsp;<input type="submit" class="button" value="清空"  /></td>
+          </tr>
+        </table>
+      	</div>
+        <div class="blank10px"></div>
+        <div class="actPageArea"> <a href="javascript:void(0);" class="btn_137x32">上一步</a> <a href="javascript:void(0);" class="btn_137x32">下一步</a> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mBtm jz"></div>
+<!--主体end--> 
+<!--底部-->
+<div class="foot jz"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></div>
+<!--底部end--> 
+
+<!--页面脚本区--> 
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script> 
+<script type="text/javascript">
+	$(".rcLine .more").hover(function(){
+		$(this).addClass("sMore");	
+		$(this).parent().parent().css("zIndex","2");
+	},function(){
+		$(this).removeClass("sMore");	
+		$(this).parent().parent().css("zIndex","1");	
+	})
+	$(".tim_mark_tale tr").hover(function(){
+		$(this).addClass("active");	
+	},function(){
+		$(this).removeClass("active");		
+	})
+	$('.show_map span').each(function(i,n){
+		$(n).click(function(){
+			$('.show_map span').removeClass('cur');
+			$(this).addClass('cur');
+			var list = $('.address-content').children();
+		    list.eq(i).stop(true,true).fadeIn();
+		    list.filter(':not(:eq('+i+'))').stop(true,true).fadeOut();
+		})
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Edit profile-Personal-Savorboard</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="Edir profile, Personal, Savorboard, Life and social network" />
+<meta name="description" content="Edit contacts in personal profile section" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../css/personal.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".inp_modify").each(function(){
+		$(this).click(function(){
+			obj = $(this).parent().parent().parent().find(".hobby_listB");
+			if(obj.css('display')=='none'){
+				obj.show();	
+			}else{
+				obj.hide();	
+			}
+		});  
+	});
+});
+</script>
+<link rel="stylesheet" type="text/css" href="../css/en.css" media="all" />
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+	<div class="header layout">
+    	<a href="index.html" class="logo"></a>
+        <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="Go Home"></a>
+            <div class="home_pop">
+            	<ul>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Activity</a>
+                        <p><a href="javascript:;">Looking for activities</a><a href="javascript:;">Create activities</a><a href="javascript:;">Classification activities</a><a href="javascript:;">Custom activities</a><a href="javascript:;">Seasonal activities</a><a href="javascript:;">My activities</a><a href="javascript:;">Historical activities</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Personal</a>
+                        <p><a href="javascript:;">Profile</a><a href="javascript:;">Diary</a><a href="javascript:;">Album</a><a href="javascript:;">Video</a></p>
+                    </li>
+                    <li  class="last">
+                        <a href="javascript:;" class="hp_title">Relationship</a>
+                        <p><a href="javascript:;">My friends</a><a href="javascript:;">Search friends</a><a href="javascript:;">Invite friends</a><a href="javascript:;">Subscription settings</a><a href="javascript:;">My groups</a><a href="javascript:;">Search group</a><a href="javascript:;">Create a group</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+                <input type="text" class="search_txt" value="Artivity/Firend/Group/Article" inputdefault="Artivity/Firend/Group/Article" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/defucult/head.jpg" width="32" height="32"></a><span class="user_infor_name"><a href="javascript:;">Cooking - life in the life journey<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">Modify profile</a></li>
+                    <li><a href="javascript:;">Account management</a></li>
+                    <li><a href="javascript:;">Privacy Settings</a></li>
+                    <li><a href="javascript:;">Change language</a></li>
+                    <li class="last"><a href="javascript:;">Exit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+	<div class="mes_box clearfix">
+		<div class="mes_box_left">
+        	
+            <div class="black10"></div>
+            <div class="mes_com_box_Tab">
+                <a href="javascript:;" class="active">Profile</a>
+                <a href="javascript:;">Diary</a>
+                <a href="javascript:;">Photo</a>
+                <a href="javascript:;">Video</a>
+            </div>
+            
+            <div class="mainlist clearfix" >
+                <div class="datum_hobby_le">
+                    <ul>
+                        <li><a href="personal_edit_basic.html">Basic info</a></li>
+                        <li><a href="personal_edit_teach.html">Education</a></li>
+                        <li><a href="personal_edit_word.html">Working Experience</a></li>
+                        <li><a href="personal_edit_hobby.html">Interests</a></li>
+                        <li id="current01"><a href="personal_edit_way.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="datum_hobby">
+                    
+                    <div class="hobby_list">
+                        <div class="hobby_listT hobby_listT_w">
+                            <ul>
+                                <li><label>E-mail：</label> Ahxiaomage@163.com</li>
+                                <li><label>QQ：</label> 1132548</li>
+                                <li><label>MSN：</label> Ahxiaomage@hotmail.com</li>
+                                <li><label>Phone：</label> 16812367895</li>
+                                <li><label>Webpage：</label> <a href="">http://www.machen.com</a></li>
+                                
+                            </ul>
+                            <div class="fdbox">
+                                <a href="javascript:void(0);" class="inp_modify">Edit</a>
+                            </div>
+                        </div>
+                        <div class="hobby_listB" style="display:none;">
+                            <div class="hobby_tagT"></div>
+                            <div class="hobby_tagC">
+                                <ul class="hobby_new">
+                                    <li><label>E-mail：</label><input type="text" class="text f_left" style="width:225px" /><span id="on">Current login account</span></li>
+                                    <li><label>QQ：</label><input type="text" class="text f_left" style="width:225px" /><span id="off"><a href="javascript:;">Set as login account</a></span></li>
+                                    <li><label>MSN：</label><input type="text" class="text f_left" style="width:225px" /><span id="off"><a href="javascript:;">Set as login account</a></span></li>
+                                    <li><label>Phone：</label><input type="text" class="text f_left" style="width:225px" /><span id="off"><a href="javascript:;">Set as login account</a></span></li>
+                                    <li><label>Webpage：</label><input type="text" class="text f_left" style="width:225px" /></li>
+                                    <li class="pt12">
+                        				<div class="black10"></div>
+                                        <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="Save">
+                        				<input type="button" class="buttonB btn_w97 btn_h36 btnGary_97 fSize-14" value="Cancel">
+                        				<input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="Settings">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="hobby_tagB"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+		<div class="mes_box_right">
+        	
+            
+                	<div class="user_card">
+                    	<h1><i>公开</i></h1>
+                        <img src="../images/demo/img01.jpg" class="per_pho" />
+                        <span><a href="javascript:;">Upload head image</a></span>
+                    </div>
+                	<div class="user_bar">
+                    	<ul>
+                        	<li class="blue_tj"><label>Profile complete：</label><span><i>20%</i></span></li>
+                            <li><label>Activity score：</label><span><i>20%</i></span></li>
+                            <li><label>Subscribed score：</label><span><i>20%</i></span></li>
+                            <li><label>Share score：</label><span><i>20%</i></span></li>
+                            <li><label>Experience：</label><span><i>20%</i></span></li>
+                        </ul>
+                    </div>
+                    <div class="user_flei">
+                    	<ul>
+                        	 <li><label>Constellation：</label><select name="select" style="width:110px;">
+                                          <option value="1">不显示</option>
+                                          <option value="1">不显示</option>
+                		  				</select></li>
+                             <li><label>Hometown：</label><select name="select" style="width:110px;">
+                                          <option value="1">不显示</option>
+                                          <option value="1">不显示</option>
+                		  				</select></li>
+                             <li><label>Current location：</label><select name="select" style="width:110px;">
+                                          <option value="1">不显示</option>
+                                          <option value="1">不显示</option>
+                		  				</select></li>
+                             <li><label>Graduate school：</label><select name="select" style="width:110px;">
+                                          <option value="1">不显示</option>
+                                          <option value="1">不显示</option>
+                		  				</select></li>
+                             <li><label>Work place：</label><select name="select" style="width:110px;">
+                                          <option value="1">不显示</option>
+                                          <option value="1">不显示</option>
+                		  				</select></li>
+                        </ul>
+                    </div>
+            
+            
+        </div>
+    </div>
+</div>
+<div class="mes_main_bot"></div>
+<!--mes_main-->
+
+<div class="footer layout">
+	<span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a href="javascript:;">Help</a></p>
+</div>
+</body>
+</html>

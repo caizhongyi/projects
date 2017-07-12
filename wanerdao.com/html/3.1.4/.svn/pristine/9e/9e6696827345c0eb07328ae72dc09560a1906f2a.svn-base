@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>玩道弹出窗</title>
+
+<meta name="keywords" content="玩儿道弹出窗口"/>
+<meta name="description"
+      content=""/>
+
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="../css/base.css"/>
+<link rel="stylesheet" href="../css/font-awesome.min.css"/>
+<!--[if IE 7]>
+    <link rel="stylesheet" href="../css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="../css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.plus.min.js" ></script>
+    <style type="text/css">
+        .dialog{
+            display: block;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="dialog ui-dialog "  data-options="handler:'header'">
+    <div class="bg"></div>
+    <div class="inner">
+        <div class="hd" data-options="region:'header',handle:true">
+            <h3>地址薄</h3>
+            <a href="javascript:;" class="close" data-options="region:'hide'"></a>
+        </div>
+
+        <div class="">
+            <div class="sitenav">
+                <a href="javascript:;"  class="selected" ><i class="icon icon-alist"></i>列表浏览</a>|<a href="javascript:;"><i class="icon icon icon-pos"></i>地图</a>
+            </div>
+            <div class="sitepanel">
+                <div class="address-message" >
+                    <div class="carousel carousel-small carousel-caption gray pagination-radius" data-loader="class-tabs" >
+                        <a href="javascript:;" class="prev" data-options="region:'prev'"></a>
+                        <a href="javascript:;" class="next "  data-options="region:'next'"></a>
+                        <div class="carousel-clip">
+                            <ul class="carousel-items" data-options="region:'panel',item:'li'">
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                                <li><img src="../images/defaults/100-100.png" alt=""/><span class="caption">Custom</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="message-main ">
+                        <div class="scroll side-list">
+                            <ul class="scroll-panel">
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">初始化参数</a><ul class="item-panel">
+                                    <li><span class="icon-right-arrow"></span><a href="javascript:;">初始化参数</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                    <li><span class="icon-right-arrow"></span><a href="javascript:;">初始化参数</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                    <li><span class="icon-right-arrow"></span><a href="javascript:;">初始化参数</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                    <li><span class="icon-right-arrow"></span><a href="javascript:;">初始化参数</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                </ul></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">基础设置</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">注册设置</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">拟定计划</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">财务</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">预交费设置</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">加入条件</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">保护</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">创建周期</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">个人报名</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">发送邀请</a></li>
+                            </ul>
+                        </div>
+                        <div class="map-mod map-list-mod">
+                            <div class="map-result">
+                                <div class="side-infos">
+                                    <div class="result-bar toolbar">
+                                        <div class="pull-left">
+                                            <span class="combo " data-loader="class-combo">
+                                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                                <div class="combo-list">
+                                                    <ul>
+                                                        <li value="1">全部</li>
+                                                        <li value="2">item2</li>
+                                                        <li value="3">item3</li>
+                                                        <li value="4">item4</li>
+                                                        <li value="5">item5</li>
+                                                    </ul>
+                                                </div>
+                                            </span><span class="input-search text-large" ><div class="search-inner">
+                                                    <input type="text" placeholder="地点名 / 州省 / 城市 / 描述" class="text">
+                                                    <button class="icon"></button>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="pagination">
+                                            <a href="javascript:;" class="prev disabled">首页</a><a href="javascript:;" class="prev">上一页</a>2/18<a href="javascript:;" class="next">下一页</a><a href="javascript:;" class="prev disabled">尾页</a>
+                                        </div>
+                                    </div>
+                                    <div class="scroll">
+                                      <dl class="scroll-panel">
+                                                <dd >
+                                                    <div>
+                                                        <h3><a href="javascript:;" >美国东升乡滑雪节</a></h3>
+                                                        <em>地址:</em>太原市/山西省
+                                                        <div class="detail">
+                                                            描述:<em>玉渊潭公园是北京市属十一大公园之一，主要由西面的樱花园、北面的引水玉渊潭公园是北京市属十一大公园之一，主要由西面的樱花园、北面的引水</em>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-opts"><a href="javascript:;" class="btn-option"><i class="icon icon-selected"></i>选择</a></div>
+                                                </dd>
+                                                <dd >
+                                                    <div>
+                                                        <h3><a href="javascript:;" >美国东升乡滑雪节</a></h3>
+                                                        <em>地址:</em>太原市/山西省
+                                                        <div class="detail">
+                                                            描述:<em>玉渊潭公园是北京市属十一大公园之一，主要由西面的樱花园、北面的引水玉渊潭公园是北京市属十一大公园之一，主要由西面的樱花园、北面的引水</em>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-opts"><a href="javascript:;" class="btn-option"><i class="icon icon-selected"></i>选择</a></div>
+                                                </dd>
+                                                <dd >
+                                                    <div>
+                                                        <h3><span class="input-control">(2012-12-2)</span><a href="javascript:;" >美国东升乡滑雪节</a></h3>
+                                                        <em>地址:</em>太原市/山西省
+                                                        <div class="detail">
+                                                            描述:<em>玉渊潭公园是北京市属十一大公园之一，主要由西面的樱花园、北面的引水玉渊潭公园是北京市属十一大公园之一，主要由西面的樱花园、北面的引水</em>
+                                                        </div>
+                                                    </div>
+                                                    <div class="item-opts"><a href="javascript:;" class="btn-option"><i class="icon icon-selected"></i>选择</a></div>
+                                                </dd>
+                                            </dl>
+                                    </div>
+                                    <div class="result-bar toolbar">
+                                        <div class="pagination">
+                                            <a href="javascript:;" class="prev disabled">首页</a><a href="javascript:;" class="prev">上一页</a>2/18<a href="javascript:;" class="next">下一页</a><a href="javascript:;" class="prev disabled">尾页</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-mod side-map" style="display: none;">
+                    <div class="hd">
+                        <label>位置:<input type="text" class="text  text-xlarge" style="width: 285px;"/></label><label
+                            >邮编:<input type="text" class="text text-mini"></label><span class="combo text-mini" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">国家</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><span class="combo  text-mini" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">省</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><input type="text" class="text " style="width: 135px;"/>
+                        <div class="on-off">
+                            <a class="btn btn-square" href="javascript:;"><i class="icon-gray-right-arrow"></i></a>
+                        </div>
+                    </div>
+                    <div style="display: none" class="map-result">
+                        <div class="side-infos">
+                            <div class="result-bar">
+                                <div class="pagination-arrow-blue"><a class="prev" href="javascript:;"></a><a
+                                        class="next disabled" href="javascript:;"></a></div>
+                                <div class="on-off">
+                                    <a class="btn btn-square" href="javascript:;"><i
+                                            class="icon-blue-left-arrow"></i></a>
+                                </div>
+                            </div>
+                            <dl>
+                                <dd>
+                                    <p>
+                                    <h3><a href="javascript:;" >美国东升乡滑雪节</a></h3>
+                                    太原市/山西State
+                                    </p>
+
+                                    <div class="item-opts"><a href="javascript:;" class="btn-option"><i
+                                            class="icon icon-more"></i>选择</a></div>
+                                    <div class="date"><em>22/100人</em>&nbsp;<em>03/22-04/22</em></div>
+                                </dd>
+                                <dd>
+                                    <p>
+                                    <h3><a href="javascript:;" >美国东升乡滑雪节</a></h3>
+                                    太原市/山西State
+                                    </p>
+                                    <div class="item-opts"><a href="javascript:;" class="btn-option"><i
+                                            class="icon icon-more"></i>选择</a></div>
+                                    <div class="date"><em>22/100人</em>&nbsp;<em>03/22-04/22</em></div>
+                                </dd>
+                            </dl>
+                            <div class="result-bar">
+                                <div class="pagination-arrow-blue"><a class="prev" href="javascript:;"></a><a
+                                        class="next disabled" href="javascript:;"></a></div>
+                                <div class="on-off">
+                                    <a class="btn btn-square" href="javascript:;"><i
+                                            class="icon-blue-left-arrow"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <div class="map-search form">
+                            <a class="btn-collapse"><i class="icon icon-filter"></i></a>
+                            <div class="item"><span class="checkbox"><input type="checkbox">同步该地址为家庭地址</span>
+                            </div>
+                            <div class="item"><i class="icon-block-blue"></i>离家距离:<span data-loader="class-combo"
+                                                                                            class="combo "
+                                                                                            data-target="floatbox_2592">
+                                <span class="combo-input" style="width: 147px;" data-val="0" title="10公里">10公里</span><a
+                                    href="javascript:void(0)" class="combo-icon"></a>
+                                <input type="hidden" class="combo-input-hidden" name="usr" value="0">
+
+                            </span></div>
+                            <div class="item"><i class=" icon-block-blue"></i><input type="text" class="text file-text"><a
+                                    class="btn btn-gray btn-mini" href="javascript:;">添加</a><br>
+
+                            </div>
+                            <div class="item">
+                                <div class="tipbox">
+                                    <ul class="list-label list-label-transparent">
+                                        <li>Name<a class="icon-close-sign" data-remove="" href="###"></a></li>
+                                        <li>Name<a class="icon-close-sign" data-remove="" href="###"></a></li>
+                                        <li>Name<a class="icon-close-sign" data-remove="" href="###"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <label><input type="checkbox"/>过滤掉去过的地址</label>
+                            </div>
+
+                            <div class="item">
+                            <span class="tips-result">
+                                <ul>
+                                    <li>Note</li>
+                                </ul>
+                            </span>
+                            </div>
+                            <div class="text-center">
+                                <a class="btn-default btn-mini" href="javascript:;">更新地图</a>
+                            </div>
+                        </div>
+                        <script>
+                            $('.btn-collapse').click(function(){
+                                var $mapsearch = $(this).closest('.map-search');
+                                if($mapsearch.css('right') == '0px')
+                                    $mapsearch.stop(true).animate({ right: -$mapsearch.width()});
+                                else
+                                    $mapsearch.stop(true).animate({ right: 0});
+                            })
+                        </script>
+                        <div class="map-content">
+                            <img alt="" src="../pics/3.png">
+                        </div>
+
+                        <div class="map-flag ">
+                            <span class="flag-label">图例显示:</span><span><i class="icon-landmark danger"></i>Address</span><span><i
+                                class="icon-landmark"></i>Address</span><span><i class="icon-landmark success"></i>Address</span><span><i
+                                class="icon-landmark warning"></i>Address</span>
+                            <div class="on-off">
+                                <a class="btn btn-square" href="javascript:;"><i class="icon-gray-right-arrow"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $('.map-flag .on-off .btn,.side-map .hd .on-off .btn').click(function () {
+                            $('.map-result').stop(true, true).fadeIn();
+                        })
+                        $('.map-result .on-off .btn').click(function () {
+                            $(this).closest('.map-result').stop(true, true).fadeOut();
+                        })
+                    </script>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $('.sitenav').on('mouseenter','a',function(){
+               $(this).addClass('selected').siblings().removeClass('selected').end()
+                       .parent().next('.sitepanel').children().hide().eq($(this).index()).
+                       stop(true,true).fadeIn();
+            })
+        </script>
+    </div>
+    </div>
+
+<!-- end footer -->
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="../js/jquery.toTop.js"></script>
+<script src="../js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="../js/global.js" ></script>
+<script type="text/javascript" src="../js/class.ui.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.placeholer.js" ></script>
+<script src="../js/jquery.draggable.js"></script>
+<script src="../js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        //   printPop.show();
+        $('.dialog .bd').initslimscroll();
+    })
+</script>;
+</body>
+</html>

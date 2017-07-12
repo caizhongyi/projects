@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Search new friend-Relationship-Savorboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+    <meta name="keywords"
+          content="Search new friend, Look for new friend, Relationship, Savorboard, Life and social network"/>
+    <meta name="description" content="Look for new friends according to name, gender or area"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all"/>
+
+
+    <link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="../css/relationship.css" media="all"/>
+    <script src="../scripts/jquery-1.7.2.min.js"></script>
+    <script src="../scripts/global.js"></script>
+    <script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $(".drop_down").toggle(function () {
+                $(".drop_down i").width(0);
+                $(".drop_down i").css("display", "none");
+                $(this).children("i").width($(this).width() + 25);
+                $(this).children("i").css("display", "block");
+            }, function () {
+                $(this).children("i").css("display", "none");
+            })
+            $(document).mousedown(function () {
+                $(".drop_down i").css("display", "none");
+            })
+
+            $(".list_member li").hover(function () {
+                $(this).addClass("active");
+            }, function () {
+                $(this).removeClass("active");
+            })
+
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="../css/en.css" media="all"/>
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+    <div class="header layout">
+        <a href="index.html" class="logo"></a>
+
+        <div class="home" hoverable="true">
+            <a href="javascript:;" class="go_home" title="Go Home"></a>
+
+            <div class="home_pop">
+                <ul>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Activity</a>
+
+                        <p><a href="javascript:;">Looking for activities</a><a href="javascript:;">Create activities</a><a
+                                href="javascript:;">Classification activities</a><a href="javascript:;">Custom
+                            activities</a><a href="javascript:;">Seasonal activities</a><a href="javascript:;">My
+                            activities</a><a href="javascript:;">Historical activities</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Personal</a>
+
+                        <p><a href="javascript:;">Profile</a><a href="javascript:;">Diary</a><a href="javascript:;">Album</a><a
+                                href="javascript:;">Video</a></p>
+                    </li>
+                    <li class="last">
+                        <a href="javascript:;" class="hp_title">Relationship</a>
+
+                        <p><a href="javascript:;">My friends</a><a href="javascript:;">Search friends</a><a
+                                href="javascript:;">Invite friends</a><a href="javascript:;">Subscription settings</a><a
+                                href="javascript:;">My groups</a><a href="javascript:;">Search group</a><a
+                                href="javascript:;">Create a group</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+            <div class="search_bg vm">
+                <input type="text" class="search_txt" value="Artivity/Firend/Group/Article"
+                       inputdefault="Artivity/Firend/Group/Article"/><input value="" type="submit" class="search_btn"/>
+            </div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img
+                src="../images/defucult/head.jpg" width="32" height="32"></a><span class="user_infor_name"><a
+                href="javascript:;">Cooking - life in the life journey<b></b></a></span>
+
+            <div class="user_infor_pop">
+                <ul>
+                    <li><a href="javascript:;">Modify profile</a></li>
+                    <li><a href="javascript:;">Account management</a></li>
+                    <li><a href="javascript:;">Privacy Settings</a></li>
+                    <li><a href="javascript:;">Change language</a></li>
+                    <li class="last"><a href="javascript:;">Exit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+<div class="mes_box per_blog clearfix">
+
+<div class="black10"></div>
+<div class="black10"></div>
+<div class="black10"></div>
+<div class="mes_com_box_Tab">
+    <a href="javascript:;">My friends</a>
+    <a href="javascript:;" class="active">Search friends</a>
+    <a href="javascript:;">Invite friends</a>
+    <a href="javascript:;">Follow Setting</a>
+    <a href="javascript:;">My groups</a>
+    <a href="javascript:;">Search groups</a>
+    <a href="javascript:;">Create a group</a>
+</div>
+
+<div class="clearfix">
+    <div class="ColuTwo_wrap clearfix Lw290_Rw655">
+        <div class="leftside">
+            <h4>Search friends</h4>
+
+            <div style=" padding:10px 0px 0px 10px;">
+
+                <div class="ltSearch"><input type="text" value="请输入关键字"
+                                             onclick="if(this.value==this.defaultValue){this.value=''; this.style.color='#333';}"
+                                             onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc'}"
+                                             class="text"/></div>
+                <table class="ltTabDate" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr class="first">
+                        <td class="name">Gender：</td>
+                        <td><label for="unlim"><input type="radio" name="sex" id="unlim"
+                                                      class="vInput"/>不限</label><label for="male"><input type="radio"
+                                                                                                         name="sex"
+                                                                                                         id="male"
+                                                                                                         class="vInput"/>男</label><label
+                                for="female"><input type="radio" name="sex" id="female" class="vInput"/>女</label></td>
+                    </tr>
+                    <tr>
+                        <td class="name">Age：</td>
+                        <td><select name="select">
+                            <option value="1">20 - 25</option>
+                            <option value="1">20 - 25</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td class="name">Constellation：</td>
+                        <td><select name="select">
+                            <option value="1">水瓶座</option>
+                            <option value="1">天枰座</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td class="name">Current place：</td>
+                        <td><select name="select" class="col2">
+                            <option value="1">州省州省州省</option>
+                            <option value="1">州省</option>
+                        </select>
+                            <select name="select"  class="col2">
+                                <option value="1">城市</option>
+                                <option value="1">城市</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td class="name">Home place：</td>
+                        <td><select name="select"  class="col2">
+                            <option value="1">州省</option>
+                            <option value="1">州省</option>
+                        </select>
+                            <select name="select"  class="col2">
+                                <option value="1">城市</option>
+                                <option value="1">城市</option>
+                            </select></td>
+                    </tr>
+                    <tr class="fav">
+                        <td class="name">Hobby：</td>
+                        <td><input type="text" value="请输入兴趣爱好"
+                                   onclick="if(this.value==this.defaultValue){this.value=''; this.style.color='#333';}"
+                                   onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc'}"
+                                   class="text"/></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="lt_Btn"><input type="button" class="prBtn" value="Clear"/><input type="button" class="prBtn"
+                                                                                             value="Search"/></div>
+
+            </div>
+        </div>
+        <div class="rCon">
+
+            <div class="topNav clearfix">
+
+                <!-- 分页左边 -->
+                <div class="f_left rel_sear_tit">
+                    Search result
+                </div>
+                <!-- 分页左边 -->
+                <!-- 分页右边 -->
+                <div class="pageList  f_right">
+                    <a href="javascript:;">More</a>&nbsp;&nbsp;
+                    <a title="First" href="javascript:;">First</a>
+                    <a title="Previous" href="javascript:;">Previous</a>
+                    <span><i>01</i>/<i>20</i></span>
+                    <a title="Next" href="javascript:;">Next</a>
+                    <a title="Last" href="javascript:;">Last</a>
+                </div>
+                <!-- 分页右边 -->
+
+            </div>
+
+            <div class="list_member">
+                <ul>
+                    <li>
+                        <dl>
+                            <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt=""/></a></dt>
+                            <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                        </dl>
+                        <div class="se_center">
+                            <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span>
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span>
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span>
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span>
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span>
+                        </div>
+                        <div class="flBtnDiv"><a href="javascript:;" class="add">Addfriend</a><a href="javascript:;"
+                                                                                                 class="greet">Greet</a>
+                        </div>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt=""/></a></dt>
+                            <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                        </dl>
+                        <div class="se_center">
+                            <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span>
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span>
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span>
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span>
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span>
+                        </div>
+                        <div class="flBtnDiv"><a href="javascript:;" class="add">Addfriend</a><a href="javascript:;"
+                                                                                                 class="greet">Greet</a>
+                        </div>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt=""/></a></dt>
+                            <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                        </dl>
+                        <div class="se_center">
+                            <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span>
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span>
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span>
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span>
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span>
+                        </div>
+                        <div class="flBtnDiv"><a href="javascript:;" class="add">Addfriend</a><a href="javascript:;"
+                                                                                                 class="greet">Greet</a>
+                        </div>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt=""/></a></dt>
+                            <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                        </dl>
+                        <div class="se_center">
+                            <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span>
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span>
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span>
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span>
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span>
+                        </div>
+                        <div class="flBtnDiv"><a href="javascript:;" class="add">Addfriend</a><a href="javascript:;"
+                                                                                                 class="greet">Greet</a>
+                        </div>
+                    </li>
+                    <li>
+                        <dl>
+                            <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt=""/></a></dt>
+                            <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                        </dl>
+                        <div class="se_center">
+                            <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span>
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span>
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span>
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span>
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span>
+                        </div>
+                        <div class="flBtnDiv"><a href="javascript:;" class="add">Addfriend</a><a href="javascript:;"
+                                                                                                 class="greet">Greet</a>
+                        </div>
+                    </li>
+                    <li class="b0">
+                        <dl>
+                            <dt><a href="javascript:;"><img src="../images/demo/head.jpg" alt=""/></a></dt>
+                            <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                        </dl>
+                        <div class="se_center">
+                            <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span>
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span>
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span>
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span>
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span>
+                        </div>
+                        <div class="flBtnDiv"><a href="javascript:;" class="add">Addfriend</a><a href="javascript:;"
+                                                                                                 class="greet">Greet</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="topNav bmNav clearfix">
+
+                <!-- 分页右边 -->
+                <div class="pageList  f_right">
+                    <a href="javascript:;">More</a>&nbsp;&nbsp;
+                    <a title="First" href="javascript:;">First</a>
+                    <a title="Previous" href="javascript:;">Previous</a>
+                    <span><i>01</i>/<i>20</i></span>
+                    <a title="Next" href="javascript:;">Next</a>
+                    <a title="Last" href="javascript:;">Last</a>
+                </div>
+                <!-- 分页右边 -->
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+<div class="mes_main_bot"></div>
+
+
+<div class="footer layout">
+    <span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a
+            href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a
+            href="javascript:;">Help</a></p>
+</div>
+
+</body>
+</html>

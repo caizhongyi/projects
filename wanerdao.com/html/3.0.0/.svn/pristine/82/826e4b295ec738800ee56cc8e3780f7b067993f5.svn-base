@@ -1,0 +1,26 @@
+@charset "utf-8";
+@import "css3";
+
+/*
+* filter 渐变滤镜详细用法，[参见这里]
+* StartColorStr 和 EndColorStr:
+*    #4c000000 是 30% 透明度的 #000000 的意思
+*    组成: # + 透明度 + 颜色
+*    算法: Math.floor(0.6 * 255).toString(16);
+*/
+.opacity ( @val ) {
+    @opacity : (@val * 100 );
+    filter: ~"alpha(opacity = @{opacity})";
+    opacity : @val ;
+    /*background : rgba(0, 0, 0, @val);
+    @color : `Math.floor(0.6 * 255).toString(16)`;
+    filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=@color, EndColorStr=@color)/9;*/
+}
+
+.media-callback () {}
+.media ( @min-width:500px , @max-width:1024px ){
+    @media only screen and (min-width:@min-width) and (max-width: @max-width){
+        .media-callback();
+    }
+}
+

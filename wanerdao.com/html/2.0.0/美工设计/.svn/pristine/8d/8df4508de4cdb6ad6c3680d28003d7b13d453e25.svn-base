@@ -1,0 +1,31 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * Created with JetBrains WebStorm.
+<span class='line'>  3</span>  * User: zhongyi
+<span class='line'>  4</span>  * Date: 12-10-7
+<span class='line'>  5</span>  * Time: 下午8:19
+<span class='line'>  6</span>  * To change this template use File | Settings | File Templates.
+<span class='line'>  7</span>  */</span><span class="WHIT">
+<span class='line'>  8</span> </span><span class="COMM">/*
+<span class='line'>  9</span>  @name    		 			: 局中
+<span class='line'> 10</span>  @animate  [bool] 			: true || false
+<span class='line'> 11</span>  @position [string] 			: relative || absolute
+<span class='line'> 12</span>  @duration [string || int]   :
+<span class='line'> 13</span>  @parent   [selector]		: 所在的父级标签，无则为默认的上一级
+<span class='line'> 14</span>  @axis 	  [string]			: x || y || auto
+<span class='line'> 15</span>  @callback [function]		: 回调
+<span class='line'> 16</span>  */</span><span class="WHIT">
+<span class='line'> 17</span> 
+<span class='line'> 18</span> </span><span class="PUNC">;</span><span class="PUNC">(</span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="WHIT">    </span><span class="NAME">$.fn.loading</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">$loading</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="NAME">$</span><span class="PUNC">(</span><span class="STRN">'&lt;div class="loading-layer">&lt;/div>'</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">appendTo</span><span class="PUNC">(</span><span class="NAME">$</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">addClass</span><span class="PUNC">(</span><span class="STRN">'pager-loading'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">hide</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 22</span> 
+<span class='line'> 23</span> </span><span class="WHIT">    </span><span class="NAME">$.fn.loading</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'载入效果，外层样式pager-loading,浮层样式loading-layer'</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">(</span><span class="NAME">jQuery</span><span class="PUNC">)</span><span class="PUNC">;</span></pre></body></html>

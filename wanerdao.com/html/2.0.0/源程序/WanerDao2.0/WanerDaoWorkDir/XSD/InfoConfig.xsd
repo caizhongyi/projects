@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="InfoConfig"
+    targetNamespace="InfoConfig.xsd"
+    elementFormDefault="qualified"
+    xmlns="InfoConfig.xsd"
+    xmlns:mstns="InfoConfig.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="Config">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="Info" minOccurs="1">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="mstns:NonEmptyStr">
+                <xs:attribute name="ID" type="xs:ID" use="required"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="NonEmptyStr">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

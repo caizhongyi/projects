@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>牛逼哄哄CS:GO-在线一键买枪生成器</title>
+    <link rel="stylesheet" type="text/css" href="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/main.css">
+    <script type="text/javascript" src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/KeyHandler.js"></script>
+    <script type="text/javascript" src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/main.js"></script>
+    <link rel="shortcut icon" href="http://www.nbcsgo.com/nb.ico">
+</head>
+<body>
+    <h2 id="title">
+        牛逼哄哄CS:GO 一键买枪生成器</h2>
+    <div id="version">
+        <p id="home_msg">
+            帮助你在CS:GO中绑定你需要的任意一键购买<br>
+        </p>
+    </div>
+    <div class="output">
+        <span id="pselect">选中的按键 : 
+            <b id="selectedkey"></b>
+        </span>
+        <span id="reset" class="span-btn">清空</span>
+        <span id="copy" class="span-btn">全选</span>
+        <textarea id="text-result" class="result" readonly="readonly"></textarea>
+        <p style="color:gray">提示：
+        1：选择一个按键，再选择枪械、弹药或装备即可生成命令; 
+        2：将文本框内容复制到控制台中即可完成该键的绑定。</p>
+    </div>
+    <div style="clear:both"></div>
+    <div id="container">
+        <div class="keyboard">
+            <div class="kb_down">
+                <div class="main" style="width:720px;float:left">
+                    <table>
+                        <tbody><tr>
+                            <td>
+                                F1
+                            </td>
+                            <td>
+                                F2
+                            </td>
+                            <td>
+                                F3
+                            </td>
+                            <td>
+                                F4
+                            </td>
+                            <td>
+                                F5
+                            </td>
+                            <td>
+                                F6
+                            </td>
+                            <td>
+                                F7
+                            </td>
+                            <td>
+                                F8
+                            </td>
+                            <td>
+                                F9
+                            </td>
+                            <td>
+                                F10
+                            </td>
+                            <td>
+                                F11
+                            </td>
+                            <td>
+                                F12
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <table>
+                        <tbody><tr>
+                            <td>
+                                `
+                            </td>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                2
+                            </td>
+                            <td>
+                                3
+                            </td>
+                            <td>
+                                4
+                            </td>
+                            <td>
+                                5
+                            </td>
+                            <td>
+                                6
+                            </td>
+                            <td>
+                                7
+                            </td>
+                            <td>
+                                8
+                            </td>
+                            <td>
+                                9
+                            </td>
+                            <td>
+                                0
+                            </td>
+                            <td>
+                                -
+                            </td>
+                            <td>
+                                =
+                            </td>
+                            <td>
+                                Backspace
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <table>
+                        <tbody><tr>
+                            <td>
+                                Tab
+                            </td>
+                            <td>
+                                Q
+                            </td>
+                            <td>
+                                W
+                            </td>
+                            <td>
+                                E
+                            </td>
+                            <td>
+                                R
+                            </td>
+                            <td>
+                                T
+                            </td>
+                            <td>
+                                Y
+                            </td>
+                            <td>
+                                U
+                            </td>
+                            <td>
+                                I
+                            </td>
+                            <td>
+                                O
+                            </td>
+                            <td>
+                                P
+                            </td>
+                            <td>
+                                [
+                            </td>
+                            <td>
+                                ]
+                            </td>
+                            <td>
+                                \
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <table>
+                        <tbody><tr>
+                            <td>
+                                CapsLock
+                            </td>
+                            <td>
+                                A
+                            </td>
+                            <td>
+                                S
+                            </td>
+                            <td>
+                                D
+                            </td>
+                            <td>
+                                F
+                            </td>
+                            <td>
+                                G
+                            </td>
+                            <td>
+                                H
+                            </td>
+                            <td>
+                                J
+                            </td>
+                            <td>
+                                K
+                            </td>
+                            <td>
+                                L
+                            </td>
+                            <td>
+                                ;
+                            </td>
+                            <td>
+                                '
+                            </td>
+                            <td>
+                                Enter
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <table>
+                        <tbody><tr>
+                            <td>
+                                Shift
+                            </td>
+                            <td>
+                                Z
+                            </td>
+                            <td>
+                                X
+                            </td>
+                            <td>
+                                C
+                            </td>
+                            <td>
+                                V
+                            </td>
+                            <td>
+                                B
+                            </td>
+                            <td>
+                                N
+                            </td>
+                            <td>
+                                M
+                            </td>
+                            <td>
+                                ,
+                            </td>
+                            <td>
+                                .
+                            </td>
+                            <td>
+                                /
+                            </td>
+                            <td>
+                                Shift
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <table>
+                        <tbody><tr>
+                            <td>
+                                Ctrl
+                            </td>
+                            <td class="empty">
+                            </td>
+                            <td>
+                                Alt
+                            </td>
+                            <td id="space">
+                                Space
+                            </td>
+                            <td>
+                                Alt
+                            </td>
+                            <td class="empty">
+                            </td>
+                            <td>
+                                Ctrl
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+            <div class="kb_up" style="padding-top: 58px">
+                <div class="arrow_home">
+                    <div class="home">
+                        <table>
+                            <tbody><tr>
+                                <td>
+                                    Insert<span>ins</span>
+                                </td>
+                                <td>
+                                    Home
+                                </td>
+                                <td>
+                                    Pg Up<span>pgup</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Delete<span>del</span>
+                                </td>
+                                <td>
+                                    End
+                                </td>
+                                <td>
+                                    Pg Down<span>pgdn</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="empty">
+                                </td>
+                                <td class="empty">
+                                </td>
+                                <td class="empty">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                    <div class="arrow">
+                        <table>
+                            <tbody><tr>
+                                <td class="empty">
+                                </td>
+                                <td>
+                                    ↑<span>uparrow</span>
+                                </td>
+                                <td class="empty">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ←<span>leftarrow</span>
+                                </td>
+                                <td>
+                                    ↓<span>downarrow</span>
+                                </td>
+                                <td>
+                                    →<span>rightarrow</span>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                </div>
+                <div class="numpad">
+                    <table>
+                        <tbody><tr>
+                            <td>
+                                Num Lock
+                            </td>
+                            <td>
+                                /<span>kp_slash</span>
+                            </td>
+                            <td>
+                                *<span>kp_multiply</span>
+                            </td>
+                            <td>
+                                -<span>kp_minus</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                7<span>kp_home</span>
+                            </td>
+                            <td>
+                                8<span>kp_uparrow</span>
+                            </td>
+                            <td>
+                                9<span>kp_pgup</span>
+                            </td>
+                            <td rowspan="2">
+                                +<span>kp_plus</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                4<span>kp_leftarrow</span>
+                            </td>
+                            <td>
+                                5<span>kp_5</span>
+                            </td>
+                            <td>
+                                6<span>kp_rightarrow</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1<span>kp_end</span>
+                            </td>
+                            <td>
+                                2<span>kp_downarrow</span>
+                            </td>
+                            <td>
+                                3<span>kp_pgdn</span>
+                            </td>
+                            <td rowspan="2">
+                                Enter<span>kp_enter</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                0<span>kp_ins</span>
+                            </td>
+                            <td>
+                                .<span>kp_del</span>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="menu">
+        <div id="primary">
+            <form id="primaryform">
+            <div class="toggle-btn">
+                <span>步枪: </span>
+                <button id="disrifle">
+                    收起/展开</button>
+            </div>
+            <div id="rifles">
+                <ul class="img-list">
+                    <li>
+                        <input id="galil" name="primaryradio" value="buy galilar; buy famas;" type="radio">
+                        <label for="galil">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_galilar.png" alt="Galil AR">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="ak47" name="primaryradio" value="buy ak47; buy m4a1;" type="radio">
+                        <label for="ak47">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_ak47.png" alt="Ak-47">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="sg556" name="primaryradio" value="buy sg556; buy aug;" type="radio">
+                        <label for="sg556">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_sg556.png" alt="SG 556">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="awp" name="primaryradio" value="buy awp;" type="radio">
+                        <label for="awp">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_awp.png" alt="AWP">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="famas" name="primaryradio" value="buy famas; buy galilar;" type="radio">
+                        <label for="famas">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_famas.png" alt="Famas">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="m4a1s" name="primaryradio" value="buy m4a1; buy ak47;" type="radio">
+                        <label for="m4a1s">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_m4a1_silencer.png" alt="M4A1-S">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="m4a4" name="primaryradio" value="buy m4a1; buy ak47;" type="radio">
+                        <label for="m4a4">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_m4a1.png" alt="M4A1">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="aug" name="primaryradio" value="buy aug; buy sg556;" type="radio">
+                        <label for="aug">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_aug.png" alt="AUG">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="scout" name="primaryradio" value="buy ssg08;" type="radio">
+                        <label for="scout">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_ssg08.png" alt="SSG 08">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="g3sg1" name="primaryradio" value="buy g3sg1; buy scar20;" type="radio">
+                        <label for="g3sg1">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_g3sg1.png" alt="G3SG1">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="scar20" name="primaryradio" value="buy scar20; buy g3sg1;" type="radio">
+                        <label for="scar20">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_scar20.png" alt="SCAR 20">
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="toggle-btn">
+                <span>冲锋枪: </span>
+                <button id="dissmg">
+                    收起/展开</button>
+            </div>
+            <div id="smgs">
+                <ul class="img-list">
+                    <li>
+                        <input id="mac10" name="primaryradio" value="buy mac10; buy mp9;" type="radio">
+                        <label for="mac10">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_mac10.png" alt="MAC 10">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="mp9" name="primaryradio" value="buy mp9; buy mac10;" type="radio">
+                        <label for="mp9">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_mp9.png" alt="MP9">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="mp7" name="primaryradio" value="buy mp7;" type="radio">
+                        <label for="mp7">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_mp7.png" alt="MP7">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="bizon" name="primaryradio" value="buy bizon;" type="radio">
+                        <label for="bizon">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_bizon.png" alt="Bizon">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="p90" name="primaryradio" value="buy p90;" type="radio">
+                        <label for="p90">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_p90.png" alt="P90">
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="toggle-btn">
+                <span>重型武器: </span>
+                <button id="disheavy">
+                    收起/展开</button>
+            </div>
+            <div id="heavy">
+                <ul class="img-list">
+                    <li>
+                        <input id="nova" name="primaryradio" value="buy nova;" type="radio">
+                        <label for="nova">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_nova.png" alt="Nova">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="xm1014" name="primaryradio" value="buy xm1014;" type="radio">
+                        <label for="xm1014">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_xm1014.png" alt="XM-1014">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="saw" name="primaryradio" value="buy sawedoff; buy mag7;" type="radio">
+                        <label for="saw">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_sawedoff.png" alt="Sawed-Off">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="mag7" name="primaryradio" value="buy mag7; buy sawedoff;" type="radio">
+                        <label for="mag7">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_mag7.png" alt="Swag-7">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="m249" name="primaryradio" value="buy m249;" type="radio">
+                        <label for="m249">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_m249.png" title="M249" alt="M249">
+                        </label>
+                    </li>
+                    <li>
+                        <input id="negev" name="primaryradio" value="buy negev;" type="radio">
+                        <label for="negev">
+                            <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_negev.png" title="Negev" alt="Negev">
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            </form>
+        </div>
+        <hr>
+        <div class="toggle-btn">
+            <span>副武器: </span>
+            <button id="dissecondary">
+                收起/展开</button>
+        </div>
+        <form id="secondaryform">
+        <div id="gun">
+            <ul class="img-list">
+                <li>
+                    <input id="p250" name="secondary" value="buy p250;" type="radio">
+                    <label for="p250">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_p250.png" alt="P250">
+                    </label>
+                </li>
+                <li>
+                    <input id="cz" name="secondary" value="buy tec9; buy fn57;" type="radio">
+                    <label for="cz">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_cz75a.png" alt="CZ-75a">
+                    </label>
+                </li>
+                <li>
+                    <input id="tec9" name="secondary" value="buy tec9; buy fn57;" type="radio">
+                    <label for="tec9">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_tec9.png" alt="TEC-9">
+                    </label>
+                </li>
+                <li>
+                    <input id="fiveseven" name="secondary" value="buy fn57; buy tec9;" type="radio">
+                    <label for="fiveseven">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_fiveseven.png" alt="Five-Seven">
+                    </label>
+                </li>
+                <li>
+                    <input id="dual" name="secondary" value="buy elite;" type="radio">
+                    <label for="dual">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_elite.png" alt="Dual elite">
+                    </label>
+                </li>
+                <li>
+                    <input id="deagle" name="secondary" value="buy deagle;" type="radio">
+                    <label for="deagle">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_deagle.png" alt="Desert eagle">
+                    </label>
+                </li>
+            </ul>
+        </div>
+        </form>
+        <hr>
+        <div class="toggle-btn">
+            <span>手榴弹: </span>
+            <button id="disgre">
+                收起/展开</button>
+        </div>
+        <form id="greform">
+        <div id="grenades">
+            <ul class="img-list">
+                <li>
+                    <input id="hegrenade" name="grenade" value="buy hegrenade;" type="checkbox">
+                    <label for="hegrenade">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_hegrenade.png" alt="HE Grenade">
+                    </label>
+                </li>
+                <li>
+                    <input id="flash" name="grenade" value="buy flashbang;" type="checkbox">
+                    <label for="flash">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_flashbang.png" title="Flashbang" alt="Flashbang">
+                    </label>
+                </li>
+                <li>
+                    <input id="flash2" name="grenade" value="buy flashbang;" type="checkbox">
+                    <label for="flash2">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_flashbang.png" title="Flashbang" alt="Flashbang">
+                    </label>
+                </li>
+                <li>
+                    <input id="smoke" name="grenade" value="buy smokegrenade;" type="checkbox">
+                    <label for="smoke">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_smokegrenade.png" alt="Smoke grenade">
+                    </label>
+                </li>
+                <li>
+                    <input id="decoy" name="grenade" value="buy decoy;" type="checkbox">
+                    <label for="decoy">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_decoy.png" title="Decoy" alt="Decoy">
+                    </label>
+                </li>
+                <li>
+                    <input id="molotov" name="grenade" value="buy molotov; buy incgrenade;" type="checkbox">
+                    <label for="molotov">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_molotov.png" alt="Molotov">
+                    </label>
+                </li>
+                <li>
+                    <input id="incendiary" name="grenade" value="buy incgrenade; buy molotov;" type="checkbox">
+                    <label for="incendiary">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_incgrenade.png" alt="Incendiary grenade">
+                    </label>
+                </li>
+            </ul>
+        </div>
+        </form>
+        <hr>
+        <div class="toggle-btn">
+            <span>装备: </span>
+            <button id="disother">
+                收起/展开</button>
+        </div>
+        <form id="equipform">
+        <div id="equipment">
+            <ul class="img-list">
+                <li>
+                    <input id="kevlar" name="other" value="buy vest;" type="checkbox">
+                    <label for="kevlar">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/equipment_kevlar.png" alt="Kevlar">
+                    </label>
+                </li>
+                <li>
+                    <input id="helmet" name="other" value="buy vesthelm;" type="checkbox">
+                    <label for="helmet">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/equipment_helmet.png" alt="Helmet">
+                    </label>
+                </li>
+                <li>
+                    <input id="kevlarhelm" name="other" value="buy vesthelm; buy vest;" type="checkbox">
+                    <label for="kevlarhelm">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/equipment_kevlarhelmet.png" alt="Kevlar + Helmet">
+                    </label>
+                </li>
+                <li>
+                    <input id="defuse" name="other" value="buy defuser;" type="checkbox">
+                    <label for="defuse">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/equipment_defusekit.png" alt="Defuse kit">
+                    </label>
+                </li>
+                <li>
+                    <input id="taser" name="other" value="buy Taser;" type="checkbox">
+                    <label for="taser">
+                        <img src="%E7%89%9B%E9%80%BC%E5%93%84%E5%93%84CS%20GO-%E5%9C%A8%E7%BA%BF%E4%B8%80%E9%94%AE%E4%B9%B0%E6%9E%AA%E7%94%9F%E6%88%90%E5%99%A8_files/weapon_taser.png" alt="Taser">
+                    </label>
+                </li>
+            </ul>
+        </div>
+        </form>
+    </div>
+
+
+</body></html>

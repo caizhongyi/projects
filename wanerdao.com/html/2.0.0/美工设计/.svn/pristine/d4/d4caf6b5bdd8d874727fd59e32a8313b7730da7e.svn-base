@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>发起活动-活动-玩儿道</title>
+<!--  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> -->
+<meta name="keywords" content="发起活动，报名参数设定，参数设定，报名费设定，加入门槛设定，预算拟定，玩儿道，生活社交网络" />
+<meta name="description" content="发起活动第三步，填写报名参数设定，包括参数设定，报名费设定，加入门槛设定，预算拟定等" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../css/activity_create.css" media="all" />
+
+
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/jquery.core.js"></script>
+<script src="../scripts/jquery.ui.tabs.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/gotop.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.ACmodGuide h4 input[type=checkbox]').click(function(){
+		if($(this).attr("checked")){
+	    	$(this).closest('h4').next().stop(true,true).slideDown();
+		}else{
+		    $(this).closest('h4').next().stop(true,true).slideUp();
+		}
+	 })
+	
+	});
+</script>
+</head>
+<body class="pBgB fSize-12">
+<div class="header_wrapper pBgH">
+     <div class="header layout"><a href="index.html" class="logo"></a>
+          <div class="home" hoverable="true"><a href="javascript:;" class="go_home" title="回到首页"></a>
+               <div class="home_pop">
+                    <ul>
+                         <li><a href="javascript:;" class="hp_title">活动</a>
+                              <p><a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a href="javascript:;">我的活动</a><a href="javascript:;">历史活动</a></p>
+                         </li>
+                         <li><a href="javascript:;" class="hp_title">个人</a>
+                              <p><a href="javascript:;">资料</a><a href="javascript:;">日志</a><a href="javascript:;">相册</a><a href="javascript:;">视频</a></p>
+                         </li>
+                         <li><a href="javascript:;" class="hp_title">关系</a>
+                              <p><a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a></p>
+                         </li>
+                    </ul>
+                    <div class="home_pop_bottom">
+                         <p></p>
+                    </div>
+               </div>
+          </div>
+          <div class="search">
+               <div class="search_bg vm">
+                    <input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖" />
+                    <input value="" type="submit" class="search_btn" />
+               </div>
+          </div>
+          <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/default/32-32.jpg" width="32" height="32" /></a><span class="user_infor_name"><a href="javascript:;">烧饭-人生旅途中人生旅途中<b></b></a></span>
+               <div class="user_infor_pop">
+                    <ul class="fSize-12">
+                         <li><a href="javascript:;">资料修改</a></li>
+                         <li><a href="javascript:;">账号管理</a></li>
+                         <li><a href="javascript:;">隐私设置</a></li>
+                         <li><a href="javascript:;">切换语言</a></li>
+                         <li class="last"><a href="javascript:;">退出</a></li>
+                    </ul>
+               </div>
+          </div>
+     </div>
+</div>
+<div class="activity_create layout">
+     <div id="container" class="activity_create w_1004 pBgC">
+          <div class="activity_createMainGuide">
+          <div class="black10"></div>
+          <div class="black10"></div>
+               <div class="mainTitile">
+                    <div class="mes_com_box_Tab"><a href="javascript:;" class="active">创建活动</a></div>
+               </div>
+               <div class="modSwitch">
+                    <label for="">
+                         <input type="radio" class="radio" name="1" id="" />
+                         列表模式填写</label>
+                    <label for="">
+                         <input type="radio" class="radio" name="1" id="" />
+                         向导模式填写</label>
+               </div>
+               <h2><b>发起活动</b></h2>
+               <div class="setbar6 pR">
+                    <div class="setbar6-l pA"></div>
+                    <div class="setbar6-r pA"></div>
+                    <ul>
+                         <li class="item1 stepbar_end">
+                              <div class="item_img item1_end"></div>
+                              <p class="setp_title">初始参数引用</p>
+                         </li>
+                         <li class="item2 stepbar_end">
+                              <div class="item_img item2_end"></div>
+                              <p class="setp_title">基本参数设定</p>
+                         </li>
+                         <li class="item3 stepbar_star">
+                              <div class="item_img item3_star"></div>
+                              <p class="setp_title">报名参数设定</p>
+                         </li>
+                         <li class="item4 stepbar_will">
+                              <div class="item_img item4_will"></div>
+                              <p class="setp_title">邀请发送</p>
+                         </li>
+                         <li class="item5 stepbar_will">
+                              <div class="item_img item5_will"></div>
+                              <p class="setp_title">个人报名</p>
+                         </li>
+                         <li class="item6 stepbar_will">
+                              <div class="item_img item6_will"></div>
+                              <p class="setp_title">参数保存</p>
+                         </li>
+                    </ul>
+               </div>
+               <div class="ACmodGuide">
+                    <h4>
+                         <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="customCycleSwitch" />
+                              <b>设定报名参数</b></label>
+                    </h4>
+                    <div class="setmodList applySet">
+                         <dl>
+                              <dd class="formTitle">人数限制：</dd>
+                              <dd class="formMain">
+                                   <input type="text" class="text" name="" id="" />
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">报名结束日期：</dd>
+                              <dd class="formMain">
+                                   <input type="text" class="text" name="" id="" />
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">报名方式：</dd>
+                              <dd class="formMain">
+                                   <label for="">
+                                        <input type="radio" name="111" id="" />
+                                        直接加入</label>
+                                   &nbsp;
+                                   <label for="">
+                                        <input type="radio" name="111" id="" />
+                                        申请批准加入</label>
+                                   &nbsp;
+                                   <label for="">
+                                        <input type="radio" name="111" id="" />
+                                        密码验证加入</label>
+                                   <div class="tips_G tipW_475"><span class="upArrow_G"></span>
+                                        <div class="tips_G_main tipW_475">
+                                             <label for="" class="pwdWarp">再次输入：
+                                                  <input type="password" class="text" name="" id="" style="width:100px"/>
+                                             </label>
+                                             <label for="" class="pwdWarp">密码设定：
+                                                  <input type="password" class="text" name="" id="" style="width:100px"/>
+                                             </label>
+                                        </div>
+                                   </div>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">&nbsp;
+                                   <label for="">
+                                        <input type="checkbox" name="" id="" />
+                                        &nbsp;</label>
+                              </dd>
+                              <dd class="formMain">启动踢人保护&nbsp;
+                                   <select name="" id="">
+                                        <option value="保护时限">保护时限</option>
+                                   </select>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                    </div>
+                    <!--设定报名参数-->
+                    <h4>
+                         <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="customCycleSwitch" />
+                              <b>设定报名费</b></label>
+                    </h4>
+                    <div class="setmodList applyFeeSet">
+                         <dl>
+                              <dd class="formTitle">报名费用：</dd>
+                              <dd class="formMain">
+                                   <input type="text" class="text" name="" id="" />
+                                   <label>
+                                        <input  type="checkbox"/>
+                                        &nbsp;&nbsp;报名时必需缴纳</label>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">费用说明：</dd>
+                              <dd class="formMain">
+                                   <textarea name="" id="" cols="69" rows="4"></textarea>
+                                   &nbsp;</dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">支持缴费方式以及&nbsp;<br/>
+                                   账号或支付地址：</dd>
+                              <dd class="formMain">
+                                   <select name="" id="">
+                                        <option value="缴费方式">缴费方式</option>
+                                   </select>
+                                   <input  type="text" class="text"/>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                    </div>
+                    <!--设定报名费用-->
+                    <h4>
+                         <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="customCycleSwitch" />
+                              <b>设定加入门槛</b></label>
+                    </h4>
+                    <div class="setmodList thresholdSet">
+                         <dl>
+                              <dd class="formTitle">设置报名门槛：</dd>
+                              <dd class="formMain">
+                                   <input type="text" class="text" name="" id="" value="添加" />
+                                   <select name="" id="">
+                                        <option value="门槛条件">门槛条件</option>
+                                   </select>
+                                   <select name="" id="">
+                                        <option value="门槛值">门槛值</option>
+                                   </select>
+                                   <input type="button" value="添加" class="buttonG btn_w56 btn_h28 btnGary_56" />
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain">
+                                   <textarea name="" id="" cols="69" rows="4"></textarea>
+                                   &nbsp; </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                    </div>
+                    <!--设定加入门槛-->
+                    <h4>
+                         <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="customCycleSwitch" />
+                              <b>拟定预算</b></label>
+                    </h4>
+                    <div class="setmodList preparedbudget">
+                         <dl>
+                              <dd class="formTitle">财务预算收支：</dd>
+                              <dd class="formMain">
+                                   <label for="">
+                                        <input type="checkbox" name="" id="" />
+                                        公开可见给所有想参加的人</label>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <div class="tabWarp_Gray">
+                              <table cellpadding="0" cellspacing="0" border="0" background="#ededed" width="642" class="preparedList fSize-12 fCgray3">
+                                   <tr class="fCblue" style="font-weight:normal;">
+                                        <th>序号</th>
+                                        <th>收支名目</th>
+                                        <th>预算收支金额</th>
+                                        <th>操作人名</th>
+                                        <th>财务人名</th>
+                                        <th>修改日期</th>
+                                        <th></th>
+                                   </tr>
+                                   <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;" class="listDown">&nbsp;</a> <a href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">&nbsp;</a></td>
+                                   </tr>
+                                   <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;" class="listDown">&nbsp;</a> <a href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">&nbsp;</a></td>
+                                   </tr>
+                                   <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;" class="listDown">&nbsp;</a> <a href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">&nbsp;</a></td>
+                                   </tr>
+                                   <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;" class="listDown">&nbsp;</a> <a href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">&nbsp;</a></td>
+                                   </tr>
+                                   <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp">&nbsp;</a> <a href="javascript:;" class="listDown">&nbsp;</a> <a href="javascript:;" class="listEdit">&nbsp;</a> <a href="javascript:;" class="listDel">&nbsp;</a></td>
+                                   </tr>
+                              </table>
+                         </div>
+                         <dl>
+                              <dd class="formTitle">预算收支项：</dd>
+                              <dd class="formMain"></dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">序号：</dd>
+                              <dd class="formMain">
+                                   <input type="text" class="text" name="" value="01" id="" style="width:60px;" />
+                                   &nbsp;收支明目&nbsp;
+                                   <input type="text" class="text" name="" id="" />
+                                   &nbsp;预算金额&nbsp;
+                                   <select name="" id="">
+                                        <option value="每天">每天</option>
+                                   </select>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">执行人名：</dd>
+                              <dd class="formMain">
+                                   <input type="text" class="text" name="" id="" />
+                                   &nbsp;&nbsp;
+                                   <select name="" id="">
+                                        <option value="活动人员">活动人员</option>
+                                   </select>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain">
+                                   <textarea name="" id="" cols="69" rows="4"></textarea>
+                                   &nbsp; </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                         <dl>
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain"> 操作时间：2011-11-15 23：11   财务人员：李小冉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                   <input type="button" value="添加预算明目" class="buttonG btn_w102 btn_h28 btnGary_102"/>
+                              </dd>
+                         </dl>
+                         <dl class="clear2">
+                         </dl>
+                    </div>
+                    <!-- 拟定预算 --> 
+               </div>
+               <div class="btn-warp">
+                    <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="上一步" onclick="location.href='activity_create_step2.html'" />
+                    &nbsp;&nbsp;
+                    <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="下一步" onclick="location.href='activity_create_step4.html'" />
+               </div>
+          </div>
+     </div>
+</div>
+<!--Main-->
+<div class="footer layout"><span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+     <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+</div>
+</body>
+</html>

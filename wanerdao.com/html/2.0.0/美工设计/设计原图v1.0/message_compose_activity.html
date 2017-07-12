@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link href="style/message.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="style/pers_rel.css" media="all" />
+</head>
+<script type="text/javascript">
+var winScreenWidth = window.screen.width;
+if(winScreenWidth>1024){
+document.writeln('<style>');
+document.writeln('.jz{padding:0px 2px;}');
+document.writeln('</style>');
+}
+</script>
+<body>
+	<!--头部-->
+	<div class="head">
+    	<div class="jz">
+        	<div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+            <ul class="nav left yh">
+            	<li><a href="#">首页</a></li>
+            	<li class="cur"><a href="#" class="arr">个人</a></li>
+            	<li><a href="#" class="arr">关系</a></li>
+            	<li><a href="#" class="arr">杂烩</a></li>
+            	<li><a href="#" class="arr">活动</a></li>
+            	<li><a href="#" class="arr">资道</a></li>
+            	<li class="newMsg"><a href="#">站内信息</a><i><a href="#">5</a></i></li>
+            </ul>
+            <div class="userInfo">
+            	<a href="#" class="left"  title="烧饭-人生旅途中-飞砂走石风过"><img src="images/layout_main/img_32x32.png" width="32" height="32" /></a>
+                <a href="javascript:void(0);" title="烧饭-人生旅途中-飞砂走石风过留痕！" class="name">烧饭-人生旅途中</a>
+            </div>
+        </div>
+    </div>
+    <!--头部end-->
+    <!--主体-->
+    <div class="main jz">
+    	<div class="home_page clearfix">
+            <div class="message_left"> 
+                <h1>
+                    <a href="#" class="active">写信息</a>
+                    <a href="#">收件箱</a>
+                    <a href="#">发件箱</a>
+                    <a href="#">草稿箱</a>
+                    <a href="#">垃圾信息</a>
+                </h1>
+            </div>
+            <div class="message_right">
+            <div class="message_Box">
+                <div class="subChaTab">
+                    <a href="#">站内信息</a>
+                    <a href="#">圈子邀请</a>
+                    <a href="#" class="active">活动邀请</a>
+                  </div>
+                  <div class="prPubW">
+                    <div class="pubTit">
+                        <div class="formTit clearfix"><label for="fd"><input id="fd" type="checkbox" />发送给所有好友</label><label for="gp"><input id="gp" type="checkbox" />发送给所有圈子</label></div>
+                    </div>
+                    <div class="pubCon1">
+                        <div class="fmLine1">
+                            <div class="c1Name">选择好友：</div>
+                            <div class="dTbc">
+                                <div class="inpW">
+                                    <div class="t"></div>
+                                    <div class="m"><input type="text" value="请输入好友名称" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#C9C9C9'}" style="color:#C9C9C9" /><b class="fd"></b></div>
+                                    <div class="b"></div>
+                                </div>
+                                <input type="button" class="c1Add" value="添加" />
+                            </div>
+                        </div>
+                        <div class="fmLine2 alter">
+                            <div class="c1Name">已选好友：</div>
+                            <div class="dTbc">
+                                <div class="inpW_l">
+                                    <div class="t"></div>
+                                    <div class="m">
+                                    <ul class="clearfix">
+                                        <li>日尧月月鸟<b></b></li>
+                                        <li>哈利波特<b></b></li>
+                                        <li>杰克逊<b></b></li>
+                                    </ul>
+                                    </div>
+                                    <div class="b"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fmLine1">
+                            <div class="c1Name">选择圈子：</div>
+                            <div class="dTbc">
+                                <div class="inpW">
+                                    <div class="t"></div>
+                                    <div class="m"><input type="text" value="请输入圈子名称" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#C9C9C9'}" style="color:#C9C9C9" /><b class="gp"></b></div>
+                                    <div class="b"></div>
+                                </div>
+                                <input type="button" class="c1Add" value="添加" />
+                            </div>
+                        </div>
+                        <div class="fmLine2">
+                            <div class="c1Name">已选圈子：</div>
+                            <div class="dTbc">
+                                <div class="inpW_l">
+                                    <div class="t"></div>
+                                    <div class="m">
+                                    <ul class="clearfix">
+                                        <li>圈子名称一<b></b></li>
+                                        <li>圈子名称<b></b></li>
+                                        <li>圈子名<b></b></li>
+                                    </ul>
+                                    </div>
+                                    <div class="b"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				  </div>
+                  <div class="prPubW">
+                    <div class="pubTit"><div class="tarAct">选择目标活动</div></div>
+                    <div class="pubCon2">
+                        <div class="topNav">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="28"><input type="checkbox" /></td>
+                                    <td width="32">显示</td>
+                                    <td width="405"><div class="prSelSty"><span>全部信息</span><b></b></div></td>
+                                    <td width="32"><a href="#" class="first">首页</a></td>
+                                    <td width="32"><a href="#" class="prev">上页</a></td>
+                                    <td width="60"><div class="prSelSty"><span>1/25</span><b></b></div></td>
+                                    <td width="32"><a href="#" class="next">下页</a></td>
+                                    <td width="32"><a href="#" class="last">末页</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="imporInfo">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="28" class="actCheck"><input type="checkbox" /></td>
+                                    <td width="584">
+                                    <dl class="actInfo">
+                                        <dt><a href="#" class="fb">周未登上珠木狼马峰</a> [纽约市/纽约州/美国]　(<var>256人</var>)</dt>
+                                        <dd class="actCon">通过我们的日记功能来分享故事、表达观点或写任何你想要表达的事情。你也可以通过手机来发布日志。</dd>
+                                        <dd class="actMeta"><span>活动时间：<i>04/03-04/05</i></span>     <span>报名截止时间：<i>04/08</i></span>     <span>预交费用：<i>100$</i></span></dd>
+                                    </dl>
+                                    </td>
+                                    <td class="actView"><a href="#">查看详细</a></td>
+                                </tr>
+                                <tr>
+                                    <td width="28" class="actCheck"><input type="checkbox" /></td>
+                                    <td width="584">
+                                    <dl class="actInfo">
+                                        <dt><a href="#" class="fb">周未登上珠木狼马峰</a> [纽约市/纽约州/美国]　(<var>256人</var>)</dt>
+                                        <dd class="actCon">通过我们的日记功能来分享故事、表达观点或写任何你想要表达的事情。你也可以通过手机来发布日志。</dd>
+                                        <dd class="actMeta"><span>活动时间：<i>04/03-04/05</i></span>     <span>报名截止时间：<i>04/08</i></span>     <span>预交费用：<i>100$</i></span></dd>
+                                    </dl>
+                                    </td>
+                                    <td class="actView"><a href="#">查看详细</a></td>
+                                </tr>
+                                <tr>
+                                    <td width="28" class="actCheck"><input type="checkbox" /></td>
+                                    <td width="584">
+                                    <dl class="actInfo">
+                                        <dt><a href="#" class="fb">周未登上珠木狼马峰</a> [纽约市/纽约州/美国]　(<var>256人</var>)</dt>
+                                        <dd class="actCon">通过我们的日记功能来分享故事、表达观点或写任何你想要表达的事情。你也可以通过手机来发布日志。</dd>
+                                        <dd class="actMeta"><span>活动时间：<i>04/03-04/05</i></span>     <span>报名截止时间：<i>04/08</i></span>     <span>预交费用：<i>100$</i></span></dd>
+                                    </dl>
+                                    </td>
+                                    <td class="actView"><a href="#">查看详细</a></td>
+                                </tr>
+                                <tr>
+                                    <td width="28" class="actCheck"><input type="checkbox" /></td>
+                                    <td width="584">
+                                    <dl class="actInfo">
+                                        <dt><a href="#" class="fb">周未登上珠木狼马峰</a> [纽约市/纽约州/美国]　(<var>256人</var>)</dt>
+                                        <dd class="actCon">通过我们的日记功能来分享故事、表达观点或写任何你想要表达的事情。你也可以通过手机来发布日志。</dd>
+                                        <dd class="actMeta"><span>活动时间：<i>04/03-04/05</i></span>     <span>报名截止时间：<i>04/08</i></span>     <span>预交费用：<i>100$</i></span></dd>
+                                    </dl>
+                                    </td>
+                                    <td class="actView"><a href="#">查看详细</a></td>
+                                </tr>
+                                <tr>
+                                    <td width="28" class="actCheck"><input type="checkbox" /></td>
+                                    <td width="584">
+                                    <dl class="actInfo">
+                                        <dt><a href="#" class="fb">周未登上珠木狼马峰</a> [纽约市/纽约州/美国]　(<var>256人</var>)</dt>
+                                        <dd class="actCon">通过我们的日记功能来分享故事、表达观点或写任何你想要表达的事情。你也可以通过手机来发布日志。</dd>
+                                        <dd class="actMeta"><span>活动时间：<i>04/03-04/05</i></span>     <span>报名截止时间：<i>04/08</i></span>     <span>预交费用：<i>100$</i></span></dd>
+                                    </dl>
+                                    </td>
+                                    <td class="actView"><a href="#">查看详细</a></td>
+                                </tr>
+                            </table>
+                            <div class="loading"><a href="#">加载更多</a></div>
+                        </div>
+                        <div class="bmNav">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="28"><input type="checkbox" /></td>
+                                    <td width="32">显示</td>
+                                    <td width="405"><div class="prSelSty"><span>全部信息</span><b></b></div></td>
+                                    <td width="32"><a href="#" class="first">首页</a></td>
+                                    <td width="32"><a href="#" class="prev">上页</a></td>
+                                    <td width="60"><div class="prSelSty"><span>1/25</span><b></b></div></td>
+                                    <td width="32"><a href="#" class="next">下页</a></td>
+                                    <td width="32"><a href="#" class="last">末页</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="bmBtn">
+                  <a href="javascript:void(0);" class="btn_127x36">发 送</a>
+                  <a href="javascript:void(0);" class="btn_127x36_gray">取 消</a>
+                </div>
+            </div>
+        	</div>
+        </div>
+    </div>
+    <div class="mBtm jz"></div>
+    <!--主体end-->
+    <!--底部-->
+    <div class="foot jz">
+    	<span class="left"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></span>
+        <span class="right">版权所有 &copy;玩儿道</span>
+    </div>
+    <!--底部end-->
+
+<!--页面脚本区-->
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript">
+	$(".imporInfo tr").hover(function(){
+		$(this).addClass("hover");	
+	},function(){
+		$(this).removeClass("hover");	
+	})
+</script>
+</body>
+</html>

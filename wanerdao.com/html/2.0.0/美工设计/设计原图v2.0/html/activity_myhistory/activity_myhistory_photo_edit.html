@@ -1,0 +1,455 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>编辑历史活动相片-活动-玩儿道</title>
+    <!--  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> -->
+    <meta name="keywords" content="编辑相片，历史活动，玩儿道，生活社交网络"/>
+    <meta name="description" content="对选择历史活动中的选择相册内的相片进行排序，设置是否显示等操作"/>
+
+    <link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="../css/activity_myhistory.css" media="all"/>
+
+
+    <link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all"/>
+    <script src="../scripts/jquery-1.7.2.min.js"></script>
+    <script src="../scripts/global.js"></script>
+    <script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+    <script src="../scripts/jquery.core.js"></script>
+    <script src="../scripts/jquery.ui.tabs.js"></script>
+</head>
+<body class="pBgB fSize-12">
+<div class="header_wrapper pBgH">
+    <div class="header layout"><a href="index.html" class="logo"></a>
+
+        <div class="home" hoverable="true"><a href="javascript:;" class="go_home" title="回到首页"></a>
+
+            <div class="home_pop">
+                <ul>
+                    <li><a href="javascript:;" class="hp_title">活动</a>
+
+                        <p><a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a
+                                href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a
+                                href="javascript:;">我的活动</a><a href="javascript:;">历史活动</a></p>
+                    </li>
+                    <li><a href="javascript:;" class="hp_title">个人</a>
+
+                        <p><a href="javascript:;">资料</a><a href="javascript:;">日志</a><a href="javascript:;">相册</a><a
+                                href="javascript:;">视频</a></p>
+                    </li>
+                    <li><a href="javascript:;" class="hp_title">关系</a>
+
+                        <p><a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a
+                                href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a
+                                href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="search">
+            <div class="search_bg vm">
+                <input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖"/><input value=""
+                                                                                                             type="submit"
+                                                                                                             class="search_btn"/>
+            </div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img
+                src="../images/default/32-32.jpg" width="32" height="32"/></a><span class="user_infor_name"><a
+                href="javascript:;">烧饭-人生旅途中人生旅途中<b></b></a></span>
+
+            <div class="user_infor_pop">
+                <ul class="fSize-12">
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="activityMain layout">
+<div id="container" class="activity_myhistory w_1004 pBgC">
+<div class="myhistroyTitle">
+    <div class="black10"></div>
+    <div class="black10"></div>
+    <div class="mes_com_box_Tab">
+        <a href="javascript:;">活动信息</a>
+        <a href="javascript:;" class="active">我的活动</a>
+    </div>
+
+</div>
+<!-- myhistroyTitle -->
+<div class="myhistoryMenu">
+    <ul>
+        <li>活动信息及评论</li>
+        <li><a href="javascript:;">浏览</a></li>
+        <li><a href="javascript:;">上传</a></li>
+        <li><a class="current" href="javascript:;">管理相册</a></li>
+        <li>浏览发表管理感想</li>
+    </ul>
+</div>
+<!-- myhistoryMenu -->
+<div class="AM_photoEditWarp">
+<h4 class="tBgb AM_photoAlbum"><b class="icon32 fCblue">历史活动相册</b>&nbsp;&nbsp;可能管理相册
+    <small class="fSize-12 fCblue">(56)</small>
+    &nbsp;&nbsp;可能管理图片数
+    <small class="fSize-12 fCblue">(103)</small>
+</h4>
+<div class=" f_left" style="margin-top:20px;">
+    <div class="album-tabs">
+        <a href="javascript:" class="album-prev" title="上一页"></a>
+
+        <div class="album-clip album-vertical">
+            <ul class="album-panel albums clearfix">
+                <li>
+                    <div class="album-box album-sys">
+                        <div class="album-label"></div>
+                        <img alt="" class="album" src="../images/default/205-145.png"/>
+
+                        <div class="album-name"><a href="javascript:;">我的周末派对</a>(24)</div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="album-box album-sys">
+                        <div class="album-label"></div>
+                        <img alt="" class="album" src="../images/default/205-145.png"/>
+
+                        <div class="album-name"><a href="javascript:;">我的周末派对</a>(24)</div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="album-box album-sys">
+                        <div class="album-label"></div>
+                        <img alt="" class="album" src="../images/default/205-145.png"/>
+
+                        <div class="album-name"><a href="javascript:;">我的周末派对</a>(24)</div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="album-box ">
+                        <div class="album-label"></div>
+                        <img alt="" class="album" src="../images/default/205-145.png"/>
+
+                        <div class="album-name"><a href="javascript:;">我的周末派对</a>(24)</div>
+
+                    </div>
+                </li>
+
+                <li>
+                    <div class="album-box album-sys">
+                        <div class="album-label"></div>
+                        <img alt="" class="album" src="../images/default/205-145.png"/>
+
+                        <div class="album-name"><a href="javascript:;">我的周末派对</a>(24)</div>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <a href="javascript:" class="album-next" title="下一页"></a>
+
+    </div>
+</div>
+<!--pohtoedit widget -->
+<div class="AM_photoEdit_Main f_left">
+<div class="photoAlbumName"><span class="f_right" style="margin:0 36px 0 0;"><a href="javascript:;"
+                                                                                class="delAlbum">&nbsp;</a><a
+        href="javascript:;" class="disableAlbum">&nbsp;</a></span>相册名&nbsp;&nbsp;相片总数（23）&nbsp;&nbsp;可编辑数（15）
+</div>
+<div class="photoList">
+<div class="photoListHead clearfix">
+    <!-- 分页左边 -->
+    <div class="f_left">
+             <span class="search-textbox">
+                 <input type="text" value="相片编号/相片序号" inputdefault="相片编号/相片序号"/>
+                 <input type="button"/>
+             </span></div>
+    <!-- 分页左边 -->
+    <!-- 分页右边 -->
+    <div class="pageList  f_right"><span>第</span><input type="text" class="text"
+                                                        value="0"><span>页</span><span>共</span><span>0</span><span>页</span><span>共</span><span>0</span><span>条</span><a
+            title="首页" href="javascript:;">首页</a><a title="上一页" href="javascript:;">上一页</a><a title="下一页"
+                                                                                              href="javascript:;">下一页</a><a
+            title="尾页" href="javascript:;">尾页</a></div>
+    <!-- 分页右边 -->
+</div>
+
+<!-- photoList Head -->
+<ul class="photoListMain">
+<li class="hover">
+    <table width="708" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="40" align="center" rowspan="2"><input type="checkbox" name="" id=""/></td>
+            <td width="140" align="center" rowspan="2"><img src="../images/default/205-145.png" width="130"
+                                                            height="106" alt=""/></td>
+            <td>序号：
+                <input type="text" class="text" name="" id="" style="width:45px;"/>
+                &nbsp;&nbsp;名称：
+                <input type="text" class="text" name="" id=""/></td>
+            <td width="200">上传时间：2011/12/23</td>
+        </tr>
+        <tr>
+            <td align="left">描述：
+                <textarea name="" id="" cols="30" rows="4" style="vertical-align:text-top;"
+                          class="textarea"></textarea></td>
+            <td>
+                <div class="operatBox">
+                    <a href="javascript:;" class="disable" title="禁用">禁用</a><a href="javascript:;"
+                                                                               class="moveUp"
+                                                                               title="上移">上移</a><a
+                        href="javascript:;" class="moveDown" title="下移">下移</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</li>
+<li>
+    <table width="708" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="40" align="center" rowspan="2"><input type="checkbox" name="" id=""/></td>
+            <td width="140" align="center" rowspan="2"><img src="../images/default/205-145.png" width="130"
+                                                            height="106" alt=""/></td>
+            <td>序号：
+                <input type="text" class="text" name="" id="" style="width:45px;"/>
+                &nbsp;&nbsp;名称：
+                <input type="text" class="text" name="" id=""/></td>
+            <td width="200">上传时间：2011/12/23</td>
+        </tr>
+        <tr>
+            <td align="left">描述：
+                <textarea name="" id="" cols="30" rows="4" style="vertical-align:text-top;"
+                          class="textarea"></textarea></td>
+            <td>
+                <div class="operatBox">
+                    <a href="javascript:;" class="disable" title="禁用">禁用</a><a href="javascript:;"
+                                                                               class="moveUp"
+                                                                               title="上移">上移</a><a
+                        href="javascript:;" class="moveDown" title="下移">下移</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</li>
+<li>
+    <table width="708" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="40" align="center" rowspan="2"><input type="checkbox" name="" id=""/></td>
+            <td width="140" align="center" rowspan="2"><img src="../images/default/205-145.png" width="130"
+                                                            height="106" alt=""/></td>
+            <td>序号：
+                <input type="text" class="text" name="" id="" style="width:45px;"/>
+                &nbsp;&nbsp;名称：
+                <input type="text" class="text" name="" id=""/></td>
+            <td width="200">上传时间：2011/12/23</td>
+        </tr>
+        <tr>
+            <td align="left">描述：
+                <textarea name="" id="" cols="30" rows="4" style="vertical-align:text-top;"
+                          class="textarea"></textarea></td>
+            <td>
+                <div class="operatBox">
+                    <a href="javascript:;" class="disable" title="禁用">禁用</a><a href="javascript:;"
+                                                                               class="moveUp"
+                                                                               title="上移">上移</a><a
+                        href="javascript:;" class="moveDown" title="下移">下移</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</li>
+<li>
+    <table width="708" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="40" align="center" rowspan="2"><input type="checkbox" name="" id=""/></td>
+            <td width="140" align="center" rowspan="2"><img src="../images/default/205-145.png" width="130"
+                                                            height="106" alt=""/></td>
+            <td>序号：
+                <input type="text" class="text" name="" id="" style="width:45px;"/>
+                &nbsp;&nbsp;名称：
+                <input type="text" class="text" name="" id=""/></td>
+            <td width="200">上传时间：2011/12/23</td>
+        </tr>
+        <tr>
+            <td align="left">描述：
+                <textarea name="" id="" cols="30" rows="4" style="vertical-align:text-top;"
+                          class="textarea"></textarea></td>
+            <td>
+                <div class="operatBox">
+                    <a href="javascript:;" class="disable" title="禁用">禁用</a><a href="javascript:;"
+                                                                               class="moveUp"
+                                                                               title="上移">上移</a><a
+                        href="javascript:;" class="moveDown" title="下移">下移</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</li>
+<li>
+    <table width="708" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="40" align="center" rowspan="2"><input type="checkbox" name="" id=""/></td>
+            <td width="140" align="center" rowspan="2"><img src="../images/default/205-145.png" width="130"
+                                                            height="106" alt=""/></td>
+            <td>序号：
+                <input type="text" class="text" name="" id="" style="width:45px;"/>
+                &nbsp;&nbsp;名称：
+                <input type="text" class="text" name="" id=""/></td>
+            <td width="200">上传时间：2011/12/23</td>
+        </tr>
+        <tr>
+            <td align="left">描述：
+                <textarea name="" id="" cols="30" rows="4" style="vertical-align:text-top;"
+                          class="textarea"></textarea></td>
+            <td>
+                <div class="operatBox">
+                    <a href="javascript:;" class="disable" title="禁用">禁用</a><a href="javascript:;"
+                                                                               class="moveUp"
+                                                                               title="上移">上移</a><a
+                        href="javascript:;" class="moveDown" title="下移">下移</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</li>
+<li>
+    <table width="708" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="40" align="center" rowspan="2"><input type="checkbox" name="" id=""/></td>
+            <td width="140" align="center" rowspan="2"><img src="../images/default/205-145.png" width="130"
+                                                            height="106" alt=""/></td>
+            <td>序号：
+                <input type="text" class="text" name="" id="" style="width:45px;"/>
+                &nbsp;&nbsp;名称：
+                <input type="text" class="text" name="" id=""/></td>
+            <td width="200">上传时间：2011/12/23</td>
+        </tr>
+        <tr>
+            <td align="left">描述：
+                <textarea name="" id="" cols="30" rows="4" style="vertical-align:text-top;"
+                          class="textarea"></textarea></td>
+            <td>
+                <div class="operatBox">
+                    <a href="javascript:;" class="disable" title="禁用">禁用</a><a href="javascript:;"
+                                                                               class="moveUp"
+                                                                               title="上移">上移</a><a
+                        href="javascript:;" class="moveDown" title="下移">下移</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</li>
+<li>
+    <table width="708" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="40" align="center" rowspan="2"><input type="checkbox" name="" id=""/></td>
+            <td width="140" align="center" rowspan="2"><img src="../images/default/205-145.png" width="130"
+                                                            height="106" alt=""/></td>
+            <td>序号：
+                <input type="text" class="text" name="" id="" style="width:45px;"/>
+                &nbsp;&nbsp;名称：
+                <input type="text" class="text" name="" id=""/></td>
+            <td width="200">上传时间：2011/12/23</td>
+        </tr>
+        <tr>
+            <td align="left">描述：
+                <textarea name="" id="" cols="30" rows="4" style="vertical-align:text-top;"
+                          class="textarea"></textarea></td>
+            <td>
+                <div class="operatBox">
+                    <a href="javascript:;" class="disable" title="禁用">禁用</a><a href="javascript:;"
+                                                                               class="moveUp"
+                                                                               title="上移">上移</a><a
+                        href="javascript:;" class="moveDown" title="下移">下移</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</li>
+<li>
+    <table width="708" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="40" align="center" rowspan="2"><input type="checkbox" name="" id=""/></td>
+            <td width="140" align="center" rowspan="2"><img src="../images/default/205-145.png" width="130"
+                                                            height="106" alt=""/></td>
+            <td>序号：
+                <input type="text" class="text" name="" id="" style="width:45px;"/>
+                &nbsp;&nbsp;名称：
+                <input type="text" class="text" name="" id=""/></td>
+            <td width="200">上传时间：2011/12/23</td>
+        </tr>
+        <tr>
+            <td align="left">描述：
+                <textarea name="" id="" cols="30" rows="4" style="vertical-align:text-top;"
+                          class="textarea"></textarea></td>
+            <td>
+                <div class="operatBox">
+                    <a href="javascript:;" class="disable" title="禁用">禁用</a><a href="javascript:;"
+                                                                               class="moveUp"
+                                                                               title="上移">上移</a><a
+                        href="javascript:;" class="moveDown" title="下移">下移</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</li>
+</ul>
+<!-- photoList main -->
+<div class="photoListFoot">
+    <table width="708" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="40" align="center"><input type="checkbox" name="" id=""/></td>
+            <td colspan="2"><a href="javascript:;"> 删除 </a><a href="javascript:;">屏蔽</a></td>
+            <td>
+                <div class="pageList  f_right"><a href="javascript:;">显示更多</a>&nbsp;&nbsp;<span>第</span><input
+                        type="text" class="text"
+                        value="0"><span>页</span><span>共</span><span>0</span><span>页</span><span>共</span><span>0</span><span>条</span><a
+                        title="首页" href="javascript:;">首页</a><a title="上一页" href="javascript:;">上一页</a><a
+                        title="下一页" href="javascript:;">下一页</a><a title="尾页" href="javascript:;">尾页</a></div>
+                <!-- 分页右边 -->
+</div>
+</td>
+</tr>
+</table>
+</div>
+<!-- photoList Foot -->
+</div>
+</div>
+<!--photoList main -->
+<div class="clear"></div>
+</div>
+<!-- AM_photoEditWarp -->
+</div>
+</div>
+<!--Main-->
+<div class="footer layout"><span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+
+    <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a
+            href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+</div>
+<script type="text/javascript">
+    new $.ui.tabs('.album-tabs', {
+        effect:'y',
+        offset:3,
+        widget:{
+            panel:'.album-panel',
+            clip:'.album-clip',
+            prev:'.album-prev',
+            next:'.album-next'
+        }
+
+    });
+</script>
+</body>
+</html>

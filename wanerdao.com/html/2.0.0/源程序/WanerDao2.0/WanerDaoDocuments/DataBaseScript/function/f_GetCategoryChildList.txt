@@ -1,0 +1,28 @@
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `f_GetCategoryChildList`(rootId varchar(40),
+                                                                    section_type int -- section_type类型  -1:父类 1:时令 2：一般 3：自定义 0:1,2,3
+                                                                    ) RETURNS varchar(1000) CHARSET utf8 COLLATE utf8_bin
+BEGIN
+       DECLARE sTemp varchar(4096);
+       DECLARE sTempChd VARCHAR(4096);
+    
+       SET sTemp = '$';
+       SET sTempChd =cast(rootId as CHAR);
+    
+       WHILE sTempChd is not null DO
+         SET sTemp = concat(sTemp,',',sTempChd);
+         SELECT group_concat(id) INTO sTempChd FROM activitycategorysettings where active=1 and FIND_IN_SET(parent_id,sTempChd)>0 and language_id='a1c3e20e-f181-11e0-8a53-00306701b527';
+       END WHILE;
+       if section_type=0 then
+            SELECT group_concat(id) INTO sTemp FROM activitycategorysettings where active=1 and section_type_id in (1,2,3) and  FIND_IN_SET(id,sTemp)>0 and language_id='a1c3e20e-f181-11e0-8a53-00306701b527';
+       else
+            SELECT group_concat(id) INTO sTemp FROM activitycategorysettings where active=1 and section_type_id=section_type and  FIND_IN_SET(id,sTemp)>0 and language_id='a1c3e20e-f181-11e0-8a53-00306701b527';
+       end if;
+       
+       RETURN sTemp;
+     END

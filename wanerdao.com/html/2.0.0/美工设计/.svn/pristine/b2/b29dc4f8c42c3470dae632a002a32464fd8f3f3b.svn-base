@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>圈子成员-关系-玩儿道</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+    <meta name="keywords" content="圈子成员，关系，玩儿道，生活社交网络"/>
+    <meta name="description" content="圈子的成员列表，管理员可以在这里批准新成员"/>
+
+
+    <link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all"/>
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="../css/relationship.css" media="all"/>
+    <script src="../scripts/jquery-1.7.2.min.js"></script>
+    <script src="../scripts/global.js"></script>
+    <script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $(".drop_down").toggle(function () {
+                $(".drop_down i").width(0);
+                $(".drop_down i").css("display", "none");
+                $(this).children("i").width($(this).width() + 25);
+                $(this).children("i").css("display", "block");
+            }, function () {
+                $(this).children("i").css("display", "none");
+            })
+            $(document).mousedown(function () {
+                $(".drop_down i").css("display", "none");
+            })
+
+            $(".list_member li").hover(function () {
+                $(this).addClass("liw_bg_blue");
+                $(this).children(".flAtteDiv").css("display", "none");
+            }, function () {
+                $(this).removeClass("liw_bg_blue");
+                $(this).children(".flAtteDiv").css("display", "block");
+            })
+
+        });
+    </script>
+</head>
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+    <div class="header layout">
+        <a href="index.html" class="logo"></a>
+
+        <div class="home" hoverable="true">
+            <a href="javascript:;" class="go_home" title="回到首页"></a>
+
+            <div class="home_pop">
+                <ul>
+                    <li>
+                        <a href="javascript:;" class="hp_title">活动</a>
+
+                        <p><a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a
+                                href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a
+                                href="javascript:;">我的活动</a><a href="javascript:;">历史活动</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">个人</a>
+
+                        <p><a href="javascript:;">资料</a><a href="javascript:;">日志</a><a href="javascript:;">相册</a><a
+                                href="javascript:;">视频</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">关系</a>
+
+                        <p><a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a
+                                href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a
+                                href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+            <div class="search_bg vm">
+                <input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖"/><input value=""
+                                                                                                             type="submit"
+                                                                                                             class="search_btn"/>
+            </div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img
+                src="../images/default/32-32.jpg" width="32" height="32"></a><span class="user_infor_name"><a
+                href="javascript:;">烧饭-人生旅途中人生旅途中<b></b></a></span>
+
+            <div class="user_infor_pop">
+                <ul>
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+<div class="mes_box per_blog clearfix">
+
+<div class="black10"></div>
+<div class="black5"></div>
+<div class="mes_com_box_Tab">
+    <a href="javascript:;">我的好友</a>
+    <a href="javascript:;">寻找好友</a>
+    <a href="javascript:;">邀请好友</a>
+    <a href="javascript:;">关注设置</a>
+    <a href="javascript:;" class="active">我的圈子</a>
+    <a href="javascript:;">寻找圈子</a>
+    <a href="javascript:;">创建圈子</a>
+</div>
+<div class="black10"></div>
+
+
+<div class="log_tab clearfix mb12">
+    <ul>
+        <li><a href="javascript:;">信息</a></li>
+        <li><a href="javascript:;">综合</a></li>
+        <li><a href="javascript:;" class="tagf">成员</a></li>
+        <li><a href="javascript:;">财务</a></li>
+        <li><a href="javascript:;">设置</a></li>
+    </ul>
+</div>
+
+<div class="ColuTwo_wrap clearfix">
+<div class="leftside">
+    <div class="black10"></div>
+    <div class="addGroup">
+        <h3 class="groupTit f14 follow_tit">搜索成员</h3>
+
+        <p><input type="text" class="text" style="width:122px; color:#CCC;"
+                  onclick="if(this.value==this.defaultValue){this.value=''; this.style.color='#333';}"
+                  onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc'}"
+                  value="请输入圈子名称"/> <input type="button" value="搜 索" class="prBtn"></p>
+    </div>
+</div>
+<div class="rCon">
+    <div class="topNav">
+        <div class="clearfix pagewrap">
+            <!-- 分页右边 -->
+            <div class="pageList  f_right"><span>第</span><input type="text" class="text"
+                                                                value="0"><span>页</span><span>共</span><span>0</span><span>页</span><span>共</span><span>0</span><span>条</span><span
+                    title="首页" href="javascript:;">首页</span><span title="上一页" href="javascript:;">上一页</span><span
+                    title="下一页" href="javascript:;">下一页</span><span title="尾页" href="javascript:;">尾页</span>
+            </div>
+            <!-- 分页右边 -->
+        </div>
+    </div>
+
+    <div class="list_member">
+        <ul>
+            <li class="liw_bg">
+                <dl>
+                    <dt><a href="javascript:;"><img src="../images/default/32-32.jpg" alt=""/></a></dt>
+                    <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                </dl>
+                <div class="se_center">
+                    <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span>
+                    <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span>
+                    <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span>
+                    <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span>
+                    <span><font color="#999999">工作单位：</font> GOOGLE INC</span>
+                </div>
+                <div class="se_righbtn"><a href="javascript:;" class="button radius-blue-button"><span
+                        class="icon icon-blue-firend"></span>交友</a><a href="javascript:;"
+                                                                      class="button radius-blue-button"><span
+                        class="icon icon-blue-love"></span>已交友</a><a href="javascript:;"
+                                                                     class="button radius-blue-button"><span
+                        class="icon icon-deepblue-close"></span>踢除</a></div>
+            </li>
+            <li class="liw_bg">
+                <dl>
+                    <dt><a href="javascript:;"><img src="../images/default/32-32.jpg" alt=""/></a></dt>
+                    <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                </dl>
+                <div class="se_center">
+                    <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span>
+                    <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span>
+                    <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span>
+                    <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span>
+                    <span><font color="#999999">工作单位：</font> GOOGLE INC</span>
+                </div>
+                <div class="se_righbtn"><a href="javascript:;" class="button radius-blue-button"><span
+                        class="icon icon-blue-right"></span>批准</a><a href="javascript:;"
+                                                                     class="button radius-gay-button"><span
+                        class="icon icon-gay-close"></span>拒绝</a>
+                    <a href="javascript:;" class="button radius-blue-button"><span
+                            class="icon icon-deepblue-message"></span>发信息</a></div>
+            </li>
+            <li class="liw_bg">
+                <dl>
+                    <dt><a href="javascript:;"><img src="../images/default/32-32.jpg" alt=""/></a></dt>
+                    <dd><a href="javascript:;">AHXIAOPENG</a></dd>
+                </dl>
+                <div class="se_center">
+                    <span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span>
+                    <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span>
+                    <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span>
+                    <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span>
+                    <span><font color="#999999">工作单位：</font> GOOGLE INC</span>
+                </div>
+                <div class="se_righbtn"><a href="javascript:;" class="button radius-gay-button"><span
+                        class="icon icon-gay-right"></span>批准</a>
+                    <a href="javascript:;" class="button radius-gay-button"><span
+                            class="icon icon-gay-close"></span>拒绝</a>
+                    <a href="javascript:;" class="button radius-gay-button"><span
+                            class="icon icon-gay-message"></span>发信息</a></div>
+            </li>
+            <li class="">
+                <dl>
+                    <dt><a href="javascript:;"><img src="../images/default/32-32.jpg" alt=""/></a></dt>
+                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                </dl>
+                <div class="se_center"><span><img src="../images/pic_poll1.jpg"/> <a href="javascript:;"
+                                                                                     style="color:#0085c5">AHXIAOPENG</a></span>
+                </div>
+                <div class="flAtteDiv"><a href="javascript:;" class="button blue-button">已关注</a></div>
+                <div class="se_righbtn se_righbtn_atten"><a href="javascript:;"
+                                                            class="button radius-gay-button"><span
+                        class="icon icon-gay-love"></span>交友</a><a href="javascript:;"
+                                                                   class="button radius-gay-button"><span
+                        class="icon icon-gay-close"></span>踢出</a><a href="javascript:;"
+                                                                    class="button radius-gay-button"><span
+                        class="icon icon-gay-love"></span>关注</a></div>
+            </li>
+            <li class="">
+                <dl>
+                    <dt><a href="javascript:;"><img src="../images/default/32-32.jpg" alt=""/></a></dt>
+                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                </dl>
+                <div class="se_center"><span><img src="../images/pic_poll2.jpg"/> <a href="javascript:;"
+                                                                                     style="color:#0085c5">AHXIAOPENG</a></span>
+                </div>
+                <div class="se_righbtn"><a href="javascript:;" class="button radius-gay-button"><span
+                        class="icon icon-gay-love"></span>交友</a><a href="javascript:;"
+                                                                   class="button radius-gay-button"><span
+                        class="icon icon-gay-close"></span>踢出</a><a href="javascript:;"
+                                                                    class="button radius-gay-button"><span
+                        class="icon icon-gay-love"></span>关注</a></div>
+            </li>
+            <li class="">
+                <dl>
+                    <dt><a href="javascript:;"><img src="../images/default/32-32.jpg" alt=""/></a></dt>
+                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                </dl>
+                <div class="se_center"><span><img src="../images/pic_poll3.png"/> <a href="javascript:;"
+                                                                                     style="color:#0085c5">AHXIAOPENG</a></span>
+
+                    <div class="se_righbtn"><a href="javascript:;" class="button radius-gay-button"><span
+                            class="icon icon-gay-love"></span>交友</a><a href="javascript:;"
+                                                                       class="button radius-gay-button"><span
+                            class="icon icon-gay-close"></span>踢出</a><a href="javascript:;"
+                                                                        class="button radius-gay-button"><span
+                            class="icon icon-gay-love"></span>关注</a></div>
+                </div>
+            </li>
+            <li class="">
+                <dl>
+                    <dt><a href="javascript:;"><img src="../images/default/32-32.jpg" alt=""/></a></dt>
+                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                </dl>
+                <div class="se_center"><span><img src="../images/pic_poll4.png"/> <a href="javascript:;"
+                                                                                     style="color:#0085c5">AHXIAOPENG</a></span>
+
+                    <div class="se_righbtn"><a href="javascript:;" class="button radius-gay-button"><span
+                            class="icon icon-gay-love"></span>交友</a><a href="javascript:;"
+                                                                       class="button radius-gay-button"><span
+                            class="icon icon-gay-close"></span>踢出</a><a href="javascript:;"
+                                                                        class="button radius-gay-button"><span
+                            class="icon icon-gay-love"></span>关注</a></div>
+                </div>
+            </li>
+            <li class="">
+                <dl>
+                    <dt><a href="javascript:;"><img src="../images/default/32-32.jpg" alt=""/></a></dt>
+                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                </dl>
+                <div class="se_center"><span><a href="javascript:;"
+                                                style="color:#0085c5">AHXIAOPENG</a></span>
+
+                    <div class="se_righbtn"><a href="javascript:;" class="button radius-gay-button"><span
+                            class="icon icon-gay-love"></span>交友</a><a href="javascript:;"
+                                                                       class="button radius-gay-button"><span
+                            class="icon icon-gay-close"></span>踢出</a><a href="javascript:;"
+                                                                        class="button radius-gay-button"><span
+                            class="icon icon-gay-love"></span>关注</a></div>
+                </div>
+            </li>
+            <li class="">
+                <dl>
+                    <dt><a href="javascript:;"><img src="../images/default/32-32.jpg" alt=""/></a></dt>
+                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                </dl>
+                <div class="se_center"><span><a href="javascript:;"
+                                                style="color:#0085c5">AHXIAOPENG</a></span>
+
+                    <div class="se_righbtn"><a href="javascript:;" class="button radius-gay-button"><span
+                            class="icon icon-gay-love"></span>交友</a><a href="javascript:;"
+                                                                       class="button radius-gay-button"><span
+                            class="icon icon-gay-close"></span>踢出</a><a href="javascript:;"
+                                                                        class="button radius-gay-button"><span
+                            class="icon icon-gay-love"></span>关注</a></div>
+                </div>
+            </li>
+            <li class="">
+                <dl>
+                    <dt><a href="javascript:;"><img src="../images/default/32-32.jpg" alt=""/></a></dt>
+                    <!--<dd><a href="javascript:;">AHXIAOPENG</a></dd>-->
+                </dl>
+                <div class="se_center"><span> <a href="javascript:;"
+                                                 style="color:#0085c5">AHXIAOPENG</a></span>
+
+                    <div class="se_righbtn"><a href="javascript:;" class="button radius-gay-button"><span
+                            class="icon icon-gay-love"></span>交友</a><a href="javascript:;"
+                                                                       class="button radius-gay-button"><span
+                            class="icon icon-gay-close"></span>踢出</a><a href="javascript:;"
+                                                                        class="button radius-gay-button"><span
+                            class="icon icon-gay-love"></span>关注</a></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="topNav bmNav">
+        <div class="clearfix pagewrap">
+            <!-- 分页右边 -->
+            <div class="pageList  f_right"><span>第</span><input type="text" class="text"
+                                                                value="0"><span>页</span><span>共</span><span>0</span><span>页</span><span>共</span><span>0</span><span>条</span><a
+                    title="首页" href="javascript:;">首页</a><a title="上一页" href="javascript:;">上一页</a><a
+                    title="下一页" href="javascript:;">下一页</a><a title="尾页" href="javascript:;">尾页</a></div>
+            <!-- 分页右边 -->
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+</div>
+<div class="mes_main_bot"></div>
+
+
+<div class="footer layout">
+    <span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+
+    <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a
+            href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+{php $cur_menu = 'new';}
+{php $load_css = array('photo','team','bigphoto');}
+{php $footer_js =  array('jquery.plus.min.js','class.tab')}
+{template "public","header"}
+
+
+<!--中间图-->
+<div id="main">
+    <div id="productCats" class="flexslider">
+        <h2><span>新 闻 花 絮</span></h2>
+
+        <div class="semitransp">
+            <a id="back-portfolio" href="{buildurl('lists','index','content',array('catid'=>12))}">返回上一页</a>
+
+            <div id="gallery-slider" class="flexslider" data-loader="Class-tabs" data-options="auto:true,initCallback:sliderInit,effect:'fade'">
+                <div class="tab-clip" data-role="clip" >
+                    <ul class="tab-panel" data-role="panel">
+                        {loop $pictureurls $pic_k $r}
+                        <li><img src="{$r[url]}"/></li>
+                        {/loop}
+                    </ul>
+                </div>
+                <ul class="flex-direction-nav">
+                    <li><a href="javascript:;" class="flex-prev" data-role="prev">Previous</a></li>
+                    <li><a href="javascript:;" class="flex-next" data-role="next">Next</a></li>
+                </ul>
+                <div class="flex-pauseplay"><a class="flex-pause">Pause slideshow</a></div>
+            </div>
+            <div class="numbers-info">- <span class="current-photo-num">1</span> of <span class="photo-total">14</span> -</div>
+            <script type="text/javascript">
+                $(function(){
+                    $('.photo-total').html($('#gallery-slider .tab-panel li').length);
+                })
+                function sliderInit(){
+                    var that = this;
+                    this.on('onchange',function(e , args ){
+                        $('.current-photo-num').html(args.current + 1);
+                    })
+                    $('.flex-pause').click(function(){
+                        if(!$(this).hasClass('stop')){
+                            $(this).html('Start slideshow').addClass('stop')
+                            that.stop();
+                        }
+                        else{
+                            $(this).html('Pause slideshow').removeClass('stop')
+                            that.auto();
+                        }
+                    })
+                }
+            </script>
+        </div>
+    </div>
+</div>
+<!--中间图-->
+
+
+
+{template "public","footer"}

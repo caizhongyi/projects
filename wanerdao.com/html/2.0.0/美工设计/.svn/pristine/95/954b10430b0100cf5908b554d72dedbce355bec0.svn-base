@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>上传个人相片-个人-玩儿道</title>
+<!--  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> -->
+<meta name="keywords" content="上传照片，个人，玩儿道，生活社交网络" />
+<meta name="description" content="上传多张相片到指定的个人相册" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../css/activity.css" media="all" />
+
+
+<link rel="stylesheet" type="text/css" href="../css/personal.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+
+</head>
+<body class="pBgB fSize-12">
+<div class="header_wrapper pBgH">
+ <div class="header layout"><a href="index.html" class="logo"></a>
+  <div class="home" hoverable="true"><a href="javascript:;" class="go_home" title="回到首页"></a>
+   <div class="home_pop">
+    <ul>
+     <li><a href="javascript:;" class="hp_title">活动</a>
+      <p><a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a href="javascript:;">我的活动</a><a href="javascript:;">历史活动</a></p>
+     </li>
+     <li><a href="javascript:;" class="hp_title">个人</a>
+      <p><a href="javascript:;">资料</a><a href="javascript:;">日志</a><a href="javascript:;">相册</a><a href="javascript:;">视频</a></p>
+     </li>
+     <li><a href="javascript:;" class="hp_title">关系</a>
+      <p><a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a></p>
+     </li>
+    </ul>
+    <div class="home_pop_bottom">
+     <p></p>
+    </div>
+   </div>
+  </div>
+  <div class="search">
+   <div class="search_bg vm">
+    <input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖" /><input value="" type="submit" class="search_btn" />
+   </div>
+  </div>
+  <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/default/32-32.jpg" width="32" height="32" /></a><span class="user_infor_name"><a href="javascript:;">烧饭-人生旅途中人生旅途中<b></b></a></span>
+   <div class="user_infor_pop">
+    <ul class="fSize-12">
+     <li><a href="javascript:;">资料修改</a></li>
+     <li><a href="javascript:;">账号管理</a></li>
+     <li><a href="javascript:;">隐私设置</a></li>
+     <li><a href="javascript:;">切换语言</a></li>
+     <li class="last"><a href="javascript:;">退出</a></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div id="container" class="container activityMain">
+    <div class="black10"></div><div class="black10"></div>
+    <div class="mes_com_box_Tab">
+         <a href="javascript:;">资料</a>
+         <a href="javascript:;">日志</a>
+         <a class="active" href="javascript:;">相册</a>
+         <a href="javascript:;">视频</a>
+      </div>
+    <div class="tabs-panel">
+        <!-- myhistroyTitle -->
+        <div class="myhistoryMenu">
+          <ul>
+            <li><a href="javascript:;">浏览相册</a></li>
+            <li><a class="current" href="javascript:;">上传相册</a></li>
+            <li><a href="javascript:;">管理相册</a></li>
+          </ul>
+        </div>
+ <!-- myhistoryMenu -->
+ <div class="AM_photoEditWarp">
+  <h4 class="tBgb AM_photoAlbum"><b class="icon icon-photo">上传设置</b><em>（上传步骤：1.选择上传相册；2.上传照片预览；3.确定提交照片）</em></h4>
+	
+    
+    <div class="form video-upload-form">
+    	<ul>
+        	<li><input  type="checkbox"/><label>上传到新文件夹，文件夹名</label><input  type="text" class="text"/></li>
+            <li><input  type="checkbox"/><label>上传到已存在的文件夹</label><select><option>共享同一个活动的文件夹名</option></select></li>
+            <li><label>权&nbsp;&nbsp;&nbsp;;限：</label><select><option>选择权限</option></select></li>
+            <li><input  type="checkbox"/><label>共享到活动：</label><select><option>选择活动</option></select>&nbsp;&nbsp;<input  type="text" class="text" value=""/></li>
+        </ul>
+    	
+        <div><input type="button" class="button buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="上传" /><input type="button" class="button buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="确定" /></div>
+    </div>
+    
+    <h3 class="media-header fb">照片预览</h3>
+    
+    <ul class="photos clearfix ">
+        <li>
+            <a href="javascript:;" class="icon close-5 photos-close"></a>
+            <img alt=""  src="../images/default/205-145.png"/>
+            <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+   		</li> 
+          <li>
+        <a href="javascript:;" class="icon close-5 photos-close"></a>
+        <img alt=""  src="../images/default/205-145.png"/>
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li>
+    
+      <li>
+        <a href="javascript:;" class="icon close-5 photos-close"></a>
+        <img alt=""  src="../images/default/205-145.png"/>
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li>
+    
+      <li>
+        <a href="javascript:;" class="icon close-5 photos-close"></a>
+        <img alt=""  src="../images/default/205-145.png"/>
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li>
+    
+      <li>
+        <a href="javascript:;" class="icon close-5 photos-close"></a>
+        <img alt=""  src="../images/default/205-145.png"/>
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li> 
+    
+    <li>
+        <a href="javascript:;" class="icon close-5 photos-close"></a>
+        <img alt=""  src="../images/default/205-145.png"/>
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li>
+    <li>
+        <a href="javascript:;" class="icon close-5 photos-close"></a>
+        <img alt=""  src="../images/default/205-145.png"/>
+        <div class="photos-name"><a href="javascript:;">我的周末派对</a></div>
+    </li>
+    </ul>
+  </div>
+
+  <div class="clear"></div>
+ </div>
+ <!-- AM_photoEditWarp -->
+
+</div>
+<!--Main-->
+<div class="footer layout"><span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+ <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>玩道弹出窗</title>
+
+    <meta name="keywords" content="玩儿道弹出窗口"/>
+    <meta name="description"
+          content=""/>
+
+
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content="" />
+    <meta name="copyright" content="2001-2010 Comsenz Inc." />
+    <link rel="Bookmark" href="favicon.ico" />
+    <link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/font-awesome.min.css"/>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="../css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/print.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/en.css"/>
+
+
+
+    <!-- jquery 库 -->
+    <link rel="stylesheet" href="../css/animate.min.css"/>
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js" ></script>
+    <script type="text/javascript" src="../js/jquery.plus.min.js" ></script>
+    <style type="text/css">
+        .dialog{
+            display: block;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="dialog" class="dialog ui-dialog" data-options="handler:'header'" >
+    <div class="bg"></div>
+    <div class="inner tabs ui-tabs">
+        <div class="hd">
+            <h3>
+                身份验证
+            </h3>
+            <a href="javascript:;" class="close" data-options="region:'hide'"></a>
+        </div>
+        <div class="bd">
+            <div class="tabs-master">
+                <div class="nav nav-tabs ">
+                    <li class="selected"><a  href="javascript:;" >注册</a></li>
+                    <li><a href="javascript:;">登录</a></li>
+                </div>
+            </div>
+            <div class="tabs-panel">
+                <div class="container form">
+                    <form >
+                        <div class="form-item form-panel-mini"><p class="text-info">永久免费</p></div>
+                        <div class="form-item">
+                            <label><span class="input-label-mini">邮件:</span><input type="text" class="text text-large" name="username" id="username"></label><span class="tips-static error">*请输入邮箱地址</span>
+                        </div>
+                        <div class="form-item">
+                            <label><span  class="input-label-mini">设置密码:</span><input type="password" class="text text-large" name="密码" id="密码"></label>&nbsp;强度:<span class="pwd-security">
+                            <i class="security-empty-1 security-1"></i><i class="security-empty-2 security-2"></i><i class="security-empty-3 "></i>
+                        </span><span class="security-result">中</span>
+                        </div>
+                        <div class="form-item">
+                            <label><span  class="input-label-mini">再次确认:</span><input type="password" class="text text-large" name="密码" id=""></label><span class="tips-static error">* 请输入您的密码</span>
+                        </div>
+                        <div class="form-item">
+                            <label><span class="input-label-mini">真实姓名:</span><input type="password" class="text text-large" name="密码" id=""></label><span class="tips-static error">* 请输入您的密码</span>
+                        </div>
+                        <div class="form-item">
+                            <label class="input-label-mini">性别:</label><label  class="radio"><input id="man" name="sex" type="radio">男</label><label for="feman" class="radio"><input id="feman" name="sex" checked="checked" type="radio">女</label>
+                        </div>
+                        <div class="form-item">
+                            <label  class="input-label-mini">生日:</label><span class="combo text-mini" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">12</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="combo text-mini" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">3</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="combo text-small" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">2012</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                        </div>
+
+                        <div class="form-item form-panel-mini">
+                        <span class="tips-result">
+                            <ul >
+                                <li>* Password error</li>
+                                <li>Hint information</li>
+                            </ul>
+                        </span>
+                        </div>
+                        <div class="form-item form-panel-mini">
+                            <input type="button" class="btn btn-primary input-control" value="注册" data-options="region:'hide'"><input type="button" class="btn btn-default input-control" value="取消"
+                                                                                                          data-options="region:'hide'" >
+                        </div>
+                    </form>
+                </div>
+                <div  class="form container" style="display: none;">
+                    <form action="" >
+                        <div class="form-item">
+                            <label for="username" class="input-label-mini">账号:</label><input type="text" class="text text-large" name="username" id="username"><span class="tips-static error">* 输入帐户名，And Case-sensitive</span>
+                        </div>
+                        <div class="form-item">
+                            <label for="密码" class="input-label-mini">密码:</label><input type="text" class="text text-large" name="username" id="密码"><span class="tips-static error">* 请输入您的密码</span>
+                        </div>
+                        <div class="form-item">
+                            <label  class="input-label-mini">&nbsp;</label><input type="checkbox" />保持3个月的登录时间
+                        </div>
+                        <div class="form-item form-panel-mini">
+                            <ul class="tips-result">
+                                <li>Hint information</li>
+                            </ul>
+                        </div>
+                        <div class="form-item form-panel-mini">
+                            <input type="button" class="btn btn-primary input-control" value="登录" data-options="region:'hide'" data-active-class="button-disable"
+                                   data-active-val="Loading..."><input type="button" class="btn btn-default input-control" value="取消" data-options="region:'hide'" >
+                        </div>
+                        <hr class="solid">
+                        <div>
+                            <label class="input-control">其它登录方式:</label><a href=""><i class="icon icon-facebook-alt"></i></a><a href=""><i class="icon icon-twitter-alt"></i></a><a href=""><i class="icon icon-google-alt"></i></a><a href=""><i class="icon icon-linkedin-alt"></i></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../js/global.js"></script>
+<script src="../js/jquery.draggable.min.js"></script>
+<script src="../js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script>$(function(){$('.dialog .bd').initslimscroll();})</script>
+</body>
+</html>

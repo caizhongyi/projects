@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9D83BD2E-8D84-4748-A884-F6DDACF3C8AC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WanerDaoWorkDir</RootNamespace>
+    <AssemblyName>WanerDaoWorkDir</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DbConfig\SQL\ActivitySQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\SQL\CommonSQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\SQL\HomeSQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\SQL\MessageSQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\SQL\PermissionSQL.xml" />
+    <Content Include="DbConfig\SQL\GroupSQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\SQL\PersonSQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\SQL\PostsSQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\SQL\RelationSQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\SQL\FollowSQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\SQL\FriendsSQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\SQL\ToolSQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\SQL\InformationSQL.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DbConfig\WanerDaoDbConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="FilterConfig\FilterConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="IndexConfig\IndexConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Integral\IntegralConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="MailConfig\WanerDaoMailTextConfig.xml" />
+    <Content Include="MailConfig\WanerDaoMailHtmlConfig.xml" />
+    <Content Include="MultipleLanguage\language.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="paramConfig\followConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="paramConfig\groupConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="helpConfig\zh-cn.xml" />
+    <Content Include="paramConfig\paramConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="pollingConfig\InterfaceConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="printConfig\demo.xml" />
+    <Content Include="printConfig\groupfinance.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="TipConfig\zh-cn.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="TipConfig\en-us.xml" />
+    <Content Include="UrlConfig\URLAlternate.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="UrlConfig\GoURLConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WanerDaoConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WanerDaoLog\logConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IOCConfig\facilities.config" />
+    <None Include="IOCConfig\properties.config" />
+    <None Include="IOCConfig\services.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\InfoConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\MailConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\SQL.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\WanerDaoConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSD\WanerDaoDbConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

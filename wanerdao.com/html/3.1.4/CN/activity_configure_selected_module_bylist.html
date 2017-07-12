@@ -1,0 +1,819 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>创建活动-活动-玩儿道</title>
+
+    <meta name="keywords" content="创建活动, 设置初始参数, 设置基本参数, 设置连接参数, 设置邀请, 注册, 保存设置, 玩儿道, 生活和社会网络"/>
+    <meta name="description"
+          content="选择列表或向导填写设置初始参数, 设置基本参数, 设置连接参数, 设置邀请, 注册和保存设置"/>
+
+
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content=""/>
+    <meta name="copyright" content="2001-2010 Comsenz Inc."/>
+    <link rel="Bookmark" href="favicon.ico"/>
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/activity.css"/>
+
+
+    <link rel="stylesheet" href="css/animate.min.css"/>
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="index.html" class="logo"><img src="images/logo.png" alt="玩儿道"></a>
+
+        <div class="home  hover">
+            <a title="Home"  class="button" href="javascript:;"><i class="icon icon-list"></i></a>
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a  href="javascript:;">活动</a></h3>
+                        <a href="activity_index.html">活动首页</a><a href="activity_search.html">查找活动</a><a href="activity_item_main.html">当前和过去的活动 </a><a href="activity_future_plan.html">未来活动</a><a href="javascript:;">发起活动 </a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">个人</a></h3>
+                        <a href="personal_edit.html">个人资料</a><a href="personal_finance_account.html">财务账号</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">关系</a></h3>
+                        <a href="relationship_friends_invite.html">我的好友</a>
+                    </li>
+                    <li>
+                        <h3><a  href="index.html">首页</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="活动 / 好友" class="text"><input type="submit" class="button" value="">
+        </div>
+
+        <div class="infotips">
+                <span class="floatbox-wrap dropdown">
+                    <a href="javascript:;" class="hint"><i class="icon icon-bell "></i><span class="badge badge-important">20</span></a>
+                    <div class="dropdown-pane floatbox slide">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <div class="accordion scroll-panel" data-collapse="">
+                                <div class="accordion-item active">
+                                    <div class="accordion-heading toolbar"><i class="icon-minus-sign"></i><!--<i class="icon-collapse"></i>--><span class="text-important">1223</span> 活动名，城市/国家  <span class="time">2012/12 - 2021/12</span></div>
+                                    <div class="accordion-panel" style="display: block">
+                                        <ul class="group-list">
+                                            <li><i class="icon-block-blue"></i>( 任务 )&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">详细</a></li>
+                                            <li>
+                                                <i class="icon-block-blue"></i>( 任务 )&nbsp;<span class="title "><strong>任务名</strong><small class="desc detail-short">描述</small></span>
+                                                <div class="detail">
+                                                    <small class="desc">描述</small>
+                                                    <br/>
+                                                    <span class="price">$123</span>&nbsp;<small class="desc">私有信息，附件</small>
+                                                    <br/>
+                                                    创建者
+                                                    <a href="" class="opts">详细</a>
+                                                </div>
+                                            </li>
+                                            <li><i class="icon-block-blue"></i>( 任务 )&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">Request content</a></li>
+                                            <li><i class="icon-block-blue"></i>( 任务 )&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">Request content</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="accordion-item ">
+                                    <div class="accordion-heading toolbar"><i class="icon-plus-sign"></i><!--<i class="icon-collapse"></i>--><span class="text-important">1223</span> 活动名，城市/国家 </div>
+                                    <div class="accordion-panel" style="display: block">
+                                        <ul class="group-list">
+                                            <li><i class="icon-block-blue"></i>( 任务 )&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">详细</a></li>
+                                            <li>
+                                                <i class="icon-block-blue"></i>( 任务 )&nbsp;<span class="title"><strong>任务名</strong><small class="desc detail-short">描述</small></span>
+                                                <div class="detail">
+                                                    <small class="desc">描述</small>
+                                                    <br/>
+                                                    <span class="price">$123</span>&nbsp;<small class="desc">私信</small>
+                                                    <br/>
+                                                    创建者
+                                                    <a href="" class="opts">详细</a>
+                                                </div>
+                                            </li>
+                                            <li><i class="icon-block-blue"></i>( 任务 )&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">Request content</a></li>
+                                            <li><i class="icon-block-blue"></i>( 任务 )&nbsp;<span class="title"><strong>任务名</strong><small class="desc">描述</small></span><a href="" class="opts">Request content</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+                <span class="floatbox-wrap dropdown">
+                    <a href="javascript:;" class="hint"><i class="icon icon-bullhorn"></i><span class="badge badge-important">20</span></a>
+                    <div class="dropdown-pane floatbox slide">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <ul class="group-list scroll-panel">
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">知道了</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </span>
+                <span class="floatbox-wrap ">
+                    <span class="dropdown">
+                        <a href="javascript:;" class="hint"><i class="icon icon-envelope"></i><span class="badge badge-important">20</span></a>
+                        <div class="dropdown-pane floatbox slide" id="message-box">
+                            <i class="arrow"></i>
+                            <div class="scroll">
+                                <div class="scroll-panel">
+                                    <div class="toolbar"><a href="###" class="message-box">留言箱<span class="text-important">（200）</span></a>•<a
+                                            href="###" class="message-compose">写邮件</a></div>
+                                    <ul class="group-list">
+                                        <li>
+                                            <div class="heading">
+                                                <i class="icon icon-star-alt"></i><span class="title">Name<small class="desc detail-short">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">详细</a></span>
+                                            </div>
+                                            <div class="form detail">
+                                                <div class="form-item ">
+                                                    <p class="desc">Content...</p>
+                                                </div>
+                                                <div class="form-item">
+                                                    <div class="input-block">
+                                                        <textarea  class="textarea " placeholder="回复" ></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <label><input type="checkbox"/>保存草稿</label>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <span class="tips-result">提示</span>
+                                                        <button class="btn btn-primary btn-mini">回复</button><button class="btn btn-default btn-mini">转发</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="heading">
+                                                <i class="icon icon-star-alt"></i><span class="title">Name<small class="desc detail-short">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">详细</a></span>
+                                            </div>
+                                            <div class="form detail">
+                                                <div class="form-item ">
+                                                    <p class="desc">Content...</p>
+                                                </div>
+                                                <div class="form-item">
+                                                    <div class="input-block">
+                                                        <textarea  class="textarea " placeholder="回复" ></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <label><input type="checkbox"/>保存草稿</label>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <span class="tips-result">提示</span>
+                                                        <button class="btn btn-primary btn-mini">发送</button><button class="btn btn-default btn-mini">保存</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><i class="icon icon-star-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">阅读</a></span></li>
+                                        <li><i class="icon icon-star-empty-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">阅读</a></span></li>
+                                        <li><i class="icon icon-star-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">阅读</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    <div class="dropdown-pane floatbox slide" id="message-compose">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <div class=" scroll-panel">
+                                <div class="toolbar"><a href="###" class="message-box">留言箱<span class="text-important">（200）</span></a>•<a
+                                        href="###" class="message-compose">写邮件</a><span class="opts">内容已保存, 时间: MM/dd/yyyy hh:mm</span></div>
+                                    <div class="form container sendbox">
+                                        <div class="form-item ">
+                                            <label><span class="input-label">发送给:</span><input type="text" class="text span7"/><button class="btn btn-default btn-mini">查找</button></label>
+                                        </div>
+                                        <div class="form-item">
+                                            <label><span class="input-label">内容:</span><textarea  class="textarea span8" placeholder="回复" ></textarea></label>
+                                        </div>
+                                        <div class="form-panel clearfix">
+                                            <div class="pull-left ">
+                                                <label><input type="checkbox"/>保存草稿</label>
+                                            </div>
+                                            <div class="pull-right">
+                                                <span class="tips-result">提示</span>
+                                                <button class="btn btn-primary btn-mini">发送</button><button class="btn btn-default btn-mini">保存</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                 </span>
+            <!-- <a href="javascript:;" class="icon-message-mail">123</a>-->
+            <script>
+
+                $('.message-box').click(function(e){
+                    $('#message-compose').removeClass('in')
+                    $('#message-box').addClass('in');
+                })
+                $('.message-compose').click(function(){
+                    $('#message-box').removeClass('in')
+                    $('#message-compose').addClass('in');
+                })
+
+
+            </script>
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img  src="images/defaults/32-32.jpg"></a><a  class="name" href="javascript:;"><span >烧饭-人生旅途中人生旅途中</span><b></b></a>
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">个人资料</a></li>
+                    <li><a href="javascript:;">账号维护</a></li>
+                    <li>
+                        <a href="javascript:;">切换语言</a>
+                        <ul>
+                            <li><a href="javascript:;">中文</a></li>
+                            <li><a href="javascript:;">英文</a></li>
+                        </ul>
+                    </li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout activity-layout">
+    <div class="container">
+        <div class="tabs-master">
+            <div class="nav">
+                <div class="pull-left"><a href="activity_index.html">活动首页</a><a href="activity_search.html">查找活动</a><a href="#">我的活动</a><a
+                        href="#" class="selected">发起活动</a></div>
+            </div>
+            <div class="titlebar "><h3>活动组织装配工厂 &#8901; 配置模块</h3><small>根据需求详细配置选择的模块</small></div>
+            <div class="sitenav">
+                <a href="javascript:;" class="selected"><i class="icon icon-alist"></i>列表浏览</a>|<a href="javascript:;"><i
+                    class="icon icon-direct"></i>向导浏览</a>
+            </div>
+            <div class="mod mod-default accordion mod-special">
+                <div class="hd">
+                    <i class="icon icon-blue-minus"></i>初始化参数
+                </div>
+                <div class="bd form">
+                    <div class="form-item"><div class="module">调查员设置模块</div><div class="tips">提示</div></div>
+                    <div class="form-item"><div class="module">基础设定模块</div><div class="tips">提示</div></div>
+                    <div class="form-item"><div class="module">注册设置模块</div></div>
+                    <div class="form-item"><div class="module">计划拟定模块</div></div>
+                    <div class="form-item"><div class="module">财务模块</div></div>
+                    <div class="form-item"><div class="module">基础设定模块</div></div>
+                    <div class="form-item"><div class="module">任务分配模块</div></div>
+                    <div class="form-item"><div class="module">预交费设置模块</div></div>
+                    <div class="form-item"><div class="module">加入条件设置模块</div></div>
+                    <div class="form-item"><div class="module">保护模块</div></div>
+                    <div class="form-item"><div class="module">创建周期模块</div></div>
+                    <div class="form-item"><div class="module">个人报名模块</div></div>
+                    <div class="form-item"><div class="module">邀请模块</div></div>
+                </div>
+            </div>
+            <div class="mod mod-default accordion mod-special">
+                <div class="hd">
+                    <i class="icon icon-blue-minus"></i>保存参数
+                </div>
+                <div class="bd form invite-list">
+                    <div class="form-item">
+                        <label ><input type="checkbox"/>保存名称:</label><input type="text" class="text text-xlarge"/>
+                        <div class="tips">提示</div>
+                    </div>
+                    <div class="form-item">
+                        <div class="tipbox">
+                            <ul class="list-label list-label-transparent">
+                                <li>Name<a href="###" class="icon-close-sign" data-remove="" title="删除"></a></li>
+                                <li>Name<a href="###" class="icon-close-sign" data-remove="" title="删除"></a></li>
+                                <li>Name<a href="###" class="icon-close-sign" data-remove="" title="删除"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mod">
+                <div class="form bd">
+                    <div class="form-item">
+                        <label><input type="checkbox"/><i class="icon icon-adobe"></i><a href="javascript:;">发起活动协议</a></label>
+                        <label><input type="checkbox"/><i class="icon icon-adobe"></i><a href="javascript:;">用户活动向导</a></label>
+                    </div>
+                    <div class="form-item">
+                    <span class="tips-result">
+                            <ul><li>提示</li></ul>
+                    </span>
+                    </div>
+                    <div class="form-item">
+                        <input type="submit" class="btn btn-primary" value="发起"   /><button class="btn btn-default">预发起</button><input type="button" class="btn btn-default" value="保存但不发起"/><input type="button" class="btn btn-default" value="放弃"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<ul class="guide">
+            <li class="success"><i class="icon-blue-circle"></i><a href="javascript:;">初始化参数</a><i class="icon-20x20"></i></li>
+            <li class="success"><i class="icon-blue-circle"></i><a href="javascript:;">ActivityBasic informationSettings</a><i class="icon-20x20"></i></li>
+            <li class="success"><i class="icon-blue-circle"></i><a href="javascript:;">Activity注册Settings</a><i class="icon-20x20"></i></li>
+            <li class="error"><i class=" icon-blue-circle"></i><a href="javascript:;">Draft plan</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">ActivityFinance</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">ActivityPrepay</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">Activity加入条件设定</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">Activity保护</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">ActivityRepetitionCreate</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">Activity个人注册</a><i class="icon-20x20"></i></li>
+            <li><i class=" icon-blue-circle"></i><a href="javascript:;">Activity发送邀请</a><i class="icon-20x20"></i></li>
+        </ul>-->
+    </div>
+</div>
+<div class="float-search float-module" id="float-search">
+<a class="search-btn" href="javascript:;">模<br/>块<br/>变<br/>动<br/></a><span class="search-panel" href="javascript:;">
+        <div class="change-module">
+        <div class="hd">
+            <div class="pull-left">
+                <a href="javascript:;" class="btn btn-default btn-mini">执行</a><a href="javascript:;" id="back" class="btn btn-default btn-mini" style="display: none;">返回</a>
+                &nbsp;模块市场
+            </div>
+            <div class="pull-right">
+                <span>当前安装模块: XXX&nbsp;<em>5219</em></span>
+            </div>
+        </div>
+        <div class="clearfix">
+        <div class="module-side scroll">
+            <ul class="module-items list-col list-col-2 scroll-panel">
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-del"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-del"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+        <div id="moduelist" class="scroll">
+        <div class="scroll-panel module-main">
+        <div class="main-hd"> Category标题:<em>168</em></div>
+        <div class="main-bd pagination-radius">
+            <a class="prev" href="javascript:;"></a>
+            <ul class="module-items list-col list-col-4">
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <a class="next disabled" href="javascript:;"></a>
+        </div>
+        <div class="main-hd"> Category标题:<em>168</em></div>
+        <div class="main-bd pagination-radius">
+            <a class="prev" href="javascript:;"></a>
+            <ul class="module-items list-col list-col-4">
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <a class="next" href="javascript:;"></a>
+        </div>
+        <div class="main-hd"> Category标题:<em>168</em></div>
+        <div class="main-bd pagination-radius">
+            <a class="prev" href="javascript:;"></a>
+            <ul class="module-items list-col list-col-4">
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <a class="next" href="javascript:;"></a>
+        </div>
+        <div class="main-hd"> Category标题:<em>168</em></div>
+        <div class="main-bd pagination-radius">
+            <a class="prev" href="javascript:;"></a>
+            <ul class="module-items list-col list-col-4">
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-inner ">
+                        <div class="thumb">
+                            <img src="images/default.png" alt=""/>
+                            <a href="javascript:;" class="caption">执行</a>
+                            <div class="desc">Category</div>
+                            <div class="opts">
+                                <a href="javascript:;" class="icon icon-add"></a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <a class="next" href="javascript:;"></a>
+        </div>
+        </div>
+        </div>
+        <div id="moduleinfo" class="module-main" style="display: none;">
+            <div class="module-info media">
+                <img src="images/default.png" style="width: 75px;" alt="" class="media-object"/>
+                <div class="media-body">
+                    <h4>Name</h4>
+                    <div>Category</div>
+                    <div class="opts">
+                        <a href="">安装</a> <a href="">卸载</a>
+                    </div>
+                </div>
+                <div class="clear block"></div>
+                <div class="desc block">
+                    Administrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activity
+                    Administrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activity
+                </div>
+            </div>
+            <div class="main-hd"> Category标题:<em>168</em></div>
+            <div class="main-bd pagination-radius">
+                <a class="prev" href="javascript:;"></a>
+                <ul class="module-items list-col list-col-4">
+                    <li>
+                        <div class="col-inner ">
+                            <div class="thumb">
+                                <img src="images/default.png" alt=""/>
+                                <a href="javascript:;" class="caption">执行</a>
+                                <div class="desc">Category</div>
+                                <div class="opts">
+                                    <a href="javascript:;" class="icon icon-add"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner ">
+                            <div class="thumb">
+                                <img src="images/default.png" alt=""/>
+                                <a href="javascript:;" class="caption">执行</a>
+                                <div class="desc">Category</div>
+                                <div class="opts">
+                                    <a href="javascript:;" class="icon icon-add"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner ">
+                            <div class="thumb">
+                                <img src="images/default.png" alt=""/>
+                                <a href="javascript:;" class="caption">执行</a>
+                                <div class="desc">Category</div>
+                                <div class="opts">
+                                    <a href="javascript:;" class="icon icon-add"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner ">
+                            <div class="thumb">
+                                <img src="images/default.png" alt=""/>
+                                <a href="javascript:;" class="caption">执行</a>
+                                <div class="desc">Category</div>
+                                <div class="opts">
+                                    <a href="javascript:;" class="icon icon-add"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a class="next" href="javascript:;"></a>
+            </div>
+            <div class="main-hd"> Category标题:<em>168</em></div>
+            <div class="main-bd pagination-radius">
+                <a class="prev" href="javascript:;"></a>
+                <ul class="module-items list-col list-col-4">
+                    <li>
+                        <div class="col-inner ">
+                            <div class="thumb">
+                                <img src="images/default.png" alt=""/>
+                                <a href="javascript:;" class="caption">执行</a>
+                                <div class="desc">Category</div>
+                                <div class="opts">
+                                    <a href="javascript:;" class="icon icon-add"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner ">
+                            <div class="thumb">
+                                <img src="images/default.png" alt=""/>
+                                <a href="javascript:;" class="caption">执行</a>
+                                <div class="desc">Category</div>
+                                <div class="opts">
+                                    <a href="javascript:;" class="icon icon-add"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner ">
+                            <div class="thumb">
+                                <img src="images/default.png" alt=""/>
+                                <a href="javascript:;" class="caption">执行</a>
+                                <div class="desc">Category</div>
+                                <div class="opts">
+                                    <a href="javascript:;" class="icon icon-add"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-inner ">
+                            <div class="thumb">
+                                <img src="images/default.png" alt=""/>
+                                <a href="javascript:;" class="caption">执行</a>
+                                <div class="desc">Category</div>
+                                <div class="opts">
+                                    <a href="javascript:;" class="icon icon-add"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a class="next" href="javascript:;"></a>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </span>
+</div>
+<script>
+    $('#moduelist').on('click','.thumb',function(){
+        $('#moduelist').hide();
+        $('#moduleinfo,#back').show();
+        var $panel = $('.module-info .desc');
+        $panel.slimscroll({ height: $panel.css('max-height') });
+    })
+
+    $('#back').click(function(){
+        $('#moduelist').show();
+        $('#moduleinfo,#back').hide();
+    })
+</script>
+    <!-- end container -->
+<script type="text/javascript">
+    $(document).on('click','.accordion .hd' ,function(){
+        var $panel =  $(this).next(), $icon = $(this).find('.icon') ,iconPlusClass = 'icon-blue-plus', iconMinusClass = 'icon-blue-minus' ;
+
+        if( $(this).closest('.mod-gray').length){
+            iconPlusClass = 'icon-gray-plus';
+            iconMinusClass = 'icon-gray-minus';
+        }
+
+        if($panel.is(':hidden')){
+            $icon.removeClass(iconPlusClass).addClass(iconMinusClass);
+            $panel.stop(true,true).slideDown();
+        }
+        else{
+            $panel.stop(true,true).slideUp();
+            $icon.addClass(iconPlusClass).removeClass(iconMinusClass);
+        }
+    })
+</script>
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+    <div class="sitemap">
+        <a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律</a><a
+            href="javascript:;" class="text-danger">招聘</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a>
+    </div>
+    <span class="copyright">版权所有 @ 2011-2014 玩儿道团队</span>
+    </div>
+</div>
+
+<div class="box fixed">
+    <ul class="list list-module list-striped">
+        <li class="clearfix"><div class="pull-right "><i class="icon icon-ok-sign text-success"></i></div><a href="#Referencer-settings-module" class="text-ellipsis unlink" title="module1">Basic settings module</a></li>
+        <li class="clearfix"><div class="pull-right "><i class="icon icon-remove-sign text-danger"></i></div><a href="#Basic-settings-module" class="text-ellipsis unlink" title="module2">Basic settings module</a></li>
+        <li class="clearfix"><div class="pull-right "><i class="icon icon-ok-sign text-success"></i></div><a href="#Sign-up-settings-module" class="text-ellipsis unlink" title="module3">Sign up settings module</a></li>
+        <li class="clearfix"><div class="pull-right "><i class="icon icon-ok-sign text-success"></i></div><a href="#Draft-plan-module" class="text-ellipsis unlink" title="module4">Draft plan module</a></li>
+    </ul>
+</div>
+<!-- end footer -->
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/class.ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.placeholer.js"></script>
+<script type="text/javascript" src="js/jquery.smartfloat.js"></script>
+<script src="js/jquery.draggable.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/global.js"></script>
+<script type="text/javascript">
+    $('#guide').smartFloat();
+</script>
+
+</body>
+</html>

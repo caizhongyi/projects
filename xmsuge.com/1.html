@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+    <title>邀请使用一卡通，吃饭看电影充话费，通通有优惠</title>
+    <meta name="keywords" content="邀请使用一卡通，吃饭看电影充话费，通通有优惠 ">
+    <meta name="description" content="邀请使用一卡通，吃饭看电影充话费，通通有优惠 ">
+    <link rel="stylesheet" type="text/css" media="all" href="/Public/WxRecommend/css/base.css">
+    <link rel="stylesheet" type="text/css" media="all" href="/Public/WxRecommend/css/index.css">
+</head>
+<body>
+<!--<div class="header">
+    <div class="container">
+        <div class="btn-left"><a href="">返回</a></div>
+        <div class="btn-right"><a href="">更多</a></div>
+        <div class="">注册一卡通</div>
+    </div>
+</div>--><div style='display:none' id='key'>o-xKVxMQl6KiAzJu9sp6OJzhMi5cr</div>
+<div style='display:none' id='unionid'></div>
+<div style='display:none' id='openid'></div>
+<div style='display:none' id='nickname'></div>
+<div style='display:none' id='headimgurl'></div>
+<div style='display:none' id='success_redirect'>
+    https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0e4c2c466726936f&redirect_uri=http%3A%2F%2Fwww.fjykt.com%2FStore%2FWxCus%2Ftaihe&response_type=code&scope=snsapi_base&state=#wechat_redirect
+</div>
+<div>
+    <div class="banner">
+        <img id="" src="/Uploads/new_user.png" alt="" class="mb">
+    </div>
+    <div class="text-center accept-title">
+        接受邀请注册一卡通，在线领取会员卡
+    </div>
+    <div class="container">
+        <form class="form" action="">
+            <input type="hidden" name="openid" value="">
+            <input type="hidden" name="unionid" value="">
+            <input type="hidden" name="key" value="">
+            <input type="hidden" name="nickname" value="">
+
+            <div class="form-group">
+               <span class="input btn-radius-small input-send-wrap">
+                    <input type="tel" class="input-send " maxlength="11" id="telno" name="telno" placeholder="请填写手机号码">
+                     <div class="tel-address small"></div>
+               </span>
+                <button class="btn btn-primary btn-send" type="button" style="margin-left: 10px;" disabled>获取验证码
+                </button>
+            </div>
+            <div class="form-group">
+                <div class="input input-block">
+                    <span class="input-label">验 证 码</span>
+                    <input type="tel" placeholder="请输入短信验证码" maxlength="6" name="code" id="code">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input input-block">
+                    <span class="input-label">设置密码</span>
+                    <input type="password" id="password" name="password" placeholder="请设置6位会员卡支付密码" maxlength="6"
+                           minlength="6">
+                </div>
+            </div>
+            <!--  <div class="form-group text-center">
+                  <div class="form-help" >
+                      <img style="margin-right:2px;" src="/Public/WxRecommend/img/icon_warning@2x.png" alt="" class="icon-warning icon-x22">
+                      <span class="">新用户开卡奖励，仅针对福建省内手机用户</span>
+                  </div>
+              </div>-->
+            <div class="form-group">
+                <button id="getCard" type="button" class="btn btn-primary btn-block btn-radius-small" disabled>领取会员卡
+                </button>
+            </div>
+            <div class="form-group text-center "><span class="small"><a href="/Public/taihe_tpls/treaty.html">《泰禾一卡通服务协议》</a></span>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div class="modal modal-alert">
+    <div class="modal-wrap">
+        <div class="modal-content">
+            <div class="modal-panel" style="width: 50%">
+                <div class="modal-body text-center">
+                    该手机号已注册
+                </div>
+                <div class="modal-footer text-center">
+                    <input type="button" class="btn btn-primary btn-block" value="知道了"
+                           onclick="$(this).closest('.modal-alert').fadeOut();">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="/Public/common/js/jquery-2.1.1.min.js"></script>
+<script src="/Public/common/js/jquery.valid.js"></script>
+<script src="/Public/common/js/countdown/src/index.js"></script>
+<script src="/Public/common/js/jquery-cookie/src/index.js"></script>
+<script src="/Public/common/js/jquery.inputmask.bundle.min.js"></script>
+<!--<script src="/Public/common/js/jquery.query.js"></script>-->
+<script>
+$(function () {
+    // var $tel = $('[name=telno]') , $help = $('.form-help') , $btnSend =  $('.btn-send') , $getCard =  $('#getCard');
+    var $tel = $('[name=telno]'),
+            $help = $('.form-help'),
+            $btnSend = $('.btn-send'),
+            $getCard = $('#getCard'),
+            $password = $('#password'),
+            $code = $('#code');
+
+    /*  $('#password').inputmask({
+     mask : "999999",
+     placeholder: ' '
+     });*/
+    function setDefault(val) {
+        $('[name=' + val + ']').val($('#' + val).text());
+    }
+
+    $('[type=hidden]').each(function () {
+        setDefault($(this).attr('name'));
+    })
+
+    function submitState() {
+        if ($code.val() && $password.val() && $tel.val()) {
+            $getCard.prop('disabled', false)
+        }
+        else {
+            $getCard.prop('disabled', true)
+        }
+    }
+
+    setInterval(function () {
+        $btnSend.prop('disabled', !checkMobile());
+        submitState();
+    }, 500);
+
+
+    function tip(val) {
+        //  if( !val ) { $help.hide() ; return ; }
+        $('.modal-alert').stop(true, true).fadeIn().find('.modal-body').html(val);
+    }
+
+
+    function checkMobile() {
+        if ($tel.val() && $.valid.isMobile($tel.val())) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function checkCode() {
+        // return $('#code').val() ==  $.cookie('vcode' );
+        var res;
+        $.ajax({
+            type: "POST",
+            cache: false,
+            data: {phone_num: $tel.val(), code: $code.val()},
+            async: false,
+            url: "/Store/SendPhone/serviceCheckCode",
+            success: function (msg) {
+                console.log(msg);
+                msg = JSON.parse(msg);
+                if (msg.status == 1) {
+                    res = true;
+                } else {
+                    res = false;
+                }
+            }, error: function (data) {
+                res = "";
+            }
+        });
+        return res;
+    }
+
+    function checkPassword() {
+        if ($('#password').val().length != 6) {
+            tip('请设置6位会员卡支付密码');
+            return false;
+        }
+        else if (!$.valid.isNumber($('#password').val())) {
+            tip('支付密码必须是6位数字');
+            return false;
+        }
+        return true;
+    }
+
+    var timeValue = 60, code;
+
+    $('.input-send').blur(function () {
+        var $this = $(this);
+        if ($(this).val())
+            $.post('/Store/WxRecommend/getAddress', {telno: $(this).val()}, function (res) {
+                // if( res.status == 2){
+                $('.tel-address').html('(' + res.data + ')');
+                //   }
+            }, 'json');
+        //$(this).val( $(this).val() );
+    })
+
+
+    $btnSend.click(function () {
+        if (!checkMobile()) return;
+        var timeValue = 60;
+        // $.post('/Store/SendSms/getParam',{
+        $.post('/Store/SendPhone/serviceSendCode', {
+            phone_num: $tel.val()
+        }, function (res) {
+            if (res.status == 1) {
+                var date = new Date();
+                date.setTime(date.getTime() + (10 * 60 * 1000));
+                $.cookie('vcode', res.data, {expires: date});
+            }
+            ;
+        }, 'json')
+
+        var $this = $(this).text(timeValue + "秒").prop('disabled', true);
+        var time = setInterval(function () {
+            timeValue--;
+            $this.text(timeValue + "秒");
+            if (timeValue < 0) {
+                clearInterval(time)
+                $this.text("重新发送").prop('disabled', false);
+            }
+        }, 1000);
+    });
+
+    $getCard.click(function () {
+        if (!checkMobile()) {
+            tip('手机号码输入有误 ');
+            return;
+        }
+        // 短信验证
+        else if (!checkCode()) {
+            tip('短信验证输入有误 ');
+            return;
+        }
+        else if (!checkPassword()) {
+            return;
+        }
+        else {
+            // tip('');
+            $getCard.prop('disabled', true);
+            $.post('/Store/WxRecommend/getCard', $('.form').serialize() + '&headimgurl=' + $('#headimgurl').html(), function (res) {
+                var yyyURL = $('#success_redirect').html();
+                //'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0e4c2c466726936f&redirect_uri=http%3A%2F%2Fwww.fjykt.com%2FStore%2FYyy%2Fdesc%2Fid%2F4&response_type=code&scope=snsapi_base&state=#
+                var key = $("#key").text();
+                var telno = $('#telno').val();
+
+                var successURL = '/Store/WxRecommend/success?telno=' + telno;
+                var redirect_url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0e4c2c466726936f&redirect_uri=http%3A%2F%2Fwww.fjykt.com%2FStore%2FWxCus%2Ftaihe&response_type=code&scope=snsapi_base&state=#wechat_redirect';
+                switch (key) {
+                    case '00000000001':
+                        successURL = "http://wwz.fzen.com.cn/hd/thykt/index.php?mobile=" + telno;
+                        break;
+                    case '00000000007'://晚报
+                        successURL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0e4c2c466726936f&redirect_uri=http%3A%2F%2Fwww.fjykt.com%2FStore%2FYyy%2Fdesc%2Factivityid%2F84&response_type=code&scope=snsapi_base&state=#wechat_redirect';
+                        break;
+                    case '00000000008'://广电
+                        successURL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0e4c2c466726936f&redirect_uri=http%3A%2F%2Fwww.fjykt.com%2FStore%2FYyy%2Fdesc%2Factivityid%2F83&response_type=code&scope=snsapi_base&state=#wechat_redirect';
+                        break;
+                    case '00000000009'://广电
+                    case '00000000010'://广电
+                    case '00000000011'://广电
+                    case '00000000012'://广电
+                        successURL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0e4c2c466726936f&redirect_uri=http%3A%2F%2Fwww.fjykt.com%2FStore%2FYyy%2Fdesc%2Factivityid%2F82&response_type=code&scope=snsapi_base&state=#wechat_redirect';
+                        break;
+                    case '00000000014'://跳转用户推荐有奖页面
+                        successURL = redirect_url;
+                        break;
+
+                    case '00000000017'://跳转用户推荐有奖页面
+                        successURL = 'https://wj.qq.com/s/1248605/51ef';
+                        break;
+                    case '00000000018'://跳转用户推荐有奖页面
+                        successURL = 'https://wj.qq.com/s/1249065/1f88';
+                        break;
+                    case '00000000019'://跳转用户推荐有奖页面
+                        successURL = 'https://wj.qq.com/s/1249074/4aff';
+                        break;
+                    case '00000000020'://跳转用户推荐有奖页面
+                        successURL = 'https://wj.qq.com/s/1249077/c65c';
+                        break;
+                    default:
+                        successURL = '/Store/WxRecommend/success';
+                        if (key.substring(0, 8) == '00000000') {
+                            successURL = redirect_url;
+                        }
+                        break;
+                }
+
+                if (res.status == 1) {
+
+                    location.href = successURL;
+
+                } else if (res.status == 2) {
+                    tip(res.desc);
+                    $('.modal-alert').find('.btn').off('click').on('click', function () {
+
+                        location.href = successURL
+                    })
+                } else {
+                    tip(res.desc);
+                }
+
+                // switch ( res.status ){
+                //     case 1 : location.href = yyyURL || successURL; break;
+                //     case 2 :
+                //         //$('.modal-alert').stop(true,true).fadeIn();
+                //             tip( res.desc );
+                //             $('.modal-alert').find('.btn').off('click').on('click',function(){
+                //                 location.href = "/Store/WxCus/taihe#/member";
+                //             })
+                //         break;
+                //     default : tip( res.desc );  break;
+                // }
+
+                $getCard.prop('disabled', false);
+            }, 'json');
+        }
+    })
+
+    /*   wx.config({
+     debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+     appId: '', // 必填，公众号的唯一标识
+     timestamp: "", // 必填，生成签名的时间戳
+     nonceStr: '', // 必填，生成签名的随机串
+     signature: '',// 必填，签名，见附录1
+     jsApiList: [
+     'checkJsApi',
+     'onMenuShareTimeline',
+     'onMenuShareAppMessage',
+     'onMenuShareQQ',
+     'onMenuShareWeibo'
+     ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+     });
+     wx.ready(function () {
+     wx.onMenuShareTimeline({
+     title: '注册一卡通，立即领取6.6元红包',
+     link: '/Uploads/new_user.png', // 分享链接,将当前登录用户转为puid,以便于发展下线
+     imgUrl: '', // 分享图标
+     success: function () {
+     // 用户确认分享后执行的回调函数
+     alert('分享成功');
+     },
+     cancel: function () {
+     // 用户取消分享后执行的回调函数
+     }
+     });
+     //微信分享给朋友的接口
+     wx.onMenuShareAppMessage({
+     title: '注册一卡通，立即领取6.6元红包',
+     desc: '注册一卡通，立即领取6.6元红包',
+     link: '/Uploads/new_user.png', // 分享链接,将当前登录用户转为puid,以便于发展下线
+     imgUrl: '',
+     success: function (res) {
+
+     },
+     cancel: function (res) {
+
+     }
+     });
+     /!*wx.error(function(res){
+     // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+     alert("errorMSG:"+res);
+     });*!/
+     });
+     //显示微信中网页右上角按钮
+     function onBridgeReady() {
+     WeixinJSBridge.call('showOptionMenu');
+     }
+     if (typeof WeixinJSBridge == "undefined") {
+     if (document.addEventListener) {
+     document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+     } else if (document.attachEvent) {
+     document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+     document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+     }
+     } else {
+     onBridgeReady();
+     }*/
+})
+</script>
+</body>
+</html>

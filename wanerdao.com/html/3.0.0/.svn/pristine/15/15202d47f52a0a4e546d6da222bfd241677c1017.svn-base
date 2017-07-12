@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>活动分类-活动-玩儿道</title>
+
+    <meta name="keywords" content="活动分类，自定义活动，时令活动，橄榄球，棒球，冰球，足球，篮球，爬山，摄影，羽毛球，网球，露营，高尔夫球，兵乓球，垂钓，自行车，骑马，自助旅行，出海，棋牌，保龄球，玩儿道，生活社交网络"/>
+    <meta name="description"
+          content="显示分类，分类包括自定义活动，时令活动，橄榄球，棒球，冰球，足球，篮球，爬山，摄影，羽毛球，网球，露营，高尔夫球，兵乓球，垂钓，自行车，骑马，自助旅行，出海，棋牌，保龄球等"/>
+
+
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content="" />
+    <meta name="copyright" content="2001-2010 Comsenz Inc." />
+    <link rel="Bookmark" href="favicon.ico" />
+    <link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/activity.css"/>
+
+
+    <!-- jquery 库 -->
+    <link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="#" class="logo"><img src="images/logo.png" alt="玩儿道"></a>
+        <div class="home hover">
+            <a title="回到首页"  class="button" href="javascript:;"></a>
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a  href="javascript:;">活动</a></h3>
+                        <a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a href="javascript:;">我的活动</a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">个人</a></h3>
+                        <a href="javascript:;">资料</a><a href="javascript:;">记事</a><a href="javascript:;">相册</a><a href="javascript:;">视频</a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">关系</a></h3>
+                        <a href="javascript:;">My friends</a><a href="javascript:;">Search friends</a><a href="javascript:;">Invite friends</a><a href="javascript:;">Subscription settings</a><a href="javascript:;">My groups</a><a href="javascript:;">Search groups</a><a href="javascript:;">Create a group</a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">主页</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="活动/好友/圈子/发帖" class="text" ><input type="submit" class="button" value="">
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img  src="images/defaults/32-32.jpg"></a><a  class="name" href="javascript:;"><span >烧饭-人生旅途中人生旅途中</span><b></b></a>
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+        <a href="javascript:;" class="icon icon-message-mail right">123</a>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout right-activity-layout">
+    <div class="container">
+        <div class="tabs-master">
+            <div class="nav">
+                <div class="pull-left"><a href="#" class="selected" >活动主页</a><a href="#">分类活动</a><a href="#">寻找活动</a><a href="#" >我的活动</a><a href="#">创建活动</a></div>
+            </div>
+        </div>
+        <div class="sitenav">
+            <a href="javascript:;"><i class="icon icon-list"></i>按分类查找</a>|<a href="javascript:;" class="selected"><i class="icon icon icon-pos"></i>按位置查找</a>
+        </div>
+        <div class="map-mod">
+            <div class="hd">
+                位置：<input type="text" class="text text-large"/><span class="combo text-mini" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">国家</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><span class="combo text-mini" data-loader="class-combo ">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">省</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><input type="text" class="text text-large" placeholder="城市, 地区"/>邮编： <input type="text" class="text "/>
+            </div>
+            <div class="bd">
+                <div class="map-result">
+                    <div class="side-infos">
+                        <div class="result-bar">
+                            <div class="pagination-arrow-blue"><a href="javascript:;" class="prev"></a><a href="javascript:;" class="next disabled"></a></div>
+                        </div>
+                        <dl>
+                            <dd>
+                                <p>
+                                    <a href="javascript:;">美国东升乡滑雪节</a><br>
+                                    太原市/山西省
+                                </p>
+                                <div class="item-opts"><a class="btn-option" href="javascript:;"><i class="icon icon-more"></i>了解更多</a></div>
+                                <div class="date"><em>22/100人</em>&nbsp;<em>03/22-04/22</em></div>
+                            </dd>
+                            <dd>
+                                <p>
+                                    <a href="javascript:;">美国东升乡滑雪节</a><br>
+                                    太原市/山西省
+                                </p>
+                                <div class="item-opts"><a class="btn-option" href="javascript:;"><i class="icon icon-more"></i>了解更多</a></div>
+                                <div class="date"><em>22/100人</em>&nbsp;<em>03/22-04/22</em></div>
+                            </dd>
+                        </dl>
+                        <div class="result-bar">
+                            <div class="pagination-arrow-blue"><a href="javascript:;" class="prev"></a><a href="javascript:;" class="next disabled"></a></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="map-content dockbar-wrap">
+                    <img src="pics/3.png" alt="" width="100%;"/>
+                    <div class="map-search dockbar horizontal">
+                        <a href="javascript:;" class="map-refresh" data-target=".dockbar" ><i class="icon icon-refresh-alt icon-small"></i></a>
+                        <div class="item"><span class="checkbox"><input type="checkbox"/><label for="">同步该地址为家庭地址</label></span></div>
+                        <div class="item"><i class="icon-blue-block"></i>离家距离：<span class="combo " data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">10公里</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span></div>
+                        <div class="item"><i class="icon-blue-block"></i><input type="text" class="text file-text"/><a
+                                href="javascript:;" class="btn btn-gray btn-mini">添加</a><br>
+                       <span class="tipbox tipbox-arrow list-label">
+                        <i class="arrow"></i>
+                        <span>姓名<a href="#" class="icon-circle-close"></a></span><span>姓名<a href="#" class="icon-circle-close"></a></span><span>姓名<a href="#" class="icon-circle-close"></a></span>
+                    </span>
+                        </div>
+                        <div class="item"><i class="icon-blue-block"></i><input type="text" class="text personal-text"/><a
+                                href="javascript:;" class="btn btn-gray btn-mini">添加</a><br>
+                       <span class="tipbox tipbox-arrow list-label">
+                        <i class="arrow"></i>
+                        <span>姓名<a href="#" class="icon-circle-close"></a></span><span>姓名<a href="#" class="icon-circle-close"></a></span><span>姓名<a href="#" class="icon-circle-close"></a></span>
+                    </span>
+                        </div>
+                        <div class="item"><i class="icon-blue-block"></i><input type="text" class="text personals-text"/><a
+                                href="javascript:;" class="btn btn-gray btn-mini">添加</a><br>
+                       <span class="tipbox tipbox-arrow list-label">
+                        <i class="arrow"></i>
+                        <span>姓名<a href="#" class="icon-circle-close"></a></span><span>姓名<a href="#" class="icon-circle-close"></a></span><span>姓名<a href="#" class="icon-circle-close"></a></span>
+                    </span>
+                        </div>
+                        <div class="item tips-result">
+                            <ul>
+                                <li>提示</li>
+                            </ul>
+                        </div>
+                        <div class="btns">
+                            <a href="javascript:;" class="btn btn-default">更新地图</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="map-flag">
+                    <span class="flag-label">图例显示：</span><span><i class="icon-landmark danger"></i>活动地址</span><span><i class="icon-landmark"></i>活动地址</span><span><i class="icon-landmark success"></i>活动地址</span><span><i class="icon-landmark warning"></i>活动地址</span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+    <div class="sitemap">
+        <a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a>
+    </div>
+    <span class="copyright">版权所有 @ 2011-2014 Savorboard Corporation</span>
+    </div>
+</div>
+<!-- end footer -->
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="js/jquery.accordion.js" ></script>
+
+</body>
+</html>

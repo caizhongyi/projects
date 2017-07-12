@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Diary-Personal-Savorboard</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="Diary, Personal, Savorboard, Life and social network" />
+<meta name="description" content="View diary by date or cateogry" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../css/personal.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".inp_modify").each(function(){
+                $(this).click(function(){
+                    obj = $(this).parent().parent().parent().find(".hobby_listB");
+                    if(obj.css('display')=='none'){
+                        obj.show();
+                    }else{
+                        obj.hide();
+                    }
+                });
+            });
+        });
+
+        function showmenu(id,id2){
+            id = '#'+id;
+            id2 = '#'+id2;
+            left2 = $(id2).offset().left;
+            top2 = $(id2).offset().top+$(id2).height()-1;
+
+
+            $(id).attr('style','position:absolute;top:'+top2+'px;left:'+left2+'px');
+            $(id).show();
+
+            $(id2).attr('hideid',id);
+
+            $(id).attr('id2',id2);
+
+            $(id).mouseout(
+                    function(){
+                        $(id2).parent().hide();
+                        $(id2).attr('show','');
+                        $(id).hide();
+                    }
+            );
+
+            $(id).mouseover(
+                    function(){
+                        id2 = $(this).attr('id2');
+                        $(this).show();
+                        $(id2).attr('show',1);
+                        $(id2).parent().show();
+                    }
+            );
+
+        }
+
+        $(function(){
+
+            //blog 左边列表
+            $(".log_manage_le li").each(function(i){
+                id = 'a__'+parseInt(i);
+                $(this).find('input').attr('id',id);
+
+                $(this).mouseleave(
+                        function(){
+                            $(this).css("backgroundColor","#fff");
+                            var show2 = $(this).find('.inp55').attr('show');
+                            if(show2=='' || show2==undefined){
+                                $(this).find(".ontab").hide();
+                                //id2 = $(this).find('input').attr('hideid');
+                                //$(id2).hide();
+                                $(this).next().show();
+                            }
+                        }
+                );
+
+                $(this).mouseenter(
+                        function(){
+                            $(this).css("backgroundColor","#f7f7f7");
+                            $(this).find(".ontab").show();
+                        }
+                );
+
+                $(this).find('input').click(
+                        function(){
+                            //id = $(this).attr('id');
+                            //showmenu('test_xl',id);
+                            $(this).next().show();
+                        }
+                );
+            });
+
+            //评论列表
+            $(".cli_pl").each(function(){
+                $(this).click(function(){
+                    obj = $(this).parent().parent().parent().find(".log_view_box");
+                    if(obj.css('display')=='none'){
+                        obj.show();
+                    }else{
+                        obj.hide();
+                    }
+                });
+            });
+
+            //blog、blog_view 收起评论
+            $(".log_viewbg09").each(function(){
+                $(this).click(function(){
+                    obj = $(this).parent().parent().parent();
+                    //alert(obj.html());
+                    obj.hide();
+                });
+            });
+
+            $(".log_manage .log_manage_ri .log_view_list li").hover(function(){
+                $(this).addClass("grohover");
+            },function(){
+                $(this).removeClass("grohover");
+            })
+
+            $(".inp06").focus(function(){
+                $(this).animate({height:"80px"},1000);
+                $(this).parent().find("input").css({"vertical-align":"top"});
+            }).blur(function(){
+                        $(this).animate({height:"23px"},1000);
+                    });
+
+        });
+
+    </script>
+
+<link rel="stylesheet" type="text/css" href="../css/en.css" media="all" />
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+	<div class="header layout">
+    	<a href="index.html" class="logo"></a>
+        <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="Go Home"></a>
+            <div class="home_pop">
+            	<ul>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Activity</a>
+                        <p><a href="javascript:;">Looking for activities</a><a href="javascript:;">Create activities</a><a href="javascript:;">Classification activities</a><a href="javascript:;">Custom activities</a><a href="javascript:;">Seasonal activities</a><a href="javascript:;">My activities</a><a href="javascript:;">Historical activities</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Personal</a>
+                        <p><a href="javascript:;">Profile</a><a href="javascript:;">Diary</a><a href="javascript:;">Album</a><a href="javascript:;">Video</a></p>
+                    </li>
+                    <li  class="last">
+                        <a href="javascript:;" class="hp_title">Relationship</a>
+                        <p><a href="javascript:;">My friends</a><a href="javascript:;">Search friends</a><a href="javascript:;">Invite friends</a><a href="javascript:;">Subscription settings</a><a href="javascript:;">My groups</a><a href="javascript:;">Search group</a><a href="javascript:;">Create a group</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+                <input type="text" class="search_txt" value="Artivity/Firend/Group/Article" inputdefault="Artivity/Firend/Group/Article" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/defucult/head.jpg" width="32" height="32"></a><span class="user_infor_name"><a href="javascript:;">Cooking - life in the life journey<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">Modify profile</a></li>
+                    <li><a href="javascript:;">Account management</a></li>
+                    <li><a href="javascript:;">Privacy Settings</a></li>
+                    <li><a href="javascript:;">Change language</a></li>
+                    <li class="last"><a href="javascript:;">Exit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+	<div class="mes_box per_blog clearfix">
+        <div class="black10"></div>
+        <div class="black5"></div>
+        <div class="mes_com_box_Tab">
+            <a href="javascript:;">Profile</a>
+            <a href="javascript:;" class="active">Diary</a>
+            <a href="javascript:;">Album</a>
+            <a href="javascript:;">Video</a>
+        </div>
+        <div class="black10"></div>
+        <div class="log_tab clearfix mb12">
+            <ul>
+                <li><a href="javascript:;" class="tagf">Read</a></li>
+                <li><a href="javascript:;">Publish</a></li>
+                <li><a href="javascript:;">Page settings</a></li>
+                <li><a href="javascript:;">Management</a></li>
+            </ul>
+        </div>
+        <div class="black10"></div>
+        <div class="log_manage clearfix">
+            <div class="log_manage_le">
+                <div class="log_manage_Lin">
+                    <input name="" type="text" class="inp09"><input name="" type="button" class="inp10" value="Search">
+                </div>
+                <dl>
+                    <dt class="mb5">Category</dt>
+                    <dd class="m0">
+                    <ul class="mt0">
+                    <li class="listM_li">
+                       <span style="display: none;" class="ontab">
+                            <input type="text" value="Action" readonly="" class="inp55" id="a__0">
+                            <ul class="test_xl">
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">帖子</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">用户</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">相册</a></li>
+                                <li><a href="javascript:;">群组</a></li>
+                            </ul>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                        <span style="display: none;" class="ontab">
+                            <input type="text" value="Action" readonly="" class="inp55" id="a__0">
+                            <ul class="test_xl">
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">帖子</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">用户</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">相册</a></li>
+                                <li><a href="javascript:;">群组</a></li>
+                            </ul>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                        <span style="display: none;" class="ontab">
+                            <input type="text" value="Action" readonly="" class="inp55" id="a__0">
+                            <ul class="test_xl">
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">帖子</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">用户</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">相册</a></li>
+                                <li><a href="javascript:;">群组</a></li>
+                            </ul>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                       <span style="display: none;" class="ontab">
+                            <input type="text" value="Action" readonly="" class="inp55" id="a__0">
+                            <ul class="test_xl">
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">帖子</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">用户</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">相册</a></li>
+                                <li><a href="javascript:;">群组</a></li>
+                            </ul>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                        <span style="display: none;" class="ontab">
+                            <input type="text" value="Action" readonly="" class="inp55" id="a__0">
+                            <ul class="test_xl">
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">帖子</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">用户</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">相册</a></li>
+                                <li><a href="javascript:;">群组</a></li>
+                            </ul>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                </ul> 
+                </dd>
+                </dl> 
+                <dl class="mt10">
+                    <dt class="mb5">Date category</dt>
+                    <dd class="m0">
+                    <ul class="mt0">
+                    <li class="listM_li">
+                        <span style="display: none;" class="ontab">
+                            <input type="text" value="Action" readonly="" class="inp55" id="a__0">
+                            <ul class="test_xl">
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">帖子</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">用户</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">相册</a></li>
+                                <li><a href="javascript:;">群组</a></li>
+                            </ul>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                        <span style="display: none;" class="ontab">
+                            <input type="text" value="Action" readonly="" class="inp55" id="a__0">
+                            <ul class="test_xl">
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">帖子</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">用户</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">相册</a></li>
+                                <li><a href="javascript:;">群组</a></li>
+                            </ul>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                        <span style="display: none;" class="ontab">
+                            <input type="text" value="Action" readonly="" class="inp55" id="a__0">
+                            <ul class="test_xl">
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">帖子</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">用户</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">相册</a></li>
+                                <li><a href="javascript:;">群组</a></li>
+                            </ul>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                       <span style="display: none;" class="ontab">
+                            <input type="text" value="Action" readonly="" class="inp55" id="a__0">
+                            <ul class="test_xl">
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">帖子</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">用户</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">相册</a></li>
+                                <li><a href="javascript:;">群组</a></li>
+                            </ul>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                        <span style="display: none;" class="ontab">
+                            <input type="text" value="Action" readonly="" class="inp55" id="a__0">
+                            <ul class="test_xl">
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">帖子</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">用户</a></li>
+                                <li style="background-color: rgb(255, 255, 255);"><a href="javascript:;">相册</a></li>
+                                <li><a href="javascript:;">群组</a></li>
+                            </ul>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+
+                </ul> 
+                    
+                    </dd>
+                    
+                </dl>
+                
+            </div>
+            <div class="log_manage_ri">
+                    <div class="log_manage_Rtit">
+                        <h1>水清安知我飞鱼</h1>
+                        <p>《新破天一剑》全网家园新服义薄云天将准时开启，届时登录就能白拿时登录就能白拿时尚Iphone4、全球限量版破</p>
+                    </div>
+                    <div class="log_manage_Rfrist">
+                        <div class="alb_nav">
+                            <span class="first"><a href="javascript:;">First</a></span>
+                            <span class="prev"><a href="javascript:;">Previous</a></span>
+                            <span><i>01</i>/<i>20</i></span>
+                            <span class="next"><a href="javascript:;">Next</a></span>
+                            <span class="last"><a href="javascript:;">Last</a></span>
+                        </div> 
+                    </div>
+                    <div class="log_manage_Rshow clearfix">
+                        <div class="log_show_le">
+                            <div class="log_show_data">2011/11/26</div>
+                            <div class="log_show_weather"><span class=""><img src="../images/logbg04.jpg"/></span><a href="javascript:;">太原</a></div>
+                        </div>
+                        <div class="log_show_ri">
+                            <h2>一千个微博客有一千个不同的评论</h2>
+                            <dl class="clearfix">
+                                <dd class="log_viewbg"><a href="javascript:;">Classification of</a></dd>
+                                <dd class="log_viewbg01"><a href="javascript:;">Follow（12）</a></dd>
+                                <dd class="log_viewbg02"><a href="javascript:;">Edit</a></dd>
+                                <dd class="log_viewbg03"><a href="javascript:;">Reply（45）</a></dd>
+                                <dd class="log_viewbg04"><a href="javascript:;">Share（42）</a></dd>
+                                <dd class="log_viewbg05"><a href="javascript:;">Save</a></dd>
+                                <dd class="log_viewbg06"><a href="javascript:;">Print</a></dd>
+                                <dd class="log_viewbg07"><a href="javascript:;">Bookmark</a></dd>
+                             </dl>
+                        </div>
+                        <div class="log_view_page">
+                            <p>从网页游戏的角度看《龙将》，其可玩性还是相对比较高的！游戏中声望、将魂和银币是玩家增强实力的保障，新手平民（包括不充值和VIP1玩家）如何从新手迅速壮大呢？在这里本人浅谈下个人经验！
+                            </p>
+                            <p>进入新区，冲级是最重要的，接任务做任务快速升到30级，因为30级的装备属性决定了太多东西！而进入新区前，准备工作一定要做足！几乎每开新区会发很多的新手卡，而不同的新手卡可以同时使用的，在这里推荐下官网新手卡+256G+07073，一般情况下这三个网站发的新手卡都是可以同时使用的，而且有的网站会发几个不同的礼包，如白金新手包，钻石新手包等，先领了进游戏后激活，会得到不少东西，这些白得的东西对任何玩家都是有点小作用的！
+                            </p>
+                            <p>
+                            武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的。50级的时候用剩下的钱开始打造属于自己的军团，VIP1玩家用积累的银币开始高级对酒。
+                            </p>
+                            <span><a href="javascript:void(0);" class="cli_pl">Comments（134）</a></span>
+                        </div> 
+                        <div class="log_view_box"  style="display:none;">
+                        <div class="log_view_tabT"></div>
+                        <div class="log_view_tabC">
+                            <div class="log_view_hf">
+                                <textarea name="" type="text" class="inp06"></textarea><input name="" type="button" class="inp07" value="回复"><input name="" type="button" class="inp08" value="取消">
+                            </div>
+                            <div class="log_view_list clearfix">
+                                <ul>
+                                    <li>
+                                        <img src="../images/viewimg.jpg"/>
+                                        <div class="log_view_pl">
+                                        武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的
+                                        </div>
+                                        <div class="log_view_data">
+                                            <span><a href="javascript:;">删除</a><a href="javascript:;">回复</a></span>30分钟前
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../images/viewimg.jpg"/>
+                                        <div class="log_view_pl">
+                                        武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的
+                                        </div>
+                                        <div class="log_view_data">
+                                            <span><a href="javascript:;">删除</a><a href="javascript:;">回复</a></span>30分钟前
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../images/viewimg.jpg"/>
+                                        <div class="log_view_pl">
+                                        武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的
+                                        </div>
+                                        <div class="log_view_data">
+                                            <span><a href="javascript:;">删除</a><a href="javascript:;">回复</a></span>30分钟前
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="log_view_bin clearfix">
+                                <a href="javascript:void(0);" class="log_viewbg09">收起</a>                                
+                                <a href="javascript:;" class="log_viewbg08">更多回复</a>
+                            </div>
+                        </div>
+                        <div class="log_view_tabB"></div>
+                     </div>
+                    </div>
+                    <div class="log_manage_Rshow clearfix">
+                        <div class="log_show_le">
+                            <div class="log_show_data">2011/11/26</div>
+                            <div class="log_show_weather"><span class=""><img src="../images/logbg04.jpg"/></span><a href="javascript:;">太原</a></div>
+                        </div>
+                        <div class="log_show_ri">
+                            <h2>一千个微博客有一千个不同的评论</h2>
+                            <dl class="clearfix">
+                                <dd class="log_viewbg"><a href="javascript:;">Classification of</a></dd>
+                                <dd class="log_viewbg01"><a href="javascript:;">Follow（12）</a></dd>
+                                <dd class="log_viewbg02"><a href="javascript:;">Edit</a></dd>
+                                <dd class="log_viewbg03"><a href="javascript:;">Reply（45）</a></dd>
+                                <dd class="log_viewbg04"><a href="javascript:;">Share（42）</a></dd>
+                                <dd class="log_viewbg05"><a href="javascript:;">Save</a></dd>
+                                <dd class="log_viewbg06"><a href="javascript:;">Print</a></dd>
+                                <dd class="log_viewbg07"><a href="javascript:;">Bookmark</a></dd>
+                             </dl>
+                        </div>
+                        <div class="log_view_page">
+                            <p>从网页游戏的角度看《龙将》，其可玩性还是相对比较高的！游戏中声望、将魂和银币是玩家增强实力的保障，新手平民（包括不充值和VIP1玩家）如何从新手迅速壮大呢？在这里本人浅谈下个人经验！
+                            </p>
+                            <p>进入新区，冲级是最重要的，接任务做任务快速升到30级，因为30级的装备属性决定了太多东西！而进入新区前，准备工作一定要做足！几乎每开新区会发很多的新手卡，而不同的新手卡可以同时使用的，在这里推荐下官网新手卡+256G+07073，一般情况下这三个网站发的新手卡都是可以同时使用的，而且有的网站会发几个不同的礼包，如白金新手包，钻石新手包等，先领了进游戏后激活，会得到不少东西，这些白得的东西对任何玩家都是有点小作用的！
+                            </p>
+                            <p>
+                            武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的。50级的时候用剩下的钱开始打造属于自己的军团，VIP1玩家用积累的银币开始高级对酒。
+                            </p>
+                            <span><a href="javascript:void(0);" class="cli_pl">Comments（134）</a></span>
+                        </div> 
+                        <div class="log_view_box"  style="display:none;">
+                        <div class="log_view_tabT"></div>
+                        <div class="log_view_tabC">
+                            <div class="log_view_hf">
+                                <input name="" type="text" class="inp06"><input name="" type="button" class="inp07" value="回复"><input name="" type="button" class="inp08" value="取消">
+                            </div>
+                            <div class="log_view_list clearfix">
+                                <ul>
+                                    <li>
+                                        <img src="../images/viewimg.jpg"/>
+                                        <div class="log_view_pl">
+                                        武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的
+                                        </div>
+                                        <div class="log_view_data">
+                                            <span><a href="javascript:;">删除</a><a href="javascript:;">回复</a></span>30分钟前
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../images/viewimg.jpg"/>
+                                        <div class="log_view_pl">
+                                        武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的
+                                        </div>
+                                        <div class="log_view_data">
+                                            <span><a href="javascript:;">删除</a><a href="javascript:;">回复</a></span>30分钟前
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img src="../images/viewimg.jpg"/>
+                                        <div class="log_view_pl">
+                                        武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的武将招募：50级之前是攒钱的阶段，注意哦，一定要注意，招募武将是很费钱的，VIP1玩家以下建议在30的时候只招募黄盖和徐庶即可，这俩武将虽然是蓝色的，如果装备和强化给力的话，50级以后还是能用很长时间的
+                                        </div>
+                                        <div class="log_view_data">
+                                            <span><a href="javascript:;">删除</a><a href="javascript:;">回复</a></span>30分钟前
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="log_view_bin clearfix">
+                                <a href="javascript:;" class="log_viewbg09">收起</a>                                
+                                <a href="javascript:;" class="log_viewbg08">更多回复</a>
+                            </div>
+                        </div>
+                        <div class="log_view_tabB"></div>
+                     </div>
+                    </div>
+                    
+                    <div class="page_end mr14">
+                        <div class="alb_nav">
+                            <span><a href="javascript:;">More</a></span>
+                            <span class="first"><a href="javascript:;">First</a></span>
+                            <span class="prev"><a href="javascript:;">Previous</a></span>
+                            <span><i>01</i>/<i>20</i></span>
+                            <span class="next"><a href="javascript:;">Next</a></span>
+                            <span class="last"><a href="javascript:;">Last</a></span>
+                        </div> 
+                        
+                    </div>
+                
+            </div>
+        </div>
+		
+    </div>
+</div>
+<div class="mes_main_bot"></div>
+<!--mes_main-->
+
+<div class="footer layout">
+	<span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a href="javascript:;">Help</a></p>
+</div>
+
+<ul id="test_xl">
+<li><a href="javascript:;">Save</a></li>
+<li><a href="javascript:;">Print</a></li>
+<ul>
+
+</body>
+</html>

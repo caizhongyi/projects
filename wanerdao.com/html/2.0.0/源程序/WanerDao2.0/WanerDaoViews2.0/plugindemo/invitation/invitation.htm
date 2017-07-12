@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>邀请demo</title>
+    <link rel="stylesheet" type="text/css" href="/css/activity_create.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/layout.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/icon.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/form.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/css/pop.css" media="all" />
+ <link rel="stylesheet" type="text/css" href="/scripts/jquery.chosen/jquery.chosen.css" media="all" />
+     <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+     <script type="text/javascript" src="/scripts/plugin/cookie/wanerdao2.cookies.js"></script>
+     <script type="text/javascript" src="/Scripts/multipleLanguage/loader.js"></script>
+    <script type="text/javascript" src="../../scripts/common/wanerdaoutils.js"></script>
+     <script type="text/javascript" src="/scripts/jquery.core.js"></script>
+     <script type="text/javascript" src="/scripts/jquery.ui.tabs.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.center.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.overlay.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.dialog.js"></script>
+     <script type="text/javascript" src="/scripts/jquery.chosen/jquery.chosen.js"></script>
+     <script type="text/javascript" src="/scripts/plugin/invitation/wanerdao2.invitation.js"></script><!--此处未使用cookie如果想使用邀请的cookie版本，请引用wanerdao2.invitation.cookie.js"-->
+     <script type="text/javascript" src="/scripts/plugin/search/wanerdao2.compop.js"></script>
+     <script type="text/javascript">
+         $(function () {
+             $(window).scroll(function () {
+                 if ($(document).scrollTop() > 0) { $('#verifyWarp').css('top', $(document).scrollTop() - 69); }
+                 else { $('#verifyWarp').css('top', 0) }
+             });
+             $("#activity_t4").inviter();
+         });
+ </script>
+</head>
+<body class="pBgB fSize-12">
+<div class="header_wrapper pBgH">
+      <div class="header layout"><a href="index.html" class="logo"></a>
+          <div class="home" hoverable="true"><a href="javascript:;" class="go_home" title="回到首页"></a>
+                <div class="home_pop">
+                    <ul>
+                          <li><a href="javascript:;" class="hp_title">活动</a>
+                              <p><a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a href="javascript:;">历史活动</a></p>
+                         </li>
+                          <li><a href="javascript:;" class="hp_title">个人</a>
+                              <p><a href="javascript:;">资料</a><a href="javascript:;">日志</a><a href="javascript:;">相册</a><a href="javascript:;">视频</a></p>
+                         </li>
+                          <li><a href="javascript:;" class="hp_title">关系</a>
+                              <p><a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a href="javascript:;">关注设置</a><a href="javascript:;">我的圈子</a><a href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a></p>
+                         </li>
+                     </ul>
+                    <div class="home_pop_bottom">
+                          <p></p>
+                     </div>
+               </div>
+           </div>
+          <div class="search">
+                <div class="search_bg vm">
+                    <input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖" />
+                    <input value="" type="submit" class="search_btn" />
+               </div>
+           </div>
+          <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="/images/defucult/head.jpg" width="32" height="32" /></a><span class="user_infor_name"><a href="javascript:;">烧饭-人生旅途中人生旅途中<b></b></a></span>
+                <div class="user_infor_pop">
+                    <ul class="fSize-12">
+                          <li><a href="javascript:;">资料修改</a></li>
+                          <li><a href="javascript:;">账号管理</a></li>
+                          <li><a href="javascript:;">隐私设置</a></li>
+                          <li><a href="javascript:;">切换语言</a></li>
+                          <li class="last"><a href="javascript:;">退出</a></li>
+                     </ul>
+               </div>
+           </div>
+     </div>
+ </div>
+<div class="activity_create layout">
+      <div id="container" class="activity_create w_1004 pBgC2">
+          <div class="activity_createMainList">
+                <div class="mainTitile">
+                    <div class="mes_com_box_Tab"><a href="javascript:;" class="active">创建活动</a></div>
+               </div>
+                <div class="modSwitch">
+                    <label for="">
+                          <input type="radio" class="radio" name="1" id="" />
+                          列表模式填写</label>
+                    <label for="">
+                          <input type="radio" class="radio" name="1" id="" />
+                          向导模式填写</label>
+               </div>
+                <h2><b>发起活动</b></h2>
+                <div class="ACmodList">
+                    <h3 id='activity_t1'><b class="square ACmodListTitle"><a name="basicQuote" id="basicQuote"></a>初始参数引用</b></h3>
+                    
+               </div>
+                <!-- 初始参数引用 -->
+                <div class="ACmodList">
+                    <h3 id='activity_t2'><b class="square ACmodListTitle"><a name="basicSet" id="basicSet"></a>基本参数设定</b></h3>
+               </div>
+                <!-- 基本参数设定 -->
+                <div class="ACmodList">
+                    <h3 id="activity_t3"><b class="square ACmodListTitle"><a name="applySet" id="applySet"></a>报名参数设定</b></h3>                    
+                    <!-- 拟定预算 --> 
+               </div>
+                <!-- 报名参数设定 -->
+                <div class="ACmodList" id="activity_t4">
+                    <h3><b class="square ACmodListTitle"><a name="sendInvite" id="sendInvite"></a>发送邀请</b></h3>
+                    
+               </div>
+                <!-- 发送邀请 -->
+                <div class="ACmodList">
+                    <h3 id="activity_t5"><b class="square ACmodListTitle"><a name="applyPerson" id="applyPerson"></a>个人报名</b></h3>
+                    
+               </div>
+                <!-- 个人报名 -->
+                <div class="ACmodList">
+                    <h3 id="activity_t6"><b class="square ACmodListTitle"><a name="saveParameter" id="saveParameter"></a>参数保存</b></h3>
+                    
+               </div>
+                <!-- 参数保存 -->
+                <div class="btn-warp">
+                    <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="创建活动" />
+                    &nbsp;&nbsp;
+                    <input type="button" class="buttonB btn_w163 btn_h36 btnGary_163 fSize-14" value="保存参数暂不创建活动" />
+                    &nbsp;&nbsp;
+                    <input type="button" class="buttonB btn_w97 btn_h36 btnGary_97 fSize-14" value="取消" />
+               </div>
+           </div>
+          <div class="activity_createWidget pR">
+                <div class="verifyWarp pA" id="verifyWarp">
+                    <ul class="fSize-14 fCwhite">
+                          <li class="array1"><span class="verify_accept f_right">&nbsp;</span><a id="basicQuoteSwitch" href="#basicQuote">初始参数应用</a></li>
+                          <li class="array2"><span class="verify_cross f_right">&nbsp;</span><a href="#basicSet">基本参数设置</a></li>
+                          <li class="array3"><span class="f_right">&nbsp;</span><a href="#applySet">报名参数设定</a></li>
+                          <li class="array4"><span class="f_right">&nbsp;</span><a id="sendInviteSwitch" href="#sendInvite">邀请发送</a></li>
+                          <li class="array5"><span class="f_right">&nbsp;</span><a id="applyPersonSwitch" href="#applyPerson">个人报名</a></li>
+                          <li class="array6"><span class="f_right">&nbsp;</span><a id="saveParameterSwitch" href="#saveParameter">参数保存</a></li>
+                     </ul>
+               </div>
+           </div>
+          <div class="clear2"></div>
+     </div>
+ </div>
+<!--Main-->
+<div class="footer layout"><span class="f_right">版权所有 &copy; 玩儿道</span>
+      <p class="footer_link"><a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a></p>
+ </div>
+</body>
+</html>

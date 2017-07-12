@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>房地产手机网站 HTML5手机网站模板 WAP手机网站 微网站 科蚁网 www.asp300.com 芳草地·雪岭仙山</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/zepto.min.js"></script> 
+<script src="js/main.js"></script>
+<script src="js/tool.js"></script> 
+<script src="js/swipe.js"></script> 
+</head>
+
+<body>
+<header class="ui-header">
+	<h1>芳草地·雪岭仙山</h1>
+    <div class="ui-header-left"><a class="ui-header-ico-home" href="/"></a></div>
+    <div class="ui-header-right">
+    	<a id="openMenu" class="ui-header-ico-menu" href="javascript:;#mp.weixin.qq.com"></a>    	
+    </div>
+</header>
+
+<ul id="menu">
+    <li class="icon"><a href="content.html">公司简介</a></li>
+    <li class="icon"><a href="list.html">项目介绍</a></li>
+    <li class="icon"><a href="#">产品展示</a></li>
+    <li class="icon"><a href="">雪岭动态</a></li>
+    <li class="icon"><a href="">物业服务</a></li>
+    <li class="icon"><a href="">联系我们</a></li>
+</ul>
+
+<div class="ui-banner">
+<div id="slider" class="swipe">
+<ul class="swipe-wrap">
+    <li><a href="#"><img src="images/banner1.jpg" /></a></li>
+    <li><a href="#"><img src="images/banner2.jpg" /></a></li>
+    <li><a href="#"><img src="images/banner3.jpg" /></a></li>
+</ul>
+    	<div id="slider_on">
+      		<ul>
+                <li class="on"></li>
+                <li class=""></li>
+                <li class=""></li>
+      		</ul>
+    	</div>
+</div>
+</div>
+
+<ul class="index_img">
+<li><a href="content.html"><img src="images/index_img1.jpg" alt="" /></a></li>
+<li><a href=""><img src="images/index_img2.jpg" alt="" /></a></li>
+<li><a href="#"><img src="images/index_img3.jpg" alt="" /></a></li>
+<li><a href=""><img src="images/index_img4.jpg" alt="" /></a></li>
+<li><a href=""><img src="images/index_img5.jpg" alt="" /></a></li>
+<li><a href=""><img src="images/index_img6.jpg" alt="" /></a></li>
+</ul>
+
+<footer>
+<div class="copy tc">微网站地房地产开发有限公司</div>
+    <div class="tecl tc">科蚁网 www.asp300.com 提供技术支持</div>
+</footer>
+<script>
+$(function(){
+$('#slider').mBanner('slider');
+});
+</script>
+<div style="display:none"></div><script>
+       var allA = document.getElementsByTagName('a');
+			for(var i=0;i<allA.length;i++){
+				if(allA[i].href.indexOf('tel')){
+				  allA[i].href = allA[i].href + '#mp.weixin.qq.com';
+				}
+			}
+       </script>
+	  </body>
+</html>

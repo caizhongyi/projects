@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>玩道弹出窗</title>
+
+    <meta name="keywords" content="玩儿道弹出窗口"/>
+    <meta name="description"
+          content=""/>
+
+
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content="" />
+    <meta name="copyright" content="2001-2010 Comsenz Inc." />
+    <link rel="Bookmark" href="favicon.ico" />
+    <link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/font-awesome.min.css"/>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="../css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/print.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/en.css"/>
+
+
+
+    <!-- jquery 库 -->
+    <link rel="stylesheet" href="../css/animate.min.css"/>
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js" ></script>
+    <script type="text/javascript" src="../js/jquery.plus.min.js" ></script>
+    <style type="text/css">
+        .dialog{
+            display: block;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div data-options="handler:'header'" class="dialog ui-dialog dialog-small">
+    <div class="bg"></div>
+    <div class="inner">
+        <div data-options="region:'header',handle:true" class="hd">
+            <h3>验证口令</h3>
+            <a data-options="region:'hide'" class="close" href="javascript:;"></a>
+        </div>
+        <div class="bd form ">
+            <div class="form-item">
+                <label><span class="input-label">密码:</span><input type="text" class="text text-xlarge"></label>
+            </div>
+        </div>
+        <div class="ft text-right"><span class="tips-result">
+                <ul>
+                    <li>Note</li>
+                </ul>
+            </span><input type="submit" value="验证" class="btn btn-default btn-mini btn-mini">
+        </div>
+    </div>
+</div>
+<script src="../js/global.js"></script>
+<script src="../js/jquery.draggable.min.js"></script>
+<script src="../js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script>
+    $('.dialog .bd').initslimscroll();
+</script>
+</body>
+</html>

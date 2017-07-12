@@ -1,0 +1,41 @@
+﻿作者：金广亮
+时间：2011-11-07
+1.文件说明：
+	继承地区选择插件
+	Plugin(插件js存放目录)\SearchGroup(地区js存放目录)\wanerdao2.searchgroup.js
+2.参数说明：
+jquery.boxy.js插件的参数说明
+    DEFAULTS: {
+        title:                  null,           // titlebar text. titlebar will not be visible if not set.
+        closeable:              true,           // display close link in titlebar?
+        draggable:              true,           // can this dialog be dragged?
+        clone:                  false,          // clone content prior to insertion into dialog?
+        actuator:               null,           // element which opened this dialog
+        center:                 true,           // center dialog in viewport?
+        show:                   true,           // show dialog immediately?
+        modal:                  false,          // make dialog modal?
+        fixed:                  true,           // use fixed positioning, if supported? absolute positioning used otherwise
+        closeText:              '[关闭]',      // text to use for default close link
+        unloadOnHide:           false,          // should this dialog be removed from the DOM after being hidden?
+        clickToFront:           false,          // bring dialog to foreground on any click (not just titlebar)?
+        behaviours:             Boxy.EF,        // function used to apply behaviours to all content embedded in dialog.
+        afterDrop:              Boxy.EF,        // callback fired after dialog is dropped. executes in context of Boxy instance.
+        afterShow:              Boxy.EF,        // callback fired after dialog becomes visible. executes in context of Boxy instance.
+        afterHide:              Boxy.EF,        // callback fired after dialog is hidden. executed in context of Boxy instance.
+        beforeUnload:           Boxy.EF,         // callback fired after dialog is unloaded. executed in context of Boxy instance.
+        okbtn:					'确定',
+        cancelbtn:				'取消'
+    }
+gAreaSettings: {
+        loadmsg: '数据加载中...', //数据加载时提示信息
+        errormsg: '数据加载错误', //数据加载错误时信息
+        validatemsg: '最多只能选择3项，若需要更换其它选项，请先点击取消部分选择结果。', //当大于limit规定的数量后弹出的警告框
+        validatetitle: '提示信息', //效验警告框的标题
+        nodatamsg: '暂无数据', //无数据时显示信息
+        friendmsg: '好友：', //作为好友集合前面的标题        
+        footmsg: '备注：好友选择', //底部左侧的提示信息
+        tipmsg: '您的选择', //选择后的提示信息
+        limit: 3, //限制选定几个好友
+        areaokbtn: '确定', //确定按钮文字信息
+        areacancelbtn: '取消'//取消按钮文字信息
+    }

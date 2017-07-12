@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>欢迎来到玩儿道, 活动安排生活的社交网络服务, 查找活动, 安排活动,
+        简单开始 </title>
+
+    <meta name="keywords"
+          content="玩儿道, 活动安排生活的社交网络服务, 查找活动, 按排活动, 活动, 圈子, 个人, 关系信息"/>
+    <meta name="description"
+          content="玩儿道 (www.wanerdao.com)是活动安排生活的社交网络服务. 用户可以根据他们的需要和玩儿道顺利地寻找不同类型活动和安排计划，像一个专业的管家。通过这些活动，你可以与你的老朋友在一起或认识更多的新朋友。互相交流，一起分享每一个快乐的时刻。让我们就从这里开始。"/>
+
+
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content=""/>
+    <meta name="copyright" content="2001-2010 Comsenz Inc."/>
+    <link rel="BookStar" href="favicon.ico"/>
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="js/jquery.chosen/jquery.chosen.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/index.css"/>
+
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="#" class="logo"><img src="images/logo.png" alt="玩儿道"></a>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout index-layout">
+    <div class="container">
+        <div class="side pull-right">
+            <form>
+                <div class="form login-form">
+                    <h3>登录</h3>
+                    <ul>
+                        <li><div class="input-block"><input type="text" class="text" placeholder="帐号"></div></li>
+                        <li><div class="input-block"><input type="password" class="text" placeholder="密码"></div></li>
+                    </ul>
+                    <div class="clearfix">
+                        <div class="record pull-left">
+                            <label class="checkbox" ><input type="checkbox" class="checkbox">保持登录</label>
+                        </div>
+                        <div class="forget pull-right">
+                            <a href="javascript:;">忘记密码？</a><br>
+                            <a href="javascript:;">忘记帐号？</a>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="button" class="btn btn-primary" value="登 录" >
+                    </div>
+
+
+                    <hr class="solid">
+                    <div class="otheraccount">
+                        <label>其它登录方式:</label><a href=""><i class="icon icon-facebook-alt"></i></a><a href=""><i class="icon icon-twitter-alt"></i></a><a href=""><i class="icon icon-google-alt"></i></a><a href=""><i class="icon icon-linkedin-alt"></i></a>
+                    </div>
+
+                </div>
+                <div class="side-footer">
+                    <h3>还没有玩儿道账号? 今天加入!</h3>
+                    <a href="javascript:;" class="button" data-target="1">立即注册玩儿道账号</a>
+                </div>
+            </form>
+
+            <form style="display: none;">
+                <div class="form regist-form">
+                    <h3>注册</h3>
+                    <ul>
+                        <li><p class="text-info">永久免费</p></li>
+                        <li><span class="input-block"><input type="text" class="text" placeholder="电子邮件"></span></li>
+                        <li><span class="input-block"><input type="password" class="text" placeholder="设置密码"></span></li>
+                        <li><span class="input-block"><input type="password" class="text" placeholder="再次确认"></span></li>
+                        <li><span class="input-block"><input type="text" class="text" placeholder="真实姓名"></span></li>
+                        <li><label class="input-control">性别:</label><span class="radio"><input id="man" name="sex" type="radio"><label
+                                for="man">男</label></span><span class="radio"><input id="feman" name="sex" checked="checked" type="radio"><label
+                                for="feman">女</label></span></li>
+                        <li><label >生日:</label><span class="combo " data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">Month</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><span class="combo" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">Day</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><span class="combo" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">Year</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span>
+                        </li>
+                    </ul>
+                    <div><input type="button" class="btn btn-primary" value="注册"></div>
+
+                </div>
+                <div class="side-footer">
+                    <h3></h3>
+                    <a href="javascript:;" class="button" data-target="0">立即登录</a>
+                </div>
+            </form>
+
+
+            <div class="text-right">
+                语言:&nbsp;
+                <select class="chosen" onchange="console.log('onchange')"  selected="selected" id="thelist" name="thelist" style="width: 150px;">
+                    <option class="dropBorder" value="0">English(U.S.)</option>
+                    <option class="dropBorder" value="1">中文简体(中国)</option>
+                </select>
+
+                <!--<span class="combo" id="combo">
+                    <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                    <input id="usr" name="usr" type="hidden" class="combo-input-hidden">
+                    <div class="combo-list">
+                        <ul>
+                            <li>English(U.S.)</li>
+                            <li>中文简体(中国)</li>
+                        </ul>
+                    </div>
+                </span>-->
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    $('.side-footer .button').click(function () {
+                       $( this).closest('form').hide().siblings('form').fadeIn();
+                    })
+
+                   /* new  Class.combo('#combo').on('onchange',function( e , args ){
+                        console.log(args)
+                    });*/
+                })
+            </script>
+        </div>
+        <div class="main">
+            <div class="main-title">
+                <a href="#" class="login-btn"><i>访客浏览</i></a>
+                <span>第一个专注于活动组织的互联网平台</span>
+            </div>
+            <ul class="clearfix mainpics">
+                <li><a href="javascript:;"><img src="pics/p1-en.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="pics/p2-en.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="pics/p3-en.jpg" alt=""></a></li>
+                <li><a href="javascript:;"><img src="pics/p4-en.jpg" alt=""></a></li>
+            </ul>
+            <div class="search clearfix">
+                <input type="text" class="text" placeholder="活动">
+                <a class="button" href="javascript:;"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+    <div class="sitemap">
+        <a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律</a><a
+            href="javascript:;" class="text-danger">招聘</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a>
+    </div>
+    <span class="copyright">版权所有 @ 2011-2014 玩儿道团队, All right reserved.</span>
+    </div>
+</div>
+<!-- end footer -->
+<script type="text/javascript" src="js/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/class.ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.placeholer.js"></script>
+
+</body>
+</html>

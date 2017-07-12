@@ -1,0 +1,1721 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>Current and history activity-Activity-Savorboard</title>
+
+    <meta name="keywords"
+          content="Current and history activity, Basic information, Plan, Budget, Member, Carpool, Route, Weather, Chat board, Savorboard, Activity arrangement living social network service"/>
+    <meta name="description"
+          content="Select an activity from my current and history activity list and display by introduction, plan, budget, member, carpool, route, weather and chat board"/>
+
+
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content=""/>
+    <meta name="copyright" content="2001-2010 Comsenz Inc."/>
+    <link rel="Bookmark" href="favicon.ico"/>
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/activity.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/en.css"/>
+
+    <link rel="stylesheet" href="css/animate.min.css"/>
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="index.html" class="logo"><img src="images/logo-en.png" alt="Wanerdao"></a>
+
+        <div class="home  hover">
+            <a title="Home" class="button" href="javascript:;"><i class="icon icon-alist"></i></a>
+
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a href="javascript:;">Activity</a></h3>
+                        <a href="activity_index.html">Activity main</a><a href="activity_search.html">Search activity</a><a
+                            href="activity_item_main.html">Current and past activities </a><a href="activity_future_plan.html">Future
+                        activities</a><a href="javascript:;">Launch an activity </a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">Personal</a></h3>
+                        <a href="personal_edit.html">Profile</a><a href="personal_finance_account.html">Finance account</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">Relationship</a></h3>
+                        <a href="relationship_friends_invite.html">My friends</a>
+                    </li>
+                    <li>
+                        <h3><a href="index.html">Main</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="Activity / Friend" class="text"><input type="submit" class="button" value="">
+        </div>
+
+        <div class="infotips">
+                        <span class="floatbox-wrap dropdown">
+                            <a href="javascript:;" class="hint"><i class="icon icon-bell "></i><span
+                                    class="badge badge-important">20</span></a>
+                            <div class="dropdown-pane floatbox slide">
+                                <i class="arrow"></i>
+
+                                <div class="scroll">
+                                    <div class="accordion scroll-panel" data-collapse="">
+                                        <div class="accordion-item active">
+                                            <div class="accordion-heading hd toolbar"><i class="icon-minus-sign"></i><!--<i class="icon-collapse"></i>--><span
+                                                    class="text-important">1223</span>&nbsp;Activity name，city/state <span
+                                                    class="time">2012/12 - 2021/12</span></div>
+                                            <div class="accordion-panel" style="display: block">
+                                                <ul class="group-list">
+                                                    <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                            class="title"><strong>Task name</strong><small class="desc">
+                                                        Description
+                                                    </small></span><a href="" class="opts">Detail</a></li>
+                                                    <li>
+                                                        <i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                            class="title "><strong>Task name</strong><small
+                                                            class="desc detail-short">Description
+                                                    </small></span>
+
+                                                        <div class="detail">
+                                                            <small class="desc">Description</small>
+                                                            <br/>
+                                                            <span class="price">$123</span>&nbsp;
+                                                            <small class="desc">Private message&nbsp;Attachment</small>
+                                                            <br/>
+                                                            Creator
+                                                            <a href="" class="opts">Detail</a>
+                                                        </div>
+                                                    </li>
+                                                    <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                            class="title"><strong>Task name</strong><small class="desc">
+                                                        Description
+                                                    </small></span><a href="" class="opts">Request content</a></li>
+                                                    <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                            class="title"><strong>Task name</strong><small class="desc">
+                                                        Description
+                                                    </small></span><a href="" class="opts">Request content</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item ">
+                                            <div class="accordion-heading hd toolbar"><i class="icon-plus-sign"></i><!--<i class="icon-collapse"></i>--><span
+                                                    class="text-important">1223</span>&nbsp;Activity name，city/state
+                                            </div>
+                                            <div class="accordion-panel" style="display: block">
+                                                <ul class="group-list">
+                                                    <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                            class="title"><strong>Task name</strong><small class="desc">
+                                                        Description
+                                                    </small></span><a href="" class="opts">Detail</a></li>
+                                                    <li>
+                                                        <i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                            class="title"><strong>Task name</strong><small
+                                                            class="desc detail-short">Description
+                                                    </small></span>
+
+                                                        <div class="detail">
+                                                            <small class="desc">Description</small>
+                                                            <br/>
+                                                            <span class="price">$123</span>&nbsp;
+                                                            <small class="desc">Private message</small>
+                                                            <br/>
+                                                            Creator
+                                                            <a href="" class="opts">Detail</a>
+                                                        </div>
+                                                    </li>
+                                                    <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                            class="title"><strong>Task name</strong><small class="desc">
+                                                        Description
+                                                    </small></span><a href="" class="opts">Request content</a></li>
+                                                    <li><i class="icon-block-blue"></i>( Task )&nbsp;<span
+                                                            class="title"><strong>Task name</strong><small class="desc">
+                                                        Description
+                                                    </small></span><a href="" class="opts">Request content</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                        <span class="floatbox-wrap dropdown">
+                            <a href="javascript:;" class="hint"><i class="icon icon-bullhorn"></i><span
+                                    class="badge badge-important">20</span></a>
+                            <div class="dropdown-pane floatbox slide">
+                                <i class="arrow"></i>
+
+                                <div class="scroll">
+                                    <ul class="group-list scroll-panel">
+                                        <li>2012/12/23&nbsp;
+                                            <small class="desc">notification</small>
+                                            <a href="" class="opts">I know</a></li>
+                                        <li>2012/12/23&nbsp;
+                                            <small class="desc">notification</small>
+                                            <a href="" class="opts">I know</a></li>
+                                        <li>2012/12/23&nbsp;
+                                            <small class="desc">notification</small>
+                                            <a href="" class="opts">I know</a></li>
+                                        <li>2012/12/23&nbsp;
+                                            <small class="desc">notification</small>
+                                            <a href="" class="opts">I know</a></li>
+                                        <li>2012/12/23&nbsp;
+                                            <small class="desc">notification</small>
+                                            <a href="" class="opts">I know</a></li>
+                                        <li>2012/12/23&nbsp;
+                                            <small class="desc">notification</small>
+                                            <a href="" class="opts">I know</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </span>
+                        <span class="floatbox-wrap ">
+                            <span class="dropdown">
+                                <a href="javascript:;" class="hint"><i class="icon icon-envelope"></i><span
+                                        class="badge badge-important">20</span></a>
+                                <div class="dropdown-pane floatbox slide" id="message-box">
+                                    <i class="arrow"></i>
+
+                                    <div class="scroll">
+                                        <div class="scroll-panel">
+                                            <div class="toolbar"><a href="###" class="message-box">Go to message box<span
+                                                    class="text-important">（200）</span></a>•<a
+                                                    href="###" class="message-compose">Compose a message</a></div>
+                                            <ul class="group-list">
+                                                <li>
+                                                    <div class="heading">
+                                                        <i class="icon icon-star-alt"></i><span class="title">Name<small
+                                                            class="desc detail-short">Content
+                                                    </small></span><span class="opts in"><span class="date">2012-12-21</span><a
+                                                            href="">Detail</a></span>
+                                                    </div>
+                                                    <div class="form detail">
+                                                        <div class="form-item ">
+                                                            <p class="desc">Content...</p>
+                                                        </div>
+                                                        <div class="form-item">
+                                                            <div class="input-block">
+                                                                <textarea class="textarea " placeholder="Replay"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix">
+                                                            <div class="pull-left">
+                                                                <label><input type="checkbox"/>Save a draft</label>
+                                                            </div>
+                                                            <div class="pull-right">
+                                                                <span class="tips-result">Tips</span>
+                                                                <button class="btn btn-primary btn-mini">Reply</button>
+                                                                <button class="btn btn-default btn-mini">Forward</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="heading">
+                                                        <i class="icon icon-star-alt"></i><span class="title">Name<small
+                                                            class="desc detail-short">Content
+                                                    </small></span><span class="opts in"><span class="date">2012-12-21</span><a
+                                                            href="">Detail</a></span>
+                                                    </div>
+                                                    <div class="form detail">
+                                                        <div class="form-item ">
+                                                            <p class="desc">Content...</p>
+                                                        </div>
+                                                        <div class="form-item">
+                                                            <div class="input-block">
+                                                                <textarea class="textarea " placeholder="Replay"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix">
+                                                            <div class="pull-left">
+                                                                <label><input type="checkbox"/>Save a draft</label>
+                                                            </div>
+                                                            <div class="pull-right">
+                                                                <span class="tips-result">Tips</span>
+                                                                <button class="btn btn-primary btn-mini">Send</button>
+                                                                <button class="btn btn-default btn-mini">Save</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li><i class="icon icon-star-alt"></i><span class="title">Name<small
+                                                        class="desc">Content
+                                                </small></span><span class="opts in"><span class="date">2012-12-21</span><a
+                                                        href="">Read</a></span></li>
+                                                <li><i class="icon icon-star-empty-alt"></i><span class="title">Name<small
+                                                        class="desc">Content
+                                                </small></span><span class="opts in"><span class="date">2012-12-21</span><a
+                                                        href="">Read</a></span></li>
+                                                <li><i class="icon icon-star-alt"></i><span class="title">Name<small
+                                                        class="desc">Content
+                                                </small></span><span class="opts in"><span class="date">2012-12-21</span><a
+                                                        href="">Read</a></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                            <div class="dropdown-pane floatbox slide" id="message-compose">
+                                <i class="arrow"></i>
+
+                                <div class="scroll">
+                                    <div class=" scroll-panel">
+                                        <div class="toolbar"><a href="###" class="message-box">Go to message box<span
+                                                class="text-important">（200）</span></a>•<a
+                                                href="###" class="message-compose">Compose a message</a><span class="opts">Content saved, Date: MM/dd/yyyy hh:mm</span>
+                                        </div>
+                                        <div class="form container sendbox">
+                                            <div class="form-item ">
+                                                <label><span class="input-label">To:</span><input type="text"
+                                                                                                  class="text span8"/>
+                                                    <button class="btn btn-default btn-mini">Search</button>
+                                                </label>
+                                            </div>
+                                            <div class="form-item">
+                                                <label><span class="input-label">Content:</span><textarea class="textarea span8"
+                                                                                                          placeholder="Replay"></textarea></label>
+                                            </div>
+                                            <div class="form-panel clearfix">
+                                                <div class="pull-left ">
+                                                    <label><input type="checkbox"/>Save a draft</label>
+                                                </div>
+                                                <div class="pull-right">
+                                                    <span class="tips-result">Tips</span>
+                                                    <button class="btn btn-primary btn-mini">Send</button>
+                                                    <button class="btn btn-default btn-mini">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </span>
+            <!-- <a href="javascript:;" class="icon-message-mail">123</a>-->
+            <script>
+
+                $('.message-box').click(function (e) {
+                    $('#message-compose').removeClass('in')
+                    $('#message-box').addClass('in');
+                })
+                $('.message-compose').click(function () {
+                    $('#message-box').removeClass('in')
+                    $('#message-compose').addClass('in');
+                })
+
+                $('.infotips .accordion').on('change', function (e, args) {
+                    var $icon = $(args.item).find('.accordion-heading hd [class*=icon]');
+                    if ($icon.hasClass('icon-plus-sign'))
+                        $icon.removeClass('icon-plus-sign').addClass('icon-minus-sign');
+                    else {
+                        $icon.removeClass('icon-minus-sign').addClass('icon-plus-sign');
+                    }
+                })
+            </script>
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img src="images/defaults/32-32.jpg"></a><a class="name"
+                                                                                                 href="javascript:;"><span>烧饭-人生旅途中人生旅途中</span><b></b></a>
+
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">Profile</a></li>
+                    <li><a href="javascript:;">Account</a></li>
+                    <li>
+                        <a href="javascript:;">Switch language</a>
+                        <ul>
+                            <li><a href="javascript:;">Chinese</a></li>
+                            <li><a href="javascript:;">English</a></li>
+                        </ul>
+                    </li>
+                    <li class="last"><a href="javascript:;">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end header -->
+<!-- container -->
+<div class="container container-box layout puture-layout">
+    <div class="container">
+        <div class="tabs-master">
+            <div class="nav">
+                <div class="pull-left"><a href="activity_index.html">Activity home</a><a href="#">Search
+                    activities</a><a href="#" class="selected">My activity</a><a href="activity_create_finish.html">Launch an activity</a></div>
+            </div>
+        </div>
+
+        <div class="layout-side">
+            <div class="equal">
+                <div class="side-inner">
+                    <div class="side-nav"><a href="javascript:;">Current & past (423)</a> | <a href="javascript:;" class="selected">Future (23)</a></div>
+                    <div class="push-up input-group">
+                        <a href="javascript:;" class="btn btn-image btn-gray-planus">
+                            <i class="icon icon-blue-date"></i>
+                        </a><a href="javascript:;" class="btn btn-image btn-gray-planus">
+                            <i  class="icon icon-blue-list"></i>
+                        </a><span class="input-search">
+                            <div class="search-inner">
+                                <input type="text" class="text" placeholder="Name / City / State"/>
+                                <a href="javascript:;" class="icon"></a>
+                            </div>
+                        </span>
+                    </div>
+
+                    <div class="clearfix text-right">
+                        <div class="pagination-arrow-blue">
+                            <a href="javascript:;" class="prev"></a><a href="javascript:;" class="next disabled"></a>
+                        </div>
+                    </div>
+                    <button class="btn btn-default btn-block  allact">Show all activities</button>
+
+                    <dl class="side-infos side-infos-line scrollfixed">
+                        <dd>
+                            <p>
+                                （100/250）<a href="javascript:;" class="text-ellipsis" style="width:85px !important;">美国东升乡滑雪节</a><br>
+                                纽约/新泽西State
+                            </p>
+
+                            <div class="item-date"><em>03/22-04/22</em></div>
+                            <div class="fixed-opts top">
+                                        <span class="combo hover">
+                                            <span class="combo-input">Action</span><a class="combo-icon"
+                                                                                      href="javascript:void(0)"></a>
+                                            <div class="combo-list">
+                                                <ul>
+                                                    <li value="1">12</li>
+                                                    <li value="2">item2</li>
+                                                    <li value="3">item3</li>
+                                                    <li value="4">item4</li>
+                                                    <li value="5">item5</li>
+                                                </ul>
+                                            </div>
+                                        </span>
+                            </div>
+
+                            <ul class="side-list" style="display: none">
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Initial Parameters</a>
+                                    <ul class="item-panel">
+                                        <li><span class="icon-right-arrow"></span><a href="javascript:;">Initial
+                                            Parameters</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                        <li><span class="icon-right-arrow"></span><a href="javascript:;">Initial
+                                            Parameters</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                        <li><span class="icon-right-arrow"></span><a href="javascript:;">Initial
+                                            Parameters</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                        <li><span class="icon-right-arrow"></span><a href="javascript:;">Initial
+                                            Parameters</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                    </ul>
+                                </li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Basic settings</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Sign up settings</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Draft plan </a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Finance</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Prepayment settings</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Join condition settings</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Kick off protection</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Launch repetition</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Individual registration</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Invitation</a></li>
+                            </ul>
+                        </dd>
+                        <dd>
+                            <p>
+                              （100/250）<a href="javascript:;" class="text-ellipsis" style="width:85px !important;">美国东升乡滑雪节</a><br>
+                               纽约/新泽西State
+                            </p>
+
+                            <div class="item-date"><em>03/22-04/22</em></div>
+                            <div class="fixed-opts top">
+                                        <span class="combo hover">
+                                            <span class="combo-input">Action</span><a class="combo-icon"
+                                                                                      href="javascript:void(0)"></a>
+                                            <div class="combo-list">
+                                                <ul>
+                                                    <li value="1">12</li>
+                                                    <li value="2">item2</li>
+                                                    <li value="3">item3</li>
+                                                    <li value="4">item4</li>
+                                                    <li value="5">item5</li>
+                                                </ul>
+                                            </div>
+                                        </span>
+                            </div>
+                            <ul class="side-list" style="display: none">
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Initial Parameters</a>
+                                    <ul class="item-panel">
+                                        <li><span class="icon-right-arrow"></span><a href="javascript:;">Initial
+                                            Parameters</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                        <li><span class="icon-right-arrow"></span><a href="javascript:;">Initial
+                                            Parameters</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                        <li><span class="icon-right-arrow"></span><a href="javascript:;">Initial
+                                            Parameters</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                        <li><span class="icon-right-arrow"></span><a href="javascript:;">Initial
+                                            Parameters</a><a href="javascript:;" class="icon icon-del"></a></li>
+                                    </ul>
+                                </li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Basic settings</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Sign up settings</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Draft plan </a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Finance</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Prepayment settings</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Join condition settings</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Kick off protection</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Launch repetition</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Individual registration</a></li>
+                                <li><i class="icon icon-block-blue"></i><a href="javascript:;">Invitation</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <script type="text/javascript">
+                        $('.side-infos').on('click', 'dd', function (e) {
+                            e.stopPropagation();
+                            if($(this).find('.side-list').is(':animated')) return ;
+                            $(this).find('.side-list').slideDown()
+                                    .end().siblings('dd').slideUp();
+                        }).on('click', '.combo', function (e) {
+                            e.stopPropagation();
+                        })
+                        $(document).on('click','.allact',function () {
+                            var sideInfo = $('.side-infos').stop(true, true)
+                            sideInfo.find('dd').stop(true, true).height('auto').slideDown()
+                                    .end().find('.side-list').stop(true, true).slideUp();
+                        })
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="layout-main">
+    <div class="subnav">
+        <a href="javascript:;" class="selected">Main</a><a href="javascript:;">Me</a><a href="javascript:;">Settings </a>
+    </div>
+    <div class="titlebar titlebar-info">
+        Survey <label  class="radio"><input type="radio"/>Like</label><label  class="radio"><input
+            type="radio"/>Dislike</label><label  class="radio"><input type="radio"/>No option</label><a
+            href="javascript:;"><i class="icon-blue-result"></i>Check result</a>
+    </div>
+    <div class="titlebar" id="modulelinks">
+        <i class="icon-lock"></i>D005001 周末白宫门口围堵奥巴马
+        <!--<div class="opts"><a href="javascript:;" class="btn-option"><i class="icon icon-love"></i>Subscribe</a></div>-->
+        <div class="text-right list-link" >
+            <a href="#launch">Ready to launch</a>•<a href="#send_invi_accordion" >Send invitation</a>•<a href="#setting">Save setting</a>•<a href="#print">Print & Save</a>
+        </div>
+
+        <script>
+                $('#modulelinks').on('click','a',function(e){
+                    e.preventDefault();
+                    var selector = $(this).attr('href');
+                    var $module = $(selector).toggleClass('active')
+                    $module.insertAfter('#modulelinks');
+                })
+        </script>
+
+    </div>
+    <div class="mod mod-default accordion ">
+        <div class="accordion-heading hd toolbar">
+            <i class="icon icon-blue-minus"></i><span class="muted">Address:</span><span>美国纽约新泽西State</span><br>
+            <i class="icon icon-empty">&nbsp;</i><span class="muted">Date:</span><span>03-05/03-15</span>
+
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <div class="accordion-panel ">
+            <div class="form form-block">
+                <div class="form-item group">
+                    <a href="javascript:;">Category1</a><a href="javascript:;">Category2</a><a
+                        href="javascript:;">Category3</a>
+                </div>
+                <div class="form-item">
+                    <label class="muted input-control">Organizer:</label>AHXIAOPENG
+                </div>
+                <div class="form-item">
+                    <label class="muted input-control">Create group:</label>周未白宫门围堵奥巴马
+                </div>
+                <div class="form-item">
+                    <label class="muted input-control">Create date:</label>12/13/2013
+                </div>
+                <div class="form-item">
+                    <label class="muted input-control">Description:</label><span class="input-mutil">重庆官方昨天披露了不雅视频事件的最新处理情况，涉案干部增至21人，与此前公布的11名官员和国企高管人员相比，除南岸区原区委书记夏泽良外，另9名涉案官员message尚未Public。</span>
+                </div>
+                <div class="form-item">
+                    <label class="muted input-control">Super administrator:</label><span class="input-control"><a
+                        href="javascript:;">AHXIAOPENG</a><a class="icon-blue-moblie"></a><a
+                        class="icon-blue-mail"></a></span><span class="input-control"><a
+                        href="javascript:;">AHXIAOPENG</a><a class="icon-blue-moblie"></a><a
+                        class="icon-blue-mail"></a></span>
+                </div>
+                <div class="form-item">
+                    <label class="muted input-control">General administrator:</label><span class="input-control"><a
+                        href="javascript:;">AHXIAOPENG</a><a class="icon-blue-moblie"></a><a
+                        class="icon-blue-mail"></a></span><span class="input-control"><a
+                        href="javascript:;">AHXIAOPENG</a><a class="icon-blue-moblie"></a><a
+                        class="icon-blue-mail"></a></span>
+                </div>
+                <div class="form-item">
+                    <label class="muted input-control">Treasurer:</label><span class="input-control"><a href="javascript:;">AHXIAOPENG</a><a
+                        class="icon-blue-moblie"></a><a class="icon-blue-mail"></a><a class="icon-blue-box"></a></span><span
+                        class="input-control"><a href="javascript:;">AHXIAOPENG</a><a class="icon-blue-moblie"></a><a
+                        class="icon-blue-mail"></a><a class="icon-blue-box"></a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mod mod mod-default accordion">
+        <div class="accordion-heading hd titlebar">
+            <i class="icon icon-empty">&nbsp;</i>Member limitation
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <div class="accordion-panel">
+            <div class="form form-block">
+                <div class="form-item">
+                    <label class="muted input-control">Member number/Total number:</label>100/200
+                </div>
+                <div class="form-item">
+                    <label class="muted input-control">Join deadline:</label>12/13/2013
+                </div>
+                <div class="form-item">
+                    <label class="muted input-control">Join method:</label>网站加入
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mod mod-default accordion">
+        <div class="accordion-heading hd titlebar mod-tabs">
+            <i class="icon icon-blue-plus"></i><a href="javascript:;" class="selected">Appending transactions</a>&nbsp;|&nbsp;<span><a href="javascript:;">History</a></span>
+
+            <div class="opts opts-input">
+                <span class="input-search">
+                    <div class="search-inner">
+                        <input type="text" class="text" placeholder="Content / Date"/><a href="#" class="icon"></a>
+                    </div>
+                </span><span class="pagination-arrow-blue">
+                    <a class="prev" href="javascript:;"></a><a class="next disabled" href="javascript:;"></a>
+                </span>
+            </div>
+        </div>
+        <div class="accordion-panel">
+            <ul class="group-list">
+                <li><i class="icon icon-block-blue"></i>Get $XXX budget to finish the mission
+                    <div class="opts group"><a href="javascript:;">Send a message</a>•<a
+                            href="javascript:;">Accept</a>•<a href="javascript:;">Decline</a></div>
+                </li>
+                <li><i class="icon icon-block-blue"></i>Execute the mission with $XXX budget
+                    <div class="opts group"><a href="javascript:;">Send a message</a>•<a
+                            href="javascript:;">Accept</a>•<a href="javascript:;">Give up</a>•<a href="javascript:;">Decline</a>
+                    </div>
+                </li>
+                <li><i class="icon icon-block-blue"></i>Activity need charge $XXX
+                    <div class="opts group"><a href="javascript:;">Send a message</a>•<a href="javascript:;">Pay</a></div>
+                </li>
+                <li><i class="icon icon-block-blue"></i>Activity refund $XXX
+                    <div class="opts group"><a href="javascript:;">Send a message</a>•<a href="javascript:;">Send payment
+                        confirmation</a></div>
+                </li>
+                <li><i class="icon icon-block-blue"></i>XXX apply for joining the activity
+                    <div class="opts group"><a href="javascript:;">Send a message</a>•<a
+                            href="javascript:;">Approve</a>•<a href="javascript:;">Decline</a></div>
+                </li>
+                <li><i class="icon icon-block-blue"></i>Administrator approved XXX to join the activity
+                    <div class="opts group"><a href="javascript:;">Send a message</a>•<a href="javascript:;">Wait for payment
+                        confirmation</a></div>
+                </li>
+                <li><i class="icon icon-block-blue"></i>XXX require to carpool
+                    <div class="opts group"><a href="javascript:;">Send a message</a>•<a
+                            href="javascript:;">Agree</a>•<a href="javascript:;">Decline</a></div>
+                </li>
+            </ul>
+            <ul class="group-list" style="display:none;">
+                <li><i class="icon icon-block-blue"></i>The mission with $XXX budget processed</li>
+                <li><i class="icon icon-block-blue"></i>The mission with $XXX budget has already been transferred to XXX</li>
+                <li><i class="icon icon-block-blue"></i>XXX paid $XXX
+                    <div class="opts group"><span>12/13/2013 </span>•<a href="javascript:;">Send a message</a></div>
+                </li>
+                <li><i class="icon icon-block-blue"></i>Refund $XXX to XXX</li>
+                <li><i class="icon icon-block-blue"></i>The application about XXX joins the activity processed</li>
+                <li><i class="icon icon-block-blue"></i>Payment XXX processed</li>
+                <li><i class="icon icon-block-blue"></i>The application about XXX want to carpool processed</li>
+                <li><i class="icon icon-block-blue"></i>XXX kicked XXX out</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div  id="send_invi_accordion" class="mod mod-default accordion ">
+        <div class="accordion-heading hd toolbar">
+            <i class="icon icon-blue-minus"></i>Send invitation
+
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <div class="accordion-panel ">
+                aaa
+        </div>
+    </div>
+
+
+    <div class="mod mod-default accordion">
+        <div class="accordion-heading hd titlebar">
+            <i class="icon icon-blue-plus"></i>Will join the activity
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <div class="accordion-panel mapway clearfix">
+            <div class="map-side">
+                <div class="side-header">Map way</div>
+                <ul>
+                    <li><i class="icon way-start">Start</i><span class="bold">桃园</span></li>
+                    <li><i class="icon way-walk"></i>步行至<a href="javascript:;">南山站医院站</a><em>210米</em></li>
+                    <li><i class="icon way-car"></i>乘坐<a href="javascript:;">36路（或223，324路）</a>在 <a
+                            href="javascript:;">深圳大学站</a>下车<em>2站</em></li>
+                    <li><i class="icon way-walk"></i>步行至<a href="javascript:;">深圳大学</a><em>10米</em></li>
+                    <li><i class="icon way-end">End</i><span class="bold">深圳大学</span></li>
+                </ul>
+            </div>
+            <div class="map-content"><img src="" alt=""/></div>
+        </div>
+    </div>
+
+    <div class="mod mod-default accordion z-topindex">
+        <div class="accordion-heading hd titlebar">
+            <i class="icon icon-blue-plus"></i>Current ride number/The number of vacancies &nbsp;<span>100/20</span>
+
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <div class="accordion-panel grid">
+            <ul class="group-list  ride">
+                <li class="row active">
+                    <span class="span1"><img class="img" src="images/defaults/100-100.png" alt="" width="35"
+                                             height="35"/></span><span class="span3">
+                                <i class="icon-blue-car"></i><i class="icon-money"></i><a href="javascript:;">AHXIAOPENG</a>
+                            </span><span class="span3">纽约/华</span><span class="span2"><a href="javascript:;"
+                                                                                         class="icon-blue-mail"></a><a
+                        href="javascript:;" class="icon-blue-moblie"></a></span>
+
+                    <div class="opts"><span class="combo hover">
+                                    <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                    <input name="usr" type="hidden" class="combo-input-hidden">
+                                    <div class="combo-list">
+                                        <ul>
+                                            <li value="1">2012</li>
+                                            <li value="2">item2</li>
+                                            <li value="3">item3</li>
+                                            <li value="4">item4</li>
+                                            <li value="5">item5</li>
+                                        </ul>
+                                    </div>
+                                </span>
+                    </div>
+                </li>
+                <li class="row">
+                    <span class="span1"><img class="img" src="images/defaults/100-100.png" alt="" width="35"
+                                             height="35"/></span><span class="span3">
+                                <i class="icon-blue-car"></i><i class="icon-money"></i><a href="javascript:;">AHXIAOPENG</a>
+                            </span><span class="span3">纽约/华</span><span class="span2"><a href="javascript:;"
+                                                                                         class="icon-blue-mail"></a><a
+                        href="javascript:;" class="icon-blue-moblie"></a></span>
+
+                    <div class="opts"><span class="combo hover">
+                                    <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                    <input name="usr" type="hidden" class="combo-input-hidden">
+                                    <div class="combo-list  hover-panel">
+                                        <ul>
+                                            <li value="1">2012</li>
+                                            <li value="2">item2</li>
+                                            <li value="3">item3</li>
+                                            <li value="4">item4</li>
+                                            <li value="5">item5</li>
+                                        </ul>
+                                    </div>
+                                </span>
+                    </div>
+                </li>
+                <li class="row">
+                    <span class="span1"><img class="img" src="images/defaults/100-100.png" alt="" width="35"
+                                             height="35"/></span><span class="span3">
+                                <i class="icon-blue-car"></i><i class="icon-money"></i><a href="javascript:;">AHXIAOPENG</a>
+                            </span><span class="span3">纽约/华</span><span class="span2"><a href="javascript:;"
+                                                                                         class="icon-blue-mail"></a><a
+                        href="javascript:;" class="icon-blue-moblie"></a></span>
+
+                    <div class="opts"><span class="combo hover">
+                                    <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                    <input name="usr" type="hidden" class="combo-input-hidden">
+                                    <div class="combo-list">
+                                        <ul>
+                                            <li value="1">2012</li>
+                                            <li value="2">item2</li>
+                                            <li value="3">item3</li>
+                                            <li value="4">item4</li>
+                                            <li value="5">item5</li>
+                                        </ul>
+                                    </div>
+                                </span>
+                    </div>
+                </li>
+            </ul>
+            <br>
+            <div class="text-right">
+                        <span class="tips-result">
+                            <ul>
+                                <li>Note</li>
+                            </ul>
+                        </span><a href="javascript:;" class="btn btn-default btn-mini"><i class="icon-car-add"></i>Add a
+                seat</a>
+                <a href="javascript:;" class="btn btn-default btn-mini"><i class="icon-car-remove"></i>Delete a seat</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mod mod-default accordion">
+        <div class="accordion-heading hd titlebar">
+            <i class="icon icon-blue-plus"></i>Plan
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <div class="accordion-panel scroll">
+            <ul class="group-list scroll-panel">
+                <li class="selected"><a href="javascript:;">12/13/2013 12:00 在白宫门口集中</a>
+
+                    <div class="opts"><a href="javascript:;" class="active-item" style="display: none">Highlight</a><a
+                            href="javascript:;" class="unactive-item">Cancel highlight</a></div>
+                </li>
+                <li>
+                    <a href="javascript:;">12/13/2013 12:00 在白宫门口集中</a>
+
+                    <div class="opts"><a href="javascript:;" class="active-item">Highlight</a><a href="javascript:;"
+                                                                                                 class="unactive-item"
+                                                                                                 style="display: none">Cancel
+                        highlight</a></div>
+                    <em>雅安地震发生后仅五分钟，第一条灾情通报message即from百度</em>
+                </li>
+                <li>
+                    12/13/2013 12:00 开始攻击
+                    <div class="opts"><a href="javascript:;" class="active-item">Highlight</a><a href="javascript:;"
+                                                                                                 class="unactive-item"
+                                                                                                 style="display: none">Cancel
+                        highlight</a></div>
+                </li>
+                <li class="selected"><a href="javascript:;">12/13/2013 12:00 在白宫门口集中</a>
+
+                    <div class="opts"><a href="javascript:;" class="active-item" style="display: none">Highlight</a><a
+                            href="javascript:;" class="unactive-item">Cancel highlight</a></div>
+                </li>
+                <li>
+                    <a href="javascript:;">12/13/2013 12:00 在白宫门口集中</a>
+
+                    <div class="opts"><a href="javascript:;" class="active-item">Highlight</a><a href="javascript:;"
+                                                                                                 class="unactive-item"
+                                                                                                 style="display: none">Cancel
+                        highlight</a></div>
+                    <em>雅安地震发生后仅五分钟，第一条灾情通报message即from百度</em>
+                </li>
+                <li>
+                    12/13/2013 12:00 开始攻击
+                    <div class="opts"><a href="javascript:;" class="active-item">Highlight</a><a href="javascript:;"
+                                                                                                 class="unactive-item"
+                                                                                                 style="display: none">Cancel
+                        highlight</a></div>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            $('.group-list').on('click', '.active-item', function () {
+                $(this).hide().next().show().closest('li').addClass('selected');
+            }).on('click', '.unactive-item', function () {
+                $(this).hide().prev().show().closest('li').removeClass('selected');
+            })
+        </script>
+    </div>
+
+    <div class="mod mod mod-default">
+        <div class="hd titlebar">
+            <i class="icon icon-empty"></i>Prepayment &nbsp;<span><em>$100</em>/Year</span>
+
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+    </div>
+
+    <div class="mod mod-default accordion">
+        <div class="accordion-heading hd titlebar">
+            <i class="icon icon-blue-minus"></i>Join conditions
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <div class="scroll accordion-panel">
+            <ul class="group-list scroll-panel grid">
+                <li class="row">
+                    <span class="span1">1</span><a href="javascript:;" class="span4">ConditionConditionCondition</a><span class="span2">Symbol</span><span
+                        class="span2">100</span>
+                </li>
+                <li class="row">
+                    <span class="span1">1</span><a href="javascript:;" class="span4">ConditionConditionCondition</a><span class="span2">Symbol</span><span
+                        class="span2">100</span>
+                </li>
+                <li class="row">
+                    <span class="span1">1</span><a href="javascript:;" class="span4">ConditionConditionCondition</a><span class="span2">Symbol</span><span
+                        class="span2">100</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mod mod mod-default">
+        <div class="hd titlebar">
+            <i class="icon icon-empty"></i>Kick off protection
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <div></div>
+    </div>
+
+    <div class="mod mod-default accordion">
+        <div class="accordion-panel hd titlebar">
+            <i class="icon icon-blue-minus"></i>Weather
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <ul class="weather clearfix accordion-panel">
+            <li class="selected"><img alt="" src="images/weather/rain.png"><span>12/13/2013</span><br><span>大雨</span></li>
+            <li><img alt="" src="images/weather/sun.png"><span>12/13/2013</span><br>晴天</li>
+            <li><img alt="" src="images/weather/storm.png"><span>12/13/2013</span><br>沙尘暴</li>
+            <li><img alt="" src="images/weather/cloud_rain.png"><span>12/13/2013</span><br>多云转雨</li>
+            <li class="selected"><img alt="" src="images/weather/cloud_run.png"><span>12/13/2013</span><br>多云转晴</li>
+            <li><img alt="" src="images/weather/snower.png"><span>12/13/2013</span><br>大雪</li>
+            <li><img alt="" src="images/weather/snow.png"><span>12/13/2013</span><br>雪</li>
+            <li><img alt="" src="images/weather/cloud_tosun.png"><span>12/13/2013</span><br>雪</li>
+            <li><img alt="" src="images/weather/rain.png"><span>12/13/2013</span><br>大雨</li>
+            <li><img alt="" src="images/weather/rain.png"><span>12/13/2013</span><br>大雨</li>
+            <li><img alt="" src="images/weather/rain.png"><span>12/13/2013</span><br>大雨</li>
+            <li><img alt="" src="images/weather/rain.png"><span>12/13/2013</span><br>大雨</li>
+            <li><img alt="" src="images/weather/rain.png"><span>12/13/2013</span><br>大雨</li>
+            <li><img alt="" src="images/weather/rain.png"><span>12/13/2013</span><br>大雨</li>
+            <li><img alt="" src="images/weather/rain.png"><span>12/13/2013</span><br>大雨</li>
+            <li><img alt="" src="images/weather/rain.png"><span>12/13/2013</span><br>大雨</li>
+        </ul>
+        <script type="text/javascript">
+            $('.weather').on('click', 'li', function () {
+                if (!$(this).hasClass('selected'))
+                    $(this).addClass('selected');
+                else
+                    $(this).removeClass('selected');
+            });
+        </script>
+    </div>
+    <div class="mod mod-default accordion">
+        <div class="accordion-heading hd hd titlebar">
+            <i class="icon icon-blue-minus"></i>Finance&nbsp;<span>Income: <em>$100 </em>&nbsp;Expense: <em>$100 </em>&nbsp;Balance: <em>$100 </em></span>
+
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <div class="accordion-panel">111</div>
+    </div>
+
+    <div class="mod mod-default accordion">
+        <div class="hd titlebar">
+            <i class="icon icon-blue-minus"></i>Task
+            assignment&nbsp;<span>Assigned number: 100&nbsp;Optional number: 200  </span>
+
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <div></div>
+    </div>
+
+    <div class="mod mod-default accordion z-topindex">
+        <div class="accordion-heading hd titlebar">
+            <i class="icon icon-blue-minus"></i>Member number/Total number&nbsp;<span>50/1000</span>
+
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+        <div class="accordion-panel mod mod-default accordion">
+            <br>
+
+            <div class="toolbar">
+                <div class="page-result">
+                    <span class="combo " data-loader="class-combo">
+                                    <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                    <input name="usr" type="hidden" class="combo-input-hidden">
+                                    <div class="combo-list">
+                                        <ul>
+                                            <li value="1">2012</li>
+                                            <li value="2">item2</li>
+                                            <li value="3">item3</li>
+                                            <li value="4">item4</li>
+                                            <li value="5">item5</li>
+                                        </ul>
+                                    </div>
+                                    </span><span class="input-search">
+                                        <div class="search-inner">
+                                            <input type="text" class="text" placeholder="Name"><a class="icon" href="#"></a>
+                                        </div>
+                                    </span>
+                </div>
+                <div class="pagination">
+<a href="javascript:;" class="prev disabled">First</a><a href="javascript:;" class="prev">Prev</a>2/18<a href="javascript:;" class="next">Next</a><a href="javascript:;" class="prev disabled">Last</a>
+</div>
+            </div>
+            <ul class="group-list">
+                <li>
+                    <div class="item-side"><img src="images/defaults/64-64.jpg" alt=""></div>
+                    <div class="">
+                        <div class="item-title"><em>[Noticed XX days ago]</em><a href="javascript:;">AHXIAOPENG</a>&nbsp;<a
+                                href="javascript:;" class="btn-option disabled"><i class="icon icon-right"></i><em>Approved
+                            but
+                            need pay</em></a></div>
+                        <div class="item-date">12/13/2013</div>
+                        <div class="item-opts">
+                                        <span class="combo hover">
+                                            <span class="combo-input">Action</span><a href="javascript:void(0)"
+                                                                                      class="combo-icon"></a>
+                                            <input type="hidden" class="combo-input-hidden" name="usr">
+                                            <div class="combo-list">
+                                                <ul>
+                                                    <li value="1">2012</li>
+                                                    <li value="2">item2</li>
+                                                    <li value="3">item3</li>
+                                                    <li value="4">item4</li>
+                                                    <li value="5">item5</li>
+                                                </ul>
+                                            </div>
+                                        </span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-side"><img src="images/defaults/64-64.jpg" alt=""></div>
+                    <div class="">
+                        <div class="item-title"><i class="icon-person"></i><i class="icon-gray-car"></i><i
+                                class="icon-gray-money"></i><a href="javascript:;">AHXIAOPENG</a></div>
+                        <div class="item-date">12/13/2013</div>
+                        <div class="item-opts">
+                                        <span class="combo hover">
+                                            <span class="combo-input">Duty operation</span><a href="javascript:void(0)"
+                                                                                              class="combo-icon"></a>
+                                            <input type="hidden" class="combo-input-hidden" name="usr">
+                                            <div class="combo-list">
+                                                <ul>
+                                                    <li value="1">2012</li>
+                                                    <li value="2">item2</li>
+                                                    <li value="3">item3</li>
+                                                    <li value="4">item4</li>
+                                                    <li value="5">item5</li>
+                                                </ul>
+                                            </div>
+                                        </span><span class="combo hover">
+                                            <span class="combo-input">Action</span><a href="javascript:void(0)"
+                                                                                      class="combo-icon"></a>
+                                            <input type="hidden" class="combo-input-hidden" name="usr">
+                                            <div class="combo-list">
+                                                <ul>
+                                                    <li value="1">2012</li>
+                                                    <li value="2">item2</li>
+                                                    <li value="3">item3</li>
+                                                    <li value="4">item4</li>
+                                                    <li value="5">item5</li>
+                                                </ul>
+                                            </div>
+                                        </span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-side"><img src="images/defaults/64-64.jpg" alt=""></div>
+                    <div class="">
+                        <div class="item-title"><i class="icon-person"></i><i class="icon-blue-car"></i><i
+                                class="icon-money"></i><a href="javascript:;">AHXIAOPENG</a>&nbsp;</div>
+                        <div class="item-date">12/13/2013</div>
+                        <div class="item-opts">
+                                        <span class="combo hover">
+                                            <span class="combo-input">Duty operation</span><a href="javascript:void(0)"
+                                                                                              class="combo-icon"></a>
+                                            <input type="hidden" class="combo-input-hidden" name="usr">
+                                            <div class="combo-list">
+                                                <ul>
+                                                    <li value="1">2012</li>
+                                                    <li value="2">item2</li>
+                                                    <li value="3">item3</li>
+                                                    <li value="4">item4</li>
+                                                    <li value="5">item5</li>
+                                                </ul>
+                                            </div>
+                                        </span><span class="combo hover">
+                                            <span class="combo-input">Action</span><a href="javascript:void(0)"
+                                                                                      class="combo-icon"></a>
+                                            <input type="hidden" class="combo-input-hidden" name="usr">
+                                            <div class="combo-list">
+                                                <ul>
+                                                    <li value="1">2012</li>
+                                                    <li value="2">item2</li>
+                                                    <li value="3">item3</li>
+                                                    <li value="4">item4</li>
+                                                    <li value="5">item5</li>
+                                                </ul>
+                                            </div>
+                                        </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mod mod-default accordion">
+        <div class="accordion-heading hd titlebar">
+            <i class="icon icon-blue-minus"></i>Chart board&nbsp;<span>10239</span>
+
+            <div class="opts"><a href="">Visible to members</a>•<a href="">Edit</a></div>
+        </div>
+
+        <div class="discussion accordion-panel">
+            <br>
+
+            <div class="discussion-side">
+                <!--  <a class="side-btn" style="position: absolute;right: 0;top: 100px; z-index: 999;overflow: hidden" href="javascript:;">button</a>-->
+                <ul>
+                    <li>
+                        主题Title主题Title
+                        <div class="opts">
+                            <a href="javascript:;" class="icon-light-up"></a><a href="javascript:;"
+                                                                                class="icon-light-down"></a><a
+                                href="javascript:;" class="icon-light-del"></a>
+                        </div>
+                    </li>
+                    <li>
+                        主题Title主题Title
+                        <div class="opts">
+                            <a href="javascript:;" class="icon-light-up"></a><a href="javascript:;"
+                                                                                class="icon-light-down"></a><a
+                                href="javascript:;" class="icon-light-del"></a>
+                        </div>
+                    </li>
+                    <li>
+                        主题Title主题Title
+                        <div class="opts">
+                            <a href="javascript:;" class="icon-light-up"></a><a href="javascript:;"
+                                                                                class="icon-light-down"></a><a
+                                href="javascript:;" class="icon-light-del"></a>
+                        </div>
+                    </li>
+                    <li>
+                        主题Title主题Title
+                        <div class="opts">
+                            <a href="javascript:;" class="icon-light-up"></a><a href="javascript:;"
+                                                                                class="icon-light-down"></a><a
+                                href="javascript:;" class="icon-light-del"></a>
+                        </div>
+                    </li>
+                </ul>
+                <script type="text/javascript">
+                    $('.side-btn').click(function () {
+                        $(this).parent().animate({ width: 'hide' });
+                    })
+                </script>
+            </div>
+            <div class="discussion-main">
+                <div class="toolbar">
+                    <div class="page-result">
+                        <div class="search-group">
+                                   <span class="input-search">
+                                        <div class="search-inner">
+                                            <input type="text" class="text" placeholder="Title / Content"><a class="icon"
+                                                                                                             href="#"></a>
+                                        </div>
+                                    </span>
+                        </div>
+                    </div>
+                    <div class="pagination">
+<a href="javascript:;" class="prev disabled">First</a><a href="javascript:;" class="prev">Prev</a>2/18<a href="javascript:;" class="next">Next</a><a href="javascript:;" class="prev disabled">Last</a>
+</div>
+                </div>
+                <ul class="group-list">
+                    <li>
+                        <div class="item-side"><img alt="" src="images/defaults/64-64.jpg"><a href="javascript:;">AHPENG</a>
+                        </div>
+                        <div class="item-main scroll-panel">
+                            <h3><i class="icon-ban"></i><i class="icon-deep-light"></i><a href="javascript:;">百度新闻手机客户端成获取雅安地震灾情</a>
+                            </h3>
+
+                            <p>雅安地震发生后仅五分钟，第一条灾情通报message即from百度新闻手机客户端推送发出，成为反应最迅速的手机新闻客户端。 </p>
+
+                            <div class="group">
+                                <a href="javascript:;">Edit</a><a href="javascript:;">Delete</a><a href="javascript:;">Subscribe</a><a
+                                    href="javascript:;">Share</a><a href="javascript:;">Highlight</a><a href="#">Read</a>
+                            </div>
+                            <div class="item-date">12/13/2013</div>
+                        </div>
+                    </li>
+                    <li class="last">
+                        <div class="item-side"><img alt="" src="images/defaults/64-64.jpg"><a href="javascript:;">AHPENG</a>
+                        </div>
+                        <div class="item-main scroll-panel">
+                            <h3><i class="icon-ban"></i><i class="icon-deep-light"></i><a href="javascript:;">百度新闻手机客户端成获取雅安地震灾情</a>
+                            </h3>
+
+                            <p>雅安地震发生后仅五分钟，第一条灾情通报message即from百度新闻手机客户端推送发出，成为反应最迅速的手机新闻客户端。 </p>
+
+                            <div class="group">
+                                <a href="javascript:;">Edit</a><a href="javascript:;">Delete</a><a href="javascript:;">Subscribe</a><a
+                                    href="javascript:;">Share</a><a href="javascript:;">Highlight</a><a href="#">Read</a>
+                            </div>
+                            <div class="item-date">12/13/2013</div>
+                        </div>
+                    </li>
+                </ul>
+                <div style="" class="replay-content">
+                    <i class="arrowhead"></i>
+                    <a class="readmore" href="#">Comments（5）</a>
+
+                    <div class="scroll">
+                        <ul class="clearfix scroll-panel">
+                            <li>
+                                <div class="pull-left">
+                                    <img alt="" src="images/defaults/32-32.jpg" class="img">
+                                </div>
+                                <div class="main">
+                                    <div class="title">回复人张三三</div>
+                                    <p>
+                                        哥们几个合资要开一家公司，为了彰显公司的牛逼，特取名“能力”！“能力公司”听着多霸气啊！兴高采烈地from工商局拿回执照，顿时傻眼了，只见执照上大大地写着“能力有限公
+                                    </p>
+
+                                    <div class="right-date">1-21</div>
+                                    <div class="text-right">
+                                        <a class="btn-option opts" href="javascript:;"><i class=" icon icon-del"></i>Delete</a>
+                                    </div>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="morebar"><a href="#">Replay</a></div>
+                    <div class="sendbox">
+                        <div class="input-block">
+                            <input type="text" placeholder="Replay" class="text replay-input">
+                        </div>
+                        <div class="cleafix rich-replay-input" style="display: none;">
+                            <div class="pull-left">
+                                <img alt="" src="images/defaults/32-32.jpg" class="img">
+                            </div>
+                            <div class="main">
+                                <div class="input-block">
+                                    <input type="text" class="text" placeholder="Title"/>
+                                    <textarea placeholder="Replay" rows="10" cols="30" id="" name=""
+                                              class="textarea"></textarea>
+                                </div>
+                                <div class="sendbox-options">
+                                    <div><input type="submit" data-active-class="btn btn-gray btn-mini"
+                                                data-active-val="Post..."
+                                                class="button btn btn-default btn-mini" value="Post"><input
+                                            type="button" value="Canle" class="button btn-gray btn-mini"/></div>
+                                    <!--  <div class="date">0/200<span class="tips-result">
+                                            <ul>
+                                                <li>ssssssssssss</li>
+                                            </ul>
+                                      </span>
+                                      </div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $('.replay-input').focus(function () {
+                                $(this).hide();
+                                $(this).closest('.sendbox').find('.rich-replay-input').show().focus();
+                            })
+                        </script>
+                    </div>
+                </div>
+                <div class="toolbar">
+                    <div class="pagination">
+                        <a href="javascript:;" class="prev disabled">First</a><a href="javascript:;" class="prev">Prev</a>2/18<a href="javascript:;" class="next">Next</a><a href="javascript:;" class="prev disabled">Last</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+<div class="float-search float-module" id="float-search">
+    <a class="search-btn" href="javascript:;">c<br>h<br>a<br>n<br>g<br>e<br>
+        <br>m<br>o<br>d<br>u<br>l<br>e<br>s</a><span class="search-panel" href="javascript:;">
+        <div class="change-module">
+            <div class="hd titlebar">
+                <div class="pull-left">
+                    <a href="javascript:;" class="btn btn-default btn-mini">Implement</a><a href="javascript:;" id="back" class="btn btn-default btn-mini" style="display: none;">Back</a>
+                    &nbsp;Module store
+                </div>
+                <div class="pull-right">
+                    <span>Current installed modules: XXX&nbsp;<em>5219</em></span>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="module-side scroll">
+                    <ul class="module-items list-col list-col-2 scroll-panel">
+                        <li>
+                            <div class="col-inner ">
+                                <div class="thumb">
+                                    <img src="images/default.png" alt=""/>
+                                    <a href="javascript:;" class="caption">Implement</a>
+                                    <div class="desc">Category</div>
+                                    <div class="opts">
+                                        <a href="javascript:;" class="icon icon-del"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-inner ">
+                                <div class="thumb">
+                                    <img src="images/default.png" alt=""/>
+                                    <a href="javascript:;" class="caption">Implement</a>
+                                    <div class="desc">Category</div>
+                                    <div class="opts">
+                                        <a href="javascript:;" class="icon icon-del"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="main">
+                    <div id="moduelist" class="scroll">
+                        <div class="scroll-panel module-main">
+                        <div class="main-hd titlebar"> CategoryTitle:<em>168</em></div>
+                        <div class="main-bd pagination-radius">
+                            <a class="prev" href="javascript:;"></a>
+                            <ul class="module-items list-col list-col-4">
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a class="next disabled" href="javascript:;"></a>
+                        </div>
+                        <div class="main-hd titlebar"> CategoryTitle:<em>168</em></div>
+                        <div class="main-bd pagination-radius">
+                            <a class="prev" href="javascript:;"></a>
+                            <ul class="module-items list-col list-col-4">
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a class="next" href="javascript:;"></a>
+                        </div>
+                        <div class="main-hd titlebar"> CategoryTitle:<em>168</em></div>
+                        <div class="main-bd pagination-radius">
+                            <a class="prev" href="javascript:;"></a>
+                            <ul class="module-items list-col list-col-4">
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a class="next" href="javascript:;"></a>
+                        </div>
+                        <div class="main-hd titlebar"> CategoryTitle:<em>168</em></div>
+                        <div class="main-bd pagination-radius">
+                            <a class="prev" href="javascript:;"></a>
+                            <ul class="module-items list-col list-col-4">
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a class="next" href="javascript:;"></a>
+                        </div>
+                    </div>
+                    </div>
+                    <div id="moduleinfo" class="module-main" style="display: none;">
+                        <div class="module-info media">
+                            <img src="images/default.png" style="width: 75px;" alt="" class="media-object"/>
+                            <div class="media-body">
+                                <h4>Name</h4>
+                                <div>Category</div>
+                                <div class="opts">
+                                    <a href="">Install</a> <a href="">Uninstall</a>
+                                </div>
+                            </div>
+                            <div class="clear block"></div>
+                            <div class="desc block">
+                                Administrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activity
+                                Administrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activityAdministrator approved XXX to join the activity
+                            </div>
+                        </div>
+                        <div class="main-hd titlebar"> CategoryTitle:<em>168</em></div>
+                        <div class="main-bd pagination-radius">
+                            <a class="prev" href="javascript:;"></a>
+                            <ul class="module-items list-col list-col-4">
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a class="next" href="javascript:;"></a>
+                        </div>
+                        <div class="main-hd titlebar"> CategoryTitle:<em>168</em></div>
+                        <div class="main-bd pagination-radius">
+                            <a class="prev" href="javascript:;"></a>
+                            <ul class="module-items list-col list-col-4">
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="col-inner ">
+                                        <div class="thumb">
+                                            <img src="images/default.png" alt=""/>
+                                            <a href="javascript:;" class="caption">Implement</a>
+                                            <div class="desc">Category</div>
+                                            <div class="opts">
+                                                <a href="javascript:;" class="icon icon-add"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a class="next" href="javascript:;"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </span>
+</div>
+<script>
+    $('#moduelist').on('click','.thumb',function(){
+        $('#moduelist').hide();
+        $('#moduleinfo,#back').show();
+        var $panel = $('.module-info .desc');
+        $panel.slimscroll({ height: $panel.css('max-height') });
+    })
+
+    $('#back').click(function(){
+        $('#moduelist').show();
+        $('#moduleinfo,#back').hide();
+    })
+</script>
+
+<!--<script type="text/javascript">
+    //模块隐藏显示
+    $('.accordion .hd titlebar .icon').click(function () {
+        var $panel = $(this).parent().next();
+        if ($panel.is(':hidden')) {
+            $(this).removeClass('icon-blue-plus').addClass('icon-blue-minus');
+            $panel.stop(true, true).slideDown();
+        }
+        else {
+            $panel.stop(true, true).slideUp();
+            $(this).addClass('icon-blue-plus').removeClass('icon-blue-minus');
+        }
+    })
+</script>-->
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+        <div class="sitemap">
+            <a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Terms</a><a
+                href="javascript:;" class="text-danger"> Help wanted</a><a href="javascript:;">Suggestion</a><a href="javascript:;">Help</a>
+        </div>
+        <span class="copyright">Copyright @ 2011-2014 Savorboard Corporation</span>
+    </div>
+</div>
+<!-- end footer -->
+<a href="javascript:;" class="gotop"></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+
+<script type="text/javascript" src="js/class.ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.draggable.js"></script>
+
+<script type="text/javascript" src="js/jquery.placeholer.js"></script>
+<script src="js/jquery.draggable.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/jquery.accordion.js"></script>
+<script src="js/global.js"></script>
+
+<!--<script src="js/jquery.scrollFixed.js"></script>-->
+<script>
+  /*  $('.accordion').on('click','.titlebar',function(){
+        $(this).next().stop(true).slideToggle().end().closest('.transaction_accordion').toggleClass('active');
+        $(this).find('.icon-blue-plus,.icon-blue-minus').toggleClass('icon-blue-plus').toggleClass('icon-blue-minus');
+    });*/
+/*    $('.signup_accordion').on('click','.titlebar',function(){
+        $(this).next().stop(true).slideToggle().end().closest('.signup_accordion').toggleClass('active');
+        $(this).find('.icon-blue-plus,.icon-blue-minus').toggleClass('icon-blue-plus').toggleClass('icon-blue-minus');
+    });*/
+</script>
+</body>
+</html>

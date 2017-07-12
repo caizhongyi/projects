@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>CreateGroup-Relationship-Savorboard</title>
+
+<meta name="keywords" content="Create group，Group message，Invitation user，Relationship，Savorboard，Activity arrangement living social network"/>
+<meta name="description"
+      content="Fill in the necessary group infomation finished group create，and can send the invitation"/>
+
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="js/bootstrap-daterangepicker/daterangepicker.css"/>
+    <link rel="stylesheet" href="js/jquery-ui-1.10.3.custom/development-bundle/themes/cupertino/jquery.ui.datepicker.min.css"/>
+    <link rel="stylesheet" href="js/jquery-ui-1.10.3.custom/development-bundle/themes/cupertino/jquery.ui.slider.min.css"/>
+    <link rel="stylesheet" href="js/jquery-ui-timepicker/jquery-ui-timepicker-addon.min.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/relationship.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/en.css"/>
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+
+<style type="text/css">
+    body{ background: #fff ; padding: 10px; width: 680px;}
+</style>
+
+<h3>View:</h3>
+<div class="accordion active">
+    <div class="accordion-heading titlebar titlebar-info">
+        <div class="pull-right list-link">
+            <a href="">Visible to members/Invisible to members</a>•<a href="">Edit</a>
+        </div>
+        <h3>
+            <i class="icon-blue-minus"></i>Plan
+        </h3>
+    </div>
+    <div class="accordion-panel">
+        <div class="scroll scroll-higher">
+            <ul class="group-list scroll-panel ">
+                <li class="selected"><a href="javascript:;">12/13/2013 12:00 在白宫门口集中</a>
+
+                    <div class="opts"><a style="display: none" class="active-item" href="javascript:;">Highlight</a><a class="unactive-item" href="javascript:;">Cancel highlight</a></div>
+                </li>
+                <li>
+                    <a href="javascript:;">12/13/2013 12:00 在白宫门口集中</a>
+
+                    <div class="opts"><a class="active-item" href="javascript:;">Highlight</a><a style="display: none" class="unactive-item" href="javascript:;">Cancel
+                        highlight</a></div>
+                    <em>雅安地震发生后仅五分钟，第一条灾情通报message即from百度</em>
+                </li>
+                <li>
+                    12/13/2013 12:00 开始攻击
+                    <div class="opts"><a class="active-item" href="javascript:;">Highlight</a><a style="display: none" class="unactive-item" href="javascript:;">Cancel
+                        highlight</a></div>
+                </li>
+                <li class="selected"><a href="javascript:;">12/13/2013 12:00 在白宫门口集中</a>
+                    <div class="opts"><a style="display: none" class="active-item" href="javascript:;">Highlight</a><a class="unactive-item" href="javascript:;">Cancel highlight</a></div>
+                </li>
+                <li>
+                    <a href="javascript:;">12/13/2013 12:00 在白宫门口集中</a>
+
+                    <div class="opts"><a class="active-item" href="javascript:;">Highlight</a><a style="display: none" class="unactive-item" href="javascript:;">Cancel
+                        highlight</a></div>
+                    <em>雅安地震发生后仅五分钟，第一条灾情通报message即from百度</em>
+                </li>
+                <li>
+                    12/13/2013 12:00 开始攻击
+                    <div class="opts"><a class="active-item" href="javascript:;">Highlight</a><a style="display: none" class="unactive-item" href="javascript:;">Cancel
+                        highlight</a></div>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            $('.group-list').on('click', '.active-item', function () {
+                $(this).hide().next().show().closest('li').addClass('selected');
+            }).on('click', '.unactive-item', function () {
+                $(this).hide().prev().show().closest('li').removeClass('selected');
+            })
+        </script>
+    </div>
+</div>
+
+
+<h3>Edit:</h3>
+<div class="accordion active">
+    <!--<div class="accordion-heading titlebar titlebar-info">
+        <div class="pull-right list-link">
+            <a href="">Visible to members</a>•<a href="">Edit</a>
+        </div>
+        <h3>
+            <i class="icon-blue-minus"></i>Plan
+        </h3>
+    </div>-->
+    <div class="accordion-panel">
+        <div class="form">
+            <div class="form-item">
+                <label class="checkbox"><input type="checkbox"/>Visible in activity index page, for everyone visit that page can view</label>
+                <div class="tips">tips</div>
+            </div>
+        </div>
+        <div class="scroll push-up scroll-higher">
+            <ul class="article-list scroll-panel">
+                <li>
+                    <a href="javascript:;">03/13/2012 - 03/15/2012    集合</a>
+                    <p>这个Date安排钟格致去扫厕所，必须Implement...听话有糖吃，不听话打屁屁...这个Date安排钟格致去扫厕所，必须Implement...听话有糖吃，不听话打屁屁...</p>
+                    <div class="opts">
+                        <a class="icon icon-light-up" href="javascript:;" title="Up"></a><a class="icon icon-light-down" href="javascript:;" title="Down"></a><a class="icon icon-light-setting" href="javascript:;" title="Edit"></a><a class="icon icon-deep-light" href="javascript:;" title="Heightlight"></a><a class="icon icon-light-del" href="javascript:;" title="Delete"></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:;">03/13/2012 - 03/15/2012    集合</a>
+                    <p>这个Date安排钟格致去扫厕所，必须Implement...听话有糖吃，不听话打屁屁...这个Date安排钟格致去扫厕所，必须Implement...听话有糖吃，不听话打屁屁...</p>
+                    <div class="opts">
+                        <a class="icon icon-light-up" href="javascript:;" title="Up"></a><a class="icon icon-light-down" href="javascript:;" title="Down"></a><a class="icon icon-light-setting" href="javascript:;" title="Edit"></a><a class="icon icon-deep-light" href="javascript:;" title="Heightlight"></a><a class="icon icon-light-del" href="javascript:;" title="Delete"></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:;">03/13/2012 - 03/15/2012    集合</a>
+                    <p>这个Date安排钟格致去扫厕所，必须Implement...听话有糖吃，不听话打屁屁...这个Date安排钟格致去扫厕所，必须Implement...听话有糖吃，不听话打屁屁...</p>
+                    <div class="opts">
+                        <a class="icon icon-light-up" href="javascript:;" title="Up"></a><a class="icon icon-light-down" href="javascript:;" title="Down"></a><a class="icon icon-light-setting" href="javascript:;" title="Edit"></a><a class="icon icon-deep-light" href="javascript:;" title="Heightlight"></a><a class="icon icon-light-del" href="javascript:;" title="Delete"></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:;">03/13/2012 - 03/15/2012    集合</a>
+                    <p>这个Date安排钟格致去扫厕所，必须Implement...听话有糖吃，不听话打屁屁...这个Date安排钟格致去扫厕所，必须Implement...听话有糖吃，不听话打屁屁...</p>
+                    <div class="opts">
+                        <a class="icon icon-light-up" href="javascript:;" title="Up"></a><a class="icon icon-light-down" href="javascript:;" title="Down"></a><a class="icon icon-light-setting" href="javascript:;" title="Edit"></a><a class="icon icon-deep-light" href="javascript:;" title="Heightlight"></a><a class="icon icon-light-del" href="javascript:;" title="Delete"></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:;">03/13/2012 - 03/15/2012    钟格致去扫厕所</a>
+                    <p>这个Date安排钟格致去扫厕所，必须Implement...听话有糖吃，不听话打屁屁...这个Date安排钟格致去扫厕所，必须Implement...听话有糖吃，不听话打屁屁...</p>
+                    <div class="opts">
+                        <a class="icon icon-light-up" href="javascript:;" title="Up"></a><a class="icon icon-light-down" href="javascript:;" title="Down"></a><a class="icon icon-light-setting" href="javascript:;" title="Edit"></a><a class="icon icon-deep-light" href="javascript:;" title="Heightlight"></a><a class="icon icon-light-del" href="javascript:;" title="Delete"></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="form form-block push-up form-special">
+            <div class="form-item">
+                <label><span class="input-label">Date from:</span><span class="combo " data-loader="class-combo" >
+                        <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input  name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list" >
+                            <ul><li value="1">Date</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                        </div>
+                    </span>
+                </label>
+                <span class="input-control"></span><span class="input-append text-large ">
+                      <input type="text" class="text" id="startDate"/>
+                </span>
+
+            </div>
+            <div class="form-item">
+                <span class="input-label">to</span><span class="combo " data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">Date</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span>
+            <span class="input-append text-large">
+                <input type="text" class="text"  id="endDate"/>
+            </span>
+                <div class="tips">tips</div>
+            </div>
+            <div class="form-item">
+                <label>
+                    <span class="input-label">Plan content:</span>
+                    <div class="input-block"><textarea class="textarea"></textarea></div>
+                </label>
+                <div class="tips">tips</div>
+            </div>
+            <div class="form-item">
+                <label>
+                    <span class="input-label">More:</span>
+                    <div class="input-block"><textarea class="textarea"></textarea></div>
+                </label>
+                <div class="tips">tips</div>
+            </div>
+            <div class="form-item  form-panel">
+                <div class="tips-result">
+                    <ul><li>Note</li></ul>
+                </div>
+            </div>
+            <div class="form-item">
+                <div class="form-panel">
+                    <button type="submit" class="btn btn-primary">Add</button><button type="button" class="btn btn-default">Clean up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end container -->
+
+
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-daterangepicker/moment.js"></script>
+<script src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="js/jquery.accordion.js"></script>
+<script src="js/jquery-ui-timepicker/jquery-ui-timepicker-addon.min.js"></script>
+<script src="js/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<script>
+    $('#startDate,#endDate').timepicker()
+   /* var starDate = $('#startDate').daterangepicker({
+        singleDatePicker: true,
+        maxDate:  $('#endDate').val(),
+        //startDate: moment().subtract(6, 'days'),
+        locale: {
+            format :  'YYYY-MM-DD'
+        }
+    }, function(start, end, label) {
+        endDate.minDate = start;
+    }).data('daterangepicker');
+
+
+    var endDate = $('#endDate').daterangepicker({
+        minDate:  $('#startDate').val(),
+        singleDatePicker: true,
+        locale: {
+            format :  'YYYY-MM-DD'
+        }
+     //   startDate: moment()
+    }, function(start, end, label) {
+        starDate.maxDate = start
+    }).data('daterangepicker');*/
+
+</script>
+</body>
+</html>

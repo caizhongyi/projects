@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>地区插件</title>
+    <link rel="stylesheet" type="text/css" href="/css/layout.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/table.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/icon.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/form.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/pop.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/pager.css" media="all" />
+    <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/scripts/plugin/cookie/wanerdao2.cookies.js"></script>
+    <script type="text/javascript" src="/Scripts/multipleLanguage/loader.js"></script>
+    <script type="text/javascript" src="../../scripts/common/wanerdaoutils.js"></script>
+    <script type="text/javascript" src="/scripts/openplugin/jquery.floatbox.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.core.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.tabs.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.center.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.overlay.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.dialog.js"></script>
+    <script type="text/javascript" src="/scripts/plugin/pagination/wanerdao2.pager.js"></script>
+    <script type="text/javascript" src="/scripts/plugin/area/wanerdao2.area.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#txtAcArea").click(function (event) {
+                event.stopPropagation();
+                new wanerdaoArea({ comopts: { elementid: "#txtAcArea", callback: function (data) {
+                    alert(data.country.id + "  " + data.country.name);
+                    alert(data.state.id + "  " + data.state.name);
+                    alert(data.city.id + "  " + data.city.name);
+                }, autocomplete: false//如果为true表示自动补全，否则为false，默认带有补全功能
+                }
+                });
+            });
+            $("#txtarea2").click(function (event) {
+                event.stopPropagation();
+                new wanerdaoArea({ comopts: { elementid: "#txtarea2", callback: function (data) {
+//                    alert(data.country.id + "  " + data.country.name);
+//                    alert(data.state.id + "  " + data.state.name);
+//                    alert(data.city.id + "  " + data.city.name);
+                }
+                }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" class="text" name="txtAcArea" value="点击选择城市不带有补全功能" id="txtAcArea"
+        style="width: 150px;" />
+            <input type="text" class="text" name="txtarea2" value="点击选择城市" id="txtarea2"
+        style="width: 150px;" />
+</body>
+</html>

@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>CreateGroup-关系-玩儿道</title>
+
+<meta name="keywords" content="CreateGroup，Group信息，邀请User，关系，玩儿道，Activity组织的生活社交网络"/>
+<meta name="description"
+      content="填写必要Group信息完成GroupCreate，并可以发出邀请"/>
+
+
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/relationship.css"/>
+
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+
+<style type="text/css">
+    body{ background: #fff ; font-size:12px;}
+    .mod-gray,.mod-default{ width: 680px; margin: 10px; }
+</style>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Basic information
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item mod-line">
+            <button class="btn large-light-blue-btn"><i class="icon icon-book-lg"></i>Address book</button>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Address:</span><input type="text" class="text text-large"/></label><label ><span class="input-control">Zip code:</span><input type="text" class="text text-small"/></label>
+            <div class="form-panel">
+                <div class="push-item">
+                       <span class="combo text-mini" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">国家</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><span class="combo  text-mini" data-loader="class-combo">
+                                <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul>
+                                        <li value="1">省</li>
+                                        <li value="2">item2</li>
+                                        <li value="3">item3</li>
+                                        <li value="4">item4</li>
+                                        <li value="5">item5</li>
+                                    </ul>
+                                </div>
+                            </span><input type="text" class="text text-large"/>
+                </div>
+            </div>
+        </div>
+        <div class="form-item">
+            <span class="input-control">Date from</span><span class="input-append text-medium input-control">
+                    <label class="input-inner">
+                        <input type="text" class="text"/>
+                        <a href="javascript:;" class="input-icon"><i class="icon-gray-date"></i></a>
+                    </label>
+                </span><span class="input-control">to</span><span class="input-append text-medium">
+                    <label class="input-inner">
+                        <input type="text" class="text"/>
+                        <a href="javascript:;" class="input-icon"><i class="icon-gray-date"></i></a>
+                    </label>
+                </span>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Category tag:</span><input type="text" class="text  text-large"/><a href="javascript:;" class="btn btn-gray btn-mini">Add</a></label>
+        </div>
+        <div class="form-item">
+            <div class="tipbox">
+                <i class="arrow"></i>
+                <ul class="list-label list-label-transparent">
+                    <li>01&nbsp;Category标记 <a class="icon icon-light-del" href="javascript:;" data-remove=""></a></li>
+                    <li>01&nbsp;Category标记 <a class="icon icon-light-del" href="javascript:;" data-remove=""></a></li>
+                    <li>01&nbsp;Category标记 <a class="icon icon-light-del" href="javascript:;" data-remove=""></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-item">
+            <label><input type="checkbox" name="" id=""/>Upload activity image</label>
+        </div>
+        <div>
+            <div class="upload">
+                <img src="images/default.png" alt=""/>
+                <div><button class="btn btn-default btn-mini btn-block">Upload</button></div>
+            </div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Name:</span><input type="text" class="text  text-large"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Description:</span><textarea class="textarea"></textarea></label>
+        </div>
+        <div class="form-item">
+            <label class="checkbox form-panel"><input type="checkbox"/>Public</label> <label class="checkbox"><input type="checkbox"/>Can be searched</label>
+        </div>
+
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Prepayment settings
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item">
+            <label ><span class="input-label-small">Prepayment:</span><span class="combo text-large" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">Year</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span></label>
+        </div>
+        <div class="form-item">
+            <label class="input-control"><span class="input-label-small">All members/Non-group members:</span><input type="text" class="text text-medium"/></label><span class="text-control">each
+            </span><input type="text" class="text text-mini"/><span class="combo text-mini" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">Year</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span>
+        </div>
+        <div class="form-item">
+            <label class="input-control"><span class="input-label-small">Group members:</span><input type="text" class="text text-medium"/></label><span class="text-control">each
+            </span><input type="text" class="text text-mini"/><span class="combo text-mini" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">Year</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span>
+        </div>
+        <div class="form-item">
+            <label ><span class="input-label-small">Payment method:</span><span class="combo text-large" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Paypal</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+        </div>
+        <div class="form-item">
+            <label ><span class="input-label-small">Description:</span><input type="text" class="text  text-large"/><a href="javascript:;" class="btn btn-gray btn-mini">Add</a></label>
+
+        </div>
+
+        <div class="form-item">
+            <div class="tipbox ">
+                <i class="arrow"></i>
+                <ul class="list-label list-label-transparent list-label-block animation-opts">
+                    <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;" data-remove=""></a></span></li>
+                    <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;" data-remove=""></a></span></li>
+                    <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;" data-remove=""></a></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Join conditions settings
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item">
+            <label class="input-control"><span class="input-label-mini">Join conditions: </span><span class="combo text-small" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">无条件</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+           </span></label><span class="combo text-small" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">无条件</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span><input type="text" class="text"/><a href="javascript:;" class="btn btn-gray btn-mini">Add</a>
+
+        </div>
+        <div class="form-item">
+            <div class="tipbox ">
+                <i class="arrow"></i>
+                <ul class="list-label list-label-transparent list-label-block animation-opts">
+                    <li class="clearfix"><span class="span2">01</span><span class="span3">条件名目</span><span class="span3">判断条件</span><span class="span2">条件值</span><span class="opts"><a class="icon icon-light-del" href="javascript:;" data-remove=""></a></span></li>
+                    <li class="clearfix muted"><span class="span2">01</span><span class="span3">条件名目</span><span class="span3">判断条件</span><span class="span2">条件值</span><span class="opts"><a class="icon icon-light-del" href="javascript:;"  data-remove=""></a></span></li>
+                    <li class="clearfix muted"><span class="span2">01</span><span class="span3">条件名目</span><span class="span3">判断条件</span><span class="span2">条件值</span><span class="opts"><a class="icon icon-light-del" href="javascript:;"  data-remove=""></a></span></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Signup settings
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item">
+            <label><span class="input-label-mini">Member limitation:</span><input type="text" class="text text-xlarge"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label-mini">Join deadline:</span><input type="text" class="text text-xlarge"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label-mini">Join method:</span><span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Approve to join</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><input type="text" class="text text-medium" />
+        </div>
+    </div>
+</div>
+
+<div class="mod mod-default accordion">
+    <div class="hd f12">
+        <i class="icon icon-blue-minus"></i><span class="muted">Address：</span><span>美国纽约新泽西State</span><br>
+        <i class="icon icon-empty">&nbsp;</i><span class="muted">Date：</span><span>03-05/03-15</span>
+        <div class="opts"><i class="icon-see"></i><i class="icon-unsee"></i><i class="icon-setting"></i></div>
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item group">
+            <a href="javascript:;">Category1</a><a href="javascript:;">Category2</a><a href="javascript:;">Category3</a>
+        </div>
+        <div class="form-item">
+            <label class="muted input-control">Organizer：</label>AHXIAOPENG
+        </div>
+        <div class="form-item">
+            <label class="muted input-control">Create group：</label>周未白宫门围堵奥巴马
+        </div>
+        <div class="form-item">
+            <label class="muted input-control">Create date：</label>12/13/2013
+        </div>
+        <div class="form-item">
+            <label class="muted input-control">Description：</label><span class="input-mutil">重庆官方昨天披露了不雅视频事件的最新处理情况，涉案干部增至21人，与此前公布的11名官员和国企高管人员相比，除南岸区原区委书记夏泽良外，另9名涉案官员信息尚未Public。</span>
+        </div>
+        <div class="form-item">
+            <label class="muted input-control">Super administrator：</label><span class="input-control"><a href="javascript:;">AHXIAOPENG</a><a class="icon-blue-moblie"></a><a class="icon-blue-mail"></a></span><span class="input-control"><a href="javascript:;">AHXIAOPENG</a><a class="icon-blue-moblie"></a><a class="icon-blue-mail"></a></span>
+        </div>
+        <div class="form-item">
+            <label class="muted input-control">General administrator：</label><span class="input-control"><a href="javascript:;">AHXIAOPENG</a><a class="icon-blue-moblie"></a><a class="icon-blue-mail"></a></span><span class="input-control"><a href="javascript:;">AHXIAOPENG</a><a class="icon-blue-moblie"></a><a class="icon-blue-mail"></a></span>
+        </div>
+        <div class="form-item">
+            <label class="muted input-control">Treasurer：</label><span class="input-control"><a href="javascript:;">AHXIAOPENG</a><a class="icon-blue-moblie"></a><a class="icon-blue-mail"></a><a class="icon-blue-box"></a></span><span class="input-control"><a href="javascript:;">AHXIAOPENG</a><a class="icon-blue-moblie"></a><a class="icon-blue-mail"></a><a class="icon-blue-box"></a></span>
+        </div>
+    </div>
+</div>
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+</body>
+</html>

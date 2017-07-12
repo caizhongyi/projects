@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="style/pers_rel.css" media="all" />
+<link rel="stylesheet" href="style/party.css" />
+<!-- 页面相册特效 -->
+<link href="tx_xc/style/ykb.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+<script src="tx_xc/js/jquery.cookie.js"></script>
+<script src="tx_xc/js/autoPalyer.js"></script>
+<!-- 页面相册特效End -->
+</head>
+<script type="text/javascript">
+var winScreenWidth = window.screen.width;
+if(winScreenWidth>1024){
+document.writeln('<style>');
+document.writeln('.jz{padding:0px 2px;}');
+document.writeln('</style>');
+}
+</script>
+<body>
+
+<script language="javascript">
+var picsJson={"pics":[
+  {"thumbPicUrl":"tx_xc/img/picyl_pig001.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig001.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig002.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig002.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig003.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig003.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig004.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig004.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig005.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig005.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig006.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig006.jpg"},
+  
+  {"thumbPicUrl":"tx_xc/img/picyl_pig001.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig001.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig002.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig002.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig003.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig003.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig004.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig004.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig005.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig005.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig006.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig006.jpg"},
+  
+  {"thumbPicUrl":"tx_xc/img/picyl_pig001.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig001.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig002.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig002.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig003.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig003.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig004.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig004.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig005.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig005.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig006.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig006.jpg"},
+  
+  {"thumbPicUrl":"tx_xc/img/picyl_pig001.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig001.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig002.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig002.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig003.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig003.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig004.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig004.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig005.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig005.jpg"},
+  {"thumbPicUrl":"tx_xc/img/picyl_pig006.jpg",
+  "middlePicUrl":"tx_xc/img/picyl_pig006.jpg"}
+
+  ]};
+</script>
+	<!--头部-->
+	<div class="head">
+    	<div class="jz">
+        	<div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+            <ul class="nav left yh">
+            	<li><a href="#">首页</a></li>
+            	<li class="cur"><a href="#" class="arr">个人</a></li>
+            	<li><a href="#" class="arr">关系</a></li>
+            	<li><a href="#" class="arr">杂烩</a></li>
+            	<li><a href="#" class="arr">活动</a></li>
+            	<li><a href="#" class="arr">资道</a></li>
+            	<li class="newMsg"><a href="#">站内信息</a><i><a href="#">5</a></i></li>
+            </ul>
+            <div class="userInfo">
+            	<a href="#" class="left"  title="烧饭-人生旅途中-飞砂走石风过"><img src="images/layout_main/img_32x32.png" width="32" height="32" /></a>
+                <a href="javascript:void(0);" title="烧饭-人生旅途中-飞砂走石风过留痕！" class="name">烧饭-人生旅途中</a>
+            </div>
+        </div>
+    </div>
+    <!--头部end-->
+    <!--主体-->
+    <div class="main jz">
+    	<div class="mCon" style="padding:0;">
+            <div class="prPdBox">
+              <div class="subChaTab">
+                <a href="#">活动信息</a>
+                <a href="#" class="active">我的活动</a>
+              </div>
+              <div class="clearfix">
+                <div class="Fnavigation FnwhiteBg">
+                  <ul class="fix4w">
+                  	<li><a href="#">活动信息及评论</a></li>
+                    <li><a href="#" class="cur">浏览</a></li>
+                    <li><a href="#">上传</a></li>
+                    <li><a href="#">管理相册</a></li>
+                    <li><a href="#">浏览发表管理感想</a></li>
+                  </ul>
+                </div>
+                <div class="pa_tit clearfix">
+					<div class="alb_set"><b class="ico_view"></b>相片浏览<em></em></div>
+				</div>
+				<!-- 页面主体内容 相片游览 区块 -->
+                <div class="pic_biaot">
+                   <span class="pic_bt_name">我的周末派对</span>
+                   <span class="pic_bt_number">(<span id="showPage">0</span>/<span id="showTotal">0</span>)</span>
+                  <a href="#"><img src="images/pic_guan001.jpg" width="16" height="16" /></a>
+                  <a href="#"><img src="images/pic_guan002.jpg" width="16" height="16" hspace="5" /></a>
+                  <a href="#"><img src="images/pic_guan003.jpg" width="16" height="16" /></a>
+                </div>
+        
+                <div class="imgLib">
+            <div class="imgShow">
+               
+              <div class="picyk_smalbox_top"></div> 
+              <div class="small_pic_box">
+                <i class="to_left">
+                    <a id="butPrevGroup" href="javascript://" target="_self" title="上五张图片"></a>
+                </i>
+                <ul id="nav" class="silderpic"></ul>		
+                <i class="to_right">
+                    <a id="butNextGroup" href="javascript://" target="_self" title="下五张图片"></a>
+                </i> 
+               </div>
+               <div class="picyk_smalbox_fot"></div> 
+               
+              <!-- 隐藏的不需要的功能 --> 
+              <div id="_playpic" class="playNav">
+                      <i class="title" id="alt"></i>
+                      <i class="playButtom">
+                        <a href="javascript://" target="_self" class="play" title="播放" id="butPlay"></a>
+                        <span id="playStatus">点击自动播放</span>
+                        <a href="javascript://" target="_self" style="display:none" class="stop" title="停止" id="butStop"></a>
+                        <a href="javascript://" target="_self" style="display:none" class="pause" title="暂停" id="butPause"></a>
+                        <span id="speedGroup" class="spead" style="display:none">
+                            <a href="javascript://" target="_self" speed="3">快</a>┊<a href="javascript://" target="_self" speed="5">中</a>┊<a href="javascript://" target="_self" speed="8">慢</a>
+                        </span>
+                    </i>
+                      <i class="jump">
+                        <a href="javascript://" class="pre" id="topPrev" target="_self" title="上一张"></a>
+                        <a href="javascript://" class="next" id="topNext" target="_self" title="下一张"></a>
+                        
+                      </i>
+                 </div>
+                 <!-- 隐藏的不需要的功能End --> 
+                 
+                  <div class="singlepic" id="_singlepic">
+                    <div class="prePic">
+                        <a href="javascript://" id="butPrev" target="_self" title="上一张" onfocus="this.blur()"></a>
+                    </div>
+                    <div class="bigPic">
+                        <img id="screen"/>
+                    </div>
+                    <div class="nextPic">
+                        <a href="javascript://" id="butNext" target="_self" title="下一张" onfocus="this.blur()"></a>
+                    </div>
+                </div>
+                
+                
+                
+         
+            </div>
+              
+          </div> 
+           
+                <div class="pic_xcsm">
+                  <div class="brief"><span class="xcsm_bt">周末组团唱歌</span>(2011/11/11)<br />
+                  	<p>
+                    我们在极端情境下，第一反应脱出而出的应该是母语，香港人急了怒了都会说丢，北方从说操或靠，上海人说册那。我有一阵看多了美国片，极端情绪下会说shit和fuck,这反应装逼到自己很不舒服，强行改掉，恢复成字正腔圆的册那。今晚被猫叫吓到时，脱口而出的居然是陕西话：饿贼尼玛！看你还是不够怕。
+                    </p>
+                    </div>   
+                </div>
+                <!-- 页面主体内容 相片游览 区块End -->
+                
+                
+        
+                <!-- 页面主体内容 相片回复 区块 -->
+                <div class="hd_picpl_box_con ">
+          <div class="hd_picpl_box">
+           <ins style="left:50px;"></ins>
+           <div class="hd_picpl_mid">
+              <div class="picpl_form_box">
+              <form id="form1" name="form1" method="post" action="">
+              <div>
+               <span><input type="text" name="textfield" id="textfield" class="picpl_hf_kuang" hidefocus="ture" style="outline:none;"/></span>
+               <span><input type="submit" name="button" id="button" value="回复" class="picpl_hf_an01" tyle="background-color: Transparent;" onmouseover="this.style.backgroundImage='url(images/picpl_hf_an01b.jpg)'" onmouseout="this.style.backgroundImage='url(images/picpl_hf_an01a.jpg)'"  onfocus="this.blur()"/></span>
+               <span><input type="reset" name="button2" id="button2" value="取消" class="picpl_hf_an02"tyle="background-color: Transparent;" onmouseover="this.style.backgroundImage='url(images/picpl_hf_an02b.jpg)'" onmouseout="this.style.backgroundImage='url(images/picpl_hf_an02a.jpg)'"  onfocus="this.blur()"/></span>
+              </div>
+              </form>
+              </div>
+              
+              <div class="picpl_huif_box">
+              <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"><a href="#">删除</a></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              
+              
+              <div class="huif_more">
+                <div class="huif_colse_an"><a href="javascript:void(0);" onclick="hideDetReply(this);">收起</a></div>
+                <div class="huif_open_an"><a href="javascript:void(0);">更多回复</a></div>
+              </div>
+              
+           </div>
+          </div>
+        </div>    
+                <!-- 页面主体内容 相片回复 区块End -->
+                <div class="blank10px"></div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="mBtm jz"></div>
+    <!--主体end-->
+    <!--底部-->
+    <div class="foot jz">
+    	<span class="left"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></span>
+        <span class="right">版权所有 &copy;玩儿道</span>
+    </div>
+    <!--底部end-->
+
+<!--页面脚本区-->
+
+<!--[if IE 6]>
+<script type="text/javascript" src="js/pngFix.js"></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<script>var productId=349691; var brandId=35929; </script>
+<span id="span_count" class="spanclass"></span>
+<script type="text/javascript">
+var autoPalyer = new AutoPlayer({
+	"baseUrl":"#",
+	"tag":"",
+	"screenId":"screen",
+	"altId":"alt",
+	"defaultAlt":"相册游览",
+	"navId":"nav",
+	"butPlayId":"butPlay",
+	"butPauseId":"butPause",
+	"butStopId":"butStop",
+	"playStatusId":"playStatus",
+	"butPrevId":"butPrev,topPrev",
+	"butNextId":"butNext,topNext",
+	"butPrevGroupId":"butPrevGroup",
+	"butNextGroupId":"butNextGroup",
+	"butPrevLinkId":"butPrevLink",
+	"butNextLinkId":"butNextLink",
+	"butExamineId":"butExamine",
+	"pvCounterId":"span_count",
+	"butSpeedGroupId":"speedGroup",
+	"showTotalId":"showTotal",
+	"showPageId":"showPage",
+	"showSourceId":"showSource",
+	"showSourceCompositeId":"showSourceComposite",
+	"data":picsJson["pics"],
+	"curId":2531086,
+	"picFilter":"",
+	"curUrl":""
+});
+
+</script>
+
+</body>
+</html>

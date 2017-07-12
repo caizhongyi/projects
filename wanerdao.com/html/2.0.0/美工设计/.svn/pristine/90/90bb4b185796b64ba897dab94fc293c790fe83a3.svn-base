@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="style/pers_rel.css" media="all" />
+<link rel="stylesheet" type="text/css" href="style/relationship.css" media="all" />
+<link href="style/select_upload.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript">
+var winScreenWidth = window.screen.width;
+if(winScreenWidth>1024){
+document.writeln('<style>');
+document.writeln('.jz{padding:0px 2px;}');
+document.writeln('</style>');
+}
+</script>
+<body>
+	<!--头部-->
+	<div class="head">
+    	<div class="jz">
+        	<div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+            <ul class="nav left yh">
+            	<li><a href="#">首页</a></li>
+            	<li class="cur"><a href="#" class="arr">个人</a></li>
+            	<li><a href="#" class="arr">关系</a></li>
+            	<li><a href="#" class="arr">杂烩</a></li>
+            	<li><a href="#" class="arr">活动</a></li>
+            	<li><a href="#" class="arr">资道</a></li>
+            	<li class="newMsg"><a href="#">站内信息</a><i><a href="#">5</a></i></li>
+            </ul>
+            <div class="userInfo">
+            	<a href="#" class="left"  title="烧饭-人生旅途中-飞砂走石风过"><img src="images/layout_main/img_32x32.png" width="32" height="32" /></a>
+                <a href="javascript:void(0);" title="烧饭-人生旅途中-飞砂走石风过留痕！" class="name">烧饭-人生旅途中</a>
+            </div>
+        </div>
+    </div>
+    <!--头部end-->
+    <!--主体-->
+    <div class="main jz">
+    	<div class="mCon">
+            <div class="prPdBox">
+              <div class="subChaTab">
+                <a href="#">我的好友</a>
+                <a href="#">寻找好友</a>
+                <a href="#">关注设置</a>
+                <a href="#" class="active">我的圈子</a>
+                <a href="#">寻找圈子</a>
+                <a href="#">创建圈子</a>
+                <a href="#">我的礼物</a>
+                <a href="#">礼物市场</a>
+              </div>
+              <div class="clearfix">
+                <div class="ColuTwo_wrap clearfix">
+                  <div class="leftside">
+                    <h4>搜索圈子</h4>
+                    <div style=" padding:10px 0px 0px 10px;">
+                    <form name="" method="post" action="">
+                        <div class="ltSearch"><input type="text" value="请输入关键字" onclick="if(this.value==this.defaultValue){this.value=''; this.style.color='#333';}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc'}"  class="prInpSty" /></div>
+                        <table class="ltTabDate" width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr class="first">
+                                    <td class="name">性&emsp;&emsp;别：</td>
+                                    <td><label for="unlim"><input type="radio" name="sex" id="unlim" class="vInput" />不限</label><label for="male"><input type="radio" name="sex" id="male" class="vInput" />男</label><label for="female"><input type="radio" name="sex" id="female" class="vInput" />女</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="name">年&emsp;&emsp;龄：</td>
+                                    <td><div class="prSelSty"><span>20/25</span><b></b></div></td>
+                                </tr>
+                                <tr>
+                                    <td class="name">星&emsp;&emsp;座：</td>
+                                    <td><div class="prSelSty"><span>金牛座</span><b></b></div></td>
+                                </tr>
+                                <tr>
+                                    <td class="name">所&ensp;在&ensp;地：</td>
+                                    <td><div class="prSelSty" style="width:37px;margin-right:6px;"><span>州省</span><b></b></div><div class="prSelSty" style="width:37px;"><span>州省</span><b></b></div></td>
+                                </tr>
+                                <tr>
+                                    <td class="name">家&emsp;&emsp;乡：</td>
+                                    <td><div class="prSelSty" style="width:37px;margin-right:6px;"><span>州省</span><b></b></div><div class="prSelSty" style="width:37px;"><span>城市</span><b></b></div></td>
+                                </tr>
+                                <tr class="fav">
+                                    <td class="name">兴趣爱好：</td>
+                                    <td><input type="text" value="请输入兴趣爱好" onclick="if(this.value==this.defaultValue){this.value=''; this.style.color='#333';}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc'}"  class="prInpSty" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="lt_Btn"><input type="button" class="prBtn" value="清 空" /><input type="button" class="prBtn" value="搜 索" /></div>
+                    </form>
+                    </div>
+                  </div>
+                  <div class="rCon">
+                    <div class="pr_Tag">
+                      <div class="prPageNav">
+                        <ul>
+                          <li class="first">首页</li>
+                          <li class="prev">上页</li>
+                          <li>
+                            <select><option>1/25</option></select>
+                          </li>
+                          <li class="next"><a href="#">下页</a></li>
+                          <li class="end"><a href="#">末页</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="list_member">
+                      <ul>
+                        <li>
+                          <dl>
+                            <dt><a href="#"><img src="images/temp/head.jpg" alt="" /></a></dt>
+                            <dd><a href="#">AHXIAOPENG</a></dd>
+                          </dl>
+                          <div class="se_center"> 
+                          	<span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span> 
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span> 
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span> 
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span> 
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span> 
+                          </div>
+                          <div class="flBtnDiv"><a href="#" class="add">加为好友</a><a href="#" class="greet">打声招呼</a></div>
+                        </li>
+                        <li>
+                          <dl>
+                            <dt><a href="#"><img src="images/temp/head.jpg" alt="" /></a></dt>
+                            <dd><a href="#">AHXIAOPENG</a></dd>
+                          </dl>
+                          <div class="se_center"> 
+                          	<span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span> 
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span> 
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span> 
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span> 
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span> 
+                          </div>
+                          <div class="flBtnDiv"><a href="#" class="add">加为好友</a><a href="#" class="greet">打声招呼</a></div>
+                        </li>
+                        <li>
+                          <dl>
+                            <dt><a href="#"><img src="images/temp/head.jpg" alt="" /></a></dt>
+                            <dd><a href="#">AHXIAOPENG</a></dd>
+                          </dl>
+                          <div class="se_center"> 
+                          	<span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span> 
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span> 
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span> 
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span> 
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span> 
+                          </div>
+                          <div class="flBtnDiv"><a href="#" class="add">加为好友</a><a href="#" class="greet">打声招呼</a></div>
+                        </li>
+                        <li>
+                          <dl>
+                            <dt><a href="#"><img src="images/temp/head.jpg" alt="" /></a></dt>
+                            <dd><a href="#">AHXIAOPENG</a></dd>
+                          </dl>
+                          <div class="se_center"> 
+                          	<span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span> 
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span> 
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span> 
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span> 
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span> 
+                          </div>
+                          <div class="flBtnDiv"><a href="#" class="add">加为好友</a><a href="#" class="greet">打声招呼</a></div>
+                        </li>
+                        <li>
+                          <dl>
+                            <dt><a href="#"><img src="images/temp/head.jpg" alt="" /></a></dt>
+                            <dd><a href="#">AHXIAOPENG</a></dd>
+                          </dl>
+                          <div class="se_center"> 
+                          	<span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span> 
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span> 
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span> 
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span> 
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span> 
+                          </div>
+                          <div class="flBtnDiv"><a href="#" class="add">加为好友</a><a href="#" class="greet">打声招呼</a></div>
+                        </li>
+                        <li>
+                          <dl>
+                            <dt><a href="#"><img src="images/temp/head.jpg" alt="" /></a></dt>
+                            <dd><a href="#">AHXIAOPENG</a></dd>
+                          </dl>
+                          <div class="se_center"> 
+                          	<span><font color="#999999">现&nbsp;居&nbsp;地：</font> 美国加利弗尼亚州旧金山市</span> 
+                            <span><font color="#999999">家&nbsp;&nbsp;&nbsp;&nbsp;乡：</font> 中国四川</span> 
+                            <span><font color="#999999">星&nbsp;&nbsp;&nbsp;&nbsp;座：</font> 白羊座</span> 
+                            <span><font color="#999999">毕业学校：</font> 美国哈佛大学</span> 
+                            <span><font color="#999999">工作单位：</font> GOOGLE INC</span> 
+                          </div>
+                          <div class="flBtnDiv"><a href="#" class="add">加为好友</a><a href="#" class="greet">打声招呼</a></div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="pr_Tag">
+                      <div class="prPageNav">
+                        <ul>
+                          <li class="first">首页</li>
+                          <li class="prev">上页</li>
+                          <li>
+                            <select><option>1/25</option></select>
+                          </li>
+                          <li class="next"><a href="#">下页</a></li>
+                          <li class="end"><a href="#">末页</a></li>
+                        </ul>
+                      </div>
+                      <a href="#" class="more">查看更多</a> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="mBtm jz"></div>
+    <!--主体end-->
+    <!--底部-->
+    <div class="foot jz"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></div>
+    <!--底部end-->
+
+<!--页面脚本区-->
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript">
+	$(".list_member li").hover(function(){
+		$(this).addClass("active");	
+	},function(){
+		$(this).removeClass("active");	
+	})
+</script>
+</body>
+</html>

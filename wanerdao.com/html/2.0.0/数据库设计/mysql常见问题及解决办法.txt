@@ -1,0 +1,117 @@
+======================= 开发 ========================
+.精度
+	对存储精确度非常高，必须使用DECIMAL而不是FLOAT和DOUBLE
+
+.别名
+	不允许在where条件中使用别名
+
+.临时表(TEMPORARY TABLE)和内存表(MEMORY)
+	两者是不同的，show tables 是看不到临时表的。内存表是一种存储引擎。
+	内存表，所用内存大小通过max_heap_table_size指定，临时表也放在内存中，通过tmp_table_size 指定。
+	当数据超过临时表的最大值时，自动转为磁盘表，此时需要IO操作，性能会大大下降，内存表不会，内存表满后，会提示数据满错误。
+
+	
+.GROUP BY优化
+	默认group by 后会自动排序，如果不需要排序可以加 orader by null来减小开销
+	
+	
+.关键字
+	当列名或表命是关键字的时候，为了防止错误，用反引号引起来，注意反引号是`
+	
+
+.整型误区
+	int(1)和int(11)同样占用4个字节，所以不要再出现int(1).
+	
+
+.datatime 和timestamp
+	datatime占8字节，范围"1000-01-01 00:00:00"到"9999-12-31 23:59:59"，不可以设置自动更新时间。
+	timestamp占4字节，1970年1月2日到2037年， 可以设置自动更新时间。
+
+
+.CHAR(N)或VARCHAR(N)中的N解释
+	MySQL中此两类字符串定义时候填写的长度N，不是字节数的意思 ，而是字符数。一般国内MySQL字符集设为UTF8，校对规则为UTF8_general_ci。
+	对于中文汉字，实际存储的时候占三个字节，而数据或字母，则只占一个字节。
+	LENGTH(string)       # 返回string所占的字节数
+    CHAR_LENGTH(string)  # 返回string中的字符个数
+
+
+.类型转换函数
+   字符串转换成日期方式，DATE_FORMAT()或STR_TO_DATE()，
+   格式：
+   DATE_FORMAT(expr1,format)
+   STR_TO_DATE(expr1, format)
+   常用的日期格式YYYY-MM-DD HH:MM:SS 对应的format为%Y-%m-%d %H:%i:%S
+	通用的类型转换函数：
+	CAST(expr AS type)
+	CONVERT(expr,type) 
+	CONVERT(expr USING transcoding_name)    
+	
+	
+	
+	
+
+===================== 数据库管理员 ==========================
+
+常用命令
+show full processlist  查看线程
+SELECT VERSION() 查看版本
+SELECT USER()  查看当前用户
+show databases 显示所有数据库
+use dataname   用某个数据库(后面不加;)
+show tables    显示所有表（包括视图）
+DESC(DESCRIBE) tablename 查看表定义
+show create table tablename 查看表定义信息
+show warnings  创建完表或者存储过程或执行完sql 可用此 查看警告。
+
+
+
+.错误日志
+	数据目录中， 后缀名为err
+
+.查看错误
+	perror 错误号
+	例如：
+	[ERROR] /usr/local/mysql/libexec/mysqld: Can't create/write to file '/usr/local/mysql/taowei.pid' (Errcode: 13)
+	# /usr/local/mysql/bin/perror 13
+	  OS error code  13:  Permission denied
+
+
+.MySQL server has gone away
+	a.超时了，试着调整wait_timeout值
+	b.可能是传输的包太大
+	c.驱动太老，换新驱动
+
+	
+.动态创建表
+	CREATE TABLE a LIKE b
+	只有表结构没有数据，索引也会被同时创建
+	CREATE TABLE a select * from b
+	索引不会被同时创建，where 1=0 则没有数据只有表结构
+	如果想要保持一样的引擎，就加上。
+	这样写：create table a engine innodb select * from b where 1 = 0;
+	
+
+.删除
+	delete   : 逻辑删除数据，支持事务，可用于触发器。DML 语句。
+	truncate : 删除数据 保留表结构，速度快。不支持事务，触发器。 DDL 语句。
+	drop     : 删除表结构、约束(constrain)、触发器(trigger)、索引(index); 依赖该表的存储/函数将保留,但是变为invalid状态. DDL 语句。
+	 
+ 
+
+----------------------- 复制 ----------------------------
+
+
+.中断处理
+	SHOW SLAVE STATUS   -- 查看错误原因， 和获取错误位置
+	STOP SLAVE      	-- 停止复制
+	SHOW BINLOG EVENTS IN 'master101-bin.000635' FROM 12679 LIMIT 50;     -- 主上执行，位置根据 SLAVE STATUS 取得
+	SHOW BINLOG EVENTS IN 'master202-bin.000432' LIMIT m n。获取为主点。
+	SET GLOBAL SQL_SLAVE_SKIP_COUNTER=n --  在从上跳过后面的n个事件
+	START SLAVE  -- 重启从
+
+	
+	
+
+程序/胥鑫
+需要把表`groupmanagerole的salary字段小数位4改为2
+ALTER TABLE groupmanagerole MODIFY `salary` DECIMAL(12,2) NOT NULL DEFAULT '0.00' COMMENT '工资'

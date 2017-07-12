@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>新的好友选择框</title>
+    <link rel='stylesheet' href="../../css/layout.css" type="text/css" />
+    <link rel='stylesheet' href="../../css/PluginCss/pop.css" type="text/css" />
+    <script type="text/javascript" src="../../Scripts/jquery-1.4.2.js"></script>
+    <script type="text/javascript" src="../../Scripts/common/wanerdaoutils.js"></script>
+    <script type="text/javascript" src="../../Scripts/multipleLanguage/loader.js"></script>    
+    <script type="text/javascript" src="../../Scripts/OpenProjectPlugin/jquery.overlay.js"></script>
+	<script type="text/javascript" src="../../Scripts/Plugin/Search/wanerdao2.compop.js"></script>
+
+</head>
+<body style="height:1000px">
+    <input type="button" id="btnarea" value="查询好友" rel="#ff"/>
+    <input type="button" id="btngroup" value="圈子查找" rel="#gg"/>
+    <input type="button" id="Button1" value="查询好友" rel="#ff"/>
+        <script type="text/javascript">
+            $("#btnarea").click(function () {
+            //alert((5-1)+'/'+20);
+//                var temp = "sdfsd{0}";
+                //                alert(temp.replace("{0}","test"));
+                //alert(Math.floor(9/6));
+<<<<<<< .mine
+              // alert(Math.ceil(6/6));
+                                wanerdaoPop({
+                                    comopts: { titleid: 'common_00011', typename: 'friends', id: 'ff', elementid: 'btnarea', callback: showdata }
+                                });
+=======
+                //alert(Math.ceil(6/6));
+                                wanerdaoPop({
+                                    comopts: { titleid: 'common_00011', typename: 'friends', id: 'ff', elementid: 'btnarea', callback: showdata }
+                                });
+>>>>>>> .r2655
+            });
+                            $("#Button1").click(function () {
+                                //alert((5-1)+'/'+20);
+                                //                var temp = "sdfsd{0}";
+                                //                alert(temp.replace("{0}","test"));
+                                //alert(Math.floor(9/6));
+                                // alert(Math.ceil(6/6));
+                                wanerdaoPop({
+                                    comopts: { titleid: 'common_00011', typename: 'friends', id: 'ff', elementid: 'Button1', callback: showdata }
+                                });
+                            });
+            $("#btngroup").click(function () {
+                wanerdaoPop({
+                    comopts: { titleid: 'common_00012', typename: 'group', id: 'gg', elementid: 'btngroup', callback: showdata }
+                });
+            });
+            function showdata(data) {
+                alert(data.group[0].id);
+            }
+            $(function () {
+                $("#Button1").overlay(); 
+                $("#btnarea").overlay(); $("#btngroup").overlay();
+            })
+        </script>
+</body>
+</html>

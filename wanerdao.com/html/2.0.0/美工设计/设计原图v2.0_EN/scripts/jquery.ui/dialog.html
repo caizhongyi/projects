@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" media="all" href="css/framework.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/style.css"/>
+<script type="text/javascript" src="jquery/jquery-1.7.2.min.js" ></script>
+<script type="text/javascript" src="js/jquery.core.js"></script>
+<script type="text/javascript" src="js/jquery.ui.core.min.js"></script>
+<script type="text/javascript" src="js/jquery.ui.draggable.js"></script>
+<script type="text/javascript" src="../js/jquery.center.js"></script>
+<script type="text/javascript" src="js/jquery.ui.overlay.js"></script>
+<script type="text/javascript" src="js/jquery.ui.dialog.js"></script>
+
+<style type="text/css">
+	.dialog{width:500px;  box-shadow:0 0 5px #ddd	; background:#fff; border-radius:5px; display:none;}
+	.dialog .dialog-header{ background:#ddd; margin:5px; padding:5px;}
+	.dialog h3{ float:left;}
+	.dialog .dialog-hide{ float:right;}
+	.dialog .dialog-container,
+	.dialog .dialog-footer{ padding:5px;}
+	.dialog .dialog-footer{ text-align:right;}
+</style>
+</head>
+
+<body class="pBgB">
+<div class="dialog">
+	<div class="dialog-header clearfix">
+    	<h3>dialog</h3>
+        <a href="javascript:;" class="dialog-hide">close</a>
+    </div>
+    <div class="dialog-container">
+    	
+    </div>
+    <div class="dialog-footer"></div>
+</div>
+
+<div class="dialog dialogs">
+	<div class="dialog-header clearfix">
+    	<h3>dialog</h3>
+        <a href="javascript:;" class="dialog-hide">close</a>
+    </div>
+    <div class="dialog-container">
+    	
+    </div>
+    <div class="dialog-footer">
+    	<a href="javascript:;" class="dialog-next">next</a>
+    </div>
+</div>
+
+<div class="dialog dialogs">
+	<div class="dialog-header clearfix">
+    	<h3>dialog</h3>
+        <a href="javascript:;" class="dialog-hide">close</a>
+    </div>
+    <div class="dialog-container">
+    	
+    </div>
+    <div class="dialog-footer"><a href="javascript:;" class="dialog-next">next</a></div>
+</div>
+
+<input  type="button" value="show" onclick="dialog.show()"/>
+<script type="text/javascript" >
+	//new $.ui.dialog('.dialog').show();
+	var dialog = new $.ui.dialogs('.dialogs' , {
+		effect : 'zoom'
+	});
+	
+	
+	var html = '<div class="dialog">'
+					+'<div class="dialog-header clearfix">'
+						+'<h3>dialog</h3>'
+						+'<a href="javascript:;" class="dialog-hide">close</a>'
+					+'</div>'
+					+'<div class="dialog-container">'	
+						+'<div class="dialog-message">'	
+						+'</div>'
+					+'</div>'
+					+'<div class="dialog-footer"></div>'
+				+'</div>';
+	var activeDialog = new $.ui.dialog(html,{}); 
+	activeDialog.alert('message!')
+</script>
+</body class="pBgB">
+</html>

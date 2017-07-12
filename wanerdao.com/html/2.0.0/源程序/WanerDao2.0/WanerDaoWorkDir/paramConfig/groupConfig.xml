@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GroupRoot>
+
+  
+  <!--缴纳费用单位-->
+  <GroupIntegral name="feeUnit">
+    <Integral>0-免费;1-按月;2-按年;3-入门费;4-自定义</Integral>
+  </GroupIntegral>
+
+  <!--自定义缴纳费用单位-->
+  <GroupIntegral name="definedUnit">
+    <Integral>10-小时;11-周;12-月;13-年</Integral>
+  </GroupIntegral>
+
+  <!--保护时限-->
+  <GroupIntegral name="protectTime">
+    <Integral>1-1小时;24-1天;48-2天;168-1周;744-1月;0-永不</Integral>
+  </GroupIntegral>
+
+  <!--层级结构 超级管理员事件-->
+  <GroupIntegral name="levelSuperEvent">
+    <Integral>1-收支预算;24-1天;48-2天;168-1周;744-1月;0-永不</Integral>
+  </GroupIntegral>
+
+  <!--层级结构 执行管理员事件-->
+  <GroupIntegral name="levelMangerEvent">
+    <Integral>1-收支预算;24-1天;48-2天;168-1周;744-1月;0-永不</Integral>
+  </GroupIntegral>
+
+  <!--层级结构 财务员事件-->
+  <GroupIntegral name="levelFinanceEvent">
+    <Integral>24-1天;48-2天;168-1周;744-1月;0-永不</Integral>
+  </GroupIntegral>
+  
+  <!--层级结构 普通成员事件-->
+  <GroupIntegral name="levelUserEvent">
+    <Integral>24-1天;48-2天;168-1周;744-1月;0-永不</Integral>
+  </GroupIntegral>
+
+  <!--收支预算事件单位-->
+  <GroupIntegral name="budgetUnit">
+    <Integral>1-按人均;2-按单位;3-按个人</Integral>
+  </GroupIntegral>
+
+  <!--执行管理员财务员换届周期-->
+  <GroupIntegral name="shiftcycle">
+    <Integral>1-每半年换届;2-每年换届;4-每2年换届;6-每3年换届;10-每5年换届;20-每10年换届</Integral>
+  </GroupIntegral>
+
+  <!--执行管理员财务员薪酬-->
+  <GroupIntegral name="cyclesalary">
+    <Integral>1-无薪酬;2-每月;3-每年</Integral>
+  </GroupIntegral>
+  
+  
+  <!--基本信息变更事件 圈子基本信息-->
+  <GroupIntegral name="groupInfo">
+    <Integral>
+      圈子名;圈子类型;圈子公开;加入方式;圈子logo;圈子描述;圈子规章;圈子主页;圈子会费;汇款账号;汇款方式;踢人保护
+    </Integral>
+  </GroupIntegral>
+
+  <!--管理结构信息变更 管理结构信息-->
+  <GroupIntegral name="manageInfo">
+    <Integral>
+      选举民主比率;执行投票周期;执行公示周期;投票通过率;执行管理员换届周期;执行管理员薪酬;财务员换届周期;财务员薪酬
+    </Integral>
+  </GroupIntegral>
+  
+  <!--超级管理员变动事件-->
+  <GroupIntegral name="supermanageInfo">
+    <Integral>
+      移交权力
+    </Integral>
+  </GroupIntegral>
+
+  <!--执行管理员\财务员变动事件-->
+  <GroupIntegral name="executionInfo">
+    <Integral>1-增选;2-撤除;3-弹劾;4-请辞</Integral>
+  </GroupIntegral>
+
+
+  <!--待处理事件过滤器 层级结构-->
+  <GroupIntegral name="levelSysList">
+    <Integral>2-全部可见;1-全部未处理;5-个人权限事件
+    </Integral>
+  </GroupIntegral>
+
+  <!--待处理事件过滤器 民主架构-->
+  <GroupIntegral name="democraticSysList">
+    <Integral>2-全部可见;1-全部未处理;3-执行委员会事件;4-公投事件;5-个人权限事件
+    </Integral>
+  </GroupIntegral>
+
+  <!--事件记录过滤器 层级结构-->
+  <GroupIntegral name="levelrecordList">
+    <Integral>2-全部;5-个人权限事件;6-预算事件;7-财务事件
+    </Integral>
+  </GroupIntegral>
+
+  <!--事件记录过滤器 民主架构-->
+  <GroupIntegral name="democraticrecordList">
+    <Integral>2-全部;3-执行委员会事件;4-公投事件;5-个人权限事件;6-预算事件;7-财务事件
+    </Integral>
+  </GroupIntegral>
+</GroupRoot>

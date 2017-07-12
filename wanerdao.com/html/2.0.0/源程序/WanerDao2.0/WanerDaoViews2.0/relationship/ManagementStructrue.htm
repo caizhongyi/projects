@@ -1,0 +1,95 @@
+﻿<div class="structset clearfix" id="managementDIV">
+                     <label>
+                    变 更 点：</label>
+                    <select name="select" id="sel_point" onchange="changemanagepoint()"  style="color:#000">
+                        <option value="">请选择变更点</option>
+                        <option value="0">选举民主比率</option>
+                        <option value="2">执行投票周期</option>
+                        <option value="4">执行公示周期</option>
+                        <option value="6">投票通过率</option>
+                        <option value="8">执行管理员设置</option>
+                        <option value="9">财务员设置</option>
+                    </select>
+                     <div class="item clearfix">
+                            <p>
+                                选举民主比率（选举执行管理员暂圈子总人数的比率）<br />
+                                <em>注意：比例越高需要选举出的执行管理员越多，虽然越能体现圈子民意，但是这样行效率也会降低</em>
+                            </p>
+                            <div class="inputs">
+                                <input type="text" class="Stext he24" id="txt_democracy_rate"/><br/>
+                                <span class="tip" style="margin-top:10px; width:104px;">+/- 1个单位浮动</span>
+                            </div>
+                     </div>
+                     
+                      <div class="item clearfix">
+                            <p>
+                                执行投票周期（管理委员会的民主相关决议需要经过投票周期投票，所有事件通用）
+                            </p>
+                            <div class="inputs">
+                                <input type="text" class="Stext he24" style="width:70px;" id="txt_vote_life"/>&nbsp;
+                                <span class="tip">天</span>
+                            </div>
+                     </div>
+                     
+                      <div class="item clearfix">
+                            <p>
+                                执行公示周期（管理委员会的决议需要经过周期公示方能生效，所有事件通用）
+                            </p>
+                            <div class="inputs">
+                                <input type="text" class="Stext he24" style="width:70px;" id="txt_public_life"/>&nbsp;
+                                <span class="tip">天</span>
+                            </div>
+                     </div>
+                     
+                      <div class="item clearfix">
+                            <p>
+                                投票通过率（赞成票超过这个比例即为通过，所有事件通用）
+                            </p>
+                            <div class="inputs">
+                                <input type="text" class="Stext he24" id="txt_vote_pass_rate"/>&nbsp;&nbsp;
+                               
+                            </div>
+                     </div>
+                     
+                     <h3>执行管理员</h3>
+                     <div class="item">
+                        <label>换届周期：</label>
+                        <select name="select" style=" width:71px; height:24px" id="sel_managercycle">
+                        
+                        </select>
+                        
+                        <label>薪酬：</label>
+                        <select name="select" style=" width:71px; height:24px" id="sel_managersalary">
+                         
+                        </select>
+                        <input class="Stext he24" id="txt_managersalary"/>
+                     </div>
+                     
+                      <h3>财务员</h3>
+                     <div class="item">
+                        <label>换届周期：</label>
+                        <select name="select" style=" width:71px; height:24px" id="sel_financialcycle">
+                         
+                        </select>
+                        
+                        
+                        <label>薪酬：</label>
+                        <select name="select" style=" width:71px; height:24px" id="sel_financialsalary">
+                       
+                        </select>
+                        <input class="Stext he24" id="txt_financialsalary"/>
+                     </div>
+                     <ul>
+                      <li>
+                        <label>
+                            主&nbsp;&nbsp;&nbsp;&nbsp;题：</label><input type="text" class="inp35"  id="txt_manageTitle"  style="color:#000"/></li>
+                    <li>
+                        <label class="v_top">
+                            内&nbsp;&nbsp;&nbsp;&nbsp;容：</label><textarea name="input" id="txt_manageComment"  style="color:#000;width:400px;"></textarea></li>
+                    <li>
+                    <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="发起事件" style="margin-left:77px;" onclick ="submitmanage()"/>
+                        	<input type="button" class="buttonB btn_w97 btn_h36 btnGary_97 fSize-14" value="取 消" onclick ="cancelEvent()" />
+                     <label style="color:Red" id="msgevent" class="msgLabArr"></label>
+                       </li>
+                </ul>
+                 </div>

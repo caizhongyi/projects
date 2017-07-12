@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="style/pers_rel.css" media="all" />
+<link rel="stylesheet" type="text/css" href="style/relationship.css" media="all" />
+<link href="style/select_upload.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript">
+var winScreenWidth = window.screen.width;
+if(winScreenWidth>1024){
+document.writeln('<style>');
+document.writeln('.jz{padding:0px 2px;}');
+document.writeln('</style>');
+}
+</script>
+<body>
+<!--头部-->
+<div class="head">
+  <div class="jz">
+    <div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+    <ul class="nav left yh">
+      <li><a href="#">首页</a></li>
+      <li class="cur"><a href="#" class="arr">个人</a></li>
+      <li><a href="#" class="arr">关系</a></li>
+      <li><a href="#" class="arr">杂烩</a></li>
+      <li><a href="#" class="arr">活动</a></li>
+      <li><a href="#" class="arr">资道</a></li>
+      <li class="newMsg"><a href="#">站内信息</a><i><a href="#">5</a></i></li>
+    </ul>
+    <div class="userInfo"> <a href="#" class="left"  title="烧饭-人生旅途中-飞砂走石风过"><img src="images/layout_main/img_32x32.png" width="32" height="32" /></a> <a href="javascript:void(0);" title="烧饭-人生旅途中-飞砂走石风过留痕！" class="name">烧饭-人生旅途中</a> </div>
+  </div>
+</div>
+<!--头部end--> 
+<!--主体-->
+<div class="main jz">
+  <div class="mCon">
+    <div class="prPdBox">
+      <div class="subChaTab"> <a href="#">我的好友</a> <a href="#">寻找好友</a> <a href="#">关注设置</a> <a href="#" class="active">我的圈子</a> <a href="#">寻找圈子</a> <a href="#">创建圈子</a> <a href="#">我的礼物</a> <a href="#">礼物市场</a> </div>
+      <div class="clearfix">
+        <div class="Fnavigation">
+          <ul>
+            <li><a href="#" class="cur">信息</a></li>
+            <li><a href="#">综合</a></li>
+            <li><a href="#">成员</a></li>
+            <li><a href="#">财务</a></li>
+            <li><a href="#">设置</a></li>
+          </ul>
+        </div>
+        <div class="FtitleW clearfix">
+          <div class="FareaW">
+            <div class="pm20"></div>
+            <ul class="Rul">
+              <li> <strong><b>*</b> 圈子名字：</strong> <span>
+                <input name="g" type="text" value="请输入圈子名称" class="Stext he24" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" style=" width:358px; color:#ccc;">
+                </span> </li>
+              <li><strong><b>*</b> 圈子分类：</strong> <span style=" position:relative">
+                <select name="select" class="Stext he24" style=" width:144px">
+                  <option>请选择圈子分类</option>
+                  <option>师傅是大方</option>
+                  <option>地方师傅的</option>
+                  <option>速度该发生的</option>
+                  <option>告别错过</option>
+                  <option>各地方</option>
+                  <option>防护的大方</option>
+                </select>
+                <div class="Uorientation">
+                  <p>帮助信息：<br />
+                    请选择您的活动分离。</p>
+                  <b onclick="this.parentNode.style.display='none'">x</b></div>
+                </span></li>
+              <li><strong>是否公开：</strong> <span>
+                <input name="g" type="checkbox" value="公开圈子" class="vInput" id="input_1" />
+                <label for="input_1">公开圈子</label>
+                </span></li>
+              <li> <strong>加入方式：</strong> <span>
+                <input type="radio" name="sex" onClick="na()" class="vInput" id="input_2" />
+                <label for="input_2">直接加入</label>
+                &nbsp;&nbsp;
+                <input type="radio" name="sex" onClick="nvnv()" class="vInput" id="input_3" />
+                <label for="input_3">批准加入</label>
+                </span> </li>
+              <li><strong>执行管理员：</strong> <span>
+                <input name="g" type="text" value="" class="Stext he24" style=" width:190px;">
+                <input type="button" class="btnA" value="添加" name="f">
+                <br />
+                <div class="U_name">
+                  <div class="U_nmetop"></div>
+                  <div class="U_nmecenter"><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span></div>
+                </div>
+                </span></li>
+              <li><strong>财务员：</strong> <span>
+                <input name="g" type="text" value="" class="Stext he24" style=" width:190px;">
+                <input type="button" class="btnA" value="添加" name="f">
+                <br />
+                <div class="U_name">
+                  <div class="U_nmetop"></div>
+                  <div class="U_nmecenter"><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span><span>好友名字<b>x</b></span></div>
+                </div>
+                </span></li>
+              <li><strong>图片上传：</strong> <span> <span class="vTextArea">
+                <label class="tFile" for="upPicfile">
+                  <input type="file" id="upPicfile" title="点击浏览您要上传的圈子图片" />
+                </label>
+                <input type="text" value="浏览您要上传的圈子图片" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" style="color:#ccc;" />
+                </span>
+                <input name="f" type="button" value="上传" class="btnA">
+                <br />
+                <input name="g" type="checkbox" value="公开圈子" class="vInput" id="input_4">
+                <label for="input_4">我知道上传的图片不侵犯第三方的版权</label>
+                <br />
+                <div class="Frpic" style="float:none; margin-top:8px;"><a href="#"><img src="images/img/pic1.jpg" width="220" height="150" /></a></div>
+                </span></li>
+              <li><strong><b>*</b> 圈子介绍：</strong> <span>
+                <textarea name="intro" class="txtArea" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" style=" width:486px; height:90px; color:#ccc;">输入圈子介绍</textarea>
+                </span></li>
+              <li><strong><b>*</b> 圈子规章：</strong> <span>
+                <textarea name="rule"  class="txtArea" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" style=" width:486px; height:90px; color:#ccc;">输入圈子规章</textarea>
+                </span></li>
+              <li><strong><b>*</b> 圈子主页：</strong> <span>
+                <input name="g" type="text" value="请输入圈子主页地址" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" class="Stext he24" style=" color:#ccc; width:357px">
+                </span></li>
+              <li><strong>管理架构：</strong> <span style="float:left">
+                <input type="radio" name="sex" onClick="na()" class="vInput" id="input_5"/>
+                <label for="input_5">层级结构</label>
+                <br />
+                <img src="images/img/name_jg.jpg" width="225" height="155" /> </span> <span style="float:left">
+                <input type="radio" name="sex" onClick="nvnv()" class="vInput" id="input_6"/>
+                <label for="input_6">民主结构</label>
+                <br />
+                <img src="images/img/name_jgr.jpg" width="225" height="155" /> </span>
+                
+              </li>
+              <li>
+                 <div class="structset clearfix">
+                     <h3>民主结构设置</h3>
+                     <div class="item clearfix">
+                            <p>
+                                选举民主比率（选举执行管理员暂圈子总人数的比率）<br />
+                                <em>注意：比例越高需要选举出的执行管理员越多，虽然越能体现圈子民意，但是这样行效率也会降低</em>
+                            </p>
+                            <div class="inputs">
+                                <input type="text" class="Stext he24"/><br/>
+                                <span class="tip" style="margin-top:10px; width:104px;">+/- 1个单位浮动</span>
+                            </div>
+                     </div>
+                     
+                      <div class="item clearfix">
+                            <p>
+                                执行投票周期（管理委员会的民主相关决议需要经过投票周期投票，所有事件通用）
+                            </p>
+                            <div class="inputs">
+                                <input type="text" class="Stext he24" style="width:70px;"/>&nbsp;
+                                <span class="tip">天</span>
+                            </div>
+                     </div>
+                     
+                      <div class="item clearfix">
+                            <p>
+                                执行公示周期（管理委员会的决议需要经过周期公示方能生效，所有事件通用）
+                            </p>
+                            <div class="inputs">
+                                <input type="text" class="Stext he24" style="width:70px;"/>&nbsp;
+                                <span class="tip">天</span>
+                            </div>
+                     </div>
+                     
+                      <div class="item clearfix">
+                            <p>
+                                投票通过率（赞成票超过这个比例即为通过，所有事件通用）
+                            </p>
+                            <div class="inputs">
+                                <input type="text" class="Stext he24"/>&nbsp;&nbsp;
+                               
+                            </div>
+                     </div>
+                     
+                     <h3>执行管理员</h3>
+                     <div class="item">
+                        <label>换届周期：</label>
+                        <select name="select" style=" width:71px; height:24px">
+                          &nbsp;
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                        </select>
+                        
+                        <label>薪酬：</label>
+                        <select name="select" style=" width:71px; height:24px">
+                          &nbsp;
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                        </select>
+                        <input class="Stext he24"/>
+                     </div>
+                     
+                      <h3>财务员</h3>
+                     <div class="item">
+                        <label>换届周期：</label>
+                        <select name="select" style=" width:71px; height:24px">
+                          &nbsp;
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                        </select>
+                        
+                        
+                        <label>薪酬：</label>
+                        <select name="select" style=" width:71px; height:24px">
+                          &nbsp;
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                          <option>单位</option>
+                        </select>
+                        <input class="Stext he24"/>
+                     </div>
+                 </div>
+              </li>
+              <li><strong><b>*</b> 缴纳费用：</strong> <span>
+                <input name="g" type="text" value="请输入费用" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}"  class="Stext he24" style=" width:112px; color:#ccc;">
+                &nbsp;
+                <select name="select" style=" width:71px; height:24px">
+                  &nbsp;
+                  <option>单位</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                </select>
+                &nbsp;
+                <input name="g" type="text" value="请输入单位值" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}"  class="Stext he24" style=" width:112px; color:#ccc;">
+                &nbsp;
+                <select name="select"  style=" width:71px; height:24px;">
+                  &nbsp;
+                  <option>单位</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                </select>
+                </span></li>
+              <li><strong><b>*</b> 汇款账号：</strong> <span>
+                <input name="g" type="text" value="请输入汇款账号" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" class="Stext he24" style=" width:357px; color:#ccc;">
+                </span></li>
+              <li><strong><b>*</b> 缴费说明：</strong> <span>
+                <textarea name="不" cols="5" rows="5" class="txtArea" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" style=" width:497px; height:99px; color:#ccc;">请输入圈子规章</textarea>
+                </span></li>
+              <li><strong>替人保护：</strong> <span>
+                <input name="g" type="checkbox" value="公开圈子" class="vInput" id="input_7">
+                <label for="input_7">启动踢保护</label>
+                &nbsp;
+                <select name="select">
+                  <option>保护时限</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                  <option>单位</option>
+                </select>
+                </span></li>
+              <li>&nbsp;</li>
+              <li class="btnn"> <a class="btn_127x36" href="javascript:void(0);">保 存</a> <a class="btn_127x36_gray" href="javascript:void(0);">取 消</a> </li>
+            </ul>
+            <div class="pm50"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mBtm jz"></div>
+<!--主体end--> 
+<!--底部-->
+<div class="foot jz"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></div>
+<!--底部end--> 
+
+<!--页面脚本区--> 
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+</body>
+</html>

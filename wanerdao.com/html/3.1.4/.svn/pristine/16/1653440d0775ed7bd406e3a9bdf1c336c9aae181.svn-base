@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>时间Picker - jQuery plugin</title>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.3.custom/css/cupertino/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui-timepicker/jquery-ui-timepicker-addon.min.css"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/account.css"/>
+
+
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-timepicker/jquery-ui-timepicker-addon.min.js"></script>
+</head>
+<body>
+
+<div class="content" style="width: 500px; height: 200px;">
+    <div class="loading-wrap">
+        <div class="loading"></div>
+        <div class="loading-mask"></div>
+        <ul>
+            <li>列表浏览</li>
+            <li>列表浏览</li>
+            <li>列表浏览</li>
+            <li>列表浏览</li>
+        </ul>
+    </div>
+</div>
+
+
+<div id="printPop" class="dialog ui-dialog " data-options="handler:'header'" style="display: block; position: relative">
+    <div class="bg"></div>
+    <div class="inner">
+        <div class="hd" data-options="region:'header',handle:true">
+            <h3>Note print / 保存设置</h3>
+            <a href="javascript:;" class="close" data-options="region:'hide'"></a>
+        </div>
+
+        <div class="loading-wrap">
+            <div class="loading"></div>
+            <div class="loading-mask"></div>
+            <form>
+                <div class=" form">
+                    <div class="form-item">
+                        <label for="username" class="input-label-mini">账号:</label><input type="text" class="text" name="username" id="username"><span class="tips-static error">* 输入帐户名，And Case-sensitive</span>
+                    </div>
+                    <div class="form-item">
+                        <label for="密码" class="input-label-mini">密码:</label><input type="text" class="text" name="username" id="密码"><span class="tips-static error">* 请输入您的密码</span>
+                    </div>
+                    <div class="form-item">
+                        <label  class="input-label-mini">&nbsp;</label><input type="checkbox" class="f12" />保持3个月的登录时间
+                    </div>
+                    <div class="form-item">
+                        <label  class="input-label-mini">&nbsp;</label><input type="checkbox" class="f12" />保持3个月的登录时间
+                    </div>
+                    <div class="form-item">
+                        <label  class="input-label-mini">&nbsp;</label>
+                        <ul class="tips-result">
+                            <li>Hint information</li>
+                        </ul>
+                    </div>
+                    <div class="form-item">
+                        <label  class="input-label-mini">&nbsp;</label>
+                        <input type="button" class="btn btn-primary input-control" value="登录" data-options="region:'hide'" ><input type="button" class="btn btn-primary input-control" value="取消" data-options="region:'hide'" ><input type="button" class=" btn btn-default"
+                                                                                                                                                                              value="Go to 注册" data-options="region:'hide'">
+                    </div>
+                </div>
+            </form>
+         </div>
+    </div>
+</div>
+<script>
+ $('.loading , .loading-mask').stop(true,true).fadeIn();
+</script>
+</body>
+</html>

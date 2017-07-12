@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SQLScript xmlns="SQL.xsd">
+    <SQL ID="SendMessage">
+        insert into SendMessage(id,user_id,reply_id,send_id,send_email,content,send_date,is_msg,is_mark,is_delete)
+        values(?id,?user_id,?reply_id,?send_id,?send_email,?content,?send_date,?is_msg,?is_mark,?is_delete);
+
+        delete from draftmessage where user_id=?user_id and is_system=true;
+    </SQL>
+    <SQL ID="ReciveMsg">
+        insert into InboxMessage(id,user_id,reply_id,from_id,from_email,content,receive_date,is_msg,is_read,is_mark,is_delete)
+        SELECT getguid(),send_id,?reply_id,?from_id,?from_email,?content,?receive_date,1,0,0,0
+        from sendmessagereceiverlist where message_id =?id and send_id!=?from_id;
+    </SQL>
+    <SQL ID="InsertSendMessageReceiverList">
+        insert into SendMessageReceiverList(id,message_id,send_type_id,send_id)
+        values (getguid(),?id,1,?user_id);
+    </SQL>
+
+    <SQL ID="SaveDraftMessage">
+        insert into draftmessage(id,user_id,send_id,send_email,draft_date,is_mark,is_read,is_delete,is_system,is_msg,content)
+        values(?id,?user_id,?send_id,?send_email,?draft_date,0,0,0,?is_system,?is_msg,?content)
+    </SQL>
+    <SQL ID="SysSaveDraftMessage">
+        call p_SavaSysDrafMsg(?id,?user_id,?draft_date,?content,?is_system,?is_msg);
+    </SQL>
+    <SQL ID="SendInviteGroupMsg">
+        insert into SendInviteMessage(id,user_id,send_id,msg_type,msg_id,is_delete,send_date)
+        values(?id,?user_id,?send_id,?msg_type,?msg_id,?is_delete,?send_date);
+    </SQL>
+    <SQL ID="SendGroupMessage">
+        <!--insert into SendInviteMessage(id,user_id,send_id,send_username,msg_type,msg_id,send_date)
+		values(?id,?user_id,?send_id,(SELECT NAME from personalprofile where user_id=?send_id),?msg_type,?msg_id,?send_date);-->
+
+        insert into InboxInviteMessage(id,user_id,from_id,msg_type,msg_id,is_delete,send_date)
+        values(?id,?user_id,?from_id,?msg_type,?msg_id,0,?send_date);
+        <!-- send_type_id 1为个人项 2为圈子项 下面的content为代替的sendmessage表的id 使之关联 -->
+        INSERT into sendinvitemessagereceiverlist(id,message_id,send_type_id,send_id)
+        VALUES(getguid(),?content,1,?user_id);
+    </SQL>
+    <SQL ID="SendInvitFird">
+        insert into SendInviteMessage(id,user_id,send_id,content,msg_type,msg_id,is_delete,send_date)
+        values(?id,?user_id,?send_id,?content,?msg_type,?msg_id,?is_delete,?send_date);
+
+        insert into InboxInviteMessage(id,user_id,from_id,msg_type,msg_id,is_delete,send_date)
+        values(getguid(),?send_id,?user_id,?msg_type,?msg_id,0,?send_date);
+    </SQL>
+    <SQL ID="SendInvitGroup">
+        insert into SendInviteMessage(id,user_id,send_id,content,msg_type,msg_id,is_delete,send_date)
+        values(?id,?user_id,?send_id,?content,?msg_type,?msg_id,?is_delete,?send_date);
+        <!--1圈子 2活动 3个人-->
+        INSERT into sendinvitemessagereceiverlist(id,message_id,send_type_id,send_id)
+        select getguid(),?id,1,user_id from groupmember where group_id=?msg_id and user_id!=?user_id and active=true;
+
+        insert into InboxInviteMessage(id,user_id,from_id,msg_type,msg_id,is_delete,send_date)
+        select getguid(),user_id,?user_id,?msg_type,?msg_id,0,?send_date from groupmember where group_id=?msg_id and user_id!=?user_id and active=true;
+    </SQL>
+    <SQL ID="SendInvitActivity">
+        insert into SendInviteMessage(id,user_id,send_id,content,msg_type,msg_id,is_delete,send_date)
+        values(?id,?user_id,?send_id,?content,?msg_type,?msg_id,?is_delete,?send_date);
+        <!--1圈子 2活动 3个人-->
+        INSERT into sendinvitemessagereceiverlist(id,message_id,send_type_id,send_id)
+        select getguid(),?id,2,user_id from activitymember where activity_id=?msg_id and user_id!=?user_id and active=true;
+
+        insert into InboxInviteMessage(id,user_id,from_id,msg_type,msg_id,is_delete,send_date)
+        select getguid(),user_id,?user_id,?msg_type,?msg_id,0,?send_date from activitymember where activity_id=?msg_id and user_id!=?user_id and active=true;
+    </SQL>
+
+    <SQL ID="SendInvitMessage">
+        call p_SendInviteMsg(?from_id,?user_id,?msg_type,?msg_id,?send_date);
+        <!-- send_type_id 1为个人项 2为圈子项  3活动 send_id的user_id为圈子id 下面的content为代替的sendmessage表的id 使之关联 -->
+        INSERT into sendinvitemessagereceiverlist(id,message_id,send_type_id,send_id)
+        VALUES(getguid(),?content,2,?user_id);
+    </SQL>
+    <SQL ID="CheckIsUsersFriend">
+        select count(*) from PersonalFriends where relation_from_id=?user_id and relation_to_id=?personid and active=1;
+    </SQL>
+    <SQL ID="SendPersonalInvite">
+        insert into SendInviteMessage(id,user_id,send_id,msg_id,msg_type,send_date,is_delete)
+        values(?id,?send_id,?user_id,?user_id,?msg_type,?send_date,0);
+
+        insert into InboxInviteMessage(id,user_id,from_id,msg_type,msg_id,send_date,is_delete)
+        values(getguid(),?user_id,?send_id,?msg_type,?send_id,?send_date,0);
+        <!-- send_type_id 1为个人项 2为圈子项 3活动  -->
+        INSERT into sendinvitemessagereceiverlist(id,message_id,send_type_id,send_id)
+        VALUES(getguid(),?id,1,?send_id);
+    </SQL>
+    <SQL ID="SendActiveInvitMessage">
+        call p_SendInviteMsg(?from_id,?user_id,?msg_type,?msg_id,?send_date);
+        <!-- send_type_id 1为个人项 2为圈子项 3活动 send_id为圈子id 下面的content为代替的sendmessage表的id 使之关联 -->
+        INSERT into sendinvitemessagereceiverlist(message_id,send_type_id,send_id)
+        VALUES(?content,3,?user_id);
+    </SQL>
+    <SQL ID="GetNotReadCount">
+        select count(id) from inboxmessage where is_read=0 and user_id=?user_id and active=1;
+    </SQL>
+    <SQL ID="ReadMessage">
+        update inboxmessage set is_read=1 where id =?messageid and active=1;
+    </SQL>
+    <SQL ID="MarkMessage">
+        update inboxmessage set is_mark=ABS(ifnull(is_mark,0)-1) where id =?messageid and active=1;
+    </SQL>
+    <SQL ID="DeleteMessage">
+        update inboxmessage set is_delete=true,delete_date=now() where (id=?messageid or reply_id=?messageid) and active=1;
+    </SQL>
+    <SQL ID="DeleteInvitMessage">
+        update InboxInviteMessage set is_delete=true,delete_date=now() where id=?messageid  and active=1;
+    </SQL>
+    <SQL ID="GetInviteType">
+        select msg_type from SendInviteMessage where id=?id and active=1;
+    </SQL>
+    <SQL ID="GetSendInviteList">
+        call p_GetSendInvitList(?user_id,?optionid,?pagecurrent,?pageSize,?config);
+    </SQL>
+    <SQL ID="GetInviteList">
+        call p_GetInboxInviteList(?user_id,?optionid,?pagecurrent,?pageSize,?config);
+    </SQL>
+    <SQL ID="AcceptInvite">
+
+    </SQL>
+    <SQL ID="MarkSendMessage">
+        update SendMessage set  is_mark=ABS(ifnull(is_mark,0)-1) where id=?messageid and active=1;
+    </SQL>
+    <SQL ID="DelSendMessage">
+        update SendMessage set is_delete=true,delete_date=now() where id=?messageid or reply_id=?messageid and active=1;
+    </SQL>
+    <SQL ID="DelSendInvite">
+        update SendInviteMessage set is_delete=true,delete_date=now() where id=?messageid and active=1;
+    </SQL>
+    <SQL ID="GetRubbishMessage">
+        call p_getMsgRubbishList(?id,?user_id,?pagecurrent,?pageSize);
+    </SQL>
+    <SQL ID="GetRubbishInvite">
+        call p_GetInvitRubbishList(?user_id,?optionid,?pagecurrent,?pageSize,?config);
+    </SQL>
+    <SQL ID="MarkRubbishMessageOfInbox">
+        UPDATE inboxmessage set  is_mark=ABS(ifnull(is_mark,0)-1) where id=?messageid and is_delete=TRUE and active=1;
+    </SQL>
+    <SQL ID="MarkRubbishMessageOfSend">
+        UPDATE sendmessage set  is_mark=ABS(ifnull(is_mark,0)-1) where id=?messageid and is_delete=TRUE and active=1;
+    </SQL>
+    <SQL ID="MarkRubbishMessageOfDraft">
+        UPDATE draftmessage set  is_mark=ABS(ifnull(is_mark,0)-1) where id=?messageid and is_delete=TRUE and active=1;
+    </SQL>
+    <SQL ID="RevertRubbishMessageOfInbox">
+        update inboxmessage set is_delete=FALSE where  id=?messageid and active=1;
+    </SQL>
+    <SQL ID="RevertRubbishMessageOfSend">
+        update sendmessage set is_delete=FALSE where  id=?messageid and active=1;
+    </SQL>
+    <SQL ID="RevertRubbishMessageOfDraft">
+        update draftmessage set is_delete=FALSE where  id=?messageid and active=1;
+    </SQL>
+    <SQL ID="RevertRubbishInviteOfInbox">
+        update InboxInviteMessage set is_delete=FALSE where  id=?messageid and active=1;
+    </SQL>
+    <SQL ID="RevertRubbishInviteOfSend">
+        update SendInviteMessage set is_delete=FALSE where  id=?messageid and active=1;
+    </SQL>
+    <SQL ID="DeleteRubbishMessageOfInbox">
+        delete from inboxmessage where id=?messageid or reply_id=?messageid and active=1;
+    </SQL>
+    <SQL ID="DeleteRubbishMessageOfSend">
+        delete from sendmessage where id=?messageid or reply_id=?messageid and active=1;
+    </SQL>
+    <SQL ID="DeleteRubbishMessageOfDraft">
+        delete from draftmessage where id=?messageid and active=1;
+    </SQL>
+    <SQL ID="ClearRubbishMessage">
+        delete from inboxmessage where user_id=?user_id and is_delete=TRUE and active=1;
+        delete from sendmessage where user_id=?user_id and is_delete=TRUE and active=1;
+        delete from draftmessage where user_id=?user_id and is_delete=TRUE and active=1;
+    </SQL>
+    <SQL ID="ClearRubbishInvite">
+        delete from InboxInviteMessage where user_id=?user_id and is_delete=TRUE and active=1;
+        delete from SendInviteMessage where user_id=?user_id and is_delete=TRUE and active=1;
+    </SQL>
+    <SQL ID="QuiteDeleteRubbishInvite">
+        delete from InboxInviteMessage where id=?messageid;
+        delete from SendInviteMessage where id=?messageid;
+    </SQL>
+    <SQL ID="QuiteDeleteRubbishInviteOfInbox">
+        delete from InboxInviteMessage where id=?messageid;
+    </SQL>
+    <SQL ID="QuiteDeleteRubbishInviteOfSend">
+        delete from SendInviteMessage where id=?messageid;
+    </SQL>
+    <SQL ID="MarkDraftMessage">
+        update DraftMessage set  is_mark=ABS(ifnull(is_mark,0)-1) where id=?messageid and active=1;
+    </SQL>
+    <SQL ID="DelDraftMessage">
+        update DraftMessage set is_delete=true,delete_date=now() where id=?messageid  and active=1;
+    </SQL>
+    <SQL ID="GetDetailedMessageList">
+
+        update InboxMessage set is_read=true where id=?id;
+
+        select sm.id,sm.send_id as user_id, pp.logo_small_path as slogo, GetUserNameById(sm.send_id) as name,
+        sm.send_email as email,SUBSTR(sm.content FROM 1 FOR 25) as content,
+        sm.send_date as receive_date from sendmessage sm join PersonalProfile pp on pp.user_id=sm.user_id
+        where sm.reply_id =(select reply_id from inboxmessage where id=?id)
+        and sm.user_id=?user_id
+        union
+        select im.id,im.from_id as user_id, pp.logo_small_path as slogo,getusernamebyid(im.from_id) as name,
+        im.from_email as email,SUBSTR(im.content FROM 1 FOR 25) as content,im.receive_date
+        from InboxMessage im join PersonalProfile pp on pp.user_id=im.from_id
+        where im.reply_id =(select reply_id from inboxmessage where id=?id)
+        and im.user_id=?user_id order by receive_date asc;
+
+        <!--select im.id,im.from_id as user_id, pp.logo_small_path as slogo,getusernamebyid(im.from_id) as name,im.from_email as email,
+        SUBSTR(im.content FROM 1 FOR 25) as content,im.receive_date
+        from InboxMessage im join PersonalProfile pp on pp.user_id=im.from_id
+        where (im.id =?id or im.reply_id =?id) and im.user_id=?user_id order by im.receive_date asc;-->
+    </SQL>
+    <SQL ID="GetSystemDrafeMessage">
+        select id,send_id,content,draft_date  from draftmessage where user_id=?user_id and is_system=true LIMIT 1;
+    </SQL>
+    <SQL ID="GetDetailedMessageListOfSend">
+        select sm.id,sm.send_id as user_id, pp.logo_small_path as slogo, GetUserNameById(sm.send_id) as name, sm.send_email as email,SUBSTR(sm.content FROM 1 FOR 25) as content,
+        sm.send_date as receive_date from sendmessage sm join PersonalProfile pp on pp.user_id=sm.user_id
+        where (sm.id =?id or sm.reply_id =?id) and sm.user_id=?user_id order by sm.send_date asc;
+    </SQL>
+    <SQL ID="GetDetailedMessageListOfDraf">
+        select dm.id,dm.send_id as user_id, pp.logo_small_path as slogo, GetUserNameById(dm.send_id) as name,dm.send_email as email,SUBSTR(dm.content FROM 1 FOR 25) as content,
+        dm.draft_date as receive_date from DraftMessage dm join PersonalProfile pp on pp.user_id=dm.send_id
+        where dm.id =?id  and (dm.is_system=0 or dm.is_system is null)
+        and dm.user_id=?user_id order by dm.draft_date desc;
+    </SQL>
+    <SQL ID="GetDetailedMessage">
+        call p_GetDetailedMessage(?id,?from_where);
+    </SQL>
+    <SQL ID="LoadingMessageDetail">
+        select content from inboxmessage where id=(select reply_id from inboxmessage where id=?id);
+    </SQL>
+    <!--发件箱回复信息  insert into SendMessageReceiverList(id,message_id,send_type_id,send_id)
+		values(getguid(),?id,1,?user_id);-->
+    <SQL ID="ReplySendMessage">
+        insert into SendMessage(id,user_id,reply_id,content,send_id,send_email,send_date,is_msg,is_mark,is_delete)
+        values(?id,?user_id,?reply_id,?content,?user_id,?send_email,?receive_date,?is_msg,?is_mark,?is_delete);
+
+        insert into InboxMessage(id,user_id,reply_id,from_id,from_email,content,receive_date,is_msg,is_mark,is_delete)
+        SELECT ?id,send_id,?reply_id,?user_id,?send_email,?content,?receive_date,?is_msg,?is_mark,?is_delete from sendmessagereceiverlist where message_id = ?reply_id
+    </SQL>
+    <!--收件箱回复信息	insert into InboxMessage(id,user_id,reply_id,content,from_id,receive_date,is_msg)
+		values(?id,?user_id,?reply_id,?content,?user_id,?receive_date,?is_msg);-->
+    <SQL ID="ReplyInboxMessage">
+        insert into InboxMessage(id,user_id,reply_id,from_id,from_email,content,receive_date,is_msg,is_mark,is_delete)
+        SELECT ?id,send_id,?reply_id,?user_id,?send_email,?content,?receive_date,?is_msg,?is_mark,?is_delete from sendmessagereceiverlist where message_id = ?reply_id;
+
+        <!--insert into SendMessage(id,user_id,reply_id,send_id,send_email,content,send_date,is_msg,is_mark,is_delete)
+        SELECT ?id,from_id,?reply_id,?user_id,?send_email,?content,?receive_date,?is_msg,?is_mark,?is_delete from InboxMessage where id = ?reply_id;-->
+    </SQL>
+    <SQL ID="IsExistsOfRecords">
+        <!--select id from InboxMessage where id=( select reply_id from InboxMessage where id=?parentid);-->
+        select reply_id from InboxMessage where id=?parentid;
+    </SQL>
+    <SQL ID ="SelectFromIdOfInboxinvite">
+        select from_id from inboxinvitemessage where id=?id and active=true and is_delete=0;
+    </SQL>
+    <SQL ID="AssentFriendInvite">
+      insert into personalfriends(id,relation_from_id,relation_to_id,class_id,join_date)
+      values(getguid(),(select from_id from inboxinvitemessage where id=?id),
+      ?user_id,(select class_id from friendsclass where user_id=(select from_id from inboxinvitemessage where id=?id) and class_type=0),(select now()));
+
+      insert into personalfriends(id,relation_to_id,relation_from_id,class_id,join_date)
+      values(getguid(),(select from_id from inboxinvitemessage where id=?id),
+      ?user_id,?class_id,(select now()));
+
+      update inboxinvitemessage set is_delete=TRUE,delete_date=(select now()) where id=?id;
+
+    </SQL>
+    <SQL ID="GetMsgIdAndSendidByMessageid">
+        SELECT
+        sendinvitemessage.msg_id,
+        sendinvitemessagereceiverlist.send_id
+        FROM
+        sendinvitemessage
+        INNER JOIN sendinvitemessagereceiverlist ON sendinvitemessage.id = sendinvitemessagereceiverlist.message_id
+        where sendinvitemessage.id=?messageid and sendinvitemessage.msg_type=?type
+        and sendinvitemessagereceiverlist.send_type_id=?type+1;
+    </SQL>
+</SQLScript>

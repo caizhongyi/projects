@@ -1,0 +1,467 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>CreateGroup-关系-玩儿道</title>
+
+<meta name="keywords" content="CreateGroup，Group信息，邀请User，关系，玩儿道，Activity组织的生活社交网络"/>
+<meta name="description"
+      content="填写必要Group信息完成GroupCreate，并可以发出邀请"/>
+
+
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/relationship.css"/>
+
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+
+<style type="text/css">
+    body{ background: #fff ; font-size:12px;}
+    .mod-gray, .mod-default{ width: 675px; margin: 10px; }
+</style>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <div class="pull-left"><i class="icon icon-gray-minus"></i>D005001 - Task assignment</div>
+        <div class="pull-right"><a href="">All tasks are visible to members</a></div>
+    </div>
+    <div class="bd form">
+        <div class="form-item">Note: Go to myactivity tab, the module will be useable.</div>
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Task assignment
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item mod-line">
+            <button class="btn large-light-blue-btn"><i class="icon icon-task"></i>Assign tasks</button>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Task name:</span><input type="text" class="text text-large"/></label><div class="tips">Tips</div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Description:</span><textarea  class="textarea text-large"></textarea></label><div class="tips">Tips</div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Executor:</span><input  type="text" class="text text-large personal-text"></label><div class="tips">Tips</div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Budget amount:</span><input type="text" class="text text-large"/></label><div class="tips">Tips</div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Privately description:</span><input type="text"  class="text text-medium"></label><a href="javacript;" class="btn btn-gray btn-mini">Add</a><div class="tips">Tips</div>
+            <div class="form-panel">
+                  <span class="tipbox  tipbox-mini push-item">
+                        <i class="arrow"></i>
+                        <ul class="list-label list-label-transparent list-label-block">
+                            <li>01&nbsp;<a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>100$</em>&nbsp;私下Note私下Note私下01Category标记 <span class="opts"><a href="javascript:;" class="icon icon-light-del" data-remove></a></span></li>
+                            <li>01&nbsp;<a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>100$</em>&nbsp;私下Note私下Note私下01Category标记 <span class="opts"><a href="javascript:;" class="icon icon-light-del" data-remove></a></span></li>
+                            <li>01&nbsp;<a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>100$</em>&nbsp;私下Note私下Note私下01Category标记 <span class="opts"><a href="javascript:;" class="icon icon-light-del" data-remove></a></span></li>
+                        </ul>
+                   </span>
+            </div>
+        </div>
+        <div class="form-item">
+            <label><input type="checkbox"/>Add attachment files</label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">File:</span><input type="text"  class="text text-medium"></label><a href="javacript;" class="btn btn-gray btn-mini">Upload</a><div class="tips">Tips</div>
+            <div class="form-panel">
+                  <span class="tipbox tipbox-mini push-item">
+                        <i class="arrow"></i>
+                        <ul class="list-label list-label-transparent list-label-block">
+                            <li>01&nbsp;attachment<span class="opts"><a href="javascript:;" class="icon icon-light-del" data-remove></a></span></li>
+                            <li>01&nbsp;attachment<span class="opts"><a href="javascript:;" class="icon icon-light-del" data-remove></a></span></li>
+                            <li>01&nbsp;attachment<span class="opts"><a href="javascript:;" class="icon icon-light-del" data-remove></a></span></li>
+                        </ul>
+                   </span>
+                   <div class=" push-item"> <button class="btn btn-primary" type="submit">Assign</button><button class="btn btn-default" type="button">Cancel</button></div>
+                   <span class="alert push-item">AHXIAOPENG<em>06/06/2012</em></span>
+            </div>
+        </div>
+        <div class="form-item">
+            <div class="toolbar">
+                <div class="pull-left">
+                    <span class="combo" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">All</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                    </span>
+                </div>
+                 <div class="pagination">
+<a href="javascript:;" class="prev disabled">First</a><a href="javascript:;" class="prev">Prev</a><input class="text" type="text">/18<a href="javascript:;" class="next">Next</a><a href="javascript:;" class="prev disabled">Last</a>
+</div>
+            </div>
+            <div class="scroll-y">
+                <ul class="module-list scroll-panel">
+                    <li>
+                        <h3><a href="javascript:;" class="icon icon-block-plus"></a><span class="green">[召集]</span>ItemItem <em>$100</em></h3>
+                        <div style="display: none;" class="module-content">
+                            <p>大众网记者沿长江路赶to了聊City付庄附近，大众网记者在现场看to，由付庄通往邢庄的南北方向道路已经戒严，数十名佩戴东昌府区民兵救援袖章的民兵将道路拦起</p>
+                            <div class="summary">Executor： <a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>$100</em>&nbsp;<span>大众网记者沿长江地在路赶to了</span><div class="summary-opts">
+                                <a href="javascript:;">Send a message</a><a href="javascript:;">Confirm</a></div></div>
+                            <div class="summary">Executor： <a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>$100</em>&nbsp;<span>大众网记者沿长江地在路赶to了</span><div class="summary-opts"><a href="javascript:;">Send a message</a><a href="javascript:;">Confirm</a></div></div>
+                            <div class="summary">Added by： <a href="javascript:;">AHXIAOPENG</a>&nbsp;&nbsp;Added on： <span class="muted">(11/10/2013)</span><div class="summary-opts"><a href="javascript:;">Send a message</a><a href="javascript:;">Attach files</a></div></div>
+                        </div>
+                        <div style="display: none;" class="opts-name">
+                            <a href="javascript:;">Reimburse</a><a href="javascript:;">Reject</a><a href="javascript:;">Accept</a><a href="javascript:;">Give up</a><a href="javascript:;">Claim</a><a href="javascript:;">Edit</a>
+                        </div>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;" class="icon icon-block-plus"></a><span class="green">[召集]</span>ItemItem <em>$100</em></h3>
+                        <div style="display: none;" class="module-content">
+                            <p>大众网记者沿长江路赶to了聊City付庄附近，大众网记者在现场看to，由付庄通往邢庄的南北方向道路已经戒严，数十名佩戴东昌府区民兵救援袖章的民兵将道路拦起</p>
+                            <div class="summary">Executor： <a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>$100</em>&nbsp;<span>大众网记者沿长江地在路赶to了</span><div class="summary-opts">
+                                <a href="javascript:;">Send a message</a><a href="javascript:;">Confirm</a></div></div>
+                            <div class="summary">Executor： <a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>$100</em>&nbsp;<span>大众网记者沿长江地在路赶to了</span><div class="summary-opts"><a href="javascript:;">Send a message</a><a href="javascript:;">Confirm</a></div></div>
+                            <div class="summary">Added by： <a href="javascript:;">AHXIAOPENG</a>&nbsp;&nbsp;Added on： <span class="muted">(11/10/2013)</span><div class="summary-opts"><a href="javascript:;">Send a message</a><a href="javascript:;">Attach files</a></div></div>
+                        </div>
+                        <div style="display: none;" class="opts-name">
+                            <a href="javascript:;">Reimburse</a><a href="javascript:;">Reject</a><a href="javascript:;">Accept</a><a href="javascript:;">Give up</a><a href="javascript:;">Claim</a><a href="javascript:;">Edit</a>
+                        </div>
+                    </li>
+                </ul>
+                <script type="text/javascript">
+                    $('.module-list .icon').click(function(){
+                        var $content = $(this).closest('li');
+                        if($(this).hasClass('icon-block-plus')){
+                            $(this).removeClass('icon-block-plus').addClass('icon-block-minus')
+                            $content.find('.module-content').stop(true,true).slideDown().end().find('.opts-name').eq(0).stop(true,true).fadeIn().end().eq(1).hide();
+                        }
+                        else{
+                            $(this).removeClass('icon-block-minus').addClass('icon-block-plus')
+                            $content.find('.module-content').stop(true,true).slideUp().end().find('.opts-name').eq(1).stop(true,true).fadeIn().end().eq(0).hide();
+                        }
+                    })
+                </script>
+            </div>
+            <div class="toolbar">
+                 <div class="pagination">
+<a href="javascript:;" class="prev disabled">First</a><a href="javascript:;" class="prev">Prev</a><input class="text" type="text">/18<a href="javascript:;" class="next">Next</a><a href="javascript:;" class="prev disabled">Last</a>
+</div>
+            </div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Name:</span><input type="text" class="text  text-large"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">Description:</span><textarea class="textarea"></textarea></label>
+        </div>
+        <div class="form-item">
+            <label class="checkbox form-panel"><input type="checkbox"/>Public</label> <label class="checkbox"><input type="checkbox"/>Can be searched</label>
+        </div>
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Prepayment settings
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item">
+            <label ><span class="input-label-small">Prepayment:</span><span class="combo text-large" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">Year</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span></label>
+        </div>
+        <div class="form-item">
+            <label ><span class="input-label-small">All members/Non-group members:</span><input type="text" class="text text-medium"/></label>&nbsp;<span>each
+            </span><input type="text" class="text text-mini"/><span class="combo text-mini" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">Year</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span>
+        </div>
+        <div class="form-item">
+            <label ><span class="input-label-small">Group members:</span><input type="text" class="text text-medium"/></label>&nbsp;<span >each
+            </span><input type="text" class="text text-mini"/><span class="combo text-mini" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">Year</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span>
+        </div>
+        <div class="form-item">
+            <label ><span class="input-label-small">Payment method:</span><span class="combo text-large" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Paypal</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+        </div>
+        <div class="form-item">
+            <label ><span class="input-label-small">Description:</span><input type="text" class="text  text-large"/><a href="javascript:;" class="btn btn-gray btn-mini">Add</a></label>
+        </div>
+        <div class="form-item">
+            <div class="form-panel">
+                <div class="tipbox tipbox-mini">
+                    <i class="arrow"></i>
+                    <ul class="list-label list-label-transparent list-label-block">
+                        <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;" data-remove ></a></span></li>
+                        <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;" data-remove></a></span></li>
+                        <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;" data-remove></a></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Join conditions settings
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item">
+            <label class="input-control" ><span class="input-label-mini">Join conditions:</span><span class="combo text-small" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">无条件</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span></label><span class="combo text-small" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">无条件</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span><input type="text" class="text"/><a href="javascript:;" class="btn btn-gray btn-mini">Add</a>
+
+        </div>
+        <div class="form-item">
+            <div class="tipbox tipbox-mini">
+                <i class="arrow"></i>
+                <ul class="list-label list-label-transparent list-label-block">
+                    <li class="clearfix"><span class="span2">01</span><span class="span2">条件名目</span><span class="span2">判断条件</span><span class="span2">条件值</span><span class="opts"><a class="icon icon-light-del" href="javascript:;" data-remove></a></span></li>
+                    <li class="clearfix muted"><span class="span2">01</span><span class="span2">条件名目</span><span class="span2">判断条件</span><span class="span2">条件值</span><span class="opts"><a class="icon icon-light-del" href="javascript:;" data-remove></a></span></li>
+                    <li class="clearfix muted"><span class="span2">01</span><span class="span2">条件名目</span><span class="span2">判断条件</span><span class="span2">条件值</span><span class="opts"><a class="icon icon-light-del" href="javascript:;" data-remove></a></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - Signup settings
+    </div>
+    <div class="bd form form-block">
+        <div class="form-item">
+            <label><span class="input-label-mini">Number limitation:</span><input type="text" class="text text-xlarge"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label-mini">Join deadline:</span><input type="text" class="text text-xlarge"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label-mini">Join method:</span><span class="combo text-medium" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Approve to join</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><input type="text" class="text text-medium" />
+        </div>
+    </div>
+</div>
+
+<div class="mod mod-default accordion">
+    <div class="hd">
+        <i class="icon icon-blue-minus"></i>Task
+        assignment&nbsp;<span>Assigned number: 100&nbsp;Optional number: 200  </span>
+
+        <div class="opts"><i class="icon-see"></i><i class="icon-unsee"></i><i class="icon-setting"></i></div>
+    </div>
+    <div style="display: block;">
+        <div class="bd">
+            <div class=" form form-block">
+                <div class="form-item mod-line">
+                    <button class="btn large-light-blue-btn"><i class="icon icon-task"></i>Assign tasks</button>
+                </div>
+                <div class="form-item">
+                    <div class="alert">
+                        Click assign task button, expand assign task module (Note: details below)
+                    </div>
+                </div>
+                <div class="form-item">
+                 <span class="combo" data-loader="class-combo" >
+                        <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input  name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list" >
+                            <ul><li value="1">All</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                        </div>
+                  </span>
+                </div>
+            </div>
+
+            <ul class="list-task">
+                <li>
+                    <div class="task-time"><h4><i class="icon icon-block-blue"></i>2012-12-22</h4></div>
+                    <ul>
+                        <li>
+                            <div class="accordion" data-collapse="">
+                                <div class="accordion-heading toolbar">
+                                    <h3><i class="icon-minus-sign"></i>task name</h3>
+                                </div>
+                                <div class="accordion-panel" style="display: none">
+                                  <div class="container">
+                                      <div class="list-link "><a href="">Accept</a>•<a href="">Receive</a>•<a href="">Finish to confirm</a>•<a href="">Give up</a>•<a href="">Reject</a>•<a href="">Confirm</a>•<a href="">Deny</a></div>
+                                      <p class="desc block">
+                                          Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message
+                                      </p>
+                                      <div class="block muted">
+                                          Added by name. <a href="">Send message</a>, Add date (MM/dd hh:mm) <a href="#" class="icon icon-attachment"></a>
+                                      </div>
+                                      <ul class="group-list list-wide list-closer block">
+                                          <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                  href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                          <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                  href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                          <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                  href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                      </ul>
+
+                                  </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="accordion" data-collapse="">
+                                <div class="accordion-heading toolbar">
+                                    <h3><i class="icon-minus-sign"></i>task name</h3>
+                                </div>
+                                <div class="accordion-panel" style="display: none">
+                                    <div class="container">
+                                        <div class="list-link "><a href="">Accept</a>•<a href="">Receive</a>•<a href="">Finish to confirm</a>•<a href="">Give up</a>•<a href="">Reject</a>•<a href="">Confirm</a>•<a href="">Deny</a></div>
+                                        <p class="desc block">
+                                            Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message
+                                        </p>
+                                        <div class="block muted">
+                                            Added by name. <a href="">Send message</a>, Add date (MM/dd hh:mm) <a href="#" class="icon icon-attachment"></a>
+                                        </div>
+                                        <ul class="group-list list-wide list-closer block">
+                                            <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                    href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                            <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                    href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                            <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                    href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="task-time"><h4><i class="icon icon-block-blue"></i>2012-12-22</h4></div>
+                    <ul>
+                        <li>
+                            <div class="accordion" data-collapse="">
+                                <div class="accordion-heading toolbar">
+                                    <h3><i class="icon-minus-sign"></i>task name</h3>
+                                </div>
+                                <div class="accordion-panel" style="display: none">
+                                    <div class="container">
+                                        <div class="list-link "><a href="">Accept</a>•<a href="">Receive</a>•<a href="">Finish to confirm</a>•<a href="">Give up</a>•<a href="">Reject</a>•<a href="">Confirm</a>•<a href="">Deny</a></div>
+                                        <p class="desc block">
+                                            Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message
+                                        </p>
+                                        <div class="block muted">
+                                            Added by name. <a href="">Send message</a>, Add date (MM/dd hh:mm) <a href="#" class="icon icon-attachment"></a>
+                                        </div>
+                                        <ul class="group-list list-wide list-closer block">
+                                            <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                    href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                            <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                    href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                            <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                    href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="accordion" data-collapse="">
+                                <div class="accordion-heading toolbar">
+                                    <h3><i class="icon-minus-sign"></i>task name</h3>
+                                </div>
+                                <div class="accordion-panel" style="display: none">
+                                    <div class="container">
+                                        <div class="list-link "><a href="">Accept</a>•<a href="">Receive</a>•<a href="">Finish to confirm</a>•<a href="">Give up</a>•<a href="">Reject</a>•<a href="">Confirm</a>•<a href="">Deny</a></div>
+                                        <p class="desc block">
+                                            Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message Added by name. Send message
+                                        </p>
+                                        <div class="block muted">
+                                            Added by name. <a href="">Send message</a>, Add date (MM/dd hh:mm) <a href="#" class="icon icon-attachment"></a>
+                                        </div>
+                                        <ul class="group-list list-wide list-closer block">
+                                            <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                    href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                            <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                    href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                            <li><span class="title">Executor name 1 task amount<small>private message </small></span> <span class="opts list-link"><a
+                                                    href="">Send message</a>•<a href="">Confirm</a></span></li>
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/jquery.accordion.min.js"></script>
+</body>
+</html>

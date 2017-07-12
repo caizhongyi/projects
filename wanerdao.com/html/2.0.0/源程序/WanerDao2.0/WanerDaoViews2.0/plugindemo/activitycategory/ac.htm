@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/css/layout.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/form.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/icon.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/pop.css" media="all" />
+    <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/scripts/plugin/cookie/wanerdao2.cookies.js"></script>
+    <script type="text/javascript" src="/Scripts/multipleLanguage/loader.js"></script>
+    <script type="text/javascript" src="../../scripts/common/wanerdaoutils.js"></script>
+    <script type="text/javascript" src="/scripts/global.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.core.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.tabs.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.center.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.overlay.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.ui.dialog.js"></script>
+    <script type="text/javascript" src="../../scripts/plugin/activitycategory/wanerdao2.ac.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#success").click(function () {
+                new wanerdaoac({ alphopts: { elementid: 'success', callback: function (data) {
+                    $.each(data.acs, function (i, n) {
+                        alert("你使用的是success按钮生成的分类，你选择的是: " + data.acs[i].id + "|" + data.acs[i].name);
+                    });
+                } 
+                }
+                });
+            });
+            $("#confirm").click(function () {
+                new wanerdaoac({ alphopts: { elementid: 'confirm', callback: function (data) {
+                    $.each(data.acs, function (i, n) {
+                        alert("你使用的是confirm按钮生成的分类，你选择的是: " + data.acs[i].id + "|" + data.acs[i].name);
+                    });
+                } 
+                }
+                });
+            });
+        })
+    </script>
+</head>
+<body>
+<input type="button" value="success" id="success"/>
+<input type="button" value="confirm" id="confirm"/>
+</body>
+</html>

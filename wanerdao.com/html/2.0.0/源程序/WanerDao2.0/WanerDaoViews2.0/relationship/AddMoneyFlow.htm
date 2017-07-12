@@ -1,0 +1,71 @@
+﻿
+                            <div>
+                            <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="添加流水项" style="margin-left:15px;" onclick="showAdd();" />
+                  
+                                <label style="color:Red" id="msgname" class="msgLabArr"></label>
+                                &nbsp; &nbsp; &nbsp;
+                                 <label style="color:Red" id="msgmoney" class="msgLabArr"></label>
+                                  &nbsp; &nbsp; &nbsp;
+                                 <label style="color:Red" id="msgpay" class="msgLabArr"></label>
+                  
+                            </div>
+                             <ul  style=" display:none;" id="MoneyFlowUL">
+                            <li><label>流水名目：</label><input type="text" onblur="isitemname()" maxlength="50" class="text" style="width:220px;" id="txt_itemname" /><label>
+                            金额：</label>
+                            <select name="select" style="width:80px;" onchange="changeType()" id="sel_flowtype">
+                                   <option value="1">收</option>
+                                          <option value="2">支</option>
+                                          <option value="3">缴纳会费</option>
+                                </select>
+                          <input type="text" class="text" style="width:100px;" maxlength="10" id="txt_money" onblur ="calculate();ismoney()" />
+                         
+                            <label id="lab_item_money"></label>
+                          <select name="select" style="width:80px;" onchange="changeobj()" id="sel_obj">
+                                  <option value="1">人均</option>
+                                          <option value="2">全体</option>
+                                </select>
+                            </li>
+                            <li id="payUser">
+                                <label>交 易 人：</label><input name="" id="btnpayUser" type="button" class="inp22" value="添 加" />
+                            </li>
+                             <li class="mt5" id="payUserLi">
+                                    	<div class="lsz_tagT"></div>
+                                    	<div class="lsz_tagB clearfix" id="payUserDIV">
+                                           
+                                        </div>
+                                    </li>
+                            <li>
+                                <label class="lsz_ms">描&nbsp;&nbsp;&nbsp;&nbsp;述：</label>
+                                <textarea class="inp23 text" name="input"  onkeyup="checklength(this)"  onfocus="disabledRightMouse()"   onblur="enabledRightMouse()" maxlength="250" id="txt_description" style="color:#000"></textarea>
+                            </li>
+                            <li>
+                                <label>执 行 人：</label><input name="" id= "addexecutor" type="button" class="inp22" value="添 加" /><label style="color:Red" id="msgexecut" class="msgLabArr"></label>
+                            </li>
+                           <li class="mt5" id="executorLi" >
+                                    	<div class="lsz_tagT "></div>
+                                    	<div class="lsz_tagB clearfix" id="executorDIV">
+                                           
+                                        </div>
+                                    </li>
+                            <li>
+                                <label>上传附件：</label><span id="spanButtonPlaceholder"></span>
+                            </li>
+                           <li class="mt5">
+                                     <div id="divUploadMessage" class="floatL marginL10" style="width: 60%; display:none;">
+                                            <span style="width: 60%; display: block; line-height: 18px;">正在上传"<label id="labUploadFile" style="width:100%; text-align:left; left:0;"></label>"...</span>
+                                            <span class="bar_grey"><span class="bar_Yellow" id="spanProgress"></span></span>
+                                        </div>
+                                    	<div class="lsz_tagT bg"></div>
+                                    	<div class="lsz_tagB clearfix pl5" id="thumbnails">
+                                
+
+                                         
+                                        </div>
+                                    </li>
+                            <li>
+                                <span class="inp_ri"><input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="添加流水项"  onclick="saveFlow()" >
+                                <input type="button" class="buttonB btn_w97 btn_h36 btnGary_97 fSize-14" value="取 消" onclick="cancelFlow()"></span>
+                                <s>操作时间：<label id="operateTime"></label>&nbsp;&nbsp;&nbsp;&nbsp;财务人员：<label id="operateUser"></label></s>
+                            </li>
+                           
+                        </ul>

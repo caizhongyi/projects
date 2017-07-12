@@ -1,0 +1,815 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link href="style/home.css" rel="stylesheet" type="text/css" />
+<link href="style/activity_main.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="style/party.css" />
+<link rel="stylesheet" type="text/css" href="style/select_upload.css"/><!-- 表单select样式 -->
+<script type="text/javascript" src="js/select_upload.js"></script><!-- 表单select  Js -->
+</head>
+<script type="text/javascript">
+var winScreenWidth = window.screen.width;
+if(winScreenWidth>1024){
+document.writeln('<style>');
+document.writeln('.jz{padding:0px 2px;}');
+document.writeln('</style>');
+}
+</script>
+<body>
+	<!--头部-->
+	<div class="head">
+    	<div class="jz">
+        	<div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+            <ul class="nav left yh">
+            	<li><a href="#">首页</a></li>
+            	<li class="cur"><a href="#" class="arr">个人</a></li>
+            	<li><a href="#" class="arr">关系</a></li>
+            	<li><a href="#" class="arr">杂烩</a></li>
+            	<li><a href="#" class="arr">活动</a></li>
+            	<li><a href="#" class="arr">资道</a></li>
+            	<li class="newMsg"><a href="#">站内信息</a><i><a href="#">5</a></i></li>
+            </ul>
+            <div class="userInfo">
+            	<a href="#" class="left"  title="烧饭-人生旅途中-飞砂走石风过"><img src="images/layout_main/img_32x32.png" width="32" height="32" /></a>
+                <a href="javascript:void(0);" title="烧饭-人生旅途中-飞砂走石风过留痕！" class="name">烧饭-人生旅途中</a>
+            </div>
+        </div>
+    </div>
+    <!--头部end-->
+    <!--主体-->
+    <div class="main jz">
+    <div class="mCon">
+	<div class="main main_share">
+		<div class="h10"></div>
+		<div class="h10"></div>
+        <div class="subChaTab">
+        <a href="#">活动信息</a>
+        <a href="#" class="active">我的活动</a>
+      </div>
+
+		<div class="Fnavigation FnwhiteBg">
+          <ul class="fix4w">
+            <li><a href="#">活动信息及评论</a></li>
+            <li><a href="#">浏览</a></li>
+            <li><a href="#">上传</a></li>
+            <li><a href="#">管理相册</a></li>
+            <li><a href="#" class="cur">浏览发表管理感想</a></li>
+          </ul>
+        </div>
+		<table border="0" cellspacing="0" cellpadding="0" class="evaluate" width="100%">
+		  <tr>
+			<td width="80" class="plun_title">发表感想</td>
+			<td class="">&nbsp;</td>
+            <td class="">&nbsp;</td>
+            <td class="">&nbsp;</td>
+		  </tr>
+		</table>
+		<div class="h10"></div>
+		<!-- 页面主体内容 相片上传内容 区块 -->
+        <div class="fb_ganx">
+        <form action="" method="get">
+          <div class="fb_ganx_bt"><a href="#" target="_blank"><img src="images/fb_ganx.jpg" width="114" height="33" /></a></div>
+          <div class="fb_ganx_bttex">
+            <span class="form_tex_lef">标题：</span>
+            <span><input type="text" name="textfield" id="textfield" class="form_ganx_bt" hidefocus="ture" style="outline:none;"/></span>
+          </div>
+          <div class="fb_ganx_box">
+            <span class="form_tex_lef">内容：</span>
+            <span><textarea name="textarea" id="textarea" class="form_ganx_con" hidefocus="ture" style="outline:none;"></textarea></span>
+          </div>
+          <div class="fb_bc_cgx">
+           <span><input type="checkbox" name="checkbox" id="checkbox" class="vInput" hidefocus="ture" style="outline:none;"/></span>
+           <span><label for="checkbox">保存一份到草稿箱</label></span> 
+           <ul id="me">
+             <li><img src="images/tisi_tex_rig.jpg" width="5" height="35" /><li>             
+             <li class="tisi_tex_mid">
+                 <span class="tisi_tex_t">内容暂时保存于2011/12/12&nbsp;&nbsp;&nbsp;00:37:32</span>
+                 <span class="tisi_tex_colse" style="cursor:pointer;" onClick="document.getElementById('me').style.display='none'"><img src="images/tisi_tex_colse.jpg" width="10" height="10"/></span>
+             <li>
+             <li><img src="images/tisi_tex_lef.jpg" width="5" height="35" /><li>
+           </ul>
+          </div>
+         <div class="xs_tianqi">
+         <ul>
+          <li class="form_fbt_lef">
+          <span class="form_fuxuan"><input type="checkbox" name="checkbox2" class="vInput" id="checkbox2" /></span><span class="tq_tex"><label for="checkbox2">显示天气：</label></span>
+          <span class="xstq_img">
+            <img src="images/tq_q.jpg" width="44" height="42" hspace="3" />
+            <img src="images/tq_y.jpg" width="44" height="42" hspace="3" />
+          </span>
+          <span class="tq_tex2">多云转晴21℃-25℃</span>
+          </li>
+          <li class="form_fbt_rig"><input type="checkbox" name="checkbox3" class="vInput" id="checkbox3" />
+          <label for="checkbox3">显示发表地：</label><input type="text" name="textfield2" id="textfield2" class="form_fbd" hidefocus="ture" style="outline:none;"/>
+          </li>
+          </ul>
+         </div>
+ 
+          <div class="fo">
+          
+            <div class="lei_lef_kao">权限：</div>
+            <div class="lie_fo">
+            <div class="hd_qx_lie"> 
+            <select name="q111" class=" w120" id="q111">
+              <option value="hd_bt" selected="selected">选择权限</option>
+              <option value="hd01" >对所有人公开</option>
+              <option value="hd01" >仅对好友公开</option>
+              <option value="hd01" >仅对主人公开</option>
+              <option value="hd01" >完全不公开</option>
+            </select>
+            </div>
+            </div>
+           
+          
+           
+            <div class="fenlei_gx">分类：</div>
+            
+            <div class="fenlei_form">
+            <div class="hd_qx_lie">
+            <select name="qx1112" class="w91" id="qx1112">
+              <option value="hd_bt" selected="selected">默认分类</option>
+              <option value="hd01" >我的同学</option>
+              <option value="hd01" >我的朋友</option>
+              <option value="hd01" >我的家人</option>
+              <option value="hd01" >我的同事</option>
+            </select>
+           </div>
+           </div>
+            <div class="fenlei_tex">
+              <input type="text" name="textfield3" id="textfield3" class="form_ganx_bt" hidefocus="ture" style="outline:none;"/>
+            </div>
+          
+          
+          </div>
+
+         <div class="gonxiang_box"  >
+           <div class="gongx_su" onClick="document.getElementById('me2').style.display='block'"><span style="cursor:pointer;">共享到其它地方</span></div>
+           <div class="gongx_xx" id="me2">
+               <div class="gongx_xx_top"><img src="images/gongx_xx_top.jpg" width="358" height="7" /></div>
+ <div class="gongx_xx_mid" >
+                   <div class="gx_gbt" onClick="document.getElementById('me2').style.display='none'">
+                     <span style="cursor:pointer;">收回共享&nbsp;<img src="images/shouhui_ji.jpg" width="13" height="9" align="absmiddle" /></span></div>
+                 
+                 <div class="fx_zong" style="z-index: 3;"><input name="" id="s_daily" type="checkbox" value="" /><label for="s_daily">共享到日志</label>
+            <div class="lie_boo">
+            <div class="hd_qx_lie"> 
+            <select name="qx3" class="w91" id="qx3">
+              <option>选择分类</option>
+              <option>我的朋友</option>
+              <option>我的同学</option>
+              <option>我的家人</option>
+              <option>我的同事</option>
+            </select>
+            </div>
+            </div>
+            
+            
+            <div class="lie_boo2">
+            <input name="font1" id="font1" type="text" class="input100" style="outline:none;" value="足球" hidefocus="ture"/>
+            </div>
+            
+            
+            
+                 </div>
+                <div class="fx_zong" style="z-index: 2;"><input name="" id="s_group" type="checkbox" value="" /><label for="s_group">共享到圈子</label>
+                <div class="lie_boo">
+            <div class="hd_qx_lie">
+              <select name="qx4" class="w91" id="qx4">
+                <option>选择圈子</option>
+                <option>玩道</option>
+                <option>腾讯</option>
+                <option>MSN</option>
+                <option>51</option>
+              </select>
+            </div>
+            </div>   
+            
+                        <div class="lie_boo2">
+            <input name="font2" id="font2" type="text" class="input100" style="outline:none;" value="洪兴俱乐部" hidefocus="ture"/>
+            </div>
+                         
+                </div>
+                <div class="fx_zong" style="z-index: 1;"><input name="" id="s_zh" type="checkbox" value="" /><label for="s_zh">共享到杂烩</label>
+                <div class="lie_boo">
+            <div class="hd_qx_lie"> 
+            <select name="qx5" class="w91" id="qx5">
+              <option>选择话题</option>
+              <option>爬山</option>
+              <option>拜佛</option>
+              <option>K歌</option>
+              <option>读书</option>
+            </select>
+            </div>
+            </div>                
+                
+                            <div class="lie_boo2">
+            <input name="font3" id="font3" type="text" class="input100" style="outline:none;" value="北海足疗" hidefocus="ture"/>
+            </div>
+                
+              </div>  
+                
+              </div>
+               <div class="gongx_xx_fot"></div>
+           
+           </div>
+         
+         </div>
+         <div class="gx_anniu">
+               <div class="gx_fb"><input name="" type="submit" class="form_gx_fb" value="发 布"/></div>
+               <div class="gx_qx"><input name="" type="reset" class="form_gx_qx" value="取 消"/></div>
+         </div>
+         </form>
+        </div>
+        <!-- 页面主体内容 相片上传内容 区块End -->
+
+        <!-- 页面主体内容 相片预览标题及内容 区块 -->
+        <div class="main_bt">
+          <ul>
+            <li><img src="images/icon_vote.png" width="16" height="16" />&nbsp;</li>
+            <li class="bt_texpig">评价该活动</li>
+            <li>
+                  <input type="radio" name="RadioGroup1" class="vInput" value="单选" id="RadioGroup1_0" /><label for="RadioGroup1_0"><span class="pl_form_tex">喜欢</span></label>
+                  <input name="RadioGroup1" type="radio" class="vInput" id="RadioGroup1_1" value="单选" checked="checked" /><label for="RadioGroup1_1"><span class="pl_form_tex">不喜欢</span></label>
+                  <input type="radio" name="RadioGroup1" class="vInput" value="单选" id="RadioGroup1_2" /><label for="RadioGroup1_2"><span class="pl_form_tex">一般般</span></label>
+            </li>
+            <li class="ck_jiegu lblue"><a href="#">查看结果</a></li>
+            <li class="bt_red_sm">对于自己发布感想，可以到个人模块日志分页中进行相应的维护</li>
+          </ul>
+        </div>
+        
+        <div class="small_bt">
+          <ul>
+            <li class="tit">活动感想<span class="lblue">(23)</span></li>
+            <li>首页</li>
+            <li>上页</li>
+            <li>01<span class="lblue">/20</span></li>
+            <li><a href="#">下页</a></li>
+            <li><a href="#">末页</a></li>
+          </ul>
+       </div>
+        <script> 
+           function bbb(obj, sType) { 
+           var oDiv = document.getElementById(obj); 
+           if (sType == 'show') { oDiv.style.display = 'block';} 
+           if (sType == 'hide') { oDiv.style.display = 'none';} 
+           } 
+          </script> 
+       <div class="hdpj_g_box">
+        <ul>
+          <li>
+            <span class="hd_pj_leftex"><a href="#" class="blue">毛小方</a>&nbsp;&nbsp;<a href="#">中国人那么努力学习英语是为了什么中国人那么努力学习英语是为了什么</a> <i class="page_state_yd">[已读]</i></span>
+          </li>
+          <li>放弃一个人并不痛苦，痛苦的是放弃心中的爱。因为放弃，我们在挣扎中回想最真的昨天，在绝望里删除密密的回忆。昨天虽已走远，但回忆的某些环节，
+越删除越清晰，它会牢牢盘踞在我们的精神深处。如果放弃，那就彻底，就算再痛；如果缘未尽，那就好好把握，毕竟我们不奢求还有来生。</li>
+          <li class="oInfo">
+          	<p class="replyOpera">
+            	<a href="javascript:void(0);" class="ico_1" onclick="showDetReply(this)" title="标题">(36)</a>
+            	<a href="javascript:void(0);" class="ico_2" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_3" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_4" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_5" title="标题"></a>
+            </p>
+          	<span class="pTime">15分钟以前</span>
+          </li>
+        </ul>
+        <div class="pl_yuedu"><a href="#"><img src="images/img_43x43.png" width="50" height="50" /></a></div>
+        <!-- 页面主体内容 相片回复 区块 -->
+        <div class="hd_picpl_box_con hidden">
+          <div class="hd_picpl_box">
+           <ins></ins>
+           <div class="hd_picpl_mid">
+              <div class="picpl_form_box">
+              <form id="form1" name="form1" method="post" action="">
+              <div>
+               <span><input type="text" name="textfield" id="textfield" class="picpl_hf_kuang" hidefocus="ture" style="outline:none;"/></span>
+               <span><input type="submit" name="button" id="button" value="回复" class="picpl_hf_an01" tyle="background-color: Transparent;" onmouseover="this.style.backgroundImage='url(images/picpl_hf_an01b.jpg)'" onmouseout="this.style.backgroundImage='url(images/picpl_hf_an01a.jpg)'"  onfocus="this.blur()"/></span>
+               <span><input type="reset" name="button2" id="button2" value="取消" class="picpl_hf_an02"tyle="background-color: Transparent;" onmouseover="this.style.backgroundImage='url(images/picpl_hf_an02b.jpg)'" onmouseout="this.style.backgroundImage='url(images/picpl_hf_an02a.jpg)'"  onfocus="this.blur()"/></span>
+              </div>
+              </form>
+              </div>
+              
+              <div class="picpl_huif_box">
+              <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"><a href="#">删除</a></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              
+              
+              <div class="huif_more">
+                <div class="huif_colse_an"><a href="javascript:void(0);" onclick="hideDetReply(this);">收起</a></div>
+                <div class="huif_open_an"><a href="javascript:void(0);">更多回复</a></div>
+              </div>
+              
+           </div>
+          </div>
+        </div>     
+        <!-- 页面主体内容 相片回复 区块End -->
+        <div class="xia_b_xian"></div>
+       </div>
+<div class="hdpj_g_box">
+        <ul>
+          <li>
+            <span class="hd_pj_leftex"><a href="#" class="blue">毛小方</a>&nbsp;&nbsp;<a href="#">中国人那么努力学习英语是为了什么中国人那么努力学习英语是为了什么</a> <i class="page_state_wd">[已读]</i></span>
+          </li>
+          <li>放弃一个人并不痛苦，痛苦的是放弃心中的爱。因为放弃，我们在挣扎中回想最真的昨天，在绝望里删除密密的回忆。昨天虽已走远，但回忆的某些环节，
+越删除越清晰，它会牢牢盘踞在我们的精神深处。如果放弃，那就彻底，就算再痛；如果缘未尽，那就好好把握，毕竟我们不奢求还有来生。</li>
+          <li class="oInfo">
+          	<p class="replyOpera">
+            	<a href="javascript:void(0);" class="ico_1" onclick="showDetReply(this)" title="标题">(36)</a>
+            	<a href="javascript:void(0);" class="ico_2" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_3" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_4" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_5" title="标题"></a>
+            </p>
+          	<span class="pTime">15分钟以前</span>
+          </li>
+        </ul>
+        <div class="pl_yuedu"><a href="#"><img src="images/img_43x43.png" width="50" height="50" /></a></div>
+        <!-- 页面主体内容 相片回复 区块 -->
+        <div class="hd_picpl_box_con hidden">
+          <div class="hd_picpl_box">
+           <ins></ins>
+           <div class="hd_picpl_mid">
+              <div class="picpl_form_box">
+              <form id="form1" name="form1" method="post" action="">
+              <div>
+               <span><input type="text" name="textfield" id="textfield" class="picpl_hf_kuang" hidefocus="ture" style="outline:none;"/></span>
+               <span><input type="submit" name="button" id="button" value="回复" class="picpl_hf_an01" tyle="background-color: Transparent;" onmouseover="this.style.backgroundImage='url(images/picpl_hf_an01b.jpg)'" onmouseout="this.style.backgroundImage='url(images/picpl_hf_an01a.jpg)'"  onfocus="this.blur()"/></span>
+               <span><input type="reset" name="button2" id="button2" value="取消" class="picpl_hf_an02"tyle="background-color: Transparent;" onmouseover="this.style.backgroundImage='url(images/picpl_hf_an02b.jpg)'" onmouseout="this.style.backgroundImage='url(images/picpl_hf_an02a.jpg)'"  onfocus="this.blur()"/></span>
+              </div>
+              </form>
+              </div>
+              
+              <div class="picpl_huif_box">
+              <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"><a href="#">删除</a></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              
+              
+              <div class="huif_more">
+                <div class="huif_colse_an"><a href="javascript:void(0);" onclick="hideDetReply(this);">收起</a></div>
+                <div class="huif_open_an"><a href="javascript:void(0);">更多回复</a></div>
+              </div>
+              
+           </div>
+          </div>
+        </div>     
+        <!-- 页面主体内容 相片回复 区块End -->
+        <div class="xia_b_xian"></div>
+       </div>
+       <div class="hdpj_g_box">
+        <ul>
+          <li>
+            <span class="hd_pj_leftex"><a href="#" class="blue">毛小方</a>&nbsp;&nbsp;<a href="#">中国人那么努力学习英语是为了什么中国人那么努力学习英语是为了什么</a> <i class="page_state_yd">[已读]</i></span>
+          </li>
+          <li>放弃一个人并不痛苦，痛苦的是放弃心中的爱。因为放弃，我们在挣扎中回想最真的昨天，在绝望里删除密密的回忆。昨天虽已走远，但回忆的某些环节，
+越删除越清晰，它会牢牢盘踞在我们的精神深处。如果放弃，那就彻底，就算再痛；如果缘未尽，那就好好把握，毕竟我们不奢求还有来生。</li>
+          <li class="oInfo">
+          	<p class="replyOpera">
+            	<a href="javascript:void(0);" class="ico_1" onclick="showDetReply(this)" title="标题">(36)</a>
+            	<a href="javascript:void(0);" class="ico_2" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_3" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_4" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_5" title="标题"></a>
+            </p>
+          	<span class="pTime">15分钟以前</span>
+          </li>
+        </ul>
+        <div class="pl_yuedu"><a href="#"><img src="images/img_43x43.png" width="50" height="50" /></a></div>
+        <!-- 页面主体内容 相片回复 区块 -->
+        <div class="hd_picpl_box_con hidden">
+          <div class="hd_picpl_box">
+           <ins></ins>
+           <div class="hd_picpl_mid">
+              <div class="picpl_form_box">
+              <form id="form1" name="form1" method="post" action="">
+              <div>
+               <span><input type="text" name="textfield" id="textfield" class="picpl_hf_kuang" hidefocus="ture" style="outline:none;"/></span>
+               <span><input type="submit" name="button" id="button" value="回复" class="picpl_hf_an01" tyle="background-color: Transparent;" onmouseover="this.style.backgroundImage='url(images/picpl_hf_an01b.jpg)'" onmouseout="this.style.backgroundImage='url(images/picpl_hf_an01a.jpg)'"  onfocus="this.blur()"/></span>
+               <span><input type="reset" name="button2" id="button2" value="取消" class="picpl_hf_an02"tyle="background-color: Transparent;" onmouseover="this.style.backgroundImage='url(images/picpl_hf_an02b.jpg)'" onmouseout="this.style.backgroundImage='url(images/picpl_hf_an02a.jpg)'"  onfocus="this.blur()"/></span>
+              </div>
+              </form>
+              </div>
+              
+              <div class="picpl_huif_box">
+              <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"><a href="#">删除</a></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              
+              
+              <div class="huif_more">
+                <div class="huif_colse_an"><a href="javascript:void(0);" onclick="hideDetReply(this);">收起</a></div>
+                <div class="huif_open_an"><a href="javascript:void(0);">更多回复</a></div>
+              </div>
+              
+           </div>
+          </div>
+        </div>     
+        <!-- 页面主体内容 相片回复 区块End -->
+        <div class="xia_b_xian"></div>
+       </div>
+       <div class="hdpj_g_box">
+        <ul>
+          <li>
+            <span class="hd_pj_leftex"><a href="#" class="blue">毛小方</a>&nbsp;&nbsp;<a href="#">中国人那么努力学习英语是为了什么中国人那么努力学习英语是为了什么</a> <i class="page_state_wd">[已读]</i></span>
+          </li>
+          <li>放弃一个人并不痛苦，痛苦的是放弃心中的爱。因为放弃，我们在挣扎中回想最真的昨天，在绝望里删除密密的回忆。昨天虽已走远，但回忆的某些环节，
+越删除越清晰，它会牢牢盘踞在我们的精神深处。如果放弃，那就彻底，就算再痛；如果缘未尽，那就好好把握，毕竟我们不奢求还有来生。</li>
+          <li class="oInfo">
+          	<p class="replyOpera">
+            	<a href="javascript:void(0);" class="ico_1" onclick="showDetReply(this)" title="标题">(36)</a>
+            	<a href="javascript:void(0);" class="ico_2" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_3" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_4" title="标题"></a>
+            	<a href="javascript:void(0);" class="ico_5" title="标题"></a>
+            </p>
+          	<span class="pTime">15分钟以前</span>
+          </li>
+        </ul>
+        <div class="pl_yuedu"><a href="#"><img src="images/img_43x43.png" width="50" height="50" /></a></div>
+        <!-- 页面主体内容 相片回复 区块 -->
+        <div class="hd_picpl_box_con hidden">
+          <div class="hd_picpl_box">
+           <ins></ins>
+           <div class="hd_picpl_mid">
+              <div class="picpl_form_box">
+              <form id="form1" name="form1" method="post" action="">
+              <div>
+               <span><input type="text" name="textfield" id="textfield" class="picpl_hf_kuang" hidefocus="ture" style="outline:none;"/></span>
+               <span><input type="submit" name="button" id="button" value="回复" class="picpl_hf_an01" tyle="background-color: Transparent;" onmouseover="this.style.backgroundImage='url(images/picpl_hf_an01b.jpg)'" onmouseout="this.style.backgroundImage='url(images/picpl_hf_an01a.jpg)'"  onfocus="this.blur()"/></span>
+               <span><input type="reset" name="button2" id="button2" value="取消" class="picpl_hf_an02"tyle="background-color: Transparent;" onmouseover="this.style.backgroundImage='url(images/picpl_hf_an02b.jpg)'" onmouseout="this.style.backgroundImage='url(images/picpl_hf_an02a.jpg)'"  onfocus="this.blur()"/></span>
+              </div>
+              </form>
+              </div>
+              
+              <div class="picpl_huif_box">
+              <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"><a href="#">删除</a></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              <div class="picpl_huif_box">
+                 <div class="huif_left"><img src="images/img_43x43.png" width="37" height="37" /></div>
+                 <div class="huif_right">
+                    <div class="huif_text">
+                        不在极端情况也一样，我有两个同事一个广东人在武汉读四年书毕业后回广东，无论是聊天还是开会每句话必带个尾音：个板马的；另一湖南人在北京读四年书，无论是聊天还是开会，每句话后面捎上那句举世闻名的&ldquo;我操&rdquo;。
+                    </div>
+                    <div class="huif_line">
+                      <span class="huif_time">30分钟前</span>
+                      <span class="huif_huif"><a href="#">回复</a></span>
+                      <span class="huif_delete"></span>
+                    </div>
+                 </div>
+              </div>
+              
+              
+              <div class="huif_more">
+                <div class="huif_colse_an"><a href="javascript:void(0);" onclick="hideDetReply(this);">收起</a></div>
+                <div class="huif_open_an"><a href="javascript:void(0);">更多回复</a></div>
+              </div>
+              
+           </div>
+          </div>
+        </div>     
+        <!-- 页面主体内容 相片回复 区块End -->
+        <div class="xia_b_xian"></div>
+       </div>
+       <div class="wb_fy">
+       
+          <ul>
+            <li><a href="#">显示更多</a></li>
+            <li>首页</li>
+            <li><a href="#">上页</a></li>
+            <li>01/<a href="#">20</a></li>
+            <li><a href="#">下页</a></li>
+            <li><a href="#">末页</a></li>
+          </ul>
+       
+       </div>
+		<div class="h10"></div>
+	</div>
+    </div>
+    </div>
+    <div class="mBtm jz"></div>
+    <!--主体end-->
+    <!--底部-->
+    <div class="foot jz">
+    	<span class="left"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></span>
+        <span class="right">版权所有 &copy;玩儿道</span>
+    </div>
+    <!--底部end-->
+
+<!--页面脚本区-->
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript">
+	$(".hdpj_g_box").hover(function(){
+		$(this).addClass("hdpj_mhover")	
+	},function(){
+		$(this).removeClass("hdpj_mhover")		
+	})
+	
+	function showDetReply(obj){
+		var reObj = $(obj).parent().parent().parent().parent().find(".hd_picpl_box_con").eq(0)	
+		var fObj  = reObj.parent();
+		reObj.removeClass("hidden");
+		fObj.addClass("hdpj_on");
+	}
+	function hideDetReply(obj){
+		var reObj = $(obj).parent().parent().parent().parent().parent();
+		var fObj  = reObj.parent();
+		reObj.addClass("hidden");
+		fObj.removeClass("hdpj_on");
+	}
+</script>
+</body>
+</html>

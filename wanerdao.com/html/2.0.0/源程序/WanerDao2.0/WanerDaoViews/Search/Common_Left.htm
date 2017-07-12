@@ -1,0 +1,22 @@
+﻿<script type="text/javascript">
+    $(function () {
+        var strUrl = window.location.href;
+        var arrUrl = strUrl.split("/");
+        var strPage = arrUrl[arrUrl.length - 1];
+        $(".listM_le ul li").each(function () {
+            if (strPage == $(this).find("a").attr("href")) {
+                $(this).attr("id", "current");
+                return false;
+            }
+        });
+    });
+</script>
+
+<div class="listM_le">
+    <ul>
+        <li><a href="Search_Result_User.aspx">用户（1232）</a></li>
+        <li><a href="search_result_ring.html">圈子（1232）</a></li>
+        <li><a href="search_result_activi.html">活动（1232）</a></li>
+        <li><a href="search_result_invi.html">帖子（1232）</a></li>
+    </ul>
+</div>

@@ -1,0 +1,1180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>历史活动-活动-玩儿道</title>
+<!--  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> -->
+<meta name="keywords" content="历史活动，活动简介，活动计划，财务收支，成员列表，搭车信息，行车路线，天气预报，留言板，玩儿道，生活社交网络" />
+<meta name="description" content="用户从历史活动中选择以后，按模块活动简介，活动计划，财务收支，成员列表，搭车信息，行车路线，天气预报，留言板" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../css/activity_myhistory.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.core.js"></script>
+<script src="../scripts/jquery.ui.tabs.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+$(function(){
+    new $.ui.tabs('.memberlineList',{ effect: 'x'});
+
+$("#switchBtn").click(function(){
+	  if($(this).hasClass("hideBox_Btn")){	
+	   if(type == 'list'){
+		 $("#listSch_Btn").removeClass("fCgray3").addClass("currentSch"); 
+		 $(".listschWarp").fadeIn(); 
+	   }else{
+		 $("#mapSch_Btn").removeClass("fCgray3").addClass("currentSch"); 
+		 $(".mapschWarp").fadeIn(); 
+	   }
+	$(this).removeClass("hideBox_Btn").addClass("showBox_Btn").siblings($("#addreesSchWarp").slideDown());
+	}
+	else{
+	$(this).removeClass("showBox_Btn").addClass("hideBox_Btn").siblings($("#addreesSchWarp").slideUp());
+	$("#listSch_Btn").removeClass("currentSch").addClass("fCgray3");
+    $("#mapSch_Btn").removeClass("currentSch").addClass("fCgray3");
+	}   
+   })
+   var type = "list";
+   //listschWarp Hide&Show
+   $("#listSch_Btn").click(function(){
+	   type = "list";
+	   $(this).removeClass("fCgray3").addClass("currentSch");
+	   $("#mapSch_Btn").removeClass("currentSch").addClass("fCgray3");
+	   $("#addreesSchWarp").css("display","block");
+	   $("#switchBtn").removeClass("hideBox_Btn").addClass("showBox_Btn");
+	   $(".mapschWarp").hide();
+	   if($(".listschWarp").css("display","none")){
+		$(this).siblings($("#addreesSchWarp").find(".listschWarp").fadeIn()).addClass("currentSch");}
+	})
+	//mapschWarp Hide&Show
+	$("#mapSch_Btn").click(function(){
+		type = "map";
+		$(this).removeClass("fCgray3").addClass("currentSch");
+		$("#listSch_Btn").removeClass("currentSch").addClass("fCgray3");
+		$("#addreesSchWarp").css("display","block");
+		$("#switchBtn").removeClass("hideBox_Btn").addClass("showBox_Btn");
+		$(".listschWarp").hide();
+		if($(".mapschWarp").css("display","none")){
+        $(this).siblings($("#addreesSchWarp").find(".mapschWarp").fadeIn()).addClass("currentSch");}
+	})	
+});
+</script>
+</head>
+<body class="pBgB fSize-12">
+<div class="header_wrapper pBgH">
+     <div class="header layout"><a href="index.html" class="logo"></a>
+          <div class="home" hoverable="true"><a href="javascript:void(0);" class="go_home" title="回到首页"></a>
+               <div class="home_pop">
+                    <ul>
+                         <li><a href="javascript:void(0);" class="hp_title">活动</a>
+                              <p><a href="javascript:void(0);">寻找活动</a><a href="javascript:void(0);">创建活动</a><a href="javascript:void(0);">分类活动</a><a href="javascript:void(0);">自定义活动</a><a href="javascript:void(0);">时令活动</a><a href="javascript:void(0);">历史活动</a></p>
+                         </li>
+                         <li><a href="javascript:void(0);" class="hp_title">个人</a>
+                              <p><a href="javascript:void(0);">资料</a><a href="javascript:void(0);">日志</a><a href="javascript:void(0);">相册</a><a href="javascript:void(0);">视频</a></p>
+                         </li>
+                         <li><a href="javascript:void(0);" class="hp_title">关系</a>
+                              <p><a href="javascript:void(0);">我的好友</a><a href="javascript:void(0);">寻找好友</a><a href="javascript:void(0);">邀请好友</a><a href="javascript:void(0);">关注设置</a><a href="javascript:void(0);">我的圈子</a><a href="javascript:void(0);">寻找圈子</a><a href="javascript:void(0);">创建圈子</a></p>
+                         </li>
+                    </ul>
+                    <div class="home_pop_bottom">
+                         <p></p>
+                    </div>
+               </div>
+          </div>
+          <div class="search">
+               <div class="search_bg vm">
+                    <input type="text" class="search_txt" value="活动/好友/圈子/发帖" inputdefault="活动/好友/圈子/发帖" />
+                    <input value="" type="submit" class="search_btn" />
+               </div>
+          </div>
+          <div class="user_infor" hoverable="true"><a href="javascript:void(0);" class="f_left"><img src="../images/default/32-32.jpg" width="32" height="32" /></a><span class="user_infor_name"><a href="javascript:void(0);">烧饭-人生旅途中人生旅途中<b></b></a></span>
+               <div class="user_infor_pop">
+                    <ul class="fSize-12">
+                         <li><a href="javascript:void(0);">资料修改</a></li>
+                         <li><a href="javascript:void(0);">账号管理</a></li>
+                         <li><a href="javascript:void(0);">隐私设置</a></li>
+                         <li><a href="javascript:void(0);">切换语言</a></li>
+                         <li class="last"><a href="javascript:void(0);">退出</a></li>
+                    </ul>
+               </div>
+          </div>
+     </div>
+</div>
+<div class="activityMain layout">
+     <div id="container" class="activity_myhistory w_1004 pBgC">
+          <div class="myhistroyTitle">
+               <div class="black10"></div>
+               <div class="black10"></div>
+               <div class="mes_com_box_Tab"> <a href="javascript:void(0);">活动信息</a> <a href="javascript:void(0);" class="active">我的活动</a> </div>
+          </div>
+          
+          <!-- myhistoryMenu -->
+          <div class="AM_photoEditWarp">
+               <div class="MyactivitySet_Widget f_left">
+                    <h4><a href="#" class="fCblue" style="padding:0 0 0 5px;">未来及现在的活动（78）</a><span class="fCgray3">历史活动（125）</span></h4>
+                    <h5 class="MyactivitySet_title"><span class="moveLeft f_right"></span><span class="moveRight f_right"></span>未来的活动<div class="sidebox-pager">
+                       <a class="prev" href="javascript:;"></a>
+                       <a class="next" href="javascript:;"></a>
+                    </div></h5>
+                    <ul class="activityList_Will">
+
+                    </ul>
+               </div>
+               <!--pohtoedit widget -->
+               <div class="MyactivitySet_Main f_left" >
+                    <div class="myhistoryMenu">
+                         <ul>
+                              <li><a class="current" href="javascript:void(0);">活动信息及评论</a></li>
+                              <li>浏览</li>
+                              <li>上传</li>
+                              <li>管理相册</li>
+                              <li>浏览发表管理感想</li>
+                         </ul>
+                    </div>
+                    <div class="ACmod">
+                         <h4 class="tBgb"><b class="icon16 square fSize-12 fCgray3">评价该活动</b>&nbsp;
+                              <label for="" class=" fSize-12">
+                                   <input type="radio" name="" id="" />
+                                   &nbsp;喜欢&nbsp;</label>
+                              <label for="" class=" fSize-12">
+                                   <input type="radio" name="" id="" />
+                                   &nbsp;不喜欢&nbsp;</label>
+                              <label for=""  class=" fSize-12" >
+                                   <input type="radio" name="" id=""/>
+                                   &nbsp;一般般&nbsp;</label>
+                              <a href="#" class=" fSize-12">查看结果</a></h4>
+                         <div class="tBgb introduction fCblcak2" style="margin:15px auto; border:1px solid #cbdfeb;">
+
+                              <div class="tBgb fSize-14">
+                                   <span class="f_right">
+                                        <input id="copylink" type="button" class="buttonB btn_w108 btn_h26 btnBlue_108 fSize-12" value="复制活动连接" />
+                                        &nbsp;<input type="button" class="buttonB btn_w70 btn_h26 btnBlue_70 fSize-12" value="+关注" />&nbsp;
+
+                                       <div class="copytext-wrap">
+                                           <div class="copytext-panel" style="display: none;">
+                                               <span style="" class="copytext">
+                                                   <div class="tips-panel" style="display: none;">
+                                                       <div class="tips tips-2">
+                                                           <div class="down-arrowhead"></div>
+                                                           <div class="">
+                                                               提示提示提示提示提示提示提示提示
+                                                           </div>
+                                                           <a href="javascript:;" class="close close-3" title="关闭"></a>
+                                                       </div>
+                                                   </div>
+                                                   <input type="text" value="http://www.qq.com" class="text"><input type="button" value="复制" class="button button1">
+                                               </span>
+                                           </div>
+                                       </div>
+
+                                   </span>
+                                  &nbsp;<b class="fSize-12 fCgray3 fCblue">本周星期六登泰山活动</b>
+                              </div>
+
+                              <p class="myact-opera"><b class="fCblue">关注度</b>&nbsp;<img src="../images/defucult/progressbar.jpg" alt="" />&nbsp;
+                            	
+                            	<a title="操作一" class="ico icon_1" href="javascript:void(0);"></a>
+                            	<a title="操作二" class="ico icon_2" href="javascript:void(0);"></a>   
+                            	<a title="操作三" class="ico icon_3" href="javascript:void(0);"></a>   
+                            	<a title="操作四" class="ico icon_4" href="javascript:void(0);"></a>   
+                            	<a title="操作五" class="ico icon_5" href="javascript:void(0);"></a>       
+                            </p>
+                              <p><b>活动地：</b>拉斯维加斯新野地下赌场&nbsp;<b>活动时间：</b>03/22-03/24&nbsp;<b>活动分类：</b>时令活动-踏春 </p>
+                              <p><b>发起人：</b>Ahxiaopeng&nbsp;<b>创建时间：</b>2010/02/03&nbsp;<b>联系电话：</b>13548715274&nbsp;<b>邮箱：</b>zssskkk@163.com</p>
+                              <p><b>报名截止时间：</b>2010/03/03&nbsp;<b>报名方式：</b>密码验证加入&nbsp;<b>报名条件：</b>起点团队成员 / 男性 / Delran, NJ</p>
+                              <p><b>人数：</b>2500/10000&nbsp;<b>初始费用：</b>1000$&nbsp;<b>缴费性质：</b>现金</p>
+                              <p><b>管理员：</b><a href="#">Ahxiaopeng</a>    <a href="#">Tim1</a>    <a href="#">Tim2</a>    <a href="#">Tim3</a>    <a href="#">Tim4</a></p>
+                              <p><b>财务员：</b><a href="#">Ahxiaopeng</a>    <a href="#">Tim</a>    <a href="#">Jackson</a>    <a href="#">Vivi</a>   <a href="#">Mr.Lee</a>   <a href="#"> Lisa.Ma</a></p>
+                         </div>
+                    </div>
+                    <div class="ACmod">
+                         <h4 class="tBgb myact-opera"><span class="f_right downarrow_B"></span><b class="icon16 square fSize-12 fCgray3">活动简介</b><a href="javascript:void(0);" class="ico icon_3" title="编辑"></a></h4>
+                         <div class="setmod">
+                              <p class="activityIntroduction fCgray mod-inner" style="text-indent:2em;">通过我们的日记功能来分享故事、表达观点或写任何你想要表达的事情。你也可以通过手机来发布日志。通过我们的日记功
+                                   能来分享故事、表达观点或写任何你想要表达的事情。你也可以通过手机来发布日志。通过我们的日记功能来分享故事、表达观点
+                                   或写任何你想要表达的事情。你也可以通过手机来发布日志。 </p>
+                         </div>
+                    </div>
+                    <div class="ACmod">
+                         <h4 class="tBgb myact-opera"><span class="f_right uparrow_B"></span><b class="icon16 square fSize-12 fCgray3">活动计划</b><a href="javascript:void(0);" class="ico icon_3" title="编辑"></a></h4>
+                         <div class="setmod">
+                              <p class="fCgray mod-inner">03-22早上10:00 在五角大楼门口集合，整装出发。<br />
+                                   12:00 到达目的地，自由活动。吃饭。<br />
+                                   14:00 开始登山，中途有比赛。<br />
+                                   18:00 活动结束，大家一起去吃饭，然后各自回家。<br />
+                                   <em>备注：吃完饭后一定要洗碗</em>
+                              </p>
+                             
+                         </div>
+                    </div>
+                    <div class="ACmod">
+                         <h4 class="tBgb fSize-12"><span class="f_right uparrow_B"></span><b class="icon16 square fSize-12 fCgray3">收支财务&nbsp;&nbsp;</b><small class="fSize-12">预算金额</small><small class="fCblue fSize-12">（1000$）</small><small class="fSize-12">现收支金额</small><small class="fCblue fSize-12">（600$）</small><small class="fSize-12">差额</small><small class="fCblue fSize-12">（400$）</small></h4>
+                         <div class="setMod">
+                              <div class="myhistoryMenu">
+                                   <ul>
+                                        <li>预算收支项目</li>
+                                        <li><a class="current" href="javascript:void(0);">实际收支项目</a></li>
+                                   </ul>
+                              </div>
+                              <br/>
+                              <dl class="clearfix">
+                                   <dd class="formTitle">序号：</dd>
+                                   <dd class="formMain">&nbsp;
+                                        <input type="text" name="" id="" class="text" value="001" />
+                                   </dd>
+                              </dl>
+                           
+                              <dl class="clearfix">
+                                   <dd class="formTitle">收支名目：</dd>
+                                   <dd class="formMain">&nbsp;
+                                        <select name="" id="">
+                                             <option value="个人缴费">个人缴费</option>
+                                        </select>
+                                        &nbsp;
+                                        <input type="text" name="" id="" class="text" />
+                                   </dd>
+                              </dl>
+                          
+                              <dl class="clearfix">
+                                   <dd class="formTitle">实际收支金额：</dd>
+                                   <dd class="formMain">&nbsp;
+                                        <select name="" id="">
+                                             <option value="个人缴费">个人缴费</option>
+                                        </select>
+                                        &nbsp;
+                                        <input type="text" name="" id="" class="text" />
+                                   </dd>
+                              </dl>
+                       
+                              <dl class="clearfix">
+                                   <dd class="formTitle">补充描述：</dd>
+                                   <dd class="formMain">&nbsp;
+                                        <input type="text" name="" id="" class="text" />
+                                   </dd>
+                              </dl>
+                             
+                              <dl class="clearfix">
+                                   <dd class="formTitle">执行人名：</dd>
+                                   <dd class="formMain">&nbsp;
+                                        <input type="text" name="" id="" class="text" />
+                                        &nbsp;
+                                        <select name="" id="">
+                                             <option value="活动人员">活动人员</option>
+                                        </select>
+                                        &nbsp;
+                                        <input type="button" value="添加" class="buttonG btn_w56 btn_h28 btnGary_56"/>
+                                       
+                                   </dd>
+                              </dl>
+                              <dl class="clearfix">
+                              		<dd class="formTitle">&nbsp;</dd>
+                              		<dd class="formMain"><div class="tips_G tipW_435 pR" style="left:10px;"><span class="upArrow_G" style="right:120px;"></span>
+                                             <div class="tips_G_main tipW_435">
+                                                  <ul>
+                                                       <li class="delBtn">执行人名</li>
+                                                       <li class="delBtn">执行人名</li>
+                                                       <li class="delBtn">执行人名</li>
+                                                       <li class="delBtn">执行人名</li>
+                                                  </ul>
+                                             </div>
+                                        </div>
+                                   </dd>
+                              </dl>
+                              
+                              <dl class="clearfix">
+                                   <dd class="formTitle">上传附件：</dd>
+                                   <dd class="formMain">&nbsp;
+                                        <input type="text" name="" id="" class="text" />
+                                        &nbsp;
+                                        <input type="button" value="上传附件" class="buttonG btn_w56 btn_h28 btnGary_56" />
+                                   </dd>
+                              </dl>
+                              <dl class="clear2">
+                              </dl>
+                              <dl class="clearfix">
+                                   <dd class="formTitle">&nbsp;</dd>
+                                   <dd class="formMain">&nbsp;
+                                        <textarea name="" id="" cols="69" rows="4"></textarea>
+                                   </dd>
+                              </dl>
+                           
+                              <dl class="clearfix">
+                                   <dd class="formTitle">操作时间：</dd>
+                                   <dd class="formMain">&nbsp;
+                                        <input type="button" value="添加收支名目" class="f_right buttonG btn_w102 btn_h28 btnGary_102"/>
+                                        2011-11-15 23：31 &nbsp;&nbsp;财务人员：李小冉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                              </dl>
+                           
+                              <dl class="clearfix">
+                              	   <dd class="formTitle">&nbsp;</dd>
+                                   <dd class="formMain">
+                                        <label for="">&nbsp;
+                                             <input type="radio" name="222" id="" />
+                                             &nbsp;显示预算</label>
+                                   </dd>
+                                   <dd class="formMain">
+                                        <label for="">&nbsp;
+                                             <input type="radio" name="222" id="" />
+                                             &nbsp;显示实际收支</label>
+                                   </dd>
+                              </dl>
+                              <br/>
+                  
+                              <div class="harvestPayWarp">
+                                   <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="harvestPayTable table-fixed">
+                                        <tr>
+                                             <th width="27">&nbsp;</th>
+                                             <th width="32">序号</th>
+                                             <th width="32">附件</th>
+                                             <th width="90">收支名目</th>
+                                             <th width="100">描述</th>
+                                             <th width="70">收支金额</th>
+                                             <th width="90">计划执行人名</th>
+                                             <th width="60">财务人名</th>
+                                             <th width="80">修改时间</th>
+                                             <th class="lrArrow"><a href="#" class="pre"></a><a href="#" class="next hasMore"></a></th>
+                                        </tr>
+                                        <tr >
+                                             <td colspan="10"><div class="subTableWarp"> <ins></ins>
+                                                       <table width="100%" border="0" cellspacing="0" cellpadding="0" class=" table-fixed">
+                                                            <tr>
+                                                                 <td width="27" align="center"><img src="../images/icons/paper.png" /></td>
+                                                                 <td width="32">007</td>
+                                                                 <td width="32" align="center"><img src="../images/icons/shuqian.png" /></td>
+                                                                 <td width="90">篮球场地费</td>
+                                                                 <td width="100">室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时 </td>
+                                                                 <td width="70">100$/70$</td>
+                                                                 <td width="90">侯建刚</td>
+                                                                 <td width="60">侯建刚</td>
+                                                                 <td width="80">2011/12/23</td>
+                                                                 <td><a href="javascript:void(0);" class="listEdit">&nbsp;</a> <a href="javascript:void(0);" class="listDel">&nbsp;</a></td>
+                                                            </tr>
+                                                       </table>
+                                                       <table width="100%"  border="0" cellspacing="0" cellpadding="0" class="table-fixed">
+                                                            <tr>
+                                                                 <td width="27" align="center"><img src="../images/icons/door.png" /></td>
+                                                                 <td width="32">007</td>
+                                                                 <td width="32" align="center"><img src="../images/icons/shuqian.png" /></td>
+                                                                 <td width="90">篮球场地费</td>
+                                                                 <td width="100">室内篮球馆20$/小时… </td>
+                                                                 <td width="70">100$/70$</td>
+                                                                 <td width="90">侯建刚</td>
+                                                                 <td width="60">侯建刚</td>
+                                                                 <td width="80">2011/12/23</td>
+                                                                 <td><a href="javascript:void(0);" class="listEdit">&nbsp;</a> <a href="javascript:void(0);" class="listDel">&nbsp;</a></td>
+                                                            </tr>
+                                                       </table>
+                                                  </div></td>
+                                        </tr>
+                                        <tr>
+                                             <td align="center"><img src="../images/icons/paper.png" /></td>
+                                             <td>007</td>
+                                             <td align="center"><img src="../images/icons/shuqian.png" /></td>
+                                             <td>篮球场地费</td>
+                                             <td>室内篮球馆20$/小时… </td>
+                                             <td>100$/70$</td>
+                                             <td>侯建刚</td>
+                                             <td>侯建刚</td>
+                                             <td>2011/12/23</td>
+                                             <td><a href="javascript:void(0);" class="listEdit">&nbsp;</a> <a href="javascript:void(0);" class="listDel">&nbsp;</a></td>
+                                        </tr>
+                                        <tr>
+                                             <td align="center"><img src="../images/icons/paper.png" /></td>
+                                             <td>008</td>
+                                             <td align="center"><img src="../images/icons/shuqian.png" /></td>
+                                             <td>篮球场地费</td>
+                                             <td>室内篮球馆20$/小时… </td>
+                                             <td>100$/70$</td>
+                                             <td>侯建刚</td>
+                                             <td>侯建刚</td>
+                                             <td> 2011/12/23</td>
+                                             <td><a href="javascript:void(0);" class="listEdit">&nbsp;</a> <a href="javascript:void(0);" class="listDel">&nbsp;</a></td>
+                                        </tr>
+                                        <tr>
+                                             <td align="center"><img src="../images/icons/door.png" /></td>
+                                             <td>009</td>
+                                             <td align="center">&nbsp;</td>
+                                             <td>篮球场地费</td>
+                                             <td>室内篮球馆20$/小时… </td>
+                                             <td>100$/70$</td>
+                                             <td>侯建刚</td>
+                                             <td>侯建刚</td>
+                                             <td> 2011/12/23</td>
+                                             <td><a href="javascript:void(0);" class="listEdit">&nbsp;</a> <a href="javascript:void(0);" class="listDel">&nbsp;</a></td>
+                                        </tr>
+                                        <tr>
+                                             <td align="center"><img src="../images/icons/door.png" /></td>
+                                             <td>010</td>
+                                             <td>&nbsp;</td>
+                                             <td>篮球场地费</td>
+                                             <td>室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时室内篮球馆20$/小时</td>
+                                             <td>100$/70$</td>
+                                             <td>侯建刚</td>
+                                             <td>侯建刚</td>
+                                             <td> 2011/12/23</td>
+                                             <td><a href="javascript:void(0);" class="listEdit">&nbsp;</a> <a href="javascript:void(0);" class="listDel">&nbsp;</a></td>
+                                        </tr>
+                                   </table>
+                              </div>
+                              <dl class="clear2">
+                              </dl>
+                              <dl>
+                                   <dd class="formTitle fCblue">&nbsp;</dd>
+                                   <dd class="formMain fCblue">预算总金额：100$ 实际收总金额：120$ 实际支出总金额：90$ 结算金额：30$</dd>
+                              </dl>
+                              <dl class="clear2">
+                              </dl>
+                              <dl>
+                                   <dd class="formTitle">&nbsp;</dd>
+                                   <dd class="formMain">（已结算）结算时间：2011/12/12&nbsp;&nbsp;&nbsp;
+                                        <select name="" id="">
+                                             <option value="按人数结算">按人数结算</option>
+                                        </select>
+                                   </dd>
+                              </dl>
+                              <dl class="clear2">
+                              </dl>
+                              <div class="tabWarp_Gray" style="padding:7px 7px;">
+                                   <table cellpadding="0" cellspacing="0" border="0" background="#ededed" width="100%" class="preparedList fSize-12 fCgray3">
+                                        <tr>
+                                             <th>序号</th>
+                                             <th>属于创建圈子</th>
+                                             <th>预算收支金额</th>
+                                             <th>返还或者需缴纳金额</th>
+                                             <th></th>
+                                        </tr>
+                                        <tr >
+                                             <td>005</td>
+                                             <td>是</td>
+                                             <td>德州篮球俱乐部</td>
+                                             <td>500$</td>
+                                             <td><a href="" class="dollar"></a><a href="" class="listDel"></a></td>
+                                        </tr>
+                                        <tr>
+                                             <td>005</td>
+                                             <td>是</td>
+                                             <td>德州篮球俱乐部</td>
+                                             <td>500$</td>
+                                             <td><a href="" class="dollar"></a><a href="" class="listDel"></a></td>
+                                        </tr>
+                                        <tr>
+                                             <td>005</td>
+                                             <td>是</td>
+                                             <td>德州篮球俱乐部</td>
+                                             <td>500$</td>
+                                             <td><a href="" class="dollar"></a><a href="" class="listDel"></a></td>
+                                        </tr>
+                                        <tr>
+                                             <td>005</td>
+                                             <td>是</td>
+                                             <td>德州篮球俱乐部</td>
+                                             <td>500$</td>
+                                             <td><a href="" class="dollar"></a><a href="" class="listDel"></a></td>
+                                        </tr>
+                                        <tr>
+                                             <td>005</td>
+                                             <td>是</td>
+                                             <td>德州篮球俱乐部</td>
+                                             <td>500$</td>
+                                             <td><a href="" class="dollar"></a><a href="" class="listDel"></a></td>
+                                        </tr>
+                                   </table>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="ACmod">
+                         <h4 class="tBgb fSize-12"><span class="f_right uparrow_B"></span><b class="icon16 square fSize-12 fCgray3">成员列表&nbsp;&nbsp;</b><small class="fSize-12">现人员数</small><small class="fCblue fSize-12">（12）</small><small class="fSize-12">总人员数</small><small class="fCblue fSize-12">（24）</small></h4>
+                         <div class="setMod memberList">
+                              <table border="0" cellspacing="0" cellpadding="0" width="100%" class="memberTable fCgray3">
+                                   <tr class="memberHead fCblue">
+                                        <td width="36">&nbsp;</td>
+                                        <td align="center">头像</td>
+                                        <td>姓名</td>
+                                        <td>角色图标</td>
+                                        <td>费用</td>
+                                        <td>交通</td>
+                                        <td>距离</td>
+                                        <td>出发地</td>
+                                        <td>加入时间</td>
+                                        <td>操作</td>
+                                   </tr>
+                                   <tr>
+                                        <td align="center"><input type="checkbox" name="" id="" /></td>
+                                        <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                        <td ><span class="roleName">胡鹏</span></td>
+                                        <td><img src="../images/icons/role1.jpg" alt="" /></td>
+                                        <td><div class="submited">已交</div></td>
+                                        <td>有车/愿意提供</td>
+                                        <td>100公里</td>
+                                        <td>深圳南山科技园</td>
+                                        <td>12/16</td>
+                                        <td><div class="opera"> <a href="javascript:void(0);" class="operaicon"></a>
+                                                 <!--- <a href="javascript:void(0);" class="icon icon-edit"></a>-->
+                                                  <ul class="operaList">
+                                                       <li><a href="javascript:void(0);"><b>批准</b></a></li>
+                                                       <li><a href="javascript:void(0);">拒绝</a></li>
+                                                  </ul>
+                                             </div></td>
+                                   </tr>
+                                   <tr>
+                                        <td align="center"><input type="checkbox" name="" id="" /></td>
+                                        <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                        <td ><span class="roleName">胡鹏</span></td>
+                                        <td><img src="../images/icons/role2.jpg" alt="" /></td>
+                                        <td><div class="submited">已交</div></td>
+                                        <td>有车/愿意提供</td>
+                                        <td>100公里</td>
+                                        <td>深圳南山科技园</td>
+                                        <td>12/16</td>
+                                        <td><div class="opera"> <a href="javascript:void(0);" class="operaicon"></a>
+                                                  <ul class="operaList">
+                                                       <li><a href="javascript:void(0);"><b>批准</b></a></li>
+                                                       <li><a href="javascript:void(0);">拒绝</a></li>
+                                                  </ul>
+                                             </div></td>
+                                   </tr>
+                                   <tr>
+                                        <td align="center"><input type="checkbox" name="" id="" /></td>
+                                        <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                        <td ><span class="roleName">胡鹏</span></td>
+                                        <td><img src="../images/icons/role3.png" alt="" /></td>
+                                        <td><div class="submited">已交</div></td>
+                                        <td>有车/愿意提供</td>
+                                        <td>100公里</td>
+                                        <td>深圳南山科技园</td>
+                                        <td>12/16</td>
+                                        <td><div class="opera"> <a href="javascript:void(0);" class="operaicon"></a>
+                                                  <ul class="operaList">
+                                                       <li><a href="javascript:void(0);"><b>批准</b></a></li>
+                                                       <li><a href="javascript:void(0);">拒绝</a></li>
+                                                  </ul>
+                                             </div></td>
+                                   </tr>
+                                   <tr>
+                                        <td align="center"><input type="checkbox" name="" id="" /></td>
+                                        <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                        <td ><span class="roleName">胡鹏</span></td>
+                                        <td><img src="../images/icons/role4.png" alt="" /></td>
+                                        <td><div class="nosubmit">未提交</div></td>
+                                        <td>有车/愿意提供</td>
+                                        <td>100公里</td>
+                                        <td>深圳南山科技园</td>
+                                        <td>12/16</td>
+                                        <td><div class="opera"> <a href="javascript:void(0);" class="operaicon"></a>
+                                                  <ul class="operaList">
+                                                       <li><a href="javascript:void(0);"><b>批准</b></a></li>
+                                                       <li><a href="javascript:void(0);">拒绝</a></li>
+                                                  </ul>
+                                             </div></td>
+                                   </tr>
+                                   <tr>
+                                        <td align="center"><input type="checkbox" name="" id="" /></td>
+                                        <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                        <td ><span class="roleName">胡鹏</span></td>
+                                        <td><img src="../images/icons/role1.jpg" alt="" /></td>
+                                        <td><div class="submited">已交</div></td>
+                                        <td>有车/愿意提供</td>
+                                        <td>100公里</td>
+                                        <td>深圳南山科技园</td>
+                                        <td>12/16</td>
+                                        <td><div class="opera"> <a href="javascript:void(0);" class="operaicon"></a>
+                                                  <ul class="operaList">
+                                                       <li><a href="javascript:void(0);"><b>批准</b></a></li>
+                                                       <li><a href="javascript:void(0);">拒绝</a></li>
+                                                  </ul>
+                                             </div></td>
+                                   </tr>
+                                   <tr>
+                                        <td align="center"><input type="checkbox" name="" id="" /></td>
+                                        <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                        <td ><span class="roleName">胡鹏</span></td>
+                                        <td><img src="../images/icons/role1.jpg" alt="" /></td>
+                                        <td><div class="submited">已交</div></td>
+                                        <td>有车/愿意提供</td>
+                                        <td>100公里</td>
+                                        <td>深圳南山科技园</td>
+                                        <td>12/16</td>
+                                        <td><div class="opera"> <a href="javascript:void(0);" class="operaicon"></a>
+                                                  <ul class="operaList">
+                                                       <li><a href="javascript:void(0);"><b>批准</b></a></li>
+                                                       <li><a href="javascript:void(0);">拒绝</a></li>
+                                                  </ul>
+                                             </div></td>
+                                   </tr>
+                                   <tr class="memberFoot">
+                                        <td colspan="10"><div class="pageList f_right">
+                                                  <ul>
+                                                       <li>显示更多</li>
+                                                       <li>首页</li>
+                                                       <li>上一页</li>
+                                                       <li>1/5</li>
+                                                       <li>下一页</li>
+                                                       <li>末页</li>
+                                                  </ul>
+                                             </div>
+                                             &nbsp;&nbsp;
+                                             <label for="">
+                                                  <input type="checkbox" name="" id="" />
+                                                  全选/反选</label>
+                                             &nbsp;&nbsp;提醒缴费&nbsp;&nbsp;已缴费 显示更多</td>
+                                   </tr>
+                              </table>
+                         </div>
+                    </div>
+                    <div class="ACmod">
+                         <h4 class="tBgb fSize-12"><span class="f_right "></span><b class="icon16 square fSize-12 fCgray3">搭车信息&nbsp;&nbsp;</b><small class="fSize-12">搭车人数</small><small class="fCblue fSize-12">（12）</small><small class="fSize-12">搭车总人数</small><small class="fCblue fSize-12">（24）</small></h4>
+                         <div class="setMod">
+                              <dl>
+                                   <dd class="formTitle">准备通过：</dd>
+                                   <dd class="formMain">
+                                        <select name="" id="" style="width:70px;">
+                                             <option value="汽车">汽车</option>
+                                        </select>
+                                        &nbsp;&nbsp;参加活动
+                                        <select name="" id="" style="width:40px;">
+                                             <option value="无">无</option>
+                                             <option value="有">有</option>
+                                        </select>
+                                        &nbsp;&nbsp;车参加活动
+                                        <select name="" id="">
+                                             <option value="寻求搭车">寻求搭车</option>
+                                        </select>
+                                   </dd>
+                              </dl>
+                              <dl class="clear2">
+                              </dl>
+                              <dl>
+                                   <dd class="formTitle">搭车费协商：</dd>
+                                   <dd class="formMain">
+                                        <label for="">
+                                             <input type="checkbox" name="" id="" />
+                                             &nbsp;油价均分&nbsp;</label>
+                                        <label for="">
+                                             <input type="checkbox" name="" id="" />
+                                             &nbsp;免费&nbsp;</label>
+                                        <label for="">
+                                             <input type="checkbox" name="" id="" />
+                                             &nbsp;车主叫价&nbsp;</label>
+                                        <select name="" id="">
+                                             <option value="10元">10元</option>
+                                        </select>
+                                        &nbsp;
+                                        <select name="" id="">
+                                             <option value="可选出车人">可选出车人</option>
+                                        </select>
+                                   </dd>
+                              </dl>
+                              <dl class="clear2">
+                              </dl>
+                              <div class="memberList">
+                                   <table border="0" cellspacing="0" cellpadding="0" width="100%" class="memberTable fCgray3">
+                                        <tr class="memberHead fCblue">
+                                             <td width="36">&nbsp;</td>
+                                             <td align="center">头像</td>
+                                             <td align="center">姓名</td>
+                                             <td>角色图标</td>
+                                             <td>联系方式</td>
+                                             <td>费用方式</td>
+                                             <td>操作</td>
+                                             <td></td>
+                                        </tr>
+                                        <tr>
+                                             <td align="center"></td>
+                                             <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                             <td align="center"><span class="roleName">我自己</span></td>
+                                             <td>深圳市南山区凯丽花园<a href="#">[地图]</a></td>
+                                             <td>13811201120</td>
+                                             <td>现金支付</td>
+                                             <td><span class="offmember"></span></td>
+                                             <td></td>
+                                        </tr>
+                                        <tr>
+                                             <td align="center"><span class="car"></span></td>
+                                             <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                             <td align="center"><span class="roleName">我自己</span></td>
+                                             <td>深圳市南山区凯丽花园<a href="#">[地图]</a></td>
+                                             <td>13811201120</td>
+                                             <td>现金支付</td>
+                                             <td><div class="opera"> <a href="javascript:void(0);" class="operaicon"></a>
+                                                       <ul class="operaList">
+                                                            <li><a href="javascript:void(0);"><b>批准</b></a></li>
+                                                            <li><a href="javascript:void(0);">拒绝</a></li>
+                                                       </ul>
+                                                  </div></td>
+                                             <td><span class="delBtn" style="width:16px; height:16px; display:block;"></span></td>
+                                        </tr>
+                                        <tr>
+                                             <td align="center"></td>
+                                             <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                             <td align="center"><span class="roleName">我自己</span></td>
+                                             <td>深圳市南山区凯丽花园<a href="#">[地图]</a></td>
+                                             <td>13811201120</td>
+                                             <td>现金支付</td>
+                                             <td><div class="opera"> <a href="javascript:void(0);" class="operaicon"></a>
+                                                       <ul class="operaList">
+                                                            <li><a href="javascript:void(0);"><b>批准</b></a></li>
+                                                            <li><a href="javascript:void(0);">拒绝</a></li>
+                                                       </ul>
+                                                  </div></td>
+                                             <td><span class="delBtn" style="width:16px; height:16px; display:block;"></span></td>
+                                        </tr>
+                                        <tr>
+                                             <td align="center"></td>
+                                             <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                             <td align="center"><span class="roleName">我自己</span></td>
+                                             <td>深圳市南山区凯丽花园<a href="#">[地图]</a></td>
+                                             <td>13811201120</td>
+                                             <td>现金支付</td>
+                                             <td><div class="opera"> <a href="javascript:void(0);" class="operaicon"></a>
+                                                       <ul class="operaList">
+                                                            <li><a href="javascript:void(0);"><b>批准</b></a></li>
+                                                            <li><a href="javascript:void(0);">拒绝</a></li>
+                                                       </ul>
+                                                  </div></td>
+                                             <td><span class="delBtn" style="width:16px; height:16px; display:block;"></span></td>
+                                        </tr>
+                                        <tr>
+                                             <td align="center"></td>
+                                             <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                             <td align="center"><span class="roleName">我自己</span></td>
+                                             <td>深圳市南山区凯丽花园<a href="#">[地图]</a></td>
+                                             <td>13811201120</td>
+                                             <td>现金支付</td>
+                                             <td><div class="opera"> <a href="javascript:void(0);" class="operaicon"></a>
+                                                       <ul class="operaList">
+                                                            <li><a href="javascript:void(0);"><b>批准</b></a></li>
+                                                            <li><a href="javascript:void(0);">拒绝</a></li>
+                                                       </ul>
+                                                  </div></td>
+                                             <td><span class="delBtn" style="width:16px; height:16px; display:block;"></span></td>
+                                        </tr>
+                                        <tr>
+                                             <td align="center"></td>
+                                             <td align="center"><img src="../images/default/48-48.jpg" width="38" height="38"  alt="" /></td>
+                                             <td align="center"><span class="roleName">我自己</span></td>
+                                             <td>深圳市南山区凯丽花园<a href="#">[地图]</a></td>
+                                             <td>13811201120</td>
+                                             <td>现金支付</td>
+                                             <td><div class="opera"> <a href="javascript:void(0);" class="operaicon"></a>
+                                                       <ul class="operaList">
+                                                            <li><a href="javascript:void(0);"><b>批准</b></a></li>
+                                                            <li><a href="javascript:void(0);">拒绝</a></li>
+                                                       </ul>
+                                                  </div></td>
+                                             <td><span class="delBtn" style="width:16px; height:16px; display:block;"></span></td>
+                                        </tr>
+                                        <tr class="memberFoot">
+                                             <td colspan="10"><div class="pageList f_right">
+                                                       <ul>
+                                                            <li>显示更多</li>
+                                                            <li>首页</li>
+                                                            <li>上一页</li>
+                                                            <li>1/5</li>
+                                                            <li>下一页</li>
+                                                            <li>末页</li>
+                                                       </ul>
+                                                  </div>
+                                                  &nbsp;&nbsp;
+                                                  <label for="">
+                                                       <input type="checkbox" name="" id="" />
+                                                       全选/反选</label>
+                                                  &nbsp;&nbsp;提醒缴费&nbsp;&nbsp;已缴费 显示更多</td>
+                                        </tr>
+                                   </table>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="ACmod">
+                         <h4 class="tBgb fSize-12"><span class="f_right uparrow_B"></span><b class="icon16 square fSize-12 fCgray3">行车路线&nbsp;&nbsp;</b><small class="fSize-12">距目的地距离</small><small class="fCblue fSize-12">（25）公里</small><small class="fSize-12">预计时间</small><small class="fCblue fSize-12">（1）小时</small></h4>
+                         <div class="setMod">
+                              <div class="roadLine">
+                                   <div class="rodalineTop"> <span style="left:94px;">何怡洁</span> <span style="left:188px;">张孟春</span> </div>
+                                   <div class="rodalineMiddle">
+                                        <div class="roadlineRight"></div>
+                                        <div class="roadlineLeft"></div>
+                                        <div class="roadlineCenter">
+                                             <ul>
+                                                  <li class="star"></li>
+                                                  <li></li>
+                                                  <li>
+                                                  	<div class="selected"></div>
+                                                    <div class="tipsWarp">
+                                                          <div class="tipsTop"></div>
+                                                          <div class="tipsMain fSize-12 fCgray3">
+                                                                <p>5：00-12：00 早市集DOTA</p>
+                                                                <p>16:00-20:00 南山集会品茶活动</p>
+                                                           </div>
+                                                          <div class="tipsBottom">&nbsp;</div>
+                                                     </div>
+                                                  </li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li></li>
+                                                  <li class="end"></li>
+                                             </ul>
+                                             
+                                        </div>
+                                   </div>
+                                   <div class="rodalineBottom">
+                                        <div class="starText">出发地</div>
+                                        <div class="tipsWarp">
+                                             <div class="tipsTop"></div>
+                                             <div class="tipsMain fSize-12 fCgray3">
+                                                  <p>大同 距离：60公里 时间：2小时</p>
+                                             </div>
+                                             <div class="tipsBottom">&nbsp;</div>
+                                        </div>
+                                        <div class="endText">目的地</div>
+                                   </div>
+                                   <div class="clear2"></div>
+                              </div>
+                              <div class="roadLineMap">
+                                   <div class="linemapL"><img src="../images/defucult/map_1.jpg"  width="460" alt="" /></div>
+                                   <div class="linemapR">
+                                        <div class="memberlineList">
+                                            <a class="moveL tabs-prev" href="javascript:;"></a>
+                                            <div class="tabs-clip">
+                                                <ul class="tabs-panel">
+                                                     <li class="selected"><b>张薪杰</b></li>
+                                                     <li>李小萌</li>
+                                                     <li>何端春</li>
+                                                     <li>刘继明</li>
+                                                    <li class="selected"><b>张薪杰</b></li>
+                                                    <li>李小萌</li>
+                                                    <li>何端春</li>
+                                                    <li>刘继明</li>
+                                                </ul>
+                                            </div>
+                                            <a class="moveR tabs-next" href="javascript:;"></a>
+                                        </div>
+                                        <div class="clear2"></div>
+                                        <ul class="lineList" >
+                                             <li class="roadlinemapStar"> 芝加哥伊诺里斯美国 </li>
+                                             <li>
+                                                  <ol class="sublineList">
+                                                       <li class="total">299 英里 - 大约 5 小时 17 分钟</li>
+                                                       <li>1. 从S Federal St向南方向，前往
+                                                            W Van Buren St <span class="f_right">1.7公里</span></li>
+                                                       <li>2. 向右转，进入W Congress Pkwy <span class="f_right">1.7公里</span></li>
+                                                       <li>3. 下出口后走I-90 E/I-94 E，前往
+                                                            Indiana <span class="f_right">1.7公里</span></li>
+                                                       <li>4 .下 53 出口走I-55 S，前往
+                                                            St Louis <span class="f_right">1.7公里</span></li>
+                                                       <li>1. 从S Federal St向南方向，前往
+                                                            W Van Buren St <span class="f_right">1.7公里</span></li>
+                                                       <li>2. 向右转，进入W Congress Pkwy <span class="f_right">1.7公里</span></li>
+                                                       <li>3. 下出口后走I-90 E/I-94 E，前往
+                                                            Indiana <span class="f_right">1.7公里</span></li>
+                                                       <li>4 .下 53 出口走I-55 S，前往
+                                                            St Louis <span class="f_right">1.7公里</span></li>
+                                                  </ol>
+                                             </li>
+                                             <li class="roadlinemapEnd"> 圣路易斯密苏里州美国 </li>
+                                        </ul>
+                                   </div>
+                                   <div class="clear2"></div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="ACmod">
+                         <h4 class="tBgb fSize-12"><span class="f_right uparrow_B"></span><b class="icon16 square fSize-12 fCgray3">天气预报&nbsp;</b><span class="weather">&nbsp;</span></h4>
+                         <div class="setMod">
+                              <ul class="weatherlist">
+                                   <li>
+                                        <div class="weatherDate">2011/12/2（周五）</div>
+                                        <div class="weatherImg"><img src="../images/weather/rain-sun.jpg" width="48" alt="" /><img src="../images/weather/rain.jpg" width="48" alt="" /></div>
+                                        <div class="weatherMain">多云转阵雨    14℃~21℃    微风</div>
+                                   </li>
+                                   <li>
+                                        <div class="weatherDate">2011/12/2（周六）</div>
+                                        <div class="weatherImg"><img src="../images/weather/rain.jpg" width="48" alt="" /></div>
+                                        <div class="weatherMain">多云转阵雨    14℃~21℃    微风</div>
+                                   </li>
+                                   <li>
+                                        <div class="weatherDate">2011/12/2（周日）</div>
+                                        <div class="weatherImg"><img src="../images/weather/rain-sun.jpg" width="48" alt="" /></div>
+                                        <div class="weatherMain">多云转阵雨    14℃~21℃    微风</div>
+                                   </li>
+                              </ul>
+                              <div class="clear2"></div>
+                         </div>
+                    </div>
+                    <div class="ACmod">
+                         <h4 class="tBgb fSize-12"><span class="f_right uparrow_B"></span><b class="icon16 square fSize-12 fCgray3">留言板&nbsp;&nbsp;</b></h4>
+                         <div class="setMod">
+                              <div class="pageListWarp" style="background:none; border:none; border-bottom:1px dotted #bababa; margin:0;">
+                                   <ul class="pageList f_right fCgray3">
+                                        <li>首页</li>
+                                        <li>上一页</li>
+                                        <li>01/23</li>
+                                        <li>下一页></li>
+                                        <li>尾页</li>
+                                   </ul>
+                              </div>
+                              <!-- pagelist -->
+                              <div class="messageBoard">
+                                   <ul>
+                                        <li class="selected"><img class="photo mbUseravatar" alt="" src="../images/default/48-48.jpg"/>
+                                             <div class="mbContent">
+                                                  <div class="mbUsername">Jackson<span class="addUser"></span><span class="addReplay"></span></div>
+                                                  <div class="mbMain">
+                                                       <p>讲回电影本身，很多人说mark扮猪吃老虎，阴了双胞胎，Eduardo和sean parker一把，可是有很多细节也许不一样。讲
+                                                            回电影本身，很多人说mark扮猪吃老虎，阴了双胞胎，Eduardo和sean parker一把，可是有很多细节也许不一样。</p>
+                                                       <p class="mbTime"><span class="f_right replayBtn"><a href="#">回复</a></span>30分钟前</p>
+                                                   <div class="replay-content"><img class="arrowhead" src="../images/home/ico_17x9.png"/>
+                                                       <input  type="text" class="text"/>
+                                                       <input  type="submit" class="button button2" value="回复"/>
+                                                       <input  type="submit" class="button btn_w56 btnGary_56 btn_h28" value="取消"/>
+                                                       <ul>
+                                                            <li class="clearfix"> <img  class="photo" alt="" src="../images/default/48-48.jpg"/>
+                                                                 <div class="overflow">
+                                                                      <p>资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道</p>
+                                                                      <div class="time">1210-21</div>
+                                                                      <div class="replay"><a  href="javascript:void(0);">删除</a><a  href="javascript:void(0);">回复</a></div>
+                                                                 </div>
+                                                            </li>
+                                                            <li class="clearfix"> <img  class="photo" alt="" src="../images/default/48-48.jpg"/>
+                                                                 <div class="overflow">
+                                                                      <p>资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道</p>
+                                                                      <div class="time">1210-21</div>
+                                                                      <div class="replay"><a  href="javascript:void(0);">回复</a></div>
+                                                                 </div>
+                                                            </li>
+                                                            <li class="clearfix"> <img  class="photo" alt="" src="../images/default/48-48.jpg"/>
+                                                                 <div class="overflow">
+                                                                      <p>资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道资道</p>
+                                                                      <div class="time">1210-21</div>
+                                                                      <div class="replay"><a  href="javascript:void(0);">回复</a></div>
+                                                                 </div>
+                                                            </li>
+                                                       </ul>
+                                                       <div class="showall"><a  href="javascript:void(0);" class="replayshow">更多回复</a>&nbsp;<a  href="javascript:void(0);" class="replaypackup">收起</a></div>
+                                                  </div>
+                                                  </div>
+                                             </div>
+                                        </li>
+                                        <li><img class="photo mbUseravatar" alt="" src="../images/default/48-48.jpg"/>
+                                             <div class="mbContent">
+                                                  <div class="mbUsername">Jackson<span class="addUser"></span><span class="addReplay"></span></div>
+                                                  <div class="mbMain">
+                                                       <p>讲回电影本身，很多人说mark扮猪吃老虎，阴了双胞胎，Eduardo和sean parker一把，可是有很多细节也许不一样。讲
+                                                            回电影本身，很多人说mark扮猪吃老虎，阴了双胞胎，Eduardo和sean parker一把，可是有很多细节也许不一样。</p>
+                                                       <p class="mbTime"><span class="f_right replayBtn"><a href="#">回复</a></span>30分钟前</p>
+                                                  </div>
+                                             </div>
+                                        </li>
+                                   </ul>
+                                   <div class="replayFrom clearfix"><img class="photo mbUseravatar" alt="" src="../images/default/48-48.jpg"/>
+                                        <div class="mbContent">
+                                             <p>
+                                                  <textarea name="" id="" cols="96" class="textarea" rows="5"></textarea>
+                                             </p>
+                                             <p>
+                                                  <input type="button" class="buttonB btn_w70 btn_h26 btnBlue_70 fSize-12" style="margin:8px 0 8px 0;" value="回复" />
+                                             </p>
+                                        </div>
+                                   </div>
+                                   <div class="clear2"></div>
+                                   <div class="pageListWarp" >
+                                        <ul class="pageList f_right fCgray3" >
+                                             <li>首页</li>
+                                             <li>上一页</li>
+                                             <li>01/23</li>
+                                             <li>下一页</li>
+                                             <li>尾页</li>
+                                        </ul>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <!--photoList main -->
+                    <div class="clear2"></div>
+               </div>
+               <!-- AM_photoEditWarp --> 
+          </div>
+     </div>
+</div>
+<!--Main-->
+<div class="footer layout"><span class="f_right">Copyright @ 2012 Savorboard Corporation, All right reserved.</span>
+     <p class="footer_link"><a href="javascript:void(0);">特色</a><a href="javascript:void(0);">开发应用</a><a href="javascript:void(0);">法律声明</a><a href="javascript:void(0);">招聘团队</a><a href="javascript:void(0);">建议</a><a href="javascript:void(0);">帮助</a></p>
+</div>
+
+<script type="text/javascript" src="../scripts/jquery.switchover.js"></script>
+<script type="text/javascript" src="../scripts/jquery.core.js"></script>
+<script type="text/javascript" src="../scripts/jquery.ui.accordion.js"></script>
+<script type="text/javascript">
+	//$('.activityList_Will').switchClick('switchover','li');
+    var html = '<li>\
+            <div class="selectMenu f_right pR">\
+            <div class="fSize-12 pR fCgray3 list-opt" >\
+            <div class="opt-button"><span class="f_right"></span>操作</div>\
+    <div class="selectMain pA fCgray3">\
+            <p><a href="javascript:;">复制活动连接</a></p>\
+            <p>退出</p>\
+            </div>\
+            </div>\
+            </div>\
+            <h3>圣诞节大家一起出去狂欢吧\
+    <p class="fCgray3">03/22-03/24     24/100人</p></h3>\
+    <ul class="activityDetailList fCblue"  style="display: block;">\
+            <li><b>简介</b></li>\
+            <li>计划</li>\
+            <li>收支财务</li>\
+            <li>成员</li>\
+            <li>搭车信息</li>\
+            <li>行车路线</li>\
+            <li>天气预报</li>\
+            <li>留言板</li>\
+            </ul>\
+    <a href="###" class="icon-packup icon back" title="缩起"></a>\
+            </li>\
+            <li>\
+            <div class="selectMenu f_right pR">\
+            <div class="fSize-12 pR fCgray3 list-opt" >\
+            <div class="opt-button"><span class="f_right"></span>操作</div>\
+    <div class="selectMain pA fCgray3">\
+            <p><a href="javascript:;">复制活动连接</a></p>\
+            <p>退出</p>\
+            </div>\
+            </div>\
+            </div>\
+            <h3>圣诞节大家一起出去狂欢吧\
+    <p class="fCgray3">03/22-03/24     24/100人</p></h3>\
+    <ul class="activityDetailList fCblue">\
+            <li><b>简介</b></li>\
+            <li>计划</li>\
+            <li>收支财务</li>\
+            <li>成员</li>\
+            <li>搭车信息</li>\
+            <li>行车路线</li>\
+            <li>天气预报</li>\
+            <li>留言板</li>\
+            </ul>\
+            </li>\
+            <li> <h3>圣诞节大家一起出去狂欢吧\
+    <p class="fCgray3">03/22-03/24     24/100人</p></h3>\
+    <ul class="activityDetailList fCblue">\
+            <li><b>简介</b></li>\
+            <li>计划</li>\
+            <li>收支财务</li>\
+            <li>成员</li>\
+            <li>搭车信息</li>\
+            <li>行车路线</li>\
+            <li>天气预报</li>\
+            <li>留言板</li>\
+            </ul>\
+            </li>\
+            <li>\
+            <h3>圣诞节大家一起出去狂欢吧\
+    <p class="fCgray3">03/22-03/24     24/100人</p></h3>\
+    <ul class="activityDetailList fCblue">\
+            <li><b>简介</b></li>\
+            <li>计划</li>\
+            <li>收支财务</li>\
+            <li>成员</li>\
+            <li>搭车信息</li>\
+            <li>行车路线</li>\
+            <li>天气预报</li>\
+            <li>留言板</li>\
+            </ul>\
+            </li>\
+    <li class="fCgray3">\
+            <h3>圣诞节大家一起出去狂欢吧\
+            <p class="fCgray3">03/22-03/24     24/100人</p></h3>\
+    <ul class="activityDetailList fCblue">\
+            <li><b>简介</b></li>\
+            <li>计划</li>\
+            <li>收支财务</li>\
+            <li>成员</li>\
+            <li>搭车信息</li>\
+            <li>行车路线</li>\
+            <li>天气预报</li>\
+            <li>留言板</li>\
+            </ul>\
+            </li>\
+    <li class="fCgray3">\
+            <h3>圣诞节大家一起出去狂欢吧\
+            <p class="fCgray3">03/22-03/24     24/100人</p></h3>\
+    <ul class="activityDetailList fCblue">\
+            <li><b>简介</b></li>\
+            <li>计划</li>\
+            <li>收支财务</li>\
+            <li>成员</li>\
+            <li>搭车信息</li>\
+            <li>行车路线</li>\
+            <li>天气预报</li>\
+            <li>留言板</li>\
+            </ul>\
+    </li>'
+
+    $('.activityList_Will').off('click.activityList').on('click.activityList','li',function(){
+        if($(this).find('.activityDetailList').is(':animated')){ return ;}
+        var items = $('.activityList_Will > li');
+        items.not(this).find('.activityDetailList').stop(true).slideUp();
+        alert(items.not(this).find('.activityDetailList').length)
+        items.find('.back').hide();
+        items.eq($(this).index()).find('.activityDetailList').stop(true).slideDown();
+        $(this).find('.back').show();
+    }).off('click.back').on('click.back','.back',function(e){
+        e.stopPropagation();
+        $(this).hide().prev().stop(true).slideUp();
+    });
+
+
+    $('.activityList_Will').append(html);
+
+
+	$('.opera').hover(function(){
+		$(this).addClass('opera-hover');
+		$(this).find('.operaList').show();
+	},function(){
+		$(this).removeClass('opera-hover');
+		$(this).find('.operaList').hide();
+	})
+
+    /**
+     *   copylink
+     * */
+    $(function(){
+        $('#copylink').click(function(e){
+            e.stopPropagation();
+            $('.copytext-panel').stop(true).slideDown();
+        });
+        $('.copytext-wrap').click(function(e){e.stopPropagation();});
+
+        $('.copytext .text').click(function(){
+            $(this).prev().stop(true).fadeIn();
+        });
+
+        $('.tips-panel .close').click(function(){
+            $(this).closest('.tips-panel').stop(true).fadeOut();
+        });
+
+        $(document).on('click',function(){
+            $('.copytext-panel').stop(true).slideUp();
+        });
+    })
+
+
+</script>
+
+</body>
+</html>

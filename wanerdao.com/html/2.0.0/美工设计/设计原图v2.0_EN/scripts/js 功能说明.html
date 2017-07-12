@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script type="text/javascript" src="jquery-1.7.2.min.js" ></script>
+<script type="text/javascript" src="jquery.class.min.js"></script>
+<script type="text/javascript" src="Class.JSToHtml.js"></script>
+<script type="text/javascript" src="jquery.plus.js"></script>
+<script type="text/javascript" src="jquery.plugin.js"></script>
+    <style type="text/css">
+        ul,li,h3{ list-style: none; margin: 0; padding: 0; line-height: normal; font-size: 13px;}
+        .title{margin:10px 0 ; font-size: 16px;}
+    </style>
+</head>
+
+<body>
+<h3 class="title">jquery-fn</h3>
+<div id="jquery-fn" >
+
+</div>
+
+<h3 class="title">jquery-ui</h3>
+<div id="jquery-ui" >
+
+</div>
+
+<script  type="text/javascript">
+
+   new Class.JSToHtml('#jquery-fn',{
+       namespace : 'jQuery.fn'
+   });
+   new Class.JSToHtml('#jquery-ui',{
+       namespace : 'jQuery.ui'
+   });
+</script>
+</body>
+</html>

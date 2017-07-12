@@ -1,0 +1,24 @@
+﻿            <script type="text/javascript">
+                $(function () {
+                    var strUrl = window.location.href;
+                    var arrUrl = strUrl.split("/");
+                    var strPage = arrUrl[arrUrl.length - 1];
+                    $(".group_tab ul li a").each(function () {
+                        if (strPage == $(this).attr("href")) {
+                            $(this).addClass("tagf");
+                            return false;
+                        }
+                    });
+
+                });
+        </script>
+        <div class="group_tab clearfix">
+            <ul>
+                <li><a href="follow_friends.html">关注人</a></li>
+                <li><a href="follow_group.html">关注圈子</a></li>
+                <!--<li><a href="follow_posts.html">关注帖子</a></li>-->
+                <li><a href="follow_activity.html">关注活动</a></li>
+                <!--<li><a href="follow_module.html">关注模块</a></li>-->
+                <li><a href="follow_myself.html">关注我的人</a></li>
+            </ul>
+        </div>

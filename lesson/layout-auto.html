@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+    <style>
+        .clearfix {
+            *zoom: 1;
+        }
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+            line-height: 0;
+        }
+        .clearfix:after {
+            clear: both;
+        }
+        .sidebar { float:left; width:200px; background:red; }
+        .main {  background: blue; overflow: hidden; }
+        .sidebar,.clearfix{ height: 100px; }
+    </style>
+</head>
+
+<body>
+    <div class="clearfix">
+        <div class="sidebar"></div>
+        <div class="clearfix main">
+            <br/><br/> <br/><br/> <br/><br/>
+        </div>
+    </div>
+    <br/>
+    <div class="clearfix">
+        <div class="sidebar" style="width: 40%"></div>
+        <div style="float: left; width: 60%; background: blue; height: 100%;">
+            <br/><br/> <br/><br/> <br/><br/>
+        </div>
+    </div>
+
+
+</body>
+</html>

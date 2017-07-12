@@ -1,0 +1,531 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+    <title>Set privacy-Account-Savorboard</title>
+
+    <meta name="keywords" content="Set privacy, Account, Savorboard, Life and social network"/>
+    <meta name="description"
+          content="Set privacy for diary, album, video, chart and others"/>
+
+
+    <meta http-equiv="Window-target" content="_top"/>
+    <meta name="author" content=""/>
+    <meta name="copyright" content="2001-2010 Comsenz Inc."/>
+    <link rel="Bookmark" href="favicon.ico"/>
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/activity.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="css/en.css"/>
+
+
+    <!-- jquery 库 -->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.plus.min.js"></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="index.html" class="logo"><img src="images/logo-en.png" alt="Wanerdao"></a>
+
+        <div class="home hover">
+            <a title="Home" class="button" href="javascript:;"></a>
+
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a href="javascript:;">Activity</a></h3>
+                        <a href="javascript:;">寻找Activity</a><a href="javascript:;">CreateActivity</a><a href="javascript:;">CategoryActivity</a><a
+                            href="javascript:;">Custom activity</a><a href="javascript:;">时令Activity</a><a href="javascript:;">我的Activity</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">个人</a></h3>
+                        <a  href="javascript:;">Profile account</a><a  href="javascript:;">Notes</a><a  href="javascript:;">Album</a><a
+                            href="javascript:;">视频</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">关系</a></h3>
+                        <a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a
+                            href="javascript:;">SubscribeSettings</a><span data-loader="class-combo"><a href="#">我的Group</a>|<i
+                            class="item-arrow combo-icon"></i> <div class="combo-list">
+                        <ul>
+                            <li value="1">12</li>
+                            <li value="2">item2</li>
+                            <li value="3">item3</li>
+                            <li value="4">item4</li>
+                            <li value="5">item5</li>
+                        </ul>
+                    </div></span><a href="javascript:;">寻找Group</a><a href="javascript:;">CreateGroup</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">Home</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="Activity / Friend" class="text" ><input type="submit" class="button" value="">
+        </div>
+
+        <div class="infotips">
+                <span class="floatbox-wrap dropdown">
+                    <a href="javascript:;" class="hint"><i class="icon icon-bell "></i><span class="badge badge-important">20</span></a>
+                    <div class="dropdown-pane floatbox slide">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <div class="accordion scroll-panel" data-collapse="">
+                                <div class="accordion-item active">
+                                    <div class="accordion-heading toolbar"><i class="icon-minus-sign"></i><!--<i class="icon-collapse"></i>--><span class="text-important">1223</span>&nbsp;Activity name，city/state <span class="time">2012/12 - 2021/12</span></div>
+                                    <div class="accordion-panel" style="display: block">
+                                        <ul class="group-list">
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Detail</a></li>
+                                            <li>
+                                                <i class="icon-block-blue"></i>( Task )&nbsp;<span class="title "><strong>Task name</strong><small class="desc detail-short">Description</small></span>
+                                                <div class="detail">
+                                                    <small class="desc">Description</small>
+                                                    <br/>
+                                                    <span class="price">$123</span>&nbsp;<small class="desc">Private message&nbsp;Attachment</small>
+                                                    <br/>
+                                                    Creator
+                                                    <a href="" class="opts">Detail</a>
+                                                </div>
+                                            </li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Request content</a></li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Request content</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="accordion-item ">
+                                    <div class="accordion-heading toolbar"><i class="icon-plus-sign"></i><!--<i class="icon-collapse"></i>--><span class="text-important">1223</span>&nbsp;Activity name，city/state</div>
+                                    <div class="accordion-panel" style="display: block">
+                                        <ul class="group-list">
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Detail</a></li>
+                                            <li>
+                                                <i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc detail-short">Description</small></span>
+                                                <div class="detail">
+                                                    <small class="desc">Description</small>
+                                                    <br/>
+                                                    <span class="price">$123</span>&nbsp;<small class="desc">Private message</small>
+                                                    <br/>
+                                                    Creator
+                                                    <a href="" class="opts">Detail</a>
+                                                </div>
+                                            </li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Request content</a></li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Request content</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+                <span class="floatbox-wrap dropdown">
+                    <a href="javascript:;" class="hint"><i class="icon icon-bullhorn"></i><span class="badge badge-important">20</span></a>
+                    <div class="dropdown-pane floatbox slide">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <ul class="group-list scroll-panel">
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </span>
+                <span class="floatbox-wrap ">
+                    <span class="dropdown">
+                        <a href="javascript:;" class="hint"><i class="icon icon-envelope"></i><span class="badge badge-important">20</span></a>
+                        <div class="dropdown-pane floatbox slide" id="message-box">
+                            <i class="arrow"></i>
+                            <div class="scroll">
+                                <div class="scroll-panel">
+                                    <div class="toolbar"><a href="###" class="message-box">Go to message box<span class="text-important">（200）</span></a>•<a
+                                            href="###" class="message-compose">Compose a message</a></div>
+                                    <ul class="group-list">
+                                        <li>
+                                            <div class="heading">
+                                                <i class="icon icon-star-alt"></i><span class="title">Name<small class="desc detail-short">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">Detail</a></span>
+                                            </div>
+                                            <div class="form detail">
+                                                <div class="form-item ">
+                                                    <p class="desc">Content...</p>
+                                                </div>
+                                                <div class="form-item">
+                                                    <div class="input-block">
+                                                        <textarea  class="textarea " placeholder="Replay" ></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <label><input type="checkbox"/>Save a draft</label>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <span class="tips-result">Tips</span>
+                                                        <button class="btn btn-primary btn-mini">Reply</button><button class="btn btn-default btn-mini">Forward</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="heading">
+                                                <i class="icon icon-star-alt"></i><span class="title">Name<small class="desc detail-short">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">Detail</a></span>
+                                            </div>
+                                            <div class="form detail">
+                                                <div class="form-item ">
+                                                    <p class="desc">Content...</p>
+                                                </div>
+                                                <div class="form-item">
+                                                    <div class="input-block">
+                                                        <textarea  class="textarea " placeholder="Replay" ></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <label><input type="checkbox"/>Save a draft</label>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <span class="tips-result">Tips</span>
+                                                        <button class="btn btn-primary btn-mini">Send</button><button class="btn btn-default btn-mini">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><i class="icon icon-star-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">Read</a></span></li>
+                                        <li><i class="icon icon-star-empty-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">Read</a></span></li>
+                                        <li><i class="icon icon-star-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">Read</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    <div class="dropdown-pane floatbox slide" id="message-compose">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <div class=" scroll-panel">
+                                <div class="toolbar"><a href="###" class="message-box">Go to message box<span class="text-important">（200）</span></a>•<a
+                                        href="###" class="message-compose">Compose a message</a><span class="opts">Content saved, Date: MM/dd/yyyy hh:mm</span></div>
+                                    <div class="form container sendbox">
+                                        <div class="form-item ">
+                                            <label><span class="input-label">To:</span><input type="text" class="text span8"/><button class="btn btn-default btn-mini">Search</button></label>
+                                        </div>
+                                        <div class="form-item">
+                                            <label><span class="input-label">Content:</span><textarea  class="textarea span8" placeholder="Replay" ></textarea></label>
+                                        </div>
+                                        <div class="form-panel clearfix">
+                                            <div class="pull-left ">
+                                                <label><input type="checkbox"/>Save a draft</label>
+                                            </div>
+                                            <div class="pull-right">
+                                                <span class="tips-result">Tips</span>
+                                                <button class="btn btn-primary btn-mini">Send</button><button class="btn btn-default btn-mini">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                 </span>
+            <!-- <a href="javascript:;" class="icon-message-mail">123</a>-->
+            <script>
+
+                $('.message-box').click(function(e){
+                    $('#message-compose').removeClass('in')
+                    $('#message-box').addClass('in');
+                })
+                $('.message-compose').click(function(){
+                    $('#message-box').removeClass('in')
+                    $('#message-compose').addClass('in');
+                })
+
+
+            </script>
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img  src="images/defaults/32-32.jpg"></a><a  class="name" href="javascript:;"><span >烧饭-人生旅途中人生旅途中</span><b></b></a>
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">Profile</a></li>
+                    <li><a href="javascript:;">Account</a></li>
+                    <li>
+                        <a href="javascript:;">Switch language</a>
+                        <ul>
+                            <li><a href="javascript:;">Chinese</a></li>
+                            <li><a href="javascript:;">English</a></li>
+                        </ul>
+                    </li>
+                    <li class="last"><a href="javascript:;">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout activity-layout">
+    <div class="container">
+        <div class="tabs-master">
+            <div class="nav">
+                <div class="pull-left"><a href="#" class="selected">Privacy settings</a></div>
+            </div>
+        </div>
+        <div class="mod mod-default mod-special">
+            <div class="hd">
+                <i class="icon icon-block-blue"></i>Personal page
+            </div>
+            <div class="bd form block-label-form">
+                <ul>
+                    <li><label for="">Basic info：</label><span class="combo text-xlarge" data-loader="class-combo">
+                        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list">
+                            <ul>
+                                <li value="1">Select category</li>
+                                <li value="2">item2</li>
+                                <li value="3">item3</li>
+                                <li value="4">item4</li>
+                                <li value="5">item5</li>
+                            </ul>
+                        </div>
+                    </span>
+                    </li>
+                    <li><label for="">Education background：</label><span class="combo text-xlarge" data-loader="class-combo">
+                        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list">
+                            <ul>
+                                <li value="1">Select category</li>
+                                <li value="2">item2</li>
+                                <li value="3">item3</li>
+                                <li value="4">item4</li>
+                                <li value="5">item5</li>
+                            </ul>
+                        </div>
+                    </span>
+                    </li>
+                    <li><label for="">Working background：</label><span class="combo text-xlarge" data-loader="class-combo">
+                        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list">
+                            <ul>
+                                <li value="1">Select category</li>
+                                <li value="2">item2</li>
+                                <li value="3">item3</li>
+                                <li value="4">item4</li>
+                                <li value="5">item5</li>
+                            </ul>
+                        </div>
+                    </span>
+                    </li>
+                    <li><label for="">Interests：</label><span class="combo text-xlarge" data-loader="class-combo">
+                        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list">
+                            <ul>
+                                <li value="1">Select category</li>
+                                <li value="2">item2</li>
+                                <li value="3">item3</li>
+                                <li value="4">item4</li>
+                                <li value="5">item5</li>
+                            </ul>
+                        </div>
+                    </span>
+                    </li>
+                    <li><label for="">Contact：</label><span class="combo text-xlarge" data-loader="class-combo">
+                        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list">
+                            <ul>
+                                <li value="1">Select category</li>
+                                <li value="2">item2</li>
+                                <li value="3">item3</li>
+                                <li value="4">item4</li>
+                                <li value="5">item5</li>
+                            </ul>
+                        </div>
+                    </span>
+                    </li>
+                </ul>
+                <div class="privacy-nav">
+                    <a href="javascript:;"><i class="icon-big-note"></i><span>Note <br><em>Go to note management settings</em></span></a><a
+                        href="javascript:;"><i class="icon-big-photo"></i><span>Photo <br><em>Go to photo management settings</em></span></a><a
+                        href="javascript:;"><i class="icon-big-video"></i><span>Video <br><em>Go to video management settings</em></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="mod mod-default mod-special">
+            <div class="hd">
+                <i class="icon icon-block-blue"></i>Custom permission settings
+            </div>
+            <div class="titlebar">Share this with <em>Note: The result will be the collection of multi conditions</em></div>
+            <div class="form bd">
+                <div class="form-item">
+                    <strong class="input-control">1.</strong><span class="combo" data-loader="class-combo">
+                        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list">
+                            <ul>
+                                <li value="1">请SelectCategory</li>
+                                <li value="2">item2</li>
+                                <li value="3">item3</li>
+                                <li value="4">item4</li>
+                                <li value="5">item5</li>
+                            </ul>
+                        </div>
+                    </span><strong class="input-control">2.</strong><span class="combo" data-loader="class-combo">
+                        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list">
+                            <ul>
+                                <li value="1">请SelectCategory</li>
+                                <li value="2">item2</li>
+                                <li value="3">item3</li>
+                                <li value="4">item4</li>
+                                <li value="5">item5</li>
+                            </ul>
+                        </div>
+                    </span><strong class="input-control">3.</strong><span class="combo" data-loader="class-combo">
+                        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list">
+                            <ul>
+                                <li value="1">请SelectCategory</li>
+                                <li value="2">item2</li>
+                                <li value="3">item3</li>
+                                <li value="4">item4</li>
+                                <li value="5">item5</li>
+                            </ul>
+                        </div>
+                    </span><input type="text" class="text personal-text"/><a href="javascript:;" class="btn btn-gray btn-mini">Add</a>
+                </div>
+                <div class="form-item">
+                      <span class="form-tips tipbox tipbox-arrow list-label">
+                            <i class="arrow"></i>
+                            <span>Name<a href="#" class="icon-circle-close"></a></span><span>Name<a href="#"
+                                                                                                    class="icon-circle-close"></a></span><span>Name<a
+                              href="#" class="icon-circle-close"></a></span>
+                      </span>
+                </div>
+
+            </div>
+            <div class="titlebar">Don’t share this with <em>Note: Un-viewable groups have higher priority than viewable groups</em></div>
+            <div class="form bd">
+                <div class="form-item">
+                    <label for="">Name：</label><input type="text" class="text text-xxlarge personal-text"/>&nbsp;<a
+                        href="javascript:;" class="btn btn-gray btn-mini">Add</a>
+                </div>
+                <div class="form-item">
+                    <span class="form-tips tipbox tipbox-arrow list-label">
+                        <i class="arrow"></i>
+                        <span>Name<a href="#" class="icon-circle-close"></a></span><span>Name<a href="#"
+                                                                                                class="icon-circle-close"></a></span><span>Name<a
+                            href="#" class="icon-circle-close"></a></span>
+                    </span>
+                </div>
+                <div class="form-item">
+                    <label for=""><input type="checkbox"/>Save the settings</label><label for="">Define permission name：<input type="text" class="text text-large"/></label>
+                </div>
+                <div class="form-item">
+                    <span class="form-tips tipbox tipbox-arrow list-label">
+                        <span>Name<a href="#" class="icon-circle-close"></a></span><span>Name<a href="#"
+                                                                                                class="icon-circle-close"></a></span><span>Name<a
+                            href="#" class="icon-circle-close"></a></span>
+                    </span>
+                </div>
+                <div class="form-item">
+                     <span class="result">
+                            <ul>
+                                <li>Note</li>
+                            </ul>
+                     </span>
+                </div>
+                <div class="form-item">
+                    <input type="submit" data-active-val="Save..." data-active-class="disabled-button"  value="Save" class="btn btn-primary btn-mini input-control"><input
+                        type="submit" value="Cancel" class="btn btn-default btn-mini">
+                </div>
+            </div>
+        </div>
+        <div class="mod mod-default mod-special">
+            <div class="hd">
+                <i class="icon icon-block-blue"></i>Friend request
+            </div>
+            <div class="bd form">
+                <label for="">Who can send friend request to me：</label><span class="combo text-xlarge" data-loader="class-combo">
+                        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list">
+                            <ul>
+                                <li value="1">所有人</li>
+                                <li value="2">item2</li>
+                                <li value="3">item3</li>
+                                <li value="4">item4</li>
+                                <li value="5">item5</li>
+                            </ul>
+                        </div>
+                    </span>
+            </div>
+        </div>
+        <div class="mod mod-default mod-special">
+            <div class="hd">
+                <i class="icon icon-block-blue"></i>Search from  Outside
+            </div>
+            <div class="bd form">
+                <label for="">Allow outside users or search engine to find me：</label><span class="combo text-xlarge" data-loader="class-combo">
+                        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list">
+                            <ul>
+                                <li value="1">充许</li>
+                                <li value="2">item2</li>
+                                <li value="3">item3</li>
+                                <li value="4">item4</li>
+                                <li value="5">item5</li>
+                            </ul>
+                        </div>
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+    <div class="sitemap">
+        <a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Terms</a><a
+            href="javascript:;"> Job</a><a href="javascript:;">Suggestion</a><a href="javascript:;">Help</a>
+    </div>
+    <span class="copyright">Copyright @ 2011-2014 Savorboard Corporation</span>
+    </div>
+</div>
+<!-- end footer -->
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/class.ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.placeholer.js"></script>
+<script type="text/javascript" src="js/jquery.smartfloat.js"></script>
+<script type="text/javascript">
+    $('#guide').smartFloat();
+</script>
+
+</body>
+</html>

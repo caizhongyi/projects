@@ -1,0 +1,133 @@
+/**
+* @author xiaoxubeii
+*/
+
+//api主url
+var url = api.createUrl();
+
+//转换器的api地址
+var convUrl = url + "Service/Common/UnitConverter.svc/";
+
+$(function () {
+    function getUnitCategories(callBack) {
+        $.getJSON(convUrl + "Unit/Category/Get", function (data) {
+            callBack(JSON.parse(data));
+        });
+    }
+
+    function getUnits(cateogryId, callBack) {
+        $.getJSON(convUrl + "Unit/Get/" + cateogryId, function (data) {
+            callBack(JSON.parse(data));
+        });
+    }
+    function convert(categoryId, unitId, value, callBack) {
+        $.getJSON(convUrl + "Unit/Convert/" + categoryId + "," + unitId + "/" + value, function (data) {
+            callBack(JSON.parse(data));
+        });
+    }
+
+    function Converter() {
+        this.render = render;
+
+        function render() {
+            _render();
+        }
+
+        function _render() {
+            _renderConvType();
+            _renderConvert();
+        }
+
+        function _init() {
+            $(".unit").html("<option value='-1'>请选择</option>");
+        }
+
+        function _renderConvert() {
+            $(".turn").click(function () {
+                var value = $(".inputNum").val();
+                var categoryId = $(".conType").val();
+                var unitId = $(".unit").val();
+                if (unitId == "-1") {
+                    alert("请选择转换单位类别！");
+                    return false;
+                }
+                if (categoryId == "-1") {
+                    alert("请选择转换单位！");
+                    return false;
+                }
+                if (!value) {
+                    alert("请输入转换数值！");
+                    return false;
+                }
+                convert(categoryId, unitId, value, function (data) {
+                    $(".converter").css("left", "25%");
+                    $('.converter .favRight').show();
+                    var $ul = $(".converterRight ul").html("");
+                    $.each(data.obj, function (i, item) {
+                        var li = "<li><span class='fRight'>" + item.unit_name + "</span><input type='text' value='" + item.value + "' readonly='readonly'></li>";
+                        $ul.append(li);
+                    });
+                });
+            });
+        }
+
+        //加载转换单位类别
+        function _renderConvType() {
+            function _render(data) {
+                var $conType = $(".conType");
+                $.each(data.rows, function (i, item) {
+                    $conType.append("<option value='" + item.id + "'>" + item.category_name + "</option>");
+                });
+                $conType.change(function () {
+                    _renderUnit($(this).val());
+                });
+            }
+
+            //加载单位
+            function _renderUnit(categoryId) {
+                function _render(data) {
+                    var $unit = $(".unit");
+                    $.each(data.rows, function (i, item) {
+                        $unit.append("<option value='" + item.id + "'>" + item.unit_name + "</option>");
+                    });
+                }
+                function _init() {
+                    $('.converter .favRight').hide();
+                    $(".converter").css("left", "50%");
+                    if (categoryId == "-1") {
+                        $(".unit").html("<option value='-1'>请选择</option>");
+                    } else {
+                        $(".unit").html("<option value='-1'>加载中</option>");
+                        getUnits(categoryId, function (data) {
+                            if (data.result) {
+                                $(".unit option[value=-1]").text("请选择");
+                                _render(data);
+                            }
+                        });
+                    }
+                }
+                _init();
+            }
+
+            //初始化 
+            function _init() {
+                $(".conType").html("<option value='-1'>加载中</option>");
+                _renderUnit($(".conType").val());
+                getUnitCategories(function (data) {
+                    if (data.result) {
+                        $(".conType option[value=-1]").text("请选择");
+                        _render(data);
+                    }
+                });
+            }
+
+            _init();
+        }
+
+    }
+
+    var conv = new Converter();
+    conv.render();
+});
+
+

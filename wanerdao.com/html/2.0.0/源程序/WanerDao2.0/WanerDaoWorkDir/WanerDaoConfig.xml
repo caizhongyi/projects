@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WanerDaoConfig xmlns="WanerDaoConfig.xsd">
+    <Settings>
+        <!--
+      描述：日志存放路径
+      创建者:金广亮
+      创建时间：2011-9-19
+    -->
+        <!--
+    <add key="Log" value="WanerDaoLog\"/>
+    -->
+        <!--
+      描述：日志存放路径目录名，可以自行更改存放路径文件名格式但是必须符合日期格式
+      创建者:金广亮
+      创建时间：2011-9-19
+    -->
+        <!--
+    <add key="LogDirFormat" value="yyyyMMdd"/>-->
+        <!--
+      描述：数据库访问驱动程序集
+      创建者:金广亮
+      创建时间：2011-9-19
+    -->
+        <add key="DbProviderAssemblyInfo" value="WanDaoMySqlDAL"/>
+        <!--
+      描述：数据库访问具体实现类
+      创建者:金广亮
+      创建时间：2011-9-19
+    -->
+        <add key="DbProviderClass" value="WanerDao2.WanDaoMySqlDAL.MySqlDALHelper"/>
+
+        <!--
+      描述：玩儿道DES加密密钥
+      创建者:金广亮
+      创建时间：2011-9-25
+    -->
+        <add key="WanerDaoDESSecurityKey" value="WanerDao2123456"/>
+
+        <!--
+      描述：玩儿道AES加密密钥
+      创建者:金广亮
+      创建时间：2011-9-25
+    -->
+        <add key="WanerDaoAESSecurityKey" value="WanerDao2123456987654321"/>
+        <!--
+      描述：数据库配置文件存放路径
+      创建者:金广亮
+      创建时间：2011-9-19
+    -->
+        <add key="DbCon" value="DbConfig\WanerDaoDbConfig.xml"/>
+
+        <!--
+      描述：圈子图片存放路径
+      创建者:胥鑫
+      创建时间：2012-3-9
+    -->
+        <add key="groupImagePath" value="group"/>
+
+        <!--
+      描述：圈子文件存放路径
+      创建者:胥鑫
+      创建时间：2012-3-9
+    -->
+        <add key="groupFilePath" value="group"/>
+        <!--
+      描述：文件相对目录地址
+      创建者:胥鑫
+      创建时间：2012-3-26
+    -->
+        <add key="WanerdaoServerFilesPath" value="\upFiles\"/>
+
+
+        <!--
+      描述：相片相对目录地址
+      创建者:徐兵
+      创建时间：2011-11-26
+    -->
+        <add key="WanerdaoServerPhotoRelativePath" value="\UpPhoto\"/>
+
+      <!--
+      描述：临时文件存储目录
+      创建者:徐兵
+      创建时间：2012-8-1
+    -->
+      <add key="WanerdaoServerTempFilePath" value="\TempFileFolder\"/>
+
+        <!--
+      描述：临时相片相对目录地址
+      创建者:徐兵
+      创建时间：2011-11-26
+    -->
+        <add key="WanerdaoServerTempPhotoRelativePath" value="UpPhoto\"/>
+        <!--
+      描述：允许选择最多活动作为参数
+      创建者:徐兵
+      创建时间：2011-11-26
+    -->
+        <add key="WanerdaoMaxActivityShowParamCount" value="10"/>
+        <!--
+      描述：允许用户创建动作参数最大数量
+      创建者:徐兵
+      创建时间：2011-11-26
+    -->
+        <add key="WanerdaoMaxActivityCreateParamCount" value="10"/>
+
+        <!--
+        描述：相片服务器根目录地址
+        创建者:徐兵
+        创建时间：2011-11-26-->
+        <add key="WanerdaoHeadPortrait" value="/images/personal/avatar/"/>
+
+      <!--
+        描述：天气预报接口地址
+        创建者:徐兵
+        创建时间：2012-9-21-->
+      <add key="WanerdaoWeatherUrl" value="http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D'http%3A%2F%2Fxml.weather.yahoo.com%2Fforecastrss%2F{0}_f.xml'"/>
+      <!--
+        描述：yahoo天气预报城市CODE查找地址
+        创建者:徐兵
+        创建时间：2012-9-21-->
+      <add key="WanerdaoWeatherCityCodeUrl" value="http://query.yahooapis.com/v1/public/yql?q=select*from%20geo.places%20where%20text=%22{0}%22&amp;format=xml"/>
+
+      <!--
+        描述：yahoo天气图片地址
+        创建者:徐兵
+        创建时间：2012-9-21-->
+      <add key="WanerdaoWeatherImage" value="http://l.yimg.com/a/i/us/we/52/{0}.gif"/>
+      
+        <!--
+	  描述：日志默认分类(未分类组)
+      创建者:杨晓东
+      创建时间：2011年12月25日21:46:39
+	  -->
+        <add key="WanerDaoBlogDefaultCategoryId" value="098d2a40288c11e19781002354c6e759"/>
+
+        <!--
+	  描述：获取IP所在地 
+      创建者:王薪杰
+      创建时间：2012年1月1日00:00:00
+	  -->
+        <add key="WanerdaoLocationInterface" value="http://j.maxmind.com/app/geoip.js"/>
+
+        <!--
+	  描述：获取Weather
+      创建者:王薪杰
+      创建时间：2012年1月1日00:00:00
+	  -->
+        <add key="WanerdaoWeatherInterface" value="http://www.google.com/ig/api?weather="/>
+
+        <!--
+	  描述：个人相册默认图标路径
+      创建者:杨晓东
+      创建时间：2012年1月1日2:29:09
+	  -->
+        <add key="WanerDaoImageFolderIconDefaultPath" value="/images/no_photo_s.png"/>
+
+        <!--
+	  描述：用户能自定义权限的数量
+      创建者:王薪杰
+      创建时间：2012年3月3日
+	  -->
+        <add key="WanerDaoCustomPermissionCount" value="5"/>
+
+        <!--
+          需要执行的服务(轮询服务/天)的开始时间(晚上12点开始)
+        -->
+
+        <add key="WanerDaoPollingDayOfBeginTime" value="00:00:00"/>
+        <!--
+          需要执行的服务的间隔时间(30分钟)
+        -->
+        <add key="WanerDaoPollingIntervalByHalfHour" value="00:30:00"/>
+		<!--
+          活动相册或个人相册上传临时路径
+        -->
+		<add key="WanerdaoPhotoTemPath" value="/PhotoUpload/"/>
+		<!--
+          活动相册或个人相册上传基础路径
+        -->
+		<add key="WanerdaoPhotoBasePath" value="/images/upPhoto/"/>
+		<!--
+          个人头像默认图片地址
+        -->
+		<add key="WanerdaoPersonalDefaultLogoPath" value="/images/personal/avatar/avatar.jpg"/>
+		<!--
+          个人头像缩略图默认图片地址
+        -->
+		<add key="WanerdaoPersonalDefaultSmallLogoPath" value="/images/personal/avatar/talk_peo_img.png"/>
+      
+    <!--域名-->
+
+      <add key="WanerdaoSiteDomain" value=""/>
+		
+    </Settings>
+
+
+</WanerDaoConfig>

@@ -1,0 +1,19 @@
+
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `f_wanerdaoformatqueryregexp`(
+    fieldName varchar(32), /* 字段名*/
+    p_conditions varchar(256)) RETURNS varchar(512) CHARSET utf8
+    COMMENT '格式化正则表达式查询'
+begin
+    set p_conditions= replace(trim(':' from trim(replace(replace(p_conditions,'|',''),'::',':'))),':','|');
+    if p_conditions<>'' then
+            return CONCAT(' and ',fieldName,' regexp ''',p_conditions,''''); 
+    else
+        return '';
+    end if;
+end

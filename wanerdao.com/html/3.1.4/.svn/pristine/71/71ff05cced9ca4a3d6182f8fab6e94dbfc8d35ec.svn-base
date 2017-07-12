@@ -1,0 +1,49 @@
+
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <script src="../../jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="../src/index.css"/>
+    <script src="../src/index.js"></script>
+  </head>
+  <body>
+    <div id="tabs-click" data-event="click" class="tabs">
+      <ul class="nav-tabs">
+        <li class="active"><a href="#" data-target="">tab1</a></li>
+        <li><a href="#" data-target="">tab2</a></li>
+        <li><a href="#" data-target="">tab3</a></li>
+        <li><a href="#" data-target="">tab4</a></li>
+      </ul>
+      <ul class="tabs-list">
+        <li class="in">环保部负责人日前表示，在开展空气质量新标准监测的161个城市中，有50个城市发生了重度及以上污染，其中11个城市为严重污染。北京、河北、山西、山东、河南、辽宁等地雾霾污染情况进一步恶化。值得注意的是，前后将近一周时间，环保部督察组启动了12个地方城市的大气污染防治专项督查，结果却令人忧虑，大量工业企业违规排放、本应该淘汰的落后产能仍然在堂而皇之地进行生产……</li>
+        <li>之地进行生产……</li>
+        <li>度及以上污染，其中11个城市为严重污染。北京、河北、山西、山东、河南、辽宁等地雾霾污染情况进一步恶化。值得注意的是，前后将近一周时间，环保部督察组启动了12个地方城市的大气污染防治专项督查，结果却令人忧虑，大量工业企业违规排放、本应该淘汰的落后产能仍然在堂而皇之地进行生产……</li>
+        <li>意的是，前后将近一周时间，环保部督察组启动了12个地方城市的大气污染防治专项督查，结果却令人忧虑，大量工业企业违规排放、本应该淘汰的落后产能仍然在堂而皇之地进行生产……</li>
+      </ul>
+    </div>
+    <div data-event="mouseenter" class="tabs">
+      <ul class="nav-tabs">
+        <li class="active"><a href="#" data-target="#content1">tab1</a></li>
+        <li><a href="#" data-target="#content2">tab2</a></li>
+        <li><a href="#" data-target="#content3">tab3</a></li>
+        <li><a href="#" data-target="#content4">tab4</a></li>
+      </ul>
+      <ul class="tabs-list">
+        <li id="content1" class="in">环保部负责人日前表示，在开展空气质量新标准监测的161个城市中，有50个城市发生了重度及以上污染，其中11个城市为严重污染。北京、河北、山西、山东、河南、辽宁等地雾霾污染情况进一步恶化。值得注意的是，前后将近一周时间，环保部督察组启动了12个地方城市的大气污染防治专项督查，结果却令人忧虑，大量工业企业违规排放、本应该淘汰的落后产能仍然在堂而皇之地进行生产……</li>
+        <li id="content2">之地进行生产……</li>
+        <li id="content4">度及以上污染，其中11个城市为严重污染。北京、河北、山西、山东、河南、辽宁等地雾霾污染情况进一步恶化。值得注意的是，前后将近一周时间，环保部督察组启动了12个地方城市的大气污染防治专项督查，结果却令人忧虑，大量工业企业违规排放、本应该淘汰的落后产能仍然在堂而皇之地进行生产……</li>
+        <li id="content3">意的是，前后将近一周时间，环保部督察组启动了12个地方城市的大气污染防治专项督查，结果却令人忧虑，大量工业企业违规排放、本应该淘汰的落后产能仍然在堂而皇之地进行生产……</li>
+      </ul>
+    </div>
+    <script>
+      $(function () {
+          $('.tabs').tabs({
+              event : 'click'
+          }).on('change',function(e){
+              console.log(e);
+          })
+      })
+    </script>
+  </body>
+</html>

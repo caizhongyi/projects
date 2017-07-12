@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="style/pers_rel.css" media="all" />
+<link rel="stylesheet" type="text/css" href="style/relationship.css" media="all" />
+<link href="style/select_upload.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript">
+var winScreenWidth = window.screen.width;
+if(winScreenWidth>1024){
+document.writeln('<style>');
+document.writeln('.jz{padding:0px 2px;}');
+document.writeln('</style>');
+}
+</script>
+<body>
+	<!--头部-->
+	<div class="head">
+    	<div class="jz">
+        	<div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+            <ul class="nav left yh">
+            	<li><a href="#">首页</a></li>
+            	<li class="cur"><a href="#" class="arr">个人</a></li>
+            	<li><a href="#" class="arr">关系</a></li>
+            	<li><a href="#" class="arr">杂烩</a></li>
+            	<li><a href="#" class="arr">活动</a></li>
+            	<li><a href="#" class="arr">资道</a></li>
+            	<li class="newMsg"><a href="#">站内信息</a><i><a href="#">5</a></i></li>
+            </ul>
+            <div class="userInfo">
+            	<a href="#" class="left"  title="烧饭-人生旅途中-飞砂走石风过"><img src="images/layout_main/img_32x32.png" width="32" height="32" /></a>
+                <a href="javascript:void(0);" title="烧饭-人生旅途中-飞砂走石风过留痕！" class="name">烧饭-人生旅途中</a>
+            </div>
+        </div>
+    </div>
+    <!--头部end-->
+    <!--主体-->
+    <div class="main jz">
+    	<div class="mCon">
+            <div class="prPdBox">
+              <div class="subChaTab">
+                <a href="#">我的好友</a>
+                <a href="#">寻找好友</a>
+                <a href="#">关注设置</a>
+                <a href="#">我的圈子</a>
+                <a href="#">寻找圈子</a>
+                <a href="#" class="active">创建圈子</a>
+                <a href="#">我的礼物</a>
+                <a href="#">礼物市场</a>
+              </div>
+              <div class="rgcTip">创建圈子</div>
+              <div class="prTnvit_wrap">
+              <div class="prT_name"><b></b>圈子信息<span>创建人、超级管理员、管理员、财务员： <i>AHXIAOPENG</i></span></div>
+              <div class="rgc_box">
+                <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                  <tr>
+                    <th class="rowNam" scope="row">加入方式：</th>
+                    <td><input type="radio" name="radio" id="dicAdd" class="vInput" value="radio"><label for="dicAdd" style="margin-right:20px;">直接加入</label>
+                      <input type="radio" name="radio" id="aprAdd" class="vInput" value="radio"><label for="aprAdd">批准加入</label></td>
+                  </tr>
+                  <tr>
+                    <th valign="top" class="rowNam" scope="row">图片上传：</th>
+                    <td>
+                    <div class="fileArea">
+                    <b></b>
+                    <input class="fileTxt prInpSty" value="浏览您要上传的圈子图片" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" type="text" id="filTxt" name="txt" />
+					<input type="button" class="fileBtn prBtn" value="上传" onclick="document.getElementById('upfile').click()" />
+					<input class="fileSty" name="upfile" id="upfile" size="30" type="file" onchange="document.getElementById('filTxt').value=this.value;document.getElementById('filTxt').style.color='#333'" />
+                    </div>
+                    <input name="" type="checkbox" value="" class="vInput" id="cpRt"><label for="cpRt">我知道上传的图片不侵犯第三方的版权</label>
+                    <div class="flie_pic"><img src="images/temp/file_pic.jpg"></div></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row"><i>*</i>圈子名字：</th>
+                    <td><input name="" value="请输入圈子名称" type="text" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}"  class="prInpSty"></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row"><i>*</i>圈子分类：</th>
+                    <td><div class="prSelSty"><span>请选择圈子分类</span><b></b></div></td>
+                  </tr>
+                  <tr>
+                    <th valign="top" class="rowNam" scope="row"><i>*</i>圈子简介：</th>
+                    <td><textarea name="" cols="" class="prTxaSty" rows="" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" >请输入圈子简介</textarea></td>
+                  </tr>
+                  <tr>
+                    <th valign="top" class="rowNam" scope="row"><i>*</i>圈子规章：</th>
+                    <td><textarea name="" cols="" class="prTxaSty" rows="" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" >请输入圈子规章</textarea></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row">圈子主页：</th>
+                    <td><input name="" type="text" value="请输入圈子主页地址" class="prInpSty" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" ></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row"><i>*</i>创建人邮箱：</th>
+                    <td><input name="" type="text" value="请输入创建者邮箱" class="prInpSty" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" ></td>
+                  </tr>
+                  <tr>
+                    <th valign="top" class="rowNam" scope="row">管理架构：</th>
+                    <td><ul class="zzjg">
+                        <li>
+                          <div class="jg_hd">
+                            <input name="" type="radio" value="" id="cjjg">
+                             <label for="cjjg">层级结构</label></div>
+                          <img src="images/img/name_jg.jpg" width="225" height="155" />
+                        </li>
+                        <li>
+                          <div class="jg_hd">
+                            <input name="" type="radio" disabled value="" id="disab">
+                            <label for="disab">民主结构</label></div>
+                          <img src="images/img/name_jgr.jpg" width="225" height="155" />
+                        </li>
+                      </ul></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row">缴纳费用：</th>
+                    <td><ul class="Capt">
+                        <li>
+                          <input name="" type="text" value="请输入费用" class="prInpSty" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" >
+                        </li>
+                        <li>
+                          <div class="prSelSty"><span>单位</span><b></b></div>
+                        </li>
+                        <li>
+                          <input name="" type="text" value="请输入单位值" class="prInpSty" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" >
+                        </li>
+                        <li>
+                          <div class="prSelSty"><span>单位</span><b></b></div>
+                        </li>
+                      </ul></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row">汇款帐号：</th>
+                    <td><input name="" type="text" value="清输入汇款帐号" class="prInpSty" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" ></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row">缴费说明：</th>
+                    <td><input name="" type="text" value="请输入说明内容" class="prInpSty" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue;this.style.color='#ccc';}" ></td>
+                  </tr>
+                  <tr>
+                    <th class="rowNam" scope="row">踢人保护：</th>
+                    <td><div class="prote">
+                        <input name="" type="checkbox" id="prote" value="">
+                        <label for="prote">启动踢人保护</label></div>
+                    <div class="prSelSty"><span>保护时限</span><b></b></div></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+              <div class="prTnvit_wrap">
+              	<div class="prT_name"><b></b>邀请用户</div>
+                <div class="select_pep_bot">
+                <p>
+                  <input type="checkbox">
+                  向所有好友发送邀请
+                  <input type="checkbox">
+                  向所有圈子发送邀请</p>
+                向部分圈子成员发送邀请 &nbsp;&nbsp;
+                <select name="select22" class="combobox w123px">
+                  <option value="AL">圈子名</option>
+                  <option value="AK">圈子名</option>
+                </select>
+                <input type="text" class=" input_a">
+                <input type="submit" class="button" value="添加">
+                <div class="select_pep_name">
+                  <div class="select_name_list"> <img class="this_pep1" src="images/this_pep.png"> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> </div>
+                </div>
+                向指定好友发送邀请 &nbsp;&nbsp;
+                <input type="text" class="input_a">
+                <input type="submit" class="button" value="添加">
+                <div class="select_pep_name">
+                  <div class="select_name_list"> <img class="this_pep2" src="images/this_pep.png"> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> <span><a href="#">周华建</a><a href="#"><img src="images/del_pep.png"></a></span> </div>
+                </div>
+                <div class="blank10px"></div>
+                <div class="agrTerm"><input name="" type="checkbox" id="agree" class="vInput" value=""><label for="agree">同意条款并阅读说明</label></div>
+                <div class="sA_btn clearfix" style="padding-left:14px;"><input name="" type="button" class="complete"><input name="" type="button" class="cancel"></div>
+                
+                <div class="blank10px"></div>
+              </div>
+              
+              </div>
+              <div class="blank5px"></div>
+            </div>
+        </div>
+    </div>
+    <div class="mBtm jz"></div>
+    <!--主体end-->
+    <!--底部-->
+    <div class="foot jz"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></div>
+    <!--底部end-->
+
+<!--页面脚本区-->
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript">
+	$(".search_result li").hover(function(){
+		$(this).addClass("active");	
+	},function(){
+		$(this).removeClass("active");	
+	})
+</script>
+</body>
+</html>

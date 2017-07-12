@@ -1,0 +1,433 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>Upload my activity album-Activity-Savorboard</title>
+
+<meta name="keywords" content="Upload photo, My activity, Savorboard, Activity arrangement living social network service"/>
+<meta name="description"
+      content="Upload photos in selected history activity"/>
+
+
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="index.html" class="logo"><img src="images/logo-en.png" alt="Wanerdao"></a>
+        <div class="home  hover">
+            <a title="Home"  class="button" href="javascript:;"><i class="icon icon-list"></i></a>
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a  href="javascript:;">Activity</a></h3>
+                        <a href="activity_index.html">Activity main</a><a href="activity_search.html">Search activities</a><a href="activity_item_main.html">Current and past activities </a><a href="activity_future_plan.html">Future  activities</a><a href="javascript:;">Launch an activity </a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">Personal</a></h3>
+                        <a href="personal_edit.html">Profile</a><a href="personal_account.html">Finance account</a>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;">Relationship</a></h3>
+                        <a href="relationship_friends_invite.html">My friends</a>
+                    </li>
+                    <li>
+                        <h3><a  href="index.html">Main</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="Activity / Friend" class="text" ><input type="submit" class="button" value="">
+        </div>
+
+        <div class="infotips">
+                <span class="floatbox-wrap dropdown">
+                    <a href="javascript:;" class="hint"><i class="icon icon-bell "></i><span class="badge badge-important">20</span></a>
+                    <div class="dropdown-pane floatbox slide">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <div class="accordion scroll-panel" data-collapse="">
+                                <div class="accordion-item active">
+                                    <div class="accordion-heading toolbar"><i class="icon-minus-sign"></i><!--<i class="icon-collapse"></i>--><span class="text-important">1223</span>&nbsp;Activity name，city/state <span class="time">2012/12 - 2021/12</span></div>
+                                    <div class="accordion-panel" style="display: block">
+                                        <ul class="group-list">
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Detail</a></li>
+                                            <li>
+                                                <i class="icon-block-blue"></i>( Task )&nbsp;<span class="title "><strong>Task name</strong><small class="desc detail-short">Description</small></span>
+                                                <div class="detail">
+                                                    <small class="desc">Description</small>
+                                                    <br/>
+                                                    <span class="price">$123</span>&nbsp;<small class="desc">Private message&nbsp;Attachment</small>
+                                                    <br/>
+                                                    Creator
+                                                    <a href="" class="opts">Detail</a>
+                                                </div>
+                                            </li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Request content</a></li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Request content</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="accordion-item ">
+                                    <div class="accordion-heading toolbar"><i class="icon-plus-sign"></i><!--<i class="icon-collapse"></i>--><span class="text-important">1223</span>&nbsp;Activity name，city/state</div>
+                                    <div class="accordion-panel" style="display: block">
+                                        <ul class="group-list">
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Detail</a></li>
+                                            <li>
+                                                <i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc detail-short">Description</small></span>
+                                                <div class="detail">
+                                                    <small class="desc">Description</small>
+                                                    <br/>
+                                                    <span class="price">$123</span>&nbsp;<small class="desc">Private message</small>
+                                                    <br/>
+                                                    Creator
+                                                    <a href="" class="opts">Detail</a>
+                                                </div>
+                                            </li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Request content</a></li>
+                                            <li><i class="icon-block-blue"></i>( Task )&nbsp;<span class="title"><strong>Task name</strong><small class="desc">Description</small></span><a href="" class="opts">Request content</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+                <span class="floatbox-wrap dropdown">
+                    <a href="javascript:;" class="hint"><i class="icon icon-bullhorn"></i><span class="badge badge-important">20</span></a>
+                    <div class="dropdown-pane floatbox slide">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <ul class="group-list scroll-panel">
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                                <li>2012/12/23&nbsp;<small class="desc">notification</small> <a href="" class="opts">I know</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </span>
+                <span class="floatbox-wrap ">
+                    <span class="dropdown">
+                        <a href="javascript:;" class="hint"><i class="icon icon-envelope"></i><span class="badge badge-important">20</span></a>
+                        <div class="dropdown-pane floatbox slide" id="message-box">
+                            <i class="arrow"></i>
+                            <div class="scroll">
+                                <div class="scroll-panel">
+                                    <div class="toolbar"><a href="###" class="message-box">Go to message box<span class="text-important">（200）</span></a>•<a
+                                            href="###" class="message-compose">Compose a message</a></div>
+                                    <ul class="group-list">
+                                        <li>
+                                            <div class="heading">
+                                                <i class="icon icon-star-alt"></i><span class="title">Name<small class="desc detail-short">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">Detail</a></span>
+                                            </div>
+                                            <div class="form detail">
+                                                <div class="form-item ">
+                                                    <p class="desc">Content...</p>
+                                                </div>
+                                                <div class="form-item">
+                                                    <div class="input-block">
+                                                        <textarea  class="textarea " placeholder="Replay" ></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <label><input type="checkbox"/>Save a draft</label>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <span class="tips-result">Tips</span>
+                                                        <button class="btn btn-primary btn-mini">Reply</button><button class="btn btn-default btn-mini">Forward</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="heading">
+                                                <i class="icon icon-star-alt"></i><span class="title">Name<small class="desc detail-short">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">Detail</a></span>
+                                            </div>
+                                            <div class="form detail">
+                                                <div class="form-item ">
+                                                    <p class="desc">Content...</p>
+                                                </div>
+                                                <div class="form-item">
+                                                    <div class="input-block">
+                                                        <textarea  class="textarea " placeholder="Replay" ></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix">
+                                                    <div class="pull-left">
+                                                        <label><input type="checkbox"/>Save a draft</label>
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <span class="tips-result">Tips</span>
+                                                        <button class="btn btn-primary btn-mini">Send</button><button class="btn btn-default btn-mini">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><i class="icon icon-star-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">Read</a></span></li>
+                                        <li><i class="icon icon-star-empty-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">Read</a></span></li>
+                                        <li><i class="icon icon-star-alt"></i><span class="title">Name<small class="desc">Content</small></span><span class="opts in"><span class="date">2012-12-21</span><a href="">Read</a></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    <div class="dropdown-pane floatbox slide" id="message-compose">
+                        <i class="arrow"></i>
+                        <div class="scroll">
+                            <div class=" scroll-panel">
+                                <div class="toolbar"><a href="###" class="message-box">Go to message box<span class="text-important">（200）</span></a>•<a
+                                        href="###" class="message-compose">Compose a message</a><span class="opts">Content saved, Date: MM/dd/yyyy hh:mm</span></div>
+                                    <div class="form container sendbox">
+                                        <div class="form-item ">
+                                            <label><span class="input-label">To:</span><input type="text" class="text span8"/><button class="btn btn-default btn-mini">Search</button></label>
+                                        </div>
+                                        <div class="form-item">
+                                            <label><span class="input-label">Content:</span><textarea  class="textarea span8" placeholder="Replay" ></textarea></label>
+                                        </div>
+                                        <div class="form-panel clearfix">
+                                            <div class="pull-left ">
+                                                <label><input type="checkbox"/>Save a draft</label>
+                                            </div>
+                                            <div class="pull-right">
+                                                <span class="tips-result">Tips</span>
+                                                <button class="btn btn-primary btn-mini">Send</button><button class="btn btn-default btn-mini">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                 </span>
+            <!-- <a href="javascript:;" class="icon-message-mail">123</a>-->
+            <script>
+
+                $('.message-box').click(function(e){
+                    $('#message-compose').removeClass('in')
+                    $('#message-box').addClass('in');
+                })
+                $('.message-compose').click(function(){
+                    $('#message-box').removeClass('in')
+                    $('#message-compose').addClass('in');
+                })
+
+
+            </script>
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img  src="images/defaults/32-32.jpg"></a><a  class="name" href="javascript:;"><span >烧饭-人生旅途中人生旅途中</span><b></b></a>
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">Profile</a></li>
+                    <li><a href="javascript:;">Account</a></li>
+                    <li>
+                        <a href="javascript:;">Switch language</a>
+                        <ul>
+                            <li><a href="javascript:;">Chinese</a></li>
+                            <li><a href="javascript:;">English</a></li>
+                        </ul>
+                    </li>
+                    <li class="last"><a href="javascript:;">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout">
+    <div class="container">
+        <div class="tabs-master">
+            <div class="nav">
+                <div class="pull-left"><a href="activity_main.html" >Activity home</a><a href="activity_search.html">Search activities</a><a href="#"  class="selected">My activities</a><a href="activity_myactivity.html" >My activities</a><a href="activity_create_finish.html" class="selected">Launch an activity</a></div>
+            </div>
+            <div class="subnav">
+                <a  href="javascript:;">Main</a><a href="javascript:;">Settings </a><span class="item">
+                    <a href="javascript:;"  class="selected">Share photos <i class="icon-down-arrow"></i></a>
+                    <span class="subitem"><a
+                            href="javascript:;" class="bold">View</a><a href="javascript:;" >Upload</a><a href="javascript:;">Management</a></span>
+                    </span><a href="javascript:;">Share notes</a>
+            </div>
+        </div>
+        <div class="layout-main">
+            <div class="blue-titlebar group">
+                <i class="icon-block-blue"></i><span class="bold">Survey</span><label for="" class="radio"><input type="radio"/>Like</label><label for="" class="radio"><input type="radio"/>Dislike</label><label for="" class="radio"><input type="radio"/>No option</label><a
+                    href="javascript:;" ><i class="icon-blue-result"></i>Check result</a>
+            </div>
+            <div class="titlebar">
+                <i class="icon-lock"></i>D005001 周末白宫门口围堵奥巴马
+                <div class="opts"><a href="javascript:;" class="btn-option"><i class="icon icon-love"></i>Subscribe</a></div>
+            </div>
+
+            <div class="mod mod-default">
+                <div class="hd f12">
+                    <i class="icon icon-block-blue"></i>Upload settings
+                </div>
+                <div class="titlebar form form-block">
+                    <span class="bold input-control">Note:</span><span class="input-mutil">
+                    1. Activity share albums are synchronized with personal albums. They will sync delete, but can own different title and description. <br>
+                    2. Except the activity own album, all other albums are created by activity members.  <br>
+                    3. Permission is the same with personal album permission.
+                    </span>
+                </div>
+                <div class="bd form">
+                    <div class="form-item">
+                        <label class="input-control"><input type="radio"/>Upload to the new album, album name：</label><input type="text" class="text text-medium"/>
+                    </div>
+                    <div class="form-item">
+                        <label class="input-control"><input type="radio"/>Upload to an existent album ：</label><span class="combo text-medium" data-loader="class-combo">
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list">
+                                    <ul><li value="1">选择相册</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span>
+                    </div>
+                    <div class="form-item">
+                        <label class="input-control">Permission ：</label><span class="combo text-medium" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">选择相册</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span>
+                    </div>
+                    <div class="form-item">
+                        <label class="input-control"><input type="checkbox"/>Share to an activity ：</label><span class="combo text-large" data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">选择Activity</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span><span class="alert">Activity周末去白宫围攻奥巴马</span>
+                    </div>
+                    <div class="form-item">
+                        <span class="result">
+                            <ul>
+                                <li>Note</li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div class="form-item">
+                        <button class="btn-primary input-control">Upload </button><button class="btn btn-default input-control" data-active-val="Upload..." data-active-class="disabled" type="submit">Submit </button>
+                    </div>
+                </div>
+
+                <div class="stepbox">
+                    <h3>Upload steps：</h3>
+                    <ul>
+                        <li>1. Select a upload album </li>
+                        <li>2. Preview </li>
+                        <li>3. Submit </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mod mod-default">
+                <div class="hd">
+                    Preview  <span class="f12">After preview, click “submit” to finally upload.  </span>
+                </div>
+                <ul class="images">
+                    <li>
+                        <img src="images/defaults/100-100.png" alt=""/>
+                        <div class="item-opts"><a href="javascript:;" class="icon-red-circle-close"></a></div>
+                    </li>
+                    <li>
+                        <img src="images/defaults/100-100.png" alt=""/>
+                        <div class="item-opts"><a href="javascript:;" class="icon-red-circle-close"></a></div>
+                    </li>
+                    <li>
+                        <img src="images/defaults/100-100.png" alt=""/>
+                        <div class="item-opts"><a href="javascript:;" class="icon-red-circle-close"></a></div>
+                    </li>
+                    <li>
+                        <img src="images/defaults/100-100.png" alt=""/>
+                        <div class="item-opts"><a href="javascript:;" class="icon-red-circle-close"></a></div>
+                    </li>
+                    <li>
+                        <img src="images/defaults/100-100.png" alt=""/>
+                        <div class="item-opts"><a href="javascript:;" class="icon-red-circle-close"></a></div>
+                    </li>
+                    <li>
+                        <img src="images/defaults/100-100.png" alt=""/>
+                        <div class="item-opts"><a href="javascript:;" class="icon-red-circle-close"></a></div>
+                    </li>
+                    <li>
+                        <img src="images/defaults/100-100.png" alt=""/>
+                        <div class="item-opts"><a href="javascript:;" class="icon-red-circle-close"></a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //模块隐藏显示
+    $('.accordion .hd .icon').click(function(){
+        var $panel =  $(this).parent().next();
+        if($panel.is(':hidden')){
+            $(this).removeClass('icon-blue-plus').addClass('icon-blue-minus');
+            $panel.stop(true,true).slideDown();
+        }
+        else{
+            $panel.stop(true,true).slideUp();
+            $(this).addClass('icon-blue-plus').removeClass('icon-blue-minus');
+        }
+    })
+</script>
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+    <div class="sitemap">
+        <a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Terms</a><a href="javascript:;"> Job</a><a href="javascript:;">Suggestion</a><a href="javascript:;">Help</a>
+    </div>
+    <span class="copyright">Copyright @ 2011-2014 Savorboard Corporation</span>
+    </div>
+</div>
+<!-- end footer -->
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+
+</body>
+</html>

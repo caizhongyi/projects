@@ -1,0 +1,195 @@
+﻿using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.IO;
+using System.Collections.Generic;
+using WanerDao_Models;
+
+public partial class PluginDemo_ActivityAlbum_upload : System.Web.UI.Page
+{
+    //personalPhotoController PCC = new personalPhotoController();
+    personalPhotoModel PPModel = new personalPhotoModel();
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+        System.Drawing.Image thumbnail_image = null;
+        System.Drawing.Image original_image = null;
+        System.Drawing.Bitmap final_image = null;
+        System.Drawing.Graphics graphic = null;
+        MemoryStream ms = null;
+        //封装上传照片信息
+        PPModel.id = Guid.NewGuid().ToString();
+        if (Request.QueryString["uid"] != null && Request.QueryString["uid"] != "")
+        {
+            PPModel.user_id = Request.QueryString["uid"];
+        }
+        else
+        {
+            PPModel.user_id = "";
+        }
+        //if (int.Parse(PCC.get_usedPhotoSpace(PPModel.user_id, (double)100)) < 100)
+        //{
+        try
+        {
+            // Get the data
+            HttpPostedFile jpeg_image_upload = Request.Files["Filedata"];
+
+            //封装上传照片信息
+            string name = jpeg_image_upload.FileName.Substring(0, jpeg_image_upload.FileName.LastIndexOf("."));
+            PPModel.image_original_name = name;
+            PPModel.image_name = name;
+            PPModel.image_type = jpeg_image_upload.GetType().ToString()
+
+            ;
+            // Retrieve the uploaded image
+            original_image = System.Drawing.Image.FromStream(jpeg_image_upload.InputStream);
+            //随机生成名称用于替换原照片名称
+            string guidName = Guid.NewGuid().ToString();
+            string path = Request.PhysicalApplicationPath + "photo";
+            long fileSize; //照片尺寸
+            if (Directory.Exists(path) == false)
+            {
+                Directory.CreateDirectory(path);
+            }
+            path += "/" + PPModel.user_id;
+            if (Directory.Exists(path) == false)
+            {
+                Directory.CreateDirectory(path);
+            }
+            //封装上传照片信息
+            PPModel.image_path = "photo/" + PPModel.user_id + "/" + guidName + "-big.jpg";
+            PPModel.image_small_path = "photo/" + PPModel.user_id + "/" + guidName + "-small.jpg";
+
+            int width = original_image.Width;
+            int height = original_image.Height;
+            int standard = 1280;
+            int new_width, new_height;
+            float image_ratio;
+            if (width >= height)
+            {
+                if (width > standard)
+                {
+                    new_width = standard;
+                    image_ratio = (float)new_width / (float)width;
+                    new_height = (int)Math.Floor(image_ratio * (float)height);
+                }
+                else
+                {
+                    new_width = width;
+                    new_height = height;
+                }
+            }
+            else
+            {
+                if (height > standard)
+                {
+                    new_height = standard;
+                    image_ratio = (float)new_height / (float)height;
+                    new_width = (int)Math.Floor(image_ratio * (float)width);
+                }
+                else
+                {
+                    new_width = width;
+                    new_height = height;
+                }
+            }
+            //大图
+            System.Drawing.Image bitmap = new System.Drawing.Bitmap(new_width, new_height);
+            graphic = System.Drawing.Graphics.FromImage(bitmap);
+            graphic.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            graphic.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            graphic.Clear(System.Drawing.Color.Black);
+            graphic.DrawImage(original_image, new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height),
+            new System.Drawing.Rectangle(0, 0, original_image.Width, original_image.Height),
+            System.Drawing.GraphicsUnit.Pixel);
+            bitmap.Save(path + "/" + guidName + "-big.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            graphic.Dispose();
+            MemoryStream bigms = new MemoryStream();
+            bitmap.Save(bigms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            fileSize = bigms.Length;
+
+            //小图
+            int ThumbSize = 120;
+            System.Drawing.Image bitThumbmap = new System.Drawing.Bitmap(ThumbSize, ThumbSize);
+            graphic = System.Drawing.Graphics.FromImage(bitThumbmap);
+            graphic.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            graphic.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            graphic.Clear(System.Drawing.Color.Black);
+            graphic.DrawImage(original_image, new System.Drawing.Rectangle(0, 0, bitThumbmap.Width, bitThumbmap.Height),
+            new System.Drawing.Rectangle(0, 0, original_image.Width, original_image.Height),
+            System.Drawing.GraphicsUnit.Pixel);
+            bitThumbmap.Save(path + "/" + guidName + "-small.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            graphic.Dispose();
+            MemoryStream smallms = new MemoryStream();
+            bitThumbmap.Save(smallms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            fileSize += smallms.Length;
+
+           //PPModel.fileSize = fileSize;
+           //PCC.ADD_personalPhoto(PPModel);
+           Response.Write(PPModel.image_small_path + "-,-" + PPModel.id + "-,-" + PPModel.image_name + "-,-PhotoUpload");
+
+
+
+
+            string thumbnail_id = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            Thumbnail thumb = new Thumbnail(thumbnail_id, smallms.GetBuffer());
+
+            // Put it all in the Session (initialize the session if necessary)			
+            List<Thumbnail> thumbnails = Session["file_info"] as List<Thumbnail>;
+            
+            if (thumbnails == null)
+            {
+                thumbnails = new List<Thumbnail>();
+                Session["file_info"] = thumbnails;
+            }
+            thumbnails.Add(thumb);
+
+            Response.StatusCode = 200;
+            Response.Write(thumbnail_id);
+
+
+
+
+
+
+
+
+
+            // Response.StatusCode = 200;
+            // Response.Write(PPModel.image_small_path + "-,-" + PPModel.id + "-,-" + PPModel.image_name + "-,-PhotoUpload");
+
+        }
+        catch
+        {
+            // If any kind of error occurs return a 500 Internal Server error
+            Response.StatusCode = 500;
+            Response.Write("An error occured");
+            Response.End();
+        }
+        finally
+        {
+            // Clean up
+            if (final_image != null) final_image.Dispose();
+            if (graphic != null) graphic.Dispose();
+            if (original_image != null) original_image.Dispose();
+            if (thumbnail_image != null) thumbnail_image.Dispose();
+            if (ms != null) ms.Close();
+            Response.End();
+        }
+        //}
+        //else
+        //{
+        //    Response.StatusCode = 200;
+        //    Response.Write("no Space!");
+        //    Response.End();
+        //}
+    }
+}

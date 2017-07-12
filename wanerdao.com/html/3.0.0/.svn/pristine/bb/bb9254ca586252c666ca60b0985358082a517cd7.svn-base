@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>创建圈子-关系-玩儿道</title>
+
+<meta name="keywords" content="创建圈子，圈子信息，邀请用户，关系，玩儿道，活动组织的生活社交网络"/>
+<meta name="description"
+      content="填写必要圈子信息完成圈子创建，并可以发出邀请"/>
+
+
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/relationship.css"/>
+
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+
+<style type="text/css">
+    body{ background: #fff ; font-size:12px;}
+    .mod-gray,.mod-default{ width: 680px; margin: 10px; }
+</style>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - 任务分配
+    </div>
+    <div class="bd form">
+        <div class="form-item">
+            <label><input type="checkbox"/>任务分配对活动参与人公开</label>
+        </div>
+        <div class="form-item">明：活动创建进入我的活动以后，将可以使用该模块</div>
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - 基本信息
+    </div>
+    <div class="bd form">
+        <div class="form-item mod-line">
+            <button class="btn large-light-blue-btn"><i class="icon icon-task"></i>发起任务</button>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">任务名目:</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">说明:</span><textarea  class="textarea text-large"></textarea></label><div class="tips">提示</div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">执 行 人:</span><input  type="text" class="text text-large personal-text"></label><div class="tips">提示</div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">预算金额:</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">私下说明:</span><input type="text"  class="text text-medium"></label><a href="javacript;" class="btn btn-gray btn-mini">添加</a><div class="tips">提示</div>
+            <div class="form-panel">
+                  <span class="tipbox tipbox-arrow list-label push-item">
+                        <i class="arrow"></i>
+                        <ul class="acount-list">
+                            <li>01&nbsp;<a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>100$</em>&nbsp;私下说明私下说明私下01分类标记 <span class="opts"><a href="javascript:;" class="icon icon-light-del"></a></span></li>
+                            <li>01&nbsp;<a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>100$</em>&nbsp;私下说明私下说明私下01分类标记 <span class="opts"><a href="javascript:;" class="icon icon-light-del"></a></span></li>
+                            <li>01&nbsp;<a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>100$</em>&nbsp;私下说明私下说明私下01分类标记 <span class="opts"><a href="javascript:;" class="icon icon-light-del"></a></span></li>
+                        </ul>
+                   </span>
+            </div>
+        </div>
+        <div class="form-item">
+            <label><input type="checkbox"/>需上传附件</label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">上传附件:</span><input type="text"  class="text text-medium"></label><a href="javacript;" class="btn btn-gray btn-mini">上传</a><div class="tips">提示</div>
+            <div class="form-panel">
+                  <span class="tipbox tipbox-arrow list-label push-item">
+                        <i class="arrow"></i>
+                        <ul class="acount-list">
+                            <li>01&nbsp;附件名称<span class="opts"><a href="javascript:;" class="icon icon-light-del"></a></span></li>
+                            <li>01&nbsp;附件名称<span class="opts"><a href="javascript:;" class="icon icon-light-del"></a></span></li>
+                            <li>01&nbsp;附件名称<span class="opts"><a href="javascript:;" class="icon icon-light-del"></a></span></li>
+                        </ul>
+                   </span>
+                   <div class=" push-item"> <button class="btn btn-primary" type="submit">发起任务</button><button class="btn btn-default" type="button">取消</button></div>
+                   <div class="descriptbox push-item">AHXIAOPENG<em>06/06/2012</em></div>
+            </div>
+        </div>
+        <div class="form-item">
+            <div class="toolbar">
+                <div class="pull-left">
+                    <span class="combo" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">全部</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                    </span>
+                </div>
+                <div class="pagination-arrow right">
+                    <a class="prevmulti" href="javascript:;"></a><a class="prev" href="javascript:;"></a>&nbsp;第<input type="text" class="text">页 / 18页<a class="next" href="javascript:;"></a><a class="nextmulti" href="javascript:;"></a>
+                </div>
+            </div>
+            <div class="scroll">
+                <ul class="module-list scroll-panel">
+                    <li>
+                        <h3><a href="javascript:;" class="icon icon-block-plus"></a><span class="green">[召集]</span>收支名目收支名目 <em>$100</em></h3>
+                        <div style="display: none;" class="module-content">
+                            <p>大众网记者沿长江路赶到了聊城市付庄附近，大众网记者在现场看到，由付庄通往邢庄的南北方向道路已经戒严，数十名佩戴东昌府区民兵救援袖章的民兵将道路拦起</p>
+                            <div class="summary">执行人： <a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>$100</em>&nbsp;<span>大众网记者沿长江地在路赶到了</span><div class="summary-opts">
+                                <a href="javascript:;">发信息</a><a href="javascript:;">核实</a></div></div>
+                            <div class="summary">执行人： <a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>$100</em>&nbsp;<span>大众网记者沿长江地在路赶到了</span><div class="summary-opts"><a href="javascript:;">发信息</a><a href="javascript:;">核实</a></div></div>
+                            <div class="summary">添加人： <a href="javascript:;">AHXIAOPENG</a>&nbsp;&nbsp;添加时间： <span class="muted">(11/10/2013)</span><div class="summary-opts"><a href="javascript:;">发信息</a><a href="javascript:;">上传文件</a></div></div>
+                        </div>
+                        <div style="display: none;" class="opts-name">
+                            <a href="javascript:;">报帐</a><a href="javascript:;">驳回</a><a href="javascript:;">接受</a><a href="javascript:;">放弃</a><a href="javascript:;">认领</a><a href="javascript:;">编辑</a>
+                        </div>
+                    </li>
+                    <li>
+                        <h3><a href="javascript:;" class="icon icon-block-plus"></a><span class="green">[召集]</span>收支名目收支名目 <em>$100</em></h3>
+                        <div style="display: none;" class="module-content">
+                            <p>大众网记者沿长江路赶到了聊城市付庄附近，大众网记者在现场看到，由付庄通往邢庄的南北方向道路已经戒严，数十名佩戴东昌府区民兵救援袖章的民兵将道路拦起</p>
+                            <div class="summary">执行人： <a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>$100</em>&nbsp;<span>大众网记者沿长江地在路赶到了</span><div class="summary-opts">
+                                <a href="javascript:;">发信息</a><a href="javascript:;">核实</a></div></div>
+                            <div class="summary">执行人： <a href="javascript:;">AHXIAOPENG</a>&nbsp;<em>$100</em>&nbsp;<span>大众网记者沿长江地在路赶到了</span><div class="summary-opts"><a href="javascript:;">发信息</a><a href="javascript:;">核实</a></div></div>
+                            <div class="summary">添加人： <a href="javascript:;">AHXIAOPENG</a>&nbsp;&nbsp;添加时间： <span class="muted">(11/10/2013)</span><div class="summary-opts"><a href="javascript:;">发信息</a><a href="javascript:;">上传文件</a></div></div>
+                        </div>
+                        <div style="display: none;" class="opts-name">
+                            <a href="javascript:;">报帐</a><a href="javascript:;">驳回</a><a href="javascript:;">接受</a><a href="javascript:;">放弃</a><a href="javascript:;">认领</a><a href="javascript:;">编辑</a>
+                        </div>
+                    </li>
+                </ul>
+                <script type="text/javascript">
+                    $('.module-list .icon').click(function(){
+                        var $content = $(this).closest('li');
+                        if($(this).hasClass('icon-block-plus')){
+                            $(this).removeClass('icon-block-plus').addClass('icon-block-minus')
+                            $content.find('.module-content').stop(true,true).slideDown().end().find('.opts-name').eq(0).stop(true).fadeIn().end().eq(1).hide();
+                        }
+                        else{
+                            $(this).removeClass('icon-block-minus').addClass('icon-block-plus')
+                            $content.find('.module-content').stop(true,true).slideUp().end().find('.opts-name').eq(1).stop(true).fadeIn().end().eq(0).hide();
+                        }
+                    })
+                </script>
+            </div>
+            <div class="toolbar">
+                <div class="pagination-arrow right">
+                    <a class="prevmulti" href="javascript:;"></a><a class="prev" href="javascript:;"></a>&nbsp;第<input type="text" class="text">页 / 18页<a class="next" href="javascript:;"></a><a class="nextmulti" href="javascript:;"></a>
+                </div>
+            </div>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">活 动 名:</span><input type="text" class="text  text-large"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label">描    述:</span><textarea class="textarea"></textarea></label>
+        </div>
+        <div class="form-item">
+            <label class="checkbox form-panel"><input type="checkbox"/>公开活动</label> <label class="checkbox"><input type="checkbox"/>可被搜索</label>
+        </div>
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - 预交费设定
+    </div>
+    <div class="bd form">
+        <div class="form-item">
+            <label for=""><span class="input-label-small">预交费:</span><span class="combo text-large" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span></label>
+        </div>
+        <div class="form-item">
+            <label for=""><span class="input-label-small">全体/非圈子成员:</span><input type="text" class="text text-medium"/></label><span class="text-control">每
+            </span><input type="text" class="text text-mini"/><span class="combo text-mini" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span>
+        </div>
+        <div class="form-item">
+            <label for=""><span class="input-label-small">圈子会员:</span><input type="text" class="text text-medium"/></label><span class="text-control">每
+            </span><input type="text" class="text text-mini"/><span class="combo text-mini" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span>
+        </div>
+        <div class="form-item">
+            <label for=""><span class="input-label-small">缴费方式:</span><span class="combo text-large" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">Paypal</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label>
+        </div>
+        <div class="form-item">
+            <label for=""><span class="input-label-small">缴费说明:</span><input type="text" class="text  text-large"/><a href="javascript:;" class="btn btn-gray btn-mini">添加</a></label>
+            <span class="tipbox tipbox-arrow list-label">
+                <i class="arrow"></i>
+                <ul class="acount-list">
+                    <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                    <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                    <li>01&nbsp;<a href="javascript:;">Paypal</a>&nbsp;&nbsp;ahxiaopeng@163.com  <span class="opts"><a class="icon icon-light-stop" href="javascript:;"></a><a class="icon icon-light-setting" href="javascript:;"></a><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                </ul>
+            </span>
+        </div>
+
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - 加入条件设置
+    </div>
+    <div class="bd form">
+        <div class="form-item">
+            <label class="input-control"><span>加入条件:</span></label><span class="combo text-small" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">无条件</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span><span class="combo text-small" data-loader="class-combo" >
+                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                <input  name="usr" type="hidden" class="combo-input-hidden">
+                <div class="combo-list" >
+                    <ul><li value="1">无条件</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                </div>
+            </span><input type="text" class="text text-medium"/><a href="javascript:;" class="btn btn-gray btn-mini">添加</a>
+            <div class="tipbox tipbox-arrow list-label">
+                <i class="arrow"></i>
+                <ul class="acount-list grid">
+                    <li class="clearfix"><span class="span1">01</span><span class="span3">Condition</span><span class="span4">Symbol</span><span class="span4">Value</span><span class="opts"><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                    <li class="clearfix muted"><span class="span1">01</span><span class="span3">Condition</span><span class="span4">Symbol</span><span class="span4">Value</span><span class="opts"><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                    <li class="clearfix muted"><span class="span1">01</span><span class="span3">Condition</span><span class="span4">Symbol</span><span class="span4">Value</span><span class="opts"><a class="icon icon-light-del" href="javascript:;"></a></span></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="mod mod-gray ">
+    <div class="hd">
+        <i class="icon icon-gray-minus"></i>D005001 - 报名设置
+    </div>
+    <div class="bd form">
+        <div class="form-item">
+            <label><span class="input-label-mini">人数限制:</span><input type="text" class="text text-xlarge"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label-mini">报名截止日期:</span><input type="text" class="text text-xlarge"/></label>
+        </div>
+        <div class="form-item">
+            <label><span class="input-label-mini">加入方式:</span><span class="combo text-small" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">批准加入</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><input type="text" class="text text-medium"/>
+        </div>
+    </div>
+</div>
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <title>Create activity-Activity-Savorboard</title>
+ <!--  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> -->
+ <meta name="keywords" content="Create activity, Set initial Paras, Set basic Paras, Set Joining Paras, Set Invitation, Sign up, Save settings, Savorboard, Life and social network" />
+ <meta name="description" content="Select list or guided view to fill set initial Paras, set basic Paras, set joining Paras, set invitation, sign up and save settings" />
+ <link rel="stylesheet" type="text/css" href="../css/activity_create.css" media="all" />
+
+ <link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+
+ <link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+ <script src="../scripts/jquery-1.7.2.min.js"></script>
+ <script src="../scripts/jquery.core.js"></script>
+ <script src="../scripts/jquery.ui.tabs.js"></script>
+ <script src="../scripts/global.js"></script>
+ <script src="../scripts/gotop.js"></script>
+ <script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+ <script type="text/javascript">
+$(function(){   
+ $(window).scroll(function(){
+	 if( $(document).scrollTop() > 0){$('#verifyWarp').css('top', $(document).scrollTop() - 69);}
+	 else {$('#verifyWarp').css('top',0)}
+    });
+	//listWarp Hide&Show
+   $("#switchBtn").click(function(){
+	  if($(this).hasClass("hideBox_Btn")){	
+	   if(type == 'list'){
+		 $("#listSch_Btn").removeClass("fCgray3").addClass("currentSch"); 
+		 $(".listschWarp").fadeIn(); 
+	   }else{
+		 $("#mapSch_Btn").removeClass("fCgray3").addClass("currentSch"); 
+		 $(".mapschWarp").fadeIn(); 
+	   }
+	$(this).removeClass("hideBox_Btn").addClass("showBox_Btn").siblings($("#addreesSchWarp").slideDown());
+	}
+	else{
+	$(this).removeClass("showBox_Btn").addClass("hideBox_Btn").siblings($("#addreesSchWarp").slideUp());
+	$("#listSch_Btn").removeClass("currentSch").addClass("fCgray3");
+    $("#mapSch_Btn").removeClass("currentSch").addClass("fCgray3");
+	}   
+   })
+   var type = "list";
+   //listschWarp Hide&Show
+   $("#listSch_Btn").click(function(){
+	   type = "list";
+	   $(this).removeClass("fCgray3").addClass("currentSch");
+	   $("#mapSch_Btn").removeClass("currentSch").addClass("fCgray3");
+	   $("#addreesSchWarp").css("display","block");
+	   $("#switchBtn").removeClass("hideBox_Btn").addClass("showBox_Btn");
+	   $(".mapschWarp").hide();
+	   if($(".listschWarp").css("display","none")){
+		$(this).siblings($("#addreesSchWarp").find(".listschWarp").fadeIn()).addClass("currentSch");}
+	})
+	//mapschWarp Hide&Show
+	$("#mapSch_Btn").click(function(){
+		type = "map";
+		$(this).removeClass("fCgray3").addClass("currentSch");
+		$("#listSch_Btn").removeClass("currentSch").addClass("fCgray3");
+		$("#addreesSchWarp").css("display","block");
+		$("#switchBtn").removeClass("hideBox_Btn").addClass("showBox_Btn");
+		$(".listschWarp").hide();
+		if($(".mapschWarp").css("display","none")){
+        $(this).siblings($("#addreesSchWarp").find(".mapschWarp").fadeIn()).addClass("currentSch");}
+	})
+	
+	$('.AC_Widget li a').click(function(){
+		$($(this).attr('href')).stop(true,true).slideDown();
+	})
+	
+	
+	 
+	 //checkbox申缩效果
+	 $('.ACmodList h4 input[type=checkbox]').click(function(){
+		if($(this).attr("checked")){
+	    	$(this).closest('h4').next().stop(true,true).slideDown();
+		}else{
+		    $(this).closest('h4').next().stop(true,true).slideUp();
+		}
+	 })
+	 
+	 //列表查找中的滚动切换效果
+	 new $.ui.tabs('.listSchBar',{
+		effect :'x',
+		widget : {
+			clip : '.catList-panel',
+			next : '.nextBtn',
+			prev : '.prevBtn',
+			panel: '.AC_catList'
+		}
+	 });
+ });
+ </script>
+ <link rel="stylesheet" type="text/css" href="../css/en.css" media="all" />
+ <body class="pBgB fSize-12">
+<div class="header_wrapper pBgH">
+      <div class="header layout"><a href="index.html" class="logo"></a>
+          <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="Go Home"></a>
+            <div class="home_pop">
+            	<ul>
+                	<li>
+                        <a href="javascript:;" class="hp_title">Activity</a>
+                        <p><a href="javascript:;">Looking for activities</a><a href="javascript:;">Create activities</a><a href="javascript:;">Classification activities</a><a href="javascript:;">Custom activities</a><a href="javascript:;">Seasonal activities</a><a href="javascript:;">My activities</a><a href="javascript:;">Historical activities</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Personal</a>
+                        <p><a href="javascript:;">Profile</a><a href="javascript:;">Diary</a><a href="javascript:;">Album</a><a href="javascript:;">Video</a></p>
+                    </li>
+                    <li  class="last">
+                        <a href="javascript:;" class="hp_title">Relationship</a>
+                        <p><a href="javascript:;">My friends</a><a href="javascript:;">Search friends</a><a href="javascript:;">Invite friends</a><a href="javascript:;">Subscription settings</a><a href="javascript:;">My groups</a><a href="javascript:;">Search group</a><a href="javascript:;">Create a group</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+        		<input type="text" class="search_txt" value="Artivity/Firend/Group/Article" inputdefault="Artivity/Firend/Group/Article" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/defucult/head.jpg" width="32" height="32" /></a><span class="user_infor_name"><a href="javascript:;">Cooking - life in the life journey<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">Modify profile</a></li>
+                    <li><a href="javascript:;">Account management</a></li>
+                    <li><a href="javascript:;">Privacy Settings</a></li>
+                    <li><a href="javascript:;">Change language</a></li>
+                    <li class="last"><a href="javascript:;">Exit</a></li>
+                     </ul>
+               </div>
+           </div>
+     </div>
+ </div>
+<div class="activity_create layout">
+      <div id="container" class="activity_create w_1004 pBgC2">
+          <div class="activity_createMainList">
+                <div class="mainTitile">
+                    <div class="mes_com_box_Tab"><a href="javascript:;" class="active">Create activities</a></div>
+               </div>
+                <div class="modSwitch">
+                    <label for="">
+                          <input type="radio" class="radio" name="1" id="" />
+                          List view</label>
+                    <label for="">
+                          <input type="radio" class="radio" name="1" id="" />
+                          Guided view</label>
+               </div>
+                <div class="ACmodList">
+                    <h3><b class="square ACmodListTitle"><a name="basicQuote" id="basicQuote"></a>Set initial Para</b></h3>
+                    <div class="setmodList basicQuote">
+                          <dl class="pR">
+                              <dd class="formTitle">Copy settings from history：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="">
+                                        <option value="选择活动名称">活动名称</option>
+                                   </select>
+                               </dd>
+                              <div class="tips-panel basicQuoteTip pA">
+                                    <div class="tips">
+                                        <div class="arrowhead"></div>
+                                        <p><span class="icon error"></span>&nbsp;Help：</p>
+                                        <p>请选择你的活动分类。<a href="javascript:;" class="close-3"></a></p>
+                                   </div>
+                               </div>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Copy settings from save：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="">
+                                        <option value="选择活动名称">活动名称</option>
+                                   </select>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Founder：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="">
+                                        <option value="圈子名义发起">圈子名义发起</option>
+                                   </select>
+                                    <select name="" id="">
+                                        <option value="圈子名称">圈子名称</option>
+                                   </select>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Founder Contact：</dd>
+                              <dd class="formMain">
+                                    <label for="">Phone：
+                                        <input type="text" class="text" name="" id="" />
+                                   </label>
+                                    <label for="">Email：
+                                        <input type="text" class="text" name="" id="" />
+                                   </label>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Super Administrator：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" value="侯建刚" id="" style="width:80px;"/>
+                                    General administrator：
+                                    <input type="text" class="text" name="" value="侯建刚" id="" style="width:80px;"/>
+                                    Treasurer：
+                                    <input type="text" class="text" name="" value="侯建刚" id="" style="width:80px;"/>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">
+                                    <label for="">
+                                        <input type="checkbox" name="" id="" />
+                                        &nbsp; </label>
+                               </dd>
+                              <dd class="formMain">Public, everyone can view</dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                     </div>
+               </div>
+                <!-- 初始参数引用 -->
+                <div class="ACmodList">
+                    <h3><b class="square ACmodListTitle"><a name="basicSet" id="basicSet"></a>Set basic Paras</b></h3>
+                    <h4>
+                          <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="customCycleSwitch" />
+                              <b>Schedule</b></label>
+                     </h4>
+                    <div class="setmodList basicSet">
+                          <dl>
+                              <dd class="formTitle">Custom your schedule：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="setperiod">
+                                        <option value="0">Interval</option>
+                                        <option value="1">浮动周期设定</option>
+                                   </select>
+                                    <input type="text" class="text" name="" id="" value="定制描述" style="width:343px;" />
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Interval：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="">
+                                        <option value="每天">每天</option>
+                                   </select>
+                                    <select name="" id="">
+                                        <option value="直接建立活动">直接建立活动</option>
+                                   </select>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">选择预定周期：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" style="width:277px;"  />
+                                    <input type="button" value="日历" class="buttonG btn_w56 btn_h28 btnGary_56"/>
+                                    <select name="" id="">
+                                        <option value="直接建立活动">直接建立活动</option>
+                                   </select>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">
+                                    <input type="checkbox" name="" id="" />
+                                    &nbsp; </dd>
+                              <dd class="formMain">Email to the founder before the date
+                                    <select name="" id="">
+                                        <option value="提前半天">提前半天</option>
+                                   </select>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">
+                                    <input type="checkbox" name="" id="" />
+                                    &nbsp;</dd>
+                              <dd class="formMain">Send message to the founder before the date
+                                    <select name="" id="">
+                                        <option value="提前半天">提前半天</option>
+                                   </select>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                     </div>
+                    <!--定制周期-->
+                    <h4>
+                          <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="addressSetSwitch" />
+                              <b>Set Address</b></label>
+                     </h4>
+                    <div id="addressSet" class="setmodList addressSet">
+                          <ul class="setBar">
+                              <li><span id="listSch_Btn" class="currentSch">List</span></li>
+                              <li><span id="mapSch_Btn" class="fCgray3">Maps</span></li>
+                              <li><span id="switchBtn" class="buttonW showBox_Btn"></span></li>
+                         </ul>
+                          <div id="addreesSchWarp" class="addreesSchWarp clearfix" >
+                              <div class="listschWarp">
+                                    <div class="listSchBar">
+                                        <ul class="activityCat">
+                                              <li> <a href="javascript:viod(0);" class="prevBtn"></a> </li>
+                                              <li class="tabs-clip" style="width:540px; overflow:hidden">
+                                                  <ul class="AC_catList">
+                                                        <li> <a href="javascript:viod(0);" class="cat_btn">运动</a> </li>
+                                                        <li> <a href="javascript:viod(0);" class="cat_btn">运动</a> </li>
+                                                        <li> <a href="javascript:viod(0);" class="cat_btn">运动</a> </li>
+                                                        <li> <a href="javascript:viod(0);" class="cat_btn">运动</a> </li>
+                                                        <li> <a href="javascript:viod(0);" class="cat_btn">运动</a> </li>
+                                                        <li> <a href="javascript:viod(0);" class="cat_btn">运动</a> </li>
+                                                        <li> <a href="javascript:viod(0);" class="cat_btn">运动</a> </li>
+                                                        <li> <a href="javascript:viod(0);" class="cat_btn">运动</a> </li>
+                                                   </ul>
+                                             </li>
+                                              <li> <a href="javascript:viod(0);" class="nextBtn"></a> </li>
+                                              <li> <a href="javascript:viod(0);" class="backBtn"></a> </li>
+                                         </ul>
+                                   </div>
+                                    <div class="listSchMain">
+                                        <div class="listSchContent">
+                                              <div class="pageList">
+                                                    <span><a href="javascript:;">More</a></span>
+                                                    <span class="first"><a href="javascript:;">First</a></span>
+                                                    <span class="prev"><a href="javascript:;">Pervious</a></span>
+                                                    <span>01/20</span>
+                                                    <span class="next"><a href="javascript:;">Next</a></span>
+                                                    <span class="last"><a href="javascript:;">Last</a></span>
+                                              </div>
+                                              <ul>
+                                                  <li class="fCgray3">
+                                                        <table width="100%" cellspacing="0" cellpadding="0" border="0" class="table-fixed">
+                                                            <tbody>
+                                                                  <tr>
+                                                                      <td width="64" align="right" class="fCblue square_small">地点名：</td>
+                                                                      <td width="120">周末ktv</td>
+                                                                      <td width="48" align="right" class="fCblue">地址：</td>
+                                                                      <td>平阳路美特好</td>
+                                                                 </tr>
+                                                                  <tr>
+                                                                      <td align="right" class="fCblue">时间段：</td>
+                                                                      <td colspan="3">2011/11/14&mdash;2011/11/30</td>
+                                                                 </tr>
+                                                                  <tr style="">
+                                                                      <td valign="top" align="right" class="fCblue">描述：</td>
+                                                                      <td colspan="3"><p>我比谁都清楚东东拼拼凑凑爱的故事简简短短你的心事我不在你身边的日子是什么让你改变坚持让人心疼你的样子吞吞吐吐欲言又止如果有那么难以启齿我不问你又何必掩饰你过的好辛苦我比谁都清楚感情路没有勉强的幸福一开始就给的糊里糊涂想回头却又不知如何结束你装作很满足我比谁都清楚你的笑隐约透露着孤独快乐背后深深藏着痛楚坚强的面对然后偷偷的哭 </p></td>
+                                                                 </tr>
+                                                             </tbody>
+                                                       </table>
+                                                   </li>
+                                                  <li class="fCgray3">
+                                                        <table width="100%" cellspacing="0" cellpadding="0" border="0" class="table-fixed">
+                                                            <tbody>
+                                                                  <tr>
+                                                                      <td width="64" align="right" class="fCblue square_small">地点名：</td>
+                                                                      <td width="120">周末ktv</td>
+                                                                      <td width="48" align="right" class="fCblue">地址：</td>
+                                                                      <td>平阳路美特好</td>
+                                                                 </tr>
+                                                                  <tr>
+                                                                      <td align="right" class="fCblue">时间段：</td>
+                                                                      <td colspan="3">2011/11/14&mdash;2011/11/30</td>
+                                                                 </tr>
+                                                                  <tr>
+                                                                      <td valign="top" align="right" class="fCblue">描述：</td>
+                                                                      <td colspan="3"><p>我比谁都清楚东东拼拼凑凑爱的故事简简短短你的心事我不在你身边的日子是什么让你改变坚持让人心疼你的样子吞吞吐吐欲言又止如果有那么难以启齿我不问你又何必掩饰你过的好辛苦我比谁都清楚感情路没有勉强的幸福一开始就给的糊里糊涂想回头却又不知如何结束你装作很满足我比谁都清楚你的笑隐约透露着孤独快乐背后深深藏着痛楚坚强的面对然后偷偷的哭 </p></td>
+                                                                 </tr>
+                                                             </tbody>
+                                                       </table>
+                                                   </li>
+                                                  <li class="fCgray3">
+                                                        <table width="100%" cellspacing="0" cellpadding="0" border="0" class="table-fixed">
+                                                            <tbody>
+                                                                  <tr>
+                                                                      <td width="64" align="right" class="fCblue square_small">地点名：</td>
+                                                                      <td width="120">周末ktv</td>
+                                                                      <td width="48" align="right" class="fCblue">地址：</td>
+                                                                      <td>平阳路美特好</td>
+                                                                 </tr>
+                                                                  <tr>
+                                                                      <td align="right" class="fCblue">时间段：</td>
+                                                                      <td colspan="3">2011/11/14&mdash;2011/11/30</td>
+                                                                 </tr>
+                                                                  <tr>
+                                                                      <td valign="top" align="right" class="fCblue">描述：</td>
+                                                                      <td colspan="3"><p>我比谁都清楚东东拼拼凑凑爱的故事简简短短你的心事我不在你身边的日子是什么让你改变坚持让人心疼你的样子吞吞吐吐欲言又止如果有那么难以启齿我不问你又何必掩饰你过的好辛苦我比谁都清楚感情路没有勉强的幸福一开始就给的糊里糊涂想回头却又不知如何结束你装作很满足我比谁都清楚你的笑隐约透露着孤独快乐背后深深藏着痛楚坚强的面对然后偷偷的哭 </p></td>
+                                                                 </tr>
+                                                             </tbody>
+                                                       </table>
+                                                   </li>
+                                             </ul>
+                                              <div class="pageList">
+                                                    <span><a href="javascript:;">More</a></span>
+                                                    <span class="first"><a href="javascript:;">First</a></span>
+                                                    <span class="prev"><a href="javascript:;">Pervious</a></span>
+                                                    <span>01/20</span>
+                                                    <span class="next"><a href="javascript:;">Next</a></span>
+                                                    <span class="last"><a href="javascript:;">Last</a></span>
+                                              </div>
+                                         </div>
+                                   </div>
+                               </div>
+                              <div class="mapschWarp">
+                                    <div class="MapSchBar">
+                                        <label for="">我的位置：
+                                              <input type="text" class="text" name="" id="" />
+                                         </label>
+                                        <label for="">邮编：
+                                              <input type="text" class="text" name="" id="" />
+                                         </label>
+                                        <input type="text" class="text" name="" id="" value="国家" inputdefault="国家" style="width:40px;" />
+                                        <input type="text" class="text" name="" id="" value="州省" inputdefault="州省" style="width:40px;" />
+                                        <input type="text" class="text tW_60" name="" id="" value="城市" inputdefault="城市" style="width:40px;" />
+                                        <input type="button" class="buttonG btn_w56 btn_h28 btnGary_56" value="选择地区" />
+                                   </div>
+                                    <div class="MapSchL"><img width="474" height="462" src="../images/defucult/map.jpg" alt="" /></div>
+                                    <div class="MapSchR">
+                                        <ul>
+                                              <li>
+                                                  <label for="">
+                                                        <input type="checkbox" name="" id="" class="checkbox" />
+                                                        同步该地址为家庭地址</label>
+                                             </li>
+                                              <li><small class="icon16 square fSize-12">离家距离:</small>
+                                                  <select class="select" name="" id="" style="width:105px;">
+                                                        <option value="10公里">10公里</option>
+                                                   </select>
+                                             </li>
+                                              <li><small class="icon16 square fSize-12">分类:</small>
+                                                  <select class="select" name="" id="" style="width:55px;">
+                                                        <option value="农场">农场</option>
+                                                   </select>
+                                                  <select class="select" name="" id="" style="width:70px;">
+                                                        <option value="选项目">选项目</option>
+                                                   </select>
+                                                  <div class="tips_G tipW_190"><span class="upArrow_G"></span>
+                                                        <div class="tips_G_main tipW_190">
+                                                            <ul>
+                                                                  <li class="delBtn">摘南瓜</li>
+                                                                  <li class="delBtn">摘苹果</li>
+                                                             </ul>
+                                                       </div>
+                                                   </div>
+                                             </li>
+                                              <li><small class="icon16 square fSize-12">
+                                                   <input type="checkbox" name="" id="" />
+                                                   所有好友参加的活动</small>
+                                                  <input type="text" class="text" name="" id="" style="width:110px;" />
+                                                  <input type="button" value="添加" class="buttonG btn_w56 btn_h28 gay-button" />
+                                                  <div class="tips_G tipW_190"><span class="upArrow_G"></span>
+                                                        <div class="tips_G_main tipW_190">
+                                                            <ul>
+                                                                  <li class="delBtn">好友名</li>
+                                                                  <li class="delBtn">好友名</li>
+                                                             </ul>
+                                                       </div>
+                                                   </div>
+                                             </li>
+                                              <li><small class="icon16 square fSize-12">
+                                                   <input type="checkbox" name="" id="" />
+                                                   所有圈子参加的活动</small><br />
+                                                  <input type="text" class="text" name="" id="" style="width:110px;" />
+                                                  <input type="button" value="添加" class="buttonG btn_w56 btn_h28 gay-button" />
+                                                  <div class="tips_G tipW_190"><span class="upArrow_G" ></span>
+                                                        <div class="tips_G_main tipW_190" >
+                                                            <ul>
+                                                                  <li class="delBtn">圈子名</li>
+                                                                  <li class="delBtn">圈子名</li>
+                                                             </ul>
+                                                       </div>
+                                                   </div>
+                                             </li>
+                                              <li><small class="icon16 square fSize-12">
+                                                   <input type="checkbox" name="" id="" />
+                                                   过滤掉去过的地方</small></li>
+                                         </ul>
+                                   </div>
+                                    <div class="clear2"></div>
+                                    <div class="MapNote">
+                                        <p class="mapNote"> <b>注释:</b><img src="../images/icons/mapschNote.png" alt="" /><font class="fCgray3">活动地点</font></p>
+                                   </div>
+                               </div>
+                         </div>
+                          <dl class="clearfix">
+                              <dd class="formTitle">Location：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" />
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Address：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" value="Country"  inputdefault="Country"  id="" style="width:100px;"/>
+                                    <input type="text" class="text" name="" value="State"inputdefault="State"  id="" style="width:100px;" />
+                                    <input type="text" class="text" inputdefault="City"  name="" value="City" id="" style="width:100px;" />
+                                    <input type="button" class="buttonG btn_w56 btn_h28 btnGary_56" value="Zip code" />
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                     </div>
+                    <!--地址设定-->
+                    <h4>
+                          <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="addressSetSwitch" />
+                              <b>Set activity Paras</b></label>
+                     </h4>
+                    <div class="setmodList activityPara">
+                          <dl  class="clearfix">
+                              <dd class="formTitle">Set activity Paras：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" />
+                                    From
+                                    <input type="text" class="text" name="" id="" />
+                                    Total
+                                    <input type="text" class="text" name="" id="" style="width:60px;" />
+                                    days</dd>
+                         </dl>
+                         
+                          <dl class="clearfix">
+                              <dd class="formTitle">Category tags：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" style="width:282px;" />
+                                    <input type="button" value="Select" class="buttonG btn_w56 btn_h28 btnGary_56" />
+                                    <input type="button" value="Input" class="buttonG btn_w56 btn_h28 btnGary_56" />
+                               </dd>
+                         </dl>
+                   
+                          <dl  class="clearfix">
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain">
+                                  <div class="tips-1" style="width:500px;">
+                                        <div style="left:60%;" class="arrowhead"></div>
+                                        <ul class="conditions">
+                                            <li>条件1<a class="icon close-2" href="javascript:;"></a></li><li>条件1<a class="icon close-2" href="javascript:;"></a></li><li>条件1<a class="icon close-2" href="javascript:;"></a></li><li>条件1<a class="icon close-2" href="javascript:;"></a></li><li>条件1<a class="icon close-2" href="javascript:;"></a></li><li>条件1<a class="icon close-2" href="javascript:;"></a></li><li>条件1<a class="icon close-2" href="javascript:;"></a></li><li>条件1<a class="icon close-2" href="javascript:;"></a></li><li>条件1<a class="icon close-2" href="javascript:;"></a></li><li>条件1<a class="icon close-2" href="javascript:;"></a></li>
+                                        </ul>
+                              </div>
+                               </dd>
+                         </dl>
+                     
+                          <dl  class="clearfix">
+                              <dd class="formTitle">Title：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" />
+                               </dd>
+                         </dl>
+                        
+                          <dl class="clearfix">
+                              <dd class="formTitle">Description：</dd>
+                              <dd class="formMain">
+                                    <textarea class="textarea" name="" id="" cols="69" rows="4"></textarea>
+                                    &nbsp;</dd>
+                         </dl>
+                        
+                     </div>
+                    <h4>
+                          <label for="">
+                              <input type="checkbox" class="checkbox" checked="checked" name="" id="addressSetSwitch" />
+                              <b>Develop a Plan</b></label>
+                     </h4>
+                    <div class="setmodList preparedPlan">
+                          <div class="timelineWarp">
+                              <div class="timelineMain">
+                                    <ul>
+                                        <li>&nbsp;</li>
+                                        <li class="current timelineBtm timelineTop">&nbsp;
+                                              <p class="tips_B fCwhite fSize-12">2011/02/12</p>
+                                              <div class="tipsWarp">
+                                                  <div class="tipsTop"></div>
+                                                  <div class="tipsMain fSize-12 fCgray3">
+                                                        <p>5：00-12：00 早市集DOTA</p>
+                                                        <p>16:00-20:00 南山集会品茶活动</p>
+                                                   </div>
+                                                  <div class="tipsBottom">&nbsp;</div>
+                                             </div>
+                                         </li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                        <li>&nbsp;</li>
+                                   </ul>
+                               </div>
+                         </div>
+                          <div class="tabWarp_Gray">
+                              <table cellpadding="0" cellspacing="0" border="0" background="#ededed" width="662" class="preparedList fSize-12 fCgray3" >
+                                    <tr>
+                                        <td>早市</td>
+                                        <td>早晨网吧早市集体DOTA</td>
+                                        <td>已灭团为主要目的</td>
+                                        <td>2011/11/11（05：30-18：30）</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                                    <tr>
+                                        <td>早市</td>
+                                        <td>早晨网吧早市集体DOTA</td>
+                                        <td>已灭团为主要目的</td>
+                                        <td>2011/11/11（05：30-18：30）</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                                    <tr>
+                                        <td>早市</td>
+                                        <td>早晨网吧早市集体DOTA</td>
+                                        <td>已灭团为主要目的</td>
+                                        <td>2011/11/11（05：30-18：30）</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                                    <tr>
+                                        <td>早市</td>
+                                        <td>早晨网吧早市集体DOTA</td>
+                                        <td>已灭团为主要目的</td>
+                                        <td>2011/11/11（05：30-18：30）</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                               </table>
+                         </div>
+                          <dl>
+                              <dd class="formTitle">Date：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="">
+                                        <option value="州省">州省</option>
+                                   </select>
+                                    &nbsp;From&nbsp;
+                                    <input type="text" class="text" name="" id="" />
+                                    &nbsp;To&nbsp;
+                                    <input type="text" class="text" name="" id="" />
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Schedule：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" />
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Remarks：</dd>
+                              <dd class="formMain">
+                                    <textarea class="textarea" name="" id="" cols="69" rows="4"></textarea>
+                                    &nbsp;</dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain">
+                                    <input type="button" value="Add" class="buttonG btn_w56 btn_h28 btnGary_56" />
+                                    <input type="button" value="Clear" class="buttonG btn_w56 btn_h28 btnGary_56" />
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                     </div>
+               </div>
+                <!-- 基本参数设定 -->
+                <div class="ACmodList">
+                    <h3><b class="square ACmodListTitle"><a name="applySet" id="applySet"></a>Set joining Paras</b></h3>
+                    <h4>
+                          <label for="">
+                              <input type="checkbox" class="checkbox" name="" id="customCycleSwitch" />
+                              <b>Basic Paras</b></label>
+                     </h4>
+                    <div class="setmodList applySet">
+                          <dl>
+                              <dd class="formTitle">Total number：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" />
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Join deadline date：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" />
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Join Type：</dd>
+                              <dd class="formMain">
+                                    <label for="">
+                                        <input type="radio" name="111" id="" />
+                                        Directly join</label>
+                                    &nbsp;
+                                    <label for="">
+                                        <input type="radio" name="111" id="" />
+                                        Approved to join</label>
+                                    &nbsp;
+                                    <label for="">
+                                        <input type="radio" name="111" id="" />
+                                        Password authorized to join</label>
+                                    <div class="tips_G tipW_475"><span class="upArrow_G"></span>
+                                        <div class="tips_G_main tipW_475">
+                                              <label for="" class="pwdWarp">Set password：
+                                                  <input type="password" class="text" name="" id="" style="width:100px"/>
+                                             </label>
+                                              <label for="" class="pwdWarp">Re-set password：
+                                                  <input type="password" class="text" name="" id="" style="width:100px"/>
+                                             </label>
+                                         </div>
+                                   </div>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">&nbsp;
+                                    <label for="">
+
+                                        &nbsp;</label>
+                               </dd>
+                              <dd class="formMain"><input type="checkbox" name="" id="" />&nbsp;Open kick out protection&nbsp;
+                                    <select name="" id="">
+                                        <option value="保护时限">保护时限</option>
+                                   </select>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                     </div>
+                    <!--设定报名参数-->
+                    <h4>
+                          <label for="">
+                              <input type="checkbox" class="checkbox" name="" id="customCycleSwitch" />
+                              <b>Set join fee</b></label>
+                     </h4>
+                    <div class="setmodList applyFeeSet">
+                          <dl>
+                              <dd class="formTitle">Join fee：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" />
+                                    <label>
+                                        <input  type="checkbox"/>
+                                        &nbsp;&nbsp;Application must pay</label>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Pre-pay notification：</dd>
+                              <dd class="formMain">
+                                    <textarea class="textarea" name="" id="" cols="69" rows="4"></textarea>
+                                    &nbsp;</dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Payment methods and&nbsp;<br/>
+                                    ID or Pay address：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="">
+                                        <option value="缴费方式">缴费方式</option>
+                                   </select>
+                                    <input  type="text" class="text"/>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                     </div>
+                    <!--设定报名费用-->
+                    <h4>
+                          <label for="">
+                              <input type="checkbox" class="checkbox" name="" id="customCycleSwitch" />
+                              <b>Set join requirement</b></label>
+                     </h4>
+                    <div class="setmodList thresholdSet">
+                          <dl>
+                              <dd class="formTitle">Set join requirement：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" value="添加" />
+                                    <select name="" id="">
+                                        <option value="Condition">Condition</option>
+                                   </select>
+                                    <select name="" id="">
+                                        <option value="Value">Value</option>
+                                   </select>
+                                    <input type="button" value="Add" class="buttonG btn_w56 btn_h28 btnGary_56" />
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain">
+                                    <textarea class="textarea" name="" id="" cols="69" rows="4"></textarea>
+                                    &nbsp; </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                     </div>
+                    <!--设定加入门槛-->
+                    <h4>
+                          <label for="">
+                              <input type="checkbox" class="checkbox" name="" id="customCycleSwitch" />
+                              <b>Plan budget</b></label>
+                     </h4>
+                    <div class="setmodList preparedbudget">
+                          <dl>
+                              <dd class="formTitle">Budget Details：</dd>
+                              <dd class="formMain">
+                                    <label for="">
+                                        <input type="checkbox" name="" id="" />
+                                        Publish budget</label>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <div class="tabWarp_Gray">
+                              <table cellpadding="0" cellspacing="0" border="0" background="#ededed" width="642" class="preparedList fSize-12 fCgray3">
+                                    <tr class="fCblue" style="font-weight:normal;">
+                                        <th>ID</th>
+                                        <th>Item</th>
+                                        <th>Balance</th>
+                                        <th>Operator</th>
+                                        <th>Finance staff</th>
+                                        <th>Date</th>
+                                        <th></th>
+                                   </tr>
+                                    <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                                    <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                                    <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                                    <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                                    <tr>
+                                        <td>001</td>
+                                        <td>山地野炊</td>
+                                        <td>600￥</td>
+                                        <td>曹操</td>
+                                        <td>刘备</td>
+                                        <td>2011-11-15</td>
+                                        <td  class="table-opt"><a href="javascript:;" class="listUp" title="Up">&nbsp;</a> <a href="javascript:;" class="listDown" title="Down">&nbsp;</a> <a href="javascript:;" class="listEdit" title="Edit">&nbsp;</a> <a href="javascript:;" class="listDel" title="Delete">&nbsp;</a></td>
+                                   </tr>
+                               </table>
+                         </div>
+                          <dl>
+                              <dd class="formTitle">Item Details：</dd>
+                              <dd class="formMain"></dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">ID：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" value="01" id="" style="width:60px;" />
+                                    &nbsp;Item&nbsp;
+                                    <input type="text" class="text" name="" id="" />
+                                    &nbsp;Balance&nbsp;
+                                    <select name="" id="">
+                                        <option value="每天">每天</option>
+                                   </select>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">执行人名：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id="" />
+                                    &nbsp;&nbsp;
+                                    <select name="" id="">
+                                        <option value="活动人员">活动人员</option>
+                                   </select>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain">
+                                    <textarea class="textarea" name="" id="" cols="69" rows="4"></textarea>
+                                    &nbsp; </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain"> 操作时间：2011-11-15 23：11   财务人员：李小冉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="button" value="Add" class="buttonG btn_w102 btn_h28 btnGary_102"/>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                     </div>
+                    <!-- 拟定预算 --> 
+               </div>
+                <!-- 报名参数设定 -->
+                <div class="ACmodList">
+                    <h3><b class="square ACmodListTitle"><a name="sendInvite" id="sendInvite"></a>Send the Invitation</b></h3>
+                    <div class="setmodList sendInvite">
+                          <div class="inviteTableWarp">
+                              <h5>Invitation：</h5>
+                              <table cellpadding="0" cellspacing="0" border="1"  class="table-fixed inviteTable">
+                                    <tr>
+                                        <td width="161" class="CL_left" valign="top"><ul class="fSize-12 fCblcak CN_list">
+                                                  <li class="arrowDown">Groups</li>
+                                                  <li class="selected fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                             </ul></td>
+                                        <td width="161" align="center" valign="middle"><input type="button" value="Add all&gt;&gt;"class="buttonW btn_w93 btn_h28 btnWhite_93 fCblue"/>
+                                              <br />
+                                              <br />
+                                              <input type="button" value="&lt;&lt;Delete all" class="buttonW btn_w93 btn_h28 btnWhite_93 fCblue"/>
+                                              <br />
+                                              <br />
+                                              <input type="button" value="Add&gt;"class="buttonW btn_w93 btn_h28 btnWhite_93 fCblue"/>
+                                              <br />
+                                              <br />
+                                              <input type="button" value="&lt;Delete" class="buttonW btn_w93 btn_h28 btnWhite_93 fCblue" /></td>
+                                        <td width="161" class="CL_right"valign="top"><ul class="fSize-12 fCblcak CN_list">
+                                                  <li class="arrowDown">Groups</li>
+                                                  <li class="selected fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                                  <li class="fCgray3"><img src="../images/defucult/32-32.jpg" width="20" height="20"  alt="" />Mike</li>
+                                             </ul></td>
+                                   </tr>
+                               </table>
+                         </div>
+                          <dl>
+                              <dd class="formTitle">&nbsp;</dd>
+                              <dd class="formMain">
+                                    <label for="">
+                                        <input type="checkbox" name="" id="" />
+                                        Send the invitation to all friends</label>
+                                    <label for="">
+                                        <input type="checkbox" name="" id="" />
+                                        Send the invitation to all groups</label>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Send the invitation to some groups：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="" style="width:80px;">
+                                        <option value="圈子名">圈子名</option>
+                                   </select>
+                                    <input type="text" class="text" name="" id=""/>
+                                    <input type="button" value="Add" class="buttonG btn_w56 btn_h28 btnGary_56" />
+                                    <div class="tips_G tipW_430 fCgray3"><span class="upArrow_G"></span>
+                                        <div class="tips_G_main tipW_430">
+                                              <ul>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                             </ul>
+                                         </div>
+                                   </div>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Send the invitation to some friends：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="" style="width:80px;">
+                                        <option value="圈子名">Groups</option>
+                                   </select>
+                                    <input type="text" class="text" name="" id=""/>
+                                    <input type="button"  class="fCgray3 buttonG btn_w56 btn_h28 btnGary_56"value="Search"  />
+                                    <input type="button" value="Add" class="buttonG btn_w56 btn_h28 btnGary_56" />
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">已添加：</dd>
+                              <dd class="formMain">
+                                    <div class="tips_G tipW_430 fCgray3"><span class="upArrow_G"></span>
+                                        <div class="tips_G_main tipW_430">
+                                              <ul>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                                  <li class="delBtn">好友姓名</li>
+                                             </ul>
+                                         </div>
+                                   </div>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                     </div>
+               </div>
+                <!-- 发送邀请 -->
+                <div class="ACmodList">
+                    <h3><b class="square ACmodListTitle"><a name="applyPerson" id="applyPerson"></a>Sign up</b></h3>
+                    <div class="setmodList applyPerson">
+                          <dl>
+                              <dd class="formTitle">Plan to take：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="" style="width:80px;">
+                                        <option value="汽车">汽车</option>
+                                   </select>
+                                    Join activity
+                                    <select name="" id="" style="width:59px;">
+                                        <option value="有">有</option>
+                                   </select>
+                                    Auto join activity
+                                    <select name="" id="" style="width:110px;">
+                                        <option value="愿意提供打车">愿意提供打车</option>
+                                   </select>
+                                    <select name="" id="" style="width:110px;">
+                                        <option value="可选搭车人">可选搭车人</option>
+                                   </select>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Carpool fee：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="" style="width:80px;">
+                                        <option value="油费均分">油费均分</option>
+                                   </select>
+                                    每人$
+                                    <input type="text" class="text" name="" id="" style="width:68px;"/>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Model：</dd>
+                              <dd class="formMain">
+                                    <select name="" id="" style="width:80px;">
+                                        <option value="车牌">车牌</option>
+                                   </select>
+                                    <select name="" id="" style="width:114px;">
+                                        <option value="车型 ">车型</option>
+                                   </select>
+                                    Brand：
+                                    <input type="text" class="text" name="" id="" style="width:113px;"/>
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                          <dl>
+                              <dd class="formTitle">Year：</dd>
+                              <dd class="formMain">
+                                    <input type="text" class="text" name="" id=""  style="width:189px;"/>
+                                    Intended carpool number
+                                    <input type="text" class="text" name="" id="" style="width:77px;" />
+                               </dd>
+                         </dl>
+                          <dl class="clear2">
+                         </dl>
+                     </div>
+               </div>
+                <!-- 个人报名 -->
+                <div class="ACmodList">
+                    <h3><b class="square ACmodListTitle"><a name="savePara" id="savePara"></a>Save settings</b></h3>
+                    <div class="setmodList savePara">
+                          <div class="saveParaWarp">
+                              <dl>
+                                    <dd class="fSize-12 fCblue">
+                                        <p class="icon16 circle">Save settings which often use, it is easier to create in the next time</p>
+                                   </dd>
+                               </dl>
+                              <dl>
+                                    <dd class="saveParaForm">
+                                        <label for="">
+                                              <input type="checkbox" name="" id="" />
+                                              Save setting name</label>
+                                        <input type="text" class="text" name="" id="" style="width:160px;" />
+                                   </dd>
+                               </dl>
+                              <dl>
+                                    <dd>
+                                        <div class="tips_G tipW_435 pR"><span class="upArrow_G"></span>
+                                              <div class="tips_G_main tipW_435">
+                                                  <ul>
+                                                        <li class="delBtn">保存活动名</li>
+                                                        <li class="delBtn">保存活动名</li>
+                                                        <li class="delBtn">保存活动名</li>
+                                                   </ul>
+                                             </div>
+                                         </div>
+                                   </dd>
+                               </dl>
+                         </div>
+                     </div>
+               </div>
+                <!-- 参数保存 -->
+                <div class="btn-warp">
+                    <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="Create" />
+                    &nbsp;&nbsp;
+                    <input type="button" class="buttonB btn_w163 btn_h36 btnGary_163 fSize-14" value="Save but not create" />
+                    &nbsp;&nbsp;
+                    <input type="button" class="buttonB btn_w97 btn_h36 btnGary_97 fSize-14" value="Cancel" />
+               </div>
+           </div>
+          <div class="activity_createWidget pR">
+                <div class="verifyWarp pA" id="verifyWarp">
+                    <ul class="fSize-14 fCwhite">
+                          <li class="array1"><span class="verify_accept f_right">&nbsp;</span><a id="basicQuoteSwitch" href="#basicQuote">Initial Para</a></li>
+                          <li class="array2"><span class="verify_cross f_right">&nbsp;</span><a href="#basicSet">Basic Para</a></li>
+                          <li class="array3"><span class="f_right">&nbsp;</span><a href="#applySet">Joining Para</a></li>
+                          <li class="array4"><span class="f_right">&nbsp;</span><a id="sendInviteSwitch" href="#sendInvite">Invitation</a></li>
+                          <li class="array5"><span class="f_right">&nbsp;</span><a id="applyPersonSwitch" href="#applyPerson">Sign up</a></li>
+                          <li class="array6"><span class="f_right">&nbsp;</span><a id="saveParaSwitch" href="#savePara">Save</a></li>
+                     </ul>
+               </div>
+           </div>
+          <div class="clear2"></div>
+     </div>
+ </div>
+<!--Main-->
+<div class="footer layout">
+	<span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a href="javascript:;">Help</a></p>
+ </div>
+</body>
+</html>

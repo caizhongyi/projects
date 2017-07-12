@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>玩儿道--框架</title>
+<meta name="keywords" content="关键字键字" />
+<meta name="description" content="描述" />
+<meta name="author" content="zhengshaofan" />
+<!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+<link href="style/layout.css" rel="stylesheet" type="text/css" />
+<link href="style/home.css" rel="stylesheet" type="text/css" />
+<link href="style/activity_main.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript">
+var winScreenWidth = window.screen.width;
+if(winScreenWidth>1024){
+document.writeln('<style>');
+document.writeln('.jz{padding:0px 2px;}');
+document.writeln('</style>');
+}
+</script>
+<body>
+	<!--头部-->
+	<div class="head">
+    	<div class="jz">
+        	<div class="logo left"><a href="#" title="玩儿道"><img src="images/layout_main/logo.png" alt="玩儿道" /></a></div>
+            <ul class="nav left yh">
+            	<li><a href="#">首页</a></li>
+            	<li class="cur"><a href="#" class="arr">个人</a></li>
+            	<li><a href="#" class="arr">关系</a></li>
+            	<li><a href="#" class="arr">杂烩</a></li>
+            	<li><a href="#" class="arr">活动</a></li>
+            	<li><a href="#" class="arr">资道</a></li>
+            	<li class="newMsg"><a href="#">站内信息</a><i><a href="#">5</a></i></li>
+            </ul>
+            <div class="userInfo">
+            	<a href="#" class="left"  title="烧饭-人生旅途中-飞砂走石风过"><img src="images/layout_main/img_32x32.png" width="32" height="32" /></a>
+                <a href="javascript:void(0);" title="烧饭-人生旅途中-飞砂走石风过留痕！" class="name">烧饭-人生旅途中</a>
+            </div>
+        </div>
+    </div>
+    <!--头部end-->
+    <!--主体-->
+    <div class="main jz">
+    	<div class="home_page ofh">
+        	
+        	<div class="home_con version1">
+              <div class="actMain">
+              <div class="subChaTab">
+                <a href="#">按分类寻找</a>
+                <a href="#" class="active">按位置查找</a>
+               </div>	
+              <div class="blank10px"></div>
+               <div class="searBar">
+               	<span class="left">
+                我的位置：<input type="text" class="txtInput" style="width:204px;" />&nbsp;
+                邮编：<input type="text" class="txtInput" style="width:88px;" />
+                <select><option>州省</option></select>
+                <select><option>城市</option></select>
+                <select><option>国家</option></select>
+                <!--<a href="javascript:void(0);" class="btn_search">查找</a>-->
+                </span>
+               </div>
+              <div class="mapSearch">
+              	<div class="map left"><img src="images/activity/map.jpg" width="447" height="462" /></div>
+                <div class="mapCondition right">
+               	  <p class="item lh24"><input type="checkbox" class="vInput" id="setHomeAddress" /><label for="setHomeAddress">同步该地址为家庭地址</label></p>
+                  <p class="item icon">离家距离：<select style="width:116px;"><option>10公里</option></select></p>
+                    <p class="item icon">分类：<select style="width:68px;"><option>农场</option></select> <select style="width:68px;"><option>选项目</option></select></p>
+                    <div class="tipShow">
+                    	<ins style="left:140px;"></ins>
+                        <p class="tCon">
+                        	<i>摘苹果<a href="javascript:void(0);"></a></i>
+                        	<i>摘苹果<a href="javascript:void(0);"></a></i>
+                        	<i>摘苹果<a href="javascript:void(0);"></a></i>
+                        </p>
+                    </div>
+                    <p class="item icon"><input type="checkbox" class="vInput" id="allFriend" /><label for="allFriend">所有好友参加的活动</label></p>
+                    <p class="item icon"><input type="checkbox" class="vInput" id="allGroup" /><label for="allGroup">所有圈子参加的活动</label></p>
+                    <p class="item"><input type="text" class="txtInput txt_cusFriend" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#909090'}"  value="自定义好友" /> <input type="button" class="btn_add" value="添加" /></p>
+                    <div class="tipShow">
+                    	<ins style="left:90px;"></ins>
+                        <p class="tCon">
+                        	<i>摘苹果<a href="javascript:void(0);"></a></i>
+                        	<i>摘苹果<a href="javascript:void(0);"></a></i>
+                        	<i>摘苹果<a href="javascript:void(0);"></a></i>
+                        </p>
+                    </div>
+                  <p class="item"><input type="text" class="txtInput txt_cusGroup" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#909090'}" value="自定义圈子" /> <input type="button" class="btn_add" value="添加" /></p>
+                    <div class="tipShow">
+                    	<ins style="left:90px;"></ins>
+                        <p class="tCon">
+                        	<i>摘苹果<a href="javascript:void(0);"></a></i>
+                        	<i>摘苹果<a href="javascript:void(0);"></a></i>
+                        	<i>摘苹果<a href="javascript:void(0);"></a></i>
+                        </p>
+                    </div>
+                    <p class="item icon"><input type="checkbox" class="vInput" id="filter" /><label for="filter">过滤掉去过的地方</label></p>
+                </div>
+                <div class="explain">
+                	<b class="lblue">注释：</b><i class="iLocat">活动地址</i>
+                </div>
+              </div>
+              <div class="blank10px"></div>
+                
+            </div>
+            </div>
+            <div class="side">
+              <div class="activity_event"><a href="#" class="Initiating_event_2"></a></div>
+              <div class="friend bor ">
+                <h2 class="friend_title">
+                  <p>搜索活动</p>
+                </h2>
+                <div class="search_ac">
+                  <form>
+                    <input type="text" value="关键词" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#79A8B0'}" class="search_active nobg"/>
+                    <input type="text" value="请选择活动分类" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#79A8B0'}"  class="search_active secA"/>
+                    <input type="text" value="好友参加的活动" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#79A8B0'}" class="search_active secB" />
+                    <input type="text" value="圈子参加的活动" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#79A8B0'}" class="search_active secC" />
+                    <input type="text" value="景点" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#79A8B0'}" class="search_active secD" />
+                    <input type="text" value="美国" onclick="if(this.value==this.defaultValue){this.value='';this.style.color='#000'}" onblur="if(this.value==''){this.value=this.defaultValue; this.style.color='#79A8B0'}" class="search_active secE" />
+                    <select style="width:108px; margin-top:3px;"><option>所有州省</option></select>&nbsp;
+                    <select style="width:111px; margin-top:3px;"><option>所有城市</option></select>
+                    <input type="submit" class="secI" value="&nbsp;" />
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="mBtm jz"></div>
+    <!--主体end-->
+    <!--底部-->
+    <div class="foot jz">
+    	<span class="left"><a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a> <a href="#">建议</a> <a href="#">帮助</a></span>
+        <span class="right">版权所有 &copy;玩儿道</span>
+    </div>
+    <!--底部end-->
+
+<!--页面脚本区-->
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript">
+	$(".active_con").hover(function(){
+		$(this).addClass("acrive_bg");	
+	},function(){
+		$(this).removeClass("acrive_bg");	
+	})
+	$(".open_activity").hover(function(){
+		$(this).addClass("acrive_bg");	
+	},function(){
+		$(this).removeClass("acrive_bg");	
+	})
+	
+	
+</script>
+</body>
+</html>

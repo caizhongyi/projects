@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>玩道弹出窗</title>
+
+<meta name="keywords" content="玩儿道弹出窗口"/>
+<meta name="description"
+      content=""/>
+
+
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+
+    <meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="BookStar" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="../css/base.css"/>
+<link rel="stylesheet" href="../css/font-awesome.min.css"/>
+<!--[if IE 7]>
+    <link rel="stylesheet" href="../css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+<link rel="stylesheet" type="text/css" media="all" href="../css/layout.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="../css/en.css"/>
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="../css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.plus.min.js" ></script>
+    <style type="text/css">
+        .dialog {
+            display: block;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="dialog ui-dialog" data-options="handler:'header'">
+    <div class="bg"></div>
+    <div class="inner">
+        <div class="hd" data-options="region:'header',handle:true">
+            <h3>
+                退出提示
+            </h3>
+            <a href="javascript:;" class="close" data-options="region:'hide'"></a>
+        </div>
+        <div class="bd form form-block">
+            <div class="form-item"><h3>你确定要退出?</h3></div>
+            <div class="form-item ">
+                <p class="text-dark ">亲爱的用户 <br/>
+                    因为你是超级管理员，你需要决定
+                </p>
+            </div>
+            <div class="form-item">
+                <span class="combo input-control" data-loader="class-combo">
+                        <span class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                        <input name="usr" type="hidden" class="combo-input-hidden">
+                        <div class="combo-list">
+                            <ul>
+                                <li value="1">12</li>
+                                <li value="2">item2</li>
+                                <li value="3">item3</li>
+                                <li value="4">item4</li>
+                                <li value="5">item5</li>
+                            </ul>
+                        </div>
+                    </span>该活动: activity name
+            </div>
+            <div class="form-item">
+                <div class="alert">
+                    你需要选择一个继任者
+                </div>
+            </div>
+            <div class="swapbox form-item">
+                <div class="swapbox-item pull-left">
+
+                    <div class="input-search  input-search-common input-block">
+                        <input type="text" class="text" placeholder="活动成员">
+                        <button class="icon"></button>
+                    </div>
+                    <ul class="tree scroll">
+                        <a href="#" class="node">活动成员</a>
+                        <ul class="scroll-panel">
+                            <li><label><input type="checkbox"/><img src="../images/defaults/person.gif" alt="">abs</label></li>
+                            <li><label><input type="checkbox"/><img src="../images/defaults/person.gif" alt="">abs</label></li>
+                            <li><label><input type="checkbox"/><img src="../images/defaults/person.gif" alt="">abs</label></li>
+                            <li><label><input type="checkbox"/><img src="../images/defaults/person.gif" alt="">abs</label></li>
+                            <li><label><input type="checkbox"/><img src="../images/defaults/person.gif" alt="">abs</label></li>
+                        </ul>
+                    </ul>
+                </div>
+                <div class="swapbox-item right">
+                    职位移交给:
+                    <ul class="tree">
+                        <li><label><input type="checkbox"/><img src="../images/defaults/person.gif" alt="">abs</label></li>
+                        <li><label><input type="checkbox"/><img src="../images/defaults/person.gif" alt="">abs</label></li>
+                        <li><label><input type="checkbox"/><img src="../images/defaults/person.gif" alt="">abs</label></li>
+                        <li><label><input type="checkbox"/><img src="../images/defaults/person.gif" alt="">abs</label></li>
+                    </ul>
+                </div>
+                <div class="main">
+                    <a href="#">>></a>
+                    <a href="#"><<</a>
+                </div>
+            </div>
+            <div class="form-item">
+                <label>
+                    <div class="input-block">
+                        <textarea class="textarea"  placeholder="原由..."></textarea>
+                    </div>
+                </label>
+            </div>
+
+            <div class="ft text-right">
+                <span class="tips-result">
+                    <ul>
+                        <li>Tips信息</li>
+                    </ul>
+                </span>
+                <input type="button" class="btn btn-primary" value="提交"><input type="button" class="btn btn-default" value="取消">
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div class="dialog ui-dialog" data-options="handler:'header'">
+    <div class="bg"></div>
+    <div class="inner">
+        <div class="hd" data-options="region:'header',handle:true">
+            <h3>退出提示</h3>
+            <a href="javascript:;" class="close" data-options="region:'hide'"></a>
+        </div>
+        <div class="bd form form-block">
+            <div class="form-item"><h3>你确定要退出?</h3></div>
+            <div class="form-item">
+                <label>
+                    <div class="input-block">
+                        <textarea class="textarea"  placeholder="原由..."></textarea>
+                    </div>
+                </label>
+            </div>
+
+            <div class="ft text-right">
+                <span class="tips-result">
+                    <ul>
+                        <li>Tips信息</li>
+                    </ul>
+                </span>
+                <input type="button" class="btn btn-primary" value="提交"><input type="button" class="btn btn-default" value="取消">
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="../js/jquery.toTop.js"></script>
+<script src="../js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="../js/global.js" ></script>
+<script type="text/javascript" src="../js/class.ui.min.js" ></script>
+<script type="text/javascript" src="../js/jquery.placeholer.js" ></script>
+<script src="../js/jquery.draggable.js"></script>
+<script src="../js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script>$(function(){$('.dialog .bd').initslimscroll();})</script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+@charset "utf-8";
+.button{ cursor:pointer;}
+.text{ border:1px solid #ddd; background:#fff;}
+.bold{ font-weight:bold;}
+/*  clear  */
+.clear{display:block;height:0;line-height:0;font-size:0;visibility:hidden;clear:both;}
+.clearfix{zoom:1;}
+.clearfix:after{content:".";height:1%;display:block;height:0;line-height:0;font-size:0;visibility:hidden;clear:both; *display:none;} 
+.equal { padding-bottom:32767px; margin-bottom: -32767px; } 
+/*  end clear  */
+
+/* template */
+.side{ float:left; _margin-right:-3px;}
+.subside{ float:right; _margin-left:-3px;}
+.main{ overflow:hidden;} 
+.overflow{overflow:hidden; }
+.txt-r{ text-align:right;}
+.f12{ font-size:12px;}
+/* end template */
+
+/* mod */
+.hd{padding-left:10px;}
+.bd{padding:10px;}
+.ft{text-align:center;}
+/* end  mod */
+
+.left { float:left;*display:inline;_margin-right:-3px; }
+.right { float:right;*display:inline;_margin-left:-3px; } 
+.inline 
+{ 
+	 display:-moz-inline-stack;
+	 display: inline-block;     
+	 zoom: 1; *display: inline; /* IE < 8: fake inline-block */     
+	 letter-spacing: normal;     
+	 word-spacing: normal;      
+}
+
+.home-content .side{ width:280px; padding:20px 0; background:#eef7fe; float:right;}
+.home-content .side .equal{ background:#eef7fe; padding-left:20px; padding-right:20px;}
+.home-content .main{padding: 0 20px 10px 20px ; }
+
+.box{border:1px solid #c7ddea; background:#f9fdff;}
+
+.searchbox .text{ border:1px solid #acccd3; padding:5.5px; color:#b6d4db; background:#fff; width:180px;}
+.searchbox .submit{ margin-left:-1px; background:url(../images/search_31x28_white.gif) no-repeat; border:1px solid #acccd3; border-left:none; width:31px; height:28px;}
+
+
+.tabs .tabs-nav{float:right; width:140px;background:#eef7fe url(../images/home/home_side_line.gif) repeat-y left; padding-left:10px;}
+.tabs .tabs-nav li{ padding:6px 6px; border:4px solid #eef7fe;  cursor:pointer;}
+.tabs .tabs-nav li .arrowhead{ display:none;}
+.tabs .tabs-nav li.tabs-nav-cur{ border:4px solid #b9d5e3; position:relative;}
+.tabs .tabs-nav li.tabs-nav-cur .arrowhead{ position:absolute; display:block; left:-10px; top:40%;}
+.tabs .tabs-nav li h3{ font-size:14px;}
+.tabs .tabs-nav li span{ margin:5px; margin-left:0; color:#999; display:inline-block;}
+
+.tabs  em{ color:#f95e01; font-size:16px; font-weight:bold; margin:0 4px;}
+.tabs .tabs-panel{ position:relative;}
+.tabs-content{ font-size:12px; color:#646567; line-height:25px;padding:20px; overflow:hidden; width:517px; position:absolute;}
+.tabs-content .main{ padding:0 0 0 20px; background:none; }
+.tabs-content img{ vertical-align:text-top;}
+.tabs-content label{ display:inline-block;  *display:inline; zoom:1;  text-align:right; margin-right:10px;}
+.tabs-content h3{ font-size:20px; color:#99c2e0;  font-family:"微软雅黑"; line-height:normal;}
+.tabs-content p{ padding-top:5px; line-height:20px;}
+.tabs-content .join{ background:url(../images/join.gif) no-repeat; display:block; width:101px; height:33px; line-height:33px; text-align:center; color:#fff; font-weight:bold; font-size:14px; margin:10px 0;}
+.tabs-content .join:hover{ background-position:0 -34px; text-decoration:none;}
+
+.commentbox{ margin:10px 0; padding:20px 20px;}
+.commentbox em{ font-size:15px;  color:#2d7fbb; font-family:"微软雅黑"; margin-right:10px;}
+.commentbox .tabs-nav a{ margin:0 10px; padding-left:19px; background:url(../images/home/icos_16x16.png) no-repeat; position:relative;}
+.commentbox .tabs-nav a.status{ background-position: 0 0;}
+.commentbox .tabs-nav a.pic{ background-position: 0 -16px;}
+.commentbox .tabs-nav a.link{ background-position: 0  -52px;}
+.commentbox .tabs-nav a.vedio{ background-position: 0  -35px;}
+.commentbox  a.right{background:url(../images/home/ico_9x6.png) no-repeat 0 center;  float:none; padding-left:15px;}
+.commentbox .submit{ background:url(../images/add_gz.jpg) no-repeat; border:none; width:72px; height:27px; line-height:27px; color:#fff; margin-left:10px;}
+.commentbox .tabs-nav{ display:inline-block; *display:inline; zoom:1; position:relative;}
+.commentbox .tabs-nav img{ position:absolute; left:50%;  top:-16px; display:none; }
+.commentbox .tabs-nav .tabs-nav-cur img{ display:block;}
+
+.commentbox .tabs-panel,
+.commentbox .tabs-panel li{ height:130px;}
+.commentbox .tabs-panel{ width:650px;}
+.commentbox .tabs-panel li{ width:630px; margin-left:5px;}
+.commentbox .tabs-panel label{ text-align:right; width:40px; color:#0868B2; display:inline-block; margin-right:10px;}
+.commentbox .tabs-panel .text{ height:24px; line-height:24px;}
+.commentbox .tabs-panel textarea{ height:50px; vertical-align:top;}
+.commentbox .tabs-panel .text,
+.commentbox .tabs-panel textarea{ box-shadow:2px; border:1px solid #ddd; margin-right:10px; width:100%;box-shadow:inset 1px 1px 2px 0px  #eff,inset -1px  -1px 2px 0px  #eff;}
+.commentbox .tabs-panel .status textarea{width:100%; height:80px;}
+.commentbox .tabs-panel .pic .text{width:490px;}
+.commentbox .tabs-panel .pic textarea,
+.commentbox .tabs-panel .link textarea,
+.commentbox .tabs-panel .link .text,
+.commentbox .tabs-panel .vedio textarea{width:560px;}
+.commentbox .tabs-panel .vedio .text{width:440px;}
+.commentbox .tabs-panel .vedio textarea{width:530px;}
+.commentbox .tabs-panel .vedio label{width:70px;}
+.commentbox .tabs-panel .upload{ background:url(../images/picpl_hf_an01a.jpg) no-repeat;width:58px; height:25px; text-align:center; line-height:25px; display:inline-block; padding:0;color:#0868B2;}
+
+.commentbox .panel-box{width:100%; height:100px; padding:10px 5px; border:1px solid #c7ddea; border-shadow:5px; border-radius:4px; margin-left:-5px; margin-bottom:10px; background:#fff;}
+
+.subChaTab .options{ float:right; }
+.subChaTab .options a{ background:url(../images/home/icos_21x21.gif) no-repeat; width:21px; height:21px;  padding:0; line-height:normal; float:none; display:inline-block;}
+.subChaTab .options a.ref{ background-position:0 0;}
+.subChaTab .options a.set{ background-position:-22px 0;}
+
+.comments{ color:#7f7f7f;}
+.comments li{ border-bottom:1px dashed #ddd; padding:10px 0;}
+.comments li:hover{ background:#eef7fe;}
+.comments li .photo{ float:left; margin-right:10px;}
+.comments li a{ color:#0868b2; margin:0 5px;}
+.comments li .content{  min-height:40px;_height:40px; _overflow:visible; font-size:14px; margin-bottom:5px;}
+.comments li  p{ line-height:22px; margin-top:5px; font-size:12px;}
+.comments li .content p img{ margin:10px 20px; margin-left:0;}
+.comments li .time{ float:left; color:#999;width:40%;}
+.comments .options{ float:right; width:50%;  text-align:right; }
+.comments .options a{ padding:0 0 0 22px;  display:inline-block; height:20px; line-height:24px; background: url(../images/home/icos_19x19.png) no-repeat;color:#999; position:relative;vertical-align:middle;}
+.comments .options a.replay{background-position:0 1px;}
+.comments .options a.enter{background-position:0 -23px;}
+.comments .options a.love{background-position:0 -47px;}
+.comments .options a.cancle{background-position:0 -73px;}
+.comments .options a.selector{background-position: center -101px;}
+.comments .options a.see{background-position:0 -121px;}
+.comments .options a.success{background-position:0 -142px;}
+	
+.select{display:inline-block; zoom:1;*display:inline;position:relative;height:17px; vertical-align:middle; cursor:pointer;  }
+.select a.selector{ position:relative; z-index:1000;width:10px; margin:0 auto; padding:1px 1px 1px 23px; }
+.select-hover a.selector{border:1px solid; border-color:#ddd #ddd #fff #ddd;  box-shadow:inset 1px 1px 2px 0px #ddd,inset -1px 1px 1px 0px #ddd; background-color:#fff; padding:0 0 0 22px;}
+.select .select-list{ display:none; border:1px solid #ddd;  position:absolute; left:0; top:0; width:100px; background:#fff; text-align:left; width:150px; left:-118px; top:21px; z-index:999;  box-shadow:inset 1px -1px 1px 0px #ddd,inset -1px -1px 1px 0px  #ddd;  }
+.select .select-list li{ padding:5px; border-bottom:none;}
+.select .select-list li:hover{ background:#ddd;}
+
+.vote li{border-bottom:none; padding:5px 0;}
+.vote .radio{ margin-right:10px;}
+.vote .vote-tip{ padding-left:20px; background:url(../images/home/timer.png) left center no-repeat; margin:10px 0;}
+.vote .vote-return{ background:url(../images/home/arrowhead.png) right center no-repeat; padding-right:10px;}
+.vote .vote-button{ background:#1683a7; border-radius:3px; width:100px; height:25px; line-height:25px; color:#fff; text-align:center; margin:5px; display:inline-block;}
+
+.comments .replay-content{ background:#f9f9f9; padding:20px; border:1px solid #d8d8d8; position:relative; margin-top:10px;}
+.comments .replay-content .arrowhead{ position:absolute; top:-9px; right:10%;}
+.comments .replay-content .text{ width:400px; padding:4px;}
+.comments .replay-content .submit{ background:url(../images/picpl_hf_an01b.jpg) no-repeat;width:58px; height:25px; border:none; margin-left:10px; color:#1d74b7;}
+.comments .replay-content li{ border-bottom:1px dotted #ddd;}
+.comments .replay-content li:hover{ background:#f9f9f9;}
+.comments .replay-content p{ margin-top:-5px; display:block;}
+.comments .replay-content .replay{ float:right;}
+.comments .replay-content .showall{ background:url(../images/icon_jiantou.gif) no-repeat right; padding-right:10px; margin-top:10px; display:inline-block;}
+.comments .main{ float:left;width:580px; overflow:visible; background:none;}
+
+.join{ text-align:center;}
+.join .invite{ display:inline-block; padding-left:20px; background:url(../images/home/ico_15x15.png) left center no-repeat ;margin:10px auto;}
+.join .join-submit{ display:inline-block; background:url(../images/home/join_151x28.png) no-repeat;width:151px; height:28px; margin-bottom:10px;}
+.join,.join a{ color:#0065aa;}
+
+.sidebox{border-top:1px dashed #ddd; margin:20px 0;}
+.sidebox,
+.sidebox a{ color:#0064a8; font-size:12px;}
+.sidebox .hd{ padding:10px 0; margin-bottom:10px;}
+.sidebox .hd h3{ float:left; color:#333333; font-size:14px; font-weight:bold;}
+.sidebox .hd h3 span{color:#0064a8; font-size:12px; font-weight:normal; }
+.sidebox .hd .pager{ float:right;}
+.sidebox .hd .pager a{ background:url(../images/home/page.png) no-repeat;width:16px; height:14px; display:inline-block;}
+.sidebox .hd .pager .prev{background-position:-20px -13px;}
+.sidebox .hd .pager .prev-disable{background-position:0 2px ;}
+.sidebox .hd .pager .next{background-position:0 -13px;}
+.sidebox .hd .pager .next-disable{background-position:-20px 2px ;}
+.sidebox .hd .pager .all{ display:inline; background:none;}
+.sidebox .bd{ padding:0;}
+.sidebox .bd ul{ margin-left:-10px;}
+.sidebox .bd li { margin:0 0 15px 12px; text-align:center; width:50px; height:72px; float:left;}
+.sidebox .bd li img{ margin-bottom:5px;}
+
+.areabox .select{ margin:5px; width:70px;}
+.areabox  a{ color:#0967af;}
+.areabox .hd{ text-align:center; padding:10px 0; margin-top:10px; border-bottom:1px solid #ddd;}
+.areabox .hd a{ margin:0 8px; color:#0967AF; padding:5px; font-size:14px; border:1px solid #EEF7FE;font-weight:bold;}
+.areabox .hd a:hover{ text-decoration:none;}
+.areabox li { position:relative;}
+.areabox li .button{ 
+	background: none repeat scroll 0 0 #91CEDD;
+    border: 1px solid #60B7CD;
+    color: #FFFFFF;
+    display: block;
+    padding: 3px 8px;
+    position: absolute;
+    right: 10px;
+    text-shadow: 1px 1px 1px #5DB1C6;
+    top: 30%;
+	line-height:normal;
+    border-radius:4px;
+	color:#fff;
+}
+.areabox li .button:hover{ text-decoration:none;}
+.areabox .hd a:hover,
+.areabox .hd .cur{  border:1px solid #0967AF; background:#53ADC5; border-radius:4px; color:#fff;}
+.areabox .arealist { color:#8d949a; }	
+.areabox .arealist li{ margin-bottom:10px; line-height:25px; float:none; width:auto;text-align:left; padding:5px;}
+.areabox .arealist li:hover{ background:#c5e5fe;}
+
+.boxpager{ background:#e1eaf1;}
+.boxpager .prev-disable,
+.boxpager .next-disable,
+.boxpager .prev,
+.boxpager .next{ width:25px;height:118px;  background:url(../images/home/boxpages.png) no-repeat; display:block;}
+.boxpager .prev{ background-position:-16px center;float:left; border-right:1px solid #ddd;}
+.boxpager .next{ background-position:3px center;float:right; border-left:1px solid #ddd;}
+.boxpager .prev-disable{ background-position:-45px center;float:left; border-right:1px solid #ddd;}
+.boxpager .next-disable{ background-position:-66px center;float:right; border-left:1px solid #ddd;}
+.boxpager-content{ color:#888d91; overflow:hidden; padding:20px;}
+.boxpager-content .content-side{ float:left; width:75px; margin-right:10px;}
+.boxpager-content .content-main{ overflow:hidden; line-height:20px;}
+.boxpager-content h3{ font-weight:bold; color:#0967b1;}
+.boxpager-content .joinit{ background:#cbedb1; border-radius:2px; color:#4a8d00; display:inline-block; width:62px; height:20px; line-height:20px; text-align:center;}
+
+.morebar{ border:1px solid #dfdfdf;  background:#fafafa;  text-align:center; height:35px; line-height:35px; margin:25px 0; cursor: pointer;  color: #999; }
+.morebar a{ display:inline-block; background:url(../images/huif_open_an.jpg) right center no-repeat; padding-right:15px;}
+.showbar{ color: #999;}
+
+/* datepicker */
+.datepicker{ width:250px; height:115px;}
+.datepicker .disable{ color:#b4b9be;}
+.datepicker a:hover{ text-decoration:none;}
+.datepicker-ui{background-image:url(../images/datepicker.png); background-repeat:no-repeat;}
+.datepicker .week{ margin-top:5px; padding-left:10px; line-height:22px; height:22px; color:#fff; background-position:0 -119px; position:relative; width:201px;}
+.datepicker .week span{ display:inline-block; width:25px; height:25px; text-align:center;}
+.datepicker .week .current{background-position:-275px 0;}
+.datepicker .tabs{ color:#fff;  font-weight:bold;}
+.datepicker .tabs a{ position:relative; left:-4px; display:block; padding-left:20px; color:#fff;width:27px; height:30px; line-height:25px; margin:5px 0;}
+.datepicker .tabs .current{background-position:-252px -30px; color:#53adc5; }
+.datepicker .datepanel{ color:#95cfde; float:left; margin-left:-10px;}
+.datepicker .datepanel .weekend{ color:#e2c067;}
+.datepicker .page{ text-align:right; float:right;}
+.datepicker .datepanel{ background:url(../images/datepicker-day.png) right bottom no-repeat; height:115px; width:207px; position:relative;}
+.datepicker .datepanel table{ margin:0; margin-left:10px;}
+.datepicker .datepanel td{width:23px; text-align:center; line-height:15px;}
+.datepicker .datepanel .prev,
+.datepicker .datepanel .next{width:14px; height:14px; display:block; margin-bottom:5px;margin-right:5px;}
+.datepicker .datepanel .prev{background-position:-246px -100px; margin-top:20px;}
+.datepicker .datepanel .next{background-position:-259px -101px;}
+.datepicker .datepanel .month{ position:absolute; bottom:0; right:0; margin:3px; font-size:14px; font-weight:bold; color:#1992b1;}
+
+.datepicker .weekpanel{ background:none;}
+.datepicker .weekpanel table{ margin-top:30px; margin-bottom:20px;}
+.datepicker .weekpanel .prev,
+.datepicker .weekpanel .next{width:15px; height:15px; display:inline-block; margin:0; margin-right:5px;}
+.datepicker .weekpanel .prev{background-position:-270px -100px;}
+.datepicker .weekpanel .next{background-position:-287px -101px;}
+.datepicker .weekpanel .worker{ position:relative;}
+.datepicker .weekpanel .mywork{ background-position:-249px 0; width:20px; height:15px; font-size:12px; color:#0b6278; position:absolute;left:0; top:-20px;}
+
+.datepicker .daypanel,
+.datepicker .daypanel a{ color:#fff;}
+.datepicker .daypanel{ background:none;}
+.datepicker .daypanel .week{ font-size:14px; text-align:center; margin:10px 0;}
+.datepicker .daypanel .day{ font-size:27px; text-align:center; font-weight:bold; margin-left:20px;}
+.datepicker .daypanel .work{ font-size:12px; font-weight:normal; margin-left:2px; position:relative; display:inline-block; }
+.datepicker .daypanel .date{ display:inline-block; padding-right:10px; background:url(../images/icon_userdownArrow.png) no-repeat right; margin-left:10px;}
+.datepicker .daypanel .work img{ top:17px; left:5px; display:block; position:absolute;}
+.datepicker .daypanel .work .tips{ position:absolute; left:5px; top:-23px; background:#fff; border-radius:2px; display:inline-block; color:#389db9; width:67px; padding:1px 0;}
+
+.sidepage{ text-align:right;font-size:15px;}
+.sidepage a{background:url(../images/bg_choseType_scroll.png) no-repeat; display:inline-block; width:22px; height:22px;  vertical-align:middle; margin:0 5px;}
+.sidepage .prev{}
+.sidepage .next{ background-position:-22px 0;}
+.sidepage .prev-disabled{ background-position:-64px 0;}
+.sidepage .next-disabled{ background-position:-85px 0;}

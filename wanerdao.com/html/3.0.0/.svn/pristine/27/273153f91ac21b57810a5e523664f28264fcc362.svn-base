@@ -1,0 +1,686 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="utf-8">
+<!--<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible" />-->
+<title>编辑个人信息-个人-玩儿道</title>
+
+<meta name="keywords" content="编辑个人资料，基本信息，教育背景，工作经验，兴趣爱好，联系方式，个人，玩儿道，活动组织的生活社交网络"/>
+<meta name="description"
+      content="编辑个人资料"/>
+
+
+<meta http-equiv="Window-target" content="_top"/>
+<meta name="author" content="" />
+<meta name="copyright" content="2001-2010 Comsenz Inc." />
+<link rel="Bookmark" href="favicon.ico" />
+<link rel ="Shortcut Icon" href="favicon.ico" type="image/x-icon"/>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/base.css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<!--[if IE 7]>
+<link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" media="all" href="css/layout.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/personal.css"/>
+
+
+<!-- jquery 库 -->
+<link rel="stylesheet" href="css/animate.min.css"/>
+<!-- jquery 库 -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery.plus.min.js" ></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <a href="#" class="logo"><img src="images/logo.png" alt="玩儿道"></a>
+        <div class="home hover">
+            <a title="回到首页"  class="button" href="javascript:;"></a>
+            <div class="panel">
+                <ul>
+                    <li>
+                        <h3><a  href="javascript:;">活动</a></h3>
+                        <a href="javascript:;">寻找活动</a><a href="javascript:;">创建活动</a><a href="javascript:;">分类活动</a><a href="javascript:;">自定义活动</a><a href="javascript:;">时令活动</a><a href="javascript:;">我的活动</a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">个人</a></h3>
+                        <a href="javascript:;">资料</a><a href="javascript:;">记事</a><a href="javascript:;">相册</a><a href="javascript:;">视频</a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">关系</a></h3>
+                        <a href="javascript:;">我的好友</a><a href="javascript:;">寻找好友</a><a href="javascript:;">邀请好友</a><a href="javascript:;">关注设置</a><span data-loader="class-combo"><a href="#">我的圈子</a>|<i class="item-arrow combo-icon"></i> <div class="combo-list" >
+                        <ul><li value="1">12</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                    </div></span><a href="javascript:;">寻找圈子</a><a href="javascript:;">创建圈子</a>
+                    </li>
+                    <li>
+                        <h3><a  href="javascript:;">主页</a></h3>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+
+        <div class="search">
+            <input type="text" placeholder="活动/好友/圈子/发帖" class="text" ><input type="submit" class="button" value="">
+        </div>
+
+        <div class="userinfo clearfix hover">
+            <a class="pull-left" href="javascript:;"><img  src="images/defaults/32-32.jpg"></a><a  class="name" href="javascript:;"><span >烧饭-人生旅途中人生旅途中</span><b></b></a>
+            <div class="panel">
+                <ul>
+                    <li><a href="javascript:;">资料修改</a></li>
+                    <li><a href="javascript:;">账号管理</a></li>
+                    <li><a href="javascript:;">隐私设置</a></li>
+                    <li><a href="javascript:;">切换语言</a></li>
+                    <li class="last"><a href="javascript:;">退出</a></li>
+                </ul>
+            </div>
+        </div>
+        <a href="javascript:;" class="icon-message-mail right">123</a>
+    </div>
+</div>
+<!-- end header -->
+
+<!-- container -->
+<div class="container container-box layout">
+    <div class="container">
+        <div class="tabs-master">
+            <div class="nav">
+                <div class="pull-left"><a href="#" class="selected" >资 料</a><a href="#">记 事</a><a href="#">相 片</a><a href="#">视 频</a><span><a href="#" >帐 户</a></span></div>
+            </div>
+        </div>
+        <div class="mod mod-default mod-special">
+            <div class="hd">
+                <i class="icon icon-blue-block"></i>个人名片<span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">公开</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+            </div>
+            <div class="gray-body myinfo-card clearfix">
+                <div class="info-side">
+                    <img src="images/defaults/100-100.png" alt=""/><br>
+                    <button class="btn btn-primary">上传头像</button>
+                </div>
+                <div class="form">
+                    <div class="info-header">
+                        <span><i class="muted">完成度</i>：90％</span><span><i class="muted">活跃度</i>：90％</span><span><i class="muted">关注度</i>：90％</span><span><i class="muted">经验积分</i>：90％</span>
+                    </div>
+                    <ul class="info-items clearfix">
+                        <li><label for=""><span class="input-label-mini">星  座：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">公开</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label></li>
+                        <li><label for=""><span class="input-label-mini">学  校：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">公开</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label></li>
+                        <li><label for=""><span class="input-label-mini">家  乡：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">公开</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label></li>
+                        <li><label for=""><span class="input-label-mini">工  作：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">公开</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label></li>
+                        <li><label for=""><span class="input-label-mini">所在地：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">公开</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mod mod-default mod-special">
+            <div class="hd">
+                <i class="icon icon-blue-block"></i>基本信息
+            </div>
+            <div class="form">
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">姓    名：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">性    别：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">男</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">生    日：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">日</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="descriptbox">生肖： <a href="javascript:;">兔子</a>   星座：<a href="javascript:;">射手座</a></span>
+                        <div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">家    乡：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">国家</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">州</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">城市</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">所 在 地：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">国家</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">州</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">城市</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><div class="tips">提示</div>
+                </div>
+
+                <div class="tipbox form-item">
+                    <div class="form-item">
+                        <label for=""><span class="input-label-mini">详细地址：</span><input type="text" class="text text-large"/></label>
+                    </div>
+                    <div class="form-item">
+                        <label for=""><span class="input-label-mini">邮    编：</span><input type="text" class="text text-small"/></label>
+                    </div>
+                    <div class="form-item">
+                        <div class="alert-warning">申明：详细地址内容是保密内容，不会对任何人公开，精确填写内容为了更快好的为您组织活动</div>
+                    </div>
+                </div>
+                <div class="form-item ">
+                    <button type="submit" class="btn btn-primary">保存修改</button><button type="button" class="btn btn-default">取消</button> <button type="button" class="btn btn-primary">隐私设置</button><span class="tips-result"><ul>
+                    <li>提示</li>
+                    </ul></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mod mod-default mod-special">
+            <div class="hd">
+                <i class="icon icon-blue-block"></i>教育背景
+            </div>
+            <div class="form">
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">教育程度：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">选择教育程度</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">大    学：</span><input type="text" class="text text-large blue-personal-text"/></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">毕业时间：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                        <div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">学    位：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">先择学位</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">专    业：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <div class="form-panel1">
+                        <div class="push-item ">
+                            <button type="submit" class="btn btn-primary">添加</button><button type="button" class="btn btn-default">取消</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">高    中：</span><input type="text" class="text text-large blue-personal-text"/></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">毕业时间：</span><span class="combo " data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span></label><span class="combo " data-loader="class-combo" >
+                                <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                                <input  name="usr" type="hidden" class="combo-input-hidden">
+                                <div class="combo-list" >
+                                    <ul><li value="1">月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                                </div>
+                            </span>
+                    <div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">班    级：</span><span class="input-control">高一</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                    <div class="form-panel1">
+                        <div class="push-item">
+                            <span class="input-control">高二</span><input type="text" class="text text-large"/>
+                        </div>
+                        <div class="push-item">
+                            <span class="input-control">高三</span><input type="text" class="text text-large"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-item">
+                    <div class="form-panel1">
+                        <div class="push-item ">
+                            <button type="submit" class="btn btn-primary">添加</button><button type="button" class="btn btn-default">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form">
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">职    高：</span><input type="text" class="text text-large blue-personal-text"/></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">毕业时间：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                    <div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">班    级：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <div class="form-panel1">
+                        <div class="push-item ">
+                            <button type="submit" class="btn btn-primary">添加</button><button type="button" class="btn btn-default">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form">
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">初    中：</span><input type="text" class="text text-large blue-personal-text"/></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">毕业时间：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                    <div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">班    级：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <div class="form-panel1">
+                        <div class="push-item ">
+                            <button type="submit" class="btn btn-primary">添加</button><button type="button" class="btn btn-default">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form">
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">中    专：</span><input type="text" class="text text-large blue-personal-text"/></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">毕业时间：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                    <div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">专    业：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">班    级：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <div class="form-panel1">
+                        <div class="push-item ">
+                            <button type="submit" class="btn btn-primary">添加</button><button type="button" class="btn btn-default">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form">
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">小    学：</span><input type="text" class="text text-large blue-personal-text"/></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">毕业时间：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                    <div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">班    级：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+
+                <div class="form-item">
+                    <div class="form-panel1">
+                        <div class="push-item ">
+                            <button type="submit" class="btn btn-primary">添加</button><button type="button" class="btn btn-default">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mod mod-default mod-special">
+            <div class="hd">
+                <i class="icon icon-blue-block"></i>工作背景
+            </div>
+            <div class="form">
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">单 位 名：</span><input type="text" class="text text-large blue-earth-text"/></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">行    业：</span><span class="combo text-large" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">行    业</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">职    位：</span><span class="combo text-large" data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">职    位</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">工作时间：</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span></label><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><span class="input-control">至</span><span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">年</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span><<span class="combo " data-loader="class-combo" >
+                            <span  class="combo-input"></span><a class="combo-icon" href="javascript:void(0)"></a>
+                            <input  name="usr" type="hidden" class="combo-input-hidden">
+                            <div class="combo-list" >
+                                <ul><li value="1">月</li><li value="2">item2</li><li value="3">item3</li><li value="4">item4</li><li value="5">item5</li></ul>
+                            </div>
+                        </span>
+                    <div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <div class="form-panel1">
+                        <div class="push-item"><label for=""><input type="checkbox"/>现工作</label></div>
+                        <div class="push-item ">
+                            <button type="submit" class="btn btn-primary">添加</button><button type="button" class="btn btn-default">取消</button>
+                        </div>
+                        <div class="push-item ">
+                            <button type="submit" class="btn btn-primary">保存修改</button><button type="button" class="btn btn-default">取消</button> <button type="button" class="btn btn-primary">隐私设置</button><span class="tips-result"><ul>
+                            <li>提示</li>
+                        </ul></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mod mod-default mod-special">
+            <div class="hd">
+                <i class="icon icon-blue-block"></i>兴趣爱好
+            </div>
+            <div class="form">
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">爱听音乐：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">爱看电影：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">爱玩游戏：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">喜爱漫画：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">爱读书籍：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">常玩运动：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <div class="form-panel1">
+                        <div class="push-item ">
+                            <button type="submit" class="btn btn-primary">保存修改</button><button type="button" class="btn btn-default">取消</button> <button type="button" class="btn btn-primary">隐私设置</button><span class="tips-result"><ul>
+                            <li>提示</li>
+                        </ul></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mod mod-default mod-special">
+            <div class="hd">
+                <i class="icon icon-blue-block"></i>联系方式
+            </div>
+            <div class="form">
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">注册帐号：</span><input type="text" class="text text-large" readonly/></label><span>当前使用帐号</span><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">E-Mail：</span><input type="text" class="text text-large"/></label><button type="button" class="btn btn-default">设置为登录帐号</button><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">第二E-Mail：</span><input type="text" class="text text-large"/></label><button type="button" class="btn btn-default">设置为登录帐号</button><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">手 机 号：</span><input type="text" class="text text-large"/></label><button type="button" class="btn btn-default">设置为登录帐号</button><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <label for=""><span class="input-label-mini">网    站：</span><input type="text" class="text text-large"/></label><div class="tips">提示</div>
+                </div>
+                <div class="form-item">
+                    <div class="form-panel1">
+                        <div class="push-item ">
+                            <button type="submit" class="btn btn-primary">保存修改</button><button type="button" class="btn btn-default">取消</button> <button type="button" class="btn btn-primary">隐私设置</button><span class="tips-result"><ul>
+                            <li>提示</li>
+                        </ul></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript">
+    $('.accordion .hd .icon').click(function(){
+        var $panel =  $(this).parent().next();
+        if($panel.is(':hidden')){
+            $(this).removeClass('icon-blue-plus').addClass('icon-blue-minus');
+            $panel.stop(true,true).slideDown();
+        }
+        else{
+            $panel.stop(true,true).slideUp();
+            $(this).addClass('icon-blue-plus').removeClass('icon-blue-minus');
+        }
+    })
+</script>
+
+<!-- end container -->
+
+<!-- footer -->
+<div class="footer clearfix">
+    <div class="container">
+    <div class="sitemap">
+        <a href="javascript:;">特色</a><a href="javascript:;">开发应用</a><a href="javascript:;">法律声明</a><a href="javascript:;">招聘团队</a><a href="javascript:;">建议</a><a href="javascript:;">帮助</a>
+    </div>
+    <span class="copyright">版权所有 @ 2011-2014 Savorboard Corporation</span>
+    </div>
+</div>
+<!-- end footer -->
+<a href="javascript:;" class="gotop" ></a>
+
+<script type="text/javascript" src="js/jquery.toTop.js"></script>
+<script src="js/jquery.dropdown.js"></script>
+<script type="text/javascript" src="js/global.js" ></script>
+<script type="text/javascript" src="js/class.ui.min.js" ></script>
+<script type="text/javascript" src="js/jquery.placeholer.js" ></script>
+<script src="js/jquery.draggable.min.js"></script>
+<script src="js/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+
+</body>
+</html>

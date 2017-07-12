@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+/* ======================================================================== 
+* 【本类功能概述】 
+* 玩儿道2.0插件或者控件所用到SQL语句
+* 作者：金广亮   时间：2011年10月12日23:17:07
+* 文件名：CommonSQL.xml
+* 版本：V0.0.1 
+* 
+* 修改者：杨晓东 时间：2011年11月25日1:59:39 
+* 修改说明： 添加SQL关于好友查询 调用存储过程
+*
+* 
+* 修改者：徐兵 时间：2011年11月26日17:00:00 
+* 修改说明： 1、添加SQL关于相册查询 调用存储过程
+*            2、添加SQL冠以相片查询
+*
+* 修改者：杨晓东 时间：2011年12月2日22:46:37
+* 修改说明： 1.添加SQL 关于查询当前登录用户的好友的圈子
+             2.添加SQL 关于根据圈子id查询当前用户圈子下的好友
+
+* 修改者：杨晓东 时间：2011年12月27日1:49:52
+* 修改说明： 1.添加SQL 关于日志 图片 视频 杂烩 的转发
+
+
+* 修改者：王渝友 时间：2011年1月17日20：00：00
+* 修改说明： 1.添加SQL 关于侧栏的感兴趣的活动（myInterestActivity）、好友友参加的活动（myFriendJoinActivity）
+
+* 修改者：金广亮 时间：2012年5月29日22：31：00
+* 修改说明：添加从数据库获取languageid语句
+* ======================================================================== 
+*/
+-->
+<SQLScript xmlns="SQL.xsd">
+    <!--分页存储过程-->
+    <SQL ID="wanerdaoLanguage">
+      select id from language where active=1  and name=?name
+    </SQL>
+    <!--分页存储过程-->
+    <SQL ID="wanerdaoPagination">
+        CALL p_wanerdaopages(?tablename,?fldName,?where,?fldSortId,?sort,?pagecurrent,?pageSize)
+    </SQL>
+    <!--中文时国家-->
+    <SQL ID="wanerdaocountrycn">
+      select if(STRCMP(CHAR(INTERVAL(CONV(HEX(left(country_name,1)),16,10),
+      0xB0A1,0xB0C5,0xB2C1,0xB4EE,0xB6EA,0xB7A2,0xB8C1,0xB9FE,
+      0xBBF7,0xBBF7,0xBFA6,0xC0AC,0xC2E8,0xC4C3,0xC5B6,0xC5BE,
+      0xC6DA,0xC8BB,0xC8F6,0xCBFA,0xCDDA,0xCDDA,0xCDDA,0xCEF4,
+      0xD1B9,0xD4D1)+64) ,'@'),CONVERT(ELT(INTERVAL(CONV(HEX(left(CONVERT(country_name USING gbk),1)),16,10),
+      0xB0A1,0xB0C5,0xB2C1,0xB4EE,0xB6EA,0xB7A2,0xB8C1,0xB9FE,0xBBF7,0xBFA6,0xC0AC,
+      0xC2E8,0xC4C3,0xC5B6,0xC5BE,0xC6DA,0xC8BB,0xC8F6,0xCBFA,0xCDDA,0xCEF4,0xD1B9,0xD4D1),
+      'A','B','C','D','E','F','G','H','J','K','L','M','N','O','P','Q','R','S','T','W','X','Y','Z') USING UTF8),left(country_name,1))as firstchar,
+      GROUP_CONCAT(country_id,',',country_name ORDER BY country_name SEPARATOR '|')as name
+      from country WHERE active=1 and language_id='a098d6c8-f181-11e0-8a53-00306701b527' group BY firstchar;
+      <!--SELECT country_id as id,country_name as name from country where active=1 and language_id= (SELECT id from `language` WHERE NAME='Chinese') ORDER BY BINARY country_name asc;-->
+    </SQL>
+    <!--英文时国家-->
+    <SQL ID="wanerdaocountryen">
+      select left(country_name,1) as firstchar, GROUP_CONCAT(country_id,',',country_name ORDER BY country_name SEPARATOR '|')as name from country
+      WHERE active=1 and language_id='a1c3e20e-f181-11e0-8a53-00306701b527' group BY firstchar;
+      <!--SELECT country_id as id,country_name as name from country where active=1 and language_id= (SELECT id from `language` WHERE NAME='English') ORDER BY BINARY country_name asc;-->
+    </SQL>
+    <!--省州-->
+    <SQL ID="wanerdaostate">
+      select GROUP_CONCAT(state_id,',',state_name ORDER BY state_name SEPARATOR '|')as name,if(STRCMP(CHAR(INTERVAL(CONV(HEX(left(state_name,1)),16,10),
+      0xB0A1,0xB0C5,0xB2C1,0xB4EE,0xB6EA,0xB7A2,0xB8C1,0xB9FE,
+      0xBBF7,0xBBF7,0xBFA6,0xC0AC,0xC2E8,0xC4C3,0xC5B6,0xC5BE,
+      0xC6DA,0xC8BB,0xC8F6,0xCBFA,0xCDDA,0xCDDA,0xCDDA,0xCEF4,
+      0xD1B9,0xD4D1)+64) ,'@'),CONVERT(ELT(INTERVAL(CONV(HEX(left(CONVERT(state_name USING gbk),1)),16,10),
+      0xB0A1,0xB0C5,0xB2C1,0xB4EE,0xB6EA,0xB7A2,0xB8C1,0xB9FE,0xBBF7,0xBFA6,0xC0AC,
+      0xC2E8,0xC4C3,0xC5B6,0xC5BE,0xC6DA,0xC8BB,0xC8F6,0xCBFA,0xCDDA,0xCEF4,0xD1B9,0xD4D1),
+      'A','B','C','D','E','F','G','H','J','K','L','M','N','O','P','Q','R','S','T','W','X','Y','Z') USING UTF8),left(state_name,1))as firstchar
+      from state where active=1 and country_id=?country_id  group BY firstchar
+    </SQL>
+    <!---英文时省州--><!--
+    <SQL ID="wanerdaostateen">
+      SELECT state_id as id,state_name as name from state where active=1 and country_id=?country_id and language_id= (SELECT id from `language` WHERE NAME='English') ORDER BY BINARY state_name asc
+    </SQL>select GROUP_CONCAT(city_id,',',city_name ORDER BY city_name SEPARATOR '|')as name,if(strcmp(CHAR(INTERVAL(CONV(HEX(left(city_name,1)),16,10),
+      0xB0A1,0xB0C5,0xB2C1,0xB4EE,0xB6EA,0xB7A2,0xB8C1,0xB9FE,
+      0xBBF7,0xBBF7,0xBFA6,0xC0AC,0xC2E8,0xC4C3,0xC5B6,0xC5BE,
+      0xC6DA,0xC8BB,0xC8F6,0xCBFA,0xCDDA,0xCDDA,0xCDDA,0xCEF4,
+      0xD1B9,0xD4D1)+64),'@'),CONVERT(ELT(INTERVAL(CONV(HEX(left(CONVERT(city_name USING gbk),1)),16,10),
+      0xB0A1,0xB0C5,0xB2C1,0xB4EE,0xB6EA,0xB7A2,0xB8C1,0xB9FE,0xBBF7,0xBFA6,0xC0AC,
+      0xC2E8,0xC4C3,0xC5B6,0xC5BE,0xC6DA,0xC8BB,0xC8F6,0xCBFA,0xCDDA,0xCEF4,0xD1B9,0xD4D1),
+      'A','B','C','D','E','F','G','H','J','K','L','M','N','O','P','Q','R','S','T','W','X','Y','Z') USING UTF8),left(city_name,1))as firstchar
+      from city WHERE active=1 and state_id=?state_id and city_name !='' group BY firstchar-->
+    <!--市县-->
+    <SQL ID="wanerdaocity">
+      SELECT s.country_id as cid,ct.country_name as cname,s.state_id as sid,s.state_name as sname,c.city_id as cityid,c.city_name as cityname  from state s,city c,country ct WHERE s.active=1 and c.state_id=s.state_id and s.language_id=?language_id and c.city_id=?id and ct.country_id=s.country_id and ct.language_id=?language_id
+    </SQL>
+    <!---复杂条件查找活动存储过程-->
+    <SQL ID="SearchActivityByManyConditions">
+        CALL p_wanerdaosearcactivity(?tableNames,?fieldNames,?userId,?activityNames,?catygoryNames,?friendsName,?groupNames,?sightNames,?countryId,?provinceId,?cityId,?ortherWhereSql,?fieldSortId,?sort,?pagecurrent,?pageSize)
+    </SQL>
+  <!--获取用户感兴趣活动-->
+  <SQL ID="SearchUserInterestsActivity">
+    CALL p_wanerdaoSearchUserInterestsActivity(?tableNames,?fieldNames,?userId,?ortherWhereSql,?fieldSortId,?sort,?pagecurrent,?pageSize)
+  </SQL>
+    <!---英文绑定地区--><!--
+    <SQL ID="wanerdaoareaen">
+        call p_wanerdaoareabyid(?cid,?sid,?id,0)
+    </SQL>
+    --><!---中文绑定地区--><!--
+    <SQL ID="wanerdaoareacn">
+        call p_wanerdaoareabyid(?cid,?sid,?id,1)
+    </SQL>-->
+    <!---活动分类and parent_id=?pid-->
+    <SQL ID="activitysectionpage">
+        select id,category_name as name from ActivityCategorySettings where active=1  order by category_name
+    </SQL>
+    <!---活动景区-->
+    <SQL ID="activitysight">
+        select id,activity_place_name as name from activityplace where active=1 order by sort_id desc
+    </SQL>
+  <!---活动留言回复表查询-->
+  <SQL ID="activitycommentsList">
+      SELECT  count(*) FROM v_activitycomments WHERE follow_id=?follow_id  AND active_posts_id=?active_posts_id;
+      SELECT  id,follow_id,content,active_posts_id,createdate,userid,username,userlogo FROM v_activitycomments WHERE follow_id=?follow_id  AND active_posts_id=?active_posts_id order by createdate desc limit ?LimitCount;
+  </SQL>
+    <!--根据名称获取好友列表-->
+    <SQL ID="GetPersonalFriendsByName">
+        call p_GetUserFirends(?user_id,?fname);
+    </SQL>
+  <!--用于获取相册管理数目以及相片管理数目-->
+  <SQL ID="getmanageactivityimagetotal">
+    call p_wanerdaohistoryimagemanage(?activityIds,?userIds,?languageid);
+  </SQL>
+    <!--获取相册-->
+    <SQL ID="getactivityimagefolderinfo">
+      call p_wanerdaosearchactivityimagefoldernew(?searchType,?userIds,?activityIds,?isSearchBlock,?orderByFileds,?sort,?pagecurrent,?pageSize);
+    </SQL>
+    <!--获取相册-->
+    <SQL ID="getactivityimagefolderinfobyid">
+      SELECT id,user_id,activity_id,share_key_id,folder_name,create_date,description,is_system,is_block,active
+      FROM activityimagefolder where id=?id;
+    </SQL>
+  <!--获取相册-->
+  <SQL ID="GetActivityImageFolderinfoByUseridAndActivityid">
+    SELECT id,user_id,activity_id,share_key_id,folder_name,create_date,description,is_system,is_block,active
+    FROM activityimagefolder where user_id=?user_id and activity_id=?activity_id and active=1 and is_block=1;
+  </SQL>
+  <!--获取相册-->
+  <SQL ID="compareimagefolderbyname">
+    SELECT id,user_id,activity_id,share_key_id,folder_name,create_date,description,is_system,is_block,active
+    FROM activityimagefolder where user_id=?user_id and activity_id=?activity_id and active=1 and folder_name=?folder_name;
+  </SQL>
+    <!--新增加活动相册-->
+    <SQL ID="insertactivityimagefolder">
+        INSERT INTO activityimagefolder
+        (id,user_id,activity_id,folder_name,create_date,description,is_system,is_block,active)
+        VALUES
+        (
+        ?id,?user_id,?activity_id,?folder_name,CURRENT_TIMESTAMP,?description,?is_system,?is_block,1
+        );
+
+    </SQL>
+    <!--修改加活动相册信息-->
+    <SQL ID="updateactivityimagefolder">
+        update activityimagefolder set folder_name=?folder_name,description=?description where id=?folderid;
+    </SQL>
+    <!--转发相册-->
+    <SQL ID="shareactivityimagefolder">
+        INSERT INTO activityimagefolder
+        (id,user_id,activity_id,folder_name,create_date,description,is_system,is_block,active)
+        select
+        ?newfolderid,?user_id,activity_id,folder_name,CURRENT_TIMESTAMP,description,is_system,is_block,active
+        from activityimagefolder where id=?folderid
+    </SQL>
+  <!--恢复屏蔽相册多个ID-->
+  <SQL ID="restoreblockactivityimagefolderMoreID">
+    update activityimagefolder set is_block=1 where id in (?ids)
+  </SQL>
+  <!--屏蔽相册多个ID-->
+  <SQL ID="blockactivityimagefolderMoreID">
+    update activityimagefolder set is_block=0 where id in (?ids)
+  </SQL>  
+    <!--屏蔽相册-->
+    <SQL ID="blockactivityimagefolder">
+        update activityimagefolder set is_block=0 where id=?id
+    </SQL>
+    <!--恢复屏蔽相册-->
+    <SQL ID="restoreblockactivityimagefolder">
+        update activityimagefolder set is_block=1 where id=?id
+    </SQL>
+    <!--根据相册ID获取相片-->
+    <SQL ID="getactivityimagebyfoldid">
+      SELECT  i.id,p.name as user_name,i.image_name,i.image_path,i.image_small_path,i.sequence,i.fileSize,i.description,i.upload_date,i.is_submit,i.counter,i.is_block
+      FROM activityimage i,PersonalProfile p  where i.active=1 and i.create_id=p.user_id  and i.folder_id=?folder_id   order by i.sequence desc;
+      SELECT f.folder_name from activityimagefolder f WHERE f.id=?folder_id and f.active=1;
+    </SQL>
+    <!--根据创建人获取相片-->
+    <SQL ID="getactivityimagebycreateid">
+      SELECT   i.id,f.folder_name,i.image_name,i.image_path,i.image_small_path,i.fileSize,i.description,i.upload_date,i.is_submit,i.counter,i.is_block
+      FROM activityimage i,activityimagefolder f where i.active=1 and  i.folder_id=f.id and i.create_id=?create_id order by i.sequence asc;
+    </SQL>
+  <!--根据相册ID获取相片总数-->
+  <SQL ID="getactivityimagecount">
+    SELECT  count(i.id) as imagetotal  FROM activityimage i where i.active=1 and i.folder_id=?folder_id;
+  </SQL>
+    <!--根据相片ID获取相片-->
+    <SQL ID="getactivityimagebyid">
+      select i.id,i.create_id,i.activity_id,p.name as user_name,i.link_id,i.folder_id,f.folder_name,i.image_name,i.image_path,i.image_small_path,i.fileSize,i.description,i.upload_date,i.counter,i.is_block
+      from activityimage i,PersonalProfile p,activityImageFolder f
+      where
+      i.create_id=p.user_id and i.folder_id=f.id and i.active=1 and i.id=?id
+    </SQL>
+  <!--根据相片ID获取相片-->
+  <SQL ID="getactivityimagebyidnew">
+    select i.id,i.folder_id from activityimage i  where i.id=?image_id
+  </SQL>
+
+  <!--插入活动相片逻辑表-->
+  <SQL ID="getactivityimagemaxquence">
+    select sequence from activityimage where folder_id=?folder_id and activity_id=?activity_id and active=1;
+  </SQL>
+    <SQL ID="insertactivityimage">
+      INSERT INTO activityimage
+      (id,create_id,activity_id,link_id,folder_id,image_name,image_path,image_small_path,fileSize,sequence,description,upload_date,is_submit,counter,is_block,active)
+      VALUES
+      (?id,?create_id,?activity_id,?link_id,?folder_id,?image_name,?image_path,?image_small_path,?fileSize,?sequence,?description,CURRENT_TIMESTAMP,?is_submit,?counter,?is_block,1)
+    </SQL>
+    <!--删除活动相片-->
+    <SQL ID="deleteactivityimagebyid">
+        delete from activityimage where Find_in_set(id,?id);
+    </SQL>
+  <!--删除活动相片-->
+  <SQL ID="deleteactivityimagefolderbyid">
+    delete from activityimagefolder where Find_in_set(id,?id);
+  </SQL>
+    <!--屏蔽相片-->
+    <SQL ID="blockactivityimage">
+      update activityimage set is_block=1  where Find_in_set(id,?id);
+    </SQL>
+    <!--恢复屏蔽相片-->
+    <SQL ID="restoreblockactivityimage">
+        update activityimage set is_block=0 where id=?id
+    </SQL>
+    <!--提交活动相片-->
+    <SQL ID="updateactivityimagesubmit">
+        update activityimage set is_submit=1 where id in (?id)
+    </SQL>
+    <!--转发相册下面所有有效相片-->
+    <SQL ID="shareactivityimagebyfolderid">
+      INSERT INTO activityimage
+      (id,create_id,activity_id,link_id,folder_id,image_name,image_path,image_small_path,fileSize,sequence,description,upload_date,is_submit,counter,is_block,active)
+      select
+      GetGuid(),?create_id,activity_id,link_id,?newfoldid,image_name,image_path,image_small_path,fileSize,sequence,description,CURRENT_TIMESTAMP,is_submit,counter,is_block,active
+      from activityimage
+      where active=1 and is_block=0 and is_submit=1 and folder_id=?foldid
+    </SQL>
+    <!--增加转发文件夹下面所有相片物理连接数-->
+    <SQL ID="addsharefolderpythicallocationzerolink_nbr">
+      update imagepythicallocation n set n.link_nbr=n.link_nbr+1
+      where  exists(select 1 from activityimage e where e.link_id=n.id and e.folder_id=?fold_id)
+    </SQL>
+    <SQL ID ="WanerDaoGetPersonFriendGroup">
+        select class_id,relation_name from  FriendsClass where user_id=?user_id;
+    </SQL>
+    <SQL ID ="WanerDaoGetPersonFriendByGroupId">
+        SELECT user_id,name from personalprofile join(
+        SELECT personalfriends.relation_from_id FROM personalprofile
+        INNER JOIN personalfriends ON personalprofile.user_id = personalfriends.relation_to_id
+        WHERE personalprofile.user_id=?user_id and personalfriends.class_id=?groupid) as c
+        on personalprofile.user_id=c.relation_from_id;
+    </SQL>
+
+    <!-- 杨晓东 BEGIN  2011年12月27日1:49:19  转发-->
+    <SQL ID ="CopyBlogToMyblog">
+        insert into personalblog(id,user_id,is_transmit,transmit_id,category_id,title,content,post_date,weather,location,counter,
+        permission) select ?guid,?user_id as user_id,true,?copyid,?categoryid,?title,content,now(),weather,location,0,
+        ?default_permission from personalblog where id=?copyid and active=true;
+    </SQL>
+    <SQL ID ="CopyImageFolderToMyFolder">
+        call p_RepresentImageFolder(?In_guid,?In_user_id,?In_imagefolder_id,?In_isCreateNewFolder,?In_folderNameOrID,?In_permission);
+    </SQL>
+    <SQL ID ="CopyVideoFolderToMyFolder">
+        call p_RepresentVideoFolder(?In_guid,?In_user_id,?In_imagefolder_id,?In_isCreateNewFolder,?In_folderNameOrID,?In_permission);
+    </SQL>
+    <SQL ID ="GetAllPersonFriends">
+        SELECT DISTINCT user_id,name from personalprofile join(
+        SELECT personalfriends.relation_from_id FROM personalprofile
+        INNER JOIN personalfriends ON personalprofile.user_id = personalfriends.relation_to_id
+        WHERE personalprofile.user_id=?user_id) as c
+        on personalprofile.user_id=c.relation_from_id;
+    </SQL>
+    <!-- 杨晓东 END  2011年12月27日1:49:19  转发-->
+ 
+     <!-- 王渝友 侧栏：好友参加的活动列表  时间：2012-1-16-->
+   <SQL ID ="myFriendJoinActivity">
+    CALL p_wanerdaoMyFriendJoinActivity(?userId,?pagecurrent,?pageSize);
+   </SQL>
+     <!-- 王渝友 侧栏：可能感兴趣的活动列表  时间2012-1-16 -->
+   <SQL ID ="myInterestActivity">
+    CALL p_wanerdaoMyInterestActivity(?userId,?pagecurrent,?pageSize);
+   </SQL>
+	<!-- 王薪杰 根据id获取个人图片 -->
+	<SQL ID ="personalimagebyid">
+		SELECT * FROM PersonalImage where id=?id and active=true;
+	</SQL>
+	<!---王薪杰 照片回复表-->
+	<SQL ID="imageSingleComments">
+		SELECT  count(1) FROM imagecomments WHERE follow_id=?follow_id  AND image_id=?image_id;
+		SELECT  id,follow_id as fid,image_id,content,comments_date as date,user_id as uid,(select logo_small_path from personalprofile where personalprofile.user_id = imagecomments.user_id) as logo  FROM imagecomments WHERE follow_id=?follow_id  AND image_id=?image_id order by comments_date desc limit ?LimitCount;
+	</SQL>
+	<!-- 王薪杰 根据id获取个人视频 -->
+	<SQL ID ="personalvideobyid">
+		SELECT * FROM PersonalVideo where id=?id and active=true;
+	</SQL>
+	<!---王薪杰 视频回复表-->
+	<SQL ID="videoSingleComments">
+		SELECT  count(1) FROM videocomments WHERE follow_id=?follow_id  AND video_id=?video_id;
+		SELECT  id,follow_id as fid,video_id,content,comments_date as date,user_id as uid,(select logo_small_path from personalprofile where personalprofile.user_id = videocomments.user_id) as logo  FROM videocomments WHERE follow_id=?follow_id  AND video_id=?video_id order by comments_date desc limit ?LimitCount;
+	</SQL>
+  <!---xubing 查询活动分类以及该分类下的最新活动-->
+  <SQL ID="newActivityByCategory">
+    <!--SELECT a.activity_name,a.description,a.join_member_nbr,a.max_nbr,a.begin_datetime,a.description  FROM activityCategory ac
+    INNER JOIN activity a ON a.id=ac.activity_id
+    INNER JOIN activitycategorysettings acs ON acs.id=ac.category_id
+    WHERE ac.category_id=?category_id OR acs.parent_id=?parent_id   ORDER BY a.begin_datetime DESC LIMIT 5
+    
+    select a.activity_name,a.description,a.address,a.join_member_nbr,a.max_nbr,a.begin_datetime
+    FROM activity a,activityCategory ac,activitycategorysettings acs
+    where a.id=ac.activity_id and ac.category_id=acs.id and acs.language_id=?language_id
+    and acs.id=?category_id
+    or acs.parent_id=?category_id ORDER BY a.begin_datetime DESC LIMIT 5
+     
+    select a.id, a.activity_name,a.description,a.address,a.join_member_nbr,a.max_nbr,a.begin_datetime   FROM activity a,activityCategory ac    where a.active=1 and ac.active=1 and a.id=ac.activity_id    and ac.category_id=?category_id and a.report_datetime >=now()    ORDER BY a.begin_datetime DESC LIMIT 5-->
+
+    select a.id, a.activity_name,a.description,a.address,a.join_member_nbr,a.max_nbr,a.begin_datetime
+    FROM activity a
+    where a.active=1 and
+    exists (select 1 from activityCategory ac where ac.active=1 and a.id=ac.activity_id
+    and FIND_IN_SET(ac.category_id, f_GetCategoryChildList(?category_id,?section_type))) and a.datetime>now()
+    ORDER BY a.datetime desc LIMIT 4;
+
+  </SQL>
+	<!---王薪杰 日志回复表-->
+	<SQL ID="blogSingleComments">
+		SELECT  count(1) FROM blogcomments WHERE follow_id=?follow_id  AND blog_id=?blog_id;
+		SELECT  id,follow_id as fid,blog_id,content,comments_date as date,user_id as uid,(select logo_small_path from personalprofile where personalprofile.user_id = blogcomments.user_id) as logo  FROM blogcomments WHERE follow_id=?follow_id  AND blog_id=?blog_id order by comments_date desc limit ?LimitCount;
+	</SQL>
+
+  
+  <!--插入相片物理表-->
+  <SQL ID="insertimagepythicallocation">
+    INSERT INTO imagepythicallocation
+    (id ,image_path  ,image_small_path  ,fileSize  ,user_id  ,upload_date  ,link_nbr  ,active)
+    VALUES
+    (
+    ?id,?image_path,?image_small_path,?fileSize,?user_id,CURRENT_TIMESTAMP,?link_nbr,?active
+    )
+  </SQL>
+  <!--增加相片物理表指定链接数-->
+  <SQL ID="addimagepythicallocationlink_nbr">
+    update imagepythicallocation set link_nbr=link_nbr+?number where id=?id;
+  </SQL>
+  <!--删除相片物理表中连接数为0的数据-->
+  <SQL ID="deleteimagepythicallocationzerolink_nbr">
+    delete from  imagepythicallocation where id=?id;
+  </SQL>
+  <!--获取相片物理表中连接数-->
+  <SQL ID="getimagepythicallocationlink_nbr">
+    select link_nbr from imagepythicallocation where id=?id;
+  </SQL>
+  <!--获取相片物理表数据 根据ID-->
+  <SQL ID="getimagepythicallocationbyid">
+    SELECT
+    id,image_path,image_small_path,fileSize,user_id,upload_date,link_nbr,active
+    FROM imagepythicallocation where id=?id;
+  </SQL>
+  
+  <Module ID="ImagePythicalLocation">
+    <SQL ID="Insert">
+      INSERT INTO imagepythicallocation
+      (id ,image_path  ,image_small_path  ,fileSize  ,user_id  ,upload_date  ,link_nbr  ,active)
+      VALUES
+      (
+      ?id,?image_path,?image_small_path,?fileSize,?user_id,CURRENT_TIMESTAMP,?link_nbr,1
+      )
+    </SQL>
+    <SQL ID="DeleteByID">
+      update imagepythicallocation set active=0 where id=?id;
+    </SQL>
+    <SQL ID="AddLinkNbr">
+      update imagepythicallocation set link_nbr=link_nbr+?number where id=?id;
+    </SQL>
+    <SQL ID="SelectAll">
+      SELECT
+      id,image_path,image_small_path,fileSize,user_id,upload_date,link_nbr,active
+      FROM imagepythicallocation where active=1;
+    </SQL>
+    <SQL ID="SelectByID">
+      SELECT
+      id,image_path,image_small_path,fileSize,user_id,upload_date,link_nbr,active
+      FROM imagepythicallocation where id=?id and active=1;
+    </SQL>
+  </Module>
+  <!--非管理员情况获取左侧列表
+  select f.id,f.folder_name,(select count(1) from activityimage i where  i.folder_id=f.id and i.active=1 and i.create_id=f.user_id) as image_count,
+    (select image_small_path from activityimage i where i.folder_id=f.id and i.active=1 and i.create_id=f.user_id limit 1) as image_small_path,
+    case when f.is_system=1 then 2
+    when f.id=f.share_key_id then 3
+    ELSE 1 end as folderType,
+    case when r.role_id='867e7daf-15fd-11e1-bb4e-000c295f9365' or r.role_id='869d272f-15fd-11e1-bb4e-000c295f9365' then 1 else 2 end as roletype
+    from activityimagefolder f,activitymemberrole r WHERE f.activity_id=?activityIds and f.user_id=?userIds and f.is_block=1 and r.member_id=f.user_id-->
+  <SQL ID="getleftmanageimagefolders">
+    select DISTINCT f.id,f.folder_name,(select count(1) from activityimage i where  i.folder_id=f.id and i.active=1 and i.create_id=f.user_id) as image_count,
+    (select image_small_path from activityimage i where i.folder_id=f.id and i.active=1 and i.create_id=f.user_id limit 1) as image_small_path,
+    case when f.is_system=1 then 2
+    when f.id=f.share_key_id then 3
+    ELSE 1 end as folderType,
+    case when r.role_id='867e7daf-15fd-11e1-bb4e-000c295f9365' or r.role_id='869d272f-15fd-11e1-bb4e-000c295f9365' then 1 else 2 end as roletype
+    from activityimage aimg
+    INNER JOIN activityimagefolder f on aimg.folder_id=f.id and f.active=1
+    INNER JOIN activitymemberrole r ON r.member_id=f.user_id
+    WHERE aimg.activity_id=?activityIds AND aimg.create_id=?userIds
+  </SQL>
+  <SQL ID="updateimageseq">
+    update activityimage set sequence=?imageproperty,upload_date=now() where id=?id
+  </SQL>
+  <SQL ID="updateimagename">
+    update activityimage set image_name=?imageproperty,upload_date=now() where id=?id
+  </SQL>
+  <SQL ID="updateimagedesc">
+    update activityimage set description=?imageproperty,upload_date=now() where id=?id
+  </SQL>
+  <SQL ID="SelectPrevImage">
+    update activityimage set sequence=(sequence+1),upload_date=now() where id=?secondid_image_id;
+    update activityimage set sequence=(sequence-1),upload_date=now() where id=?image_id;
+  </SQL>
+  <SQL ID="SelectNextImage">
+    update activityimage set sequence=(sequence-1),upload_date=now() where id=?secondid_image_id;
+    update activityimage set sequence=(sequence+1),upload_date=now() where id=?image_id;
+  </SQL>
+  <SQL ID="ImageSortOrderOfClick">
+    call p_ImageSortOrderOfClick(?image_id,?type,?fold_id);
+  </SQL>
+  <SQL ID="addImageComments">
+    INSERT INTO imagecomments
+    (id ,image_id  ,follow_id  ,user_id  ,content  ,comments_date  ,positive  ,negative,active)VALUES(?id,?postid,?replayid,?user_id,?content,CURRENT_TIMESTAMP,0,0,1)
+  </SQL>
+  <SQL ID="delImageComments">
+    delete from imagecomments where id=?postid
+  </SQL>
+  <SQL ID="addBlogComments">
+    INSERT INTO blogcomments
+    (id ,blog_id  ,follow_id  ,user_id  ,content  ,comments_date  ,positive  ,negative,active)VALUES(?id,?postid,?replayid,?user_id,?content,CURRENT_TIMESTAMP,0,0,1)
+  </SQL>
+  <SQL ID="delBlogComments">
+    delete from blogcomments where id=?postid
+  </SQL>
+  <SQL ID="addVideoComments">
+    INSERT INTO videocomments
+    (id ,video_id  ,follow_id  ,user_id  ,content  ,comments_date  ,positive  ,negative,active)VALUES(?id,?postid,?replayid,?user_id,?content,CURRENT_TIMESTAMP,0,0,1)
+  </SQL>
+  <SQL ID="delVideoComments">
+    delete from videocomments where id=?postid
+  </SQL>
+  <SQL ID="addNewfeedComments">
+    INSERT INTO newfeedscomments
+    (id ,news_id  ,follow_id  ,user_id  ,content  ,comments_date  ,positive  ,negative,active)VALUES(?id,?postid,?replayid,?user_id,?content,CURRENT_TIMESTAMP,0,0,1)
+  </SQL>
+  <SQL ID="delNewfeedComments">
+    delete from newfeedscomments where id=?postid
+  </SQL>
+  <SQL ID="addLeaveMessageComments">
+    INSERT INTO leavemessagecomments
+    (id ,message_id  ,follow_id  ,user_id  ,content  ,comments_date  ,positive  ,negative,active)VALUES(?id,?postid,?replayid,?user_id,?content,CURRENT_TIMESTAMP,0,0,1)
+  </SQL>
+  <SQL ID="delLeaveMessageComments">
+    delete from leavemessagecomments where id=?postid
+  </SQL>
+</SQLScript>

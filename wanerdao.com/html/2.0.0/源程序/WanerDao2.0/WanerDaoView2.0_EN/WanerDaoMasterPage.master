@@ -1,0 +1,205 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="WanerDaoMasterPage.master.cs" Inherits="en_us_WanerDaoMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" type="image/x-icon" href="/savorboard.ico" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/layout.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/form.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/pop.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/icon.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/appTool.css" media="all" />
+<link rel="stylesheet" type="text/css" href="/css/en.css" media="all" />
+    <script type="text/javascript">
+        var wd_B = { uin: { uid: '<%=PersonalSecurity.user_id%>', name: '<%=PersonalProfile.name%>', second_name: '<%=PersonalProfile.second_name%>', small_logo: '<%=PersonalProfile.logo_small_path %>' }, clientlang: '<%=WanerDao2.WanerDaoModule.TipInfo.WanerDaoGlobalTip.GetClientLanguage() %>' };
+        function getCurrentUserId() {
+            return wd_B.uin.uid;
+        }
+        function getCurrentLangType() {
+            return wd_B.clientlang;
+        }
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-31932768-1']);
+        _gaq.push(['_trackPageview']);
+    </script>
+    <script type="text/javascript">
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="pBgB lan-en">
+    <div class="header_wrapper pBgH">
+        <div class="header layout">
+            <a href="/personal/index.html" class="logo"></a>
+        <div class="home" hoverable="true">
+            <a href="javascript:;" class="go_home" title="回到首页"></a>
+            <div class="home_pop">
+            	<ul>
+                    <li><a href="/activity/activity_main.html" class="hp_title">Activity</a>
+                        <p>
+                            <a href="/activity/activity_search.html?activityNames=&catygoryNames=&friendsName=&groupNames=&sightNames=&countryId=&provinceId=&cityId=&address=">
+                                Looking for activities</a><a href="/activity/activity_create.html">Create activities</a><a href="/activity/activity_main.html">Classification activities</a><a
+                                    href="/activity/activity_define_main.html?categoryid=76d234ee-c429-11e1-a032-000c29821f28">Custom Activities</a><a
+                                        href="/activity/activity_season_main.html?categoryid=76d23b58-c429-11e1-a032-000c29821f28">Seasonal activities</a><a
+                                            href="/activity/activity_myactivity.html">My activities</a><a
+                                            href="/activity/activity_myactivity.html?urltype=history">Historical activities</a></p>
+                    </li>
+                    <li><a href="/personal/index.html" class="hp_title">Personal</a>
+                            <p>
+                            <a href="/personal/personal_info.html">Profile</a><a
+                                    href="/personal/blog.html">Diary</a><a href="/personal/photo_album.html">Album</a><a href="/personal/video_album.html">Video</a></p>
+                        </li>
+                    <li><a href="/relationship/relationship_myfriends.aspx" class="hp_title">Relationship</a>
+                            <p>
+                                <a href="/relationship/relationship_myfriends.aspx">My friends</a><a href="/relationship/relationship_friends_search.aspx">Search friends</a><a
+                                    href="/relationship/relationship_friends_invite.aspx">Invite friends</a><a href="/relationship/follow/follow_friends.html">Subscription settings</a><a
+                                        href="/relationship/relationship_mygroup.aspx">My groups</a><a href="/relationship/relationship_group_search.aspx">Search group</a><a
+                                            href="/relationship/relationship_group_create.aspx">Create a group</a><%--<a href="/relationship/relationship_gift_info.aspx">我的礼物</a><a
+                                                href="/relationship/relationship_gift_market.aspx">礼物市场</a>--%></p>
+                        </li>
+                    <li class="last"><a href="/personal/index.html" class="hp_title">Home</a></li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+             <input type="text" class="search_txt"value="Artivity/Firend/Group/Article" inputdefault="Artivity/Firend/Group/Article"
+                        id="srch_str" maxlength="50" /><input value="" type="submit" class="search_btn" id="srch_info" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true" id="userInfo">
+            <a href="javascript:;" class="f_left">
+                <img width="32" height="32"></a><span class="user_infor_name"><a href="/personal/personal_info.html"><span
+                    id="uname"></span><b></b></a></span>
+            <div class="user_infor_pop">
+                <ul>
+                    <li><a href="/personal/personal_info.html">Modify profile</a></li>
+                    <li><a href="/account/account_set_security.html">Account management</a></li>
+                    <li><a href="/personal/private_set.html">Privacy Settings</a></li>
+                    <li><a href="javascript:;" id="toggleLang">Change language</a></li>
+                    <li class="last" id="logout"><a href="javascript:;">Exit</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="/message/inbox.html" class="messagetip" id="z_msg">
+        <span>
+            <span class="tip-num" style=" display: none;"></span>
+            <img src="/images/messagetip.png" />
+        </span>
+    </a>
+
+    </div>
+</div>
+
+
+    <asp:ContentPlaceHolder ID="Content" runat="server">
+    </asp:ContentPlaceHolder>
+
+<div class="footer layout">
+	<span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a href="javascript:;">Help</a></p>
+</div>
+    <div class="footBarSmall">
+        <div class="footBarConA">
+        </div>
+        <div class="footBarCon">
+            <div class="fbBox">
+                <div class="slideBtn">
+                    <a href="javascript:;" class="doConfig"></a><a href="javascript:scroll(0,0);" class="goTop">
+                    </a><a href="javascript:void(0)" class="doSlide doSlideUp" type="top"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footBar">
+        <div class="footBarConA">
+        </div>
+        <div class="footBarCon">
+            <div class="fbBox">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" id="barTable">
+                    <tr>
+                        <td id="configTd">
+                            <div class="configBox">
+                                <div class="configBoxBtn">
+                                    <span></span>
+                                </div>
+                                <div class="cbCon">
+                                    <div class="popE">
+                                    </div>
+                                    <div class="cbConBox">
+                                        <div class="cbcBoxLeft">
+                                            <h2 class="h26 cbTitle" style="width: 100%;">
+                                                <b>已经安装应用</b></h2>
+                                            <!--因为设计原因 自适应几乎不太可能 只有宽高都给你定了 -->
+                                            <div class="cbLeft">
+                                                <ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="cbcBoxRight">
+                                            <h2 class="h26 cbTitle" style="width: 100%;">
+                                                <b class="bg">可选应用</b><small>（选择您想要安装的应用添加至左边）</small></h2>
+                                            <div class="cbRight">
+                                                <div class="cbRightL">
+                                                    <ul>
+                                                    </ul>
+                                                </div>
+                                                <div class="cbRightR">
+                                                    <ul>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="popE">
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="slideBtn">
+                                <a href="javascript:scroll(0,0);" class="goTop"></a><a href="javascript:void(0)"
+                                    class="doSlide doSlideDown" type="down"></a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pop" style="position: absolute; left: 50%; top: 50%; z-index: 99; display: none;
+        margin: -250px 0 0 -400px">
+        <iframe frameborder="0" scrolling="no" id="popFrame" name="popFrame" style="width: 1000px; height: 575px">
+        </iframe>
+    </div>
+    <!--js脚步-->
+    <script src="/scripts/plugin/cookie/wanerdao2.cookies.js" type="text/javascript"></script>
+    <script src="/Scripts/multipleLanguage/loader.js" type="text/javascript"></script>
+    <script src="/Scripts/common/wandao.js" type="text/javascript"></script>
+    <script src="/Scripts/common/wanerdaoutils.js" type="text/javascript"></script>
+    <script src="/scripts/common/wanerdao2.date.js" type="text/javascript"></script>
+    <script src="/scripts/openplugin/jquery.floatbox.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/scripts/global.js"></script>
+    <script src="/Scripts/personal/curInfo.js" type="text/javascript"></script>
+    <script src="/scripts/pop.js" type="text/javascript"></script>
+    <script src="/scripts/plugin/TipPop/wanerdao2.pop.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/scripts/plugintool/plugintool.js"></script>
+    <asp:ContentPlaceHolder ID="Script" runat="server">
+    </asp:ContentPlaceHolder>
+    <script src="/scripts/gotop.js" type="text/javascript"></script>
+</body>
+</html>

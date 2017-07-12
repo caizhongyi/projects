@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SQLScript xmlns="SQL.xsd">
+    <!--查询用户的全部好友SQL-->
+    <SQL ID="SelectAll_UserGroup">
+        select t1.user_id,t1.name from PersonalFriends T0  inner join PersonalProfile T1  on  T0.relation_from_id = T1.user_id where T0.is_authorize = 1 and T0.active = 1
+        and T0.relation_to_id = ?user_id
+    </SQL>
+
+    <!--用户礼品相关SQL 杨晓东 Begin-->
+    <SQL ID ="SendGiftToFriendBySelf">
+        insert into personalgift(id,user_id,gift_id,content,is_receive,action_id,action_date,active)
+        values(?id,?user_id,?gift_id,?content,?is_receive,?action_id,?action_date,?active)
+    </SQL>
+    <SQL ID ="GetExistsGift">
+        call p_GetExistsGiftOfSelf(?user_id,?is_received,?pagecurrent,?pageSize);
+    </SQL>
+    <SQL ID ="GetGiftDetailInfo">
+        select pg.id,pg.is_receive,gm.gift_logo_path,gm.gift_name,gc.category_name,
+        GetUserNameById(pg.user_id) as action_name,pg.content,pg.action_date
+        from PersonalGift pg inner join GiftsMarket gm on pg.gift_id=gm.id
+        inner join GiftCategory gc on gc.id=gm.category_id
+        where pg.user_id=?user_id and pg.gift_id=?gift_id and pg.active=true;
+    </SQL>
+    <SQL ID ="RunByDay">
+        update personalgift pg set pg.is_receive=1 where date(pg.action_date)=CURRENT_DATE() and pg.is_receive=2 and active=1;
+    </SQL>
+<!-- 查询礼品分类-->
+  <SQL ID ="GetGiftCategory">
+
+    SELECT gc.id,gc.parent_id,gc.category_name as value ,ifnull(stable.s,0) as num
+    FROM ( select tab.id,tab.parent_id,tab.category_name from (
+    select id,parent_id,parent_id as orderid,category_name FROM giftcategory
+    where language_id = ?language_id and parent_id !='-1' and active =1
+    union
+    select id,parent_id,id as orderid,category_name FROM giftcategory
+    where language_id = ?language_id and parent_id ='-1' and active =1) as tab
+    order by tab.orderid desc,parent_id
+    ) gc left join (select count(*) as s,category_id from GiftsMarket where active = 1  group by category_id) as stable
+    on gc.id = stable.category_id;
+
+
+  </SQL>
+
+  <!-- 查询礼品详细-->
+  <SQL ID ="GetGift">
+    SELECT gm.id,gm.gift_name,gm.description,gm.gift_logo_path,gc.category_name
+    FROM giftcategory gc inner join GiftsMarket gm on gm.category_id =  gc.id
+    where gm.id=?id  and gm.active=1 and gc.language_id=?language_id;
+  </SQL>
+
+  
+    <!--用户礼品相关SQL End-->
+</SQLScript>

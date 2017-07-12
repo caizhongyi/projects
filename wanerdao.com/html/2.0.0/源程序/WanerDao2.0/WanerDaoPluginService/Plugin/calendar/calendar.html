@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>玩儿道--个人日历</title>
+    <meta name="keywords" content="个人日历" />
+    <meta name="description" content="个人日历" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <!--[if IE 6]><script>document.execCommand("BackgroundImageCache", false, true)</script><![endif]-->
+    <link rel="stylesheet" type="text/css" href="style/layout.css" />
+    <link rel="stylesheet" type="text/css" href="style/pop.css" />
+    <link rel='stylesheet' type='text/css' href='style/fullcalendar.css' />
+    <link rel='stylesheet' type='text/css' href='style/fullcalendar.print.css' media='print' />
+    <style type="text/css">
+        body
+        {
+            font-family: Arial,Helvetica,sans-serif;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+    <!-----------------日历------------->
+    <div class="datePop popDiv">
+        <div class="popA">
+        </div>
+        <div class="popB">
+        </div>
+        <div class="datePopBox">
+            <div class="popTitle">
+                <span class="titleDes">
+                    <img src="images/popImg/icon5.gif" /><span>日历</span></span><div class="closeWin">
+                        <a class="hideWinBtn" href="javascript:void(0)" onclick="closeWin('.datePop')"></a>
+                        <a class="closeWinBtn" href="javascript:void(0)" onclick="closeWin('.datePop')">
+                        </a>
+                    </div>
+            </div>
+            <div class="popContent">
+                <div class="favFolderCon">
+                    <div class="popC">
+                    </div>
+                    <div class="popD">
+                    </div>
+                    <div class="ffDes">
+                        <div class="dateTitle">
+                        </div>
+                        <div class="dateCon">
+                            <div class="dateConLeft">
+                                <div class="mt5" id="datepicker">
+                                </div>
+                                <!--需要操作单个的表格 并添加事件 请使用firebug查看Html-->
+                            </div>
+                            <div class="dateConRight">
+                                <div id="calendar" class="dateConBox normal">
+                                    <div class="popDateTips">
+                                        <table>
+                                            <tr>
+                                                <th>
+                                                    时间：
+                                                </th>
+                                                <td>
+                                                    <span class="time"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="vtp">
+                                                    内容：
+                                                </th>
+                                                <td>
+                                                    <textarea class="popTipsArea"></textarea>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                </th>
+                                                <td>
+                                                    <a href="#" class="sBtn save"><span>添加</span></a><a href="#" class="sBtn del"><span>删除</span></a><a
+                                                        href="#" class="detail"> 编辑详细事件</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <div class="popFlag">
+                                        </div>
+                                    </div>
+                                    <div class="popDateEdit">
+                                        <div class="">
+                                            <a href="#" class="popDateEditClose"></a><a href="#" class="sBtn return"><span>返回</span></a>
+                                            <a href="#" class="sBtn save"><span>保存</span></a> <a href="#" class="sBtn cancel"><span>
+                                                放弃</span></a><br />
+                                            <div class="mt5">
+                                                <input type="text" class="textS w300 title" default="请输入标题" value="请输入标题" /></div>
+                                            <div class="vm mt5">
+                                                <input type="text" class="startDate textS w80" />
+                                                <select class="startTime">
+                                                    <option>02:00</option>
+                                                </select>
+                                                <span>-</span>
+                                                <input type="text" class="endDate textS w80" />
+                                                <select class="endTime">
+                                                    <option>02:00</option>
+                                                </select>
+                                            </div>
+                                            <div class="mt5">
+                                                <input type="text" class="textS w300 destination" default="事件地点" value="事件地点" />
+                                            </div>
+                                            <div class="mt5">
+                                                <textarea class="textS w300 event" default="事件详细描述">事件详细描述</textarea>
+                                            </div>
+                                            <div class="mt5">
+                                                <input type="checkbox" value="" class="agenda" /><label>标为重要日程</label>
+                                            </div>
+                                            <div class="mt5">
+                                                <input type="checkbox" value="" class="email" /><label>邮件提醒</label>
+                                            </div>
+                                            <div class="mt5">
+                                                <input type="text" value="" class="textS w180 emailDuration" />
+                                                <select class="emailUnit">
+                                                    <option value="0">时</option>
+                                                    <option value="1">天</option>
+                                                    <option value="2">周</option>
+                                                    <option value="3">月</option>
+                                                </select>
+                                            </div>
+                                            <div class="mt5">
+                                                <input type="checkbox" value="" class="hint" /><label>消息提醒</label>
+                                            </div>
+                                            <div class="mt5">
+                                                <input type="text" value="" class="textS w180 hintDuration" />
+                                                <select class="hintUnit">
+                                                    <option value="0">时</option>
+                                                    <option value="1">天</option>
+                                                    <option value="2">周</option>
+                                                    <option value="3">月</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dateConBox dayList">
+                                    <table border="0" cellspacing="0" cellpadding="0" class="dateListClass" width="100%">
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popD">
+                        </div>
+                        <div class="popC">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="popB">
+            </div>
+            <div class="popA">
+            </div>
+        </div>
+    </div>
+    <iframe id="crossdomain" frameborder="0"></iframe>
+    <script type='text/javascript' src='../scripts/jquery-1.7.2.min.js'></script>
+    <script type='text/javascript' src='scripts/jquery-ui-1.8.11.custom.min.js'></script>
+    <script type='text/javascript' src="scripts/jquery.ui.datepicker-zh-CN.js"></script>
+    <script type='text/javascript' src="../scripts/pop.js"></script>
+    <script type='text/javascript' src="../scripts/utility.js"></script>
+    <script type="text/javascript" src='../scripts/wanerdao.js'></script>
+    <script type="text/javascript" src='../scripts/json2.js'></script>
+    <script type="text/javascript">
+        var uid = getQueryString("uid"); //用户id
+    </script>
+    <script type="text/javascript" src="scripts/calendar.js"></script>
+    <script type='text/javascript' src='scripts/fullcalendar.js'></script>
+</body>
+</html>

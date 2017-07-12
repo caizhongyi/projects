@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Post diary-Personal-Savorboard</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="Post diary, Personal, Savorboard, Life and social network" />
+<meta name="description" content="Edit and publish diary" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../css/personal.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+	function checkbox2(id){
+		if($('#'+id).attr('checked')==true){
+			$('#'+id).attr('checked',false);
+		}else{
+			$('#'+id).attr('checked',true);
+		}
+	}
+	
+$(document).ready(function(){
+	//blog、blog_view 展开评论
+	$(".gxbox").each(function(){
+		$(this).click(function(){
+			obj = $(this).parent().parent().parent().find(".log_view_box");
+			if(obj.css('display')=='none'){
+				obj.show();	
+			}else{
+				obj.hide();	
+			}
+		});  
+	}); 
+	//blog_post 收起共享
+	$(".shgx").each(function(){
+		$(this).click(function(){									 
+			obj = $(this).parent().parent();							 
+			obj.hide();
+		});
+	});
+});
+
+</script>
+<link rel="stylesheet" type="text/css" href="../css/en.css" media="all" />
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+	<div class="header layout">
+    	<a href="index.html" class="logo"></a>
+        <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="Go Home"></a>
+            <div class="home_pop">
+            	<ul>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Activity</a>
+                        <p><a href="javascript:;">Looking for activities</a><a href="javascript:;">Create activities</a><a href="javascript:;">Classification activities</a><a href="javascript:;">Custom activities</a><a href="javascript:;">Seasonal activities</a><a href="javascript:;">My activities</a><a href="javascript:;">Historical activities</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Personal</a>
+                        <p><a href="javascript:;">Profile</a><a href="javascript:;">Diary</a><a href="javascript:;">Album</a><a href="javascript:;">Video</a></p>
+                    </li>
+                    <li  class="last">
+                        <a href="javascript:;" class="hp_title">Relationship</a>
+                        <p><a href="javascript:;">My friends</a><a href="javascript:;">Search friends</a><a href="javascript:;">Invite friends</a><a href="javascript:;">Subscription settings</a><a href="javascript:;">My groups</a><a href="javascript:;">Search group</a><a href="javascript:;">Create a group</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+                <input type="text" class="search_txt" value="Artivity/Firend/Group/Article" inputdefault="Artivity/Firend/Group/Article" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/defucult/head.jpg" width="32" height="32"></a><span class="user_infor_name"><a href="javascript:;">Cooking - life in the life journey<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">Modify profile</a></li>
+                    <li><a href="javascript:;">Account management</a></li>
+                    <li><a href="javascript:;">Privacy Settings</a></li>
+                    <li><a href="javascript:;">Change language</a></li>
+                    <li class="last"><a href="javascript:;">Exit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+	<div class="mes_box per_blog clearfix">
+        <div class="black10"></div>
+        <div class="black5"></div>
+        <div class="mes_com_box_Tab">
+            <a href="javascript:;">Profile</a>
+            <a href="javascript:;" class="active">Diary</a>
+            <a href="javascript:;">Album</a>
+            <a href="javascript:;">Video</a>
+        </div>
+        <div class="black10"></div>
+        <div class="log_tab clearfix mb12">
+            <ul>
+                <li><a href="javascript:;">Read</a></li>
+                <li><a href="javascript:;" class="tagf">Publish</a></li>
+                <li><a href="javascript:;">Page settings</a></li>
+                <li><a href="javascript:;">Management</a></li>
+            </ul>
+        </div>
+        
+        <div class="log_postinfo">
+            <ul>
+                <li class="log_Ptit"><label>Title：</label>&nbsp;&nbsp;&nbsp;<input type="text" class="text" style="width:280px;" /></li>
+                <li class="log_Pweath">
+                	<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input style=" margin-left:30px; margin-right:5px;" id="box1" name="" type="checkbox" value=""  class="inp01" /><label onclick="checkbox2('box1')" >Display weather：</label><img style="margin-left:5px;" src="../images/post_bg.jpg"/><span>多云转晴  21℃-25℃</span> 
+                    <input id="box2" name="" type="checkbox" value="" class="inp01"><label onclick="checkbox2('box2')">Display Address：</label><input type="text" class="text" style="width:138px;" />
+                </li>
+                <li class="log_Pcon">
+                    <label>Content：</label>
+                    <textarea name="" cols="" rows="" class="text mes_com_send_con" style="width:608px;"></textarea>
+              </li>
+                <li class="log_save">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="" type="checkbox" value="" class="v_top1" id="box6"><label onclick="checkbox2('box6')">Save as a draft</label>
+                                <div class="save_draft_alert">
+                                    内容临时保存于：2011/11/11/11:00:00
+                                    <a href="javascript:void(0);" onclick="this.parentNode.style.display='none'" class="close"></a>
+                                </div>
+                </li>
+                <li class="log_qx">
+                    <label>Permission：</label><select name="select">
+                              <option value="1">话题分类</option>
+                              <option value="2">帖子分类</option>
+                              <option value="3">辩论分类</option>
+                            </select>
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;Category：</label><select name="select">
+                              <option value="1">话题分类</option>
+                              <option value="2">帖子分类</option>
+                              <option value="3">辩论分类</option>
+                            </select>
+                            <input type="text" class="text" style="width:180px;" />
+                </li>
+                <li class="log_gx clearfix">
+                    <a href="javascript:void(0);" class="gxbox">Share to</a>
+                    <dl class="log_view_box" style="display:none">
+                        <dt><a href="javascript:void(0);" class="shgx">Withdraw sharing</a></dt>
+                        <dd> 
+                            <input name="" type="checkbox" value="" class="inp04"  id="box3"  >
+                            <label onclick="checkbox2('box3')">Share to diary</label>
+                            <select name="select" style="width:90px;">
+                              <option value="1">选择日志</option>
+                              <option value="1">选择日志</option>
+                            </select>
+                            <input name="" type="text" class="inp05" value="足球">
+                        </dd> 
+                        <dd> 
+                            <input name="" type="checkbox" value="" class="inp04" id="box4">
+                            <label onclick="checkbox2('box4')">Share to group</label>
+                            <select name="select" style="width:90px;">
+                              <option value="1">选择圈子</option>
+                              <option value="1">选择圈子</option>
+                            </select>
+                            <input name="" type="text" class="inp05" value="洪兴俱乐部">
+                        </dd>
+                        <dd> 
+                            <input name="" type="checkbox" value="" class="inp04" id="box5">
+                            <label onclick="checkbox2('box5')">Share to forum</label>
+                            <select name="select" style="width:90px;">
+                              <option value="1">选择杂烩</option>
+                              <option value="1">选择杂烩</option>
+                            </select>
+                            <input name="" type="text" class="inp05" value="足球">
+                        </dd>   
+                    </dl>
+                </li>
+                <li>
+                    <div class="black10"></div><div class="black10"></div><div class="black10"></div>
+                    <input type="button" class="buttonB btn_w135 btn_h36 btnBlue_135 fSize-14" value="Preview">
+                    <input type="button" class="buttonB btn_w97 btn_h36 btnGary_97 fSize-14" value="Cancel">
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+</div>
+<div class="mes_main_bot"></div>
+<!--mes_main-->
+
+<div class="footer layout">
+	<span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a href="javascript:;">Help</a></p>
+</div>
+
+</body>
+</html>

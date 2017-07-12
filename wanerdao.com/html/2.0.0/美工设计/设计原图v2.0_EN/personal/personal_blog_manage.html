@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Diary maintenance-Personal-Savorboard</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="Diary maintenance, Personal, Savorboard, Life and social network" />
+<meta name="description" content="Edit, delete and re-category personal diary, rename and delete category and edit permission" />
+
+<link rel="stylesheet" type="text/css" href="../css/public/base.css" media="all" />
+
+
+
+
+<link rel="stylesheet" type="text/css" href="../scripts/jquery.chosen/jquery.chosen.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../css/personal.css" media="all" />
+<script src="../scripts/jquery-1.7.2.min.js"></script>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/jquery.chosen/jquery.chosen.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".inp_modify").each(function(){
+		$(this).click(function(){
+			obj = $(this).parent().parent().parent().find(".hobby_listB");
+			if(obj.css('display')=='none'){
+				obj.show();	
+			}else{
+				obj.hide();	
+			}
+		});  
+	});
+});
+
+function showmenu(id,id2){
+	id = '#'+id;
+	id2 = '#'+id2;
+	left2 = $(id2).offset().left;
+	top2 = $(id2).offset().top+$(id2).height()-1;
+
+	
+	$(id).attr('style','position:absolute;top:'+top2+'px;left:'+left2+'px');
+	$(id).show();
+
+	$(id2).attr('hideid',id);
+
+	$(id).attr('id2',id2);
+
+	$(id).mouseout(
+		function(){
+			$(id2).parent().hide();
+			$(id2).attr('show','');
+			$(id).hide();
+		}
+	);
+
+	$(id).mouseover(
+		function(){
+			id2 = $(this).attr('id2');
+			$(this).show();
+			$(id2).attr('show',1);
+			$(id2).parent().show();
+		}
+	);
+	
+}
+
+$(function(){
+	
+	//blog_manages 右边列表
+	$(".log_manage_Rlist .listM_li").each(function(){
+		$(this).mouseout(
+			function(){
+				$(this).css("backgroundColor","#fff");
+				$(this).find(".listbox_ri").hide();
+			}	
+		);
+
+		$(this).mouseover(
+			function(){
+				$(this).css("backgroundColor","#f7f7f7");
+				$(this).find(".listbox_ri").show();
+			}	
+		);
+	});
+	
+	//blog_manages 左边列表
+	$(".log_manage_le .listM_li").each(function(){
+		$(this).mouseout(
+			function(){
+				$(this).css("backgroundColor","#fff");
+				$(this).find(".listbox_ri").hide();
+			}	
+		);
+
+		$(this).mouseover(
+			function(){
+				$(this).css("backgroundColor","#f7f7f7");
+				$(this).find(".listbox_ri").show();
+			}	
+		);
+	});
+	
+	//评论列表
+	$(".cli_pl").each(function(){
+		$(this).click(function(){
+			obj = $(this).parent().parent().parent().find(".log_view_box");
+			if(obj.css('display')=='none'){
+				obj.show();	
+			}else{
+				obj.hide();	
+			}
+		});  
+	});
+});
+	
+</script>
+
+<link rel="stylesheet" type="text/css" href="../css/en.css" media="all" />
+<body class="pBgB">
+<div class="header_wrapper pBgH">
+	<div class="header layout">
+    	<a href="index.html" class="logo"></a>
+        <div class="home" hoverable="true">
+        	<a href="javascript:;" class="go_home" title="Go Home"></a>
+            <div class="home_pop">
+            	<ul>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Activity</a>
+                        <p><a href="javascript:;">Looking for activities</a><a href="javascript:;">Create activities</a><a href="javascript:;">Classification activities</a><a href="javascript:;">Custom activities</a><a href="javascript:;">Seasonal activities</a><a href="javascript:;">My activities</a><a href="javascript:;">Historical activities</a></p>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="hp_title">Personal</a>
+                        <p><a href="javascript:;">Profile</a><a href="javascript:;">Diary</a><a href="javascript:;">Album</a><a href="javascript:;">Video</a></p>
+                    </li>
+                    <li  class="last">
+                        <a href="javascript:;" class="hp_title">Relationship</a>
+                        <p><a href="javascript:;">My friends</a><a href="javascript:;">Search friends</a><a href="javascript:;">Invite friends</a><a href="javascript:;">Subscription settings</a><a href="javascript:;">My groups</a><a href="javascript:;">Search group</a><a href="javascript:;">Create a group</a></p>
+                    </li>
+                </ul>
+                <div class="home_pop_bottom"><p></p></div>
+            </div>
+        </div>
+        <div class="search">
+        	<div class="search_bg vm">
+                <input type="text" class="search_txt" value="Artivity/Firend/Group/Article" inputdefault="Artivity/Firend/Group/Article" /><input value="" type="submit" class="search_btn" />
+        	</div>
+        </div>
+        <div class="user_infor" hoverable="true"><a href="javascript:;" class="f_left"><img src="../images/defucult/head.jpg" width="32" height="32"></a><span class="user_infor_name"><a href="javascript:;">Cooking - life in the life journey<b></b></a></span>
+        	<div class="user_infor_pop">
+            	<ul>
+                    <li><a href="javascript:;">Modify profile</a></li>
+                    <li><a href="javascript:;">Account management</a></li>
+                    <li><a href="javascript:;">Privacy Settings</a></li>
+                    <li><a href="javascript:;">Change language</a></li>
+                    <li class="last"><a href="javascript:;">Exit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mes_main layout">
+	<div class="mes_box per_blog clearfix">
+        <div class="black10"></div>
+        <div class="black5"></div>
+        <div class="mes_com_box_Tab">
+            <a href="javascript:;">Profile</a>
+            <a href="javascript:;" class="active">Diary</a>
+            <a href="javascript:;">Album</a>
+            <a href="javascript:;">Video</a>
+        </div>
+        <div class="black10"></div>
+        <div class="log_tab clearfix mb12">
+            <ul>
+                <li><a href="javascript:;">Read</a></li>
+                <li><a href="javascript:;">Publish</a></li>
+                <li><a href="javascript:;">Page settings</a></li>
+                <li><a href="javascript:;" class="tagf">Management</a></li>
+            </ul>
+        </div>
+        <div class="black10"></div>
+        
+        <div class="log_manage clearfix">
+            <div class="log_manage_le">
+                <dl class="per_blog_man_lsel">
+                    <dt>Category Settings</dt>
+                    <dd>
+                    	<label>Default category</label>
+                        <select name="select" style="width:140px;">
+                              <option value="1">时令活动</option>
+                              <option value="2">分类二</option>
+                              <option value="3">分类三</option>
+                        </select>
+                    </dd>
+                    <dd>
+                    	<label>Default permission</label>
+                        <select name="select" style="width:140px;">
+                              <option value="1">所有人可见</option>
+                              <option value="2">分类二</option>
+                              <option value="3">分类三</option>
+                        </select>
+                    </dd>
+                    <dd class="mt15"><input name="" type="text" class="inp09"><input name="" type="button" class="inp10" value="Add"></dd>
+                </dl> 
+                <ul>
+                    <li class="listM_li">
+                        <span class="listbox_ri" style="display: none;">
+                            <a class="" href="javascript:;"><img src="../images/managebg02.jpg"/></a>
+                            <a class="" href="javascript:;"><img src="../images/managebg03.jpg"/></a>
+                            <a class="" href="javascript:;"><img src="../images/managebg04.jpg"/></a>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                        <span class="listbox_ri" style="display: none;">
+                            <a class="" href="javascript:;"><img src="../images/managebg02.jpg"/></a>
+                            <a class="" href="javascript:;"><img src="../images/managebg03.jpg"/></a>
+                            <a class="" href="javascript:;"><img src="../images/managebg04.jpg"/></a>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                        <span class="listbox_ri" style="display: none;">
+                            <a class="" href="javascript:;"><img src="../images/managebg02.jpg"/></a>
+                            <a class="" href="javascript:;"><img src="../images/managebg03.jpg"/></a>
+                            <a class="" href="javascript:;"><img src="../images/managebg04.jpg"/></a>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                       <span class="listbox_ri" style="display: none;">
+                            <a class="" href="javascript:;"><img src="../images/managebg02.jpg"/></a>
+                            <a class="" href="javascript:;"><img src="../images/managebg03.jpg"/></a>
+                            <a class="" href="javascript:;"><img src="../images/managebg04.jpg"/></a>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                    <li class="listM_li">
+                        <span class="listbox_ri" style="display: none;">
+                            <a class="" href="javascript:;"><img src="../images/managebg02.jpg"/></a>
+                            <a class="" href="javascript:;"><img src="../images/managebg03.jpg"/></a>
+                            <a class="" href="javascript:;"><img src="../images/managebg04.jpg"/></a>
+                        </span>
+                        <a href="javascript:;">分类名一（10）</a>
+                    </li>
+                </ul> 
+            </div>
+            <div class="log_manage_ri">
+                <div class="log_manage_Rxl">
+                    <div class="Rxl_le">
+                    <label>Time</label>
+                        <input type="text" class="text" style="width:60px; height:22px;" />
+                        -
+                        <input type="text" class="text" style="width:60px; height:22px;" />
+                        <label>Category</label>
+                        <select name="select" style="width:80px;">
+                              <option value="1">分类一</option>
+                              <option value="2">分类二</option>
+                              <option value="3">分类三</option>
+                        </select>
+                        <input type="text" class="text" style="width:110px; height:22px;" />
+                        <input name="" type="button" class="inp14" value="Search">
+                    </div>
+                    
+                    <div class="alb_nav">
+                        <span class="first"><a href="javascript:;">First</a></span>
+                        <span class="prev"><a href="javascript:;">Pervious</a></span>
+                        <span><i>01</i>/<i>20</i></span>
+                        <span class="next"><a href="javascript:;">Next</a></span>
+                        <span class="last"><a href="javascript:;">Last</a></span>
+                    </div>  
+                </div>
+                <div class="log_manage_Rlist">
+                    <ul>
+                        <li class="listM_li">
+                            <span><a href="javascript:;" class="listbox_ri" style=" display:none">Read</a><i>所有人可见</i><i>2011/12/25</i></span>
+                            <input name="" type="checkbox" value="">
+                            <label><a href="javascript:;" id="c_yellow">[分类一]</a><a href="javascript:;">到年底一总结</a></label>
+                        </li>
+                        <li class="listM_li">
+                            <span><a href="javascript:;" class="listbox_ri" style=" display:none">Read</a><i>所有人可见</i><i>2011/12/25</i></span>
+                            <input name="" type="checkbox" value="">
+                            <label><a href="javascript:;" id="c_yellow">[分类一]</a><a href="javascript:;">到年底一总结</a></label>
+                        </li>
+                        <li class="listM_li">
+                            <span><a href="javascript:;" class="listbox_ri" style=" display:none">Read</a><i>所有人可见</i><i>2011/12/25</i></span>
+                            <input name="" type="checkbox" value="">
+                            <label><a href="javascript:;" id="c_yellow">[分类一]</a><a href="javascript:;">到年底一总结</a></label>
+                        </li>
+                        <li class="listM_li">
+                            <span><a href="javascript:;" class="listbox_ri" style=" display:none">Read</a><i>所有人可见</i><i>2011/12/25</i></span>
+                            <input name="" type="checkbox" value="">
+                            <label><a href="javascript:;" id="c_yellow">[分类一]</a><a href="javascript:;">到年底一总结</a></label>
+                        </li>
+                        <li class="listM_li">
+                            <span><a href="javascript:;" class="listbox_ri" style=" display:none">Read</a><i>所有人可见</i><i>2011/12/25</i></span>
+                            <input name="" type="checkbox" value="">
+                            <label><a href="javascript:;" id="c_yellow">[分类一]</a><a href="javascript:;">到年底一总结</a></label>
+                        </li>
+                        <li class="listM_li">
+                            <span><a href="javascript:;" class="listbox_ri" style=" display:none">Read</a><i>所有人可见</i><i>2011/12/25</i></span>
+                            <input name="" type="checkbox" value="">
+                            <label><a href="javascript:;" id="c_yellow">[分类一]</a><a href="javascript:;">到年底一总结</a></label>
+                        </li>
+                        <li class="listM_li">
+                            <span><a href="javascript:;" class="listbox_ri" style=" display:none">Read</a><i>所有人可见</i><i>2011/12/25</i></span>
+                            <input name="" type="checkbox" value="">
+                            <label><a href="javascript:;" id="c_yellow">[分类一]</a><a href="javascript:;">到年底一总结</a></label>
+                        </li>
+                        <li class="listM_li">
+                            <span><a href="javascript:;" class="listbox_ri" style=" display:none">Read</a><i>所有人可见</i><i>2011/12/25</i></span>
+                            <input name="" type="checkbox" value="">
+                            <label><a href="javascript:;" id="c_yellow">[分类一]</a><a href="javascript:;">到年底一总结</a></label>
+                        </li>
+                        <li class="listM_li">
+                            <span><a href="javascript:;" class="listbox_ri" style=" display:none">Read</a><i>所有人可见</i><i>2011/12/25</i></span>
+                            <input name="" type="checkbox" value="">
+                            <label><a href="javascript:;" id="c_yellow">[分类一]</a><a href="javascript:;">到年底一总结</a></label>
+                        </li>
+                        <li class="listM_li">
+                            <span><a href="javascript:;" class="listbox_ri" style=" display:none">Read</a><i>所有人可见</i><i>2011/12/25</i></span>
+                            <input name="" type="checkbox" value="">
+                            <label><a href="javascript:;" id="c_yellow">[分类一]</a><a href="javascript:;">到年底一总结</a></label>
+                        </li>
+                        <li class="listM_li">
+                            <span><a href="javascript:;" class="listbox_ri" style=" display:none">Read</a><i>所有人可见</i><i>2011/12/25</i></span>
+                            <input name="" type="checkbox" value="">
+                            <label><a href="javascript:;" id="c_yellow">[分类一]</a><a href="javascript:;">到年底一总结</a></label>
+                        </li>
+                    </ul>
+                    <div class="page_end">
+                        <div class="alb_nav">
+                        <span class="first"><a href="javascript:;">First</a></span>
+                        <span class="prev"><a href="javascript:;">Pervious</a></span>
+                        <span><i>01</i>/<i>20</i></span>
+                        <span class="next"><a href="javascript:;">Next</a></span>
+                        <span class="last"><a href="javascript:;">Last</a></span>
+                        </div> 
+                        <div class="page_end_le">
+                            <input name="" type="checkbox" value=""><label><a href="javascript:;">Delete</a></label>
+                            <select name="select">
+                              <option value="1">Change permission to</option>
+                              <option value="1">Change permission to</option>
+                            </select>
+                            <select name="select">
+                              <option value="1">Change category to</option>
+                              <option value="1">Change category to</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+        
+    </div>
+</div>
+<div class="mes_main_bot"></div>
+<!--mes_main-->
+
+<div class="footer layout">
+	<span class="f_right">Copyright &copy; 2012 Savorboard Corporation, All right reserved.</span>
+    <p class="footer_link"><a href="javascript:;">Feature</a><a href="javascript:;">Application</a><a href="javascript:;">Term</a><a href="javascript:;">Career</a><a href="javascript:;">Suggest</a><a href="javascript:;">Help</a></p>
+</div>
+
+</body>
+</html>

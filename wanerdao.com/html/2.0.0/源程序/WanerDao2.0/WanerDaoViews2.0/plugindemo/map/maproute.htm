@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>地图</title>
+    <link rel='stylesheet' href="/css/layout.css" type="text/css" />
+    <!--<link rel='stylesheet' href="/css/PluginCss/pop.css" type="text/css" />-->
+</head>
+<script type="text/javascript">
+    var winScreenWidth = window.screen.width;
+    if (winScreenWidth > 1024) {
+        document.writeln('<style>');
+        document.writeln('.jz{padding:0px 2px;}');
+        document.writeln('</style>');
+    }
+</script>
+<body style="height: 1000px;">
+    <!--头部-->
+    <div class="head">
+        <div class="jz">
+            <div class="logo left">
+                <a href="#" title="玩儿道">
+                    <img src="/images/layout_main/logo.png" alt="玩儿道" /></a></div>
+            <ul class="nav left yh">
+                <li><a href="#">首页</a></li>
+                <li class="cur"><a href="#" class="arr">个人</a></li>
+                <li><a href="#" class="arr">关系</a></li>
+                <li><a href="#" class="arr">杂烩</a></li>
+                <li><a href="#" class="arr">活动</a></li>
+                <li><a href="#" class="arr">资道</a></li>
+                <li class="newMsg"><a href="#">站内信息</a><i><a href="#">5</a></i></li>
+            </ul>
+            <div class="userInfo">
+                <a href="#" class="left" title="烧饭-人生旅途中-飞砂走石风过">
+                    <img src="/images/layout_main/img_32x32.png" width="32" height="32" /></a> <a href="javascript:void(0);"
+                        title="烧饭-人生旅途中-飞砂走石风过留痕！" class="name">烧饭-人生旅途中</a>
+            </div>
+        </div>
+    </div>
+    <div class="main jz">
+        <div class="mCon">
+            <div class="prPdBox">
+                <div class="prTnvit_wrap">
+                    <div class="prT_name">
+                        <b></b>邀请用户</div>
+                </div>
+                <div class="blank5px">
+                </div>
+                [<a id="viewmap" href="javascript:;" rel="#gmap">地图</a>]
+                <div id="gmap"></div>
+            </div>
+        </div>
+    </div>
+    <div class="mBtm jz">
+    </div>
+    <!--主体end-->
+    <!--底部-->
+    <div class="foot jz">
+        <a href="#">特色</a> <a href="#">开发应用</a> <a href="#">法律声明</a> <a href="#">招聘团队</a>
+        <a href="#">建议</a> <a href="#">帮助</a></div>
+    <!--底部end-->
+    <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/scripts/common/wanerdaoutils.js"></script>
+    <script type="text/javascript" src="/scripts/multipleLanguage/loader.js"></script>
+    <script type="text/javascript" src="/scripts/OpenProjectPlugin/jquery.overlay.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="/Scripts/OpenProjectPlugin/gmap3.js"></script>
+    <!--<script type="text/javascript" src="../../Scripts/Plugin/viewpath/wanerdao2.mapview.js"></script>-->
+    <script type="text/javascript" src="/Scripts/Plugin/map/wanerdao2.mapview2.js"></script>
+    <script type="text/javascript">
+        $("#viewmap").click(function () {
+            $("#viewmap").wanerdaomap({ origin: "中国江苏省徐州", dest: "中国江苏省南京" });
+        });
+        //$(function () {
+        //$("#viewmap").wanerdaomap({ start: "中国四川省绵阳", end: "中国四川省成都" });
+        //var g = groupinvite();
+        //            $(".prT_name").inviter();
+        //            $("#getgroupdata").click(function () {
+        //                alert($.data(document.body, "groupdata"));
+        //                //好友的是$.data(document.body, "frienddata")
+        //            })
+        //            $("#btngroup").overlay();
+        //            $("#btnfriend").overlay();
+        //})
+    </script>
+</body>
+</html>
