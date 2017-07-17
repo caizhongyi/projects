@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-declare var $
+declare var $;
 
 $.fn.grade = function(){
     function setVal( index ){

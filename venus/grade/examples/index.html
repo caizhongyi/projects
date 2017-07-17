@@ -17,9 +17,12 @@
       <input type="hidden" name="grade" value="0"/>
   </div>
   <script>
-      seajs.use('./../dist/index', function ( $ ) {
-          $('.grade').grade();
+      seajs.config({
+          alias : {
+              'jquery' : './node_modules/jquery/dist/jquery.js'
+          }
       })
+      seajs.use('./../dist/main',function ( $ ) { })
   </script>
   </body>
 </html>
