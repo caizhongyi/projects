@@ -1,10 +1,8 @@
-/**
- * Created by lenovo on 2017/7/12.
- */
-import $ from './../..//node_modules/jquery/dist/jquery';
+import $ from 'jquery';
+
+declare var $
 
 $.fn.grade = function(){
-
     function setVal( index ){
         $(this).find('.icon:lt('+ (index + 1) +')').addClass('active')
         $(this).find('.icon:gt('+ index +')').removeClass('active')
@@ -22,3 +20,5 @@ $.fn.grade = function(){
         })
     })
 }
+
+export default $ ;

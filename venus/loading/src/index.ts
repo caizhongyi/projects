@@ -1,4 +1,3 @@
-import $ from './../../node_modules/jquery/dist/jquery';
 /*export class loading {
     constructor(){}
     show(){
@@ -7,7 +6,7 @@ import $ from './../../node_modules/jquery/dist/jquery';
     hide(){
     }
 }*/
-
+declare  var $ ;
 //overlay
 $.overlay =  function(options) {
     var defaults = {
@@ -56,5 +55,4 @@ $.loadingEffect =  function(options) {
         $('body').append(s);
         return false;
     }
-    return false;
 }
