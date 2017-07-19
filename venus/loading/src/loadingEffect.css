@@ -1,0 +1,17 @@
+
+.signal { border: 6px solid #FFF; border-radius: 100%; height: 50px; left: 50%; margin: -15px 0 0 -25px; opacity: 0; position: absolute; top: 50%; width: 50px; -webkit-animation: pulsate 1s ease-out; animation: pulsate 1s ease-out; -webkit-animation-iteration-count: infinite; animation-iteration-count: infinite; z-index: 8000; }
+@-webkit-keyframes pulsate {
+    0% {
+        -webkit-transform:scale(.1);
+        transform:scale(.1);
+        opacity: 0.0;
+    }
+    50% {
+        opacity:1;
+    }
+    100% {
+        -webkit-transform:scale(1.2);
+        transform:scale(1.2);
+        opacity:0;
+    }
+}
