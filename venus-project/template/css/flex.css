@@ -1,0 +1,57 @@
+.flex,.flex-middle{
+    display: flex !important;
+    display: -webkit-flex  !important;
+    display: -webkit-box  !important;
+    display: flex !important;
+    -webkit-flex-flow: row;
+    flex-flow: row;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    /* 水平局中 */
+    /*  -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+  */
+    /* 垂直局中 */
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-pack: center;
+
+    -webkit-align-content: center;
+    align-content: center;
+
+}
+
+.flex-content{
+    padding:5px 10px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+.flex-inline{
+    display: inline-flex !important;
+    display: -webkit-inline-flex  !important;
+}
+.flex-col,.flex-middle{
+    -webkit-flex-flow: column;
+    flex-flow: column;
+}
+.flex-item,.flex-item-1{
+    flex :1 ;
+    -webkit-flex: 1;
+}
+.flex-item-2{ flex : 2 ; -webkit-flex: 2;  }
+.flex-item-3{  flex : 3 ;  -webkit-flex: 3;  }
+.flex-item-4{  flex : 4;  -webkit-flex: 4;  }
+
+.flex .flex-content + .flex-content{
+    padding-left: 0;
+}
+
+.flex-col .flex-content + .flex-content{
+    padding-top: 0;
+}
+
+.flex-col > .flex .flex-content + .flex-content{
+    padding-top: 0;
+}
