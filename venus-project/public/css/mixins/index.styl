@@ -45,6 +45,11 @@ heading(size = font-size, color = default-color)
  * Base reset (recommended)
  */
 reset()
+  if is-mobile
+    *
+      box-sizing border-box
+      -webkit-box-sizing border-box
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -89,6 +94,8 @@ reset()
   img
     max-width 100%
     display inline-block
+
+
   normalize()
   fields-reset()
   base-classes()
@@ -467,6 +474,26 @@ base-classes()
       -webkit-flex: 1;
      for i in 1...10
       .flex-item-{i}{ flex : i ; -webkit-flex: i;  }
+
+  .btn
+    position: relative;
+    font-size: font-size;
+    padding: 7px 12px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: all 0.4s ease-in-out;
+    background: none;
+    line-height: 1.4 !important;
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: center;
+    border: 1px solid transparent;
+    /*box-shadow: 0 0 5px #ddd;*/
+    text-shadow: 0 0 1px #b1b1b1;
+    cursor: pointer;
+    &:hover
+      text-decoration none;
+
 
 
 
